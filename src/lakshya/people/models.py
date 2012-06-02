@@ -1,0 +1,53 @@
+from django.db import models
+from django.contrib.auth.models import User
+
+BTECH = 0
+MTECH = 1
+PHD = 2
+COURSE_CHOICES = ((BTECH, "B.Tech"),
+                  (MTECH, "M.Tech"),
+                  (PHD, "Phd"))
+
+ECE = 0
+EEE = 1
+CSE = 2
+MECH = 3
+CIVIL = 4
+CHEM = 5
+METALLURGY = 6
+BIOTECH = 7
+DEPARTMENT_CHOICES = ((ECE, "ECE"),
+                      (EEE, "EEE"),
+                      (CSE, "CSE"),
+                      (MECH, "MECH"),       
+                      (CIVIL, "CIVIL"),
+                      (CHEM, "CHEM"),
+                      (METALLURGY, "METALLURGY"),
+                      (BIOTECH, "BIOTECH"),)
+
+class Person(models.Model):
+    user = models.OneToOneField(User)
+    #Address
+    billing_address = models.TextField("Billing Address", blank=True)
+    billing_landmark = models.CharField("Landmark", max_length=100, blank=True)
+    billing_city = models.CharField("City", max_length=50, blank=True)
+    billing_state = models.CharField("State", max_length=50, blank=True)
+    billing_postal_code = models.CharField("Pin Code", max_length=30, blank=True)
+    billing_country = models.CharField("Country", max_length=50, blank=True)
+    contact_number = models.CharField("Phone Number", max_length = 20, blank=True)
+    #if NITW
+    is_nitw_alumni = models.BooleanField(blank=True)
+    course = models.IntegerField(choices=COURSE_CHOICES, default=BTECH, blank=True)
+    department = models.IntegerField(choices=DEPARTMENT_CHOICES, blank=True)
+    year_of_passing = models.IntegerField(blank=True)
+    
+    def __unicode__(self):
+        return self.user.first_name
+
+
+class Person_preference(models.Model):
+    person = models.OneToOneField(Person)
+    is_subscribed_for_newsletter = models.BooleanField(default=True, blank=False)
+    show_donations = models.BooleanField(default=True, blank=True)
+    
+    
