@@ -37,9 +37,9 @@ class Person(models.Model):
     contact_number = models.CharField("Phone Number", max_length = 20, blank=True)
     #if NITW
     is_nitw_alumni = models.BooleanField(blank=True)
-    course = models.IntegerField(choices=COURSE_CHOICES, default=BTECH, blank=True)
-    department = models.IntegerField(choices=DEPARTMENT_CHOICES, blank=True)
-    year_of_passing = models.IntegerField(blank=True)
+    course = models.IntegerField(choices=COURSE_CHOICES, default=BTECH, blank=True, null=True)
+    department = models.IntegerField(choices=DEPARTMENT_CHOICES, blank=True, null=True)
+    year_of_passing = models.IntegerField(blank=True, null=True)
     
     def __unicode__(self):
         return self.user.first_name

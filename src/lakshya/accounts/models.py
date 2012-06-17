@@ -44,10 +44,10 @@ TRANSACTION_CHOICES = ((PAYMENT_GATEWAY, "Payment Gateway"),
 class Expense(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     date_of_expense = models.DateField()
-    date_of_entry = models.DateField(auto_now_add = True)
-    status = models.IntegerField(choices = EXPENSE_STATUS_CHOICES, default=ENTERED)
-    expense_header_first_level = models.IntegerField(choices = EXPENSE_HEADER_FIRST_LEVEL_CHOICES, blank=True)
-    expense_header_second_level = models.IntegerField(choices = EXPENSE_HEADER_SECOND_LEVEL_CHOICES, blank=True)
+    date_of_entry = models.DateField(auto_now_add=True)
+    status = models.IntegerField(choices=EXPENSE_STATUS_CHOICES, default=ENTERED)
+    expense_header_first_level = models.IntegerField(choices=EXPENSE_HEADER_FIRST_LEVEL_CHOICES, blank=True)
+    expense_header_second_level = models.IntegerField(choices=EXPENSE_HEADER_SECOND_LEVEL_CHOICES, blank=True)
     scan_bill = models.FileField(upload_to="expenses", blank=True)
     details = models.TextField(blank=True)
     
@@ -76,7 +76,4 @@ class Donation(models.Model):
     transaction_details = models.CharField(max_length=200, blank=True) 
 
     def __unicode__(self):
-        return str(self.date_of_donation) + " : Rs." + str(self.amount) + self.donor.user.first_name      
-    
-    
-    
+        return str(self.date_of_donation) + " : Rs." + str(self.amount) + self.donor.user.first_name          
