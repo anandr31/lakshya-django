@@ -1,7 +1,7 @@
 from django.db import models
 from people.models import Person
-from datetime import datetime
 from accounts.models import DonationFund, Expense, TRANSACTION_CHOICES
+from datetime import datetime
 
 YET_TO_SHORTLIST = 0
 NEED_TO_VERIFY = 1
@@ -118,39 +118,44 @@ YES_NO__NOT_SURE_CHOICES = ((YES, "Yes"),
                             (NO, "No"),
                             (NOT_SURE, "Not sure"),)
 
+NOT_YET_VERIFIED = 0
+VERIFIED = 1
+VERIFICATION_STATUS_CHOICES = ((NOT_YET_VERIFIED, "Not yet verified"),
+                               (VERIFIED, "Verified"),)
+
 class ScholarshipApplication(models.Model):
     person = models.ForeignKey(Person)
-    date_of_submission = models.DateTimeField()
-    year_of_submission = models.IntegerField()
+    date_of_submission = models.DateTimeField(null=True, blank=True, auto_now=True)
+    year_of_submission = models.IntegerField(null=True, blank=True, default=datetime.now().year)
     #personal details
-    date_of_birth = models.DateField(blank=True)
-    sex = models.IntegerField(choices=SEX_CHOICES, default = MALE)
-    roll_num = models.IntegerField(blank=True)
+    date_of_birth = models.DateField(null=True, blank=True)
+    sex = models.IntegerField(choices=SEX_CHOICES, default = MALE, null=True, blank=True)
+    roll_num = models.IntegerField(null=True, blank=True)
     #contact details in adittion to what stored in the Persons table
-    hostel_address = models.TextField(blank=True)
-    parent_contact = models.CharField(max_length=20)
+    hostel_address = models.TextField(null=True, blank=True)
+    parent_contact = models.CharField(max_length=20, null=True, blank=True)
     #ssc details
-    ssc_board = models.IntegerField(choices=SSC_BOARD_CHOICES, default = SSC_CBSE)
+    ssc_board = models.IntegerField(choices=SSC_BOARD_CHOICES, default = SSC_CBSE, null=True, blank=True)
     ssc_batch = models.IntegerField(verbose_name="Year of passing", 
-                                    choices=BATCH_CHOICES, default=2005)
-    ssc_percentage = models.DecimalField(verbose_name="Percentage(%)", blank=True,
+                                    choices=BATCH_CHOICES, default=2005, null=True, blank=True)
+    ssc_percentage = models.DecimalField(verbose_name="Percentage(%)", null=True, blank=True, 
                                         max_digits=5, decimal_places=2)
-    ssc_school_name = models.CharField(max_length=100, blank=True)
-    ssc_school_address = models.TextField(blank=True)
-    ssc_school_type = models.IntegerField(choices=INSTITUTION_TYPE, default=PRIVATE)
+    ssc_school_name = models.CharField(max_length=100, null=True, blank=True)
+    ssc_school_address = models.TextField(null=True, blank=True)
+    ssc_school_type = models.IntegerField(choices=INSTITUTION_TYPE, default=PRIVATE, null=True, blank=True)
     #intermediate_details
     intermediate_board = models.IntegerField(choices=INTERMEDIATE_BOARD_CHOICES,
-                                             default = INTERMEDIATE_CBSE)
+                                             default = INTERMEDIATE_CBSE, null=True, blank=True)
     intermediate_batch = models.IntegerField(verbose_name="Year of passing", 
-                                             choices=BATCH_CHOICES, default=2005)
+                                             choices=BATCH_CHOICES, default=2005, null=True, blank=True)
     intermediate_percentage = models.DecimalField(verbose_name="Percentage(%)", 
-                                                  blank=True, max_digits=5, decimal_places=2)
-    intermediate_college_name = models.CharField(max_length=100, blank=True)
-    intermediate_college_address = models.TextField(blank=True)
+                                                  null=True, blank=True, max_digits=5, decimal_places=2)
+    intermediate_college_name = models.CharField(max_length=100, null=True, blank=True)
+    intermediate_college_address = models.TextField(null=True, blank=True)
     intermediate_college_type = models.IntegerField(choices=INSTITUTION_TYPE, 
-                                                    default=PRIVATE)
+                                                    default=PRIVATE, null=True, blank=True)
     #aieee
-    aieee_air = models.IntegerField(blank=True)
+    aieee_air = models.IntegerField(null=True, blank=True)
     #vehicles
     has_two_wheeler = models.BooleanField(blank=True)
     has_four_wheeler = models.BooleanField(blank=True)
@@ -158,20 +163,20 @@ class ScholarshipApplication(models.Model):
     has_tv = models.BooleanField(blank=True)
     has_fridge = models.BooleanField(blank=True)
     has_washing_machine = models.BooleanField(blank=True)
-    house_ownership = models.IntegerField(choices=OWNERSHIP_CHOICES, blank=True)
-    house_type = models.IntegerField(choices=HOUSE_TYPE_CHOICES, blank=True)
-    agriculture_land = models.CharField(max_length=50, blank=True,
+    house_ownership = models.IntegerField(choices=OWNERSHIP_CHOICES, null=True, blank=True)
+    house_type = models.IntegerField(choices=HOUSE_TYPE_CHOICES, null=True, blank=True)
+    agriculture_land = models.CharField(max_length=50, null=True, blank=True,
                                         help_text="Eg : We have 2.5 acres ")
-    other_asset = models.TextField(blank=True, help_text="Eg : We have 8 cows and a tractor")
-    question1 = models.TextField(blank=True, verbose_name = "How have you supported your education \
+    other_asset = models.TextField(null=True, blank=True, help_text="Eg : We have 8 cows and a tractor")
+    question1 = models.TextField(null=True, blank=True, verbose_name = "How have you supported your education \
                                     till now and why are you applying for the \
                                     Lakshya scholarship?")
-    question2 = models.TextField(blank=True, verbose_name = "How will you manage if \
+    question2 = models.TextField(null=True, blank=True, verbose_name = "How will you manage if \
                                 you are not supported by Lakshya")
     #others
     
     status = models.IntegerField(choices=SCHOLARSHIP_APPLICATION_STATUS, 
-                                 default=YET_TO_SHORTLIST)
+                                 default=YET_TO_SHORTLIST, null=True, blank=True)
 
     def get_first_name(self):
         if self.person:
@@ -189,7 +194,7 @@ class ScholarshipApplication(models.Model):
     
     def get_branch(self):
         if self.person:
-            return self.person.department
+            return self.person.get_department_display()
         else:
             return ""
     get_branch.short_description = "Branch"
@@ -215,33 +220,36 @@ class ScholarshipApplication(models.Model):
         else:
             return ""
     get_contact_number.short_description = "Contact num"
+    
+    def __unicode__(self):
+        return self.person.user.first_name
 
 class Sgpa(models.Model):
     application = models.ForeignKey(ScholarshipApplication, related_name="sgpa")
-    semester = models.IntegerField(choices=SEMESTER_CHOICES, blank=True)
-    sgpa = models.DecimalField(max_digits=4, decimal_places=2)
+    semester = models.IntegerField(choices=SEMESTER_CHOICES, null=True, blank=True)
+    sgpa = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
 
 class OtherExamPerformance(models.Model):
     application = models.ForeignKey(ScholarshipApplication, related_name="otherexams")
-    exam_name = models.CharField(max_length=100, blank=True)
+    exam_name = models.CharField(max_length=100, null=True, blank=True)
     year = models.IntegerField(verbose_name="Year of exam", 
-                               choices=BATCH_CHOICES, default=2005)
-    result = models.CharField(max_length=50, verbose_name="Rank/Percentage", blank=True)
+                               choices=BATCH_CHOICES, default=2005, null=True, blank=True)
+    result = models.CharField(max_length=50, verbose_name="Rank/Percentage", null=True, blank=True)
 
 class FamilyDetail(models.Model):
     application = models.ForeignKey(ScholarshipApplication, related_name="familydetails")
-    name = models.CharField(max_length=100, blank=True)
-    relation = models.IntegerField(choices=RELATION_CHOICES, blank=True)
-    education = models.CharField(max_length=100, blank=True)
+    name = models.CharField(max_length=100, null=True, blank=True)
+    relation = models.IntegerField(choices=RELATION_CHOICES, null=True, blank=True)
+    education = models.CharField(max_length=100, null=True, blank=True)
     occupation_annualincome = models.CharField(verbose_name="Occupation & Annual Income", 
-                                               max_length=200, help_text="", blank=True)
+                                               max_length=200, help_text="", null=True, blank=True)
     
 
 class OtherScholarship(models.Model):
     application = models.ForeignKey(ScholarshipApplication, related_name="otherscholarships")
-    name = models.CharField(max_length=200, blank=True)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
-    comments = models.CharField(max_length=200, blank=True, 
+    name = models.CharField(max_length=200, null=True, blank=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    comments = models.CharField(max_length=200, null=True, blank=True, 
                                 help_text="Eg: I have applied for scholarship but \
                                  I am not sure if I will get it")
 
@@ -249,7 +257,7 @@ class OtherScholarship(models.Model):
 class ScholarshipVerification(models.Model):
     application = models.ForeignKey(ScholarshipApplication)
     verifier = models.ForeignKey(Person)
-    date_of_verfication = models.TimeField(blank=True)
+    date_of_verfication = models.TimeField(null=True, blank=True)
     #whom all you have met
     met_applicant = models.BooleanField(blank=True)
     met_father = models.BooleanField(blank=True)
@@ -258,42 +266,79 @@ class ScholarshipVerification(models.Model):
     met_relatives = models.BooleanField(blank=True)
     met_neighbours = models.BooleanField(blank=True)
     house_ownership_type = models.IntegerField(verbose_name="Ownership of house where applicant is staying", 
-                                               choices=OWNERSHIP_CHOICES, blank=True)
+                                               choices=OWNERSHIP_CHOICES, null=True, blank=True)
     house_type = models.IntegerField(verbose_name="Type of house where applicant is staying",
-                                     choices=HOUSE_TYPE_CHOICES, blank=True)
+                                     choices=HOUSE_TYPE_CHOICES, null=True, blank=True)
     #all electronics the applicant has
     has_tv = models.BooleanField(blank=True)
     has_fridge = models.BooleanField(blank=True)
     has_washing_machine = models.BooleanField(blank=True)
     has_air_cooler = models.BooleanField(blank=True)
     has_air_conditioner = models.BooleanField(blank=True)
-    vehicles_owned = models.CharField(max_length=200, blank=True, help_text="Eg:Bike, Cycle etc")
+    vehicles_owned = models.CharField(max_length=200, null=True, blank=True, help_text="Eg:Bike, Cycle etc")
     #financial details
     father_details = models.TextField(verbose_name="About father's education, occupation and annual income", 
-                                      blank=True)
+                                      null=True, blank=True)
     mother_details = models.TextField(verbose_name="About mother's education, occupation and annual income", 
-                                      blank=True)
+                                      null=True, blank=True)
     sibling_details = models.TextField(verbose_name="About siblings of the applicant", 
-                                      blank=True)    
-    question1 = models.TextField(blank=True, verbose_name = "How has he supported his education till now",
+                                      null=True, blank=True)    
+    question1 = models.TextField(null=True, blank=True, verbose_name = "How has he supported his education till now",
                                  help_text="SSC, Intermidiate and Engineering till now")
-    question2 = models.TextField(blank=True, verbose_name = "How does he plan to support \
+    question2 = models.TextField(null=True, blank=True, verbose_name = "How does he plan to support \
                                              his education now if he doesn't get a Lakshya scholarship")
     aware_repayment_model = models.IntegerField(verbose_name="Is applicant and his family aware of the repayment model",
-                                                choices=YES_NO_CHOICES, help_text="5 years time, no interest, no collateral")
+                                                choices=YES_NO_CHOICES, help_text="5 years time, no interest, no collateral",
+                                                null=True, blank=True)
     aware_renewal_criteria = models.IntegerField(verbose_name="Is applicant and his family aware of the \
                                                 scholarship renewal criteria", choices=YES_NO_CHOICES, help_text=" \
                                                 If his performance is bad(fails in a subject or SGPA is less than 6) \
-                                                for two consecutive semesters, then we will discontinue the scholarship")
-    final_recommendation = models.IntegerField(verbose_name="Do you recommend this applicant for Lakshya scholarship?",
-                                               choices=YES_NO__NOT_SURE_CHOICES,)
-    additional_comment = models.TextField(blank=True)
+                                                for two consecutive semesters, then we will discontinue the scholarship",
+                                                null=True, blank=True)
+    final_recommendation = models.IntegerField(verbose_name="Recommendation",
+                                               help_text = "Do you recommend this applicant for Lakshya scholarship?",
+                                               choices=YES_NO__NOT_SURE_CHOICES,null=True, blank=True)
+    additional_comment = models.TextField(null=True, blank=True)
+    status = models.IntegerField(choices=VERIFICATION_STATUS_CHOICES, null=True, blank=True)
     
+    def get_verifier_name(self):
+        if self.verifier:
+            return self.verifier.user.first_name
+        else:
+            return ""
+    get_verifier_name.short_description = "First Name"
+    
+    def get_verifier_mobile_num(self):
+        if self.verifier:
+            return self.verifier.contact_number
+        else:
+            return ""
+    get_verifier_mobile_num.short_description = "Mobile Number"    
+    
+    def get_verifier_email(self):
+        if self.verifier:
+            return self.verifier.user.email
+        else:
+            return ""
+    get_verifier_email.short_description = "Email"   
+    
+    def get_applicant_name(self):
+        if self.verifier:
+            return self.application.person.user.first_name
+        else:
+            return ""
+    get_applicant_name.short_description = "First name"     
+    
+    def __unicode__(self):
+        return self.verifier.user.first_name + "-" + self.application.person.user.first_name 
 
 class Scholar(models.Model):
-    scholar = models.ForeignKey(Person)
+    person = models.ForeignKey(Person)
     application = models.ForeignKey(ScholarshipApplication)
     donation_fund = models.ForeignKey(DonationFund)
+    
+    def __unicode__(self):
+        return self.person.user.first_name
 
 
 class ScholarshipPayment(models.Model):
@@ -304,19 +349,31 @@ class ScholarshipPayment(models.Model):
                                          default=TUTION_FEES)
     expense = models.ForeignKey(Expense)
 
+    def __unicode__(self):
+        return str(self.scholar) + " : Rs " + str(self.amount) +  " : " +str(self.expense.date_of_expense)
 
 class ScholarUpdate(models.Model):
     scholar = models.ForeignKey(Scholar)
-    date_of_update = models.DateField(null=True, blank=True, auto_now_add=True)
+    date_of_update = models.DateField(null=True, blank=True,)
     update = models.TextField()
 
     
 class ScholarAcademicUpdate(models.Model):
     scholar = models.ForeignKey(Scholar)
+    semester = models.IntegerField(choices=SEMESTER_CHOICES,)
     sgpa = models.DecimalField(max_digits=4, decimal_places=2)
     cgpa = models.DecimalField(max_digits=4, decimal_places=2)
     comments = models.TextField(blank=True)
-
+    
+    def get_link(self):
+        if self.id:
+            return "<a href='/admin/scholarships/scholaracademicupdate/%d'>%d</a>" % (self.id, self.id)
+        else:
+            return ""
+    get_link.allow_tags = True
+    
+    def __unicode__(self):
+        return str(self.scholar.person.user.first_name) + " - " + str(self.get_semester_display())
     
 class GradeUpdate(models.Model): 
     academic_update = models.ForeignKey(ScholarAcademicUpdate)
@@ -331,3 +388,6 @@ class Repayment(models.Model):
     date_of_repayment = models.DateField()
     transacation_type = models.IntegerField(choices=TRANSACTION_CHOICES,)
     transaction_details = models.CharField(max_length=200, blank=True)
+    
+    def __unicode__(self):
+        return str(self.scholar) + " : Rs " + str(self.amount) +  " : " +str(self.date_of_repayment)
