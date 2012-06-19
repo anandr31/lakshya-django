@@ -51,6 +51,7 @@ class ScholarAcademicUpdateInline(admin.TabularInline):
     fields = ('get_link', 'semester', 'sgpa', 'cgpa', 'comments',)
     readonly_fields = ('get_link', 'semester', 'sgpa', 'cgpa', 'comments',)
     extra = 0
+    can_delete = False
 
 class ScholarAdmin(admin.ModelAdmin):
     raw_id_fields = ('person', 'application', 'donation_fund')
