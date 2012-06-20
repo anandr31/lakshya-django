@@ -27,7 +27,7 @@ class InnovationApplication(models.Model):
         return self.title
     
 class Innovation(models.Model):
-    application = models.ForeignKey(InnovationApplication)
+    application = models.OneToOneField(InnovationApplication)
     guide = models.ForeignKey(Person)
     
         
@@ -57,7 +57,7 @@ class InnovationUpdate(models.Model):
     
 class InnovationUpdateImage(models.Model):
     innovation_update = models.ForeignKey(InnovationUpdate, related_name="images")
-    image = models.ImageField(upload_to="innovation_update_images")
+    image = models.FileField(upload_to="innovation_update_images")
     caption = models.CharField(max_length=100, blank=True)
     sort_order = models.IntegerField(default=0)
 
@@ -76,4 +76,10 @@ class InnovationPayment(models.Model):
     
     def __unicode__(self):
         return str(self.innovation) + " : Rs " + str(self.amount) +  " : " +str(self.expense.date_of_expense)    
+    
+    def save(self, **kwargs):
+        if not self.id:
+            self.amount = self.expense.amount
+        super(InnovationPayment, self).save(**kwargs)
+        
     

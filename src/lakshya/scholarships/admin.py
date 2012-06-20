@@ -25,7 +25,7 @@ class ScholarshipApplicationAdmin(admin.ModelAdmin):
                                                  ('roll_num','get_batch','get_branch'),),}),
                  ("Contact Details", {"fields" : (('hostel_address','get_permanent_address',),
                                                   ('get_email_address', 'get_contact_number', 'parent_contact'), )}), 
-                 ("SSC Details", {"fields" : (('ssc_board', 'ssc_batch', 'ssc_percentage'), 
+                 ("10th Details", {"fields" : (('ssc_board', 'ssc_batch', 'ssc_percentage'), 
                                               ('ssc_school_name','ssc_school_type',), 'ssc_school_address')}),
                  ("Intermediate Details", {"fields" : (('intermediate_board', 'intermediate_batch', 'intermediate_percentage'), 
                                                        ('intermediate_college_name','intermediate_college_type',), 
@@ -52,6 +52,7 @@ class ScholarAcademicUpdateInline(admin.TabularInline):
     readonly_fields = ('get_link', 'semester', 'sgpa', 'cgpa', 'comments',)
     extra = 0
     can_delete = False
+    max_num=0
 
 class ScholarAdmin(admin.ModelAdmin):
     raw_id_fields = ('person', 'application', 'donation_fund')
@@ -59,6 +60,7 @@ class ScholarAdmin(admin.ModelAdmin):
     list_filter = ('donation_fund',)
     search_fields = ('person__user__first_name',)
     inlines = (ScholarUpdateInline, ScholarAcademicUpdateInline)
+    readonly_fields = ('person', )
     
 class RepaymentAdmin(admin.ModelAdmin):
     raw_id_fields = ('scholar',)
@@ -72,6 +74,7 @@ class ScholarshipPaymentAdmin(admin.ModelAdmin):
     list_display = ('scholar', 'amount', 'semester', )
     list_filter = ('scholar',)
     search_fields = ('scholar__person__user__first_name', 'scholar__person__user__last_name', )
+    readonly_fields = ('amount',)
     
 class ScholarshipVerificationAdmin(admin.ModelAdmin):
     fieldsets = [("Volunteer Details", {"fields" : (('verifier','get_verifier_name',),

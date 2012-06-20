@@ -1,9 +1,12 @@
 from django.contrib import admin
 from innovation.models import InnovationApplication, Innovation,\
     InnovationPayment, InnovationUpdate, InnovationUpdateImage,\
-    InnovationUpdateVideo
+    InnovationUpdateVideo, ACCEPTED
+from django import forms
 
 class InnovationApplicationAdmin(admin.ModelAdmin):
+    fields = (('date_of_submission', 'year_of_submission',), ('title','status',), 'description', 'abstract', 
+              'team_members', 'reviewer', 'review', )
     filter_horizontal = ('team_members', )
     raw_id_fields = ('reviewer', )
     list_display = ('title', 'year_of_submission', 'status',)
@@ -15,16 +18,32 @@ class InnovationUpdateInline(admin.TabularInline):
     readonly_fields = ('get_link', 'innovation', 'date_of_update', 'update',)
     extra = 0
     can_delete = False
-    
+    max_num=0
+
+class InnovationAdminForm(forms.ModelForm): 
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        application = self.cleaned_data['application']
+        
+        if application and application.status != ACCEPTED :
+            self._errors["application"] = self.error_class(["You can only select innovation applications in 'Accepted' status"])
+            del cleaned_data["application"]  
+        return cleaned_data          
+        
+    class Meta:
+        model = Innovation
+                       
 class InnovationAdmin(admin.ModelAdmin):
     raw_id_fields = ('application', 'guide', )
     list_display = ('get_title', 'get_year_of_submission',)
     inlines = (InnovationUpdateInline,)
+    form = InnovationAdminForm
     
 class InnovationPaymentAdmin(admin.ModelAdmin):
     raw_id_fields = ('innovation', 'expense',)
     list_display = ('innovation', 'amount',)
     list_filter = ('innovation', )
+    readonly_fields = ('amount',)
 
 class InnovationUpdateImageInline(admin.TabularInline):
     model = InnovationUpdateImage

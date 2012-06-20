@@ -135,14 +135,14 @@ class ScholarshipApplication(models.Model):
     hostel_address = models.TextField(null=True, blank=True)
     parent_contact = models.CharField(max_length=20, null=True, blank=True)
     #ssc details
-    ssc_board = models.IntegerField(choices=SSC_BOARD_CHOICES, default = SSC_CBSE, null=True, blank=True)
+    ssc_board = models.IntegerField(verbose_name="10th Board", choices=SSC_BOARD_CHOICES, default = SSC_CBSE, null=True, blank=True)
     ssc_batch = models.IntegerField(verbose_name="Year of passing", 
                                     choices=BATCH_CHOICES, default=2005, null=True, blank=True)
     ssc_percentage = models.DecimalField(verbose_name="Percentage(%)", null=True, blank=True, 
                                         max_digits=5, decimal_places=2)
-    ssc_school_name = models.CharField(max_length=100, null=True, blank=True)
-    ssc_school_address = models.TextField(null=True, blank=True)
-    ssc_school_type = models.IntegerField(choices=INSTITUTION_TYPE, default=PRIVATE, null=True, blank=True)
+    ssc_school_name = models.CharField(verbose_name="10th School Name", max_length=100, null=True, blank=True)
+    ssc_school_address = models.TextField(verbose_name="10th School Address", null=True, blank=True)
+    ssc_school_type = models.IntegerField(verbose_name="10th School Type", choices=INSTITUTION_TYPE, default=PRIVATE, null=True, blank=True)
     #intermediate_details
     intermediate_board = models.IntegerField(choices=INTERMEDIATE_BOARD_CHOICES,
                                              default = INTERMEDIATE_CBSE, null=True, blank=True)
@@ -241,7 +241,9 @@ class FamilyDetail(models.Model):
     name = models.CharField(max_length=100, null=True, blank=True)
     relation = models.IntegerField(choices=RELATION_CHOICES, null=True, blank=True)
     education = models.CharField(max_length=100, null=True, blank=True)
-    occupation_annualincome = models.CharField(verbose_name="Occupation & Annual Income", 
+    occupation = models.CharField(verbose_name="Occupation", 
+                                               max_length=200, help_text="", null=True, blank=True)
+    annualincome = models.CharField(verbose_name="Annual Income", 
                                                max_length=200, help_text="", null=True, blank=True)
     
 
@@ -257,7 +259,7 @@ class OtherScholarship(models.Model):
 class ScholarshipVerification(models.Model):
     application = models.ForeignKey(ScholarshipApplication)
     verifier = models.ForeignKey(Person)
-    date_of_verfication = models.TimeField(null=True, blank=True)
+    date_of_verfication = models.DateField(null=True, blank=True)
     #whom all you have met
     met_applicant = models.BooleanField(blank=True)
     met_father = models.BooleanField(blank=True)
@@ -339,6 +341,11 @@ class Scholar(models.Model):
     
     def __unicode__(self):
         return self.person.user.first_name
+    
+    def save(self, **kwargs):
+        if not self.id:
+            self.person = self.application.person
+        super(Scholar, self).save(**kwargs)    
 
 
 class ScholarshipPayment(models.Model):
@@ -352,6 +359,11 @@ class ScholarshipPayment(models.Model):
     def __unicode__(self):
         return str(self.scholar) + " : Rs " + str(self.amount) +  " : " +str(self.expense.date_of_expense)
 
+    def save(self, **kwargs):
+        if not self.id:
+            self.amount = self.expense.amount
+        super(ScholarshipPayment, self).save(**kwargs)
+        
 class ScholarUpdate(models.Model):
     scholar = models.ForeignKey(Scholar)
     date_of_update = models.DateField(null=True, blank=True,)
@@ -391,3 +403,4 @@ class Repayment(models.Model):
     
     def __unicode__(self):
         return str(self.scholar) + " : Rs " + str(self.amount) +  " : " +str(self.date_of_repayment)
+    
