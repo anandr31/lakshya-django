@@ -74,6 +74,11 @@ class Donation(models.Model):
     donation_fund = models.ForeignKey(DonationFund, blank=True)
     transacation_type = models.IntegerField(choices=TRANSACTION_CHOICES,)
     transaction_details = models.CharField(max_length=200, blank=True) 
-
+    
+    def get_donation_receipt(self):
+        return "<a href='http://127.0.0.1:8000/accounts/donation-receipt'>Download</a>"
+    get_donation_receipt.allow_tags = True 
+    get_donation_receipt.short_description = "Donation Receipt"       
+        
     def __unicode__(self):
         return str(self.date_of_donation) + " : Rs." + str(self.amount) + self.donor.user.first_name          

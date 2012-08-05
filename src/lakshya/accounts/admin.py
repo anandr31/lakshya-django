@@ -10,7 +10,7 @@ class DonationFundOptions(admin.ModelAdmin):
     list_display = ('name', 'description', )
     
 class DonationOptions(admin.ModelAdmin):
-    list_display = ('amount', 'date_of_donation', 'donor', )
+    list_display = ('amount', 'date_of_donation', 'donor', 'get_donation_receipt')
     list_filter = ('transacation_type', )
     search_fields = ('donor__user__first_name', )
     raw_id_fields = ('donor', 'donation_fund',)

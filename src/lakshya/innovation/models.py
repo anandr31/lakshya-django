@@ -14,6 +14,7 @@ INNOVATION_APPLICATION_STATUS = ((NEED_TO_REVIEW, "Need to review"),
 class InnovationApplication(models.Model):
     date_of_submission = models.DateTimeField()
     year_of_submission = models.IntegerField()
+    
     title = models.CharField(max_length=200)
     description = models.TextField(help_text="What it is about, what problem you are trying to solve etc")
     abstract = models.FileField(upload_to="innovation_abstracts", null=True, blank=True)

@@ -130,6 +130,7 @@ INSTALLED_APPS = (
     'innovation',
     'scholarships',
     'south',
+    'utils',
 )
 
 # A sample logging configuration. The only tangible logging
