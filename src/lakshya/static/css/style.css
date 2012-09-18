@@ -401,3 +401,23 @@ tr#footer_header {
 
 /* --------------------------- END OF About Innovation PAGE --------------------------- */
 
+/* --------------------------- Start OF Innovations list PAGE --------------------------- */
+
+#innovations_list .project_gist {
+	cursor: pointer;
+}
+
+#innovation_description .desc {
+	padding-left: 10px;
+}
+
+.project_numbers {
+	width: 40%;
+	margin: auto;
+}
+
+.project_numbers td.label {
+	color: rgb(144, 202, 0);
+	padding-left: 0px;
+}
+/* --------------------------- END OF Innovations list PAGE --------------------------- */

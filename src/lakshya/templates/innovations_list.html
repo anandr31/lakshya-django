@@ -1,8 +1,126 @@
 {% extends "base.html" %}
+
+{% block meta %}
+<title>Lakshya Innovations List</title>
+<meta name="description" content="Lakshya Foundation is a registered ngo">
+<meta name="keywords" content="Alumni, Students and Faculty of NITW working together to bring social change" />
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css"></LINK>
+<script src="{{STATIC_URL}}js/jquery.min.js"></script>	
+<script type="text/javascript">
+$(function(){
+	$(".desc").hide();
+	$(".hovamarine").show();	
+	$(".project_gist").click(function(){
+		$(".desc").hide();
+		$("."+this.id).show();
+		$(".project_gist").removeClass("selected")
+		$(this).addClass("selected")
+	});
+});
+</script>
+{% endblock %}
+
 {% block content %}
 <div class = "content_with_page_title left">
-	<h2>About Lakshya</h2>
+	<h2>Innovations</h2>
 	<div class="content_div">
+		<div id="innovations_list">
+			<div id="hovamarine" class="project_gist left selected" >
+				<img src="{{STATIC_URL}}/img/temp_img.jpg" />
+				<a href=""><h3>Hovamarinee</h3></a>
+				<p>asdfasdf asd f saf sa df as fd <br>safd sadf sad fasd fsa df sa fasfd sdfa df</p>
+			</div>
+			<div id="smart_meter" class="project_gist left" >
+				<img src="{{STATIC_URL}}/img/temp_img.jpg" />
+				<a href=""><h3>Smart Meter</h3></a>
+				<p>asdfasdf asd f saf sa df as fd <br>safd sadf sad fasd fsa df sa fasfd sdfa df</p>
+			</div>
+			<div id="concrete" class="project_gist left" >
+				<img src="{{STATIC_URL}}/img/temp_img.jpg" />
+				<a href=""><h3>Recycled Concrete</h3></a>
+				<p>asdfasdf asd f saf sa df as fd <br>safd sadf sad fasd fsa df sa fasfd sdfa df</p>
+			</div>	
+		</div>
+		<div id="innovation_description">
+			<div class = "hovamarine desc hidden">
+				<h3>Hovamarine</h3>
+				<div id="image_slider">
+					<h1>Image slider</h1>
+				</div>
+				<p>asdfasdf asd fas f as df asf as df as df
+					asdf sa df sad fsa df sad f sadf sa f sadf sa dfadsfasdf asdf  asdf a s f asd f asdf a sf as df as df asd f  asd f as f sa f as f sad f as df asd f sadf sad fsa f asdf</p>
+				<p>asdfasdf asd fas f as df asf as df as df
+					asdf sa df sad fsa df sad f sadf sa f sadf sa df sadf sad fsa f asdf</p>
+				<table class="project_numbers">
+					<tr>
+						<td>asfasdfasdf</td><td>asfasdfasdf</td>
+					</tr>
+					<tr>
+						<td>asfasdfasdf</td><td>asfasdfasdf</td>
+					</tr>
+					<tr>
+						<td>asfasdfasdf</td><td>asfasdfasdf</td>
+					</tr>
+				</table>	
+				<h3>Updates</h3>
+				<ul>
+					<li>asdfasdfd addafasdf dfasdfasd afsfdas dfdas fasdf sa df sad fsa df sad f sadf sa f sadf sa dfadsfasdf asdf  asdf a s f asd f asdf a sf as df as df asd f  asd f </li>
+					<li>asdfasdfd addafasdf dfasdfasd afsfdas dfdas f</li>
+				</ul>				
+			</div>
+
+			<div class = "smart_meter desc hidden">
+				<h3>Smart Meter</h3>
+				<div id="image_slider">
+					<h1>Image slider</h1>
+				</div>
+				<p>asdfasdf asd fas asdfasdfadsfa f as df asf as df as df
+					asdf sa df sad fsa df sad f sadf sa f sadf sa dfadsfasdf asdf  asdf a s f asd f asdf a sf as df as df asd f  asd f as f sa f as f sad f as df asd f sadf sad fsa f asdf</p>
+				<p>asdfasdf asd fas f adfas afd as df asf as df as df
+					asdf sa df sad fsa df sad f sadf sa f sadf sa df sadf sad fsa f asdf</p>
+				<table class="project_numbers">
+					<tr>
+						<td class="label">Team : </td><td>Joby</td>
+					</tr>
+					<tr>
+						<td class="label">Guide : </td><td>Venugopal Sir</td>
+					</tr>
+					<tr>
+						<td class="label">Funding : </td><td>Rs 40,140</td>
+					</tr>
+				</table>	
+				<h3>Updates</h3>
+				<ul>
+					<li>asdfaasdfsdadsfsdfd addafasdf dfasdfasd afsfdas dfdas fasdf sa df sad fsa df sad f sadf sa f sadf sa dfadsfasdf asdf  asdf a s f asd f asdf a sf as df as df asd f  asd f </li>
+					<li>asdfasdfd addafasdf dfasdfasd afsfdas dfdas f</li>
+				</ul>
+			</div>
+			<div class = "concrete desc hidden">
+				<h3>Recycled Concrete</h3>
+				<div id="image_slider">
+					<h1>Image slider</h1>
+				</div>
+				<p>asdfasdf asd fas asdfasdfadsfa f as df asf as df as df
+					asdf sa df sad fsasdfasdfsadfsadfaa df sad f sadf sa f sadf sa dfadsfasdf asdf  asdf a s f asd f asdf a sf as df as df asd f  asd f as f sa f as f sad f as df asd f sadf sad fsa f asdf</p>
+				<p>asdfasdf asd fas f adfas afd as df asf as df as df
+					asdf sa df sad fsa dfsfasfsafasfdasfsd sad f sadf sa f sadf sa df sadf sad fsa f asdf</p>
+				<table class="project_numbers">
+					<tr>
+						<td>asfasasdfasdfdfasdf</td><td>asfaasdfsdfasdf</td>
+					</tr>
+					<tr>
+						<td>asfasdfasdf</td><td>asfasdfasdf</td>
+					</tr>
+					<tr>
+						<td>asfasdfasdf</td><td>asfasdfasdf</td>
+					</tr>
+				</table>	
+				<h3>Updates</h3>
+				<ul>
+					<li>asdfaasdfsdadsfsdfd addafasdf dfasdfasd afsfdas dfdas fasdf sa df sad fsa df sad f sadf sa f sadf sa dfadsfasdf asdf  asdf a s f asd f asdf a sf as df as df asd f  asd f </li>
+					<li>asdfasdfd addafasdf dfasdfasd afsfdas dfdas f</li>
+				</ul>			</div>
+		</div>
 	</div>
 </div>
 <div class = "right_navigation_div right">
