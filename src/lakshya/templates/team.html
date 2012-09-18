@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>Lakshya Team Page</title>
+<meta name="description" content="Lakshya Foundation is a registered ngo">
+<meta name="keywords" content="Alumni, Students and Faculty of NITW working together to bring social change" />
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css"></LINK>
+<script src="{{STATIC_URL}}js/jquery.min.js"></script>	
+<script type="text/javascript">
+$(function(){
+	$(".desc").hide();
+	$(".anand").show();	
+	$(".thumbnail").click(function(){
+		$(".desc").hide();
+		$("."+this.id).show();
+		$(".thumbnail").removeClass("selected")
+		$(this).addClass("selected")
+	});
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<div class = "content_with_page_title left">
+	<h2>Lakshya Team</h2>
+	<div class="content_div">
+		<p>asfasdf sadf  sadfsad f sad f sad f sadf sa df sda fs adf sa df sad fs afsd fsadf sd f saf asd f
+			sadfsadfsadfsadfsdaf sd f sa f sadf a sf</p>
+		<div id="team-list" class="left cB">
+			<h3>Faculty</h3>
+			<div>
+				<img class = "thumbnail" id="jrr" src="{{STATIC_URL}}img/team-page-pics/jrr.jpg" width="40px" height="40px" />
+				<img class = "thumbnail" id="padma" src="{{STATIC_URL}}img/team-page-pics/padma.jpg" width="40px" height="40px"/>
+				<img class = "thumbnail" id="venugopal" src="{{STATIC_URL}}img/team-page-pics/venugopal.jpg" width="40px" height="40px"/>
+			</div>
+			<h3>Alumni</h3>
+			<div>
+				<img class = "thumbnail selected" id="anand" src="{{STATIC_URL}}img/team-page-pics/anand.jpg" width="40px" height="40px" />
+				<img class = "thumbnail" id="srihari" src="{{STATIC_URL}}img/team-page-pics/srihari.jpg" width="40px" height="40px" />
+				<img class = "thumbnail" id="rakesh" src="{{STATIC_URL}}img/team-page-pics/rakesh.jpg" width="40px" height="40px" />
+				<img class = "thumbnail" id="shailesh" src="{{STATIC_URL}}img/team-page-pics/shailesh.jpg" width="40px" height="40px" />
+			</div>
+			<div>
+				<img class = "thumbnail" id="vrishank" src="{{STATIC_URL}}img/team-page-pics/vrishank.jpg" width="40px" height="40px" />
+				<img class = "thumbnail" id="kalyan" src="{{STATIC_URL}}img/team-page-pics/kalyan.jpg" width="40px" height="40px" />
+			</div>
+			<h3>Students</h3>
+			<div>
+				<img class = "thumbnail" id="jaswant" src="{{STATIC_URL}}img/team-page-pics/jaswant.jpg" width="40px" height="40px" />
+				<img class = "thumbnail" id="shine" src="{{STATIC_URL}}img/team-page-pics/shine.jpg" width="40px" height="40px" />
+				<img class = "thumbnail" id="arogya" src="{{STATIC_URL}}img/team-page-pics/arogya.jpg" width="40px" height="40px" />
+				<img class = "thumbnail" id="prashanth" src="{{STATIC_URL}}img/team-page-pics/prashanth.jpg" width="40px" height="40px" />
+			</div>
+			<h3>Board Of Advisors</h3>
+			<div>
+				<img class = "thumbnail" id="venkat" src="{{STATIC_URL}}img/team-page-pics/venkat.jpg" width="40px" height="40px" />
+				<img class = "thumbnail" id="vasanth" src="{{STATIC_URL}}img/team-page-pics/vasanth.jpg" width="40px" height="40px" />
+			</div>
+		</div>
+		<div id="team_description" class="right">
+			<div class = "jrr desc hidden cB">
+				<div class="left">
+					<img src="{{STATIC_URL}}img/team-page-pics/jrr.jpg" width="150px" height="150px" />
+				</div>
+				<div id="team_member_details"class="left">
+					<h3> Prof J.Rama Chander Rao </h3>
+					<p>Hon Chairperson and Trustee</p>
+					<a href="#"><img src="{{STATIC_URL}}img/facebook_icon.png" width="25px" height="25px"></a>
+					<a href="#"><img src="{{STATIC_URL}}img/linkedin_icon.png" width="25px" height="25px"></a>
+				</div>
+				<div id="team_member_description" class="cB"> 
+					<p>asdfasdf asfasdfdf asdfasdf asf asd f sadf as df a sdf as df as f as df sa df sa fsa df as df safsad f  sadf  asf sa f sa f sa fsa f sa df as f sa f asd fa sf as f s f saf s f as df asf asd</p>
+				</div>
+			</div>	
+
+			<!-- To be deleted -->
+			<div class = "anand desc hidden cB">
+				<div class="left">
+					<img src="{{STATIC_URL}}img/team-page-pics/anand.jpg" width="150px" height="150px" />
+				</div>
+				<div id="team_member_details"class="left">
+					<h3> Anand Rajgopalan </h3>
+					<p>Co-founder and CEO</p>
+					<a href="#"><img src="{{STATIC_URL}}img/facebook_icon.png" width="25px" height="25px"></a>
+					<a href="#"><img src="{{STATIC_URL}}img/linkedin_icon.png" width="25px" height="25px"></a>
+				</div>
+				<div id="team_member_description" class="cB"> 
+					<p>asdfasdf andnd andnadn f as df as f as df sa df sa fsa df as df safsad f  sadf  asf sa f sa f sa fsa f sa df as f sa f asd fa sf as f s f saf s f as df asf asd</p>
+				</div>
+			</div>	
+			<div class = "rakesh desc hidden cB">
+				<div class="left">
+					<img src="{{STATIC_URL}}img/team-page-pics/rakesh.jpg" width="150px" height="150px" />
+				</div>
+				<div id="team_member_details"class="left">
+					<h3> Rakesh Dubbudu</h3>
+					<p>Truestee</p>
+					<a href="#"><img src="{{STATIC_URL}}img/facebook_icon.png" width="25px" height="25px"></a>
+					<a href="#"><img src="{{STATIC_URL}}img/linkedin_icon.png" width="25px" height="25px"></a>
+				</div>
+				<div id="team_member_description" class="cB"> 
+					<p>asdfasdf asfasdfdfrakesh arkarhs asf asd f sadf as df a sdf as df as f as df sa df sa fsa df as df safsad f  sadf  asf sa f sa f sa fsa f sa df as f sa f asd fa sf as f s f saf s f as df asf asd</p>
+				</div>
+			</div>	
+			<!-- To be deleted -->
+		</div>
+		<span class="cB"></span>
+	</div>
+</div>
+<div class = "right_navigation_div right">
+	<h3>About</h3>
+	<ul>
+		<li><a href="/about">About Lakshya</a></li>
+		<li>Team</li>
+	</ul>
+</div>
+{% endblock content %}

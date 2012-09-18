@@ -4,12 +4,14 @@
 	<meta name="keywords" content="Alumni, Students and Faculty of NITW working together to bring social change" />
 	<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css"></LINK>
 	{% endblock %}
+	{% block scripts %}
+	{% endblock scripts %}	
 </head>
 <body>
 {% block header %}
 <div id="header_wrapper">
 	<div id="logo" class="left">
-		<img src="{{STATIC_URL}}img/logo.jpg">
+		<a href="/"><img src="{{STATIC_URL}}img/logo.jpg"></a>
 	</div>
 	<div id="secondary_navigation" class = "right">
 		<a href="#"> Blog </a>
@@ -20,13 +22,13 @@
 		<ul>
 		<li><a href="#">About Us<span class="drop">&#9660;</span></a>
 			<ul>
-				<li><a href="#">About Lakshya</a></li>
-				<li><a href="#">Team</a></li>
+				<li><a href="/about">About Lakshya</a></li>
+				<li><a href="/team">Team</a></li>
 			</ul>
 		</li>
 		<li><a href="#">Projects<span class="drop">&#9660;</span></a>
 			<ul>
-				<li><a href="#">Innovation Project</a></li>
+				<li><a href="/innovation/">Innovation Project</a></li>
 				<li><a href="#">Scholarships Project</a></li>
 			</ul>
 		</li>

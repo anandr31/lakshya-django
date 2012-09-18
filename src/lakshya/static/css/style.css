@@ -24,6 +24,16 @@ body {
 	color: rgb(94, 94, 94)
 }
 
+body h2, body h3 {
+	color: rgb(144, 202, 0)
+}
+
+body a {
+	color: rgb(144, 202, 0)
+}
+
+
+
 /* --------------------------- START OF HEADER --------------------------- */
 #header_wrapper {
 	width: 990px;
@@ -253,4 +263,141 @@ tr#footer_header {
 
 /* --------------------------- END OF HOME PAGE --------------------------- */
 
+/* --------------------------- START OF GENERIC INNER PAGES --------------------------- */
+
+.content_with_page_title {
+	width: 80%;
+}
+
+.right_navigation_div {
+	width: 19%;
+	border-left: 1px solid #DADADA;
+	height: 100%;
+}
+
+.right_navigation_div li {
+	padding-bottom: 10px;
+}
+
+.right_navigation_div h3 {
+	padding-left: 5px;
+	padding-top: 30px;
+}
+
+.content_div {
+	padding-left: 10px;
+	width: 100%;
+}
+
+/* --------------------------- END OF GENERIC INNER PAGES --------------------------- */
+
+/* --------------------------- START OF ABOUT PAGE --------------------------- */
+
+.project_gist {
+	border: 1px solid #DADADA;
+	padding: 10px 20px;
+	width: 27%;
+	margin-right: 5px;
+	margin-bottom: 20px;
+}
+
+.project_gist h3, .project_gist p, .project_gist img {
+	text-align: center;
+}
+
+/* --------------------------- END OF ABOUT PAGE --------------------------- */
+
+/* --------------------------- START OF TEAM PAGE --------------------------- */
+#team-list {
+	border-right: 1px dotted grey;
+	width: 30%;
+}
+#content {
+	float: left;
+}
+
+#team-list h3 {
+	clear: both;
+	margin: 2px 0px;
+
+}
+
+.selected { 
+	-moz-box-shadow: 0 0 5px 3px green;
+	-webkit-box-shadow: 0 0 5px 3px green;
+	box-shadow: 0 0 5px 3px green;
+}
+
+.thumbnail {
+	padding: 5px 5px;
+}
+
+#team_description {	
+	width: 68%;
+
+}
+
+#team_description p {
+	font-size: 14px;
+}
+
+#team_member_details {
+	padding-left: 20px;
+}
+
+#team_member_description {
+	padding-top: 20px;
+}
+
+
+/* --------------------------- END OF TEAM PAGE --------------------------- */
+
+/* --------------------------- Start OF Innovation Home PAGE --------------------------- */
+#innovation_project_desc {
+	width: 58%;
+}
+
+#innnovation_stats {
+	width: 38%;
+}
+
+#innnovation_stats div#stats_number {
+	font-size: 40px;
+	color: #888;
+	text-align: center;
+	padding-top: 10px;
+}
+
+#innnovation_stats div#stats_description {
+	font-size: 17px;
+	color: #888;
+	text-align: center;
+
+}
+
+#innnovation_stats h3 {
+	text-align: center;
+	margin: 0px 0px;
+}
+
+#innnovation_stats {
+	border: 1px solid #DADADA;
+	padding: 10px 5px;
+	margin-right: 10px;
+	margin-bottom: 25px;
+}
+/* --------------------------- END OF Innovation Home PAGE --------------------------- */
+
+
+/* --------------------------- START OF About Innovation PAGE --------------------------- */
+
+.q_and_a {
+	padding-left: 30px;
+}
+
+.q_and_a p.question {
+	color: rgb(144, 202, 0);
+}
+
+/* --------------------------- END OF About Innovation PAGE --------------------------- */
 

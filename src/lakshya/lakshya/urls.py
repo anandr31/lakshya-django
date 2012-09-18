@@ -8,6 +8,10 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', direct_to_template, {'template' : 'index.html'}, name='home'),
+    url(r'^about$', direct_to_template, {'template' : 'about.html'}, name='home'),
+    url(r'^team$', direct_to_template, {'template' : 'team.html'}, name='home'),
+    url(r'^innovation/', include('innovation.urls')),
+
     # url(r'^$', 'lakshya.views.home', name='home'),
     # url(r'^lakshya/', include('lakshya.foo.urls')),
 
