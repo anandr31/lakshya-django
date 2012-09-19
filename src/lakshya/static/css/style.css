@@ -501,7 +501,65 @@ blockquote {
 	padding:4px 16px;
 	text-shadow:#FE6 0 1px 0;
 	margin: 20px 300px;
+	cursor: pointer;
 }
 
 
 /* --------------------------- END OF ASTHRA PAGE --------------------------- */
+
+/* --------------------------- START OF PILOT PROJECTS PAGE --------------------------- */
+	
+table.internships_numbers{
+	margin: auto;
+	border: 1px solid rgb(144, 202, 0);
+	border-collapse: collapse;
+}
+
+table.internships_numbers td {
+	padding: 10px 10px;
+}
+
+table.internships_numbers th {
+	padding: 10px 10px;
+	background: #C0E06C;
+}
+
+#ek_jodi_kapada_desc {
+	width: 58%;
+}
+
+#ek_jodi_kapada_stats {
+	width: 38%;
+}
+
+#ek_jodi_kapada_stats div#stats_number {
+	font-size: 30px;
+	color: #888;
+	text-align: center;
+	padding-top: 10px;
+}
+
+#ek_jodi_kapada_stats div#stats_description {
+	font-size: 17px;
+	color: #888;
+	text-align: center;
+
+}
+
+#ek_jodi_kapada_stats h3 {
+	text-align: center;
+	margin: 0px 0px;
+}
+
+#ek_jodi_kapada_stats {
+	border: 1px solid #DADADA;
+	padding: 10px 5px;
+	margin-right: 10px;
+	margin-bottom: 25px;
+	margin-top: 30px;
+}
+
+/* --------------------------- END OF PILOT PROJECTS PAGE --------------------------- */
+
+
+

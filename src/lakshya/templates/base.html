@@ -2,10 +2,10 @@
 	{% block meta %}
 	<meta name="description" content="Lakshya Foundation is a registered ngo">
 	<meta name="keywords" content="Alumni, Students and Faculty of NITW working together to bring social change" />
-	<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css"></LINK>
+	<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?1"></LINK>
 	{% endblock %}
 	{% block scripts %}
-	{% endblock scripts %}	
+	{% endblock %}	
 </head>
 <body>
 {% block header %}
@@ -15,8 +15,8 @@
 	</div>
 	<div id="secondary_navigation" class = "right">
 		<a href="#"> Blog </a>
-		<a href="#"> Team </a>
-		<a href="#"> Contact Us </a>
+		<a href="/team"> Team </a>
+		<a href="/contact"> Contact Us </a>
 	</div>
 	<div id="primary_navigation" class = "right cR">
 		<ul>
@@ -28,10 +28,10 @@
 		</li>
 		<li><a href="#">Projects<span class="drop">&#9660;</span></a>
 			<ul>
-				<li><a href="/innovation/">Innovation Project</a></li>
-				<li><a href="#">Scholarships Project</a></li>
-				<li><a href="/asthra/">Asthra</a></li>
-				<li><a href="#">Pilot Projects</a></li>
+				<li><a href="/innovation/home">Innovation Project</a></li>
+				<li><a href="/scholarships/home">Scholarships Project</a></li>
+				<li><a href="/asthra/home">Asthra</a></li>
+				<li><a href="/pilot-projects">Pilot Projects</a></li>
 			</ul>
 		</li>
 		<li><a href="#">Funds & Transparency<span class="drop">&#9660;</span></a>
@@ -42,7 +42,7 @@
 				<li><a href="/accounts/audits">Audit Statements</a></li>				
 			</ul>
 		</li>
-		<li><a href="#"><span id="donate">Donate Now</span></a></li>
+		<li><a href="/donate"><span id="donate">Donate Now</span></a></li>
 		</ul>
 	</div>	
 </div>
