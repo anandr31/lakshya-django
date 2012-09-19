@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class = "content_with_page_title left">
+	<h2>Audits</h2>
+	<div class="content_div">
+		<p>asdfasdf asd fasf asd fsaf sa dfas f asdf sa df sad f sadf sa df as fas df sa fsa f sa fs af sad f sadf asd f sadf as fsa df sa fsfdasf sadfs afa  fsd</p>
+		<h3>Audit Statements</h3>
+		<div class="audit_list">
+			<div class="audit_report left" >
+				<img src="{{STATIC_URL}}/img/temp_img.jpg" />
+				<a href=""><h4>08-09</h4></a>
+			</div>
+			<div class="audit_report left" >
+				<img src="{{STATIC_URL}}/img/temp_img.jpg" />
+				<a href=""><h4>08-09</h4></a>
+			</div>
+			<div class="audit_report left" >
+				<img src="{{STATIC_URL}}/img/temp_img.jpg" />
+				<a href=""><h4>08-09</h4></a>
+			</div>			
+		</div>
+	</div>
+</div>
+<div class = "right_navigation_div right">
+	<h3>About</h3>
+	<ul>
+		<li><a href="/accounts/our-core-belief">Our core belief</a></li>
+		<li><a href="/accounts/donations">Donations</a></li>
+		<li><a href="/accounts/expenses">Expenses</a></li>
+		<li>Audits</li>
+	</ul>
+</div>
+{% endblock content %}
