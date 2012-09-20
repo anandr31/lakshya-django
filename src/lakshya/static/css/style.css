@@ -61,6 +61,113 @@ button {
 	cursor: pointer;
 }
 
+/* --------------------------- START OF SLIDER --------------------------- */
+#example {
+	width:600px;
+	height:280px;
+	position:relative;
+}
+
+
+/*
+	Slideshow
+*/
+
+#slides {
+	position:absolute;
+	top:-4px;
+	left:4px;
+	z-index:100;
+}
+
+/*
+	Slides container
+	Important:
+	Set the width of your slides container
+	Set to display none, prevents content flash
+*/
+
+.slides_container {
+	width:990px;
+	overflow:hidden;
+	position:relative;
+	display:none;
+	border-bottom: 5px solid rgb(144, 202, 0)
+}
+
+/*
+	Each slide
+	Important:
+	Set the width of your slides
+	If height not specified height will be set by the slide content
+	Set to display block
+*/
+
+.slides_container a {
+	width:570px;
+	height:270px;
+	display:block;
+}
+
+.slides_container a img {
+	display:block;
+}
+
+/*
+	Next/prev buttons
+*/
+
+#slides .next,#slides .prev {
+	position:absolute;
+	top:107px;
+	left:-39px;
+	width:24px;
+	height:43px;
+	display:block;
+	z-index:101;
+}
+
+#slides .next {
+	left:585px;
+}
+
+/*
+	Pagination
+*/
+
+.pagination {
+	position: relative;
+	margin:2px auto 0;
+	width:100px;
+	z-index:11100;
+	top: -25px;
+	left: 450px;
+}
+
+.pagination li {
+	float:left;
+	margin:0 1px;
+	list-style:none;
+}
+
+.pagination li a {
+	display:block;
+	width:12px;
+	height:0;
+	padding-top:12px;
+	background-image:url(../img/pagination.png);
+	background-position:0 0;
+	float:left;
+	overflow:hidden;
+}
+
+.pagination li.current a {
+	background-position:0 -12px;
+}
+
+/* --------------------------- END OF SLIDER --------------------------- */
+
+
 
 /* --------------------------- START OF HEADER --------------------------- */
 #header_wrapper {
@@ -133,6 +240,7 @@ button {
 	padding: 0;
 	position: absolute; 
 	top: 100%;
+	z-index: 2000;
 }
 
 #primary_navigation ul ul li {
@@ -251,6 +359,10 @@ tr#footer_header {
 
 #updates_block_inner_div li {
 	padding: 10px 0px;
+}
+
+#updates_block_inner_div h3 {
+	margin-top: 0px;
 }
 
 #all_updates_link {

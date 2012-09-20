@@ -12,13 +12,38 @@
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script src="{{STATIC_URL}}js/jquery.min.js"></script>
+<script src="{{STATIC_URL}}js/slides.min.jquery.js"></script>
+
+<script>
+	$(function(){
+		$('#slides').slides({
+			preload: true,
+			preloadImage: '{{STATIC_URL}}img/loading.gif',
+			play: 5000,
+			pause: 2500,
+			hoverPause: true
+		});
+	});
+</script>
 
 {% endblock %}	
 
 {% block content %}
-<div id="image_slider">
-	<h1>Image slider123</h1>
+<div id="example">
+	<div id="slides">
+		<div class="slides_container">
+			<a href="http://www.flickr.com/photos/jliba/4665625073/" title="145.365 - Happy Bokeh Thursday! | Flickr - Photo Sharing!" ><img src="{{STATIC_URL}}img/slider-1.jpg" width="990" height="270" alt="Slide 1"></a>
+			<a href="http://www.flickr.com/photos/stephangeyer/3020487807/" title="Taxi | Flickr - Photo Sharing!" ><img src="http://slidesjs.com/examples/standard/img/slide-2.jpg" width="990" height="270" alt="Slide 2"></a>
+			<a href="http://www.flickr.com/photos/childofwar/2984345060/" title="Happy Bokeh raining Day | Flickr - Photo Sharing!" ><img src="http://slidesjs.com/examples/standard/img/slide-3.jpg" width="990" height="270" alt="Slide 3"></a>
+			<a href="http://www.flickr.com/photos/b-tal/117037943/" title="We Eat Light | Flickr - Photo Sharing!" ><img src="http://slidesjs.com/examples/standard/img/slide-4.jpg" width="990" height="270" alt="Slide 4"></a>
+		</div>
+<!-- 		<a href="#" class="prev"><img src="{{STATIC_URL}}img/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
+		<a href="#" class="next"><img src="{{STATIC_URL}}img/arrow-next.png" width="24" height="43" alt="Arrow Next"></a> -->
+	</div>
 </div>
 <div id="intro_block" class="left">
 	<div>
