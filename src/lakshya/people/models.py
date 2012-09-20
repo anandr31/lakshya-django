@@ -50,4 +50,17 @@ class Person_preference(models.Model):
     is_subscribed_for_newsletter = models.BooleanField(default=True, blank=False)
     show_donations = models.BooleanField(default=True, blank=True)
     
+ 
+class TeamMember(models.Model):
+    name = models.CharField("Full Name", max_length=100,)
+    slug = models.CharField("Slug", max_length=100,)
+    designation = models.CharField("Designation", max_length=100,)
+    photo = models.ImageField("Update photo", upload_to="team_pics/", null=True, blank=True)
+    description = models.TextField("Description",)
+    fb_link = models.URLField(null=True, blank=True)
+    linkedin_link = models.URLField(null=True, blank=True)
+    twitter_link = models.URLField(null=True, blank=True)
+    blog_link = models.URLField(null=True, blank=True)
+
+    
     

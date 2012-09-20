@@ -1,1 +1,8 @@
-# Create your views here.
+from django.shortcuts import render_to_response, redirect
+from django.template import RequestContext
+from people.models import TeamMember
+
+def get_team_details(request):
+    team_member_list = TeamMember.objects.all()  
+    return render_to_response("team.html", 
+                              RequestContext(request, {'team_member_list':team_member_list}))# Create your views here.

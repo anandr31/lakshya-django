@@ -1,4 +1,4 @@
-from people.models import Person, Person_preference
+from people.models import Person, Person_preference, TeamMember
 from django.contrib import admin
 
 class PreferenceInline(admin.TabularInline):
@@ -16,4 +16,9 @@ class PersonOptions(admin.ModelAdmin):
     raw_id_fields = ('user', )
     inlines = (PreferenceInline, )
     
+class TeamMemberOptions(admin.ModelAdmin):
+    list_display = ('name', 'designation')
+    search_fields = ('name', )
+    
 admin.site.register(Person, PersonOptions)
+admin.site.register(TeamMember, TeamMemberOptions)
