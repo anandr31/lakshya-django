@@ -246,8 +246,12 @@ tr#footer_header {
 	margin-top: 3px;
 }
 
-#announcement_block, #facebook_block {
-	width: 49%;
+#announcement_block {
+	width: 40%;
+}
+
+#facebook_block {
+	width: 58%;	
 }
 
 #announcement_block, #facebook_block p{

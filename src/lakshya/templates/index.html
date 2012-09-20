@@ -1,4 +1,21 @@
 {% extends "base.html" %}
+
+{% block meta %}
+<meta name="description" content="Lakshya Foundation is a registered ngo">
+<meta name="keywords" content="Alumni, Students and Faculty of NITW working together to bring social change" />
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?1"></LINK>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+{% endblock %}	
+
 {% block content %}
 <div id="image_slider">
 	<h1>Image slider123</h1>
@@ -13,8 +30,10 @@
 		<div id="stats_description">Total scholarship amount disbursed</div>
 	</div>
 	<div id="announcemet_facebook_block">
-		<div id="announcement_block" class="left"><p>announcement</p></div>
-		<div id="facebook_block" class="right"><p>facebook</p></div>
+		<div id="announcement_block" class="left"><p>announcemeent</p></div>
+		<div id="facebook_block" class="right">
+			<div class="fb-like-box" data-href="http://www.facebook.com/thelakshyafoundation" data-width="250" data-height="200" data-show-faces="false" data-stream="false" data-header="false"></div>
+		</div>
 	</div>	
 </div>
 <div id="updates_block" class="left cL">
