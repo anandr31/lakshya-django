@@ -493,13 +493,26 @@ blockquote {
 	padding-left: 30px;
 }
 .audit_report {
-	border: 1px solid #DADADA;
 	padding: 10px 20px;
 	width: 20%;
 	height: 130px;
-	margin-right: 30px;
-	margin-bottom: 20px;
 }
+
+.audit_report img {
+	width: 80px;
+	height: 80px;
+	display: block;
+	margin: auto;
+}
+
+.audit_report a {
+	text-decoration: none;
+}
+
+.audit_report:hover a {
+	text-decoration: underline;
+}
+
 
 .audit_report h3, .audit_report p, .audit_report img, .audit_report h4 {
 	text-align: center;
