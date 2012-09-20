@@ -19,6 +19,23 @@
 	clear: left;
 }
 
+body p, li, a, td {
+	font-size: 15px;
+	line-height: 22px;
+}
+
+body h2 {
+	font-size: 24px;
+}
+
+body h3 {
+	font-size: 19px;
+}
+
+body h4 {
+	font-size: 15px;
+}
+
 body {
 	font-family: "helvetica";
 	color: rgb(94, 94, 94);
@@ -29,6 +46,20 @@ body h2, body h3, h4, a {
 	font-weight: normal;
 }
 
+button {
+	-webkit-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+	-moz-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+	box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+	color:#fff;
+	background-color:rgb(144, 202, 0);
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border:none;
+	font-family:'Helvetica Neue',Arial,sans-serif;
+	text-shadow:#FE6 0 1px 0;
+	cursor: pointer;
+}
 
 
 /* --------------------------- START OF HEADER --------------------------- */
@@ -137,7 +168,7 @@ table#footer_table {
 }
 
 table#footer_table tr th, table#footer_table tr td{
-	padding: 10px;
+	padding: 7px;
 	font-weight: normal;
 }
 
@@ -231,7 +262,7 @@ tr#footer_header {
 }
 
 #intro_block p {
-	font-size: 20px;
+	font-size: 16px;
 	padding: 5px 5 px;
 }
 
@@ -243,7 +274,7 @@ tr#footer_header {
 #announcemet_facebook_block{
 	width:100%;
 	height: 49%;
-	margin-top: 3px;
+	margin-top: 8px;
 }
 
 #announcement_block {
@@ -279,6 +310,15 @@ tr#footer_header {
 	color: #888;
 	text-align: center;
 
+}
+
+#announcement_block button {
+	font-size: 18px;
+	padding: 6px 12px;
+	margin-top: 14px;
+}
+#announcement_block p {
+	font-size: 13px;
 }
 
 /* --------------------------- END OF HOME PAGE --------------------------- */
@@ -324,14 +364,6 @@ tr#footer_header {
 	height: 250px;
 	margin-right: 30px;
 	margin-bottom: 20px;
-}
-
-.project_gist img{
-	opacity: 0.5;
-}
-
-.project_gist:hover img{
-	opacity: 1;
 }
 
 .project_gist h3, .project_gist p, .project_gist img {
@@ -424,9 +456,9 @@ tr#footer_header {
 
 /* --------------------------- START OF About Innovation PAGE --------------------------- */
 
-.q_and_a {
+/*.q_and_a {
 	padding-left: 30px;
-}
+}*/
 
 .q_and_a p.question {
 	color: rgb(144, 202, 0);
@@ -531,21 +563,9 @@ blockquote {
 }
 
 #asthra-intro button {
-	-webkit-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
-	-moz-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
-	box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
-	color:#fff;
-	background-color:rgb(144, 202, 0);
-	border-radius:5px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	border:none;
-	font-family:'Helvetica Neue',Arial,sans-serif;
 	font-size:20px;
 	padding:4px 16px;
-	text-shadow:#FE6 0 1px 0;
 	margin: 20px 300px;
-	cursor: pointer;
 }
 
 
