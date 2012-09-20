@@ -24,7 +24,7 @@ body {
 	color: rgb(94, 94, 94);
 }
 
-body h2, body h3, a {
+body h2, body h3, h4, a {
 	color: rgb(144, 202, 0);
 	font-weight: normal;
 }
@@ -175,6 +175,17 @@ tr#footer_header {
 	top: -75px;
 	padding-right: 40px;
 }
+
+#footer_table a {
+	text-decoration: none;
+	color: rgb(94, 94, 94);
+}
+
+#footer_table a:hover {
+	text-decoration: underline;
+}
+
+
 /* --------------------------- END OF FOOTER --------------------------- */
 
 /* --------------------------- START OF HOME PAGE --------------------------- */
@@ -203,8 +214,16 @@ tr#footer_header {
 	border: 1px solid #DADADA;
 }
 
-#updates_block h1 {
-	padding: 100px 110px;
+#updates_block_inner_div {
+	padding: 10px 10px;
+}
+
+#updates_block_inner_div li {
+	padding: 10px 0px;
+}
+
+#all_updates_link {
+	padding-bottom: 10px;
 }
 
 #testimonials_block h1 {
@@ -301,6 +320,14 @@ tr#footer_header {
 	height: 250px;
 	margin-right: 30px;
 	margin-bottom: 20px;
+}
+
+.project_gist img{
+	opacity: 0.5;
+}
+
+.project_gist:hover img{
+	opacity: 1;
 }
 
 .project_gist h3, .project_gist p, .project_gist img {
@@ -561,5 +588,26 @@ table.internships_numbers th {
 
 /* --------------------------- END OF PILOT PROJECTS PAGE --------------------------- */
 
+/* --------------------------- START OF ALL UPDATES  PAGE --------------------------- */
+
+.update {
+	padding-bottom: 20px;
+}
+
+.update h4 {
+	margin: 0px 0px;
+}
+
+.update hr {
+	color: rgb(94, 94, 94);
+}
+
+.update img {
+	display: block;
+	margin: auto;
+	max-width: 400px;
+	max-height: 400px;
+}
+/* --------------------------- END OF ALL UPDATES  PAGE --------------------------- */
 
 

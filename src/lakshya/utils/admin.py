@@ -3,6 +3,7 @@ from utils.models import LakshyaUpdate, LakskhyaTestimonial
 
 class LakshyaUpdateOptions(admin.ModelAdmin):
     list_display = ('update_text', 'date_of_entry', 'sorting', "active",)
+    list_editable = ('sorting', )
     list_filter = ('active', )
     search_fields = ('update_text', )
     

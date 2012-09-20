@@ -58,51 +58,28 @@ $(function(){
 			</div>
 		</div>
 		<div id="team_description" class="right">
-			<div class = "jrr desc hidden cB">
+			{% for team_member in team_member_list %}
+			<div class = "{{team_member.slug}} desc hidden cB">
 				<div class="left">
-					<img src="{{STATIC_URL}}img/team-page-pics/jrr.jpg" width="150px" height="150px" />
+					<img src="{{team_member.photo.url}}" width="150px" height="150px" />
 				</div>
 				<div id="team_member_details"class="left">
-					<h3> Prof J.Ramachander Rao </h3>
-					<p>Honarary Chairperson and Trustee</p>
-					<a href="#"><img src="{{STATIC_URL}}img/facebook_icon.png" width="25px" height="25px"></a>
-					<a href="#"><img src="{{STATIC_URL}}img/linkedin_icon.png" width="25px" height="25px"></a>
+					<h3> {{team_member.name}} </h3>
+					{% if team_member.designation%}
+						<p>{{team_member.designation}}</p>
+					{% endif %}
+					{% if team_member.fb_link%}
+						<a href="{{team_member.fb_link}}"><img src="{{STATIC_URL}}img/facebook_icon.png" width="25px" height="25px"></a>
+					{% endif %}
+					{% if team_member.linkedin_link%}
+						<a href="{{team_member.linkedin_link}}"><img src="{{STATIC_URL}}img/facebook_icon.png" width="25px" height="25px"></a>
+					{% endif %}				
 				</div>
 				<div id="team_member_description" class="cB"> 
-					<p>Prof.J.Ramachander Rao, better know to his students as Prof.JRR, is the Honarary Chairperson of Lakshya and is curently a professor at the department of Physics and the Chief Vigilence Officer at NIT Warangal.<br/><br/>Prof.JRR completed his MSc.Tech and PhD from REC in 1974 and 1980 respectively. He has held almost every position of responsibility in the college administration from department HoD, to Chief Warden, to the Dean. His contribution in helping Lakshya strategize its projects in college during the initial days have been invaluable.</p>
+					<p>{{team_member.description}}</p>
 				</div>
 			</div>	
-
-			<!-- To be deleted -->
-			<div class = "anand desc hidden cB">
-				<div class="left">
-					<img src="{{STATIC_URL}}img/team-page-pics/anand.jpg" width="150px" height="150px" />
-				</div>
-				<div id="team_member_details"class="left">
-					<h3> Anand Rajgopalan </h3>
-					<p>Co-founder and CEO</p>
-					<a href="#"><img src="{{STATIC_URL}}img/facebook_icon.png" width="25px" height="25px"></a>
-					<a href="#"><img src="{{STATIC_URL}}img/linkedin_icon.png" width="25px" height="25px"></a>
-				</div>
-				<div id="team_member_description" class="cB"> 
-					<p>asdfasdf andnd andnadn f as df as f as df sa df sa fsa df as df safsad f  sadf  asf sa f sa f sa fsa f sa df as f sa f asd fa sf as f s f saf s f as df asf asd</p>
-				</div>
-			</div>	
-			<div class = "rakesh desc hidden cB">
-				<div class="left">
-					<img src="{{STATIC_URL}}img/team-page-pics/rakesh.jpg" width="150px" height="150px" />
-				</div>
-				<div id="team_member_details"class="left">
-					<h3> Rakesh Dubbudu</h3>
-					<p>Truestee</p>
-					<a href="#"><img src="{{STATIC_URL}}img/facebook_icon.png" width="25px" height="25px"></a>
-					<a href="#"><img src="{{STATIC_URL}}img/linkedin_icon.png" width="25px" height="25px"></a>
-				</div>
-				<div id="team_member_description" class="cB"> 
-					<p>asdfasdf asfasdfdfrakesh arkarhs asf asd f sadf as df a sdf as df as f as df sa df sa fsa df as df safsad f  sadf  asf sa f sa f sa fsa f sa df as f sa f asd fa sf as f s f saf s f as df asf asd</p>
-				</div>
-			</div>	
-			<!-- To be deleted -->
+			{% endfor %}
 		</div>
 		<span class="cB"></span>
 	</div>

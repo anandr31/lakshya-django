@@ -1,5 +1,9 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic.simple import direct_to_template
+from utils.urls import urlpatterns as util_urls
+from people.urls import urlpatterns as people_urls
+from django.conf import settings
+
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -7,9 +11,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', direct_to_template, {'template' : 'index.html'}, name='home'),
+    url(r'^$', 'lakshya.views.get_home_page', name='home'),
     url(r'^about$', direct_to_template, {'template' : 'about.html'}, name='home'),
-    url(r'^team$', direct_to_template, {'template' : 'team.html'}, name='home'),
     url(r'^innovation/', include('innovation.urls')),
     url(r'^scholarships/', include('scholarships.urls')),
     url(r'^accounts/', include('accounts.urls')),
@@ -27,3 +30,11 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
      url(r'^admin/', include(admin.site.urls)),
 )
+
+urlpatterns += util_urls
+
+urlpatterns += people_urls
+
+urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT}))
