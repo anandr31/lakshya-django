@@ -4,7 +4,7 @@ from people.models import Person
 # Create your models here.
 class LakshyaUpdate(models.Model):
     update_text = models.TextField(null=True, blank=True)
-    photo = models.ImageField("Update photo", upload_to="update_pics/", null=True, blank=True)
+    photo = models.FileField("Update photo", upload_to="update_pics/", null=True, blank=True)
     date_of_entry = models.DateField(null=True, blank=True,)
     sorting = models.IntegerField()
     active = models.BooleanField()
