@@ -313,11 +313,22 @@ table#footer_table {
 	table-layout: fixed;
 	width: 100%;
 	border-spacing: 0px;
-	margin-bottom: 30px;
+	margin-bottom: 5px;
 }
 
+table#footer_table th {
+	padding: 5px;
+}
+
+table#footer_table td {
+	padding: 4px;
+
+}
+
+table#footer_table a, p {
+	font-size: 14px;
+}
 table#footer_table tr th, table#footer_table tr td{
-	padding: 7px;
 	font-weight: normal;
 }
 
@@ -342,17 +353,27 @@ tr#footer_header {
 	border-top: 1px dotted rgb(94, 94, 94);
 }
 
+#payment_footer {
+	font-size: 14px;
+}
+
 #ccavenue_block img {
-	padding: 0px 10px;
+	padding: 0px 5px;
+	vertical-align: middle;
 }
 
 #ccavenue_block, #follow_block {
 	padding: 20px 0px;	
 }
 
+#ccavenue_block span#copy_right {
+	font-size: 10px;
+	padding-left: 120px;
+}
+
 #follow_block {
 	position: relative;
-	top: -75px;
+	top: -60px;
 	padding-right: 40px;
 }
 
