@@ -301,6 +301,8 @@ button {
 /* --------------------------- END OF HEADER --------------------------- */
 
 /* --------------------------- START OF FOOTER --------------------------- */
+
+
 #footer {
 	width: 990px;
 	margin: auto;
@@ -838,6 +840,13 @@ table.internships_numbers th {
 #contact_block span {
 	padding-left: 40px;
 }
+
+#contact_block a {
+	font-size: 17px;
+}
+
+
+
 
 /* --------------------------- END OF CONTACT PAGE --------------------------- */
 
