@@ -453,18 +453,22 @@ tr#footer_header {
 	height: 100%;
 }
 
-#stats div#stats_number {
-	font-size: 50px;
+#stats div.stats_number {
+	font-size: 55px;
 	color: #888;
 	text-align: center;
-	padding: 10px 0px;
+	padding: 20px 0px;
 }
 
-#stats div#stats_description {
+#stats div.stats_description {
 	font-size: 17px;
 	color: #888;
 	text-align: center;
 
+}
+
+#stats li {
+	list-style-type: none;
 }
 
 #announcement_block button {

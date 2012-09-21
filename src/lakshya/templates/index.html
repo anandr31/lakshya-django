@@ -13,6 +13,8 @@
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+
+
 </script>
 
 <script src="{{STATIC_URL}}js/jquery.min.js"></script>
@@ -38,6 +40,21 @@
 			hoverPause: true
 
 		});
+
+		function showTheList() {
+		  var i = 1;
+		  function showOne() {
+		    if (i === 1) $('.ul li').hide();
+		    $('.ul li').eq(i - 1).delay(100).fadeIn(2000, function() {
+		      $('.ul li').eq(i - 1).fadeOut(4000, function() {
+		        if (++i > 3) i = 1;
+		        showOne();
+		      });
+		    });
+		  }
+		  showOne();
+		}
+		showTheList();
 	});
 </script>
 
@@ -52,8 +69,6 @@
 			<a href="http://www.flickr.com/photos/childofwar/2984345060/" title="Happy Bokeh raining Day | Flickr - Photo Sharing!" ><img src="http://slidesjs.com/examples/standard/img/slide-3.jpg" width="990" height="270" alt="Slide 3"></a>
 			<a href="http://www.flickr.com/photos/b-tal/117037943/" title="We Eat Light | Flickr - Photo Sharing!" ><img src="http://slidesjs.com/examples/standard/img/slide-4.jpg" width="990" height="270" alt="Slide 4"></a>
 		</div>
-<!-- 		<a href="#" class="prev"><img src="{{STATIC_URL}}img/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
-		<a href="#" class="next"><img src="{{STATIC_URL}}img/arrow-next.png" width="24" height="43" alt="Arrow Next"></a> -->
 	</div>
 </div>
 <div id="intro_block" class="left">
@@ -64,8 +79,20 @@
 </div>
 <div id="stats_block" class = "right">
 	<div id="stats">
-		<div id="stats_number">Rs 1,000,000</div>
-		<div id="stats_description">Total scholarship amount disbursed</div>
+		<ul class="ul">
+			<li>
+				<div class="stats_number">&#x20B9; 17,00,000</div>
+				<div class="stats_description">amount raised from NITW alumni</div>
+			</li>
+			<li>
+				<div class="stats_number">8</div>
+				<div class="stats_description">research ideas being supported</div>
+			</li>
+			<li>
+				<div class="stats_number">22</div>
+				<div class="stats_description">need based scholarships for NITW students</div>
+			</li>
+		</ul>
 	</div>
 	<div id="announcemet_facebook_block">
 		<div id="announcement_block" class="left">
