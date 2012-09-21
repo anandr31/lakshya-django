@@ -27,6 +27,17 @@
 			pause: 2500,
 			hoverPause: true
 		});
+
+		$('#testimonial_slides').slides({
+			pagination: false,
+			container: 'testimonials_container',
+			preload: true,
+			preloadImage: '{{STATIC_URL}}img/loading.gif',
+			play: 0,
+			pause: 2500,
+			hoverPause: true
+
+		});
 	});
 </script>
 
@@ -58,7 +69,7 @@
 	</div>
 	<div id="announcemet_facebook_block">
 		<div id="announcement_block" class="left">
-			<button>Support</button> <p>lakshya to become fiinancially sustainable</p>
+			<button>Know more</button> <p>about our obscession for transparency</p>
 		</div>
 		<div id="facebook_block" class="right">
 			<div class="fb-like-box" data-href="http://www.facebook.com/thelakshyafoundation" data-width="250" data-height="200" data-show-faces="false" data-stream="false" data-header="false"></div>
@@ -74,10 +85,62 @@
 			<li>{{update.update_text|safe|slice:"90"}}  ..... <a href="/updates#update-{{update.id}}">more</a></li>			
 			{% endfor %}
 		</ul>
-		<a id="all_updates_link" class="right" href="/updates">all updates</a>
+		<a id="all_updates_link" class="right" href="/updates">more updates</a>
 	</div>
 </div>
 <div id="testimonials_block" class="right">
-	<h1>Testimonials block</h1>
+	<div id="testimonials_block_inner_div">
+		<h3>Lakshya Testimonials</h3>
+		<hr>
+		<div id="testimonial_slides">
+			<div class="testimonials_container">
+				<div class="testimonial_slide">
+					<p class="testimonial_text"><span>''</span>We started with a small team, but it was a team in every sense of the word. Students, faculble.<span>''</span></p>
+					<div>
+						<div class="testimonial_image_div left ">
+							<img src="{{STATIC_URL}}img/slider-1.jpg" width="100px" height="100px">
+						</div>
+						<div id="testimonial_details_div" class="left" >
+							<h4>Thomas Zacaria</h4>
+							<p>adsfasdasfasdf asdfa </p>
+							<p>afdasf asd fas df</p>
+						</div>
+					</div>	
+				</div>
+
+				<div class="testimonial_slide cB">
+					<p class="testimonial_text cB"><span>''</span>Every donation made is ring a plant and no one waters a plant they are not allowed to see. We want your tributions<span>''</span></p>
+					<div>
+						<div class="testimonial_image_div left ">
+							<img src="{{STATIC_URL}}img/slider-1.jpg" width="100px" height="100px">
+						</div>
+						<div id="testimonial_details_div" class="left" >
+							<h4>Thomas Zacaria</h4>
+							<p>adsfasdasfasdf asdfa </p>
+							<p>afdasf asd fas df</p>
+						</div>
+					</div>	
+				</div>
+
+				<div class="testimonial_slide">
+					<p class="testimonial_text"><span>''</span>We are in this for the long-haul. We work to have a lasting impact that will take us closer <span>''</span></p>
+					<div>
+						<div class="testimonial_image_div left ">
+							<img src="{{STATIC_URL}}img/slider-1.jpg" width="100px" height="100px">
+						</div>
+						<div id="testimonial_details_div" class="left" >
+							<h4>Thomas Zacaria</h4>
+							<p>adsfasdasfasdf asdfa </p>
+							<p>afdasf asd fas df</p>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<a href="#" class="prev arrow"><img src="{{STATIC_URL}}img/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
+			<a href="#" class="next arrow"><img src="{{STATIC_URL}}img/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>
+		</div>
+	</div>
+
+
 </div>
 {% endblock content %}

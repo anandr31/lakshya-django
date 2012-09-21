@@ -9,5 +9,5 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^home$', direct_to_template, {'template' : 'innovation_home.html'}, name='home'),
     url(r'^about-innovation-project$', direct_to_template, {'template' : 'about_innovation_project.html'}, name='about_innnovation_project'),
-    url(r'^innovations-list$', direct_to_template, {'template' : 'innovations_list.html'}, name='innovations_list'),
+    url(r'^innovations-list(/?)(?P<project_name>.*)$', 'innovation.views.get_innovation_list', name='innovations_list'),
 )
