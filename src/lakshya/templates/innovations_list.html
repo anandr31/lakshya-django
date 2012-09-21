@@ -8,8 +8,9 @@
 <script src="{{STATIC_URL}}js/jquery.min.js"></script>	
 <script type="text/javascript">
 $(function(){
+	$("#{{project_name}}").addClass("selected")
 	$(".desc").hide();
-	$(".hovamarine").show();	
+	$(".{{project_name}}").show();	
 	$(".project_gist").click(function(){
 		$(".desc").hide();
 		$("."+this.id).show();
@@ -25,21 +26,38 @@ $(function(){
 	<h2>Innovations</h2>
 	<div class="content_div">
 		<div id="innovations_list">
-			<div id="hovamarine" class="project_gist left selected" >
-				<img src="{{STATIC_URL}}/img/temp_img.jpg" />
-				<a href=""><h3>Hovamarine</h3></a>
+			<div id="hovamarine" class="project_gist left" >
+				<h3>Hovamarinee</h3>
 				<p>A vehicle capable of movement over any surface and also under water.</p>
 			</div>
 			<div id="smart_meter" class="project_gist left" >
-				<img src="{{STATIC_URL}}/img/temp_img.jpg" />
-				<a href=""><h3>Smart Meter</h3></a>
+				<h3>Smart Meter</h3>
 				<p>A device for collecting and analyzing domestic electric consumption data</p>
 			</div>
 			<div id="concrete" class="project_gist left" >
-				<img src="{{STATIC_URL}}/img/temp_img.jpg" />
-				<a href=""><h3>SCC using RA</h3></a>
+				<h3>SCC using RA</h3>
 				<p>Developing self compacting concrete using aggregate from demolished structures</p>
 			</div>	
+			<div id="concrete" class="project_gist left" >
+				<h3>SCC using RA</h3>
+				<p>Developing self compacting concrete using aggregate from demolished structures</p>
+			</div>
+			<div id="concrete" class="project_gist left" >
+				<h3>SCC using RA </h3>
+				<p>Developing self compacting concrete using aggregate from demolished structures</p>
+			</div>
+			<div id="concrete" class="project_gist left" >
+				<h3>SCC using RA</h3>
+				<p>Developing self compacting concrete using aggregate from demolished structures</p>
+			</div>
+			<div id="concrete" class="project_gist left" >
+				<h3>SCC using RA</h3>
+				<p>Developing self compacting concrete using aggregate from demolished structures</p>
+			</div>
+			<div id="concrete" class="project_gist left" >
+				<h3>SCC using RA</h3>
+				<p>Developing self compacting concrete using aggregate from demolished structures</p>
+			</div>
 		</div>
 		<div id="innovation_description" class="cB">
 			<div class = "hovamarine desc hidden">

@@ -12,13 +12,64 @@
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+
+
+</script>
+
+<script src="{{STATIC_URL}}js/jquery.min.js"></script>
+<script src="{{STATIC_URL}}js/slides.min.jquery.js"></script>
+
+<script>
+	$(function(){
+		$('#slides').slides({
+			preload: true,
+			preloadImage: '{{STATIC_URL}}img/loading.gif',
+			play: 5000,
+			pause: 2500,
+			hoverPause: true
+		});
+
+		$('#testimonial_slides').slides({
+			pagination: false,
+			container: 'testimonials_container',
+			preload: true,
+			preloadImage: '{{STATIC_URL}}img/loading.gif',
+			play: 0,
+			pause: 2500,
+			hoverPause: true
+
+		});
+
+		function showTheList() {
+		  var i = 1;
+		  function showOne() {
+		    if (i === 1) $('.ul li').hide();
+		    $('.ul li').eq(i - 1).delay(100).fadeIn(2000, function() {
+		      $('.ul li').eq(i - 1).fadeOut(4000, function() {
+		        if (++i > 3) i = 1;
+		        showOne();
+		      });
+		    });
+		  }
+		  showOne();
+		}
+		showTheList();
+	});
+</script>
 
 {% endblock %}	
 
 {% block content %}
-<div id="image_slider">
-	<h1>Image slider123</h1>
+<div id="example">
+	<div id="slides">
+		<div class="slides_container">
+			<a href="http://www.flickr.com/photos/jliba/4665625073/" title="145.365 - Happy Bokeh Thursday! | Flickr - Photo Sharing!" ><img src="{{STATIC_URL}}img/slider-1.jpg" width="990" height="270" alt="Slide 1"></a>
+			<a href="http://www.flickr.com/photos/stephangeyer/3020487807/" title="Taxi | Flickr - Photo Sharing!" ><img src="http://slidesjs.com/examples/standard/img/slide-2.jpg" width="990" height="270" alt="Slide 2"></a>
+			<a href="http://www.flickr.com/photos/childofwar/2984345060/" title="Happy Bokeh raining Day | Flickr - Photo Sharing!" ><img src="http://slidesjs.com/examples/standard/img/slide-3.jpg" width="990" height="270" alt="Slide 3"></a>
+			<a href="http://www.flickr.com/photos/b-tal/117037943/" title="We Eat Light | Flickr - Photo Sharing!" ><img src="http://slidesjs.com/examples/standard/img/slide-4.jpg" width="990" height="270" alt="Slide 4"></a>
+		</div>
+	</div>
 </div>
 <div id="intro_block" class="left">
 	<div>
@@ -28,12 +79,24 @@
 </div>
 <div id="stats_block" class = "right">
 	<div id="stats">
-		<div id="stats_number">Rs 1,000,000</div>
-		<div id="stats_description">Total scholarship amount disbursed</div>
+		<ul class="ul">
+			<li>
+				<div class="stats_number">&#x20B9; 17,00,000</div>
+				<div class="stats_description">amount raised from NITW alumni</div>
+			</li>
+			<li>
+				<div class="stats_number">8</div>
+				<div class="stats_description">research ideas being supported</div>
+			</li>
+			<li>
+				<div class="stats_number">22</div>
+				<div class="stats_description">need based scholarships for NITW students</div>
+			</li>
+		</ul>
 	</div>
 	<div id="announcemet_facebook_block">
 		<div id="announcement_block" class="left">
-			<button>Support</button> <p>lakshya to become fiinancially sustainable</p>
+			<button>Know more</button> <p>about our obscession for transparency</p>
 		</div>
 		<div id="facebook_block" class="right">
 			<div class="fb-like-box" data-href="http://www.facebook.com/thelakshyafoundation" data-width="250" data-height="200" data-show-faces="false" data-stream="false" data-header="false"></div>
@@ -49,10 +112,62 @@
 			<li>{{update.update_text|safe|slice:"90"}}  ..... <a href="/updates#update-{{update.id}}">more</a></li>			
 			{% endfor %}
 		</ul>
-		<a id="all_updates_link" class="right" href="/updates">all updates</a>
+		<a id="all_updates_link" class="right" href="/updates">more updates</a>
 	</div>
 </div>
 <div id="testimonials_block" class="right">
-	<h1>Testimonials block</h1>
+	<div id="testimonials_block_inner_div">
+		<h3>Lakshya Testimonials</h3>
+		<hr>
+		<div id="testimonial_slides">
+			<div class="testimonials_container">
+				<div class="testimonial_slide">
+					<p class="testimonial_text">" We started with a small team, but it was a team in every sense of the word. Students, faculble. "</p>
+					<div>
+						<div class="testimonial_image_div left ">
+							<img src="{{STATIC_URL}}img/slider-1.jpg" width="100px" height="100px">
+						</div>
+						<div id="testimonial_details_div" class="left" >
+							<h4>Thomas Zacaria</h4>
+							<p>adsfasdasfasdf asdfa </p>
+							<p>afdasf asd fas df</p>
+						</div>
+					</div>	
+				</div>
+
+				<div class="testimonial_slide cB">
+					<p class="testimonial_text cB">" Every donation made is ring a plant and no one waters a plant they are not allowed to see. We want your tributions "</p>
+					<div>
+						<div class="testimonial_image_div left ">
+							<img src="{{STATIC_URL}}img/slider-1.jpg" width="100px" height="100px">
+						</div>
+						<div id="testimonial_details_div" class="left" >
+							<h4>Thomas Zacaria</h4>
+							<p>adsfasdasfasdf asdfa </p>
+							<p>afdasf asd fas df</p>
+						</div>
+					</div>	
+				</div>
+
+				<div class="testimonial_slide">
+					<p class="testimonial_text">" We are in this for the long-haul. We work to have a lasting impact that will take us closer "</p>
+					<div>
+						<div class="testimonial_image_div left ">
+							<img src="{{STATIC_URL}}img/slider-1.jpg" width="100px" height="100px">
+						</div>
+						<div id="testimonial_details_div" class="left" >
+							<h4>Thomas Zacaria</h4>
+							<p>adsfasdasfasdf asdfa </p>
+							<p>afdasf asd fas df</p>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<a href="#" class="prev arrow"><img src="{{STATIC_URL}}img/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
+			<a href="#" class="next arrow"><img src="{{STATIC_URL}}img/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>
+		</div>
+	</div>
+
+
 </div>
 {% endblock content %}

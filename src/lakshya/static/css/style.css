@@ -61,6 +61,152 @@ button {
 	cursor: pointer;
 }
 
+/* --------------------------- START OF SLIDER --------------------------- */
+#example {
+	width:600px;
+	height:280px;
+	position:relative;
+}
+
+
+/*
+	Slideshow
+*/
+
+#slides {
+	position:absolute;
+	top:-4px;
+	left:4px;
+	z-index:100;
+}
+
+/*
+	Slides container
+	Important:
+	Set the width of your slides container
+	Set to display none, prevents content flash
+*/
+
+.slides_container {
+	width:990px;
+	overflow:hidden;
+	position:relative;
+	display:none;
+	border-bottom: 5px solid rgb(144, 202, 0)
+}
+
+/*
+	Each slide
+	Important:
+	Set the width of your slides
+	If height not specified height will be set by the slide content
+	Set to display block
+*/
+
+.slides_container a {
+	width:570px;
+	height:270px;
+	display:block;
+}
+
+.slides_container a img {
+	display:block;
+}
+
+/*
+	Next/prev buttons
+*/
+
+#slides .next,#slides .prev {
+	position:absolute;
+	top:107px;
+	left:-39px;
+	width:24px;
+	height:43px;
+	display:block;
+	z-index:101;
+}
+
+#slides .next {
+	left:585px;
+}
+
+/*
+	Pagination
+*/
+
+.pagination {
+	position: relative;
+	margin:2px auto 0;
+	width:100px;
+	z-index:11100;
+	top: -25px;
+	left: 450px;
+}
+
+.pagination li {
+	float:left;
+	margin:0 1px;
+	list-style:none;
+}
+
+.pagination li a {
+	display:block;
+	width:12px;
+	height:0;
+	padding-top:12px;
+	background-image:url(../img/pagination.png);
+	background-position:0 0;
+	float:left;
+	overflow:hidden;
+}
+
+.pagination li.current a {
+	background-position:0 -12px;
+}
+
+
+
+/* --------------------------- START OF TESTIMONIAL SLIDER --------------------------- */
+
+.testimonial_slide {
+	padding: 0px 10px;
+	width: 54%;
+}
+
+.testimonial_slide p.testimonial_text {
+	font-size: 16px;
+}
+
+.testimonial_image_div img{
+	padding: 10px 8px 20px 30px;
+}
+
+.testimonial_slide p.testimonial_text span {
+	font-size: 40px;
+}
+
+#testimonials_block_inner_div a.next {
+	float: right;
+}
+
+.testimonials_container {
+	height: 250px;
+}
+
+#testimonials_block_inner_div .arrow{
+	position: relative;
+	top: -150px;	
+	z-index: 1000;
+}
+
+#testimonials_block_inner_div .pagination {
+	display: none;
+}
+
+
+/* --------------------------- END OF TESTIMONIAL SLIDER --------------------------- */
+
 
 /* --------------------------- START OF HEADER --------------------------- */
 #header_wrapper {
@@ -133,6 +279,7 @@ button {
 	padding: 0;
 	position: absolute; 
 	top: 100%;
+	z-index: 2000;
 }
 
 #primary_navigation ul ul li {
@@ -154,6 +301,8 @@ button {
 /* --------------------------- END OF HEADER --------------------------- */
 
 /* --------------------------- START OF FOOTER --------------------------- */
+
+
 #footer {
 	width: 990px;
 	margin: auto;
@@ -164,11 +313,22 @@ table#footer_table {
 	table-layout: fixed;
 	width: 100%;
 	border-spacing: 0px;
-	margin-bottom: 30px;
+	margin-bottom: 5px;
 }
 
+table#footer_table th {
+	padding: 5px;
+}
+
+table#footer_table td {
+	padding: 4px;
+
+}
+
+table#footer_table a, p {
+	font-size: 14px;
+}
 table#footer_table tr th, table#footer_table tr td{
-	padding: 7px;
 	font-weight: normal;
 }
 
@@ -193,17 +353,27 @@ tr#footer_header {
 	border-top: 1px dotted rgb(94, 94, 94);
 }
 
+#payment_footer {
+	font-size: 14px;
+}
+
 #ccavenue_block img {
-	padding: 0px 10px;
+	padding: 0px 5px;
+	vertical-align: middle;
 }
 
 #ccavenue_block, #follow_block {
 	padding: 20px 0px;	
 }
 
+#ccavenue_block span#copy_right {
+	font-size: 10px;
+	padding-left: 120px;
+}
+
 #follow_block {
 	position: relative;
-	top: -75px;
+	top: -60px;
 	padding-right: 40px;
 }
 
@@ -237,6 +407,10 @@ tr#footer_header {
 	margin-bottom: 10px;
 }
 
+#updates_block, #testimonials_block {
+	height: 310px;
+}
+
 #intro_block, #stats_block{
 	height: 225px;
 }
@@ -245,12 +419,16 @@ tr#footer_header {
 	border: 1px solid #DADADA;
 }
 
-#updates_block_inner_div {
+#updates_block_inner_div, #testimonials_block_inner_div{
 	padding: 10px 10px;
 }
 
 #updates_block_inner_div li {
 	padding: 10px 0px;
+}
+
+#updates_block_inner_div h3, #testimonials_block_inner_div h3 {
+	margin-top: 0px;
 }
 
 #all_updates_link {
@@ -298,18 +476,22 @@ tr#footer_header {
 	height: 100%;
 }
 
-#stats div#stats_number {
-	font-size: 50px;
+#stats div.stats_number {
+	font-size: 55px;
 	color: #888;
 	text-align: center;
-	padding: 10px 0px;
+	padding: 20px 0px;
 }
 
-#stats div#stats_description {
+#stats div.stats_description {
 	font-size: 17px;
 	color: #888;
 	text-align: center;
 
+}
+
+#stats li {
+	list-style-type: none;
 }
 
 #announcement_block button {
@@ -359,15 +541,23 @@ tr#footer_header {
 }
 .project_gist {
 	border: 1px solid #DADADA;
-	padding: 10px 20px;
+	padding: 10px 10px;
 	width: 20%;
 	height: 250px;
-	margin-right: 30px;
+	margin-right: 12px;
 	margin-bottom: 20px;
 }
 
 .project_gist h3, .project_gist p, .project_gist img {
 	text-align: center;
+}
+
+.project_gist:hover h3{
+	text-decoration: underline;
+}
+
+.project_gist p{
+	color:	rgb(94, 94, 94);
 }
 
 /* --------------------------- END OF ABOUT PAGE --------------------------- */
@@ -469,8 +659,16 @@ tr#footer_header {
 /* --------------------------- Start OF Innovations list PAGE --------------------------- */
 
 #innovations_list .project_gist {
+	height: 145px;
 	cursor: pointer;
+	margin-bottom: 9px;
+	padding: 5px 10px;
 }
+
+#innovations_list .project_gist h3 {
+	margin: 3px 5px;
+}
+
 
 #innovation_description .desc {
 	padding-left: 10px;
@@ -647,4 +845,29 @@ table.internships_numbers th {
 }
 /* --------------------------- END OF ALL UPDATES  PAGE --------------------------- */
 
+/* --------------------------- START OF CONTACT PAGE --------------------------- */
+
+#fb_block {
+
+	padding-right: 50px;
+	border-right: 1px dotted grey;
+	margin-bottom: 50px;
+}
+
+#contact_block {
+	padding-left: 50px;
+}
+
+#contact_block span {
+	padding-left: 40px;
+}
+
+#contact_block a {
+	font-size: 17px;
+}
+
+
+
+
+/* --------------------------- END OF CONTACT PAGE --------------------------- */
 

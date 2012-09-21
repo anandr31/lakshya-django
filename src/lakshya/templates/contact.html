@@ -1,19 +1,36 @@
 {% extends "base.html" %}
+{% block meta %}
+<meta name="description" content="Lakshya Foundation is a registered ngo">
+<meta name="keywords" content="Alumni, Students and Faculty of NITW working together to bring social change" />
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?1"></LINK>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+{% endblock %}	
+
+
 {% block content %}
 <div class = "content_with_page_title left">
 	<h2>Contact</h2>
 	<div class="content_div">
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<h3>Under construction :) </h3>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>				
+		<div id="fb_block" class="left" >
+			<p>Like our page to get regular updates. </p>
+			<div class="fb-like-box" data-href="http://www.facebook.com/thelakshyafoundation" data-width="292" data-height="400" data-show-faces="true" data-stream="false" data-header="false"></div>
+		</div>		
+		<div id="contact_block" class="left">
+			<h3>Email us : </h3>
+			<span>info@thelakshyafoundation.org</span>
+			<br>
+			<h3>Call us : </h3>
+			<span>+91-98493-65735 (<a href="/team"> Anand Rajgopalan </a>)</span>
+		</div>	
 	</div>
 </div>
 {% endblock content %}
