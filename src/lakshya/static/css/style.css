@@ -822,4 +822,22 @@ table.internships_numbers th {
 }
 /* --------------------------- END OF ALL UPDATES  PAGE --------------------------- */
 
+/* --------------------------- START OF CONTACT PAGE --------------------------- */
+
+#fb_block {
+
+	padding-right: 50px;
+	border-right: 1px dotted grey;
+	margin-bottom: 50px;
+}
+
+#contact_block {
+	padding-left: 50px;
+}
+
+#contact_block span {
+	padding-left: 40px;
+}
+
+/* --------------------------- END OF CONTACT PAGE --------------------------- */
 
