@@ -72,11 +72,17 @@ $(function(){
 						<a href="{{team_member.fb_link}}"><img src="{{STATIC_URL}}img/facebook_icon.png" width="25px" height="25px"></a>
 					{% endif %}
 					{% if team_member.linkedin_link%}
-						<a href="{{team_member.linkedin_link}}"><img src="{{STATIC_URL}}img/facebook_icon.png" width="25px" height="25px"></a>
+						<a href="{{team_member.linkedin_link}}"><img src="{{STATIC_URL}}img/linkedin_icon.png" width="25px" height="25px"></a>
+					{% endif %}	
+					{% if team_member.twitter_link%}
+						<a href="{{team_member.fb_link}}"><img src="{{STATIC_URL}}img/twitter_icon.png" width="25px" height="25px"></a>
+					{% endif %}
+					{% if team_member.blog_link%}
+						<a href="{{team_member.linkedin_link}}"><img src="{{STATIC_URL}}img/blog_icon.png" width="25px" height="25px"></a>
 					{% endif %}				
 				</div>
 				<div id="team_member_description" class="cB"> 
-					<p>{{team_member.description}}</p>
+					<p>{{team_member.description|safe}}</p>
 				</div>
 			</div>	
 			{% endfor %}
