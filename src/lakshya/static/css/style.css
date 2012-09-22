@@ -641,6 +641,10 @@ tr#footer_header {
 	margin-right: 10px;
 	margin-bottom: 25px;
 }
+
+.innovation_home_listing .project_gist {
+	height: 198px;
+}
 /* --------------------------- END OF Innovation Home PAGE --------------------------- */
 
 
@@ -654,24 +658,23 @@ tr#footer_header {
 	color: rgb(144, 202, 0);
 }
 
+
+
 /* --------------------------- END OF About Innovation PAGE --------------------------- */
 
 /* --------------------------- Start OF Innovations list PAGE --------------------------- */
 
 #innovations_list .project_gist {
-	height: 145px;
+	height: 96px;
 	cursor: pointer;
 	margin-bottom: 9px;
 	padding: 5px 10px;
 }
 
-#innovations_list .project_gist h3 {
-	margin: 3px 5px;
-}
-
 
 #innovation_description .desc {
 	padding-left: 10px;
+	padding-top: 20px;
 }
 
 .project_numbers {
@@ -683,6 +686,20 @@ tr#footer_header {
 	color: rgb(144, 202, 0);
 	padding-left: 0px;
 }
+
+dt {
+ float:left;
+ clear:left;  
+ text-align:right;
+ width:30%;
+}
+dd {
+ float:left;
+ margin-left:3em;
+ padding-bottom: 10px;
+}
+
+
 /* --------------------------- END OF Innovations list PAGE --------------------------- */
 
 /* --------------------------- START OF Our-Core-Belief PAGE --------------------------- */

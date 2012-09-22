@@ -14,20 +14,25 @@ GENERAL = 0
 SCHOLARSHIPS = 1
 INNOVATION = 2
 INTERNSHIPS = 3
+ADMINISTRATION_EXPENSES = 4
 EXPENSE_HEADER_FIRST_LEVEL_CHOICES = ((GENERAL, "General"),
                                 (SCHOLARSHIPS, "Scholarships project"),
                                 (INNOVATION, "Innovation project"),
-                                (INTERNSHIPS, "Internships project"))
+                                (INTERNSHIPS, "Internships project"),
+                                (ADMINISTRATION_EXPENSES, "Administrative Expenses"))
+
 
 WEBSITE = 0
 PUBLICITY = 1
 SCHOLARSHIPS = 2
 ACCOUNTING = 3
 OTHERS = 4
+SALARY = 5
 EXPENSE_HEADER_SECOND_LEVEL_CHOICES = ((WEBSITE, "Website"),
                                        (PUBLICITY, "Publicity"),
                                        (SCHOLARSHIPS, "Scholarships"),
                                        (ACCOUNTING, "Accounting"),
+                                       (SALARY, "Salary"),                                       
                                        (OTHERS, "Others"))
 
 
