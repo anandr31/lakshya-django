@@ -12,14 +12,14 @@
 			<ul class="left">
 				{% for scholar in scholar_list %}
 					{% if not forloop.counter|divisibleby:"2" %}
-						<li><a href="/scholarships/scholars/{{scholar.id}}">{{scholar.name}}</a></li>
+						<li><a href="/scholarships/scholars-list/{{scholar.id}}">{{scholar.name}}</a></li>
 					{% endif %}
 				{% endfor %}
 			</ul>
 			<ul class="left">
 				{% for scholar in scholar_list %}
 					{% if forloop.counter|divisibleby:"2" %}
-						<li><a href="/scholarships/scholars/{{scholar.id}}">{{scholar.name}}</a></li>
+						<li><a href="/scholarships/scholars-list/{{scholar.id}}">{{scholar.name}}</a></li>
 					{% endif %}
 				{% endfor %}
 			</ul>

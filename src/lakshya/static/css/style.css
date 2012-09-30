@@ -908,6 +908,8 @@ ul.funding_partners_list {
 	border: 1px solid #DADADA;
 	padding: 20px 20px;
 	margin: 20px 20px;
+	height: 330px;
+	width: 160px;
 }
 
 .scholar_year_list .year {
