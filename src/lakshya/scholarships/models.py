@@ -337,7 +337,7 @@ class ScholarshipVerification(models.Model):
 class Scholar(models.Model):
     person = models.ForeignKey(Person)
     application = models.ForeignKey(ScholarshipApplication)
-    donation_fund = models.ForeignKey(DonationFund)
+    donation_fund = models.ForeignKey(DonationFund, null=True, blank=True)
     
     def __unicode__(self):
         return self.person.user.first_name
