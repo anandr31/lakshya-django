@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load generic_filters %}
 {% block content %}
 <div class = "content_with_page_title left">
 	<h2>Funding Partners</h2>
@@ -10,18 +9,20 @@
 		{{funding_partner.description|safe}}
 		<p>Scholars funder by {{funding_partner.name}} are </p>
 		<div class="scholar_funded_list">
-			{% for scholar in scholar_list %}
-				<ul class="left">
+			<ul class="left">
+				{% for scholar in scholar_list %}
 					{% if forloop.counter|divisibleby:"2" %}
 						<li><a href="/scholarships/scholars/{{scholar.id}}">{{scholar.name}}</a></li>
 					{% endif %}
-				</ul>
-				<ul class="left">
-					{% if not forloop.counter|divisibleby:"2" %}
+				{% endfor %}
+			</ul>
+			<ul class="left">
+				{% for scholar in scholar_list %}
+					{% if forloop.counter|divisibleby:"2" %}
 						<li><a href="/scholarships/scholars/{{scholar.id}}">{{scholar.name}}</a></li>
 					{% endif %}
-				</ul>
-			{% endfor %}
+				{% endfor %}
+			</ul>
 		</div>
 		<hr class="cB">
 	{% endfor %}

@@ -27,18 +27,20 @@
 		</div>
 		<h3>Funding partners</h3>
 		<p>asdfasfd sad f sa f asf  asf as f as df sa f sa df sd f sa df s adf sad f sdf sdafasdf asd fs adf sad f sadf sa df sad f sadf s f sd af sda f sad f sda fsa df sda f a f sd f</p>
-		{% for funding_partner in funding_partners_list %}
-			<ul class="left funding_partners_list">
+		<ul class="left funding_partners_list">
+			{% for funding_partner in funding_partners_list %}
 				{% if forloop.counter|divisibleby:"2" %}
 					<li><a href="/scholarships/funding-partners/#{{funding_partner.id}}">{{funding_partner.name}}</a></li>
 				{% endif %}
-			</ul>
-			<ul class="left funding_partners_list">
+			{% endfor %}		
+		</ul>
+		<ul class="left funding_partners_list">
+			{% for funding_partner in funding_partners_list %}
 				{% if not forloop.counter|divisibleby:"2" %}
 					<li><a href="/scholarships/funding-partners/#{{funding_partner.id}}">{{funding_partner.name}}</a></li>
 				{% endif %}
-			</ul>
-		{% endfor %}		
+			{% endfor %}
+		</ul>
 
 		<h3 class="cB">Lakshya Scholars</h3>	
 		<p>asdfasfd sad f sa f asf  asf as f as df sa f sa df sd f sa df s adf sad f sdf sdafasdf asd fs adf sad f sadf sa df sad f sadf s f sd af sda f sad f sda fsa df sda f a f sd f</p>
