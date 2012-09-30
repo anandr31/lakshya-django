@@ -11,7 +11,7 @@
 		<div class="scholar_funded_list">
 			<ul class="left">
 				{% for scholar in scholar_list %}
-					{% if forloop.counter|divisibleby:"2" %}
+					{% if not forloop.counter|divisibleby:"2" %}
 						<li><a href="/scholarships/scholars/{{scholar.id}}">{{scholar.name}}</a></li>
 					{% endif %}
 				{% endfor %}

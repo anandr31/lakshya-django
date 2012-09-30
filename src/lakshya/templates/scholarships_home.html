@@ -29,14 +29,14 @@
 		<p>asdfasfd sad f sa f asf  asf as f as df sa f sa df sd f sa df s adf sad f sdf sdafasdf asd fs adf sad f sadf sa df sad f sadf s f sd af sda f sad f sda fsa df sda f a f sd f</p>
 		<ul class="left funding_partners_list">
 			{% for funding_partner in funding_partners_list %}
-				{% if forloop.counter|divisibleby:"2" %}
+				{% if not forloop.counter|divisibleby:"2" %}
 					<li><a href="/scholarships/funding-partners/#{{funding_partner.id}}">{{funding_partner.name}}</a></li>
 				{% endif %}
 			{% endfor %}		
 		</ul>
 		<ul class="left funding_partners_list">
 			{% for funding_partner in funding_partners_list %}
-				{% if not forloop.counter|divisibleby:"2" %}
+				{% if forloop.counter|divisibleby:"2" %}
 					<li><a href="/scholarships/funding-partners/#{{funding_partner.id}}">{{funding_partner.name}}</a></li>
 				{% endif %}
 			{% endfor %}
