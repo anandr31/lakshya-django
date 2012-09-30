@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<div class = "content_with_page_title left">
+		<div id="blockquote_div">
+			<blockquote> "Ideas are like rabbits. You get a couple and learn how to handle them, and pretty soon you have a dozen"</h3><p>-John Steinbeck, Nobel Laureate, Literature (1962)</p></blockquote>
+		</div> 	
+	<h2>About the Scholarships Project</h2>
+	<div class="content_div">
+		<div class="q_and_a">
+			<p class="question">What is the Innovation Project?</p>
+			<p class="answer"><!--convey the part about going all the way to a prototype-->Each semester we select innovative ideas from students and faculty. We then work with these teams to create prototypes or technology demonstrators to validate their ideas. Depending on the field of work and its impact, we then proceed for protecting intellectual property and commercialization.</p>
+			<p class="question">What is its purpose?</p>
+			<p class="answer">To establish a support system that creates an atmosphere conducive to research, innovatona and technology entrepreneurship in NIT Warangal.</p>
+		</div>
+		<h3>Selection Process</h3>
+		<div class="q_and_a">
+			<p class="question">How are project ideas selected?</p>
+			<p class="answer">Lakshya calls for students to submit abstracts of their ideas. These are then screened and the shortlisted teams are requested to present a detailed proposal. A judges panel will then select ideas based on originality, practical application, and impact.</p>
+		</div>
+		<h3>Support System</h3>
+		<div class="q_and_a">
+				<div class="centre">
+					<img src="{{STATIC_URL}}img/developmentModel.jpg" width="550px" height="380px" />
+				</div>
+
+			<p class="question">How will the Innovation Project create a support system?</p>
+			<p class="answer">The support system is essentially a framework which give confidence to the innovator in himself, confidence in his ideas, because the gains if successful far outweigh the risks. By taking care of funding, providing access to world class mentors and to industry, we mitigate the risks and improve the chances of success.</p>
+			<p class="question">Where do the funds come from?</p>
+			<p class="answer">While Lakshya and NIT Warangal contribute equally for some of the projects, the remaining are funded entirely by us. Lakshya's funds come from the NIT Warangal alumni and the institute gets its funds from the Government of India.</p>
+		</div>
+	</div>
+</div>
+<div class = "right_navigation_div right">
+	<h3>Scholarships Project</h3>
+	<ul>
+		<li><a href="/scholarships/home">Scholarship Project Home</a></li>
+		<li>About Scholarhip Project</li>
+		<li><a href="/scholarships/scholars-list">Scholars list</a></li>
+		<li><a href="/scholarships/funding-partners">Funding Partners</a></li>
+	</ul>
+</div>
+{% endblock content %}

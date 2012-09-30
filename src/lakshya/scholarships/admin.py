@@ -60,7 +60,6 @@ class ScholarAdmin(admin.ModelAdmin):
     list_filter = ('donation_fund',)
     search_fields = ('person__user__first_name',)
     inlines = (ScholarUpdateInline, ScholarAcademicUpdateInline)
-    readonly_fields = ('person', )
     
 class RepaymentAdmin(admin.ModelAdmin):
     raw_id_fields = ('scholar',)

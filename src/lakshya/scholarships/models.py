@@ -342,6 +342,9 @@ class Scholar(models.Model):
     def __unicode__(self):
         return self.person.user.first_name
     
+    def name(self):
+        return self.person.name()
+    
     def save(self, **kwargs):
         if not self.id:
             self.person = self.application.person

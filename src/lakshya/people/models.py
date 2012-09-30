@@ -43,6 +43,9 @@ class Person(models.Model):
     
     def __unicode__(self):
         return self.user.first_name
+    
+    def name(self):
+        return self.user.first_name + " " + self.user.last_name
 
 
 class Person_preference(models.Model):

@@ -889,25 +889,30 @@ table.internships_numbers th {
 /* --------------------------- START OF SCHOLARSHIPS PAGE --------------------------- */
 
 ul.funding_partners_list {
-	padding-left: 100px;
-}
-
-table.scholars_list_table{
-	margin: auto;
-	border: 1px solid rgb(144, 202, 0);
-	border-collapse: collapse;
-	margin-bottom: 20px;
-}
-
-table.scholars_list_table td {
-	padding: 10px 10px;
-}
-
-table.scholars_list_table th {
-	padding: 10px 10px;
-	/*background: #C0E06C;*/
+	padding-left: 30px;
 }
 
 /* --------------------------- ENd OF SCHOLARSHIPS PAGE --------------------------- */
 
+
+/* --------------------------- START OF Funding Partners --------------------------- */
+
+.scholar_funded_list {
+	padding-left: 30px;
+}
+
+/* --------------------------- END OF Funding Partners --------------------------- */
+
+/* --------------------------- START OF Funding Partners --------------------------- */
+.scholar_year_list {
+	border: 1px solid #DADADA;
+	padding: 20px 20px;
+	margin: 20px 20px;
+}
+
+.scholar_year_list .year {
+	text-align: center;
+	font-size: 18px;
+}
+/* --------------------------- ENd OF SCHOLARSHIPS PAGE --------------------------- */
 

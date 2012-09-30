@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load generic_filters %}
+{% block content %}
+<div class = "content_with_page_title left">
+	<h2>Funding Partners</h2>
+	<p>adsfads fasd f sadf sadf sadf sad f sad fsadf sad f sadf asd f sadf sa df as fas df adf asd  sd fsa f d asdf asdf as df as fd asd fa sdf asd f asdf asd f sad f sad f asdf s df sa df ds</p>
+
+	{% for funding_partner,scholar_list in funding_partners_list%}	
+		<h3 id="{{funding_partner.id}}">{{funding_partner.name}}</h3>
+		{{funding_partner.description|safe}}
+		<p>Scholars funder by {{funding_partner.name}} are </p>
+		<div class="scholar_funded_list">
+			{% for scholar in scholar_list %}
+				<ul class="left">
+					{% if forloop.counter|divisibleby:"2" %}
+						<li><a href="/scholarships/scholars/{{scholar.id}}">{{scholar.name}}</a></li>
+					{% endif %}
+				</ul>
+				<ul class="left">
+					{% if not forloop.counter|divisibleby:"2" %}
+						<li><a href="/scholarships/scholars/{{scholar.id}}">{{scholar.name}}</a></li>
+					{% endif %}
+				</ul>
+			{% endfor %}
+		</div>
+		<hr class="cB">
+	{% endfor %}
+</div>
+<div class = "right_navigation_div right">
+	<h3>Scholarships Project</h3>
+	<ul>
+		<li><a href="/scholarships/home">Scholarship Project Home</a></li>
+		<li><a href="/scholarships/about-scholarships-project">About Scholarhip Project</a></li>
+		<li><a href="/scholarships/scholars-list">Scholars list</a></li>
+		<li>Funding Partners</li>
+	</ul>
+</div>
+{% endblock content %}

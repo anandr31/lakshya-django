@@ -27,39 +27,40 @@
 		</div>
 		<h3>Funding partners</h3>
 		<p>asdfasfd sad f sa f asf  asf as f as df sa f sa df sd f sa df s adf sad f sdf sdafasdf asd fs adf sad f sadf sa df sad f sadf s f sd af sda f sad f sda fsa df sda f a f sd f</p>
-		<ul class="left funding_partners_list">
-			<li>Tom Zacharia Foundation</li>
-			<li>Tom Zacharia Foundation</li>
-			<li>Tom Zacharia Foundation</li>
-			<li>Tom Zacharia Foundation</li>
-		</ul>	
-
-		<ul class="left funding_partners_list">
-			<li>Tom Zacharia Foundation</li>
-			<li>Tom Zacharia Foundation</li>
-			<li>Tom Zacharia Foundation</li>
-			<li>Tom Zacharia Foundation</li>
-		</ul>
+		{% for funding_partner in funding_partners_list %}
+			<ul class="left funding_partners_list">
+				{% if forloop.counter|divisibleby:"2" %}
+					<li><a href="/scholarships/funding-partners/#{{funding_partner.id}}">{{funding_partner.name}}</a></li>
+				{% endif %}
+			</ul>
+			<ul class="left funding_partners_list">
+				{% if not forloop.counter|divisibleby:"2" %}
+					<li><a href="/scholarships/funding-partners/#{{funding_partner.id}}">{{funding_partner.name}}</a></li>
+				{% endif %}
+			</ul>
+		{% endfor %}		
 
 		<h3 class="cB">Lakshya Scholars</h3>	
 		<p>asdfasfd sad f sa f asf  asf as f as df sa f sa df sd f sa df s adf sad f sdf sdafasdf asd fs adf sad f sadf sa df sad f sadf s f sd af sda f sad f sda fsa df sda f a f sd f</p>
-		<table class="scholars_list_table" border="1">
-			<tr><th>2008-2012</th><th>2008-2012</th><th>2008-2012</th></tr>
-			<tr><td>asdfasdf afsdfassddfa</td><td>asdfasdf afsdfassdfa</td><td>asdfasdf afsdfassdfa</td></tr>
-			<tr><th>2008-2012</th><th>2008-2012</th><th>2008-2012</th></tr>
-			<tr><td>asdfasdf afsdfassdfa</td><td>asdfasdf afsdfassdfa</td><td>asdfasdf afsdfassdfa</td></tr>
-			<tr><td>asdfasdf afsdfassdfa</td><td>asdfasdf afsdfassdfa</td><td>asdfasdf afsdfassdfa</td></tr>
-			<tr><td>asdfasdf afsdfassdfa</td><td>asdfasdf afsdfassdfa</td><td>asdfasdf afsdfassdfa</td></tr>
-		</table>
+
+		{% for year, scholar_list in scholar_year_list %}
+		<div class="scholar_year_list left">
+			<p class="year" > {{year}} </p>
+			<hr>
+			{% for scholar in scholar_list%}
+				<p><a href="/scholarships/scholars/{{scholar.id}}">{{scholar.name}}</a></p>
+			{% endfor %}			
+		</div>
+		{% endfor %}
 	</div>
 </div>
 <div class = "right_navigation_div right">
-	<h3>Innovation Project</h3>
+	<h3>Scholarships Project</h3>
 	<ul>
 		<li>Scholarship Project Home</li>
-		<li><a href="/innovation/about-innovation-project">About Scholarhip Project</a></li>
-		<li><a href="/innovation/innovations-list">Scholars list</a></li>
-		<li><a href="/innovation/innovations-list">Funding Partners</a></li>
+		<li><a href="/scholarships/about-scholarships-project">About Scholarhip Project</a></li>
+		<li><a href="/scholarships/scholars-list">Scholars list</a></li>
+		<li><a href="/scholarships/funding-partners">Funding Partners</a></li>
 	</ul>
 </div>
 {% endblock content %}
