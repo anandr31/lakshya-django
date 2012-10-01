@@ -1,32 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
 <div class = "content_with_page_title left">
-	<h2>Scholarships Project</h2>
+	<h2>Scholarships</h2>
 	<div class="content_div">
 		<div id="innovation_project_desc" class="left">
-			<p>The Innovation Project is a step towards building an atmosphere of research, innovation and entrepreneurship at NIT Warangal.</p>
-			<p>The Innovation Project involves:</p>
-
-			<ul>
-				<li>Funding and guiding innovative ideas from students and faculty</li>
-				<li>Protecting IPR resulting from such ideas</li>
-				<li>Encourage students to take up technology entrepreneurship</li>
-
-			</ul>
+			<p>Lakshya provides scholarships to students who cannot afford the fee. Ours is an interest free, collateral free loan model with a repayment period of five years</p>
 		</div>
 		<div id = "innnovation_stats" class="right">
 			<h3>Impact</h3>
-			<div id="stats_number">8</div>
-			<div id="stats_description">innovative ideas funded</div>
+			<div id="stats_number">22</div>
+			<div id="stats_description">students funded</div>
 			<br>
-			<div id="stats_number">Rs.3,30,000</div>
-			<div id="stats_description">Total funding amount</div>
+			<div id="stats_number">&#x20B9; 15,00,000</div>
+			<div id="stats_description">Funds disbursed for scholarships</div>
 		</div>
 		<div class="cB">
 			<p></p>
 		</div>
 		<h3>Funding partners</h3>
-		<p>asdfasfd sad f sa f asf  asf as f as df sa f sa df sd f sa df s adf sad f sdf sdafasdf asd fs adf sad f sadf sa df sad f sadf s f sd af sda f sad f sda fsa df sda f a f sd f</p>
+		<p>Many individuals, foundations and groups have come forward to generously support students chosen by Lakshya.</p>
 		<ul class="left funding_partners_list">
 			{% for funding_partner in funding_partners_list %}
 				{% if not forloop.counter|divisibleby:"2" %}
@@ -43,8 +35,7 @@
 		</ul>
 
 		<h3 class="cB">Lakshya Scholars</h3>	
-		<p>asdfasfd sad f sa f asf  asf as f as df sa f sa df sd f sa df s adf sad f sdf sdafasdf asd fs adf sad f sadf sa df sad f sadf s f sd af sda f sad f sda fsa df sda f a f sd f</p>
-
+		<p>Students pursuing their undergraduate studies in NIT Warangal apply for Lakshya scholarships after they are admitted. Given below are the list of students who receive financial support from Lakshya.</p>
 		{% for year, scholar_list in scholar_year_list %}
 		<div class="scholar_year_list left">
 			<p class="year" > {{year}} </p>
@@ -57,11 +48,11 @@
 	</div>
 </div>
 <div class = "right_navigation_div right">
-	<h3>Scholarships Project</h3>
+	<h3>Scholarships</h3>
 	<ul>
-		<li>Scholarship Project Home</li>
-		<li><a href="/scholarships/about-scholarships-project">About Scholarhip Project</a></li>
-		<li><a href="/scholarships/scholars-list">Scholars list</a></li>
+		<li>Scholarships Home</li>
+		<li><a href="/scholarships/about-scholarships-project">About Scholarships</a></li>
+		<li><a href="/scholarships/scholars-list">List of Scholars</a></li>
 		<li><a href="/scholarships/funding-partners">Funding Partners</a></li>
 	</ul>
 </div>
