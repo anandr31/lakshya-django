@@ -7,7 +7,7 @@
 	{% for funding_partner,scholar_list in funding_partners_list%}	
 		<h3 id="{{funding_partner.id}}">{{funding_partner.name}}</h3>
 		{{funding_partner.description|safe}}
-		<p>Scholars funder by {{funding_partner.name}} are </p>
+		<br/>Sponsored students:
 		<div class="scholar_funded_list">
 			<ul class="left">
 				{% for scholar in scholar_list %}
