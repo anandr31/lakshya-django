@@ -2,6 +2,7 @@ from django.db import models
 from people.models import Person
 from accounts.models import DonationFund, Expense, TRANSACTION_CHOICES
 from datetime import datetime
+from django.db.models import Sum
 
 YET_TO_SHORTLIST = 0
 NEED_TO_VERIFY = 1
@@ -344,6 +345,72 @@ class Scholar(models.Model):
     
     def name(self):
         return self.person.name()
+    
+    def batch(self):
+        return str(self.person.year_of_passing - 4) + " - " + str(self.person.year_of_passing) + " batch" 
+    
+    def cgpa(self):
+        if ScholarAcademicUpdate.objects.filter(scholar = self).order_by("-semester"):
+            return str(ScholarAcademicUpdate.objects.filter(scholar = self).order_by("-semester")[0].cgpa)
+        return "NA"
+    
+    def funding_amount(self):
+        ret_val = ScholarshipPayment.objects.filter(scholar = self).aggregate(Sum('amount'))["amount__sum"]
+        if ret_val :
+            return str(ret_val)
+        return "---" 
+    
+    def repaid_amount(self):
+        ret_val = Repayment.objects.filter(scholar = self).aggregate(Sum('amount'))["amount__sum"]
+        if ret_val :
+            return str(ret_val)
+        return "---" 
+    
+    def updates(self):
+        ret_val = []
+        for update in ScholarUpdate.objects.filter(scholar = self).order_by('-date_of_update'):
+            ret_val.append(update.update)
+        return ret_val
+    
+    def ssc_percentage(self):
+        percentage = self.application.ssc_percentage
+        if percentage:
+            return str(percentage) + " %"
+        
+        return "NA"
+    
+    def inter_percentage(self):
+        percentage = self.application.intermediate_percentage
+        if percentage:
+            return str(percentage) + " %"
+        
+        return "NA"
+    
+    def aieee_rank(self):
+        aieee_rank = self.application.aieee_air
+        
+        if aieee_rank:
+            return aieee_rank
+        
+        return "NA"
+    
+    def sgpa_list(self):
+        ret_val = []
+        for i in range(1,9):
+            try:
+                ret_val.append(ScholarAcademicUpdate.objects.get(scholar=self, semester=i).sgpa)
+            except:
+                ret_val.append("-")
+        return ret_val
+    
+    def cgpa_list(self):
+        ret_val = []
+        for i in range(1,9):
+            try:
+                ret_val.append(ScholarAcademicUpdate.objects.get(scholar=self, semester=i).cgpa)
+            except:
+                ret_val.append("-")
+        return ret_val
     
     def save(self, **kwargs):
         if not self.id:

@@ -1,7 +1,127 @@
 {% extends "base.html" %}
+
+{% block meta %}
+<title>Lakshya Team Page</title>
+<meta name="description" content="Lakshya Foundation is a registered ngo">
+<meta name="keywords" content="Alumni, Students and Faculty of NITW working together to bring social change" />
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css"></LINK>
+<script src="{{STATIC_URL}}js/jquery.min.js"></script>	
+<script type="text/javascript">
+$(function(){
+	$(".desc").hide();
+	$(".schol-16").show();	
+	$("#schol-16").addClass("selected");
+	$(".thumbnail").click(function(){
+		$(".desc").hide();
+		$("."+this.id).show();
+		$(".thumbnail").removeClass("selected")
+		$(this).addClass("selected")
+	});
+});
+</script>
+{% endblock %}
+
 {% block content %}
 <div class = "content_with_page_title left">
-	<h2>List of Scholars</h2>
+	<h2>Scholars List</h2>
+	<div class="content_div">
+<!--Role of individual in Lakshya-->
+		<p>Synergy is one of our core values and it reflects in our team composition. Faculty, alumni, and students are all part of the organization, bringing all stakeholders of NIT Warangal together.</p>
+		<div id="team-list" class="left cB">
+			{% for year, scholar_list in scholar_year_list %}
+				<h4 class="year" > {{year|add:"-4"}} - {{year}} batch</h4>
+				{% for scholar in scholar_list%}
+					<img class = "thumbnail" id="schol-{{scholar.id}}" src="{{STATIC_URL}}img/team-page-pics/venkat.jpg" width="40px" height="40px" />
+				{% endfor %}	
+			{% endfor %}			
+		</div>
+		<div id="team_description" class="right">
+			{% for scholar in scholar_list %}
+			<div class = "schol-{{scholar.id}} desc hidden cB">
+				<h3>Scholar Details</h3>
+				<div class="left">
+					<img src="{{STATIC_URL}}img/team-page-pics/venkat.jpg" width="150px" height="150px" />
+				</div>
+				<div id="team_member_details" class="left">
+					<dl>
+					    <dt>Name :</dt>
+					    <dd>{{scholar.name}}</dd>
+					    <dt>Batch :</dt>
+					    <dd>{{scholar.batch}}</dd>
+					    <dt>Branch :</dt>
+					    <dd>Rs.55,000</dd>
+					    {% if scholar.donation_fund %}
+						    <dt>Funding Agency :</dt>
+						    <dd><a href="/scholarships/funding-partners/#{{scholar.donation_fund.id}}">
+						    	{{scholar.donation_fund.name|slice:"20"}}</a></dd>
+						{% endif %}
+					</dl>​		
+				</div>
+				<div id="scholar_highlights" class="cB"> 
+
+					<div class="scholar_highlight left">
+						<div class="scholar_highlight_stat"><span>{{scholar.cgpa}}</span></div>
+						<div class="scholar_highlight_label"><span>CGPA</span></div>
+					</div>	
+
+					<div class="scholar_highlight left">
+						<div class="scholar_highlight_stat"><span>{{scholar.funding_amount}}</span></div>
+						<div class="scholar_highlight_label"><span>Funding</span></div>
+					</div>	
+
+					<div class="scholar_highlight left">
+						<div class="scholar_highlight_stat"><span>{{scholar.repaid_amount}}</span></div>
+						<div class="scholar_highlight_label"><span>Amount Repaid</span></div>
+					</div>	
+
+				</div>				
+				<h3>Scholar Updates</h3>
+				{% if scholar.updates %}
+					<ul>
+					{% for update in scholar.updates %}
+						<li>{{update}}</li>
+					{% endfor %}
+					</ul>
+				{% else %}
+					<p>No updates yet about this scholar</p>
+				{% endif %}
+				<h3>Academic Record</h3>
+				<div>
+					<div class="academic_highlight left">
+					    	<span>SSC :</span>
+					    	<span>{{scholar.ssc_percentage}}</span>
+					</div>
+					<div class="academic_highlight left">
+					    	<span>Inter :</span>
+					    	<span>{{scholar.inter_percentage}}</span>
+					</div>
+					<div class="academic_highlight left">
+					    	<span>AIEEE :</span>
+					    	<span>{{scholar.aieee_rank}}</span>
+					</div>
+				</div>
+				<table class="scholar_academic_update_table" border="1">
+					<tr>
+						<th>Year-Semester</th><th>1-1</th><th>1-2</th><th>2-1</th><th>2-2</th><th>3-1</th><th>3-2</th><th>4-1</th><th>4-2</th>
+					</tr>
+					<tr>
+						<td>SGPA</td>
+						{% for sgpa in scholar.sgpa_list %}
+							<td>{{sgpa}}</td>
+						{% endfor %}
+					</tr>
+					<tr>
+						<td>CGPA</td>
+						{% for cgpa in scholar.cgpa_list %}
+							<td>{{cgpa}}</td>
+						{% endfor %}
+					</tr>
+				</table>	
+			</div>	
+			{% endfor %}
+		</div>
+		<span class="cB"></span>
+	</div>
 </div>
 <div class = "right_navigation_div right">
 	<h3>Scholarships</h3>

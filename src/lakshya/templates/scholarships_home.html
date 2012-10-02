@@ -36,15 +36,32 @@
 
 		<h3 class="cB">Lakshya Scholars</h3>	
 		<p>Students pursuing their undergraduate studies in NIT Warangal apply for Lakshya scholarships after they are admitted. Given below are the list of students who receive financial support from Lakshya.</p>
-		{% for year, scholar_list in scholar_year_list %}
-		<div class="scholar_year_list left">
-			<p class="year" > {{year}} </p>
-			<hr>
-			{% for scholar in scholar_list%}
-				<p><a href="/scholarships/scholars-list/{{scholar.id}}">{{scholar.name}}</a></p>
-			{% endfor %}			
+		<div class="scholar_year_list_with_head left">
+			<h3>Current Scholars</h3>
+			<div class="scholar_year_list">
+				{% for year, scholar_list in scholar_year_list %}
+					{% if year > 2012 %}
+						<p class="year" > {{year}} - {{year|add:"4"}} batch</p>
+						{% for scholar in scholar_list%}
+							<p><a href="/scholarships/scholars-list/{{scholar.id}}">{{scholar.name}}</a></p>
+						{% endfor %}	
+					{% endif %}	
+				{% endfor %}
+			</div>
 		</div>
-		{% endfor %}
+		<div class="scholar_year_list_with_head left">
+			<h3>Existing Scholars</h3>
+			<div class="scholar_year_list">
+				{% for year, scholar_list in scholar_year_list %}
+					{% if year <= 2012 %}
+						<p class="year" > {{year}} - {{year|add:"4"}} batch</p>
+						{% for scholar in scholar_list%}
+							<p><a href="/scholarships/scholars-list/{{scholar.id}}">{{scholar.name}}</a></p>
+						{% endfor %}	
+					{% endif %}	
+				{% endfor %}
+			</div>
+		</div>
 	</div>
 </div>
 <div class = "right_navigation_div right">

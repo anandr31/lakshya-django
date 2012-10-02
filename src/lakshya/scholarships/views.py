@@ -4,7 +4,7 @@ from django.template import RequestContext
 from accounts.models import DonationFund
 from scholarships.models import Scholar
 
-def scholarships_home(request):
+def get_scholar_year_list():
     scholars = Scholar.objects.all().order_by("-person__year_of_passing")
     scholar_year_dict = {}
     for scholar in scholars:
@@ -15,10 +15,11 @@ def scholarships_home(request):
     scholar_year_list = []
     for year in sorted(scholar_year_dict):
         scholar_year_list.append((year, scholar_year_dict[year]))
-    
-    funding_partners = DonationFund.objects.all()
-    
-    context = {"scholar_year_list" : scholar_year_list, "funding_partners_list" : funding_partners}
+    return scholar_year_list    
+        
+def scholarships_home(request):
+    funding_partners = DonationFund.objects.all()   
+    context = {"scholar_year_list" : get_scholar_year_list(), "funding_partners_list" : funding_partners}
     return render_to_response("scholarships_home.html", 
                               RequestContext(request, context))
 
@@ -33,5 +34,7 @@ def funding_partners_list(request):
                               RequestContext(request, context))
 
 def get_scholarships_list(request, scholar_id):
+    scholar_list = Scholar.objects.all()
+    context = {"scholar_year_list" : get_scholar_year_list(), "scholar_list" : scholar_list}
     return render_to_response("scholars_list.html", 
-                              RequestContext(request,))
+                              RequestContext(request, context))

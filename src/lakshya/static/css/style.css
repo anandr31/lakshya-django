@@ -36,6 +36,8 @@ body h4 {
 	font-size: 15px;
 }
 
+
+
 body {
 	font-family: "helvetica";
 	color: rgb(94, 94, 94);
@@ -687,17 +689,19 @@ tr#footer_header {
 	padding-left: 0px;
 }
 
-dt {
+#innovation_description dt {
  float:left;
  clear:left;  
  text-align:right;
  width:30%;
 }
-dd {
+
+#innovation_description dd {
  float:left;
  margin-left:3em;
  padding-bottom: 10px;
 }
+
 
 
 /* --------------------------- END OF Innovations list PAGE --------------------------- */
@@ -892,6 +896,10 @@ ul.funding_partners_list {
 	padding-left: 30px;
 }
 
+ul.funding_partners_list li {
+	line-height: 35px;
+}
+
 /* --------------------------- ENd OF SCHOLARSHIPS PAGE --------------------------- */
 
 
@@ -906,15 +914,83 @@ ul.funding_partners_list {
 /* --------------------------- START OF Funding Partners --------------------------- */
 .scholar_year_list {
 	border: 1px solid #DADADA;
-	padding: 20px 20px;
-	margin: 20px 20px;
-	height: 330px;
-	width: 160px;
+	padding: 20px 50px;
+	margin: 20px 40px;
 }
 
-.scholar_year_list .year {
+.scholar_year_list_with_head p, .scholar_year_list_with_head h3 {
+	text-align: center;
+}
+
+.scholar_year_list_with_head .year {
 	text-align: center;
 	font-size: 18px;
 }
 /* --------------------------- ENd OF SCHOLARSHIPS PAGE --------------------------- */
 
+/* --------------------------- START OF Scholar list page --------------------------- */
+#team_member_details dt {
+	float:left;
+	clear:left;  
+	text-align:right;
+ /*width:30%;*/
+}
+
+#team_member_details dd {
+ 	float:left;
+ 	margin-left:1em;
+ 	padding-bottom: 10px;
+}
+
+.scholar_highlight {
+	height: 150px;
+	padding: 30px 10px;
+}
+
+.scholar_highlight_stat {
+	height: 100px;
+	background: #DADADA;
+}
+
+.scholar_highlight_stat span{
+	font-size: 25px;
+	width: 150px;
+	display: block;
+	text-align: center;
+	vertical-align: center;
+	padding-top: 30px;
+}
+
+.scholar_highlight_label{
+	height: 50px;
+	background: #F3F3F3;
+}
+
+.scholar_highlight_label span{
+	padding-top: 10px;
+	width: 150px;
+	display: block;
+	text-align: center;
+}
+
+.academic_highlight {
+	width: 30%;
+	padding-bottom: 20px;
+}
+
+table.scholar_academic_update_table{
+	margin: auto;
+	border: 1px solid rgb(144, 202, 0);
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+table.scholar_academic_update_table td {
+	padding: 10px 10px;
+}
+
+table.scholar_academic_update_table th {
+	padding: 10px 10px;
+	background: #C0E06C;
+}
+/* --------------------------- START OF Scholar list page --------------------------- */
