@@ -56,6 +56,9 @@ class Expense(models.Model):
     scan_bill = models.FileField(upload_to="expenses", blank=True)
     details = models.TextField(blank=True)
     
+    def header(self):
+        return self.expense_header_first_level_display()
+    
     def __unicode__(self):
         return str(self.date_of_expense) + " : Rs." + str(self.amount)
 

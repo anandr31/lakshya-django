@@ -1,3 +1,5 @@
 #compiled files
 *.pyc
 media/
+lakshya-temp
+*settings_local.py*

@@ -8,7 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^our-core-belief$', direct_to_template, {'template' : 'our_core_belief_transparency.html'}, name='our_core_belief'),
-    url(r'^donations$', direct_to_template, {'template' : 'donations.html'}, name='donations'),
-    url(r'^expenses$', direct_to_template, {'template' : 'expenses.html'}, name='expenses'),
+    url(r'^donations$', 'accounts.views.donations_home',),
+    url(r'^expenses$', 'accounts.views.expenses_home',),
     url(r'^audits$', direct_to_template, {'template' : 'audits.html'}, name='audits'),
 )

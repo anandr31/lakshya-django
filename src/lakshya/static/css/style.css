@@ -20,23 +20,21 @@
 }
 
 body p, li, a, td {
-	font-size: 15px;
-	line-height: 22px;
+	font-size: 13px;
+	line-height: 20px;
 }
 
 body h2 {
-	font-size: 24px;
+	font-size: 22px;
 }
 
 body h3 {
-	font-size: 19px;
+	font-size: 17px;
 }
 
 body h4 {
-	font-size: 15px;
+	font-size: 13px;
 }
-
-
 
 body {
 	font-family: "helvetica";
@@ -61,6 +59,20 @@ button {
 	font-family:'Helvetica Neue',Arial,sans-serif;
 	text-shadow:#FE6 0 1px 0;
 	cursor: pointer;
+}
+
+div.stats_number {
+	font-size: 40px;
+	color: #888;
+	text-align: center;
+	padding-top: 10px;
+}
+
+div.stats_description {
+	font-size: 14px;
+	color: #888;
+	text-align: center;
+
 }
 
 /* --------------------------- START OF SLIDER --------------------------- */
@@ -480,16 +492,7 @@ tr#footer_header {
 
 #stats div.stats_number {
 	font-size: 55px;
-	color: #888;
-	text-align: center;
 	padding: 20px 0px;
-}
-
-#stats div.stats_description {
-	font-size: 17px;
-	color: #888;
-	text-align: center;
-
 }
 
 #stats li {
@@ -618,20 +621,6 @@ tr#footer_header {
 	width: 38%;
 }
 
-#innnovation_stats div#stats_number {
-	font-size: 40px;
-	color: #888;
-	text-align: center;
-	padding-top: 10px;
-}
-
-#innnovation_stats div#stats_description {
-	font-size: 17px;
-	color: #888;
-	text-align: center;
-
-}
-
 #innnovation_stats h3 {
 	text-align: center;
 	margin: 0px 0px;
@@ -722,14 +711,14 @@ blockquote {
 /* --------------------------- END OF Our-Core-Belief PAGE --------------------------- */
 
 /* --------------------------- START OF DONATIONS PAGE --------------------------- */
-#donations_table, #expenses_table {
+#donations_table,{
 	background: #DCDCDC;
 	width: 100%;
 	border-bottom: 7px solid rgb(144, 202, 0);
 	margin-bottom: 10px;
 }
 
-#donations_table h1, #expenses_table h1 {
+#donations_table h1,{
 	padding: 250px 400px;
 }
 
@@ -738,6 +727,10 @@ blockquote {
 
 /* --------------------------- START OF EXPENSES PAGE --------------------------- */
 
+.expense_stats {
+	width: 33%;
+	padding-bottom: 40px;
+}
 /* --------------------------- END OF EXPENSES PAGE --------------------------- */
 
 /* --------------------------- END OF EXPENSES PAGE --------------------------- */
