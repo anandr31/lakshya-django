@@ -89,4 +89,13 @@ class Donation(models.Model):
     get_donation_receipt.short_description = "Donation Receipt"       
         
     def __unicode__(self):
-        return str(self.date_of_donation) + " : Rs." + str(self.amount) + self.donor.user.first_name          
+        return str(self.date_of_donation) + " : Rs." + str(self.amount) + self.donor.user.first_name        
+    
+class PaymentTemp(models.Model):
+    email_address = models.EmailField('Email address')
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    email_receipt = models.BooleanField(default=True)
+
+    
+        
+    

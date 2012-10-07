@@ -20,7 +20,12 @@ urlpatterns = patterns('',
     url(r'^asthra/about$', direct_to_template, {'template' : 'about_asthra.html'}, name='home'),
     url(r'^pilot-projects$', direct_to_template, {'template' : 'pilot_projects.html'}, name='home'),
     url(r'^contact$', direct_to_template, {'template' : 'contact.html'}, name='home'),    
-    url(r'^donate$', direct_to_template, {'template' : 'donate.html'}, name='home'),    
+    url(r'^donate$', "accounts.views.donate_home", name='home'),  
+    url(r'^payment_redirect$', "accounts.views.payment_redirect", name='payment_redirect'),  
+    url(r'^payment-return$', "accounts.views.return_view", name='payment-return'),  
+    url(r'^payment-success$', direct_to_template, {'template' : 'payment_success.html'}, name='payment-success'),
+    url(r'^payment-failure$', direct_to_template, {'template' : 'payment_failure.html'}, name='payment-failure'),
+       
     # url(r'^$', 'lakshya.views.home', name='home'),
     # url(r'^lakshya/', include('lakshya.foo.urls')),
 

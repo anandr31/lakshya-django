@@ -987,3 +987,31 @@ table.scholar_academic_update_table th {
 	background: #C0E06C;
 }
 /* --------------------------- START OF Scholar list page --------------------------- */
+
+/* --------------------------- START OF ABOUT PAGE --------------------------- */
+
+#account_details dt {
+	float:left;
+	clear:left;  
+	text-align:right;
+	width:30%;
+	font-size: 13px;
+}
+
+#account_details dd {
+	float:left;
+	margin-left:3em;
+	padding-bottom: 10px;
+	font-size: 13px;
+}
+
+#postal_address p {
+	padding-left: 30px;
+}
+
+#redirecting p {
+	padding: 200px 20px;
+	font-size: 18px;
+}
+/* --------------------------- END OF GENERIC INNER PAGES --------------------------- */
+
