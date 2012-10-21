@@ -1,4 +1,4 @@
-aDATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'lakshya',                      # Or path to database file if using sqlite3.

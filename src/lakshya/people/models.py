@@ -40,6 +40,7 @@ class Person(models.Model):
     course = models.IntegerField(choices=COURSE_CHOICES, default=BTECH, blank=True, null=True)
     department = models.IntegerField(choices=DEPARTMENT_CHOICES, blank=True, null=True)
     year_of_passing = models.IntegerField(blank=True, null=True)
+    profile_pic = models.FileField("Update photo", upload_to="profile_pics/", null=True, blank=True)
     
     def __unicode__(self):
         return self.user.first_name

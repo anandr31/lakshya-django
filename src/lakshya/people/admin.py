@@ -5,7 +5,7 @@ class PreferenceInline(admin.TabularInline):
     model = Person_preference
 
 class PersonOptions(admin.ModelAdmin):
-    fieldsets = [(None, {"fields" : [('user'),]}), 
+    fieldsets = [(None, {"fields" : [('user', 'profile_pic'),]}), 
                  ("Billing Details", {"fields" : [('billing_address',),('billing_landmark', 'billing_city',), 
                                                   ('billing_state', 'billing_postal_code'), ('billing_country', 'contact_number'), ]}), 
                  ("Alumni Details", {"fields" : [('is_nitw_alumni',), ('course', 'department', 'year_of_passing',)]}), ]

@@ -31,7 +31,11 @@ $(function(){
 			{% for year, scholar_list in scholar_year_list %}
 				<h4 class="year" > {{year|add:"-4"}} - {{year}} batch</h4>
 				{% for scholar in scholar_list%}
-					<img class = "thumbnail" id="schol-{{scholar.id}}" src="{{STATIC_URL}}img/team-page-pics/venkat.jpg" width="40px" height="40px" />
+					{% if  scholar.person.profile_pic %}
+					<img class = "thumbnail" id="schol-{{scholar.id}}" src="{{scholar.person.profile_pic.url}}" width="50px" height="50px" />
+					{% else %}
+					<img class = "thumbnail" id="schol-{{scholar.id}}" src="{{STATIC_URL}}img/noImageAvailable.png" width="50px" height="50px" />
+					{% endif %}
 				{% endfor %}	
 			{% endfor %}			
 		</div>
@@ -40,7 +44,11 @@ $(function(){
 			<div class = "schol-{{scholar.id}} desc hidden cB">
 				<h3>Scholar Details</h3>
 				<div class="left">
-					<img src="{{STATIC_URL}}img/team-page-pics/venkat.jpg" width="150px" height="150px" />
+					{% if  scholar.person.profile_pic %}
+					<img src="{{scholar.person.profile_pic.url}}" width="150px" height="150px" />
+					{% else %}
+					<img src="{{STATIC_URL}}img/noImageAvailable.png" width="150px" height="150px" />
+					{% endif %}
 				</div>
 				<div id="team_member_details" class="left">
 					<dl>
