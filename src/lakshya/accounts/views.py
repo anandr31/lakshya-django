@@ -30,7 +30,18 @@ def donations_home(request):
         last_donated_on = Donation.objects.filter(donor = donor).order_by("-date_of_donation")[0].date_of_donation
         donor_details = (donor.name, donor.year_of_passing, donor.get_department_display, total, last_donated_on)
         donor_details_list.append(donor_details)
-    context = {"donor_details_list" : donor_details_list}
+    total_donation_amount = Donation.objects.all().aggregate(Sum("amount"))["amount__sum"]
+    donor_distinct_set = set()
+    for donation in Donation.objects.all():
+        donor_distinct_set.add(donation.donor.id)
+    total_donors = len(donor_distinct_set)
+
+    avg_donation_amount = total_donation_amount/total_donors
+    
+    context = {"donor_details_list" : donor_details_list, 
+               "total_donation_amount" : total_donation_amount, 
+               "total_donors" : total_donors, 
+               "avg_donation_amount" : avg_donation_amount}
     return render_to_response("donations.html", 
                               RequestContext(request, context)) 
     

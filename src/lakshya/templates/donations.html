@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load humanize %}
 
 {% block meta %}
 <title>Lakshya Donations</title>
@@ -25,39 +26,26 @@ $(document).ready(function() {
 <div class = "content_with_page_title left">
 	<h2>Donations</h2>
 	<div class="content_div">
-		<p>asdfasdf asdf as df asdf as df sadf as df asdf as df asdf as fas df saf as dfsd af sa fd
-			sadf asd fas df sad fasdf asdfasdf sadf asd f asdf sad</p>
+		<p>Information on donations received by Lakshya. Please <a href="/contact">contact us</a> if you need more info</p>
 		<div>
 			<div class="expense_stats left">
-				<div class="stats_number">8</div>
-				<div class="stats_description">innovative ideas funded</div>
-				<br>
-				<br>
-				<div class="stats_number">Rs.3,30,000</div>
-				<div class="stats_description">Total funding amount</div>
+				<div class="stats_number">{{total_donors}}</div>
+				<div class="stats_description">Number of Unique Donors</div>
 			</div>
 
 			<div class="expense_stats left">
-				<div class="stats_number">8</div>
-				<div class="stats_description">innovative ideas funded</div>
-				<br>
-				<br>
-				<div class="stats_number">Rs.3,30,000</div>
-				<div class="stats_description">Total funding amount</div>
+				<div class="stats_number">{{total_donation_amount|floatformat:"0"|intcomma}}</div>
+				<div class="stats_description">Total Amount Raised</div>
 			</div>
 
 			<div class="expense_stats left">
-				<div class="stats_number">8</div>
-				<div class="stats_description">innovative ideas funded</div>
-				<br>
-				<br>
-				<div class="stats_number">Rs.3,30,000</div>
-				<div class="stats_description">Total funding amount</div>
+				<div class="stats_number">{{avg_donation_amount|floatformat:"0"|intcomma}}</div>
+				<div class="stats_description">Avg Donation by a Donor</div>
 			</div>
 		</div>
 		<h3 class="cB">All Donations</h3>
-		<p>asdfasdf asdf as df asdf as df sadf as df asdf as df asdf as fas df saf as dfsd af sa fd
-			sadf asd fas df sad fasdf asdfasdf sadf asd f asdf sad</p>
+		<!-- <p>asdfasdf asdf as df asdf as df sadf as df asdf as df asdf as fas df saf as dfsd af sa fd -->
+			<!-- sadf asd fas df sad fasdf asdfasdf sadf asd f asdf sad</p> -->
 		<br>
 		<table cellpadding="0" cellspacing="0" border="0" class="display" id="table_id">
 		    <thead>

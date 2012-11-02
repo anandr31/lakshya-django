@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load humanize %}
 
 {% block meta %}
 <meta name="description" content="Lakshya Foundation is a registered ngo">
@@ -64,24 +65,24 @@
 <div id="example">
 	<div id="slides">
 		<div class="slides_container">
-			<a href="http://www.flickr.com/photos/jliba/4665625073/" title="145.365 - Happy Bokeh Thursday! | Flickr - Photo Sharing!" ><img src="{{STATIC_URL}}img/slider-1.jpg" width="990" height="270" alt="Slide 1"></a>
-			<a href="http://www.flickr.com/photos/stephangeyer/3020487807/" title="Taxi | Flickr - Photo Sharing!" ><img src="http://slidesjs.com/examples/standard/img/slide-2.jpg" width="990" height="270" alt="Slide 2"></a>
-			<a href="http://www.flickr.com/photos/childofwar/2984345060/" title="Happy Bokeh raining Day | Flickr - Photo Sharing!" ><img src="http://slidesjs.com/examples/standard/img/slide-3.jpg" width="990" height="270" alt="Slide 3"></a>
-			<a href="http://www.flickr.com/photos/b-tal/117037943/" title="We Eat Light | Flickr - Photo Sharing!" ><img src="http://slidesjs.com/examples/standard/img/slide-4.jpg" width="990" height="270" alt="Slide 4"></a>
+			<a href="/innovation/innovations-list/hovamarine" title="Hovamarine - NITW's first patent application" ><img src="{{STATIC_URL}}img/banners/hovamarine.png" width="990" height="270" alt="Hovamarine - NITW's first patent application"></a>
+			<a href="/accounts/our-core-belief" title="Lakshya's commitment for Transparency" ><img src="{{STATIC_URL}}img/banners/transparency.jpg" width="990" height="270" alt="Lakshya's commitment for Transparency"></a>
+<!-- 			<a href="http://www.flickr.com/photos/childofwar/2984345060/" title="Happy Bokeh raining Day | Flickr - Photo Sharing!" ><img src="http://slidesjs.com/examples/standard/img/slide-3.jpg" width="990" height="270" alt="Slide 3"></a>
+			<a href="http://www.flickr.com/photos/b-tal/117037943/" title="We Eat Light | Flickr - Photo Sharing!" ><img src="http://slidesjs.com/examples/standard/img/slide-4.jpg" width="990" height="270" alt="Slide 4"></a> -->
 		</div>
 	</div>
 </div>
 <div id="intro_block" class="left">
-	<div>
-		<p>At Lakshya - an NIT Warangal alumni led organization - we are building an ecosystem of innovation, research, and equal opportunity so that NIT Warangal makes significant contributions to India and the world in the fields of science and technology.</p> <p>Learn more <a href="#">about us</a> and our work in the areas of <a href="#">innovation, research & entrepreneurship</a>, <a href="#">campus enablers</a> and <a href="#">student enablers</a>.</p>
+	<div id="lakhsya-homepage-intro">
+		<p>At Lakshya - an NIT Warangal alumni led organization - we are building an ecosystem of innovation, research, and equal opportunity so that NIT Warangal makes significant contributions to India and the world in the fields of science and technology.</p> 
 	</div>
 </div>
 <div id="stats_block" class = "right">
 	<div id="stats">
 		<ul class="ul">
 			<li>
-				<div class="stats_number">&#x20B9; 20,00,000</div>
-				<div class="stats_description">funds utilised for Lakshya projects</div>
+				<div class="stats_number">&#x20B9; {{total_donation_amount|floatformat:"0"|intcomma}}</div>
+				<div class="stats_description">funds raised for Lakshya </div>
 			</li>
 			<li>
 				<div class="stats_number">8</div>
@@ -120,44 +121,45 @@
 		<hr>
 		<div id="testimonial_slides">
 			<div class="testimonials_container">
-				<div class="testimonial_slide">
-					<p class="testimonial_text">" We started with a small team, but it was a team in every sense of the word. Students, faculble. "</p>
-					<div>
-						<div class="testimonial_image_div left ">
-							<img src="{{STATIC_URL}}img/slider-1.jpg" width="100px" height="100px">
-						</div>
-						<div id="testimonial_details_div" class="left" >
-							<h4>Thomas Zacaria</h4>
-							<p>adsfasdasfasdf asdfa </p>
-							<p>afdasf asd fas df</p>
-						</div>
-					</div>	
-				</div>
 
 				<div class="testimonial_slide cB">
-					<p class="testimonial_text cB">" Every donation made is ring a plant and no one waters a plant they are not allowed to see. We want your tributions "</p>
+					<p class="testimonial_text cB">" Lakshya Foundation helped me achieve my dream.Lakshya makes a difference by helping ignited students propel their dreams and give others the opportunity to think differently.  I am sure the world will witness more innovations and innovators with the help of Lakshya Foundation in the coming years."</p>
 					<div>
 						<div class="testimonial_image_div left ">
-							<img src="{{STATIC_URL}}img/slider-1.jpg" width="100px" height="100px">
+							<img src="{{STATIC_URL}}img/joby_yeldo.png" width="100px" height="100px">
 						</div>
 						<div id="testimonial_details_div" class="left" >
-							<h4>Thomas Zacaria</h4>
-							<p>adsfasdasfasdf asdfa </p>
-							<p>afdasf asd fas df</p>
+							<h4>Joby Yeldo</h4>
+							<p>Student Innovator</p>
+							<p>NITW Class of 2012</p>
 						</div>
 					</div>	
 				</div>
 
 				<div class="testimonial_slide">
-					<p class="testimonial_text">" We are in this for the long-haul. We work to have a lasting impact that will take us closer "</p>
+					<p class="testimonial_text">"Transparent mode of selection & sharing financial information are key areas which satisfy. I shall be a keen observer of my humble contribution put to good use by young & energetic team of selfless workforce"</p>
 					<div>
 						<div class="testimonial_image_div left ">
-							<img src="{{STATIC_URL}}img/slider-1.jpg" width="100px" height="100px">
+							<img src="{{STATIC_URL}}img/naresh_ummat.jpg" width="100px" height="100px">
 						</div>
 						<div id="testimonial_details_div" class="left" >
-							<h4>Thomas Zacaria</h4>
-							<p>adsfasdasfasdf asdfa </p>
-							<p>afdasf asd fas df</p>
+							<h4>Naresh Ummat</h4>
+							<p>Managing Director, Barracuda Camouflage</p>
+							<p>NITW Class of 1964</p>
+						</div>
+					</div>	
+				</div>
+
+				<div class="testimonial_slide">
+					<p class="testimonial_text">" Lakshya Scholarship helped me to a great extent by reducing the fianancial burden during my engineering. It was a good inspiration for me to achieve higher goals. It helped me have a good social life during my B.Tech, and motivated me to help students financially in future."</p>
+					<div>
+						<div class="testimonial_image_div left ">
+							<img src="{{STATIC_URL}}img/gayatri_k.jpg" width="100px" height="100px">
+						</div>
+						<div id="testimonial_details_div" class="left" >
+							<h4>K. Gayatri</h4>
+							<p>Lakshya Scholar </p>
+							<p>NITW Class of 2012</p>
 						</div>
 					</div>	
 				</div>

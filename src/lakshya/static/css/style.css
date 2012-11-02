@@ -502,6 +502,15 @@ tr#footer_header {
 	margin : 14px auto;
 }
 
+#lakhsya-homepage-intro {
+	padding-top: 36px;
+}
+
+#lakhsya-homepage-intro p {
+	font-size: 16px;
+	line-height: 28px;
+}
+
 
 /* --------------------------- END OF HOME PAGE --------------------------- */
 
