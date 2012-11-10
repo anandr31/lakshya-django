@@ -38,12 +38,17 @@ body h4 {
 
 body {
 	font-family: "helvetica";
-	color: rgb(94, 94, 94);
+	color: #5E5E5E;
 }
 
-body h2, body h3, h4, a {
-	color: rgb(144, 202, 0);
+body h2, body h3, h4 {
+	color: #74B446;
 	font-weight: normal;
+}
+
+body a , body a h2, body a h3, body a h4{
+	color: #4B7099;
+	text-decoration: underline;
 }
 
 button {
@@ -51,7 +56,7 @@ button {
 	-moz-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
 	box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
 	color:#fff;
-	background-color:rgb(144, 202, 0);
+	background-color:#74B446;
 	border-radius:5px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
@@ -106,7 +111,7 @@ div.stats_description {
 	overflow:hidden;
 	position:relative;
 	display:none;
-	border-bottom: 5px solid rgb(144, 202, 0)
+	border-bottom: 5px solid #74B446
 }
 
 /*
@@ -229,12 +234,10 @@ div.stats_description {
 }
 #secondary_navigation a {
 	padding-left: 30px;
-	text-decoration: none;
-	color: rgb(72, 72, 72);
 }
 
 #primary_navigation ul {
-	background: rgb(144, 202, 0); 
+	background: #74B446; 
 	list-style: none;
 	position: relative;
 	display: inline-table;
@@ -268,8 +271,16 @@ div.stats_description {
 	float: left;
 }
 	
-#primary_navigation ul li:hover {
-	background: rgb(123, 176, 0);
+#primary_navigation ul li:hover{
+	background: #67A23C;
+}
+
+#primary_navigation ul li:hover a{
+	color: #F8E724;
+}
+
+#primary_navigation ul li:hover ul a{
+	color: #fff;
 }
 
 #primary_navigation a{
@@ -284,7 +295,7 @@ div.stats_description {
 }
 
 #primary_navigation ul ul {
-	background: rgb(123, 176, 0); 
+	background: #67A23C;
 	border-radius: 0px; 
 	padding: 0;
 	position: absolute; 
@@ -305,7 +316,8 @@ div.stats_description {
 }	
 
 #primary_navigation ul ul li a:hover {
-	background: rgb(115, 160, 0);
+	background: #5D9137;
+	color: #F8E724;
 }
 
 /* --------------------------- END OF HEADER --------------------------- */
@@ -316,7 +328,7 @@ div.stats_description {
 #footer {
 	width: 990px;
 	margin: auto;
-	background: rgb(229, 229, 229);
+	background: #F2F7F0;
 }
 
 table#footer_table {
@@ -344,7 +356,7 @@ table#footer_table tr th, table#footer_table tr td{
 }
 
 tr#footer_header {
-	background: rgb(144, 202, 0);
+	background: #74B446;
 	text-align: left;
 	color: #fff;
 }
@@ -360,7 +372,7 @@ tr#footer_header {
 }
 
 #payment_footer {
-	background: rgb(229, 229, 229);
+	background: #F2F7F0;
 	border-top: 1px dotted rgb(94, 94, 94);
 }
 
@@ -401,7 +413,7 @@ tr#footer_header {
 #image_slider {
 	background: #DCDCDC;
 	width: 100%;
-	border-bottom: 7px solid rgb(144, 202, 0);
+	border-bottom: 7px solid #74B446;
 	margin-bottom: 10px;
 }
 
@@ -424,6 +436,8 @@ tr#footer_header {
 
 #updates_block,  #testimonials_block, #stats, #announcement_block, #facebook_block {
 	border: 1px solid #DADADA;
+	border-radius: 10px;
+	box-shadow: 1px 1px 1px #E7E3E3;
 }
 
 #updates_block_inner_div, #testimonials_block_inner_div{
@@ -498,8 +512,9 @@ tr#footer_header {
 	text-decoration: none;
 	font-size: 16px;
 	padding: 6px 12px;
-	background: rgb(144, 202, 0);
+	background: #74B446;
 	margin : 14px auto;
+	border-radius: 8px;
 }
 
 #lakhsya-homepage-intro {
@@ -646,7 +661,7 @@ tr#footer_header {
 }*/
 
 .q_and_a p.question {
-	color: rgb(144, 202, 0);
+	color: rgb(75, 145, 35);
 }
 
 
@@ -677,7 +692,7 @@ tr#footer_header {
 }
 
 .project_numbers td.label {
-	color: rgb(144, 202, 0);
+	color: #74B446;
 	padding-left: 0px;
 }
 
@@ -701,7 +716,7 @@ tr#footer_header {
 /* --------------------------- START OF Our-Core-Belief PAGE --------------------------- */
 
 blockquote {
-	border-left: 5px solid rgb(144, 202, 0);
+	border-left: 5px solid #74B446;
 	padding: 15px 15px;
 	font-size: 20px;
 }
@@ -717,7 +732,7 @@ blockquote {
 #donations_table,{
 	background: #DCDCDC;
 	width: 100%;
-	border-bottom: 7px solid rgb(144, 202, 0);
+	border-bottom: 7px solid #74B446;
 	margin-bottom: 10px;
 }
 
@@ -790,7 +805,7 @@ blockquote {
 	
 table.internships_numbers{
 	margin: auto;
-	border: 1px solid rgb(144, 202, 0);
+	border: 1px solid #74B446;
 	border-collapse: collapse;
 }
 
@@ -975,7 +990,7 @@ ul.funding_partners_list li {
 
 table.scholar_academic_update_table{
 	margin: auto;
-	border: 1px solid rgb(144, 202, 0);
+	border: 1px solid #74B446;
 	border-collapse: collapse;
 	margin-top: 20px;
 	margin-bottom: 20px;
