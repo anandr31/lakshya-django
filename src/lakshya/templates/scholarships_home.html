@@ -11,7 +11,7 @@
 					<li>collateral free </li>
 					<li>with repayment period of five years</li>
 				</ul>
-			<p>We do a thorough verification (which includes going to the applicants house and verifing) so as ensure the scholarships are given only to deserving students.
+			<p>We do a thorough verification (which includes going to the applicants house and verifing) so as to ensure the scholarships are given only to deserving students.
 			</p>
 		</div>
 		<div id = "innnovation_stats" class="right">
@@ -49,7 +49,7 @@
 			<div class="scholar_year_list">
 				{% for year, scholar_list in scholar_year_list %}
 					{% if year > 2012 %}
-						<p class="year" > {{year}} - {{year|add:"4"}} batch</p>
+						<p class="year" > {{year|add:"-4"}} - {{year}} batch</p>
 						{% for scholar in scholar_list%}
 							<p><a href="/scholarships/scholars-list/{{scholar.id}}">{{scholar.name}}</a></p>
 						{% endfor %}	
@@ -58,11 +58,11 @@
 			</div>
 		</div>
 		<div class="scholar_year_list_with_head left">
-			<h3>Existing Scholars</h3>
+			<h3>Graduated Scholars</h3>
 			<div class="scholar_year_list">
 				{% for year, scholar_list in scholar_year_list %}
 					{% if year <= 2012 %}
-						<p class="year" > {{year}} - {{year|add:"4"}} batch</p>
+						<p class="year" > {{year|add:"-4"}} - {{year}} batch </p>
 						{% for scholar in scholar_list%}
 							<p><a href="/scholarships/scholars-list/{{scholar.id}}">{{scholar.name}}</a></p>
 						{% endfor %}	
