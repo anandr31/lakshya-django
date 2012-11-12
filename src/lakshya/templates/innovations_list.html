@@ -5,7 +5,8 @@
 <meta name="description" content="Lakshya Foundation is a registered ngo">
 <meta name="keywords" content="Alumni, Students and Faculty of NITW working together to bring social change" />
 <LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css"></LINK>
-<script src="{{STATIC_URL}}js/jquery.min.js"></script>	
+<!-- <script src="{{STATIC_URL}}js/jquery.min.js"></script> -->
+<script src="http://gettopup.com/releases/latest/top_up-min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$("#{{project_name}}").addClass("selected")
@@ -65,6 +66,26 @@ $(function(){
 					    <dt>Funding :</dt>
 					    <dd>Rs.55,000</dd>
 					</dl>​
+				<h3 class="cB">Pictures</h3>
+
+    			<div id="hovamarine-pics">
+      				<a href="{{STATIC_URL}}img/innovation/hovamarine/1.jpg"><img src="{{STATIC_URL}}img/innovation/hovamarine/1-thumb.jpg"/></a>
+      				<a href="{{STATIC_URL}}img/innovation/hovamarine/2.jpg"><img src="{{STATIC_URL}}img/innovation/hovamarine/2-thumb.jpg"/></a>
+      				<a href="{{STATIC_URL}}img/innovation/hovamarine/3.jpg"><img src="{{STATIC_URL}}img/innovation/hovamarine/3-thumb.jpg"/></a>      				
+      				<a href="{{STATIC_URL}}img/innovation/hovamarine/4.jpg"><img src="{{STATIC_URL}}img/innovation/hovamarine/4-thumb.jpg"/></a>      				
+      				<a href="{{STATIC_URL}}img/innovation/hovamarine/5.jpg"><img src="{{STATIC_URL}}img/innovation/hovamarine/5-thumb.jpg"/></a>
+    			</div>
+			    <script type="text/javascript">
+			      TopUp.addPresets({
+			        "#hovamarine-pics a": {
+			          title: "Gallery {alt} ({current} of {total})",
+			          group: "hovamarine-pics",
+			          readAltText: 1,
+			          shaded: 1
+			        }
+			      });
+			    </script>
+
 				<h3 class="cB">Updates</h3>
 				<ul>
 					<li>Patent application process is underway, NIT Warangal's first. The institute will fund the patent application.</li>
@@ -87,6 +108,8 @@ $(function(){
 				<ul>
 					<li>Graphical User Interface to send SMS to the remote meter end GSM developed</li>
 				</ul>
+
+
 			</div>
 			<div class = "concrete desc hidden">
 				<h3>Recycled Concrete</h3>
@@ -99,6 +122,26 @@ $(function(){
 				    <dt>Funding :</dt>
 				    <dd>Rs.56,000</dd>
 				</dl>​	
+
+				<h3 class="cB">Pictures</h3>
+    			<div id="recycled-concrete-pics">
+      				<a href="{{STATIC_URL}}img/innovation/recycled-concrete/1.jpg"><img src="{{STATIC_URL}}img/innovation/recycled-concrete/1-thumb.jpg"/></a>
+      				<a href="{{STATIC_URL}}img/innovation/recycled-concrete/2.jpg"><img src="{{STATIC_URL}}img/innovation/recycled-concrete/2-thumb.jpg"/></a>
+      				<a href="{{STATIC_URL}}img/innovation/recycled-concrete/3.jpg"><img src="{{STATIC_URL}}img/innovation/recycled-concrete/3-thumb.jpg"/></a>      				
+      				<a href="{{STATIC_URL}}img/innovation/recycled-concrete/4.jpg"><img src="{{STATIC_URL}}img/innovation/recycled-concrete/4-thumb.jpg"/></a>      				
+      				<a href="{{STATIC_URL}}img/innovation/recycled-concrete/5.jpg"><img src="{{STATIC_URL}}img/innovation/recycled-concrete/5-thumb.jpg"/></a>
+    			</div>
+			    <script type="text/javascript">
+			      TopUp.addPresets({
+			        "#recycled-concrete-pics a": {
+			          title: "Gallery {alt} ({current} of {total})",
+			          group: "recycled-concrete-pics",
+			          readAltText: 1,
+			          shaded: 1
+			        }
+			      });
+			    </script>
+
 				<h3 class="cB">Updates</h3>
 				<ul>
 					<li>Over 300 concrete casted and tested with various proportions of recycled aggregate</li>
@@ -218,4 +261,8 @@ $(function(){
 		<li>Innovations list</li>
 	</ul>
 </div>
+
+
+
+
 {% endblock content %}
