@@ -41,11 +41,14 @@ body {
 	color: #5E5E5E;
 }
 
-body h2, body h3, h4 {
+body h2, body h3 {
 	color: #74B446;
 	font-weight: normal;
 }
 
+body h4{
+	font-weight: bold;
+}
 body a , body a h2, body a h3, body a h4{
 	color: #4B7099;
 	text-decoration: underline;
@@ -595,6 +598,14 @@ tr#footer_header {
 
 .project_gist p{
 	color:	rgb(94, 94, 94);
+}
+
+#buckets-description h4{
+	padding-left: 30px;
+}
+
+#buckets-description p{
+	padding-left: 50px;
 }
 
 /* --------------------------- END OF ABOUT PAGE --------------------------- */
