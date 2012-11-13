@@ -319,12 +319,12 @@ div.stats_description {
 }	
 
 #primary_navigation ul ul#projects-menu li a {
-	padding: 10px 50px;
+	padding: 10px 10px 10px 40px;
 }
 
 
 #primary_navigation ul ul li p{
-	padding: 0px 20px;
+	padding: 0px 10px 0px 20px;
 	margin-bottom: 0px;
 	font-size: 14px;
 }
