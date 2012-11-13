@@ -38,7 +38,7 @@ body h4 {
 
 body {
 	font-family: "helvetica";
-	color: #5E5E5E;
+	color: #333;
 }
 
 body h2, body h3 {
@@ -414,7 +414,7 @@ tr#footer_header {
 
 #footer_table a {
 	text-decoration: none;
-	color: rgb(94, 94, 94);
+	color: #333;
 }
 
 #footer_table a:hover {
@@ -1086,5 +1086,9 @@ table.scholar_academic_update_table th {
 	border-radius: 10px;
 	box-shadow: 1px 1px 1px #E7E3E3;
 	margin-bottom: 10px;
+}
+
+#content_block_contact {
+
 }
 /* --------------------------- END OF RESEARCH FACILITATOR PAGE --------------------------- */
