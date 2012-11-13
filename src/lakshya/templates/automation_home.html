@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>Adminstrative Process Automation</title>
+<meta name="description" content="Lakshya Foundation is a registered ngo">
+<meta name="keywords" content="Alumni, Students and Faculty of NITW working together to bring social change" />
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css"></LINK>
+<!-- <script src="{{STATIC_URL}}js/jquery.min.js"></script> -->
+<script src="http://gettopup.com/releases/latest/top_up-min.js"></script>
+{% endblock %}
+
+{% block content %}
+<br>
+<h2>Administrative Process Automation</h2>
+<div id="blockquote_div">
+	<blockquote> "Getting docs like transcripts from NIT Warangal should be as easy as booking bus tickets online through Redbus"</h3></blockquote>
+</div>
+<div id="intro">
+	<p>Once a scholar graduates, they deposit a minimum of Rs.100 per month in the Lakshya account. This enables to keep in touch with each scholar and ensures that their contact information is up to date. </p>
+	<ul>
+		<li>interest free</li>
+		<li>collateral free </li>
+		<li>with repayment period of five years</li>
+	</ul>			
+</div>
+<h3>Updates</h3>
+<ul>
+<li><p>After couple of discussions with College, the accounts secion, web section and student team are excited to make this happen</p></li>
+<li>
+	<p>Wireframes are done</p><br>
+	<div id="automation-wireframes">
+			<a href="{{STATIC_URL}}img/automation/page0.png"><img src="{{STATIC_URL}}img/automation/page0-thumb.png"/></a>
+			<a href="{{STATIC_URL}}img/automation/page1.png"><img src="{{STATIC_URL}}img/automation/page1-thumb.png"/></a>
+			<a href="{{STATIC_URL}}img/automation/page2.png"><img src="{{STATIC_URL}}img/automation/page2-thumb.png"/></a>
+			<a href="{{STATIC_URL}}img/automation/page3.png"><img src="{{STATIC_URL}}img/automation/page3-thumb.png"/></a>
+			<a href="{{STATIC_URL}}img/automation/page4.png"><img src="{{STATIC_URL}}img/automation/page4-thumb.png"/></a>
+			<br>
+			<a href="{{STATIC_URL}}img/automation/page5.png"><img src="{{STATIC_URL}}img/automation/page5-thumb.png"/></a>
+			<a href="{{STATIC_URL}}img/automation/page6.png"><img src="{{STATIC_URL}}img/automation/page6-thumb.png"/></a>
+			<a href="{{STATIC_URL}}img/automation/page7.png"><img src="{{STATIC_URL}}img/automation/page7-thumb.png"/></a>
+			<a href="{{STATIC_URL}}img/automation/page8.png"><img src="{{STATIC_URL}}img/automation/page8-thumb.png"/></a>
+	</div>
+	<script type="text/javascript">
+	  TopUp.addPresets({
+	    "#automation-wireframes a": {
+	      title: "Gallery {alt} ({current} of {total})",
+	      group: "automation-wireframes",
+	      readAltText: 1,
+	      shaded: 1
+	    }
+	  });
+	</script>
+</li>
+<li><p>Student Team that will develop this and integrate to college has been finalized</p></li>
+<li><p>First-cut of development is done</p></li>
+<li><p>Right now, we are working with CCAvenue to integrate the payment gateway.</p></li>
+</ul>
+<h3>Release</h3>
+<p id="release_plan">We plan to get it live by <b>Jan 2013</b></p>
+{% endblock content %}
