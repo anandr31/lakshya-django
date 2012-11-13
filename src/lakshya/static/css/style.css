@@ -315,10 +315,23 @@ div.stats_description {
 	color: #fff;
 }	
 
+#primary_navigation ul ul#projects-menu li a {
+	padding: 10px 50px;
+}
+
+
+#primary_navigation ul ul li p{
+	padding: 0px 20px;
+	margin-bottom: 0px;
+	font-size: 14px;
+}
+
 #primary_navigation ul ul li a:hover {
 	background: #5D9137;
 	color: #F8E724;
 }
+
+
 
 /* --------------------------- END OF HEADER --------------------------- */
 
