@@ -1063,3 +1063,28 @@ table.scholar_academic_update_table th {
 }
 /* --------------------------- END OF GENERIC INNER PAGES --------------------------- */
 
+/* --------------------------- START OF RESEARCH FACILITATOR PAGE --------------------------- */
+#research_image p{
+	text-align: center;
+}
+
+#research_main_content {
+	width:450px;
+	padding-right: 20px;
+}
+
+#research_image {
+	width: 400px;
+}
+
+.content_block_inner {
+	padding: 10px 20px;
+}
+
+.content_block {
+	border: 1px solid #DADADA;
+	border-radius: 10px;
+	box-shadow: 1px 1px 1px #E7E3E3;
+	margin-bottom: 10px;
+}
+/* --------------------------- END OF RESEARCH FACILITATOR PAGE --------------------------- */

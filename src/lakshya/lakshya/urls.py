@@ -19,6 +19,8 @@ urlpatterns = patterns('',
     url(r'^asthra/home$', direct_to_template, {'template' : 'asthra_home.html'}, name='home'),
     url(r'^asthra/about$', direct_to_template, {'template' : 'about_asthra.html'}, name='home'),
     url(r'^pilot-projects$', direct_to_template, {'template' : 'pilot_projects.html'}, name='home'),
+    url(r'^research/home$', direct_to_template, {'template' : 'research_facilitator_home.html'}, name='research_facilitator_home'),
+    
     url(r'^contact$', direct_to_template, {'template' : 'contact.html'}, name='home'),    
     url(r'^donate$', "accounts.views.donate_home", name='home'),  
     url(r'^payment_redirect$', "accounts.views.payment_redirect", name='payment_redirect'),  
