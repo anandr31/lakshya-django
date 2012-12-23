@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>Lakshya Team Page</title>
+<meta name="description" content="Lakshya Foundation is a registered ngo">
+<meta name="keywords" content="Alumni, Students and Faculty of NITW working together to bring social change" />
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css"></LINK>
+{% endblock %}
+
+{% block content %}
+<div class = "content_with_page_title left">
+	<h2>Apply for Lakshya Scholarships</h2>
+	<iframe src="https://docs.google.com/spreadsheet/embeddedform?formkey=dE81T0hZMzVqc1Fkak11TEhWNElXTUE6MQ" width="760" height="924" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+</div>
+<div class = "right_navigation_div right">
+	<h3>Scholarships</h3>
+	<ul>
+		<li><a href="/scholarships/home">Scholarships Home</a></li>
+		<li><a href="/scholarships/about-scholarships-project">About Scholarships</a></li>
+		<li><a href="/scholarships/scholars-list">List of Scholars</a></li>
+		<li><a href="/scholarships/funding-partners">Funding Partners</a></li>
+		<li>Apply For Scholarships</li>		
+	</ul>
+</div>
+{% endblock content %}
