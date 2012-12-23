@@ -3,6 +3,7 @@ from people.models import Person
 from accounts.models import DonationFund, Expense, TRANSACTION_CHOICES
 from datetime import datetime
 from django.db.models import Sum
+from django.contrib.auth.models import User
 
 YET_TO_SHORTLIST = 0
 NEED_TO_VERIFY = 1
@@ -123,6 +124,17 @@ NOT_YET_VERIFIED = 0
 VERIFIED = 1
 VERIFICATION_STATUS_CHOICES = ((NOT_YET_VERIFIED, "Not yet verified"),
                                (VERIFIED, "Verified"),)
+
+LOAN = 0
+GRANT = 1
+SCHOLARSHIP_SCHEME_REPYAMENT_TYPE = ((LOAN, "Loan"), 
+                                     (GRANT, "Grant"),)
+
+YES = 0
+NO = 1
+PUBLISH_STATUS = ((YES, "Yes"), 
+                             (NO, "No"),)
+
 
 class ScholarshipApplication(models.Model):
     person = models.ForeignKey(Person)
@@ -473,4 +485,25 @@ class Repayment(models.Model):
     
     def __unicode__(self):
         return str(self.scholar) + " : Rs " + str(self.amount) +  " : " +str(self.date_of_repayment)
+    
+class ScholarshipScheme(models.Model):
+    name = models.CharField("Scholarship Name", max_length = 150)
+    funding_agency = models.CharField(max_length = 150)
+    logo = models.FileField("Logo", upload_to="scholarships/schemes/logos", null=True, blank=True)
+    repayment_type = models.IntegerField("Scholarship Type", choices = SCHOLARSHIP_SCHEME_REPYAMENT_TYPE)
+    scholarship_amount = models.IntegerField(null=True, blank=True, help_text = "calculated annually")
+    eligibility_criteria = models.URLField(null=True, blank=True)
+    how_to_apply = models.URLField(null=True, blank=True)
+    website = models.URLField(null=True, blank=True)
+    contact_email = models.EmailField(null=True, blank=True)
+    contact_mobile = models.CharField(max_length=30, null=True, blank=True)
+    publish_status = models.IntegerField("Do you want to publish", choices=PUBLISH_STATUS, default=NO)
+    curator = models.ForeignKey(User, null=True, blank=True, help_text = "Person entering the details")
+    last_updated = models.DateField(auto_now=True)
+    
+    
+    
+
+    
+    
     

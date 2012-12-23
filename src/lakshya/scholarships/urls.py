@@ -11,4 +11,5 @@ urlpatterns = patterns('scholarships.views',
     url(r'^scholars-list(/?)(?P<scholar_id>[0-9]*)$', 'get_scholarships_list', name='innovations_list'),
     url(r'^about-scholarships-project$', direct_to_template, {'template' : 'about_scholarships_project.html'}, name='home'),    
     url(r'^funding-partners', 'funding_partners_list', name='funding-partners'),
+    url(r'^apply-scholarships', direct_to_template, {'template' : 'scholarships_apply.html'},),    
 )

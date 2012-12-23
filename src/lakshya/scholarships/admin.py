@@ -2,7 +2,7 @@ from django.contrib import admin
 from scholarships.models import ScholarshipApplication, ScholarshipVerification,\
     Scholar, ScholarshipPayment, Repayment, Sgpa, OtherExamPerformance,\
     FamilyDetail, OtherScholarship, ScholarUpdate, ScholarAcademicUpdate,\
-    GradeUpdate
+    GradeUpdate, ScholarshipScheme
 
 class SgpaInline(admin.TabularInline):
     model = Sgpa
@@ -110,9 +110,22 @@ class ScholarAcademicUpdateAdmin(admin.ModelAdmin):
     list_filter = ('semester', 'scholar',)
     search_fields = ('scholar__person__user__first_name', 'scholar__person__user__last_name',)
     
+class ScholarshipSchemeAdmin(admin.ModelAdmin):
+    fieldsets = [("", {"fields" : (('name', 'funding_agency'), ('logo', 'repayment_type'), ('scholarship_amount',)),}), 
+                 ("Links", {"fields" : ('eligibility_criteria','how_to_apply','website',)}),
+                 ("Contact Info", {"fields" : ('contact_email','contact_mobile',)}),
+                 ("Curator Details", {"fields" : ('publish_status','curator',)}),
+                ]
+    list_display = ('name', 'funding_agency', 'repayment_type', 'scholarship_amount', 'curator', 'publish_status')
+    list_filter = ('repayment_type', 'publish_status', )
+    raw_id_fields = ('curator', )
+    search_fields = ('name', 'funding_agency', 'curator__first_name', )
+    
+    
 admin.site.register(ScholarshipApplication, ScholarshipApplicationAdmin)
 admin.site.register(ScholarshipVerification, ScholarshipVerificationAdmin)
 admin.site.register(Scholar, ScholarAdmin)
 admin.site.register(ScholarshipPayment, ScholarshipPaymentAdmin)
 admin.site.register(Repayment, RepaymentAdmin)
 admin.site.register(ScholarAcademicUpdate, ScholarAcademicUpdateAdmin)
+admin.site.register(ScholarshipScheme, ScholarshipSchemeAdmin)

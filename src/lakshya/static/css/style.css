@@ -1097,8 +1097,15 @@ table.scholar_academic_update_table th {
 }
 /* --------------------------- END OF RESEARCH FACILITATOR PAGE --------------------------- */
 
-/* --------------------------- END OF AUTOMATION PAGE --------------------------- */
+/* --------------------------- START OF AUTOMATION PAGE --------------------------- */
 #release_plan {
 	padding-left: 25px;
 }
 /* --------------------------- END OF AUTOMATION PAGE --------------------------- */
+
+
+/* --------------------------- START OF DONATE PAGE --------------------------- */
+#payment_gateway {
+	border: 1px;
+}
+/* --------------------------- END OF DONATE PAGE --------------------------- */

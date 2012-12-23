@@ -11,3 +11,5 @@ DATABASES = {
 
 merchant_id="M_thelaksh_10884"
 working_key="95o6bpj72771v3yo7s"
+
+GOOGLE_SITE_CODE="asdfasdf"
