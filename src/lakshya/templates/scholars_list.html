@@ -57,7 +57,7 @@ $(function(){
 					    <dt>Batch :</dt>
 					    <dd>{{scholar.batch}}</dd>
 					    <dt>Branch :</dt>
-					    <dd>Rs.55,000</dd>
+					    <dd>{{scholar.person.get_department_display}}</dd>
 					    {% if scholar.donation_fund %}
 						    <dt>Funding Agency :</dt>
 						    <dd><a href="/scholarships/funding-partners/#{{scholar.donation_fund.id}}">
