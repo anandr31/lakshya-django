@@ -35,6 +35,6 @@ def funding_partners_list(request):
 
 def get_scholarships_list(request, scholar_id):
     scholar_list = Scholar.objects.all()
-    context = {"scholar_year_list" : get_scholar_year_list(), "scholar_list" : scholar_list}
+    context = {"scholar_year_list" : get_scholar_year_list(), "scholar_list" : scholar_list, "show_scholar": scholar_id, }
     return render_to_response("scholars_list.html", 
                               RequestContext(request, context))

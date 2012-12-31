@@ -9,8 +9,14 @@
 <script type="text/javascript">
 $(function(){
 	$(".desc").hide();
-	$(".schol-16").show();	
-	$("#schol-16").addClass("selected");
+	if ({{ show_scholar }}) {
+		$(".schol-{{show_scholar}}").show();	
+		$("#schol-{{show_scholar}}").addClass("selected");
+	}
+	else {
+		$(".schol-16").show();	
+		$("#schol-16").addClass("selected");		
+	}
 	$(".thumbnail").click(function(){
 		$(".desc").hide();
 		$("."+this.id).show();
