@@ -145,7 +145,7 @@ class ScholarshipApplication(models.Model):
     sex = models.IntegerField(choices=SEX_CHOICES, default = MALE, null=True, blank=True)
     roll_num = models.IntegerField(null=True, blank=True)
     #contact details in adittion to what stored in the Persons table
-    hostel_address = models.TextField(null=True, blank=True)
+    hostel_address = models.TextField("Permanent Address", null=True, blank=True)
     parent_contact = models.CharField(max_length=20, null=True, blank=True)
     #ssc details
     ssc_board = models.IntegerField(verbose_name="10th Board", choices=SSC_BOARD_CHOICES, default = SSC_CBSE, null=True, blank=True)
@@ -491,10 +491,10 @@ class ScholarshipScheme(models.Model):
     funding_agency = models.CharField(max_length = 150)
     logo = models.FileField("Logo", upload_to="scholarships/schemes/logos", null=True, blank=True)
     repayment_type = models.IntegerField("Scholarship Type", choices = SCHOLARSHIP_SCHEME_REPYAMENT_TYPE)
-    scholarship_amount = models.IntegerField(null=True, blank=True, help_text = "calculated annually")
-    eligibility_criteria = models.URLField(null=True, blank=True)
-    how_to_apply = models.URLField(null=True, blank=True)
-    website = models.URLField(null=True, blank=True)
+    scholarship_amount = models.CharField(max_length=350, null=True, blank=True, help_text = "calculated annually")
+    eligibility_criteria = models.CharField(max_length=350, null=True, blank=True)
+    how_to_apply = models.CharField(max_length=350, null=True, blank=True)
+    website = models.CharField(max_length=350, null=True, blank=True)
     contact_email = models.EmailField(null=True, blank=True)
     contact_mobile = models.CharField(max_length=30, null=True, blank=True)
     publish_status = models.IntegerField("Do you want to publish", choices=PUBLISH_STATUS, default=NO)

@@ -23,7 +23,7 @@ class OtherScholarshipInline(admin.TabularInline):
 class ScholarshipApplicationAdmin(admin.ModelAdmin):
     fieldsets = [("Personal Details", {"fields":(('person','status',),('get_first_name','date_of_birth','sex',),
                                                  ('roll_num','get_batch','get_branch'),),}),
-                 ("Contact Details", {"fields" : (('hostel_address','get_permanent_address',),
+                 ("Contact Details", {"fields" : (('hostel_address',),
                                                   ('get_email_address', 'get_contact_number', 'parent_contact'), )}), 
                  ("10th Details", {"fields" : (('ssc_board', 'ssc_batch', 'ssc_percentage'), 
                                               ('ssc_school_name','ssc_school_type',), 'ssc_school_address')}),

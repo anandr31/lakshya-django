@@ -5,6 +5,7 @@ from .utils import calc_checksum
 from django.core.exceptions import ValidationError
 from django.utils.encoding import smart_str
 
+
 class PaymentTempForm(ModelForm):
     class Meta:
         model = PaymentTemp

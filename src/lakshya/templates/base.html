@@ -20,13 +20,18 @@
 </head>
 <body>
 {% block header %}
+    <!--[if lt IE 11]> 
+	    <img src="{{STATIC_URL}}img/ie_not_supported_lakshya.png" style="width:100%;padding-bottom: 100000px;"/>
+		<h1 style="text-align:center">It's broken in IE. We will fix it soon</div>
+	<![endif]--> 
+
 <div id="header_wrapper">
+
 	<div id="logo" class="left">
 		<a href="/"><img src="{{STATIC_URL}}img/logo.jpg"></a>
 	</div>
-    <!--[if lt IE 11]> 
-	    <div id="IElt9warning">Please upgrade your browser to Chrome or Firefox. <br>We don't support IE as of now</div> 
-	<![endif]--> 
+
+
 	<div id="secondary_navigation" class = "right">
 		<a href="/team"> Team </a>
 		<a href="/contact"> Contact Us </a>

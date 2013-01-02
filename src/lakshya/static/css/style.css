@@ -1115,4 +1115,8 @@ table.scholar_academic_update_table th {
 #payment_gateway {
 	border: 1px;
 }
+
+#id_amount {
+	margin-left: 42px;
+}
 /* --------------------------- END OF DONATE PAGE --------------------------- */

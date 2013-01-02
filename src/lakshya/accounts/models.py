@@ -92,9 +92,9 @@ class Donation(models.Model):
         return str(self.date_of_donation) + " : Rs." + str(self.amount) + self.donor.user.first_name        
     
 class PaymentTemp(models.Model):
-    email_address = models.EmailField('Email address')
+    email_address = models.EmailField('Email Address')
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    email_receipt = models.BooleanField(default=True)
+    email_receipt = models.BooleanField("Email me the Donation Receipt", default=True)
 
     
         
