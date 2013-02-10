@@ -373,7 +373,8 @@ class Scholar(models.Model):
         return "---" 
     
     def repaid_amount(self):
-        ret_val = Repayment.objects.filter(scholar = self).aggregate(Sum('amount'))["amount__sum"]
+        from accounts.models import Donation
+        ret_val = Donation.objects.filter(donor = self.person).aggregate(Sum('amount'))["amount__sum"]
         if ret_val :
             return str(ret_val)
         return "---" 
