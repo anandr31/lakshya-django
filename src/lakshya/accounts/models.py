@@ -83,6 +83,7 @@ class DonationFund(models.Model):
 
         
 class Donation(models.Model):
+    from scholarships.models import Scholar
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     date_of_donation = models.DateField()
     donor = models.ForeignKey(Person)
@@ -91,6 +92,7 @@ class Donation(models.Model):
     transaction_details = models.CharField(max_length=200, blank=True) 
     donation_type = models.IntegerField(choices=DONATION_TYPE, default=DIRECT)
     pan_number = models.CharField(max_length=15, blank=True)
+    is_repayment = models.BooleanField("Is this a repayment", default=False, help_text="Tick this only if its a repayment. Donar ~ Scholar for this donation")
     
     def get_donation_receipt(self):
         return "<a href='http://127.0.0.1:8000/accounts/donation-receipt'>Download</a>"
