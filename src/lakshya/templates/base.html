@@ -1,9 +1,12 @@
 <head>
-	{% block meta %}
+	{% block title %}
+	<title>Lakshya - an NITW alumni led organization</title>
 	<meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
 	<meta name="keywords" content="Alumni, Students and Faculty of NITW working together to bring social change" />
-	<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?1"></LINK>
+	{% endblock title %}
+	{% block meta %}
 	{% endblock %}
+	<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?1"></LINK>
 	{% block scripts %}
 		<script type="text/javascript">
 		  var _gaq = _gaq || [];

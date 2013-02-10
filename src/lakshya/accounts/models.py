@@ -40,10 +40,17 @@ PAYMENT_GATEWAY = 1
 CHEQUE = 2
 DD = 3
 CASH = 4
+ONLINE_TRANSFER = 5
 TRANSACTION_CHOICES = ((PAYMENT_GATEWAY, "Payment Gateway"),
                        (CHEQUE, "Cheque"),
                        (DD, "DD"),
-                       (CASH, "Cash"))
+                       (CASH, "Cash"),
+                       (ONLINE_TRANSFER, "Online Transfer"))
+
+DIRECT = 1
+INDIRECT = 0
+DONATION_TYPE = ((DIRECT, "Direct"),
+                 (INDIRECT, "Indirect"),)
 
 
 class Expense(models.Model):
@@ -82,6 +89,8 @@ class Donation(models.Model):
     donation_fund = models.ForeignKey(DonationFund, blank=True)
     transacation_type = models.IntegerField(choices=TRANSACTION_CHOICES,)
     transaction_details = models.CharField(max_length=200, blank=True) 
+    donation_type = models.IntegerField(choices=DONATION_TYPE, default=DIRECT)
+    pan_number = models.CharField(max_length=15, blank=True)
     
     def get_donation_receipt(self):
         return "<a href='http://127.0.0.1:8000/accounts/donation-receipt'>Download</a>"
