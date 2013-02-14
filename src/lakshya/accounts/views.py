@@ -89,3 +89,7 @@ def return_view(request):
         return redirect("payment-success")
     else:
         return redirect('payment-failure')
+    
+def seedfund(request):
+    return render_to_response("seed_fundraising.html", 
+                              RequestContext(request, {}))

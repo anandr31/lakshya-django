@@ -1139,3 +1139,54 @@ table.scholar_academic_update_table th {
 	margin-left: 42px;
 }
 /* --------------------------- END OF DONATE PAGE --------------------------- */
+
+/* --------------------------- START OF DONATE PAGE --------------------------- */
+
+#seedcapital_main {
+	width: 65%;
+	padding-right: 20px;
+}
+
+#ceo_message_panel {
+	width: 25%;
+}
+
+#seed_fund_heading {
+	padding-top: 20px;
+	padding-left: 240px;
+}
+
+#seed_links{
+	padding: 20px 0px;
+}
+#why_seed_link {
+	padding-left: 200px;
+}
+
+#why_seed_link, #why_corpus_link {
+	/*color: blue;*/
+}
+
+.seed-link-selected{
+	font-size: 20px;
+	color: #74B446;
+}
+
+.seed-link-not-selected{
+	font-size: 13px;
+	color: #4B7099;
+	text-decoration: underline;
+	cursor: hand; 
+	cursor: pointer;
+}
+
+.seed-link-not-selected:hover {
+
+}
+
+
+
+
+
+/* --------------------------- END OF DONATE PAGE --------------------------- */
+
