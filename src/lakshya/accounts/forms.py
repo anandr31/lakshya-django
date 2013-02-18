@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from accounts.models import PaymentTemp
+from accounts.models import PaymentTemp, Pledge
 from django import forms
 from .utils import calc_checksum
 from django.core.exceptions import ValidationError
@@ -45,5 +45,8 @@ class CCAVenueReturnForm(forms.Form):
         
         super(CCAVenueReturnForm,self).__init__(*args, **kwargs)
         
+class PledgeForm(ModelForm):
+    class Meta:
+        model = Pledge        
     
     

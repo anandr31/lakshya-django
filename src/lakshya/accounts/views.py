@@ -8,11 +8,12 @@ from django.db.models import Sum
 
 from accounts.models import Expense, Donation
 from people.models import Person
-from accounts.forms import PaymentTempForm
-from accounts.models import PaymentTemp
+from accounts.forms import PaymentTempForm, PledgeForm
+from accounts.models import PaymentTemp, Pledge
 from accounts.utils import get_post_object
 from accounts.forms import CCAVenueReturnForm
 from django.views.decorators.csrf import csrf_exempt
+import math
 
 
 def expenses_home(request):
@@ -91,5 +92,27 @@ def return_view(request):
         return redirect('payment-failure')
     
 def seedfund(request):
+    show_success_message = False
+    if request.method == "POST":
+        form = PledgeForm(request.POST)
+        if not form.is_valid():
+            pass    
+        else:
+            if not Pledge.objects.filter(email = form.cleaned_data['email']):
+                pledge = Pledge(name = form.cleaned_data['name'], email = form.cleaned_data['email'], batch = form.cleaned_data['batch'],
+                            rs_or_dollar =form.cleaned_data['rs_or_dollar'], month_of_donation = form.cleaned_data['month_of_donation'])
+                pledge.save()
+            show_success_message = True
+            form = PledgeForm() 
+    else:       
+        form = PledgeForm()    
+    donations = Pledge.objects.filter(donation__isnull=False)
+    pledges = Pledge.objects.filter(donation__isnull=True)
+    print Pledge.objects.filter(rs_or_dollar = 500).count()*25000
+    print Pledge.objects.filter(rs_or_dollar = 10000).count()*10000
+    pledge_percentage = (float(Pledge.objects.filter(rs_or_dollar = 500).count()*25000 + 
+                               Pledge.objects.filter(rs_or_dollar = 10000).count()*10000))*100/float(1500000)
+    pledge_percentage = str(math.ceil(pledge_percentage*100)/100) + " %"
     return render_to_response("seed_fundraising.html", 
-                              RequestContext(request, {}))
+                              RequestContext(request, {'form' : form, "donations" : donations, "pledges":pledges, 
+                                                       "pledge_percentage":pledge_percentage, "show_success_message":show_success_message}))

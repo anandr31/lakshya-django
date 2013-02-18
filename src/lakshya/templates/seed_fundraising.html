@@ -7,6 +7,7 @@
 
 {% block meta %}
 <script src="{{STATIC_URL}}js/jquery.min.js"></script>	
+<script src="{{STATIC_URL}}js/jquery.masonry.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$("#why_corpus").hide();
@@ -30,29 +31,126 @@ $(function(){
 		$('#why_corpus_link').addClass("seed-link-selected")
 		$('#why_corpus_link').removeClass("seed-link-not-selected")
 	});
+
+    $('#donation_results').masonry({
+    // options
+        itemSelector : '.result_div',
+    });	
+
+    $('#pledge_results').masonry({
+    // options
+        itemSelector : '.result_div',
+    });	
 });
 </script>
 {% endblock %}
 
 {% block content %}
-	<h2 id="seed_fund_heading">Seed Capital Funding</h2>
-		<div id="seedcapital_main" class="left">
-			<p><b>Thank You</b></p>
-			<p>For coming here to learn more about our efforts to sustain, grow and make big things happen in NIT Warangal</p>
-			<div id="seed_links">
-			<span id="why_seed_link" >Why Seed Capital</span>&nbsp&nbsp|&nbsp&nbsp<span id="why_corpus_link" >Why Corpus</span>
+	<img src="{{STATIC_URL}}img/seed_capital_final.jpg" width="990px" />
+
+	<div id="seedcapital_main" class="left">
+		{% if show_success_message %}
+		<div id="show_pledge_thankyou">
+			<p>Thank you for pledging. Fulfill your pledge by <a href="/donate">donating now</a></p>
+		</div>
+		{% else %}
+		<p><b>Thank You</b></p>
+		<p>For coming here to learn more about our efforts to sustain, grow and make big things happen in NIT Warangal</p>
+		{% endif %}
+		<div id="seed_links">
+		<span id="why_seed_link" >Why Seed Capital</span>&nbsp&nbsp|&nbsp&nbsp<span id="why_corpus_link" >Why Corpus</span>
+		</div>
+
+		<div id="why_seed">
+			<p>Your support is our fuel, it is what drives us. We work hard for this cause because it is our passion. However, every effort needs finances to be effectively delivered. Raising a corpus is in itself a massive task and it will entail expenses. It is a long term committment and, through this seed capital,we are preparing ourselves to go the distance. The seed will be used to cover for activities, resources, and purchases towards raising the corpus.</p>
+			<p>Target : Raise <b> Rs 15,00,000 </b> by April 2013 </p>
+		</div>
+
+		<div id="why_corpus">
+			<p>In February 2012 Lakshya's first full-time employee was hired. The results we've delivered in NIT Warangal- a patent application, two startups, alumni services, scholarships - all within a short span of time, goes to show that our independance and flexibility is our strength.We now have to grow, and grow rapidly, if we are to achieve our <a href="/about">vision</a>. Having a corpus will enable us to take up several more projects having a wider and deeper impact in NIT Warangal. We can build resources in line with our goal and take bold decisions, a necessity in an era where innovation and risk go hand in hand.</p>	
+			<p>Target : Raise <b> Rs 5,00,00,000 </b> by Jan 2016 </p>
+		</div>
+
+		<h2 class="center">Make your pledge</h2>
+
+		<form id="pledge_form" action="/seedfund" method="post">{% csrf_token %}
+		    {{ form.non_field_errors }}
+		    <div id="name_div" class="fieldWrapper left">
+		        {{ form.name.errors }}
+		        <label for="id_name">Name</label>
+		        {{ form.name }}
+		    </div>
+		    <div id="email_div" class="fieldWrapper left">
+		        {{ form.email.errors }}
+		        <label for="id_email">Email Address</label>
+		        {{ form.email }}
+		    </div>
+		    <div class="cB"></div>
+		    <div class="fieldWrapper left">
+		        {{ form.batch.errors }}
+		        <label for="id_batch">Batch</label>
+		        {{ form.batch }}
+		    </div>
+		    <div id="rs_or_dollar_div" class="fieldWrapper left">
+		        {{ form.rs_or_dollar.errors }}
+		        <label for="id_year_of_passing">Amount</label>
+		        {{ form.rs_or_dollar }}
+		    </div>
+		    <div id="month_of_donation_div" class="fieldWrapper left">
+		        {{ form.month_of_donation.errors }}
+		        <label for="id_month_of_donation">Will donate by</label>
+		        {{ form.month_of_donation }}
+		    </div>
+		    <div id="pledge_submit_div">
+		    	<input class="pledge_submit" class="left" type="submit" value="Pledge Now" />
+		    </div>
+		    <span class="cB"></span>
+		</form>
+		<h2 class="center">Seed Captial Contributions till now </h2>
+		<h3>Alumni who have donated</h3>
+		<hr>
+		<div>
+			<div id="donation_results">
+				{% for donation in donations %}
+					<div class="result_div">
+						<h2>{{ donation.name }}</h2>
+						<p>{{ donation.batch }}</p>
+						<p>{% if donation.rs_or_dollar == 10000 %}Rs 10,000 {% else %} $ 500 {% endif %} donated</p>
+					</div>
+				{% endfor %}
 			</div>
-
-			<p id="why_seed">Your support is our fuel, it is what drives us. We work hard for this cause because it is our passion. However, every effort needs finances to be effectively delivered. Raising a corpus is in itself a massive task and it will entail expenses. It is a long term committment and, through this seed capital,we are preparing ourselves to go the distance. The seed will be used to cover for activities, resources, and purchases towards raising the corpus.</p>
-
-			<p id="why_corpus">In February 2012 Lakshya's first full-time employee was hired. The results we've delivered in NIT Warangal- a patent application, two startups, alumni services, scholarships - all within a short span of time, goes to show that our independance and flexibility is our strength.We now have to grow, and grow rapidly, if we are to achieve our <a href="/about">vision</a>. Having a corpus will enable us to take up several more projects having a wider and deeper impact in NIT Warangal. We can build resources in line with our goal and take bold decisions, a necessity in an era where innovation and risk go hand in hand.</p>	
-        </div>
-        <div id="ceo_message_panel" class="left">
-        	<p><b>Dear alumni,</b></p>
-        	<p>NIT Warangal has given us fond memories, great friends, and a top education. Its time we give back and in a big way. Lakshya aims to do just that and we've delivered some fine results so far. Support from the alumni, institute, and industry is imperative but strong foundations are laid on sound financial footing. </p><p>A corpus will help realize our collective vision for NIT Warangal, the seed capital is the first small step to enter the big league.</p>
-        	<p>Sincerely,</p>
-        	<img src="{{STATIC_URL}}img/anand-sign.png" width="120px" height="50px"/>
-        	<p>Anand Rajgoplanan, CEO</p>
-        </div>
-
+		</div>
+		<div class="cB"></div>
+		<h3>Alumni who have pledged</h3>
+			<div id="pledge_results">
+			{% for pledge in pledges %}
+					<div class="result_div">
+						<h2>{{ pledge.name }}</h2>
+						<p>{{ pledge.batch }}</p>
+						<p>{% if pledge.rs_or_dollar == 10000 %}Rs 10,000 {% else %} $ 500 {% endif %} pledged</p>
+					</div>
+				{% endfor %}
+			</div>
+    </div>
+    <div id="seedfund_right_panel" class="left">
+	    <div id="ceo_message_panel" >
+	    	<p><b>Dear alumni,</b></p>
+	    	<p>NIT Warangal has given us fond memories, great friends, and a top education. Its time we give back and in a big way. Lakshya aims to do just that and we've delivered some fine results so far. Support from the alumni, institute, and industry is imperative but strong foundations are laid on sound financial footing. </p><p>A corpus will help realize our collective vision for NIT Warangal, the seed capital is the first small step to enter the big league.</p>
+	    	<p>Sincerely,</p>
+	    	<img src="{{STATIC_URL}}img/anand-sign.png" width="120px" height="50px"/>
+	    	<p>Anand Rajgoplanan, CEO</p>
+	    </div>
+	   	<hr>
+	    <div id="seed_stats">
+	    	<h2>Stats</h2>
+	    	<div class="stats_block">
+		    	<div class="stats_number">15,00,000</div>
+		    	<div class="stats_description">Target</div>
+	    	</div>
+	    	<div class="stats_block">
+		    	<div class="stats_number">{{ pledge_percentage }}</div>
+		    	<div class="stats_description">% of Target Amount Pledged</div>
+	    	</div>
+		</div>
+    </div>
 {% endblock content %}

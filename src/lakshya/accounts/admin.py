@@ -1,4 +1,4 @@
-from accounts.models import Expense, DonationFund, Donation
+from accounts.models import Expense, DonationFund, Donation, Pledge
 from django.contrib import admin
 
 class ExpenseOptions(admin.ModelAdmin):
@@ -19,3 +19,4 @@ class DonationOptions(admin.ModelAdmin):
 admin.site.register(Expense, ExpenseOptions)
 admin.site.register(DonationFund, DonationFundOptions)
 admin.site.register(Donation, DonationOptions)
+admin.site.register(Pledge)

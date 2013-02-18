@@ -19,6 +19,10 @@
 	clear: left;
 }
 
+.center {
+	text-align: center;
+}
+
 body p, li, a, td, span, dl, dt {
 	font-size: 13px;
 	line-height: 20px;
@@ -1140,15 +1144,19 @@ table.scholar_academic_update_table th {
 }
 /* --------------------------- END OF DONATE PAGE --------------------------- */
 
-/* --------------------------- START OF DONATE PAGE --------------------------- */
+/* --------------------------- START OF SEED FUND PAGE --------------------------- */
 
 #seedcapital_main {
-	width: 65%;
+	width: 72%;
 	padding-right: 20px;
 }
 
-#ceo_message_panel {
+#seedfund_right_panel{
 	width: 25%;
+}
+
+#ceo_message_panel p{
+	font-size: 10px;
 }
 
 #seed_fund_heading {
@@ -1163,8 +1171,8 @@ table.scholar_academic_update_table th {
 	padding-left: 200px;
 }
 
-#why_seed_link, #why_corpus_link {
-	/*color: blue;*/
+#why_seed, #why_corpus {
+	height: 150px;
 }
 
 .seed-link-selected{
@@ -1181,12 +1189,91 @@ table.scholar_academic_update_table th {
 }
 
 .seed-link-not-selected:hover {
-
 }
 
+.stats_block{
+	padding: 20px 0px;
+}
 
+#seed_stats h2{
+	text-align: center;
+}
 
+#pledge_form{
+	padding-bottom: 30px;
+}
+#pledge_form label, #pledge_form input{
+	display: block;
+}
 
+#pledge_form label{
+	font-size: 12px;
+}
 
-/* --------------------------- END OF DONATE PAGE --------------------------- */
+#pledge_form .fieldWrapper{
+	padding: 10px 10px 10px 10px;
+}
 
+#pledge_form input, #pledge_form select{
+	height: 40px;
+}
+
+#name_div input{
+	width: 200px;
+}
+
+#email_div input{
+	width: 450px;
+}
+
+#pledge_form select{ 
+	width: 150px;
+}
+
+#pledge_submit_div{
+	margin-top: 22px;
+	margin-left: 535px;
+}
+.pledge_submit {
+	background: #74B446;
+	border: none;
+	font-size: 16px;
+	background-image: -webkit-linear-gradient(top,#416427, #74B446);	
+	color: white;
+	text-align: center;
+	cursor: pointer;
+}
+
+.pledge_submit:hover {
+	background-image: -webkit-linear-gradient(top,#74B446, #416427);	
+}
+
+.result_div{
+	width: 190px;
+	padding: 0px 16px 10px;
+	background-color: #F1F1F1;
+	box-shadow: 0px 1px 3px #BEAFAF;
+	margin: 5px 5px;
+	float: left;
+}
+
+.result_div h2{
+	color: #888;
+	font-size: 29px;
+	line-height: 40px;
+	font-weight: 300;
+}
+
+.result_div p{
+	font-size: 17px;
+	color: #888;
+}
+/* --------------------------- END OF SEED FUND PAGE --------------------------- */
+
+#show_pledge_thankyou{
+	margin-top: 40px;
+	margin-bottom: 40px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background: #E9F8C6;
+}

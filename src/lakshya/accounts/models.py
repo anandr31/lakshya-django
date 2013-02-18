@@ -106,7 +106,13 @@ class PaymentTemp(models.Model):
     email_address = models.EmailField('Email Address')
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     email_receipt = models.BooleanField("Email me the Donation Receipt", default=True)
-
     
+class Pledge(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    batch = models.IntegerField("Year of Graduation", choices = [(x,x) for x in reversed(range(1964, 2013))])
+    rs_or_dollar = models.IntegerField(choices = [(10000, "Rs 10,000"), (500, "$ 500"),])
+    month_of_donation = models.CharField(choices=[("feb", "February, 2013"), ("mar", "March, 2013"), ("apr", "April, 2013"),], max_length="4")
+    donation = models.ForeignKey(Donation, blank=True, null=True)
         
     
