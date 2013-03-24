@@ -49,7 +49,7 @@ def generate_receipt(donation):
     p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/managing_trustee_sign.jpg", 10, 440, 80, 35)
     p.drawString(10,430, "Dr K.Padma")
     p.drawString(10, 410, "Managing Trustee")
-    p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/receipt_footer.png", 2, 180, 596, 200)
+    p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/receipt_footer.jpg", 2, 180, 596, 200)
     
     p.showPage()
     p.save()
