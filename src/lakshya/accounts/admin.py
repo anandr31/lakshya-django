@@ -1,13 +1,8 @@
 import datetime
 import textwrap
-import trml2pdf
 
 from django.contrib import admin
 from django.core.mail import EmailMessage
-from django.template import loader
-from django.template.context import Context
-from django.utils.encoding import smart_str
-from django.http import HttpResponse
 from django.conf import settings
 from django.http import Http404
 
