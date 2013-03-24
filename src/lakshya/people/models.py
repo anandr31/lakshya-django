@@ -35,6 +35,8 @@ class Person(models.Model):
     billing_postal_code = models.CharField("Pin Code", max_length=30, blank=True)
     billing_country = models.CharField("Country", max_length=50, blank=True)
     contact_number = models.CharField("Phone Number", max_length = 20, blank=True)
+    pan_number = models.CharField("PAN Number", max_length = 20, blank=True)
+        
     #if NITW
     is_nitw_alumni = models.BooleanField(blank=True)
     course = models.IntegerField(choices=COURSE_CHOICES, default=BTECH, blank=True, null=True)
@@ -42,11 +44,16 @@ class Person(models.Model):
     year_of_passing = models.IntegerField(blank=True, null=True)
     profile_pic = models.FileField("Update photo", upload_to="profile_pics/", null=True, blank=True)
     
+    
     def __unicode__(self):
         return self.user.first_name
     
     def name(self):
         return self.user.first_name + " " + self.user.last_name
+    
+    def get_full_address(self):
+        return self.billing_address + ", Landmark: " + self.billing_landmark + ", " + self.billing_city + "- " + self.billing_postal_code + ", " + \
+            self.billing_state + ", " + self.billing_country
 
 
 class Person_preference(models.Model):

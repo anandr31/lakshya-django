@@ -1,5 +1,7 @@
 from django.db import models
 from people.models import Person
+from django.db.models.aggregates import Max
+
 
 ENTERED = 0
 APPROVED = 1
@@ -91,16 +93,25 @@ class Donation(models.Model):
     transacation_type = models.IntegerField(choices=TRANSACTION_CHOICES,)
     transaction_details = models.CharField(max_length=200, blank=True) 
     donation_type = models.IntegerField(choices=DONATION_TYPE, default=DIRECT)
-    pan_number = models.CharField(max_length=15, blank=True)
     is_repayment = models.BooleanField("Is this a repayment", default=False, help_text="Tick this only if its a repayment. Donar ~ Scholar for this donation")
+    receipt_number = models.IntegerField(blank=True, null=True)    
     
     def get_donation_receipt(self):
-        return "<a href='http://127.0.0.1:8000/accounts/donation-receipt'>Download</a>"
+        
+        return "<a href='http://127.0.0.1:8000/accounts/donation-receipt'>Mail Receipt</a>"
     get_donation_receipt.allow_tags = True 
     get_donation_receipt.short_description = "Donation Receipt"       
         
     def __unicode__(self):
         return str(self.date_of_donation) + " : Rs." + str(self.amount) + self.donor.user.first_name        
+    
+    def save(self, **kwargs):
+        if not self.pk:
+            #We need to create the invoice number when its getting created
+            self.receipt_number = (Donation.objects.filter(date_of_donation__year = self.date_of_donation__year).aggregate(Max('receipt_number'))["receipt_number__max"] or 0) + 1
+            super(Donation, self).save(**kwargs)
+            return
+        super(Donation, self).save(**kwargs)
     
 class PaymentTemp(models.Model):
     email_address = models.EmailField('Email Address')
