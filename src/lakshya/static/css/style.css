@@ -1277,3 +1277,19 @@ table.scholar_academic_update_table th {
 	padding-bottom: 5px;
 	background: #E9F8C6;
 }
+
+/*#internships-table 
+{
+border: 1px solid #DADADA;
+}*/
+
+.internships-table th
+{
+border: 1px solid #DADADA;
+}
+
+.internships-table td
+{
+border: 1px solid #DADADA;
+padding: 1px 4px;
+}
