@@ -54,29 +54,9 @@ $(function(){
 			<p>Thank you for pledging. Fulfill your pledge by <a href="/donate">donating now</a></p>
 		</div>
 		{% else %}
-		<p><b>Thank You</b></p>
-		<p>For coming here to learn more about our efforts to sustain, grow and make big things happen in NIT Warangal</p>
+		<p><b>Thank You!</b></p>
+		<p>For coming here to help us sustain, grow and make big things happen at NIT Warangal</p>
 		{% endif %}
-		<div id="seed_links">
-		<span id="why_seed_link" >Why Seed Capital</span>&nbsp&nbsp|&nbsp&nbsp<span id="why_corpus_link" >Why Corpus</span>
-		</div>
-
-		<div id="why_seed">
-			<p>Every effort needs sound financial footing to deliver and sustain. Raising a corpus is in itself a massive task and it will entail expenses. It is a long term commitment and, through this seed capital, we are preparing ourselves to go the distance.
-			</p>
-			<p>Target : Raise <b> Rs 15,00,000 </b> by July 20th, 2013</p>
-		</div>
-
-		<div id="why_corpus">
-			<p>Lakshya is a non-profit that has a unique goal - to help build an ecosystem of research and entrepreneurship through creativity and innovation at NIT Warangal.</p>
-
-			<p>The results we've delivered such as NIT Warangal's first patent application and our effective model for innovation and research support has also gotten the attention of the english and telugu press.</p>
-
-			<p>We now have to grow and grow rapidly if we have to achieve our vision. Having a corpus will enable us to take up several more projects having a wider and deeper impact in NIT Warangal. We can build resources in line with our goal and take bold decisions, a necessity in an era where innovation and risk go hand in hand.</p>	
-
-			<p>Target : Raise <b>Rs.5 crores </b> by June 2016</p>
-		</div>
-
 		<h2 class="center, cB">Make your pledge</h2>
 
 		<form id="pledge_form" action="/seedfund" method="post">{% csrf_token %}
@@ -112,6 +92,27 @@ $(function(){
 		    </div>
 		    <span class="cB"></span>
 		</form>
+
+		<div id="seed_links">
+		<span id="why_seed_link" >Why Seed Capital</span>&nbsp&nbsp|&nbsp&nbsp<span id="why_corpus_link" >Why Corpus</span>
+		</div>
+
+		<div id="why_seed">
+			<p>Lakshya is a non-profit that has a unique goal -<i> to help build an ecosystem of research and entrepreneurship through creativity and innovation at NIT Warangal.</i></p>
+
+			<p>Every effort needs sound financial footing to deliver and sustain. Raising a corpus is in itself a massive task and it will entail expenses. It is a long term commitment and, through this seed capital, we are preparing ourselves to go the distance.
+			</p>
+			<p>Target : Raise <b> Rs 15,00,000 </b> by July, 2013</p>
+		</div>
+
+		<div id="why_corpus">
+			<p>The results we've delivered such as NIT Warangal's first patent application and our effective model for innovation and research support has also gotten the attention of the english and telugu press.</p>
+
+			<p>We now have to grow and grow rapidly to achieve our vision. Having a corpus will enable us to take up several more projects having a wider and deeper impact in NIT Warangal. We can build resources in line with our goal and take bold decisions, a necessity in an era where innovation and risk go hand in hand.</p>	
+
+			<p>Target : Raise <b>Rs.5 crores </b> by June 2016</p>
+		</div>
+
 		<h2 class="center">Seed Captial Contributions till now </h2>
 		<h3>Alumni who have donated</h3>
 		<hr>
