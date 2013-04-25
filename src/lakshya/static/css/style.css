@@ -1156,8 +1156,8 @@ table.scholar_academic_update_table th {
 }
 
 #ceo_message_panel p{
-	background-color: #E9F8C6;
-	font-size: 10px;
+	font-size: 10.5px;
+	color: #808080;
 }
 
 #seed_fund_heading {
@@ -1202,6 +1202,7 @@ table.scholar_academic_update_table th {
 
 #pledge_form{
 	padding-bottom: 30px;
+	background-color: #E9F8C6;
 }
 #pledge_form label, #pledge_form input{
 	display: block;
