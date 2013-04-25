@@ -11,13 +11,13 @@
 	<div class="content_div">
 		<p>You can donate to Lakshya in one of the below ways</p>
 		<a href="#">Why Seed Capital</a><a href="#">Why Corpus</a>
-		<h3>Payment Gateway</h3>	
+		<h3 id="vision_block">Payment Gateway (Credit card, Debit card, Net Banking)</h3>	
 		<form action="payment_redirect" method="post">{% csrf_token %}
 		{{ form.as_p }}
 		<input type="submit" value="Submit" />
 		</form>
-		<h3>Online Transfer</h3>
-		<p>Lakshya Bank account Details </p>
+		<h3 id="vision_block">Online Transfer</h3>
+
 		<dl id="account_details">
 		    <dt>Account Name :</dt>
 		    <dd>The Lakshya Foundation</dd>
@@ -28,12 +28,12 @@
 		    <dt>IFSC code :</dt>
 		    <dd>ICIC0000201</dd>
 		</dl>​
-		<p class="cB">Note: While making an online transfer, please mention your name in the comments.</p>
-		<h3>Cheques/Demand Drafts</h3>
+		<p class="cB"></p>
+		<h3 id="vision_block">Cheques/Demand Drafts</h3>
 		<p>Post your Cheques/DD's to below address.  </p>
 		<div id="postal_address">		
-			<p>Prof.J.Ramachander Rao,</p>
-			<p>Department of Physics,</p>
+			<p>Prof. A. Venu Gopal,</p>
+			<p>Mechanical Engineering Department,</p>
 			<p>NIT Warangal,</p>
 			<p>Warangal - 506021.</p>
 			<p>Andhra Pradesh, India</p>

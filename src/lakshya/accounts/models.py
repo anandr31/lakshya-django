@@ -116,7 +116,7 @@ class Donation(models.Model):
 class PaymentTemp(models.Model):
     email_address = models.EmailField('Email Address')
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    email_receipt = models.BooleanField("Send me a copy", default=True)
+    email_receipt = models.BooleanField("Send me the receipt", default=True)
     
 class Pledge(models.Model):
     name = models.CharField(max_length=200)

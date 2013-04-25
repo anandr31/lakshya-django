@@ -113,9 +113,22 @@ $(function(){
 			<p>Target: <b>Rs.5 crores </b> by June 2016</p>
 		</div>
 
-		<h2 class="center">Seed Captial Contributions</h2>
-		<h3>Alumni who have donated</h3>
+<!--		<h2 class="center">Seed Captial Contributions</h2>-->
+
+		<h3>Alumni who have pledged</h3>
 		<hr>
+			<div id="pledge_results">
+			{% for pledge in pledges %}
+					<div class="result_div">
+						<h2>{{ pledge.name }}</h2>
+						<p>{{ pledge.batch }}</p>
+						<p>{% if pledge.rs_or_dollar == 10000 %}Rs.10,000 {% else %} $500 {% endif %} pledged</p>
+					</div>
+				{% endfor %}
+			</div>
+
+
+		<h3>Alumni who have donated</h3>
 		<div>
 			<div id="donation_results">
 				{% for donation in donations %}
@@ -128,29 +141,12 @@ $(function(){
 			</div>
 		</div>
 		<div class="cB"></div>
-		<h3>Alumni who have pledged</h3>
-			<div id="pledge_results">
-			{% for pledge in pledges %}
-					<div class="result_div">
-						<h2>{{ pledge.name }}</h2>
-						<p>{{ pledge.batch }}</p>
-						<p>{% if pledge.rs_or_dollar == 10000 %}Rs.10,000 {% else %} $500 {% endif %} pledged</p>
-					</div>
-				{% endfor %}
-			</div>
     </div>
     <div id="seedfund_right_panel" class="left">
 <!--     	<div id="donate_panel">
     		<a href="/donate-seedfund">Donate and fulfill your pledge</a>
     	</div> -->
-	    <div id="ceo_message_panel" >
-	    	<p><b>Dear alumni,</b></p>
-	    	<p>NIT Warangal has given us fond memories, great friends, and a top education. Its time we give back and in a big way. Lakshya aims to do just that and we've delivered some fine results so far. Support from the alumni, institute, and industry is imperative but strong foundations are laid on sound financial footing. </p><p>A corpus will help realize our collective vision for NIT Warangal, the seed capital is the first small step to enter the big league.</p>
-	    	<p>Thanks,</p>
-	    	<img src="{{STATIC_URL}}img/anand-sign.png" width="120px" height="50px"/>
-	    	<p>Anand Rajgoplanan, CEO</p>
-	    </div>
-	   	<hr>
+
 	    <div id="seed_stats">
 	    	<!--<h2>Stats</h2>-->
 	    	<div class="stats_block">
@@ -162,5 +158,15 @@ $(function(){
 		    	<div class="stats_description">% of Target Amount Pledged</div>
 	    	</div>
 		</div>
+	   	<hr>
+
+	    <div id="ceo_message_panel" >
+	    	<p><b>Dear alumni,</b></p>
+	    	<p>NIT Warangal has given us fond memories, great friends, and a top education. Its time we give back and in a big way. Lakshya aims to do just that and we've delivered some fine results so far. Support from the alumni, institute, and industry is imperative but strong foundations are laid on sound financial footing. </p><p>A corpus will help realize our collective vision for NIT Warangal, the seed capital is the first small step to enter the big league.</p>
+	    	<p>Thanks,</p>
+	    	<img src="{{STATIC_URL}}img/anand-sign.png" width="120px" height="50px"/>
+	    	<p>Anand Rajgoplanan, CEO</p>
+	    </div>
+
     </div>
 {% endblock content %}
