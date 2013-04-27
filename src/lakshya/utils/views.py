@@ -16,7 +16,7 @@ def get_updates(request):
 @staff_member_required
 def get_donation_details_for_analytics(request):
     context = {}
-    separator = "&"
+    separator = "|"
     if request.GET and request.GET["separator"]:
         separator = request.GET["separator"]
     context["separator"] = separator
