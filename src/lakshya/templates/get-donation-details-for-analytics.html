@@ -1,0 +1,16 @@
+<html>
+<head>
+</head>
+<body>
+Separtor is ',' by default. You can tweak it by specifying in the url. </br> 
+
+Eg: To get $ as speartor, url should be "http://127.0.0.1:8000/get-donation-details-for-analytics?separator=$"  </br></br>
+
+*********************
+<br><br>
+{% for detail in donor_details_list %}
+{{ detail.0 }}{{ separator }}{{ detail.1 }}{{ separator }}{{ detail.2 }}{{ separator }}{{ detail.3 }}{{ separator }}{{ detail.4 }}<br>
+{% endfor %}
+
+</body>
+</html>

@@ -8,6 +8,9 @@ admin.autodiscover()
 urlpatterns = patterns('utils.views',
     # Examples:
     url(r'^updates$', "get_updates", name='updates'),    
+    url(r'^get-donation-details-for-analytics$', "get_donation_details_for_analytics", 
+        name='get_donation_details_for_analytics'),    
+
 )
 
 
