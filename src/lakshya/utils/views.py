@@ -6,6 +6,7 @@ from utils.models import LakshyaUpdate
 from accounts.models import Donation
 from people.models import Person
 from django.db.models.aggregates import Sum
+from django.contrib.auth.models import User
 
 def get_updates(request):
     update_list = LakshyaUpdate.objects.order_by('-date_of_entry')  
@@ -32,4 +33,12 @@ def get_donation_details_for_analytics(request):
     
     context['donor_details_list'] = donor_details_list
     return render_to_response("get-donation-details-for-analytics.html", 
-                              RequestContext(request, context))# Create your views here.    
+                              RequestContext(request, context))   
+    
+@staff_member_required
+def get_donor_emails_for_campaigns(request):    
+    emails = [ user.email for user in User.objects.filter(person__donation__isnull=False).distinct() if user.email]
+    return render_to_response("get-donor-emails-for-campaigns.html", 
+                              RequestContext(request, {"email_addresses" : ", ".join(emails)}))
+             
+

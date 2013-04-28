@@ -10,7 +10,8 @@ urlpatterns = patterns('utils.views',
     url(r'^updates$', "get_updates", name='updates'),    
     url(r'^get-donation-details-for-analytics$', "get_donation_details_for_analytics", 
         name='get_donation_details_for_analytics'),    
-
+    url(r'^get-donor-emails-for-campaigns$', "get_donor_emails_for_campaigns", 
+        name='get_donor_emails_for_campaigns'),    
 )
 
 
