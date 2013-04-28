@@ -1265,6 +1265,7 @@ table.scholar_academic_update_table th {
 	font-size: 22px;
 	line-height: 40px;
 	font-weight: 300;
+	white-space: nowrap;
 }
 
 .result_div p{
