@@ -28,7 +28,7 @@ def get_donation_details_for_analytics(request):
         total = temp_dict["total"]
         donor = Person.objects.get(id=donor_id)
         last_donated_on = Donation.objects.filter(donor = donor).order_by("-date_of_donation")[0].date_of_donation
-        donor_details = (donor.name, donor.year_of_passing, donor.get_department_display, total, last_donated_on)
+        donor_details = (donor.name, donor.year_of_passing, donor.get_department_display, total, last_donated_on.strftime("%d-%m-%Y"))
         donor_details_list.append(donor_details)
     
     context['donor_details_list'] = donor_details_list
