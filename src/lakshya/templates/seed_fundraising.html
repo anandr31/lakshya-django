@@ -7,7 +7,6 @@
 
 {% block meta %}
 <script src="{{STATIC_URL}}js/jquery.min.js"></script>	
-<script src="{{STATIC_URL}}js/jquery.masonry.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$("#why_corpus").hide();
@@ -32,15 +31,15 @@ $(function(){
 		$('#why_corpus_link').removeClass("seed-link-not-selected")
 	});
 
-    $('#donation_results').masonry({
-    // options
-        itemSelector : '.result_div',
-    });	
+    // $('#donation_results').masonry({
+    // // options
+    //     itemSelector : '.result_div',
+    // });	
 
-    $('#pledge_results').masonry({
-    // options
-        itemSelector : '.result_div',
-    });	
+    // $('#pledge_results').masonry({
+    // // options
+    //     itemSelector : '.result_div',
+    // });	
 });
 </script>
 {% endblock %}
@@ -120,20 +119,29 @@ $(function(){
 			<div id="pledge_results">
 			{% for pledge in pledges %}
 					<div class="result_div">
-						<h2>{{ pledge.name }}</h2>
+						{% if pledge.name|length > 20 %}
+							<h2>{{ pledge.name|slice:":18" }}..</h2>
+						{% else %}
+							<h2>{{ pledge.name }}</h2>						
+						{% endif %}
 						<p>{{ pledge.batch }}</p>
 						<p>{% if pledge.rs_or_dollar == 10000 %}Rs.10,000 {% else %} $500 {% endif %} pledged</p>
 					</div>
 				{% endfor %}
 			</div>
 
-
-		<h3>Alumni who have donated</h3>
+		<div class="cB"></div>
+		<h3 class="cB">Alumni who have donated</h3>
+		<hr>
 		<div>
 			<div id="donation_results">
 				{% for donation in donations %}
 					<div class="result_div">
-						<h2>{{ donation.name }}</h2>
+						{% if donation.name|length > 20 %}
+							<h2>{{ donation.name|slice:":18" }}..</h2>
+						{% else %}
+							<h2>{{ donation.name }}</h2>						
+						{% endif %}
 						<p>{{ donation.batch }}</p>
 						<p>{% if donation.rs_or_dollar == 10000 %}Rs.10,000 {% else %} $500 {% endif %} donated</p>
 					</div>

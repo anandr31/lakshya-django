@@ -1252,6 +1252,7 @@ table.scholar_academic_update_table th {
 
 .result_div{
 	width: 190px;
+	height: 150px;
 	padding: 0px 16px 10px;
 	background-color: #F1F1F1;
 	box-shadow: 0px 1px 3px #BEAFAF;
@@ -1261,7 +1262,7 @@ table.scholar_academic_update_table th {
 
 .result_div h2{
 	color: #888;
-	font-size: 29px;
+	font-size: 22px;
 	line-height: 40px;
 	font-weight: 300;
 }

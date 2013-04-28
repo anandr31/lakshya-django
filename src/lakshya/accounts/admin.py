@@ -99,7 +99,11 @@ class DonationOptions(admin.ModelAdmin):
     list_editable = ('receipt_number',)
     actions =[mail_receipt, ]
     
+class PledgeOptions(admin.ModelAdmin):
+    list_display = ("name", "batch", "rs_or_dollar", "month_of_donation", "donation")
+    list_filter = ("rs_or_dollar", "month_of_donation", "batch", )
+    
 admin.site.register(Expense, ExpenseOptions)
 admin.site.register(DonationFund, DonationFundOptions)
 admin.site.register(Donation, DonationOptions)
-admin.site.register(Pledge)
+admin.site.register(Pledge, PledgeOptions)

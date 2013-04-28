@@ -108,7 +108,7 @@ class Donation(models.Model):
     def save(self, **kwargs):
         if not self.pk:
             #We need to create the invoice number when its getting created
-            self.receipt_number = (Donation.objects.filter(date_of_donation__year = self.date_of_donation__year).aggregate(Max('receipt_number'))["receipt_number__max"] or 0) + 1
+            self.receipt_number = (Donation.objects.filter(date_of_donation__year = self.date_of_donation.year).aggregate(Max('receipt_number'))["receipt_number__max"] or 0) + 1
             super(Donation, self).save(**kwargs)
             return
         super(Donation, self).save(**kwargs)
