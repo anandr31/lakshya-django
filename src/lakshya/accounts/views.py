@@ -15,6 +15,8 @@ from accounts.forms import CCAVenueReturnForm
 from django.views.decorators.csrf import csrf_exempt
 import math
 
+import ip2country
+
 
 def expenses_home(request):
     expenses_list = Expense.objects.all()
@@ -91,7 +93,21 @@ def return_view(request):
     else:
         return redirect('payment-failure')
     
+    
+def calc_amount(ip):
+    """
+    Calculate amount - Determine if it is $500 or Rs 10000
+    """
+    ip2c = ip2country.IP2Country(verbose=1)
+    country = ip2c.lookup(ip)
+    
+    if country[0] in ["AU", "AT", "JP", "US"]:
+        return True
+    
+    return False
+    
 def seedfund(request):
+    is_dollar = calc_amount(request.META.get('REMOTE_ADDR'))
     show_success_message = False
     if request.method == "POST":
         form = PledgeForm(request.POST)
@@ -99,8 +115,9 @@ def seedfund(request):
             pass    
         else:
             if not Pledge.objects.filter(email = form.cleaned_data['email']):
+                rs_or_dollar = 500 if is_dollar else 10000
                 pledge = Pledge(name = form.cleaned_data['name'], email = form.cleaned_data['email'], batch = form.cleaned_data['batch'],
-                            rs_or_dollar =form.cleaned_data['rs_or_dollar'], month_of_donation = form.cleaned_data['month_of_donation'])
+                            rs_or_dollar =rs_or_dollar, month_of_donation = form.cleaned_data['month_of_donation'])
                 pledge.save()
             show_success_message = True
             form = PledgeForm() 
@@ -108,11 +125,10 @@ def seedfund(request):
         form = PledgeForm()    
     donations = Pledge.objects.filter(donation__isnull=False)
     pledges = Pledge.objects.filter(donation__isnull=True)
-    print Pledge.objects.filter(rs_or_dollar = 500).count()*25000
-    print Pledge.objects.filter(rs_or_dollar = 10000).count()*10000
     pledge_percentage = (float(Pledge.objects.filter(rs_or_dollar = 500).count()*25000 + 
                                Pledge.objects.filter(rs_or_dollar = 10000).count()*10000))*100/float(1500000)
     pledge_percentage = str(math.ceil(pledge_percentage*100)/100) + " %"
     return render_to_response("seed_fundraising.html", 
                               RequestContext(request, {'form' : form, "donations" : donations, "pledges":pledges, 
-                                                       "pledge_percentage":pledge_percentage, "show_success_message":show_success_message}))
+                                                       "pledge_percentage":pledge_percentage, 
+                                                       "show_success_message":show_success_message, "is_dollar" : is_dollar}))
