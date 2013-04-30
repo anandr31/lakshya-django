@@ -104,7 +104,8 @@ def calc_amount(ip):
     print "-------------ip------------" + ip
     print country
     print "country"
-    if country["country_code"] and country["country_code"] in ["AU", "AT", "JP", "US", "CA"]:
+    if country["country_code"] and country["country_code"] in ["AU", "AT", "JP", "US", "CA", "GB", "CH", "SE", \
+                                                                "ES", "SG", "DK", "JP", "IT", "DE" ]:
         return True
     return False
     
