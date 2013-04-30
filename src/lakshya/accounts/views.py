@@ -5,6 +5,9 @@ from django.shortcuts import render_to_response, render, redirect
 from django.template.context import RequestContext
 from django.http import HttpResponseRedirect
 from django.db.models import Sum
+from django.contrib.gis.geoip import GeoIP
+from django.conf import settings
+
 
 from accounts.models import Expense, Donation
 from people.models import Person
@@ -14,8 +17,6 @@ from accounts.utils import get_post_object
 from accounts.forms import CCAVenueReturnForm
 from django.views.decorators.csrf import csrf_exempt
 import math
-
-import ip2country
 
 
 def expenses_home(request):
@@ -98,16 +99,20 @@ def calc_amount(ip):
     """
     Calculate amount - Determine if it is $500 or Rs 10000
     """
-    ip2c = ip2country.IP2Country(verbose=1)
-    country = ip2c.lookup(ip)
-    
-    if country[0] in ["AU", "AT", "JP", "US"]:
+    g = GeoIP(path=settings.PROJECT_DIR + "/libraries/geoip")
+    country = g.country(ip)
+    print "-------------ip------------" + ip
+    print country
+    print "country"
+    if country["country_code"] and country["country_code"] in ["AU", "AT", "JP", "US", "CA"]:
         return True
-    
     return False
     
 def seedfund(request):
-    is_dollar = calc_amount(request.META.get('REMOTE_ADDR'))
+    ip = request.META.get('HTTP_X_REAL_IP')
+    if settings.ENV and settings.ENV == "dev":
+        ip = "127.0.0.1"
+    is_dollar = calc_amount(ip)
     show_success_message = False
     if request.method == "POST":
         form = PledgeForm(request.POST)
