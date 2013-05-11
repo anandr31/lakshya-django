@@ -122,17 +122,17 @@ def seedfund(request):
         else:
             if not Pledge.objects.filter(email = form.cleaned_data['email']):
                 rs_or_dollar = 500 if is_dollar else 10000
-                pledge = Pledge(name = form.cleaned_data['name'], email = form.cleaned_data['email'], batch = form.cleaned_data['batch'],
-                            rs_or_dollar =rs_or_dollar, month_of_donation = form.cleaned_data['month_of_donation'])
+                donation_amount = 25000 if is_dollar else 10000
+                pledge = Pledge(name=form.cleaned_data['name'], email=form.cleaned_data['email'], batch=form.cleaned_data['batch'],
+                            rs_or_dollar=rs_or_dollar, month_of_donation=form.cleaned_data['month_of_donation'], donation_amount=donation_amount)
                 pledge.save()
             show_success_message = True
             form = PledgeForm() 
     else:       
         form = PledgeForm()    
-    donations = Pledge.objects.filter(donation__isnull=False)
-    pledges = Pledge.objects.filter(donation__isnull=True)
-    pledge_percentage = (float(Pledge.objects.filter(rs_or_dollar = 500).count()*25000 + 
-                               Pledge.objects.filter(rs_or_dollar = 10000).count()*10000))*100/float(1500000)
+    donations = Pledge.objects.filter(has_donated=True)
+    pledges = Pledge.objects.filter(has_donated=False)
+    pledge_percentage = Pledge.objects.all().aggregate(Sum("donation_amount"))['donation_amount__sum']*100/1500000
     pledge_percentage = str(math.ceil(pledge_percentage*100)/100) + " %"
     return render_to_response("seed_fundraising.html", 
                               RequestContext(request, {'form' : form, "donations" : donations, "pledges":pledges, 

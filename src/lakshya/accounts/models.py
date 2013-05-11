@@ -124,6 +124,8 @@ class Pledge(models.Model):
     batch = models.IntegerField("Year of Graduation", choices = [(x,x) for x in reversed(range(1964, 2013))])
     rs_or_dollar = models.IntegerField(choices = [(10000, "Rs 10,000"), (500, "$ 500"),], blank=True)
     month_of_donation = models.CharField(choices=[("may", "May, 2013"), ("jun", "June, 2013"), ("jul", "July, 2013"),], max_length="4")
+    has_donated = models.BooleanField(default=False,)
+    donation_amount = models.DecimalField(max_digits=10, decimal_places=3, blank=True, null=True)
     donation = models.ForeignKey(Donation, blank=True, null=True)
         
     
