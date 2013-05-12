@@ -156,7 +156,7 @@ $(function(){
 							<h2>{{ donation.name }}</h2>						
 						{% endif %}
 						<p>{{ donation.batch }}</p>
-						<p>{% if donation.rs_or_dollar == 10000 %}Rs.{{ donation.donation_amount|floatformat:"0"|intcomma }} {% else %} $500 {% endif %} pledged</p>
+						<p>{% if donation.rs_or_dollar == 10000 %}Rs.{{ donation.donation_amount|floatformat:"0"|intcomma }} {% else %} $500 {% endif %} donated</p>
 					</div>
 				{% endfor %}
 			</div>

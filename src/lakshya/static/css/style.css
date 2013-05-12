@@ -1297,3 +1297,19 @@ border: 1px solid #DADADA;
 border: 1px solid #DADADA;
 padding: 1px 4px;
 }
+
+
+/*************************** Start of Companies Listing Page *********************/
+#companies_listing{
+	width: 70%;
+	height: 500px;
+}
+
+#companies_listing_right_pane{
+	width: 30%;
+}
+
+#companies_detail{
+	width: 70%;
+	height: 500px;	
+}

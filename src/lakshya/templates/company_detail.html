@@ -1,0 +1,41 @@
+
+{% extends "base.html" %}
+{% load humanize %} 
+
+{% block title %}
+<title>Seed Fund | Lakshya, an NITW alumni led organization</title>
+<meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
+{% endblock title %}
+
+{% block content %}
+	<img src="{{STATIC_URL}}img/seed_capital_final.jpg" width="990px" height="100px" />
+	<div id="companies_detail" class="left">
+		<p>Name</p>
+		<p>{{company.name}}</p>
+		<br>
+		<p>Slug</p>
+		<p>{{company.slug}}</p>
+		<br>
+		<p>Description</p>
+		<p>{{company.description}}</p>
+		<br>
+		<p>Website</p>
+		<p>{{company.website_url}}</p>
+		<br>
+
+	</div>
+	<div class="left" id="companies_listing_right_pane">
+		<div id="sectors_list">
+			<p>Industries</p>
+			{% for sector in sectors_list_details %}
+				<div>
+					<a href="/entreprenuers?sector={{ sector.1 }}">{{ sector.0 }} ({{ sector.2 }})</a>					
+				</div>	
+			{% endfor %}			
+		</div>
+<!-- 		<div id="batches_list">
+			<p>Batches</p>
+		</div> -->
+	</div>
+{% endblock content %}
+
