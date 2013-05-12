@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.views.generic.simple import direct_to_template
 from utils.urls import urlpatterns as util_urls
 from people.urls import urlpatterns as people_urls
+from entrepreneurship.urls import urlpatterns as entrepreneurship_urls
 from django.conf import settings
 
 
@@ -29,6 +30,7 @@ urlpatterns = patterns('',
     url(r'^payment-success$', direct_to_template, {'template' : 'payment_success.html'}, name='payment-success'),
     url(r'^payment-failure$', direct_to_template, {'template' : 'payment_failure.html'}, name='payment-failure'),
     url(r'^apply$', direct_to_template, {'template' : 'apply-vp.html'}, name='apply-vp'),
+
        
     # url(r'^$', 'lakshya.views.home', name='home'),
     # url(r'^lakshya/', include('lakshya.foo.urls')),
@@ -43,6 +45,8 @@ urlpatterns = patterns('',
 urlpatterns += util_urls
 
 urlpatterns += people_urls
+
+urlpatterns += entrepreneurship_urls
 
 urlpatterns += patterns('',
         (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
