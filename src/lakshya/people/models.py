@@ -44,7 +44,6 @@ class Person(models.Model):
     year_of_passing = models.IntegerField(blank=True, null=True)
     profile_pic = models.FileField("Update photo", upload_to="profile_pics/", null=True, blank=True)
     
-    
     def __unicode__(self):
         return self.user.first_name
     
@@ -55,12 +54,10 @@ class Person(models.Model):
         return self.billing_address + ", Landmark: " + self.billing_landmark + ", " + self.billing_city + "- " + self.billing_postal_code + ", " + \
             self.billing_state + ", " + self.billing_country
 
-
 class Person_preference(models.Model):
     person = models.OneToOneField(Person)
     is_subscribed_for_newsletter = models.BooleanField(default=True, blank=False)
     show_donations = models.BooleanField(default=True, blank=True)
-    
  
 class TeamMember(models.Model):
     name = models.CharField("Full Name", max_length=100,)

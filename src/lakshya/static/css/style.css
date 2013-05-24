@@ -1300,16 +1300,23 @@ padding: 1px 4px;
 
 
 /*************************** Start of Companies Listing Page *********************/
+#companies_listing_left_pane{
+	width: 25%;
+}
+
 #companies_listing{
 	width: 70%;
-	height: 500px;
 }
 
 #companies_listing_right_pane{
-	width: 30%;
+	width: 20%;
 }
 
 #companies_detail{
-	width: 70%;
-	height: 500px;	
+	width: 55%;
 }
+
+a.selected_link{
+	color: #74B446;
+}
+
