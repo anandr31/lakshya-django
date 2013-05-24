@@ -1,0 +1,144 @@
+<head>
+	{% block title %}
+	<title>Lakshya - NITW's Entreprenuer Meet</title>
+	<meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
+	<meta name="keywords" content="Alumni, Entreprenuer Meet" />
+	{% endblock title %}
+	{% block meta %}
+	{% endblock %}
+	<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?1"></LINK>
+	<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/nem.css?1"></LINK>
+	<script src="{{STATIC_URL}}js/jquery.min.js"></script>
+	<script src="{{STATIC_URL}}js/slides.min.jquery.js"></script>
+	<script>
+	$(function(){
+		$('#slides').slides({
+			preload: true,
+			preloadImage: '{{STATIC_URL}}img/loading.gif',
+			play: 5000,
+			pause: 2500,
+			hoverPause: true
+		});
+
+		$('#testimonial_slides').slides({
+			pagination: false,
+			container: 'testimonials_container',
+			preload: true,
+			preloadImage: '{{STATIC_URL}}img/loading.gif',
+			play: 0,
+			pause: 2500,
+			hoverPause: true
+
+		});
+	});
+</script>
+<!-- 	{% block scripts %}
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', '{{GOOGLE_SITE_CODE}}' ]);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+	{% endblock %}	 -->
+</head>
+<body>
+{% block header %}
+    <!--[if lt IE 11]> 
+	    <img src="{{STATIC_URL}}img/ie_not_supported_lakshya.png" style="width:100%;padding-bottom: 100000px;"/>
+		<h1 style="text-align:center">It's broken in IE. We will fix it soon</div>
+	<![endif]--> 
+
+<div id="header_wrapper">
+
+	<div id="logo" class="left">
+		<a href="/"><img src="{{STATIC_URL}}img/logo.jpg"></a>
+	</div>
+
+	<div class="left, nem_navigation">
+		<span><a href="">agenda</a></span>
+		<span><a href="">participants</a></span>
+		<span><a href="">about this meet</a></span>
+		<span><a href="">about lakshya</a></span>
+		<span><a href="">contact us</a></span>
+	</div>
+</div>
+{% endblock header %}
+<div id="content_wrapper" class="cB">
+	<span class="cB"></span>
+	{% block content %}
+	<div id="nem_slider_panel">
+		<div id="example" class="left">
+		<div id="slides">
+			<div class="slides_container" style="width:690px">
+				<a href="/innovation/innovations-list/hovamarine" title="Hovamarine - NITW's first patent application" ><img src="{{STATIC_URL}}img/banners/hovamarine_banner.jpg" width="690" height="270" alt="Hovamarine - NITW's first patent application"></a>
+				<a href="/accounts/our-core-belief" title="Lakshya's commitment for Transparency" ><img src="{{STATIC_URL}}img/banners/transparency_banner.png" width="690" height="270" alt="Lakshya's commitment for Transparency"></a>
+			</div>
+		</div>
+		</div>
+		<div class="right" id="nem_detail_panel">
+			<p style="font-size:16px; padding-top:20px">Lakshya & Sequoia Capital</p>
+			<p style="font-size:16px">presents</p>
+			<p style="font-size:22px; padding:20px 0px 20px 0px">NITW Entreprenuer's Meet</p>
+			<p style="font-size:16px">at Taj Vivanta, Bangalore</p>
+			<p style="font-size:15px">Sat, June 22<sup>nd</sup> 2013. 11 am - 3 pm</p>
+		</div>
+		<span class="cB"></span>
+	</div>
+	<div style="width:900px;height:280px"></div>
+	<span class="cB"></span>
+	<p class="nem_oneliner">First ever meet of NITW organized by Lakshya to connect Alumni Entreprenuers, Student Entreprenuers and Alumni Investors. First ever meet of NITW organized by Lakshya to connect Alumni Entreprenuers, Student Entreprenuers and Alumni Investors. </p>
+	<p class="nem_oneliner">First ever meet of NITW organized by Lakshya to connect Alumni Entreprenuers, Student Entreprenuers and Alumni Investors.</p>
+
+	<div id="other_details_panel">
+		<div id="other_details" class="left">
+			<div id="agenda" class="section">
+				<p class="section-title">Agenda</p>
+			</div>
+
+		</div>
+		<div id="sponsor_details" class="left">
+		</div>
+	</div>
+
+   {% endblock content %}
+</div>
+
+{% block footer %}
+<div id="footer" class="cB">
+	<table id="footer_table">
+		<tr id="footer_header">
+			<th>About us</th><th>Projects</th><th>Funds & Transparency</th><th>Donate</th>
+		</tr>
+		<tr>
+			<td><a href="/about">About Lakshya</a></td><td><a href="/innovation/home">Innovation Support Program</a></td><td><a href="/accounts/our-core-belief">Our core belief</a></td><td><a href="/donate">Online Payment Gateway</a></td>
+		</tr>
+		<tr>
+			<td><a href="/team">The Team</a></td><td><a href="/research/home">Research Facilitator Program</a></td><td><a href="/accounts/donations">Donations</a></td><td><a href="/donate">Cheque/DD/Cash/NEFT</a></td>
+		</tr>
+		<tr>
+			<td><a href="/contact">Contact Us</a></td><td><a href="/automation/home">Administrative Process Automation</a></td><td><a href="/accounts/expenses">Expenses</a></td>
+		</tr>
+		<tr>
+			<td></td><td><a href="/scholarships/home">Financial Assistance Program</a></td><td><a href="/accounts/audits">Audit Reports</a></td><td></td>
+		</tr>
+	</table>
+	<div id="payment_footer">
+		<div id="ccavenue_block">
+					<span>Donations powered by</span> <img src="{{STATIC_URL}}img/ccavenue.png" width="100px" height="20px" />
+					<span id="copy_right">&#9400 thelakshyafoundation.com 2008-2015</span>
+		</div>
+
+		<div class = "right" id="follow_block">
+			<span style="vertical-align:10px;">follow us on</span> <a href="https://www.facebook.com/thelakshyafoundation"><img src="{{STATIC_URL}}img/facebook_icon.png" width="25px" height="25px" /></a> 
+		</div>		
+	</div>
+
+</div>
+{% endblock footer%}
+</body>
+

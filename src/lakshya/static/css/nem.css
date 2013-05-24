@@ -1,0 +1,57 @@
+.nem_navigation{
+	padding-top: 40px;
+}
+
+.nem_navigation span{
+	padding-right: 40px;
+}
+
+.nem_navigation a{
+	font-size: 18px;
+	text-decoration: none;
+	color: #74B446;
+}
+
+.nem_navigation a:hover{
+	text-shadow: #8DCF7D 0.1em 0.1em 0.2em;
+}
+
+.pagination {
+	position: relative;
+	margin: 2px auto 0;
+	width: 100px;
+	z-index: 11100;
+	top: -25px;
+	left: 300px;
+}
+
+#nem_detail_panel{
+	width: 300px;
+	height: 270px;
+	border-bottom: 5px solid #74B446;
+	position: relative;
+	top: -4px;
+	background-color: #DFFAC6;
+}
+
+#nem_detail_panel p{
+	text-align: center;
+}
+
+#nem_slider_panel{
+	padding-top: 10px;
+}
+
+.nem_oneliner{
+	font-size: 16px;
+	line-height: 28px;
+}
+
+#other_details{
+	width: 600px;
+}
+
+#sponsor_details{
+	width: 300px;
+}
+

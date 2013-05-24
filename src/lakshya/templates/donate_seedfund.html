@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Donate- Lakshya, an NITW alumni led organization</title>
+<meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
+{% endblock title %}
+
+{% block content %}
+<div class = "content_with_page_title left">
+	<h2>Donate</h2>
+	<div class="content_div">
+		<h3>Payment Gateway</h3>	
+		<form action="payment_redirect" method="post">{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Submit" />
+		</form>
+	</div>
+</div>
+{% endblock content %}
