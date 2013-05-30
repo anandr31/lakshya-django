@@ -35,34 +35,12 @@
 	<div class="left" id="companies_listing_right_pane">
 		<div id="sectors_list">
 			<p>Industries</p>
-			{% if selected_sector %}
-			<a href="/entreprenuers">All ({{ total_companies_count }})</a>
-			{% else %}
-			<a href="/entreprenuers" class="selected_link">All ({{ total_companies_count }})</a>
-			{% endif %}
 			{% for sector in sectors_list_details %}
 				<div>
 					{% if selected_sector and sector.1 == selected_sector %}
-					<a href="/entreprenuers?sector={{ sector.1 }}" class="selected_link">{{ sector.0 }} ({{ sector.2 }})</a>
+					<a href="/entreprenuers?sector={{ sector.1 }}" class="selected">{{ sector.0 }} ({{ sector.2 }})</a>
 					{% else %}
 					<a href="/entreprenuers?sector={{ sector.1 }}">{{ sector.0 }} ({{ sector.2 }})</a>					
-					{% endif %}
-				</div>	
-			{% endfor %}			
-		</div>
-		<div id="sectors_list">
-			<p>Countries</p>
-			{% if selected_country %}
-			<a href="/entreprenuers">All ({{ total_companies_count }})</a>
-			{% else %}
-			<a href="/entreprenuers" class="selected_link">All ({{ total_companies_count }})</a>
-			{% endif %}
-			{% for country in countries_list_details %}
-				<div>
-					{% if selected_country and country.0 == selected_country %}
-					<a href="/entreprenuers?country={{ country.0 }}" class="selected_link">{{ country.0 }} ({{ country.1 }})</a>
-					{% else %}
-					<a href="/entreprenuers?country={{ country.0 }}">{{ country.0 }} ({{ country.1 }})</a>					
 					{% endif %}
 				</div>	
 			{% endfor %}			

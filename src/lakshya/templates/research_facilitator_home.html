@@ -5,9 +5,67 @@
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
 {% endblock title %}
 
+{%  block header %}
+<div id="example">
+	<div id="header_wrapper">
+
+	<div style="width:990px; height:24px; background-image:url('{{STATIC_URL}}img/REC-top.png'); opacity:0.8;">
+		<div id="secondary_navigation" class = "right">
+		<a href="/team"> Team </a>
+		<a href="/contact"> Contact Us </a>
+		<a href="/"> Home </a>
+	</div>
+	</div>
+
+	<div style="width:990px; height:134px; background-image:url('{{STATIC_URL}}img/nav_bg.png'); opacity:0.8;">
+		<div id="primary_navigation" class = "right cR">
+		<ul>
+		<li><a href="#">About Us<span class="drop">&#9660;</span></a>
+			<ul>
+				<li><a href="/about">About Lakshya</a></li>
+				<li><a href="/team">Team</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Projects<span class="drop">&#9660;</span></a>
+			<ul id="projects-menu">
+				<li><p>Innovation, Research and Entreprenuership</p></li>
+				<li><a href="/innovation/home">- Innovation Support Program</a></li>
+				<li><a href="/research/home">- Research Facilitator Program</a></li>
+				<li><p>Campus Enablers</p></li>
+				<li><a href="/automation/home">- Administrative Process Automation</a></li>
+				<li><p>Student Enablers</p></li>
+				<li><a href="/scholarships/home">- Financial Assistance Program</a></li>
+				<li><p>Others</p></li>
+				<li><a href="/pilot-projects">- Pilot Projects</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Funds & Transparency<span class="drop">&#9660;</span></a>
+			<ul>
+				<li><a href="/accounts/our-core-belief">Our core belief</a></li>
+				<li><a href="/accounts/donations">Donations</a></li>
+				<li><a href="/accounts/expenses">Expenses</a></li>
+				<li><a href="/accounts/audits">Audit Statements</a></li>				
+			</ul>
+		</li>
+		<li><a href="/donate">Donate Now</a></li>
+		</ul>
+	</div>
+	</div>
+</div>
+<div id="slides">
+	<div class="slides_container" >
+			<a href="/team" title="Team" ><img src="{{STATIC_URL}}img/projects.jpg" width="990" height="420" alt="Team"></a>
+	
+	</div>
+	</div>
+	
+</div>
+
+{% endblock header%}
+
 {% block content %}
 <br>
-<h2>Research Facilitator Program</h2>
+<h2 style="color: #2e93a8;">Research Facilitator Program</h2>
 <div id="intro">
 	<p>This program provides funding to NIT Warangal UG and PG students whose work is chosen for presentation in top national/ international conferences and internships</p>
 </div>
@@ -53,7 +111,7 @@
 
 <div class="left">
 
-	<h2>Internships funded till date</h2>
+	<h2 style="color: #2e93a8;">Internships funded till date</h2>
 		<table class="internships-table" width="500px" >
 			<tr>
 				<th>Name</th><th>University/Company</th><th>Country</th><th>Funding (INR)</th>
@@ -77,7 +135,7 @@
 				<td>Chanukya Patnaik</td><td>Nanyang Technological University</td><td>Singapore</td><td>35,000</td>
 			</tr>
 		</table>
-	<h2>Conferences funded till date</h2>
+	<h2 style="color: #2e93a8;">Conferences funded till date</h2>
 		<table class="internships-table" width="500px" >
 			<tr>
 				<th>Student Name</th><th>Conference</th><th>Place</th>

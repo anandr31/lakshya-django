@@ -7,8 +7,8 @@
 	{% block meta %}
 	{% endblock %}
 	<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?1"></LINK>
-	{% block scripts %}
-		<script type="text/javascript">
+		{% block scripts %}
+	<script type="text/javascript">
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', '{{GOOGLE_SITE_CODE}}' ]);
 		  _gaq.push(['_trackPageview']);
@@ -19,66 +19,71 @@
 		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		  })();
 		</script>
+		<script>(function(d, s, id) {
+  			var js, fjs = d.getElementsByTagName(s)[0];
+  			if (d.getElementById(id)) return;
+  			js = d.createElement(s); js.id = id;
+  			js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+	<script src="{{STATIC_URL}}js/jquery.min.js"></script>
+	<script src="{{STATIC_URL}}js/slides.min.jquery.js"></script>
+
+	<script>
+		$(function(){
+		$('#slides').slides({
+			preload: true,
+			preloadImage: '{{STATIC_URL}}img/loading.gif',
+			play: 5000,
+			pause: 2500,
+			hoverPause: true
+		});
+
+		$('#testimonial_slides').slides({
+			pagination: false,
+			container: 'testimonials_container',
+			preload: true,
+			preloadImage: '{{STATIC_URL}}img/loading.gif',
+			play: 0,
+			pause: 2500,
+			hoverPause: true
+
+		});
+
+		function showTheList() {
+		  var i = 1;
+		  function showOne() {
+		    if (i === 1) $('.ul li').hide();
+		    $('.ul li').eq(i - 1).delay(100).fadeIn(2000, function() {
+		      $('.ul li').eq(i - 1).fadeOut(4000, function() {
+		        if (++i > 3) i = 1;
+		        showOne();
+		      });
+		    });
+		  }
+		  showOne();
+		}
+		showTheList();
+	});
+	</script>
+
 	{% endblock %}	
 </head>
 <body>
+
 {% block header %}
-    <!--[if lt IE 11]> 
-	    <img src="{{STATIC_URL}}img/ie_not_supported_lakshya.png" style="width:100%;padding-bottom: 100000px;"/>
-		<h1 style="text-align:center">It's broken in IE. We will fix it soon</div>
-	<![endif]--> 
-
-<div id="header_wrapper">
-
-	<div id="logo" class="left">
-		<a href="/"><img src="{{STATIC_URL}}img/logo.jpg"></a>
-	</div>
-
-
-	<div id="secondary_navigation" class = "right">
-		<a href="/team"> Team </a>
-		<a href="/contact"> Contact Us </a>
-	</div>
-	<div id="primary_navigation" class = "right cR">
-		<ul>
-		<li><a href="#">About Us<span class="drop">&#9660;</span></a>
-			<ul>
-				<li><a href="/about">About Lakshya</a></li>
-				<li><a href="/team">Team</a></li>
-			</ul>
-		</li>
-		<li><a href="#">Projects<span class="drop">&#9660;</span></a>
-			<ul id="projects-menu">
-				<li><p>Innovation, Research and Entreprenuership</p></li>
-				<li><a href="/innovation/home">- Innovation Support Program</a></li>
-				<li><a href="/research/home">- Research Facilitator Program</a></li>
-				<li><p>Campus Enablers</p></li>
-				<li><a href="/automation/home">- Administrative Process Automation</a></li>
-				<li><p>Student Enablers</p></li>
-				<li><a href="/scholarships/home">- Financial Assistance Program</a></li>
-				<li><p>Others</p></li>
-				<li><a href="/pilot-projects">- Pilot Projects</a></li>
-			</ul>
-		</li>
-		<li><a href="#">Funds & Transparency<span class="drop">&#9660;</span></a>
-			<ul>
-				<li><a href="/accounts/our-core-belief">Our core belief</a></li>
-				<li><a href="/accounts/donations">Donations</a></li>
-				<li><a href="/accounts/expenses">Expenses</a></li>
-				<li><a href="/accounts/audits">Audit Statements</a></li>				
-			</ul>
-		</li>
-		<li><a href="/donate">Donate Now</a></li>
-		</ul>
-	</div>	
-</div>
+  <h1 id = "header_wrapper">Header Area</h1>
 {% endblock header %}
+
 <div id="content_wrapper" class="cB">
 	<span class="cB"></span>
 	{% block content %}
 	<h1 class="cB">Content Area</h1>
     {% endblock content %}
 </div>
+
 {% block footer %}
 <div id="footer" class="cB">
 	<table id="footer_table">
@@ -100,12 +105,15 @@
 	</table>
 	<div id="payment_footer">
 		<div id="ccavenue_block">
-					<span>Donations powered by</span> <img src="{{STATIC_URL}}img/ccavenue.png" width="100px" height="20px" />
+					<img src="{{STATIC_URL}}img/ccavenue.png" width="150px" height="35px" />
 					<span id="copy_right">&#9400 thelakshyafoundation.com 2008-2015</span>
 		</div>
 
 		<div class = "right" id="follow_block">
-			<span style="vertical-align:10px;">follow us on</span> <a href="https://www.facebook.com/thelakshyafoundation"><img src="{{STATIC_URL}}img/facebook_icon.png" width="25px" height="25px" /></a> 
+			<a href="https://www.facebook.com/thelakshyafoundation"><img src="{{STATIC_URL}}img/fb_0.png" onmouseover="this.src='{{STATIC_URL}}img/fb_1.png'" onmouseout="this.src='{{STATIC_URL}}img/fb_0.png'" width="35px" height="35px" /></a> 
+
+			<a href="https://twitter.com/lakshyatweets"><img src="{{STATIC_URL}}img/twit_0.png" onmouseover="this.src='{{STATIC_URL}}img/twit_1.png'" onmouseout="this.src='{{STATIC_URL}}img/twit_0.png'" width="35px" height="35px" /></a> 
+			
 		</div>		
 	</div>
 

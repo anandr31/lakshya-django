@@ -6,10 +6,66 @@
 {% block meta %}
 <script src="http://gettopup.com/releases/latest/top_up-min.js"></script>
 {% endblock %}
+{%  block header %}
+<div id="example">
+	<div id="header_wrapper">
 
+	<div style="width:990px; height:24px; background-image:url('{{STATIC_URL}}img/REC-top.png'); opacity:0.8;">
+		<div id="secondary_navigation" class = "right">
+		<a href="/team"> Team </a>
+		<a href="/contact"> Contact Us </a>
+		<a href="/"> Home </a>
+	</div>
+	</div>
+
+	<div style="width:990px; height:134px; background-image:url('{{STATIC_URL}}img/nav_bg.png'); opacity:0.8;">
+		<div id="primary_navigation" class = "right cR">
+		<ul>
+		<li><a href="#">About Us<span class="drop">&#9660;</span></a>
+			<ul>
+				<li><a href="/about">About Lakshya</a></li>
+				<li><a href="/team">Team</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Projects<span class="drop">&#9660;</span></a>
+			<ul id="projects-menu">
+				<li><p>Innovation, Research and Entreprenuership</p></li>
+				<li><a href="/innovation/home">- Innovation Support Program</a></li>
+				<li><a href="/research/home">- Research Facilitator Program</a></li>
+				<li><p>Campus Enablers</p></li>
+				<li><a href="/automation/home">- Administrative Process Automation</a></li>
+				<li><p>Student Enablers</p></li>
+				<li><a href="/scholarships/home">- Financial Assistance Program</a></li>
+				<li><p>Others</p></li>
+				<li><a href="/pilot-projects">- Pilot Projects</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Funds & Transparency<span class="drop">&#9660;</span></a>
+			<ul>
+				<li><a href="/accounts/our-core-belief">Our core belief</a></li>
+				<li><a href="/accounts/donations">Donations</a></li>
+				<li><a href="/accounts/expenses">Expenses</a></li>
+				<li><a href="/accounts/audits">Audit Statements</a></li>				
+			</ul>
+		</li>
+		<li><a href="/donate">Donate Now</a></li>
+		</ul>
+	</div>
+	</div>
+</div>
+<div id="slides">
+	<div class="slides_container" >
+			<a href="/team" title="Team" ><img src="{{STATIC_URL}}img/projects.jpg" width="990" height="420" alt="Team"></a>
+	
+	</div>
+	</div>
+	
+</div>
+
+{% endblock header%}
 {% block content %}
 <br>
-<h2>Administrative Process Automation</h2>
+<h2 style="color: #2e93a8;">Administrative Process Automation</h2>
 <div id="blockquote_div">
 	<blockquote> "One machine can do the work of fifty ordinary men. No machine can do the work of one extraordinary man."<p>-Elbert Hubbard, American writer, publisher, artist, and philosopher</p></blockquote>
 </div>
@@ -17,7 +73,7 @@
 	<p>Applying for official certificates, transcripts or documents from NIT Warangal will be as easy as booking a movie ticket. This has been made possible through IT infrastructure being built by Lakshya together with the institute for the administration.</p>
 </div>
 
-<h3> Certificates that you can apply for </h3>
+<h3 style="color: #2e93a8;"> Certificates that you can apply for </h3>
 <ul>
 <li> Transcripts </li>
 <li> Degree Certificate (Original and Duplicate)</li>
@@ -28,6 +84,6 @@
 
 <a id="automation_button" href="http://www.nitw.ac.in/alumnirequest/select.php">Apply now </a> 
 
-<h3>Planned Next Release</h3>
+<h3 style="color: #2e93a8">Planned Next Release</h3>
 <p id="release_plan">Request monitoring and Tracking system will be released on <b>February 5th 2013</b></p>
 {% endblock content %}

@@ -1,24 +1,41 @@
 {% extends "base.html" %}
 {% load humanize %}
 
-{% block meta %}
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+<head>
+	{% block title %}
+	<title>Lakshya - an NITW alumni led organization</title>
+	<meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
+	<meta name="keywords" content="Alumni, Students and Faculty of NITW working together to bring social change" />
+	{% endblock title %}
+	{% block meta %}
+	{% endblock %}
+	<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?1"></LINK>
+	{% block scripts %}
+	<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', '{{GOOGLE_SITE_CODE}}' ]);
+		  _gaq.push(['_trackPageview']);
 
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+		<script>(function(d, s, id) {
+  			var js, fjs = d.getElementsByTagName(s)[0];
+  			if (d.getElementById(id)) return;
+  			js = d.createElement(s); js.id = id;
+  			js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 
-</script>
+	<script src="{{STATIC_URL}}js/jquery.min.js"></script>
+	<script src="{{STATIC_URL}}js/slides.min.jquery.js"></script>
 
-<script src="{{STATIC_URL}}js/jquery.min.js"></script>
-<script src="{{STATIC_URL}}js/slides.min.jquery.js"></script>
-
-<script>
-	$(function(){
+	<script>
+		$(function(){
 		$('#slides').slides({
 			preload: true,
 			preloadImage: '{{STATIC_URL}}img/loading.gif',
@@ -53,21 +70,75 @@
 		}
 		showTheList();
 	});
-</script>
+	</script>
 
-{% endblock %}	
+	{% endblock %}	
+</head>
 
-{% block content %}
+
+{%  block header %}
 <div id="example">
-	<div id="slides">
-		<div class="slides_container">
-			<a href="/innovation/innovations-list/hovamarine" title="Hovamarine - NITW's first patent application" ><img src="{{STATIC_URL}}img/banners/hovamarine_banner.jpg" width="990" height="270" alt="Hovamarine - NITW's first patent application"></a>
-			<a href="/accounts/our-core-belief" title="Lakshya's commitment for Transparency" ><img src="{{STATIC_URL}}img/banners/transparency_banner.png" width="990" height="270" alt="Lakshya's commitment for Transparency"></a>
-<!-- 			<a href="http://www.flickr.com/photos/childofwar/2984345060/" title="Happy Bokeh raining Day | Flickr - Photo Sharing!" ><img src="http://slidesjs.com/examples/standard/img/slide-3.jpg" width="990" height="270" alt="Slide 3"></a>
-			<a href="http://www.flickr.com/photos/b-tal/117037943/" title="We Eat Light | Flickr - Photo Sharing!" ><img src="http://slidesjs.com/examples/standard/img/slide-4.jpg" width="990" height="270" alt="Slide 4"></a> -->
-		</div>
+	<div id="header_wrapper">
+
+	<div style="width:990px; height:24px; background-image:url('{{STATIC_URL}}img/REC-top.png'); opacity:0.8;">
+		<div id="secondary_navigation" class = "right">
+		<a href="/team"> Team </a>
+		<a href="/contact"> Contact Us </a>
+		<a href="/"> Home </a>
+	</div>
+	</div>
+
+	<div style="width:990px; height:134px; background-image:url('{{STATIC_URL}}img/nav_bg.png'); opacity:0.8;">
+		<div id="primary_navigation" class = "right cR">
+		<ul>
+		<li><a href="#">About Us<span class="drop">&#9660;</span></a>
+			<ul>
+				<li><a href="/about">About Lakshya</a></li>
+				<li><a href="/team">Team</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Projects<span class="drop">&#9660;</span></a>
+			<ul id="projects-menu">
+				<li><p>Innovation, Research and Entreprenuership</p></li>
+				<li><a href="/innovation/home">- Innovation Support Program</a></li>
+				<li><a href="/research/home">- Research Facilitator Program</a></li>
+				<li><p>Campus Enablers</p></li>
+				<li><a href="/automation/home">- Administrative Process Automation</a></li>
+				<li><p>Student Enablers</p></li>
+				<li><a href="/scholarships/home">- Financial Assistance Program</a></li>
+				<li><p>Others</p></li>
+				<li><a href="/pilot-projects">- Pilot Projects</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Funds & Transparency<span class="drop">&#9660;</span></a>
+			<ul>
+				<li><a href="/accounts/our-core-belief">Our core belief</a></li>
+				<li><a href="/accounts/donations">Donations</a></li>
+				<li><a href="/accounts/expenses">Expenses</a></li>
+				<li><a href="/accounts/audits">Audit Statements</a></li>				
+			</ul>
+		</li>
+		<li><a href="/donate">Donate Now</a></li>
+		</ul>
+	</div>
 	</div>
 </div>
+<div id="slides">
+	<div class="slides_container" >
+			<a href="/innovation/innovations-list/hovamarine" title="Hovamarine - NITW's first patent application" ><img src="{{STATIC_URL}}img/banners/slide_1.png" width="990" height="420" alt="Hovamarine - NITW's first patent application"></a>
+	
+	</div>
+	</div>
+	
+</div>
+
+{% endblock header%}
+
+
+{% block content %}
+
+<div id="content_wrapper" class = "cB">
+
 <div id="intro_block" class="left">
 	<div id="lakhsya-homepage-intro">
 		<p>Help build an ecosystem of research and entrepreneurship through creativity and innovation at NIT Warangal by bringing together alumni, students, faculty, the institute and relevant partners</p>
@@ -78,16 +149,16 @@
 	<div id="stats">
 		<ul class="ul">
 			<li>
+				<div class="stats_number">&#x20B9; {{total_donation_amount|floatformat:"0"|intcomma}}</div>
+				<div class="stats_description">funds raised for Lakshya</div>
+			</li>
+			<li>
 				<div class="stats_number">7</div>
 				<div class="stats_description">research ideas being supported</div>
 			</li>
 			<li>
 				<div class="stats_number">22</div>
 				<div class="stats_description">need based scholarships for NITW students</div>
-			</li>
-			<li>
-				<div class="stats_number">10</div>
-				<div class="stats_description">students funded for internships / conferences</div>
 			</li>
 		</ul>
 	</div>
@@ -167,5 +238,6 @@
 	</div>
 
 
+</div>
 </div>
 {% endblock content %}
