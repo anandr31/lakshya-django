@@ -33,6 +33,7 @@ body p, li, a, td, span, dl, dt {
 	font-family: 'Didact Gothic', sans-serif;
 }
 
+
 body h2 {
 	font-size: 22px;
 }
@@ -265,8 +266,8 @@ div.stats_description {
 }
 
 #secondary_navigation a:hover {
-	color: rgb(138, 184, 202);
-	font-weight: bold;
+	color: rgb(0, 224, 255);
+	
 }
 
 #primary_navigation ul {
@@ -285,6 +286,7 @@ div.stats_description {
 
 #primary_navigation .drop {
 	color: white;
+
 }
 
 #primary_navigation ul ul {
@@ -424,7 +426,7 @@ tr#footer_header {
 #content_wrapper {
 	width: 990px;
 	margin: auto;
-	margin-top: 10px;
+	margin-top: 0px;
 }
 
 #content_wrapper h1 {
@@ -468,9 +470,8 @@ tr#footer_header {
 }
 
 #footer_table a:hover {
-	color: #68cbe0;
-	text-decoration: underline;
-	
+	color: rgb(0, 210, 255);
+		
 }
 
 
@@ -605,7 +606,7 @@ tr#footer_header {
 }
 
 #lakhsya-homepage-intro {
-	padding-top: 36px;
+	padding-top: 0px;
 }
 
 #lakhsya-homepage-intro p {
