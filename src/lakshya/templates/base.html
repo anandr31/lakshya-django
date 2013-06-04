@@ -7,6 +7,7 @@
 	{% block meta %}
 	{% endblock %}
 	<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?1"></LINK>
+	<link href='http://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
 		{% block scripts %}
 	<script type="text/javascript">
 		  var _gaq = _gaq || [];
@@ -74,7 +75,63 @@
 <body>
 
 {% block header %}
-  <h1 id = "header_wrapper">Header Area</h1>
+<div id="example">
+	<div id="header_wrapper">
+
+	<div style="width:990px; height:18px; background-color:rgba(0, 0, 0, 0.78);">
+		<div id="secondary_navigation" class="right">
+			<a href="/team">TEAM</a>
+			<a href="/contact">CONTACT US</a>
+			<a href="/">HOME</a>
+		</div>
+	</div>
+				
+	
+		<div style="width:990px; height:134px; background-image:url('{{STATIC_URL}}img/nab_bar3.png'); opacity:0.9;">
+			<div id="primary_navigation" class = "right cR">
+			<ul>
+				<li><a href="#">About Us<span class="drop">&#9660;</span></a>
+					<ul>
+						<li><a href="/about">About Lakshya</a></li>
+						<li><a href="/team">Team</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Projects<span class="drop">&#9660;</span></a>
+					<ul id="projects-menu">
+						<li><p>Innovation, Research and Entreprenuership</p></li>
+						<li><a href="/innovation/home">- Innovation Support Program</a></li>
+						<li><a href="/research/home">- Research Facilitator Program</a></li>
+						<li><p>Campus Enablers</p></li>
+						<li><a href="/automation/home">- Administrative Process Automation</a></li>
+						<li><p>Student Enablers</p></li>
+						<li><a href="/scholarships/home">- Financial Assistance Program</a></li>
+						<li><p>Others</p></li>
+						<li><a href="/pilot-projects">- Pilot Projects</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Funds & Transparency<span class="drop">&#9660;</span></a>
+					<ul>
+						<li><a href="/accounts/our-core-belief">Our core belief</a></li>
+						<li><a href="/accounts/donations">Donations</a></li>
+						<li><a href="/accounts/expenses">Expenses</a></li>
+						<li><a href="/accounts/audits">Audit Statements</a></li>				
+					</ul>
+				</li>
+				<li><a href="/donate">Donate Now</a></li>
+			</ul>
+		</div>
+
+		</div>
+	</div>
+	
+	<div id="slides">
+		<div class="slides_container" >
+			{% block header_slide%}
+				
+			{% endblock header_slide%}
+		</div>
+	</div>
+</div>
 {% endblock header %}
 
 <div id="content_wrapper" class="cB">
@@ -105,7 +162,7 @@
 	</table>
 	<div id="payment_footer">
 		<div id="ccavenue_block">
-					<img src="{{STATIC_URL}}img/ccavenue.png" width="150px" height="35px" />
+					<img src="{{STATIC_URL}}img/ccavenue_1.png" width="150px" height="35px" />
 					<span id="copy_right">&#9400 thelakshyafoundation.com 2008-2015</span>
 		</div>
 

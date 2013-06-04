@@ -28,8 +28,9 @@
 }
 
 body p, li, a, td, span, dl, dt {
-	font-size: 13px;
+	font-size: 12pt;
 	line-height: 20px;
+	font-family: 'Didact Gothic', sans-serif;
 }
 
 body h2 {
@@ -45,7 +46,7 @@ body h4 {
 }
 
 body {
-	font-family: "helvetica";
+	font-family: 'Didact Gothic', sans-serif;
 	color: #333;
 }
 
@@ -104,6 +105,7 @@ div.stats_description {
 	height:420px;
 	position:relative;
 	margin: auto;
+	font-family: 'Didact Gothic', sans-serif; 
 }
 
 
@@ -246,21 +248,22 @@ div.stats_description {
 /* --------------------------- START OF HEADER --------------------------- */
 #header_wrapper {
 	width: 990px;
-	margin: auto;
+	padding-top: 12px;
 }
 
 #secondary_navigation {
 	margin-right: 0px;
 }
 #secondary_navigation a {
-	padding-left: 20px;
-	color:#727272;
-	font-size: 20;
+	padding-left: 8px;
+	color: rgb(255, 255, 255);
+	font-size: 15px;
+	text-decoration: none;
 	text-decoration:none;
 }
 #secondary_navigation a:hover {
-	color: #2e93a8;
-	font-style: bold;
+	color: rgb(138, 184, 202);
+	font-weight: bold;
 }
 
 #primary_navigation ul {
@@ -268,8 +271,8 @@ div.stats_description {
 	list-style: none;
 	position: relative;
 	display: inline-table;
-	padding: 75px 0px 0px 0px;
-
+	padding: 80px 0px 0px 0px;
+	z-index: 1;
 }
 
 #primary_navigation li
@@ -297,6 +300,7 @@ div.stats_description {
 
 #primary_navigation ul li {
 	float: left;
+
 }
 	
 #primary_navigation ul li:hover{
@@ -320,13 +324,14 @@ div.stats_description {
 	
 #primary_navigation ul li a {
 	display: block; 
-	padding: 10px 20px;
+	padding: 0px 12px 12px 12px;
 	color: #fff; 
 	text-decoration: none;
+	font-size: 15pt;
 }
 
 #primary_navigation ul ul {
-	background: #727272;
+	background: rgba(39, 38, 38, 0.81);
 	border-radius: 0px; 
 	padding: 0;
 	position: absolute; 
@@ -356,7 +361,10 @@ div.stats_description {
 	margin-bottom: 0px;
 	font-size: 16px;
 	font-weight: bold;
+	color:rgb(138, 184, 202);
 }
+
+
 
 #primary_navigation ul ul li a:hover {
 	background: #2e93a8;
@@ -373,7 +381,8 @@ div.stats_description {
 #footer {
 	width: 990px;
 	margin: auto;
-	background: #727272;
+	background: #7a7a7a;
+	font-family: 'Didact Gothic', sans-serif;
 }
 
 table#footer_table {
@@ -404,7 +413,7 @@ table#footer_table tr th, table#footer_table tr td{
 }
 
 tr#footer_header {
-	background: #2e93a8;
+	background: #3f3f3f;
 	text-align: left;
 	color: #fff;
 }
@@ -491,9 +500,7 @@ tr#footer_header {
 }
 
 #updates_block,  #testimonials_block, #stats, #announcement_block, #facebook_block {
-	border: 1px solid #DADADA;
-	border-radius: 10px;
-	box-shadow: 1px 1px 1px #E7E3E3;
+	
 }
 
 #updates_block_inner_div, #testimonials_block_inner_div{
@@ -507,6 +514,8 @@ tr#footer_header {
 #updates_block_inner_div h3, #testimonials_block_inner_div h3 {
 	margin-top: 0px;
 	color: #2e93a8;
+	font-family: 'Didact Gothic', sans-serif;
+	font-size: 17;
 }
 
 #all_updates_link {
@@ -581,7 +590,7 @@ tr#footer_header {
 	text-decoration: none;
 	font-size: 16px;
 	padding: 6px 12px;
-	background: #727272;
+	background: rgba(46, 147, 168, 0.75);
 	margin : 14px auto;
 	border-radius: 8px;
 }
@@ -591,8 +600,9 @@ tr#footer_header {
 }
 
 #lakhsya-homepage-intro p {
-	font-size: 16px;
+	font-size: 18px;
 	line-height: 28px;
+	text-align: center;
 }
 
 #lakhsya-homepage-intro a {

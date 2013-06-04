@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 
-
 {% block title %}
 <title>About - Lakshya, an NITW alumni led organization</title>
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
@@ -69,62 +68,9 @@
 
 	{% endblock %}	
 
-{% block header%}
-<div id="example">
-	<div id="header_wrapper">
-
-	<div style="width:990px; height:24px; background-image:url('{{STATIC_URL}}img/REC-top.png'); opacity:0.8;">
-		<div id="secondary_navigation" class = "right">
-		<a href="/team"> Team </a>
-		<a href="/contact"> Contact Us </a>
-		<a href="/"> Home </a>
-	</div>
-	</div>
-
-	<div style="width:990px; height:134px; background-image:url('{{STATIC_URL}}img/nav_bg.png'); opacity:0.8;">
-		<div id="primary_navigation" class = "right cR">
-		<ul>
-		<li><a href="#">About Us<span class="drop">&#9660;</span></a>
-			<ul>
-				<li><a href="/about">About Lakshya</a></li>
-				<li><a href="/team">Team</a></li>
-			</ul>
-		</li>
-		<li><a href="#">Projects<span class="drop">&#9660;</span></a>
-			<ul id="projects-menu">
-				<li><p>Innovation, Research and Entreprenuership</p></li>
-				<li><a href="/innovation/home">- Innovation Support Program</a></li>
-				<li><a href="/research/home">- Research Facilitator Program</a></li>
-				<li><p>Campus Enablers</p></li>
-				<li><a href="/automation/home">- Administrative Process Automation</a></li>
-				<li><p>Student Enablers</p></li>
-				<li><a href="/scholarships/home">- Financial Assistance Program</a></li>
-				<li><p>Others</p></li>
-				<li><a href="/pilot-projects">- Pilot Projects</a></li>
-			</ul>
-		</li>
-		<li><a href="#">Funds & Transparency<span class="drop">&#9660;</span></a>
-			<ul>
-				<li><a href="/accounts/our-core-belief">Our core belief</a></li>
-				<li><a href="/accounts/donations">Donations</a></li>
-				<li><a href="/accounts/expenses">Expenses</a></li>
-				<li><a href="/accounts/audits">Audit Statements</a></li>				
-			</ul>
-		</li>
-		<li><a href="/donate">Donate Now</a></li>
-		</ul>
-	</div>
-	</div>
-</div>
-<div id="slides">
-	<div class="slides_container" >
-			<a href="/about" title="About Us" ><img src="{{STATIC_URL}}img/aboutus.jpg" width="990" height="420" alt="About Us"></a>
-	
-	</div>
-	</div>
-	
-</div>
-{% endblock header%}
+{%block header_slide%}
+	<a href="/about" title="About Us" ><img src="{{STATIC_URL}}img/aboutus.jpg" width="990" height="420" alt="About Us"></a>
+{% endblock header_slide%}
 
 {% block content %}
 <div class = "content_with_page_title left">
