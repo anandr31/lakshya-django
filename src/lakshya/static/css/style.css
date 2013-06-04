@@ -334,7 +334,7 @@ div.stats_description {
 }
 
 #primary_navigation ul ul {
-	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0,0.92);
 	border-radius: 0px; 
 	padding: 0;
 	position: absolute; 
@@ -494,6 +494,7 @@ tr#footer_header {
 	margin-bottom: 10px;
 }
 
+
 #updates_block, #testimonials_block {
 	height: 310px;
 }
@@ -535,23 +536,26 @@ tr#footer_header {
 
 #stats {
 	width: 100%;
-	height: 47%;
+	height: 34%;
 	position: relative;
 	z-index: -1;
 }
 
 #announcemet_facebook_block{
 	width:100%;
-	height: 49%;
+	height: 33%;
 	margin-top: 8px;
 }
 
 #announcement_block {
-	width: 40%;
+	width: 100%;
+	height: 100%;
+	margin-bottom: 25px;
 }
 
 #facebook_block {
-	width: 58%;	
+	width: 100%;
+	height:33%;	
 }
 
 #announcement_block, #facebook_block p{
@@ -560,7 +564,7 @@ tr#footer_header {
 
 #announcement_block {
 	height: 100%;
-	margin-bottom: 3px;
+	margin-bottom: 0px;
 }
 
 #facebook_block {
@@ -999,7 +1003,7 @@ table.internships_numbers th {
 #fb_block {
 
 	padding-right: 50px;
-	border-right: 1px dotted grey;
+	border-right: 1px solid #000;
 	margin-bottom: 50px;
 }
 
