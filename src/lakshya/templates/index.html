@@ -76,7 +76,7 @@
 </head>
 
 {%block header_slide%}
-	<a href="/innovation/innovations-list/hovamarine" title="Hovamarine - NITW's first patent application" ><img src="{{STATIC_URL}}img/homepageHead1.jpg" width="990" height="420" alt="Hovamarine - NITW's first patent application"></a>
+	<a href="/innovation/innovations-list/hovamarine" title="Hovamarine - NITW's first patent application" ><img src="{{STATIC_URL}}img/jobi_header.jpg" width="990" height="420" alt="Hovamarine - NITW's first patent application"></a>
 {%endblock header_slide%}	
 
 
@@ -117,7 +117,7 @@
 	</div>	
 </div>
 <div id="updates_block" class="left cL">
-	<div id="updates_block_inner_div">
+	<div id="updates_block_inner_div" style="height:350px">
 		<h3>Lakshya Updates</h3>
 		<hr>
 		<ul>
@@ -125,7 +125,7 @@
 			<li>{{update.update_text|safe|slice:"90"}}  ..... <a href="/updates#update-{{update.id}}">more</a></li>			
 			{% endfor %}
 		</ul>
-		<a id="all_updates_link" class="right" href="/updates">more updates</a>
+		<a id="all_updates_link" class="right" href="/updates">More Updates</a>
 	</div>
 </div>
 <div id="testimonials_block" class="right">

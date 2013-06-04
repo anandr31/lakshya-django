@@ -260,7 +260,10 @@ div.stats_description {
 	font-size: 15px;
 	text-decoration: none;
 	text-decoration:none;
+	display:inline-block;
+	vertical-align:middle;
 }
+
 #secondary_navigation a:hover {
 	color: rgb(138, 184, 202);
 	font-weight: bold;
@@ -272,7 +275,7 @@ div.stats_description {
 	position: relative;
 	display: inline-table;
 	padding: 80px 0px 0px 0px;
-	z-index: 1;
+	z-index: 2000;
 }
 
 #primary_navigation li
@@ -533,6 +536,8 @@ tr#footer_header {
 #stats {
 	width: 100%;
 	height: 47%;
+	position: relative;
+	z-index: -1;
 }
 
 #announcemet_facebook_block{
