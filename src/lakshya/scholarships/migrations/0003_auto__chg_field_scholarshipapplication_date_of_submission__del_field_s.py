@@ -17,7 +17,7 @@ class Migration(SchemaMigration):
         # Adding field 'Scholar.person'
         db.add_column('scholarships_scholar', 'person',
                       self.gf('django.db.models.fields.related.ForeignKey')(default=0, to=orm['people.Person']),
-                      keep_default=False)
+			keep_default=False)
 
 
     def backwards(self, orm):

@@ -72,7 +72,7 @@
 
 	{% endblock %}	
 </head>
-<body>
+<body style="background-image:url('{{STATIC_URL}}img/backgrounds/grey_1.png'); background-attachment: fixed; position:relative; z-index:-10">
 
 {% block header %}
 <div id="example">
@@ -90,13 +90,13 @@
 		<div style="width:990px; height:134px; background-image:url('{{STATIC_URL}}img/nab_bar3.png'); opacity:0.95;">
 			<div id="primary_navigation" class = "right cR">
 			<ul>
-				<li><a href="#">About Us</a>
+				<li><a href="/about">About Us<span class="drop"> &#9660;</span></a>
 					<ul>
 						<li><a href="/about">About Lakshya</a></li>
 						<li><a href="/team">Team</a></li>
 					</ul>
 				</li>
-				<li><a href="#">Projects</a>
+				<li><a href="/innovation/home">Projects<span class="drop"> &#9660;</span></a>
 					<ul id="projects-menu">
 						<li><p>Innovation, Research and Entreprenuership</p></li>
 						<li><a href="/innovation/home">- Innovation Support Program</a></li>
@@ -109,7 +109,7 @@
 						<li><a href="/pilot-projects">- Pilot Projects</a></li>
 					</ul>
 				</li>
-				<li><a href="#">Funds & Transparency</a>
+				<li><a href="/accounts/our-core-belief">Funds & Transparency<span class="drop"> &#9660;</span></a>
 					<ul>
 						<li><a href="/accounts/our-core-belief">Our core belief</a></li>
 						<li><a href="/accounts/donations">Donations</a></li>
@@ -134,12 +134,14 @@
 </div>
 {% endblock header %}
 
+
 <div id="content_wrapper" class="cB">
 	<span class="cB"></span>
 	{% block content %}
 	<h1 class="cB">Content Area</h1>
     {% endblock content %}
 </div>
+
 
 {% block footer %}
 <div id="footer" class="cB">

@@ -48,7 +48,7 @@ body h4 {
 
 body {
 	font-family: 'Didact Gothic', sans-serif;
-	color: #333;
+	color: #000;
 }
 
 body h2, body h3 {
@@ -81,14 +81,14 @@ button {
 
 div.stats_number {
 	font-size: 40px;
-	color: #888;
+	color: #fff;
 	text-align: center;
 	padding-top: 10px;
 }
 
 div.stats_description {
 	font-size: 14px;
-	color: #888;
+	color: #fff;
 	text-align: center;
 
 }
@@ -266,7 +266,7 @@ div.stats_description {
 }
 
 #secondary_navigation a:hover {
-	color: rgb(0, 224, 255);
+	color: #2e93a8;
 	
 }
 
@@ -275,7 +275,7 @@ div.stats_description {
 	list-style: none;
 	position: relative;
 	display: inline-table;
-	padding: 80px 0px 0px 0px;
+	padding: 83px 0px 0px 0px;
 	z-index: 2000;
 }
 
@@ -286,8 +286,10 @@ div.stats_description {
 
 #primary_navigation .drop {
 	color: white;
+	font-size: 15;
 
 }
+
 
 #primary_navigation ul ul {
 	display: none;
@@ -311,11 +313,10 @@ div.stats_description {
 #primary_navigation ul li:hover{
 	text-decoration: none;
 	border-bottom: 3px solid #2e93a8;
-	
 }
 
 #primary_navigation ul li:hover a{
-	color: none;
+	color: #2e93a8;;
 
 }
 
@@ -386,7 +387,7 @@ div.stats_description {
 #footer {
 	width: 990px;
 	margin: auto;
-	background: #7a7a7a;
+	background: rgba(0, 0, 0, 0.73);
 	font-family: 'Didact Gothic', sans-serif;
 }
 
@@ -418,7 +419,7 @@ table#footer_table tr th, table#footer_table tr td{
 }
 
 tr#footer_header {
-	background: #3f3f3f;
+	background: rgba(63, 63, 63, 0.63);
 	text-align: left;
 	color: #fff;
 }
@@ -434,7 +435,7 @@ tr#footer_header {
 }
 
 #payment_footer {
-	background: #727272;
+	background: transparent;
 	border-top: 1px bold #fff;
 	color: #fff;
 }
@@ -470,7 +471,7 @@ tr#footer_header {
 }
 
 #footer_table a:hover {
-	color: rgb(0, 210, 255);
+	color: rgba(0, 210, 255, 0.69);
 		
 }
 
@@ -675,7 +676,7 @@ tr#footer_header {
 }
 
 #vision_block{
-	background-color: #F2F2F2;
+	background-color: rgba(242, 242, 242, 0.16);
 	padding: 5px 5px;
 	margin: 5px 0px;
 }
@@ -723,8 +724,8 @@ tr#footer_header {
 
 .selected { 
 	-moz-box-shadow: 0 0 5px 3px green;
-	-webkit-box-shadow: 0 0 5px 3px green;
-	box-shadow: 0 0 5px 3px green;
+	-webkit-box-shadow: 0 0 5px 3px rgb(0, 77, 128);
+	box-shadow: 0 0 5px 3px rgb(0, 102, 128);
 }
 
 .thumbnail {
@@ -951,7 +952,7 @@ table.internships_numbers th {
 
 #ek_jodi_kapada_stats div#stats_number {
 	font-size: 30px;
-	color: #888;
+	color: #fff;
 	text-align: center;
 	padding-top: 10px;
 }
