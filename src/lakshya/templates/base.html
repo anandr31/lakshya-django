@@ -1,3 +1,4 @@
+<html>
 <head>
 	{% block title %}
 	<title>Lakshya - an NITW alumni led organization</title>
@@ -72,7 +73,7 @@
 
 	{% endblock %}	
 </head>
-<body style="background-image:url('{{STATIC_URL}}img/backgrounds/grey_1.png'); background-attachment: fixed; position:relative; z-index:-10">
+<body style="background-image:url('{{STATIC_URL}}img/backgrounds/grey_1.jpg'); background-attachment: fixed; position:relative; z-index:-10">
 
 {% block header %}
 <div id="example">
@@ -135,11 +136,17 @@
 {% endblock header %}
 
 
-<div id="content_wrapper" class="cB" height="100%;">
-	<span class="cB"></span>
-	{% block content %}
-	<h1 class="cB">Content Area</h1>
-    {% endblock content %}
+<div id="content_wrapper" class="cB">
+	<table style="background-color:#fff; width:100%; z-index:-5;">
+		<tr>
+			<td>
+				<span class="cB"></span>
+				{% block content %}
+				<h1 class="cB">Content Area</h1>
+    			{% endblock content %}
+    		</td>
+    	</tr>
+    </table>
 </div>
 
 
@@ -175,8 +182,8 @@
 			
 		</div>		
 	</div>
-
 </div>
 {% endblock footer%}
 </body>
+</html>
 
