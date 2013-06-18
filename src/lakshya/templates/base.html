@@ -73,7 +73,7 @@
 
 	{% endblock %}	
 </head>
-<body style="background-image:url('{{STATIC_URL}}img/backgrounds/groovepaper.png'); background-attachment: fixed; position:relative; z-index:-10">
+<body style="background-image:url('{{STATIC_URL}}img/backgrounds/groovepaper.png'); background-attachment: fixed; position:relative;">
 
 {% block header %}
 <div id="example" class="effect8">
@@ -136,8 +136,8 @@
 {% endblock header %}
 
 
-<div id="content_wrapper" class="cB effect8">
-	<table style="background-color:#fff; width:100%; z-index:-5;">
+<div id="content_wrapper" class="cB effect8" style="z-index:-10;">
+	<table style="background-color:#fff; width:100%; z-index:5;">
 		<tr>
 			<td>
 				<span class="cB"></span>
