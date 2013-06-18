@@ -27,6 +27,11 @@
 	display: block;
 }
 
+html,body{
+	margin:0;
+	height: 100%;
+}
+
 body p, li, a, td, span, dl, dt {
 	font-size: 12pt;
 	line-height: 20px;
@@ -542,7 +547,7 @@ tr#footer_header {
 	width: 100%;
 	height: 34%;
 	position: relative;
-	z-index: 0;
+	z-index: -10;
 }
 
 #announcemet_facebook_block{
@@ -1225,7 +1230,7 @@ table.scholar_academic_update_table th {
 	text-decoration: none;
 	font-size: 16px;
 	padding: 10px 28px;
-	background: #727272;
+	background: rgba(46, 147, 168, 0.75);
 	margin-left : 80px;
 	border-radius: 8px;
 }
@@ -1410,4 +1415,14 @@ padding: 1px 4px;
 #companies_detail{
 	width: 70%;
 	height: 500px;	
+}
+
+
+/** Shadow Element **/
+.effect8
+{
+  	position:relative;
+    -webkit-box-shadow:0 10px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.6) inset;
+       -moz-box-shadow:0 10px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.6) inset;
+            box-shadow:0 10px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.6) inset;
 }
