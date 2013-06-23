@@ -9,8 +9,10 @@ def companies_listing(request):
     total_companies_count = companies.count
     
     #By Sectors
-    sectors_count_map = [(Sector.objects.get(id=map['sectors']), map['sectors__count']) for map in \
-                                             Company.objects.all().values('sectors').annotate(Count('sectors'))]
+    sectors_count_map = []
+    for sector_map in Company.objects.all().values('sectors').annotate(Count('sectors')):
+        if len(Sector.objects.filter(id=sector_map['sectors'])):
+            sectors_count_map.append((Sector.objects.get(id=sector_map['sectors']), sector_map['sectors__count']))
     sectors_list_details = ((x[0].name, x[0].slug, x[1]) for x in sectors_count_map)
     
     #By Batch
