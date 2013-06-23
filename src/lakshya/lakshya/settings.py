@@ -147,6 +147,7 @@ INSTALLED_APPS = (
     'south',
     'utils',
     'entrepreneurship',
+    'gunicorn',
 )
 
 # A sample logging configuration. The only tangible logging

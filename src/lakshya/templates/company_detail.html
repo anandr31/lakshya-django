@@ -72,19 +72,19 @@
 	<div class="left" id="companies_listing_right_pane">
 		<div id="sectors_list">
 			<p>Industries</p>
-			<a href="/entreprenuers">All ({{ total_companies_count }})</a>
+			<a href="/entrepreneurs">All ({{ total_companies_count }})</a>
 			{% for sector in sectors_list_details %}
 				<div>
-					<a href="/entreprenuers?sector={{ sector.1 }}">{{ sector.0 }} ({{ sector.2 }})</a>					
+					<a href="/entrepreneurs?sector={{ sector.1 }}">{{ sector.0 }} ({{ sector.2 }})</a>					
 				</div>	
 			{% endfor %}			
 		</div>
 		<div id="sectors_list">
 			<p>Countries</p>
-			<a href="/entreprenuers">All ({{ total_companies_count }})</a>
+			<a href="/entrepreneurs">All ({{ total_companies_count }})</a>
 			{% for country in countries_list_details %}
 				<div>
-					<a href="/entreprenuers?country={{ country.0 }}">{{ country.0 }} ({{ country.1 }})</a>					
+					<a href="/entrepreneurs?country={{ country.0 }}">{{ country.0 }} ({{ country.1 }})</a>					
 				</div>	
 			{% endfor %}			
 		</div>
