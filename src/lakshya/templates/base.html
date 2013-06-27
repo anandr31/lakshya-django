@@ -80,8 +80,9 @@
 {% block header %}
 <div id="header_full">
 	<div id="header_full_left" style="background-image:url('{{STATIC_URL}}img/headers/gray_left.png'); background-repeat: repeat;">
-		<a href="/"><img src="{{STATIC_URL}}img/headers/logo_name.png" /></a>
 	</div>
+
+	<a href="/"><img src="{{STATIC_URL}}img/headers/logo_name.png" /></a>
 
 	<div id="primary_nav_bar">
 	<div id="primary_nav_bar_inner">
@@ -126,7 +127,7 @@
 <div id="content_wrapper" class="cB">
 	<table style="width:100%; z-index:11;">
 		<tr>
-			<td style="padding-bottom:15px">
+			<td style="padding-bottom:25px">
 				<span class="cB"></span>
 				{% block content %}
 				<h1 class="cB">Content Area</h1>

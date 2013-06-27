@@ -7,7 +7,7 @@
 .tabs input {
 	position: absolute;
 	z-index: 1000;
-	width: 120px;
+	width: 200px;
 	height: 40px;
 	left: 0px;
 	top: 0px;
@@ -17,7 +17,7 @@
 	cursor: pointer;
 }
 .tabs input#tab-2{
-	left: 120px;
+	left: 200px;
 }
 .tabs input#tab-3{
 	left: 240px;
