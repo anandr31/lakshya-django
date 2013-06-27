@@ -48,7 +48,7 @@ body h3 {
 }
 
 body h4 {
-	font-size: 13px;
+	font-size: 16px;
 }
 
 body {
@@ -276,13 +276,30 @@ div.stats_description {
 	
 }
 
+#primary_navigation{
+	position: relative;
+	display: inline-block;
+	height:38px;
+	bottom: 0px;
+
+}
+
+#primary_navigation a p{
+text-transform: capitalize;
+}
+
 #primary_navigation ul {
 	background: none; 
 	list-style: none;
 	position: relative;
 	display: inline-table;
+	height: 38px;
 	padding: 83px 0px 0px 0px;
 	z-index: 25;
+	padding-top: 0px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	text-transform: capitalize;
 }
 
 #primary_navigation li
@@ -291,9 +308,9 @@ div.stats_description {
 }
 
 #primary_navigation .drop {
-	color: white;
+	color: #000;
 	font-size: 15;
-
+	text-transform: capitalize;
 }
 
 
@@ -311,18 +328,20 @@ div.stats_description {
 	display: block;
 }
 
-#primary_navigation ul li {
+#primary_navigation > ul > li {
 	float: left;
+	border-right:0px solid rgb(46,147,168);
 
 }
 	
 #primary_navigation ul li:hover{
 	text-decoration: none;
-	border-bottom: 3px solid #2e93a8;
+	background-image:url(../img/backgrounds/blue_texture.png);
+	background-repeat: repeat;
 }
 
 #primary_navigation ul li:hover a{
-	color: #2e93a8;;
+	color: #000;
 
 }
 
@@ -336,18 +355,20 @@ div.stats_description {
 	
 #primary_navigation ul li a {
 	display: block; 
-	padding: 0px 12px 12px 12px;
-	color: #fff; 
+	color: #000; 
 	text-decoration: none;
-	font-size: 15pt;
+	font-size: 13pt;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-right: 20px;
+	padding-left: 20px;
+	height: 22px;
 }
 
 #primary_navigation ul ul {
-	background: rgba(0, 0, 0,0.92);
 	border-radius: 0px; 
 	padding: 0;
 	position: absolute; 
-	top: 100%;
 	z-index: 25;
 }
 
@@ -360,7 +381,9 @@ div.stats_description {
 		
 #primary_navigation ul ul li a {
 	padding: 10px 20px;
-	color: #fff;
+	color: #000;
+	background: #000;
+	opacity: 0.8;
 }	
 
 #primary_navigation ul ul#projects-menu li a {
@@ -373,13 +396,16 @@ div.stats_description {
 	margin-bottom: 0px;
 	font-size: 16px;
 	font-weight: bold;
-	color:rgb(138, 184, 202);
+	color:#2e93a8;
+	background-color: #000;
+	margin-top: 0px;
+	opacity: 0.93;
 }
 
 
 
 #primary_navigation ul ul li a:hover {
-	background: #2e93a8;
+	background-image: url(../img/backgrounds/blue_texture.png);
 	color: #fff;
 }
 
@@ -621,7 +647,7 @@ tr#footer_header {
 #lakhsya-homepage-intro p {
 	font-size: 18px;
 	line-height: 28px;
-	text-align: center;
+	text-align: justify;
 }
 
 #lakhsya-homepage-intro a {
@@ -1427,3 +1453,178 @@ padding: 1px 4px;
        -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 0, 0, 0.4) ;
             box-shadow:0 1px 4px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 0, 0, 0.4) ;
 }
+
+/** New Header **/
+#header_full{
+	min-width: 100%;
+	height:114px;
+	position: relative;
+	background-image:url(../img/backgrounds/blue_texture.png);
+	background-repeat: repeat;
+}
+
+#header_full > a > img{
+	position: absolute;
+	z-index: 9;
+}
+
+#header_full_left{
+	background-color: #000;
+	min-width: 29%;
+	height: 100%;
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+}
+
+#header_full_left > a > img{
+	position: absolute;
+	height:114px;
+	left:296px;
+	z-index: -1;
+}
+
+#primary_nav_bar{
+	min-width:100%;
+	position: absolute;
+	display: inline-block;
+	height:33px;
+	background-color: #fff;
+	border-top: 1px solid #2e93a8;
+	border-bottom: 1px solid #2e93a8;
+	right:0px;
+	bottom: 0px;
+}
+
+#primary_nav_bar_inner{
+	width: 990px;
+	position: relative;
+	margin: 0px auto;
+	height: 33px;
+	z-index: 10;
+}
+
+.left_border{
+	border-left: 0px solid #2e93a8;
+}
+
+#footer_full{
+	position: absolute;
+	min-width: 100%;
+	height:245px;
+	background-color:#3a9baf;
+}
+
+#footer_top{
+	width: 990px;
+	margin: 0px auto;
+	position: relative;
+	height:245px;
+
+}
+
+#footer_table_left{
+	width: 53%;
+	height: 91%;
+	position: absolute;
+	border-right: 5px solid #7dbdca;
+	top: 13px;
+}
+
+#table_styler{
+	font-size: 14pt;
+	width: 95%;
+	height: 100%;
+	margin: auto;
+	cursor: auto;
+}
+
+#table_styler a{
+	text-decoration: none;
+	font-size: 12pt;
+	color: #fff;
+	position: relative;
+	top:10px;
+	font-weight: bold;
+}
+
+#table_styler_inner{
+	width: 90%;
+	height: 90%;
+	border:1px solid #7dbdca;
+	background-color:#7dbdca;
+}
+
+#table_styler_inner:hover{
+	background-color: #a9d4dc;
+}
+
+#footer_table_right{
+	height: 90%;
+	width:44%;
+	top:13px;
+	position: absolute;
+	left:555px;
+}
+
+#contact_us_text{
+	width: 100%;
+	height: 15%;
+	position: absolute;
+}
+
+#contact_us_text > img{
+	margin-left: 25px;
+}
+
+#contact_us_tab{
+	width: 100%;
+	position: absolute;
+	top: 16%;
+}
+
+#footer_copyright{
+	min-width: 100%;
+	height: 50px;
+	position: relative;
+	background-image: url(../img/backgrounds/gray_jean.png);
+	top: 245px;
+}
+
+#footer_copyright_inner{
+	width: 990px;
+	margin: 0px auto;
+}
+
+#footer_copyright_inner > img{
+	position: absolute;
+	top:5px;
+}
+
+#lak_copyright{
+	color: #2e93a8;
+	height: 80%;
+	width: 250px;
+	position: absolute;
+	left:950px;
+}
+
+#lak_copyright p{
+	line-height: 7px;
+}
+
+#facebook_twitter{
+	height: 100%;
+	width: 100px;
+	position: absolute;
+	left:1200px;
+	border-left: 1px solid #2e93a8;
+	top:10px;
+}
+
+.img_arrow{
+	position: relative;
+	top: 3;
+	left: 2;
+}
+
