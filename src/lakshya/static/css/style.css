@@ -1177,15 +1177,15 @@ table.scholar_academic_update_table th {
 	float:left;
 	clear:left;  
 	text-align:right;
-	width:15%;
-	font-size: 13px;
+	width:16%;
+	font-size: 13pt;
 }
 
 #account_details dd {
 	float:left;
-	margin-left:3em;
+	margin-left:1em;
 	padding-bottom: 10px;
-	font-size: 13px;
+	font-size: 13pt;
 }
 
 #postal_address p {
@@ -1630,5 +1630,11 @@ padding: 1px 4px;
 	position: relative;
 	top: 3;
 	left: 2;
+}
+
+#map_link{
+	width: 180px;
+	height: 100px;
+	position: absolute;
 }
 
