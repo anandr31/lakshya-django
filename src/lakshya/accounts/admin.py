@@ -4,7 +4,7 @@ import textwrap
 from django.contrib import admin
 from django.core.mail import EmailMessage
 from django.conf import settings
-from django.http import Http404
+from django.http import Http404, HttpResponseNotFound
 
 from reportlab.pdfgen import canvas
 
@@ -56,17 +56,32 @@ def generate_receipt(donation):
     return "Lakshya-Receipt-Donation-" + str(donation.id) + ".pdf"
 
 def has_insufficient_details(donation):
-    if donation.amount and donation.donor.name and donation.get_transacation_type_display() and \
-        donation.receipt_number and donation.date_of_donation and donation.donor.pan_number and donation.donor.get_full_address() \
-        and donation.donor.user.email :
-        return False
-    return True
+    has_insufficient_data = False
+    data_map = {"amount": donation.amount,
+                "name": donation.donor.name,
+                "Transaction type": donation.get_transacation_type_display(),
+                "Receipt Number": donation.receipt_number,
+                "Date of Donation": donation.date_of_donation,
+                "Pan Number": donation.donor.pan_number,
+                "Full Address": donation.donor.get_full_address(),
+                "Email": donation.donor.user.email}
+    missing_data_list = []
+    for key in data_map.keys():
+        if not data_map[key]:
+            has_insufficient_data = True
+            missing_data_list.append(key)
+    return (has_insufficient_data, missing_data_list)
     
 def mail_receipt(modeladmin, request, queryset):
-#    queryset.update(status='p')
+    print "adasfdas"
+    print request.META['HTTP_HOST']
     for donation in queryset:
-        if has_insufficient_details(donation):
-            raise Http404
+        has_insufficient_data, missing_data_list = has_insufficient_details(donation)
+        if has_insufficient_data:
+            return HttpResponseNotFound("<h3>The below details are missing. So, invoice can't be generated</h3><br>" + 
+                                        ",".join(missing_data_list) + "<br><br>" +
+                                        '<a href="/admin/accounts/donation/%d">Donation Link</a>  and  <a href="/admin/people/person/%d">Donor Link</a> ' %
+                                        (donation.id, donation.donor.id))
         text_content = ('''
 --------------------************-----------------------
 1. Verify the mail content and the attachment
