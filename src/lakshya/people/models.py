@@ -53,6 +53,9 @@ class Person(models.Model):
     def get_full_address(self):
         return self.billing_address + ", Landmark: " + self.billing_landmark + ", " + self.billing_city + "- " + self.billing_postal_code + ", " + \
             self.billing_state + ", " + self.billing_country
+            
+    def email(self):
+        return self.user.email
 
 class Person_preference(models.Model):
     person = models.OneToOneField(Person)

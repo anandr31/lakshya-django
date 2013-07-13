@@ -16,16 +16,27 @@ class InnovationApplication(models.Model):
     year_of_submission = models.IntegerField()
     
     title = models.CharField(max_length=200)
-    description = models.TextField(help_text="What it is about, what problem you are trying to solve etc")
     abstract = models.FileField(upload_to="innovation_abstracts", null=True, blank=True)
-    team_members = models.ManyToManyField(Person, null=True, blank=True)
+    expected_expenditure = models.CharField(max_length=15)
+    team_member = models.ForeignKey(Person, null=True, blank=True)
+    other_member_details = models.TextField(help_text="Enter your team member details")
     reviewer = models.ForeignKey(Person, related_name="reviewer", null=True, blank=True)
     review = models.TextField(blank=True)
     status = models.IntegerField(choices=INNOVATION_APPLICATION_STATUS, default=NEED_TO_REVIEW)
-
     
     def __unicode__(self):
         return self.title
+    
+    def get_team_member_detail(self):
+        retval = self.team_member.name() + "<br>" + self.team_member.get_course_display() + "," \
+                + self.team_member.get_department_display() \
+              + "," + str(self.team_member.year_of_passing) + "<br>" + self.team_member.email() + "<br>" \
+              + self.team_member.contact_number + "<br>" + \
+              "<a href='/admin/people/person/%d'>More Details</a>"%(self.team_member.id)        
+        return retval
+    
+    get_team_member_detail.allow_tags = True
+    get_team_member_detail.short_description = "Team Member Details"
     
 class Innovation(models.Model):
     application = models.OneToOneField(InnovationApplication)

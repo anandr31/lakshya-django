@@ -3,14 +3,19 @@ from innovation.models import InnovationApplication, Innovation,\
     InnovationPayment, InnovationUpdate, InnovationUpdateImage,\
     InnovationUpdateVideo, ACCEPTED
 from django import forms
+from people.models import Person
+
+
 
 class InnovationApplicationAdmin(admin.ModelAdmin):
-    fields = (('date_of_submission', 'year_of_submission',), ('title','status',), 'description', 'abstract', 
-              'team_members', 'reviewer', 'review', )
-    filter_horizontal = ('team_members', )
-    raw_id_fields = ('reviewer', )
+    fieldsets = [("Basic Details", {"fields" : [('date_of_submission', 'status',),]}),
+                 ("Project Details", {"fields" : ['title', 'abstract', "expected_expenditure"]}),
+                 ("Team Details", {"fields" : ['get_team_member_detail', 'team_member', 'other_member_details',]}),
+                 ("Review Details", {"fields" : ['reviewer', 'review',]}),]
+    raw_id_fields = ('reviewer', 'team_member')
     list_display = ('title', 'year_of_submission', 'status',)
     list_filter = ('year_of_submission', 'status', 'reviewer', )
+    readonly_fields = ("get_team_member_detail", "date_of_submission", )
     
 class InnovationUpdateInline(admin.TabularInline):
     model = InnovationUpdate
