@@ -40,7 +40,7 @@ def apply_innovation(request):
                                                           title=form.cleaned_data['title_of_project'],
                                                           status=NEED_TO_REVIEW, team_member=person, 
                                                           other_member_details=form.cleaned_data['other_member_details'])            
-            return HttpResponse("asdfasd")
+            return HttpResponse("Your application got submitted successfully. ")
                 
             # Process the data in form.cleaned_data
 #            amount = form.cleaned_data['amount']
