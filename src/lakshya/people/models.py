@@ -4,9 +4,15 @@ from django.contrib.auth.models import User
 BTECH = 0
 MTECH = 1
 PHD = 2
+MBA = 3
+MSC= 4
+MCA = 5
 COURSE_CHOICES = ((BTECH, "B.Tech"),
                   (MTECH, "M.Tech"),
-                  (PHD, "Phd"))
+                  (PHD, "PHD"),
+                  (MBA, "MBA"),
+                  (MSC, "M.Sc"),
+                  (MCA, "MCA"),)
 
 ECE = 0
 EEE = 1

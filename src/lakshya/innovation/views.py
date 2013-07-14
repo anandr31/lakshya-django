@@ -1,11 +1,11 @@
 # Create your views here.
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from forms import InnovationApplicationForm
+from forms import IspApplicationForm
 from django.contrib.auth.models import User
 from people.models import Person
 from datetime import date
-from innovation.models import InnovationApplication, NEED_TO_REVIEW
+from innovation.models import IspApplication, NEED_TO_REVIEW
 from django.http import HttpResponse
 
 def get_innovation_list(request, project_name):
@@ -16,7 +16,7 @@ def get_innovation_list(request, project_name):
     
 def apply_innovation(request):
     if request.method == 'POST': # If the form has been submitted...
-        form = InnovationApplicationForm(request.POST, request.FILES) # A form bound to the POST data
+        form = IspApplicationForm(request.POST, request.FILES) # A form bound to the POST data
         if form.is_valid(): # All validation rules passes
             try:
                 user = User.objects.get(email=form.cleaned_data['email']) 
@@ -35,25 +35,14 @@ def apply_innovation(request):
                                                is_nitw_alumni=True, course=form.cleaned_data['course'],
                                                department=form.cleaned_data['department'],
                                                year_of_passing=form.cleaned_data['year_of_passing'])
-            ia = InnovationApplication.objects.create(date_of_submission=date.today(), year_of_submission=
+            IspApplication.objects.create(date_of_submission=date.today(), year_of_submission=
                                                           date.today().year, abstract=form.cleaned_data['abstract'],
                                                           title=form.cleaned_data['title_of_project'],
-                                                          status=NEED_TO_REVIEW, team_member=person, 
+                                                          status=NEED_TO_REVIEW, member=person, 
                                                           other_member_details=form.cleaned_data['other_member_details'])            
-            return HttpResponse("Your application got submitted successfully. ")
-                
-            # Process the data in form.cleaned_data
-#            amount = form.cleaned_data['amount']
-#            email_address = form.cleaned_data['email_address']
-#            email_receipt = form.cleaned_data['email_receipt']
-#            pt = PaymentTemp.objects.create(amount=amount, email_address=email_address, email_receipt=email_receipt)
-#            transaction_id = pt.id
-#            callback_url = "http://127.0.0.1:8000/payment-return"
-#            context = {"payment_dict" : get_post_object(callback_url, amount, email_address, transaction_id)}
-#            return render_to_response("payment_redirect.html", 
-#                              RequestContext(request, context))
+            return render_to_response("apply_innovation_success.html", RequestContext(request, {}))
     else:
-        form = InnovationApplicationForm() # An unbound form
+        form = IspApplicationForm() # An unbound form
 
     return render(request, 'apply_innovation.html', {
         'form': form,

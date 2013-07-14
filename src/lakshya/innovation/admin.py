@@ -1,5 +1,5 @@
 from django.contrib import admin
-from innovation.models import InnovationApplication, Innovation,\
+from innovation.models import IspApplication, Innovation,\
     InnovationPayment, InnovationUpdate, InnovationUpdateImage,\
     InnovationUpdateVideo, ACCEPTED
 from django import forms
@@ -7,15 +7,15 @@ from people.models import Person
 
 
 
-class InnovationApplicationAdmin(admin.ModelAdmin):
+class IspApplicationAdmin(admin.ModelAdmin):
     fieldsets = [("Basic Details", {"fields" : [('date_of_submission', 'status',),]}),
                  ("Project Details", {"fields" : ['title', 'abstract', "expected_expenditure"]}),
-                 ("Team Details", {"fields" : ['get_team_member_detail', 'team_member', 'other_member_details',]}),
-                 ("Review Details", {"fields" : ['reviewer', 'review',]}),]
-    raw_id_fields = ('reviewer', 'team_member')
+                 ("Team Details", {"fields" : ['get_member_detail', 'member', 'other_member_details',]}),
+                 ("Review Details", {"fields" : ['review',]}),]
+    raw_id_fields = ('member',)
     list_display = ('title', 'year_of_submission', 'status',)
-    list_filter = ('year_of_submission', 'status', 'reviewer', )
-    readonly_fields = ("get_team_member_detail", "date_of_submission", )
+    list_filter = ('year_of_submission', 'status', )
+    readonly_fields = ("get_member_detail", "date_of_submission", )
     
 class InnovationUpdateInline(admin.TabularInline):
     model = InnovationUpdate
@@ -62,7 +62,7 @@ class InnovationUpdateAdmin(admin.ModelAdmin):
     list_filter = ('innovation', )
     inlines = (InnovationUpdateImageInline, InnovationUpdateVideoInline,)
 
-admin.site.register(InnovationApplication, InnovationApplicationAdmin)
+admin.site.register(IspApplication, IspApplicationAdmin)
 admin.site.register(Innovation, InnovationAdmin)
 admin.site.register(InnovationPayment, InnovationPaymentAdmin)
 admin.site.register(InnovationUpdate, InnovationUpdateAdmin)

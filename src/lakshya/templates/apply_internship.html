@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Apply for Research Facilitator Program</title>
+<meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
+{% endblock title %}
+
+{% block content %}
+<br>
+<h2>Apply for Research Facilitator Program</h2>
+
+<form class="application" enctype="multipart/form-data" action="/research/apply-internship-funding" method="post">{% csrf_token %}
+    <div class="left">
+	{% for field in form.visible_fields %}
+    	{% if forloop.counter < 11 %}
+        {% if field.label = "Name of Company/University" %}
+          <h3>Internship Details </h3>
+        {% endif %}
+    		<div class="field">
+                <label>{{ field.label}}</label> {{ field }}
+               	<p class="error">
+               		{% for error in field.errors %}
+               			{{error}}<br>
+               		{% endfor %}
+               	</p>
+        </div>
+    	{% endif %}
+    {% endfor %}
+    </div>
+    <div class="second_column left"> 	
+    {% for field in form.visible_fields %}
+    	{% if forloop.counter > 10 %}
+    		<div class="field">
+                <label>{{ field.label}}</label> {{ field }}
+               	<p class="error">
+               		{% for error in field.errors %}
+               			{{error}}<br>
+               		{% endfor %}
+               	</p>
+        </div>
+    	{% endif %}
+    {% endfor %}
+    <div id="terms">
+	    <p>Terms and conditions </p>
+	    <ul>
+	    	<li>We do not accept entries for internships which take <br> place after you graduate</li>
+        <li>You agree to prepare and submit a report post internship <br> and share your experience with fellow students and faculty</li>
+	    </ul>
+	    <p class="note">By clicking Submit, you agree to above Terms and Conditions</p>
+    </div>
+    <button type="submit" value="Submit">Submit</button>
+    </div>
+    <span class="cB"></span>
+</form>
+
+{% endblock content %}

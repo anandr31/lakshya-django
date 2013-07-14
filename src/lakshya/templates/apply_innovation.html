@@ -9,7 +9,7 @@
 <br>
 <h2>Apply for Innovation Support Program.</h2>
 
-<form id="apply_innovation" enctype="multipart/form-data" action="/innovation/apply" method="post">{% csrf_token %}
+<form class="application" enctype="multipart/form-data" action="/innovation/apply" method="post">{% csrf_token %}
     <div class="left">
 	{% for field in form.visible_fields %}
     	{% if forloop.counter < 10 %}
@@ -47,25 +47,6 @@
     <button type="submit" value="Submit">Submit</button>
     </div>
     <span class="cB"></span>
-
-<!--     <div class="column-1 left">
-       {{ form.name }}
-       {{ form.email }}
-       {{ form.repeat_email }}
-       {{ form.roll_num }}
-       {{ form.course }}
-       {{ form.department }}
-       {{ form.year_of_passing }} 
-       {{ form.contact_number }}
-       {{ form.other_member_details }}        
-    </div>
-    <div class="column-2 left"> 
-       {{ form.title_of_project }}
-       {{ form.expected_expenditure }}
-       {{ form.abstract }}
-       <input type="submit" value="Submit" />
-    </div>
-    <span class="cB"></span> -->
 </form>
 
 {% endblock content %}

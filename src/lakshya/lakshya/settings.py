@@ -143,6 +143,7 @@ INSTALLED_APPS = (
     'people',
     'accounts',
     'innovation',
+    'research',
     'scholarships',
     'south',
     'utils',

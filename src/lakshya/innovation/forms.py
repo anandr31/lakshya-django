@@ -9,7 +9,7 @@ Created on 13-Jul-2013
 from django import forms
 from people.models import DEPARTMENT_CHOICES, COURSE_CHOICES
 
-class InnovationApplicationForm(forms.Form):
+class IspApplicationForm(forms.Form):
     name = forms.CharField()
     email = forms.EmailField()
     repeat_email = forms.EmailField()
@@ -24,7 +24,7 @@ class InnovationApplicationForm(forms.Form):
     abstract = forms.FileField()
         
     def clean(self):
-        cleaned_data = super(InnovationApplicationForm, self).clean()
+        cleaned_data = super(IspApplicationForm, self).clean()
         email = cleaned_data.get('email')
         repeat_email = cleaned_data.get('repeat_email')
         if not email == repeat_email:

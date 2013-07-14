@@ -461,6 +461,7 @@ tr#footer_header {
 	width: 990px;
 	margin: auto;
 	margin-top: 0px;
+	min-height: 300px;
 }
 
 #content_wrapper h1 {
@@ -871,24 +872,24 @@ tr#footer_header {
 
 /* --------------------------- START OF Innovations Apply PAGE --------------------------- */
 
-#apply_innovation .field{
+.application .field{
 	padding-bottom: 2px;
 }
 
-#apply_innovation label{
+.application label{
 	width: 200px;
 	display: inline-block;
 }
 
-#apply_innovation .error{
+.application .error{
 	color: red;
 	font-size: 12px;
 }
-#apply_innovation .second_column{
+.application .second_column{
 	padding-left: 30px;
 }
 
-#apply_innovation button {
+.application button {
 	display: block;
 	width: 60%;
 	color: #fff;
@@ -900,7 +901,7 @@ tr#footer_header {
 	border-radius: 8px;
 }
 
-#apply_innovation button {
+.application button {
 	display: block;
 	width: 60%;
 	color: #fff;
@@ -912,12 +913,12 @@ tr#footer_header {
 	border-radius: 8px;
 }
 
-#apply_innovation p.note{
+.application p.note{
 	font-size: 13px;
 	padding-top: 10px;
 }
 
-#apply_innovation div#terms li{
+.application div#terms li{
 	font-size: 14px;
 }
 
