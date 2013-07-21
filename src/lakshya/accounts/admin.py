@@ -83,12 +83,6 @@ def mail_receipt(modeladmin, request, queryset):
                                         '<a href="/admin/accounts/donation/%d">Donation Link</a>  and  <a href="/admin/people/person/%d">Donor Link</a> ' %
                                         (donation.id, donation.donor.id))
         text_content = ('''
---------------------************-----------------------
-1. Verify the mail content and the attachment
-2. Remove this block
-3. Forward this to %s after removing the 'Fwd' in the subject header
---------------------************-----------------------
-
 Dear %s,
 
 Please find attached the receipt for your donation made to The Lakshya Foundation on %s
@@ -98,9 +92,11 @@ Feel free to contact us for any queries.
 Thanks,
 Anand
 For Lakshya Team
-        ''') % (donation.donor.user.email, donation.donor.name(), donation.date_of_donation)
+        ''') % (donation.donor.name(), donation.date_of_donation)
         msg = EmailMessage("Lakshya Donation Receipt", text_content, "info@thelakshyafoundation.org", 
-                           ['anand@thelakshyafoundation.org',], cc=['srihari@thelakshyafoundation.org',])
+                           [donation.donor.user.email,], 
+                           bcc=['anand@thelakshyafoundation.org', 'srihari@thelakshyafoundation.org'])
+                
         msg.attach_file(generate_receipt(donation))
         msg.attach_file("static/docs/lakshya_80G_tax_exemption.pdf")
         msg.send()
