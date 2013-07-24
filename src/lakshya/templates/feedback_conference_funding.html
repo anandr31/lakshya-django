@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Feedback on Conference Funding Application</title>
+<meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
+{% endblock title %}
+
+{% block content %}
+<br>
+<h2>Feedback on Conference Funding Application</h2>
+
+<div id="feedback_conference_details" class="left">
+  <h3>Conference Details</h3>
+  <p>Name : {{ conference_application.conference_name }}</p>
+  <p>City : {{ conference_application.conference_city }}</p>
+  <p>Country : {{ conference_application.conference_country }}</p>
+  <p>URL : {{ conference_application.conference_url }}</p>
+
+  <h3>Paper Details</h3>
+  <p>Paper Title : {{ conference_application.paper_title }}</p>
+
+</div>
+
+<div class="left">
+  <form id="conference_feedback_form" class="application" enctype="multipart/form-data" action="/research/feedback-conference-funding" method="post">{% csrf_token %}
+  <h3>Feedback</h3>
+  <p>Rate from 0 to 5, 5 being excellent </p>
+	{% for field in form.visible_fields %}
+        {% if field.label == "Application id" or field.label == "Panelist id" or field.label == "Time stamp" %}
+    		  <div class="field hidden">
+        {% else %}
+          <div class="field">
+        {% endif %}
+                <label>{{ field.label}}</label> {{ field }}
+               	<p class="error">
+               		{% for error in field.errors %}
+               			{{error}}<br>
+               		{% endfor %}
+               	</p>
+        </div>
+    {% endfor %}
+    <button type="submit" value="Submit">Submit</button>
+    <span class="cB"></span>
+  </form>
+</div>
+
+{% endblock content %}

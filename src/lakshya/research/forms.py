@@ -6,6 +6,7 @@ Created on 14-Jul-2013
 
 from django import forms
 from people.models import DEPARTMENT_CHOICES, COURSE_CHOICES
+from research.models import ConferenceApplicationFeedback
 
 class ConferenceApplicationForm(forms.Form):
     name = forms.CharField()
@@ -20,10 +21,13 @@ class ConferenceApplicationForm(forms.Form):
     conference_dates = forms.CharField()
     conference_city = forms.CharField(label="City")
     conference_country = forms.CharField(label="Country")
+    conference_url = forms.CharField(label="Conference Website Url", required=False)    
     expected_expenditure = forms.CharField()    
     paper_title = forms.CharField()
+    research_paper = forms.FileField()
     sop = forms.FileField(label="Statement Of Purpose")
     acceptance_email = forms.FileField()
+    
         
     def clean(self):
         cleaned_data = super(ConferenceApplicationForm, self).clean()
@@ -58,3 +62,13 @@ class InternshipApplicationForm(forms.Form):
         if not email == repeat_email:
             self._errors["repeat_email"] = self.error_class(["You have to enter the same email address"])
         return cleaned_data
+    
+class ConferenceApplicationFeedbackForm(forms.ModelForm):
+    
+    application_id = forms.IntegerField()
+    panelist_id = forms.IntegerField()        
+            
+    class Meta:
+        model = ConferenceApplicationFeedback
+        exclude = ['application', 'panelist',]
+        

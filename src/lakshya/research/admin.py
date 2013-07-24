@@ -5,7 +5,11 @@ Created on 14-Jul-2013
 '''
 from django.contrib import admin
 from models import ConferenceApplication, InternshipApplication
+from research.models import Panelist, ConferenceApplicationFeedback
 
+class PanelistAdmin(admin.ModelAdmin):
+    list_display = ("name", "branch", "active",)
+    list_filter = ("branch", "active",)
 
 class ConferenceApplicationAdmin(admin.ModelAdmin):
     fieldsets = [("Basic Details", {"fields" : [('date_of_submission', 'status',),]}),
@@ -30,6 +34,13 @@ class InternshipApplicationAdmin(admin.ModelAdmin):
     list_filter = ('year_of_submission', 'status', 'internship_place', 'internship_country')
     readonly_fields = ("get_applicant_detail", "date_of_submission", )
     
+class ConferenceApplicationFeedbackAdmin(admin.ModelAdmin):
+    list_display = ("application", "panelist", "recommended_extent_of_funding",)
+    list_filter = ("recommended_extent_of_funding",)
+    
 admin.site.register(InternshipApplication, InternshipApplicationAdmin)
 admin.site.register(ConferenceApplication, ConferenceApplicationAdmin)
+admin.site.register(Panelist, PanelistAdmin)
+admin.site.register(ConferenceApplicationFeedback, ConferenceApplicationFeedbackAdmin)
+
 

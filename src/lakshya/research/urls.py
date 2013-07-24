@@ -10,4 +10,6 @@ urlpatterns = patterns('',
     url(r'^home$', TemplateView.as_view(template_name="research_facilitator_home.html")),
     url(r'^apply-conference-funding/?$', 'research.views.apply_conference', name="research_apply_conference"),
     url(r'^apply-internship-funding/?$', 'research.views.apply_internship', name="reserach_apply_internship"),
+    url(r'^feedback-conference-funding/?$', 'research.views.feedback_conference', name="feedback_conference"),
+
 )

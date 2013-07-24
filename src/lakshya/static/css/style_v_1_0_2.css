@@ -19,6 +19,10 @@
 	clear: left;
 }
 
+.hidden {
+	display: none;
+}
+
 .center {
 	text-align: center;
 }
@@ -923,6 +927,18 @@ tr#footer_header {
 }
 
 /* --------------------------- END OF Innovations Apply PAGE --------------------------- */
+
+/* --------------------------- START OF Feedback on Conference Funding PAGE --------------------------- */
+
+#conference_feedback_form #application_id, 
+
+#feedback_conference_details{
+	padding-right: 200px;
+	max-width: 400px;
+}
+
+
+/* --------------------------- END OF Feedback on Conference Funding PAGE --------------------------- */
 
 
 
