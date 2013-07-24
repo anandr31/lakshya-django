@@ -58,7 +58,7 @@ Conference Name : %s
 Paper Title : %s
 Feedback Link : %s
 """ % (panelist.name,ca.conference_name, ca.paper_title, 
-                       "www.thelakshyafoundation.org/research/feedback-conference-funding?application_id=%d&panelist_id=%d" % (ca.id, panelist.id))
+                       "%s/research/feedback-conference-funding?application_id=%d&panelist_id=%d" % (settings.SITE_URL, ca.id, panelist.id))
                 msg = EmailMessage("Lakshya: Feedback on conference funding application", content, "info@thelakshyafoundation.org", 
                                [panelist.email,],)
                 msg.attach_file(settings.MEDIA_ROOT +"/"+ ca.research_paper.name)
@@ -132,10 +132,21 @@ def feedback_conference(request):
                                                          time_stamp=datetime.now())
             
             content = """
+            
+Hey guys,
+
+We got a feedback for a conference funding application. Below are the details. 
+
 From: %s
 For : %s
 Application : %s
-""" %(caf.panelist.name, caf.application.paper_title, caf.application.applicant.name())
+Application Link : %s 
+Feedback Link : %s
+
+
+""" %(caf.panelist.name, caf.application.paper_title, caf.application.applicant.name(),
+      "%s/admin/research/conferenceapplication/%d" % (settings.SITE_URL, caf.application.id), 
+      "%s/admin/research/conferenceapplicationfeedback/%d" % (settings.SITE_URL, caf.id))
             msg = EmailMessage("Lakshya: Got feedback on conference funding application", content, "info@thelakshyafoundation.org", 
                                ['srihari@thelakshyafoundation.org', 'anand@thelakshyafoundation.org', 'naveen@thelakshyafoundation.org',],)
             msg.send()
