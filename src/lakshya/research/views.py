@@ -118,7 +118,7 @@ def apply_internship(request):
 def feedback_conference(request):
     if request.method == 'POST': # If the form has been submitted...
         form = ConferenceApplicationFeedbackForm(request.POST, request.FILES) # A form bound to the POST data
-        ca = ConferenceApplication.objects.get(id=form.cleaned_data['application_id'])
+        ca = ConferenceApplication.objects.get(id=request.POST.get('application_id'))
 #        import pdb; pdb.set_trace()
         if form.is_valid(): # All validation rules passes
             caf = ConferenceApplicationFeedback.objects.create(application=ConferenceApplication.objects.get(id=form.cleaned_data['application_id']),
@@ -138,9 +138,9 @@ Hey guys,
 
 We got a feedback for a conference funding application. Below are the details. 
 
-From: %s
-For : %s
-Application : %s
+Panelist : %s
+Applicant : %s
+Paper Title : %s
 Application Link : %s 
 Feedback Link : %s
 
