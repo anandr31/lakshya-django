@@ -18,8 +18,8 @@ def apply_conference(request):
         form = ConferenceApplicationForm(request.POST, request.FILES) # A form bound to the POST data
         if form.is_valid(): # All validation rules passes
             try:
-                user = User.objects.get(email=form.cleaned_data['email']) 
-            except User.DoesNotExist:
+                user = User.objects.filter(email=form.cleaned_data['email'])[0]
+            except :
                 user = User.objects.create(username=form.cleaned_data['email'],first_name=form.cleaned_data['name'], 
                                            email=form.cleaned_data['email'])    
             
@@ -79,8 +79,8 @@ def apply_internship(request):
         form = InternshipApplicationForm(request.POST, request.FILES) # A form bound to the POST data
         if form.is_valid(): # All validation rules passes
             try:
-                user = User.objects.get(email=form.cleaned_data['email']) 
-            except User.DoesNotExist:
+                user = User.objects.filter(email=form.cleaned_data['email'])[0]
+            except:
                 user = User.objects.create(username=form.cleaned_data['email'],first_name=form.cleaned_data['name'], 
                                            email=form.cleaned_data['email'])    
             
@@ -137,7 +137,7 @@ For : %s
 Application : %s
 """ %(caf.panelist.name, caf.application.paper_title, caf.application.applicant.name())
             msg = EmailMessage("Lakshya: Got feedback on conference funding application", content, "info@thelakshyafoundation.org", 
-                               ['sriharimaneru@gmail.com',],)
+                               ['srihari@thelakshyafoundation.org', 'anand@thelakshyafoundation.org', 'naveen@thelakshyafoundation.org',],)
             msg.send()
             
             return render_to_response("feedback_conference_success.html", RequestContext(request, {}))
