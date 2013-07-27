@@ -30,7 +30,7 @@ def get_financial_year(donation):
 
 def generate_receipt(donation):
     p = canvas.Canvas("Lakshya-Receipt-Donation-" + str(donation.id) + ".pdf")
-    p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/receipt-header.jpg", 2, 700, 600, 133)
+    p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/receipt-header.jpg", 2, 720, 600, 100)
     p.drawString(10, 680, datetime.date.today().strftime("%B %d, %Y"))
     p.drawString(430, 680, "No. "+str(donation.receipt_number) + "/" + get_financial_year(donation))
     p.setFontSize(18)
