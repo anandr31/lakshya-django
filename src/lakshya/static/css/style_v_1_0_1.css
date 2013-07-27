@@ -893,8 +893,19 @@ tr#footer_header {
 	padding-left: 30px;
 }
 
+.application button {
+	display: block;
+	width: 60%;
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	padding: 6px 12px;
+	background: #2e93a8;
+	margin : 14px auto;
+	border-radius: 8px;
+}
 
-.button {
+.application button {
 	display: block;
 	width: 60%;
 	color: #fff;
@@ -904,7 +915,6 @@ tr#footer_header {
 	background: rgba(46, 147, 168, 0.75);
 	margin : 14px auto;
 	border-radius: 8px;
-	text-align: center;
 }
 
 .application p.note{

@@ -18,7 +18,7 @@ class IspApplicationForm(forms.Form):
     department = forms.ChoiceField(choices=DEPARTMENT_CHOICES)
     year_of_passing = forms.IntegerField()    
     contact_number = forms.CharField()
-    other_member_details = forms.CharField(required=False)
+    other_member_details = forms.CharField(label="Other team member details (Names)", required=False)
     title_of_project = forms.CharField()
     expected_expenditure = forms.CharField()
     abstract = forms.FileField()
