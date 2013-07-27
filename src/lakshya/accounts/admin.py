@@ -31,7 +31,7 @@ def get_financial_year(donation):
 def generate_receipt(donation):
     p = canvas.Canvas("Lakshya-Receipt-Donation-" + str(donation.id) + ".pdf")
     p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/receipt-header.jpg", 2, 720, 600, 100)
-    p.drawString(10, 680, datetime.date.today().strftime("%B %d, %Y"))
+    p.drawString(20, 680, datetime.date.today().strftime("%B %d, %Y"))
     p.drawString(430, 680, "No. "+str(donation.receipt_number) + "/" + get_financial_year(donation))
     p.setFontSize(18)
     p.drawString(200, 650, "Receipt For Donation")
@@ -42,14 +42,14 @@ def generate_receipt(donation):
            donation.get_transacation_type_display(), donation.donor.pan_number, donation.donor.get_full_address())
     content_start=620
     for line in textwrap.wrap(content, 100):
-        p.drawString(10, content_start, line)
+        p.drawString(20, content_start, line)
         content_start -= 20
         
-    p.drawString(10, 490, "For The Lakshya Foundation")
-    p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/managing_trustee_sign.jpg", 10, 440, 80, 35)
-    p.drawString(10,430, "Dr K.Padma")
-    p.drawString(10, 410, "Managing Trustee")
-    p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/receipt_footer.jpg", 2, 180, 596, 200)
+    p.drawString(20, 490, "For The Lakshya Foundation")
+    p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/managing_trustee_sign.jpg", 20, 440, 80, 35)
+    p.drawString(20,430, "Dr K.Padma")
+    p.drawString(20, 410, "Managing Trustee")
+    p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/receipt_footer.png", 2, 180, 600, 230)
     
     p.showPage()
     p.save()
