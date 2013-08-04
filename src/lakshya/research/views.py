@@ -13,6 +13,7 @@ from django.http import Http404
 from research.models import Panelist, ConferenceApplicationFeedback
 
 
+
 def apply_conference(request):
     if request.method == 'POST': # If the form has been submitted...
         form = ConferenceApplicationForm(request.POST, request.FILES) # A form bound to the POST data
@@ -48,23 +49,53 @@ def apply_conference(request):
                                                  sop=form.cleaned_data['sop'],
                                                  acceptance_email=form.cleaned_data['acceptance_email'],)
             
-#            import pdb; pdb.set_trace()
-            for panelist in Panelist.objects.filter(branch=form.cleaned_data['department'], active=True):
-                print "************" + panelist.email
+            for panelist in Panelist.objects.filter(branch=form.cleaned_data['department'], active=True):  
                 content = """
-Dear %s
-Please review the below application
-Conference Name : %s
-Paper Title : %s
-Feedback Link : %s
-""" % (panelist.name,ca.conference_name, ca.paper_title, 
-                       "%s/research/feedback-conference-funding?application_id=%d&panelist_id=%d" % (settings.SITE_URL, ca.id, panelist.id))
+Dear %s,
+
+We have received the following application for the Research Facilitator Program - request for funding for conference. Please review the application and kindly give us your feedback based on which we will decide on the funding to be extended to the applicant.
+
+The relevant documents for the conference are attached with the mail. Basic details are given below:
+
+Conference Name: %s
+Dates: %s
+Conference website: %s
+Paper Title: %s
+Expected Expenditure: %s
+Online feedback Link: %s
+
+Thanks,
+The Lakshya Team
+""" % (panelist.name, ca.conference_name, ca.conference_dates, 
+       ca.conference_url, ca.paper_title, ca.expected_expenditure,   
+       "%s/research/feedback-conference-funding?application_id=%d&panelist_id=%d" % (settings.SITE_URL, ca.id, panelist.id))
                 msg = EmailMessage("Lakshya: Feedback on conference funding application", content, "info@thelakshyafoundation.org", 
                                [panelist.email,],)
                 msg.attach_file(settings.MEDIA_ROOT +"/"+ ca.research_paper.name)
                 msg.attach_file(settings.MEDIA_ROOT +"/"+ ca.sop.name)
                 msg.attach_file(settings.MEDIA_ROOT +"/"+ ca.acceptance_email.name)
-                msg.send()            
+                msg.send()                            
+                
+                
+#                 Django Notification doesn't support attachments             
+#                user = User(first_name="Srihari", last_name="", 
+#                       email="sriharimaneru@gmail.com", id=1)
+#                
+#                to_users = [user, ]
+#                context = {"panelist_name": panelist.name,
+#                           "conference_name": ca.conference_name,
+#                           "conference_dates": ca.conference_dates,
+#                           "conference_url": ca.conference_url,
+#                           "paper_title": ca.paper_title,
+#                           "expenditure": ca.expected_expenditure,
+#                           "feedback_url": "%s/research/feedback-conference-funding?application_id=%d&panelist_id=%d" \
+#                                            % (settings.SITE_URL, ca.id, panelist.id),
+#                           }
+#                
+#                attachments = []
+#                attachments.append(settings.MEDIA_ROOT +"/"+ ca.research_paper.name)
+#                attachments.append(settings.MEDIA_ROOT +"/"+ ca.acceptance_email.name)
+#                notification.send(to_users, "feedback_conference_funding", context, attachments=attachments)        
             
             return render_to_response("apply_research_success.html", RequestContext(request, {}))
     else:
