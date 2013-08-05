@@ -1,0 +1,21 @@
+{% block mail_content %}
+Dear {{panelist_name}},
+
+We have received the following application for the Research Facilitator Program - request for funding for conference. Please review the application and kindly give us your feedback based on which we will decide on the funding to be extended to the applicant.
+
+The relevant documents for the conference are attached with the mail. Basic details are given below:
+
+Conference Name: {{ conference_name }}
+Dates: {{ conference_dates }}
+{% if conference_url %}
+Conference website: {{ conference_url }}
+{% endif %}
+Paper Title: {{paper_title}}
+Expected Expenditure: {{expenditure}}
+
+
+Online feedback Link: {{feedback_url}}
+
+Thanks,
+The Lakshya Team
+{%endblock%}

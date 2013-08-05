@@ -27,7 +27,7 @@ def get_post_object(callback_url, amount, email_address, transaction_id):
             "Order_Id" :transaction_id ,
             "Redirect_Url" :callback_url ,
             
-            "Checksum" :calc_checksum("M_thelaksh_10884", transaction_id, amount, callback_url, "95o6bpj72771v3yo7s") ,
+            "Checksum" :calc_checksum("M_thelaksh_10884", transaction_id, amount, callback_url, "vsb2w5ampye1baft0hg62jlwrscw007u") ,
             
             "billing_cust_name" :name , 
             "billing_cust_address" :address , 
@@ -52,7 +52,7 @@ def get_post_object(callback_url, amount, email_address, transaction_id):
             "Amount" :amount ,
             "Order_Id" :transaction_id ,
             "Redirect_Url" :callback_url , 
-            "Checksum" :calc_checksum("M_thelaksh_10884", transaction_id, amount, callback_url, "95o6bpj72771v3yo7s") ,
+            "Checksum" :calc_checksum("M_thelaksh_10884", transaction_id, amount, callback_url, "vsb2w5ampye1baft0hg62jlwrscw007u") ,
             "billing_cust_name" :"" , 
             "billing_cust_address" :"" , 
             "billing_cust_country" :"" ,

@@ -16,8 +16,17 @@
 <!--		<p>You can donate to Lakshya in one of the below ways</p>
 		<a href="#">Why Seed Capital</a><a href="#">Why Corpus</a>-->
 		<h3 id="vision_block">Payment Gateway (Credit card, Debit card, Net Banking)</h3>	
-		<form action="payment_redirect" method="post">{% csrf_token %}
-		{{ form.as_p }}
+		<form class="application" action="payment_redirect" method="post">{% csrf_token %}
+			{% for field in form.visible_fields %}
+				<div class="field">
+		            <label>{{ field.label}}</label> {{ field }}
+		           	<p class="error">
+		           		{% for error in field.errors %}
+		           			{{error}}<br>
+		           		{% endfor %}
+		           	</p>
+		       	</div>
+		    {% endfor %}
 		<input type="submit" value="Submit" />
 		</form>
 		<h3 id="vision_block">Online Transfer</h3>

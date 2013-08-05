@@ -1,6 +1,8 @@
 # Create your views here.
 #from reportlab.pdfgen import canvas
 #from django.http import HttpResponse
+
+from datetime import date
 from django.shortcuts import render_to_response, render, redirect
 from django.template.context import RequestContext
 from django.http import HttpResponseRedirect
@@ -9,7 +11,8 @@ from django.contrib.gis.geoip import GeoIP
 from django.conf import settings
 
 
-from accounts.models import Expense, Donation
+from accounts.models import Expense, Donation, DonationFund, PAYMENT_GATEWAY,\
+    DIRECT
 from people.models import Person
 from accounts.forms import PaymentTempForm, PledgeForm
 from accounts.models import PaymentTemp, Pledge
@@ -17,6 +20,9 @@ from accounts.utils import get_post_object
 from accounts.forms import CCAVenueReturnForm
 from django.views.decorators.csrf import csrf_exempt
 import math
+from django.contrib.auth.models import User
+from notification import models as notification
+
 
 
 def expenses_home(request):
@@ -65,7 +71,9 @@ def payment_redirect(request):
             email_receipt = form.cleaned_data['email_receipt']
             pt = PaymentTemp.objects.create(amount=amount, email_address=email_address, email_receipt=email_receipt)
             transaction_id = pt.id
-            callback_url = "http://127.0.0.1:8000/payment-return"
+            if settings.ENV == "dev":
+                transaction_id = "dev" + str(pt.id)
+            callback_url = "http://www.thelakshyafoundation.org/accounts/payment-return"
             context = {"payment_dict" : get_post_object(callback_url, amount, email_address, transaction_id)}
             return render_to_response("payment_redirect.html", 
                               RequestContext(request, context))
@@ -78,8 +86,9 @@ def payment_redirect(request):
     
 @csrf_exempt
 def return_view(request):   
+#    import pdb; pdb.set_trace()
     if request.method == "POST":       
-        working_key = "95o6bpj72771v3yo7s"
+        working_key = "vsb2w5ampye1baft0hg62jlwrscw007u"
         merchant_id = "M_thelaksh_10884"
         
         form = CCAVenueReturnForm(merchant_id, working_key, request.POST)
@@ -89,6 +98,51 @@ def return_view(request):
        
         if form.cleaned_data['AuthDesc'] == 'N':
             return redirect('payment-failure')
+        
+        try:
+            temp_id = request.POST.get("Order_Id")
+            if settings.ENV == "dev":
+                #order_id will be like dev11
+                temp_id = int(request.POST.get("Order_Id").split("dev")[1])
+            paymentTemp = PaymentTemp.objects.get(id=temp_id)
+        except PaymentTemp.DoesNotExist:
+            print "Error: Shouldn't have come here.PaymentTemp is missing"
+            return redirect("payment-success")
+        
+        try:
+            user = User.objects.get(email=paymentTemp.email_address)
+        except User.DoesNotExist:
+            user = User.objects.create(username=paymentTemp.email_address, 
+                                       email=paymentTemp.email_address, 
+                                       first_name=request.POST.get("delivery_cust_name"),
+                                       password="Lakshya123$")
+        try:
+            person = Person.objects.get(user=user)
+        except Person.DoesNotExist:
+            person = Person.objects.create(user=user)
+        
+        if paymentTemp.pan_card:
+            person.pan_number = paymentTemp.pan_card
+            person.save()
+        
+        Donation.objects.create(amount=request.POST.get("Amount"),
+                                date_of_donation=date.today(),
+                                donor=person,
+                                donation_fund=DonationFund.objects.filter(name__contains="Lakshya")[0],
+                                transacation_type=PAYMENT_GATEWAY,
+                                transaction_details="CCAvenue Id: "+str(request.POST.get("Order_Id")),
+                                donation_type=DIRECT,
+                                is_repayment=False,)
+        
+        info_user = User(first_name="Info", last_name="", 
+                       email="info@thelakshyafoundation.org", id=1)
+                
+        to_users = [user, info_user]
+        
+        context = {"name": request.POST.get("delivery_cust_name"),
+                   "amount": request.POST.get("Amount")}
+        
+        notification.send(to_users, "payment_confirmation", context)
         
         return redirect("payment-success")
     else:
@@ -101,9 +155,6 @@ def calc_amount(ip):
     """
     g = GeoIP(path=settings.PROJECT_DIR + "/libraries/geoip")
     country = g.country(ip)
-    print "-------------ip------------" + ip
-    print country
-    print "country"
     if country["country_code"] and country["country_code"] in ["AU", "AT", "JP", "US", "CA", "GB", "CH", "SE", \
                                                                 "ES", "SG", "DK", "JP", "IT", "DE" ]:
         return True
