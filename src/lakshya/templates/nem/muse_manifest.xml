@@ -1,0 +1,84 @@
+<manifest alg="2" build="704" opt="false" iceEnabled="true">
+  <folder name="css">
+    <file name="site_global.css" crc="4036735006"/>
+    <file name="master_a-master.css" crc="122192223" ref="register:index"/>
+    <file name="register.css" crc="391844208" ref="register"/>
+    <file name="index.css" crc="150218683" ref="index"/>
+  </folder>
+  <folder name="assets">
+    <folder name="nemintro">
+      <folder name="edge_includes">
+        <file name="edge.2.0.0.min.js" crc="3766536203" mt="1375526060000"/>
+        <file name="jquery-1.7.1.min.js" crc="111770969" mt="1375526060000"/>
+      </folder>
+      <folder name="images">
+        <file name="circleplant.png" crc="4233558162" mt="1375526060000"/>
+        <file name="circleplant2.png" crc="4233558162" mt="1375526060000"/>
+        <file name="circleplant3.png" crc="4233558162" mt="1375526060000"/>
+        <file name="plant 3.png" crc="4116062427" mt="1375526060000"/>
+        <file name="plant1.png" crc="106398317" mt="1375526060000"/>
+        <file name="Poster.png" crc="171750726" mt="1375526060000"/>
+      </folder>
+      <file name="nemintro_edge.js" crc="3894942328" mt="1375526060000"/>
+      <file name="nemintro_edgeActions.js" crc="275033795" mt="1375526060000"/>
+      <file name="nemintro_edgePreload.js" crc="361493208" mt="1375526060000"/>
+      <file name="nemintro.html" crc="4034703188" mt="1375526060000"/>
+    </folder>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="3828297711" ref="index:register"/>
+    <file name="museutils.js" crc="4210811981" ref="index:register"/>
+    <file name="jquery.tobrowserwidth.js" crc="4262060562" ref="index:register"/>
+    <file name="jquery.musepolyfill.bgsize.js" crc="3812640551" ref="index:register"/>
+    <file name="pie.js" crc="4147615982" ref="index"/>
+    <file name="webpro.js" crc="4369767" ref="index"/>
+    <file name="musewpslideshow.js" crc="83045620" ref="index"/>
+    <file name="jquery.museoverlay.js" crc="3925244142" ref="index"/>
+    <file name="touchswipe.js" crc="261777990" ref="index"/>
+    <file name="jquery.scrolleffects.js" crc="3895911286" ref="index:register"/>
+    <file name="jquery.watch.js" crc="4199601726" ref="index:register"/>
+  </folder>
+  <folder name="images">
+    <file name="bg 3.png" crc="3920788947" ref="index:register"/>
+    <file name="logo.png" crc="233298433" ref="index:register"/>
+    <file name="name.png" crc="82418058" ref="index:register"/>
+    <file name="fb logo-u1721-fr.png" crc="455852989" ref="index"/>
+    <file name="fb logo-u1721-r-fr.png" crc="419674314" ref="index"/>
+    <file name="register.png" crc="313311038" ref="index"/>
+    <file name="register2.png" crc="219359547" ref="index"/>
+    <file name="u929-4.png" crc="106415146" ref="index"/>
+    <file name="u1142-4.png" crc="321052124" ref="index"/>
+    <file name="dot.png" crc="4072284207" ref="index"/>
+    <file name="u1167-4.png" crc="4257705698" ref="index"/>
+    <file name="avasa.png" crc="4104714092" ref="index"/>
+    <file name="u1471-4.png" crc="285989365" ref="index"/>
+    <file name="blank.gif" crc="4208392903" ref="index"/>
+    <file name="u1461.png" crc="285280838" ref="index"/>
+    <file name="u1461-a.png" crc="4285972937" ref="index"/>
+    <file name="u1927.png" crc="4109949605" ref="index"/>
+    <file name="u1927-a.png" crc="520979135" ref="index"/>
+    <file name="u1938.png" crc="30694280" ref="index"/>
+    <file name="u1938-a.png" crc="4026403434" ref="index"/>
+    <file name="u2033.png" crc="3773877665" ref="index"/>
+    <file name="u2033-a.png" crc="273034089" ref="index"/>
+    <file name="anand2.png" crc="677822" ref="index"/>
+    <file name="srini2.png" crc="4109752884" ref="index"/>
+    <file name="sharat.png" crc="3892955376" ref="index"/>
+    <file name="director.png" crc="224708761" ref="index"/>
+    <file name="agenda.png" crc="254217447" ref="index"/>
+    <file name="directions.png" crc="182571028" ref="index"/>
+    <file name="directions2.png" crc="406778001" ref="index"/>
+    <file name="bottom button.jpg" crc="4049734793" ref="index"/>
+    <file name="bottom button2.jpg" crc="4026005157" ref="index"/>
+    <file name="bottom button3.jpg" crc="4064798765" ref="index"/>
+    <file name="layer-2.png" crc="58512225" ref="index"/>
+    <file name="nem.png" crc="4167003525" ref="index"/>
+    <file name="mail.png" crc="3842783474" ref="index"/>
+    <file name="iphone.png" crc="154059225" ref="index"/>
+    <file name="home-u2559-fr.png" crc="522038192" ref="register"/>
+    <file name="home-u2559-r-fr.png" crc="11307921" ref="register"/>
+    <file name="u2546-4.png" crc="488139506" ref="register"/>
+  </folder>
+  <file name="index.html" crc="4144921065" mt="1375687580968"/>
+  <file name="register.html" crc="126485008" mt="1375688147818"/>
+</manifest>

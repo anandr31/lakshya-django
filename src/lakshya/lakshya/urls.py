@@ -31,7 +31,7 @@ urlpatterns = patterns('',
     url(r'^payment-success$',TemplateView.as_view(template_name="payment_success.html")),
     url(r'^payment-failure$', TemplateView.as_view(template_name="payment_failure.html")),
     url(r'^apply$',TemplateView.as_view(template_name="apply-vp.html")),
-
+    url(r'^nem/?$', "nem.views.show_home", name='nem'),  
        
     # url(r'^$', 'lakshya.views.home', name='home'),
     # url(r'^lakshya/', include('lakshya.foo.urls')),
