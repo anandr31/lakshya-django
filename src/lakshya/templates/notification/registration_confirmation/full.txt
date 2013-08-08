@@ -1,0 +1,11 @@
+{% block mail_content %}
+Dear {{ name }},
+
+Thank you for registering for the NIT Warangal Entrepreneurs' Meet (NEM).
+
+The NEM will be a game changer for the NIT Warangal community, bringing together all stakeholders of the institute for the cause of entrepreneurship. Entrepreneurship in general is growing, but the community of student entrepreneurs is only now beginning to coalesce. This is the first small step to what we hope will be a long and fruitful journey for the college and for our society.
+
+Thanks,
+The Lakshya Team
+
+{% endblock %}

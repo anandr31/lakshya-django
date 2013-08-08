@@ -149,6 +149,7 @@ INSTALLED_APPS = (
     'utils',
     'entrepreneurship',
     'notification',
+    'nem',
 )
 
 # A sample logging configuration. The only tangible logging

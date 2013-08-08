@@ -32,7 +32,13 @@ urlpatterns = patterns('',
     url(r'^payment-failure$', TemplateView.as_view(template_name="payment_failure.html")),
     url(r'^apply$',TemplateView.as_view(template_name="apply-vp.html")),
     url(r'^nem/?$', "nem.views.show_home", name='nem'),  
-       
+    url(r'^nem/register/?$', "nem.views.register", name='nem-registration'), 
+    url(r'^nem/payment-return/?$', "nem.views.return_view", name='nem-payment-return'),    
+    url(r'^nem/registration-success/?$', "nem.views.registration_success", name='registration-success'),  
+    url(r'^nem/registration-failure/?$', "nem.views.registration_failure", name='registration-failure'),  
+
+
+   
     # url(r'^$', 'lakshya.views.home', name='home'),
     # url(r'^lakshya/', include('lakshya.foo.urls')),
 

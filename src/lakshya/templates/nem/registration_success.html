@@ -44,18 +44,7 @@ var __adobewebfontsappname__ = "muse";
     </div>
     <div class="verticalspacer"></div>
     <div id="nem_registration_form">
-    <form class="application" enctype="multipart/form-data" action="/nem/register" method="post">{% csrf_token %}
-      {% for field in form.visible_fields %}
-            <div class="field">
-                    <label>{{ field.label}}</label> {{ field }}
-                    <p class="error">
-                      {% for error in field.errors %}
-                        {{error}}<br>
-                      {% endfor %}
-                    </p>
-            </div>
-        {% endfor %}
-      <button class = "button" type="submit" value="Submit">Submit</button>
+      <p style="color:white">Thank you for registering for the NIT Warangal Entrepreneurs' Meet (NEM).</p>
     </form>
     </div>
    </div>
