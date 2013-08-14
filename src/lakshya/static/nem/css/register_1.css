@@ -176,3 +176,11 @@ body
 .button:hover {
 	background-image:url(../images/hover.png);
 }
+
+#nem_student_application{
+	position: fixed;
+	left: 368px;
+	top: 129px;
+	z-index: 1000;
+	height: 800px;
+}

@@ -30,6 +30,12 @@ def registration_failure(request):
     return render_to_response("nem/registration_failure.html", 
                               RequestContext(request, context))
     
+def apply_student(request):
+    context = {"nem_base_url" : "http://" + settings.SITE_URL + "/static/nem/", 
+               "site_url" : "http://" + settings.SITE_URL + "/",}
+    return render_to_response("nem/apply_student.html", 
+                              RequestContext(request, context))
+    
 def register(request):
     context = {"nem_base_url" : "http://" + settings.SITE_URL + "/static/nem/", 
                "site_url" : "http://" + settings.SITE_URL + "/",}
