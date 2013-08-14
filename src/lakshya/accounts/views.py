@@ -112,7 +112,7 @@ def return_view(request):
         try:
             user = User.objects.get(email=paymentTemp.email_address)
         except User.DoesNotExist:
-            user = User.objects.create(username=paymentTemp.email_address, 
+            user = User.objects.create(username=paymentTemp.email_address[:28], 
                                        email=paymentTemp.email_address, 
                                        first_name=request.POST.get("delivery_cust_name"),
                                        password="Lakshya123$")

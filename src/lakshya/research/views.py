@@ -21,7 +21,7 @@ def apply_conference(request):
             try:
                 user = User.objects.filter(email=form.cleaned_data['email'])[0]
             except :
-                user = User.objects.create(username=form.cleaned_data['email'],first_name=form.cleaned_data['name'], 
+                user = User.objects.create(username=form.cleaned_data['email'][:28],first_name=form.cleaned_data['name'], 
                                            email=form.cleaned_data['email'])    
             
             #A dirty hack till we support logins and sessions in our system. @author: srihari
@@ -112,7 +112,7 @@ def apply_internship(request):
             try:
                 user = User.objects.filter(email=form.cleaned_data['email'])[0]
             except:
-                user = User.objects.create(username=form.cleaned_data['email'],first_name=form.cleaned_data['name'], 
+                user = User.objects.create(username=form.cleaned_data['email'][:28],first_name=form.cleaned_data['name'], 
                                            email=form.cleaned_data['email'])    
             
             #A dirty hack till we support logins and sessions in our system. @author: srihari
