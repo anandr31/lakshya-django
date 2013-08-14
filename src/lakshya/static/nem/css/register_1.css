@@ -158,14 +158,21 @@ body
 
 .button {
 	display: block;
-	width: 60%;
+	width: 166px;
+	height: 51px;
 	color: #fff;
 	text-decoration: none;
 	font-size: 16px;
 	padding: 6px 12px;
-	background: rgba(46, 147, 168, 0.75);
+	background: #E4BA4B;
+	background-image:url(../images/normal.png);
+	background-repeat: no-repeat;
 	margin : 14px auto;
 	border-radius: 8px;
 	text-align: center;
 	cursor: pointer;
+}
+
+.button:hover {
+	background-image:url(../images/hover.png);
 }

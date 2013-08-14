@@ -1520,7 +1520,7 @@ padding: 1px 4px;
 	height:114px;
 	position: relative;
 	background-image:url(../img/backgrounds/blue_texture.png);
-	background-repeat: repeat;
+	background-repeat: no-repeat;
 }
 
 #header_full > a > img{
