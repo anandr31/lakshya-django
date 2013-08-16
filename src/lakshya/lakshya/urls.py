@@ -59,3 +59,6 @@ urlpatterns += entrepreneurship_urls
 urlpatterns += patterns('',
         (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT}))
+
+handler500 = "lakshya.views.server_error"
+

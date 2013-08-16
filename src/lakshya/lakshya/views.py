@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response, redirect
+from django.shortcuts import render_to_response, redirect, render
 from django.template import RequestContext
 from utils.models import LakshyaUpdate
 from accounts.models import Donation
@@ -9,3 +9,9 @@ def get_home_page(request):
     total_donation_amount = Donation.objects.all().aggregate(Sum("amount"))["amount__sum"]
     return render_to_response("index.html", 
                               RequestContext(request, {'update_list':update_list, 'total_donation_amount':total_donation_amount}))# Create your views here.
+
+
+def server_error(request):
+    response = render(request, "500.html")
+    response.status_code = 500
+    return response

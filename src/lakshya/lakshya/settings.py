@@ -9,7 +9,7 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-     ('Srihari Maneru', 'srihari@thelakshyafoundation.com'),
+     ('Srihari Maneru', 'srihari@thelakshyafoundation.org'),
 )
 
 MANAGERS = ADMINS
