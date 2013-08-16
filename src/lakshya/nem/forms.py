@@ -3,12 +3,15 @@ Created on 08-Aug-2013
 
 @author: srihari
 '''
-from django.forms import ModelForm
-from models import Registration
+from models import PROFILE_TYPE
 from django import forms
 
 
-class RegistrationForm(ModelForm):
-    class Meta:
-        model = Registration
+class RegistrationForm(forms.Form):
+    name = forms.CharField()
+    batch = forms.CharField()
+    branch = forms.CharField()
+    email = forms.EmailField()
+    amount = forms.ChoiceField(choices=PROFILE_TYPE)
+
     

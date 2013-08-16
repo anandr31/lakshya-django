@@ -3,38 +3,32 @@ from django.shortcuts import render_to_response, render, redirect
 from django.template.context import RequestContext
 from django.conf import settings
 from forms import RegistrationForm
-from models import Registration, ALUMNI
+from models import Registration, ALUMNI, LIMBO, FAILED, SUCCESS
 from accounts.utils import get_post_object
 from django.views.decorators.csrf import csrf_exempt
 from accounts.forms import CCAVenueReturnForm
 from django.contrib.auth.models import User
 from notification import models as notification
 
-
+def get_nem_context():
+    return {"nem_base_url" : "http://" + settings.SITE_URL + "/static/nem/", 
+               "site_url" : "http://" + settings.SITE_URL + "/",}
 
 def show_home(request):
-    context = {"nem_base_url" : "http://" + settings.SITE_URL + "/static/nem/", 
-               "site_url" : "http://" + settings.SITE_URL + "/",}
     return render_to_response("nem/index.html", 
-                              RequestContext(request, context))
+                              RequestContext(request, get_nem_context()))
     
 def registration_success(request):
-    context = {"nem_base_url" : "http://" + settings.SITE_URL + "/static/nem/", 
-               "site_url" : "http://" + settings.SITE_URL + "/",}
     return render_to_response("nem/registration_success.html", 
-                              RequestContext(request, context))
+                              RequestContext(request, get_nem_context()))
     
 def registration_failure(request):
-    context = {"nem_base_url" : "http://" + settings.SITE_URL + "/static/nem/", 
-               "site_url" : "http://" + settings.SITE_URL + "/",}
     return render_to_response("nem/registration_failure.html", 
-                              RequestContext(request, context))
+                              RequestContext(request, get_nem_context()))
     
 def apply_student(request):
-    context = {"nem_base_url" : "http://" + settings.SITE_URL + "/static/nem/", 
-               "site_url" : "http://" + settings.SITE_URL + "/",}
     return render_to_response("nem/apply_student.html", 
-                              RequestContext(request, context))
+                              RequestContext(request, get_nem_context()))
     
 def register(request):
     context = {"nem_base_url" : "http://" + settings.SITE_URL + "/static/nem/", 
@@ -49,13 +43,14 @@ def register(request):
             branch = form.cleaned_data['branch']
             batch = form.cleaned_data['batch']
             pt = Registration.objects.create(amount=amount_bool, email=email, 
-                                             name=name, branch=branch, batch=batch)
+                                             name=name, branch=branch, batch=batch,
+                                             status=LIMBO)
             transaction_id = pt.id
             if settings.ENV == "dev":
                 transaction_id = "dev-nem" + str(pt.id)
             else:
                 transaction_id = "nem" + str(pt.id)
-            callback_url = "http://www.thelakshyafoundation.org/nem/payment-return"
+            callback_url = "http://" + settings.SITE_URL + "/nem/payment-return"
             amount = 1500 if amount_bool == ALUMNI else 500
             context = {"payment_dict" : get_post_object(callback_url, amount, email, transaction_id)}
             return render_to_response("nem/registration_payment_redirect.html", 
@@ -75,13 +70,7 @@ def return_view(request):
         merchant_id = "M_thelaksh_10884"
         
         form = CCAVenueReturnForm(merchant_id, working_key, request.POST)
-        if not form.is_valid():
-            return redirect('registration-failure')
-        
-       
-        if form.cleaned_data['AuthDesc'] == 'N':
-            return redirect('registration-failure')
-        
+
         try:
             temp_id = request.POST.get("Order_Id")
             if settings.ENV == "dev":
@@ -91,10 +80,21 @@ def return_view(request):
                 temp_id = int(request.POST.get("Order_Id").split("nem")[1])
             registration = Registration.objects.get(id=temp_id)
         except Registration.DoesNotExist:
-            print "Error: Shouldn't have come here.PaymentTemp is missing"
-            return redirect("registration-success")
-
+            print "Error: Shouldn't have come here.Registration is missing"
+            return redirect("registration-failure")        
         
+        
+        if not form.is_valid():
+            registration.status = FAILED
+            registration.save()
+            return redirect('registration-failure')
+        
+       
+        if form.cleaned_data['AuthDesc'] == 'N':
+            registration.status = FAILED
+            registration.save()
+            return redirect('registration-failure')
+
         info_user = User(first_name="Info", last_name="", 
                        email="info@thelakshyafoundation.org", id=1)
         
@@ -107,7 +107,8 @@ def return_view(request):
                    "amount": request.POST.get("Amount")}
         
         notification.send(to_users, "registration_confirmation", context)
-        
+        registration.status = SUCCESS
+        registration.save()
         return redirect("registration-success")
     else:
         return redirect('registration-failure')
