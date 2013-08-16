@@ -5,11 +5,11 @@ import os
 PROJECT_APP_DIR = os.path.realpath(os.path.dirname(__file__))
 PROJECT_DIR = os.path.dirname(PROJECT_APP_DIR)
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+     ('Srihari Maneru', 'srihari@thelakshyafoundation.com'),
 )
 
 MANAGERS = ADMINS
