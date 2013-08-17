@@ -51,7 +51,7 @@ def register(request):
             else:
                 transaction_id = "nem" + str(pt.id)
             callback_url = "http://" + settings.SITE_URL + "/nem/payment-return"
-            amount = 1500 if amount_bool == ALUMNI else 500
+            amount = 1500 if int(amount_bool) == ALUMNI else 500
             context = {"payment_dict" : get_post_object(callback_url, amount, email, transaction_id)}
             return render_to_response("nem/registration_payment_redirect.html", 
                               RequestContext(request, context))
