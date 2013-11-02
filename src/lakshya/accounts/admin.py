@@ -37,9 +37,10 @@ def generate_receipt(donation):
     p.drawString(200, 650, "Receipt For Donation")
     p.setFontSize(12)
 #    import pdb; pdb.set_trace()
-    content = '''Received with thanks an amount of Rs.%d (%s only) from %s towards charitable donation vide %s (PAN - %s), %s.
+    content = '''Received with thanks an amount of Rs.%d (%s only) from %s on %s towards charitable donation vide %s %s (PAN - %s), Address: %s.
     ''' % (donation.amount, number2word.to_card(donation.amount), donation.donor.name(), \
-           donation.get_transacation_type_display(), donation.donor.pan_number, donation.donor.get_full_address())
+           donation.date_of_donation, donation.get_transacation_type_display(), donation.get_transaction_details(),
+           donation.donor.pan_number, donation.donor.get_full_address())
     content_start=620
     for line in textwrap.wrap(content, 100):
         p.drawString(20, content_start, line)

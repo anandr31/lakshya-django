@@ -83,7 +83,7 @@ class DonationFund(models.Model):
         verbose_name = "Donation Fund"
         verbose_name_plural = "Donation Fund"    
 
-        
+
 class Donation(models.Model):
     from scholarships.models import Scholar
     amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -91,11 +91,25 @@ class Donation(models.Model):
     donor = models.ForeignKey(Person)
     donation_fund = models.ForeignKey(DonationFund, blank=True)
     transacation_type = models.IntegerField(choices=TRANSACTION_CHOICES,)
-    transaction_details = models.CharField(max_length=200, blank=True) 
+    bank_details = models.CharField(max_length=200, null=True, blank=True,
+                                           help_text="Enter Bank and Branch Details. Mandatory \
+                                           if Cheque or DD id choosen")
+    transaction_details = models.CharField(max_length=200, null=True, blank=True,
+                                           help_text="Enter cheque number or DD number or CCAvenue \
+                                           Transaction ID")
     donation_type = models.IntegerField(choices=DONATION_TYPE, default=DIRECT)
     is_repayment = models.BooleanField("Is this a repayment", default=False, help_text="Tick this only if its a repayment. Donar ~ Scholar for this donation")
-    receipt_number = models.IntegerField(blank=True, null=True)    
-    
+    receipt_number = models.IntegerField(blank=True, null=True)
+
+    def get_transaction_details(self):
+        if self.bank_details:
+            retval = ", Bank: %s" % (self.bank_details,)
+            if self.transaction_details:
+                retval += ", Transaction Details: %s" % (self.transaction_details)
+            return retval
+        else:
+            return ""
+
     def get_donation_receipt(self):
         
         return "<a href='http://127.0.0.1:8000/accounts/donation-receipt'>Mail Receipt</a>"
