@@ -54,6 +54,9 @@ INDIRECT = 0
 DONATION_TYPE = ((DIRECT, "Direct"),
                  (INDIRECT, "Indirect"),)
 
+EXPENSE_PAYMENT_TYPE = ((DIRECT, "Direct"),
+                 (INDIRECT, "Indirect"),)
+
 
 class Expense(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -63,7 +66,9 @@ class Expense(models.Model):
     expense_header_first_level = models.IntegerField(choices=EXPENSE_HEADER_FIRST_LEVEL_CHOICES, blank=True)
     expense_header_second_level = models.IntegerField(choices=EXPENSE_HEADER_SECOND_LEVEL_CHOICES, blank=True)
     scan_bill = models.FileField(upload_to="expenses", blank=True)
-    details = models.TextField(blank=True)
+    details = models.TextField(blank=True, null=True)
+    payment_type = models.IntegerField(choices=EXPENSE_PAYMENT_TYPE, default=DIRECT)
+    transaction_number = models.CharField(max_length=100, null=True, blank=True, help_text="Check/DD No")
     
     def header(self):
         return self.expense_header_first_level_display()
