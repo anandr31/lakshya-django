@@ -9,11 +9,11 @@
 {% block meta %}
 <LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/datatable/demo_table.css"></LINK>
 
-<script src="{{STATIC_URL}}js/jquery.min.js"></script>	
+<script type="text/javascript" src= "{{STATIC_URL}}js/jquery.min.js"></script>
 <script type="text/javascript" language="javascript" src="{{STATIC_URL}}js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#table_id').dataTable( {
+    $('#table_id').dataTable({
         "sScrollY": "600px",
         "bPaginate": true,
         "bScrollCollapse": true,
