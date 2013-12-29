@@ -41,7 +41,7 @@ class Person(models.Model):
     billing_postal_code = models.CharField("Pin Code", max_length=30, blank=True)
     billing_country = models.CharField("Country", max_length=50, blank=True)
     contact_number = models.CharField("Phone Number", max_length = 20, blank=True)
-    pan_number = models.CharField("PAN Number", max_length = 20, blank=True)
+    pan_number = models.CharField("PAN Number", max_length = 10, blank=True)
         
     #if NITW
     is_nitw_alumni = models.BooleanField(blank=True)
