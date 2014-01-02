@@ -49,6 +49,51 @@ $(document).ready(function() {
 				<div class="stats_description">Avg Donation by a Donor</div>
 			</div>
 		</div>
+
+<!-- top 3 donors -->
+	<table>
+		<tr>
+		<td align="centre" valign="top" width="45%">
+		<table cellpadding="5" cellspacing="0" border="0" class="" id="">
+		<caption><h3 class="cB">Top Donors</h3></caption>
+		        <tr>
+		            <th>Name</th>
+		            <th>Amount</th>
+		        </tr>
+
+		    	{% for name, total in top_donor_details_list %}
+		        <tr>
+		            <td>{{name}}</td>
+		            <td>{{total}}</td>
+		        </tr>
+		    	{% endfor %}
+		</table>
+		</td>
+<!-- ends here -->
+
+<!-- most frequesnt 3 donors -->
+		<td align="centre" valign="top" >
+		<table cellpadding="5" cellspacing="0" border="0" class="" id="">
+		<caption><h3 class="cB">Most Frequent Donors</h3></caption>
+		        <tr>
+		            <th>Name</th>
+		            <th>No. of donations</th>
+		            <th>Amount</th>
+		        </tr>
+		    	{% for name, count, total in freq_donor_details_list %}
+		        <tr align="center" valign="top" >
+		            <td>{{name}}</td>
+		            <td>{{count}}</td>
+		            <td>{{total}}</td>
+		        </tr>
+		    	{% endfor %}
+		    
+		</table>
+		</td>
+		</tr>
+	</table>
+<!-- ends here -->
+
 		<h3 class="cB">All Donations</h3>
 		<!-- <p>asdfasdf asdf as df asdf as df sadf as df asdf as df asdf as fas df saf as dfsd af sa fd -->
 			<!-- sadf asd fas df sad fasdf asdfasdf sadf asd f asdf sad</p> -->

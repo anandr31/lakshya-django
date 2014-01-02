@@ -33,13 +33,22 @@ def expenses_home(request):
     
 def donations_home(request):
     donor_details_list = [] #list of tuples - name, batch, branch, amount, last Donated on
+    top_donor_details_list = [] #list of top donors
+    freq_donor_details_list = [] #list of most frequent donors
     for temp_dict in Donation.objects.values('donor').annotate(total=Sum('amount')):
         donor_id = temp_dict["donor"]
         total = temp_dict["total"]
         donor = Person.objects.get(id=donor_id)
+	count = Donation.objects.filter(donor = donor).count() ## top frequent donors
         last_donated_on = Donation.objects.filter(donor = donor).order_by("-date_of_donation")[0].date_of_donation
         donor_details = (donor.name, donor.year_of_passing, donor.get_department_display, total, last_donated_on)
+	freq_donor_details = (donor.name, count, total)
+	top_donor_details = (donor.name, total)
         donor_details_list.append(donor_details)
+	if not donor_id in [26,27]: # Excluding Anonymous and Bank Interest from these lists
+		top_donor_details_list.append(top_donor_details) ##
+		freq_donor_details_list.append(freq_donor_details) ##
+
     total_donation_amount = Donation.objects.all().aggregate(Sum("amount"))["amount__sum"]
     donor_distinct_set = set()
     for donation in Donation.objects.all():
@@ -47,11 +56,19 @@ def donations_home(request):
     total_donors = len(donor_distinct_set)
 
     avg_donation_amount = total_donation_amount/total_donors
+   
+    top_donor_details_list = sorted(top_donor_details_list, key=lambda donors: donors[1], reverse=True) ##
+    del top_donor_details_list[4:] ##
     
+    freq_donor_details_list = sorted(freq_donor_details_list, key=lambda donors: donors[1], reverse=True) ##
+    del freq_donor_details_list[4:] ##
+
     context = {"donor_details_list" : donor_details_list, 
                "total_donation_amount" : total_donation_amount, 
                "total_donors" : total_donors, 
-               "avg_donation_amount" : avg_donation_amount}
+               "avg_donation_amount" : avg_donation_amount,
+	       "top_donor_details_list" : top_donor_details_list,
+	       "freq_donor_details_list" : freq_donor_details_list}
     return render_to_response("donations.html", 
                               RequestContext(request, context)) 
     
