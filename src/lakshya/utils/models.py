@@ -9,10 +9,12 @@ class LakshyaUpdate(models.Model):
     sorting = models.IntegerField()
     active = models.BooleanField()
     
-class LakskhyaTestimonial(models.Model):
+class LakshyaTestimonial(models.Model):
     testimonial_text = models.TextField(null=True, blank=True)
+    photo = models.FileField("Update photo", upload_to="update_pics/", null=True, blank=True)
+    video_link = models.TextField(null=True, blank=True)
     person = models.ForeignKey(Person, )
     designation = models.CharField(max_length = 50)
     date_of_entry = models.DateField(null=True, blank=True, auto_now=True)
     sorting = models.IntegerField()
-    active = models.BooleanField()    
+    active = models.BooleanField()

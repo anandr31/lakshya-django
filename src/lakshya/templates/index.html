@@ -11,6 +11,8 @@
 	{% endblock %}
 	<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?1"></LINK>
 	{% block scripts %}
+
+
 	<script type="text/javascript">
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', '{{GOOGLE_SITE_CODE}}' ]);
@@ -49,7 +51,7 @@
 			container: 'testimonials_container',
 			preload: true,
 			preloadImage: '{{STATIC_URL}}img/loading.gif',
-			play: 0,
+			play: 5000,
 			pause: 2500,
 			hoverPause: true
 
@@ -79,11 +81,25 @@
 <div id="example">
 	<div id="slides">
 		<div class="slides_container" >
-				<a href="/innovation/innovations-list/hovamarine" title="Hovamarine - NITW's first patent application" ><img src="{{STATIC_URL}}img/jobi_header_2.jpg" width="990" height="420" alt="Hovamarine - NITW's first patent application"></a>
+				<a href="/innovation/innovations-list/hovamarine" title="Hovamarine - NITW's first patent application" ><img src="{{STATIC_URL}}img/jobi_header_3.jpg" alt="Hovamarine - NITW's first patent application"></a>
 		</div>
 	</div>
 </div>
 
+<div class="media_block">
+	<div class="media_block_element">
+		<a href="http://www.thehansindia.com/posts/index/2013-07-26/Lakshya-aims-high-2382" target="_blank"><img class="media-object" src="{{STATIC_URL}}img/media/hans_india.png" alt="Hans India Logo"></a>
+	<div class="media-text"><a href="http://www.thehansindia.com/posts/index/2013-07-26/Lakshya-aims-high-2382" target="_blank">"Lakshya is doing something that can be a game changer in the higher education sector"</a></div>
+	</div>
+
+	<div class="media_block_element">
+		<a href="http://social.yourstory.com/2013/09/how-nit-warangal-lakshya-foundation-bridged-gap-alumni-and-students/" target="_blank"><img class="media-object" src="{{STATIC_URL}}img/media/YourStory_Media-Logo.png" alt="YourStory Logo"></a>
+	<div class="media-text"><a href="http://social.yourstory.com/2013/09/how-nit-warangal-lakshya-foundation-bridged-gap-alumni-and-students/" target="_blank">"How NIT Warangal’s Lakshya Foundation bridged the gap between alumni and students"</a></div>
+	</div>
+
+
+</div>
+<hr color="#d9d9d9">
 <div id="intro_block" class="left">
 	<div id="lakhsya-homepage-intro">
 		<p>Lakshya helps build an ecosystem of research and entrepreneurship through creativity and innovation at NIT Warangal by bringing together alumni, students, faculty, the institute and relevant partners</p>
@@ -109,14 +125,14 @@
 	</div>
 	<div id="announcemet_facebook_block" style="z-index:25;">
 		<div id="announcement_block" class="left">
-			<a href="/innovation/home" style="padding-left:12px; margin-left:102px;">Apply</a> <p style="margin-left:30px"> to get Lakhsya's support for your innovative idea</p>
+		<!--	<a href="/innovation/home" style="padding-left:12px; margin-left:102px;">Apply</a> <p style="margin-left:30px"> to get Lakhsya's support for your innovative idea</p> -->
 		</div>
 		<div id="facebook_block" class="right">
 			<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fthelakshyafoundation&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;font=verdana&amp;colorscheme=light&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border-left-width: 0px;border:none; overflow:hidden; width:450px; height:21px;padding-left: 220px;padding-bottom: 0px;padding-top: 25px;" allowtransparency="true"></iframe>
 		</div>
 	</div>	
 </div>
-<div id="updates_block" class="left cL">
+<!--div id="updates_block" class="left cL">
 	<div id="updates_block_inner_div" style="height:350px">
 		<h3>Lakshya Updates</h3>
 		<hr>
@@ -127,56 +143,47 @@
 		</ul>
 		<a id="all_updates_link" class="right" href="/updates">More Updates</a>
 	</div>
-</div>
-<div id="testimonials_block" class="right">
+</div-->
+
+<div id="testimonials_block" class="left">
+<hr color="#d9d9d9">
 	<div id="testimonials_block_inner_div">
-		<h3>Lakshya Testimonials</h3>
-		<hr>
-		<div id="testimonial_slides">
-			<div class="testimonials_container">
-				<div class="testimonial_slide cB">
-					<p class="testimonial_text cB">" Lakshya Foundation helped me achieve my dream.Lakshya makes a difference by helping ignited students propel their dreams and give others the opportunity to think differently.  I am sure the world will witness more innovations and innovators with the help of Lakshya Foundation in the coming years."</p>
-					<div>
-						<div class="testimonial_image_div left ">
-							<img src="{{STATIC_URL}}img/joby_test_1.png" width="300px" height="100px">
-						</div>
-					</div>
-					
-				</div>
+		<h3>Testimonials - <a href=/testimonials>View all testimonials</a> </h3>
 
-				<div class="testimonial_slide">
-					<p class="testimonial_text">"Transparent mode of selection & sharing financial information are key areas which satisfy. I shall be a keen observer of my humble contribution put to good use by young & energetic team of selfless workforce"</p>
-					<div>
-						<div class="testimonial_image_div left ">
-							<img src="{{STATIC_URL}}img/naresh_ummat.jpg" width="100px" height="100px">
-						</div>
-						<div id="testimonial_details_div" class="left" >
-							<h4>Naresh Ummat</h4>
-							<p>Managing Director, Barracuda Camouflage</p>
-							<p>NITW Class of 1964</p>
-						</div>
-					</div>	
-				</div>
-
-				<div class="testimonial_slide">
-					<p class="testimonial_text">" Lakshya Scholarship helped me to a great extent by reducing the fianancial burden during my engineering. It was a good inspiration for me to achieve higher goals. It helped me have a good social life during my B.Tech, and motivated me to help students financially in future."</p>
-					<div>
-						<div class="testimonial_image_div left ">
-							<img src="{{STATIC_URL}}img/gayatri_k.jpg" width="100px" height="100px">
-						</div>
-						<div id="testimonial_details_div" class="left" >
-							<h4>K. Gayatri</h4>
-							<p>Lakshya Scholar </p>
-							<p>NITW Class of 2012</p>
-						</div>
-					</div>	
-				</div>
-			</div>
-			<a href="#" class="prev arrow" style="display: inline;"><img src="{{STATIC_URL}}img/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
-			<a href="#" class="next arrow" style="display: inline;"><img src="{{STATIC_URL}}img/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>	
+		{% for testimonial in testimonial_list %}
+		<div class="testimonial_content">
+			{% if testimonial.photo %}
+				<img class="testimonial_image" src="{{testimonial.photo.url}}"/> 
+				<div class="testimonial_name">{{testimonial.person}}</div>
+				<div class="testimonial_designation">{{testimonial.designation}}</div>
+				<p class="testimonial_text">{{testimonial.testimonial_text|safe}}</p>
+			{% else %}
+				<div class="testimonial_video">{{testimonial.video_link|safe}}</div>
+				<div class="testimonial_name">{{testimonial.person}}</div>
+				<div class="testimonial_designation">{{testimonial.designation}}</div>
+				<p class="testimonial_text">{{testimonial.testimonial_text|safe}}</p>
+			{% endif %}
 		</div>
-	</div>
+		{% endfor %} 
 
+<!--
+		{% for testimonial in testimonial_list %}
+		<table class="testimonial_table">
+			<tr>
+				<td class="partition">
+					{% if testimonial.photo %}
+						<img src="{{testimonial.photo.url}}" />
+					{% endif %}
+					<div class="name">{{testimonial.person}}</div>
+					<div class="designation">{{testimonial.designation}}</div>
+				</td>
+						<td class="testimonial_text" align="centre" valign="top" width=80%>
+							{{testimonial.video_link|safe}} <br/> {{testimonial.testimonial_text|safe}}
+						</td>
+			</tr>
+		</table>
+		{% endfor %} -->
+</div>
 
 </div>
 
