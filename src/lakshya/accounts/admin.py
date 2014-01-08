@@ -31,26 +31,26 @@ def get_financial_year(donation):
 def generate_receipt(donation):
     p = canvas.Canvas("Lakshya-Receipt-Donation-" + str(donation.id) + ".pdf")
     p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/receipt-header.jpg", 2, 720, 600, 100)
-    p.drawString(20, 680, datetime.date.today().strftime("%B %d, %Y"))
+    p.drawString(40, 680, datetime.date.today().strftime("%B %d, %Y"))
     p.drawString(430, 680, "No. "+str(donation.receipt_number) + "/" + get_financial_year(donation))
     p.setFontSize(18)
     p.drawString(200, 650, "Receipt For Donation")
     p.setFontSize(12)
 #    import pdb; pdb.set_trace()
-    content = '''Received with thanks an amount of Rs.%d (%s only) from %s on %s towards charitable donation vide %s %s (PAN - %s), Address: %s.
+    content = '''Received with thanks an amount of Rs.%.2f (Rupees %s only) from %s on %s towards charitable donation vide %s %s (PAN - %s), Address: %s.
     ''' % (donation.amount, number2word.to_card(donation.amount), donation.donor.name(), \
            donation.date_of_donation, donation.get_transacation_type_display(), donation.get_transaction_details(),
            donation.donor.pan_number, donation.donor.get_full_address())
     content_start=620
-    for line in textwrap.wrap(content, 100):
-        p.drawString(20, content_start, line)
+    for line in textwrap.wrap(content, 90):
+        p.drawString(40, content_start, line)
         content_start -= 20
         
-    p.drawString(20, 490, "For The Lakshya Foundation")
-    p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/managing_trustee_sign.jpg", 20, 440, 80, 35)
-    p.drawString(20,430, "Dr K.Padma")
-    p.drawString(20, 410, "Managing Trustee")
-    p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/receipt_footer.jpg", 2, 180, 600, 230)
+    p.drawString(40, 490, "For The Lakshya Foundation")
+    p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/managing_trustee_sign.jpg", 40, 440, 80, 35)
+    p.drawString(40,430, "Dr K.Padma")
+    p.drawString(40, 410, "Managing Trustee")
+    p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/receipt_footer.jpg", 2, 25, 600, 230)
     
     p.showPage()
     p.save()
@@ -73,26 +73,33 @@ def has_insufficient_details(donation):
             missing_data_list.append(key)
     return (has_insufficient_data, missing_data_list)
     
+def is_indirect_donation(donation):
+    is_indirect = False
+    if donation.donation_type == 0:
+	is_indirect = True
+    return (is_indirect)
+
 def mail_receipt(modeladmin, request, queryset):
-    print "adasfdas"
+    print "inside mail_receipt()"
     print request.META['HTTP_HOST']
     for donation in queryset:
         has_insufficient_data, missing_data_list = has_insufficient_details(donation)
+	is_indirect = is_indirect_donation(donation)
+        if is_indirect:
+            return HttpResponseNotFound('<p>%d is an <b>indirect donation</b>. Receipt and tax exemption cannot be given.</p>' % donation.id)
         if has_insufficient_data:
-            return HttpResponseNotFound("<h3>The below details are missing. So, invoice can't be generated</h3><br>" + 
-                                        ",".join(missing_data_list) + "<br><br>" +
-                                        '<a href="/admin/accounts/donation/%d">Donation Link</a>  and  <a href="/admin/people/person/%d">Donor Link</a> ' %
-                                        (donation.id, donation.donor.id))
+            return HttpResponseNotFound("<p>Unable to generate receipt. Below donor details are missing.<p>" + ",".join(missing_data_list) + "<br><br>" + 'Rectify: <a href="/admin/accounts/donation/%d">Donation Link</a>  and  <a href="/admin/people/person/%d">Donor Link</a> ' % (donation.id, donation.donor.id))
+
         text_content = ('''
 Dear %s,
 
-Please find attached the receipt for your donation made to The Lakshya Foundation on %s
+Thank you for donating to Lakshay. Please find attached the receipt for your donation made to The Lakshya Foundation on %s.
 
-Feel free to contact us for any queries. 
+Please feel free to contact us for any queries.
 
-Thanks,
-Anand
-For Lakshya Team
+Regards,
+Anand Rajagopalan
+The Lakshya Team
         ''') % (donation.donor.name(), donation.date_of_donation)
         msg = EmailMessage("Lakshya Donation Receipt", text_content, "info@thelakshyafoundation.org", 
                            [donation.donor.user.email,], 
