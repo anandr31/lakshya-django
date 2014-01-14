@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from accounts.models import PaymentTemp, Pledge
 from django import forms
-from .utils import calc_checksum
+from .util import calc_checksum
 from django.core.exceptions import ValidationError
 from django.utils.encoding import smart_str
 

@@ -16,13 +16,13 @@ from people.models import Person
 
 from accounts.forms import PaymentTempForm, PledgeForm
 from accounts.models import PaymentTemp, Pledge
-from accounts.utils import get_post_object
+from accounts.util import get_post_object
 from accounts.forms import CCAVenueReturnForm
 from django.views.decorators.csrf import csrf_exempt
 import math
 from django.contrib.auth.models import User
 from notification import models as notification
-#from utils.models import LakshyaTestimonial - This is where it is breaking. I want to include testimonials in the donate page.
+from utils.models import LakshyaTestimonial
 
 def expenses_home(request):
     expenses_list = Expense.objects.all()

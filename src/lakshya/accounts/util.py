@@ -1,6 +1,7 @@
 from zlib import adler32
 from people.models import Person
 
+print "asdfasdf"
 
 def calc_checksum(*args):
     '''
