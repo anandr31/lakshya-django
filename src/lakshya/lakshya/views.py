@@ -9,7 +9,6 @@ def get_home_page(request):
     update_list = LakshyaUpdate.objects.filter(sorting__in = [1,2,3]).order_by('sorting')  
     total_donation_amount = Donation.objects.all().aggregate(Sum("amount"))["amount__sum"]
     testimonial_list=LakshyaTestimonial.objects.order_by('?')[:3]
-    print testimonial_list
     return render_to_response("index.html", 
                               RequestContext(request, {'update_list':update_list, 'total_donation_amount':total_donation_amount, 'testimonial_list':testimonial_list}))# Create your views here.
 

@@ -5,21 +5,121 @@
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
 {% endblock title %}
 
+{% block meta %}
+<script type="text/javascript">
+function display_pan()
+{
+	if (!document.getElementById("id_email_receipt").checked)
+		document.getElementById("div_id_pan_card").style.display = "none";
+	else
+		document.getElementById("div_id_pan_card").style.display = "inline";
+}
+
+function test_func()
+{
+	document.getElementById("id_pan_card").value = document.getElementById("id_amount").value
+
+}
+</script>
+{% endblock %}
 {%block header_slide%}
-	<a href="/team" title="Team" ><img src="{{STATIC_URL}}img/headers/funds.png" width="990" height="420" alt="Team"></a>
+<!--	<a href="/team" title="Team" ><img src="{{STATIC_URL}}img/headers/funds.png" width="990" height="420" alt="Team"></a>-->
 {%endblock header_slide%}
 
 {% block content %}
-<div class = "content_with_page_title left">
-	<h2>Donate</h2>
-	<div class="content_div">
-<!--		<p>You can donate to Lakshya in one of the below ways</p>
-		<a href="#">Why Seed Capital</a><a href="#">Why Corpus</a>-->
-		<h3 id="vision_block">Payment Gateway (Credit card, Debit card, Net Banking)</h3>	
-		<form class="application" action="payment_redirect" method="post">{% csrf_token %}
+	<h2 class="donate_header">Donate</h2>
+<div class = "donate_content">
+<!--
+<div id="testimonials_block" class="left">
+<hr color="#d9d9d9">
+	<div id="testimonials_block_inner_div">
+		{% for testimonial in testimonial_list %}
+		<div class="testimonial_content">
+			{% if testimonial.photo %}
+				<img class="testimonial_image" src="{{testimonial.photo.url}}"/> 
+				<div class="testimonial_name">{{testimonial.person}}</div>
+				<div class="testimonial_designation">{{testimonial.designation}}</div>
+				<p class="testimonial_text">{{testimonial.testimonial_text|safe}}</p>
+			{% else %}
+				<div class="testimonial_video">{{testimonial.video_link|safe}}</div>
+				<div class="testimonial_name">{{testimonial.person}}</div>
+				<div class="testimonial_designation">{{testimonial.designation}}</div>
+				<p class="testimonial_text">{{testimonial.testimonial_text|safe}}</p>
+			{% endif %}
+		</div>
+		{% endfor %} 
+
+	</div>
+
+</div>
+-->
+Where your donation goes
+Vision Development Programs:
+1. Scholarships - Various chapter and batches pledge to support students under our interest-free loan model of financial assistance. We finance students' institute fee under the condition that they will repay the amount within five years of his/her graduation. Every single scholar who has graduated has repaid and given back.
+
+2. Innovation and Research: We have an MoU with NIT Warangal to support and fund research and innovation by students. Each proposal goes through a selection process and the selected ideas are granted seed funding to develop their prototypes
+
+People and technology:
+We have 2 employees and we also hire interns from time to time to support a wide variety of projects, making your donation a great investment in a not-for-profit. We also develop technology to make the NIT Warangal administration more efficient. The Alumni Request Automation and Bills and Advances Tracking System are two such examples which are now in use on campus.
+
+</div>
+
+<div class = "donate_right">
+	<div class="donate_content_div">
+
+<table>
+	<tbody>
+	<tr>
+		<td>
+			<input type="radio" name="amount" id="input_amount_0" value="200" onclick="document.getElementById('id_amount').value=value;" style="">
+			<label for="input_amount_0">Rs.200</label>
+		</td>
+		<td>
+			<input type="radio" name="amount" id="input_amount_1" onclick="document.getElementById('id_amount').value=value;" value="500" style="">
+			<label for="input_amount_1">Rs.500</label>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<input type="radio" name="amount" id="input_amount_2" onclick="document.getElementById('id_amount').value=value;" value="1000" style="">
+			<label for="input_amount_2">Rs.1000</label>
+		</td>
+		<td>
+			<input type="radio" name="amount" id="input_amount_3" onclick="document.getElementById('id_amount').value=value;" value="2000" style="">
+			<label for="input_amount_3">Rs.2000</label>
+		</td>
+	</tr>
+		    <tr>
+		      <td class="radiobuttons-cell">
+		<input type="radio" name="amount" id="input_amount_other" value="Other" onclick="document.getElementById('input_amount_other_box').focus(); document.getElementById('id_amount').value=document.getElementById('input_amount_other_box').value;" style="">
+		<label for="input_amount_other">Other Rs.</label>
+		<input type="text" id="input_amount_other_box" size="3" autocomplete="off" value="" onchange="document.getElementById('id_amount').value=value;" style="">
+		      </td>
+		    </tr>
+
+
+	</tbody>
+</table>
+
+
+		<form class="donation_choices" action="payment_redirect" method="post">{% csrf_token %}
 			{% for field in form.visible_fields %}
 				<div class="field">
-		            <label>{{ field.label}}</label> {{ field }}
+				{% if field.name == 'email_receipt' %}
+					<input type="checkbox" class="form-control"
+					name="{{ field.name }}"
+					id="id_{{ field.name }}"
+					value="{{ field.value }}" onclick="display_pan();"> <label>{{ field.label}}</label>
+<div class = "donate_help_text">{{ field.help_text|safe }} </div>
+				{% elif field.name == 'pan_card' %}
+					<div id="div_id_{{ field.name }}" style="display: none"><label>{{ field.label}}</label> <div>{{ field }}</div></div>
+				{% elif field.name == 'amount' %}
+					<div id="div_id_{{ field.name }}" style="display: none"><label>{{ field.label}}</label> <div>{{ field }}</div></div>
+
+				{% else %}
+					<label>{{ field.label}}</label> <div>{{ field }}</div>
+				{% endif %}					
 		           	<p class="error">
 		           		{% for error in field.errors %}
 		           			{{error}}<br>
@@ -27,29 +127,32 @@
 		           	</p>
 		       	</div>
 		    {% endfor %}
-		<input type="submit" value="Submit" />
+		<input type="submit" value="Donate by credit/debit card" onclick="test_func()"/>
 		</form>
-		<h3 id="vision_block">Online Transfer</h3>
-
+		</div> <!-- End of vision_block div-->
+<!--		<h3 id="vision_block">Online Transfer</h3>-->
+		<h3 class="donate_subheader">Account Details</h3>
 		<dl id="account_details">
-		    <dt>Account Name :</dt>
+		    <dt>A/C Name:</dt>
 		    <dd>The Lakshya Foundation</dd>
-		    <dt>Account Number :</dt>
+		    <dt>A/C No.:</dt>
 		    <dd>020101005180</dd>
-		    <dt>Bank Details :</dt>
-		    <dd>ICICI BANK, Hanmakonda Branch, Warangal</dd>
-		    <dt>IFSC code :</dt>
+		    <dt>Bank:</dt>
+		    <dd>ICICI Bank, Hanmakonda</dd>
+		    <dt>City:</dt>
+		    <dd>Warangal, Andhra Pradesh</dd>
+		    <dt>IFSC:</dt>
 		    <dd>ICIC0000201</dd>
 		</dl>​
 		<p class="cB"></p>
-		<h3 id="vision_block">Cheques/Demand Drafts</h3>
-		<p>Post your Cheques/DD's to below address.  </p>
+		<h3 class="donate_subheader">Post cheques to</h3>
 		<div id="postal_address">		
 			<p>Prof. A. Venu Gopal,</p>
 			<p>Mechanical Engineering Department,</p>
 			<p>NIT Warangal,</p>
 			<p>Warangal - 506021.</p>
 			<p>Andhra Pradesh, India</p>
+			<p>Contact: 0870-2462338</p>
 		</div>
 	</div>
 </div>

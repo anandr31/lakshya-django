@@ -133,10 +133,11 @@ class Donation(models.Model):
         super(Donation, self).save(**kwargs)
     
 class PaymentTemp(models.Model):
-    email_address = models.EmailField('Email Address')
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    pan_card = models.CharField("Pan Card Number", max_length=10, null=True, blank=True)
-    email_receipt = models.BooleanField("Send me the receipt", default=True)
+    email_address = models.EmailField('Email')
+    email_receipt = models.BooleanField("I want to save tax on this donation", default=False, help_text="What is 80G exemption?<br/>50% of the donated amount is allowed<br/>to be deducted from your taxable income.")
+    pan_card = models.CharField("PAN", max_length=10, null=True, blank=True)
+
     
 class Pledge(models.Model):
     name = models.CharField(max_length=200)

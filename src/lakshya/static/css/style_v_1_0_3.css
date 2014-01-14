@@ -61,7 +61,7 @@ body {
 }
 
 body h2, body h3 {
-	color: #74B446;
+	color:  #74B446;
 	font-weight: normal;
 }
 
@@ -734,7 +734,7 @@ tr#footer_header {
 }
 
 #vision_block{
-	background-color: rgba(44, 135, 163, 0.2)
+	background-color: rgba(44, 135, 163, 0.2);
 	padding: 5px 5px;
 	margin: 5px 0px;
 }
@@ -1258,20 +1258,20 @@ table.scholar_academic_update_table th {
 #account_details dt {
 	float:left;
 	clear:left;  
-	text-align:right;
-	width:17%;
-	font-size: 13pt;
+	text-align:left;
+	width:30%;
+	font-size: 11pt;
 }
 
 #account_details dd {
 	float:left;
-	margin-left:1em;
+	margin-left:0em;
 	padding-bottom: 10px;
-	font-size: 13pt;
+	font-size: 11pt;
 }
 
 #postal_address p {
-	padding-left: 30px;
+	font-size: 11pt;
 }
 
 #redirecting p {
@@ -1350,6 +1350,49 @@ table.scholar_academic_update_table th {
 #payment_gateway {
 	border: 1px;
 }
+
+.field_label {
+}
+.field_input {
+}
+.donate_content
+{
+	float: left;
+	width: 65%;
+	padding: 5px;
+}
+
+.donate_right{
+	float: right;
+	width: 30%;
+}
+.donate_content_div {
+	padding: 10px;
+	width: 100%;
+	background-color: rgba(44, 135, 163, 0.2)
+}
+
+.donate_header{
+	padding-top: 20px;
+	color:  #2e93a8;
+	font-size:40px; 
+	text-align:center
+}
+
+.donate_subheader{
+	padding: 2px;
+	color:  #ffffff;
+	background-color: #7dbdca;
+/*#74B446;*/
+}
+
+.donate_help_text{
+	color:  #404040;
+	font-size:14px; 
+	display: block;
+
+}
+
 
 /* --------------------------- END OF DONATE PAGE --------------------------- */
 

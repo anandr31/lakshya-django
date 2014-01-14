@@ -10,10 +10,10 @@ from django.db.models import Sum
 from django.contrib.gis.geoip import GeoIP
 from django.conf import settings
 
-
 from accounts.models import Expense, Donation, DonationFund, PAYMENT_GATEWAY,\
     DIRECT
 from people.models import Person
+
 from accounts.forms import PaymentTempForm, PledgeForm
 from accounts.models import PaymentTemp, Pledge
 from accounts.utils import get_post_object
@@ -22,8 +22,7 @@ from django.views.decorators.csrf import csrf_exempt
 import math
 from django.contrib.auth.models import User
 from notification import models as notification
-
-
+#from utils.models import LakshyaTestimonial - This is where it is breaking. I want to include testimonials in the donate page.
 
 def expenses_home(request):
     expenses_list = Expense.objects.all()
@@ -206,3 +205,4 @@ def seedfund(request):
                               RequestContext(request, {'form' : form, "donations" : donations, "pledges":pledges, 
                                                        "pledge_percentage":pledge_percentage, 
                                                        "show_success_message":show_success_message, "is_dollar" : is_dollar}))
+
