@@ -111,8 +111,8 @@ The Lakshya Team
 mail_receipt.short_description = "Mail Receipt"
     
 class DonationOptions(admin.ModelAdmin):
-    list_display = ('id', 'amount', 'date_of_donation', 'donor', 'receipt_number', )
-    list_filter = ('transacation_type', )
+    list_display = ('id', 'amount', 'date_of_donation', 'donor', 'receipt_number', 'donation_type', )
+    list_filter = ('transacation_type', 'donation_type', )
     search_fields = ('donor__user__first_name', )
     raw_id_fields = ('donor', 'donation_fund',)
     list_editable = ('receipt_number',)
