@@ -4,7 +4,7 @@ from django.template.context import RequestContext
 from django.conf import settings
 from forms import RegistrationForm
 from models import Registration, ALUMNI, LIMBO, FAILED, SUCCESS
-from accounts.utils import get_post_object
+from accounts.util import get_post_object
 from django.views.decorators.csrf import csrf_exempt
 from accounts.forms import CCAVenueReturnForm
 from django.contrib.auth.models import User
