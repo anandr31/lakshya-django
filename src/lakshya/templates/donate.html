@@ -29,12 +29,21 @@ function test_func()
 {% block content %}
 	<h2 class="donate_header">Donate</h2>
 <div class = "donate_content">
-<!--
-<div id="testimonials_block" class="left">
+<p align="center">Where your donation goes</p>
+Vision Development Programs<br/>
+<ul>
+<li><b>Scholarships</b>: Various chapter and batches pledge to support students under our interest-free loan model. We finance students' institute fee which is repaid within five years of the student's graduation. Every single scholar who has graduated has started repaying and some have given over and above what they received.</li>
+
+<li><b>Research, Entrepreneurship and Creativity Development</b>: We have an MoU with NIT Warangal to support and fund research and innovation by students and also sponsor innovative and research opportunities outside the MoU. We conduct events to creat non-credit learning opportunities like workshops, guest-lectures, networking events, competitions etc.</li>
+</ul>
+People and technology:<br/>
+<ul>We have 2 employees and hire interns from time to time to work on achieving our vision. We also develop technology to make the NIT Warangal administration more efficient. The Alumni Request Automation and Bills and Advances Tracking System are two such examples. Funds are also used to keep web servers running and for office space rentals.</ul>
 <hr color="#d9d9d9">
+<div id="testimonials_block" class="left">
 	<div id="testimonials_block_inner_div">
+	<h3>Testimonials - <a href=/testimonials>View all testimonials</a> </h3>
 		{% for testimonial in testimonial_list %}
-		<div class="testimonial_content">
+		<div class="donate_testimonial_content">
 			{% if testimonial.photo %}
 				<img class="testimonial_image" src="{{testimonial.photo.url}}"/> 
 				<div class="testimonial_name">{{testimonial.person}}</div>
@@ -52,21 +61,12 @@ function test_func()
 	</div>
 
 </div>
--->
-Where your donation goes
-Vision Development Programs:
-1. Scholarships - Various chapter and batches pledge to support students under our interest-free loan model of financial assistance. We finance students' institute fee under the condition that they will repay the amount within five years of his/her graduation. Every single scholar who has graduated has repaid and given back.
-
-2. Innovation and Research: We have an MoU with NIT Warangal to support and fund research and innovation by students. Each proposal goes through a selection process and the selected ideas are granted seed funding to develop their prototypes
-
-People and technology:
-We have 2 employees and we also hire interns from time to time to support a wide variety of projects, making your donation a great investment in a not-for-profit. We also develop technology to make the NIT Warangal administration more efficient. The Alumni Request Automation and Bills and Advances Tracking System are two such examples which are now in use on campus.
 
 </div>
 
 <div class = "donate_right">
 	<div class="donate_content_div">
-
+<b>Donate</b>
 <table>
 	<tbody>
 	<tr>
@@ -113,7 +113,7 @@ We have 2 employees and we also hire interns from time to time to support a wide
 					value="{{ field.value }}" onclick="display_pan();"> <label>{{ field.label}}</label>
 <div class = "donate_help_text">{{ field.help_text|safe }} </div>
 				{% elif field.name == 'pan_card' %}
-					<div id="div_id_{{ field.name }}" style="display: none"><label>{{ field.label}}</label> <div>{{ field }}</div></div>
+					<div id="div_id_{{ field.name }}" style="display: none"><label>{{ field.label}}</label> <div>{{ field }}</div><div class = "donate_help_text">{{ field.help_text|safe }} </div></div>
 				{% elif field.name == 'amount' %}
 					<div id="div_id_{{ field.name }}" style="display: none"><label>{{ field.label}}</label> <div>{{ field }}</div></div>
 

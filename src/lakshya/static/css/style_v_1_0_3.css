@@ -1385,13 +1385,19 @@ table.scholar_academic_update_table th {
 	background-color: #7dbdca;
 /*#74B446;*/
 }
-
 .donate_help_text{
-	color:  #404040;
 	font-size:14px; 
-	display: block;
-
+	color:  #6c6c6c;
 }
+.donate_testimonial_content{
+  position:relative;
+  float:left;
+  padding: 0px;
+  width: 50%;
+  text-align:left;
+  vertical-align:middle;
+}
+
 
 
 /* --------------------------- END OF DONATE PAGE --------------------------- */

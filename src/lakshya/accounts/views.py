@@ -73,8 +73,9 @@ def donations_home(request):
     
 def donate_home(request):
     form = PaymentTempForm()
+    testimonial_list=LakshyaTestimonial.objects.order_by('?')[:2]
     return render(request, 'donate.html', {
-        'form': form,
+        'form': form, 'testimonial_list': testimonial_list
     })
  
 def payment_redirect(request):
