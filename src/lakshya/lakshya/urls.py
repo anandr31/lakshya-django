@@ -37,7 +37,7 @@ urlpatterns = patterns('',
     url(r'^nem/payment-return/?$', "nem.views.return_view", name='nem-payment-return'),    
     url(r'^nem/registration-success/?$', "nem.views.registration_success", name='registration-success'),  
     url(r'^nem/registration-failure/?$', "nem.views.registration_failure", name='registration-failure'),  
-
+    url(r'^corpus$', TemplateView.as_view(template_name="corpus.html")),
 
    
     # url(r'^$', 'lakshya.views.home', name='home'),
