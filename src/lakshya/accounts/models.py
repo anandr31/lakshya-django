@@ -100,17 +100,17 @@ class Donation(models.Model):
                                            help_text="Enter Bank and Branch Details. Mandatory \
                                            if Cheque or DD id choosen")
     transaction_details = models.CharField(max_length=200, null=True, blank=True,
-                                           help_text="'Cheque number xxx' or 'DD number xxx' or the CCAvenue \
-                                           Transaction ID")
+                                           help_text="'Cheque number xxx' or 'DD number xxx' or 'CCAvenue \
+                                           Transaction ID number xxx'")
     donation_type = models.IntegerField(choices=DONATION_TYPE, default=DIRECT)
     is_repayment = models.BooleanField("Is this a repayment", default=False, help_text="Tick this only if its a repayment. Donor ~ Scholar for this donation")
     receipt_number = models.IntegerField(blank=True, null=True)
 
     def get_transaction_details(self):
         if self.bank_details:
-            retval = "[%s" % (self.bank_details,)
+            retval = "[%s]" % (self.bank_details,)
             if self.transaction_details:
-                retval += ", %s" % (self.transaction_details) % "]"
+                retval = "[%s, %s]" % (self.bank_details, self.transaction_details)
             return retval
         else:
             return ""

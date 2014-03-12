@@ -60,8 +60,15 @@ class Person(models.Model):
         retval = self.billing_address
         if self.billing_landmark:
             retval += ", Landmark: " + self.billing_landmark
-        return retval + ", " + self.billing_city + "- " + self.billing_postal_code + ", " + \
-            self.billing_state + ", " + self.billing_country
+	if self.billing_city:
+	    retval += ", " + self.billing_city 
+	if self.billing_postal_code:
+	    retval += "- " + self.billing_postal_code 
+	if self.billing_state:
+	    retval += ", " + self.billing_state
+	if self.billing_country:
+	    retval += ", " + self.billing_country
+        return retval
             
     def email(self):
         return self.user.email

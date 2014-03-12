@@ -31,14 +31,15 @@ def get_financial_year(donation):
 def generate_receipt(donation):
     p = canvas.Canvas("Lakshya-Receipt-Donation-" + str(donation.id) + ".pdf")
     p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/receipt-header.jpg", 2, 720, 600, 100)
+    p.setFontSize(10)
     p.drawString(40, 680, datetime.date.today().strftime("%B %d, %Y"))
     p.drawString(430, 680, "No. "+str(donation.receipt_number) + "/" + get_financial_year(donation))
     p.setFontSize(18)
     p.drawString(200, 650, "Receipt For Donation")
     p.setFontSize(12)
 #    import pdb; pdb.set_trace()
-    content = '''Received with thanks an amount of Rs.%.2f (Rupees %s only) from %s on %s towards charitable donation vide %s %s (PAN - %s), Address: %s.
-    ''' % (donation.amount, number2word.to_card(donation.amount), donation.donor.name(), \
+    content = '''Received with thanks an amount of Rs.%.2f (Rupees %s only) from %s on %s towards charitable donation vide %s %s (PAN - %s), %s.
+    ''' % (donation.amount, number2word.to_card(donation.amount), donation.donor.name(), 
            donation.date_of_donation, donation.get_transacation_type_display(), donation.get_transaction_details(),
            donation.donor.pan_number, donation.donor.get_full_address())
     content_start=620
@@ -93,7 +94,7 @@ def mail_receipt(modeladmin, request, queryset):
         text_content = ('''
 Dear %s,
 
-Thank you for donating to Lakshya. Please find attached the donation receipt and a copy of 80G approval letter for claiming exemptions as per Income Tax Act.
+Thank you for donating to Lakshya. Please find attached the donation receipt for your donation made on %s and a copy of 80G approval letter for claiming exemptions as per Income Tax Act.
 
 Please feel free to contact us for any queries.
 
