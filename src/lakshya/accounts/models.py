@@ -108,9 +108,9 @@ class Donation(models.Model):
 
     def get_transaction_details(self):
         if self.bank_details:
-            retval = ", Bank: %s" % (self.bank_details,)
+            retval = "[%s" % (self.bank_details,)
             if self.transaction_details:
-                retval += ", Transaction Details: %s" % (self.transaction_details)
+                retval += ", %s" % (self.transaction_details) % "]"
             return retval
         else:
             return ""

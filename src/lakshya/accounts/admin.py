@@ -93,7 +93,7 @@ def mail_receipt(modeladmin, request, queryset):
         text_content = ('''
 Dear %s,
 
-Thank you for donating to Lakshay. Please find attached the receipt for your donation made to The Lakshya Foundation on %s.
+Thank you for donating to Lakshya. Please find attached the donation receipt and a copy of 80G approval letter for claiming exemptions as per Income Tax Act.
 
 Please feel free to contact us for any queries.
 
