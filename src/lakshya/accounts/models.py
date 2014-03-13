@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 from people.models import Person
 from django.db.models.aggregates import Max
 
@@ -127,7 +128,15 @@ class Donation(models.Model):
     def save(self, **kwargs):
         if not self.pk:
             #We need to create the invoice number when its getting created
-            self.receipt_number = (Donation.objects.filter(date_of_donation__year = self.date_of_donation.year).aggregate(Max('receipt_number'))["receipt_number__max"] or 0) + 1
+	    if self.date_of_donation.month in [1,2,3]:
+		financial_year_1 = self.date_of_donation.year-1
+		financial_year_2 = self.date_of_donation.year
+	    else:
+		financial_year_1 = self.date_of_donation.year
+		financial_year_2 = self.date_of_donation.year+1
+  	    date_1=date(financial_year_1, 4, 1)
+	    date_2=date(financial_year_2, 3, 31)
+            self.receipt_number = (Donation.objects.filter(date_of_donation__gte = date_1, date_of_donation__lte = date_2).aggregate(Max('receipt_number'))["receipt_number__max"] or 0) + 1
             super(Donation, self).save(**kwargs)
             return
         super(Donation, self).save(**kwargs)
