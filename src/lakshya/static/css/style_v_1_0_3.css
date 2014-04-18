@@ -1865,3 +1865,27 @@ padding:10px;
 }
 
 /* --------------------------- END OF Media block --------------------------- */
+
+/* --------------------------- START OF research applicants block --------------------------- */
+
+
+table.research_applicants td{
+   color:#808080;
+   font-size:14px;
+   padding:6px;
+   border:1px solid #808080;
+   border-collapse:collapse;
+}
+
+.button {
+	display: block;
+	width: 100%;
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 12px;
+	padding: 5px 5px;
+	background: rgba(46, 147, 168, 0.75);
+	margin : 2px auto;
+	border-radius: 4px;
+	text-align: center;
+}

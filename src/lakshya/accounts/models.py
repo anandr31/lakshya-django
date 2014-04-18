@@ -146,7 +146,8 @@ class PaymentTemp(models.Model):
     email_address = models.EmailField('Email')
     email_receipt = models.BooleanField("I want to save tax on this donation", default=False, help_text="What is 80G exemption?<br/>50% of donated amount is deductible from<br/>donor's taxable income.")
     pan_card = models.CharField("PAN", max_length=10, null=True, blank=True, help_text="Required for donation receipt")
-
+    referrer_url = models.CharField("Referrer Field", max_length=100, null=True, blank=True)
+    flex_field = models.CharField("Flexible Field", max_length=100, null=True, blank=True)
     
 class Pledge(models.Model):
     name = models.CharField(max_length=200)

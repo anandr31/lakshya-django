@@ -73,19 +73,29 @@ def donations_home(request):
     
 def donate_home(request):
     form = PaymentTempForm()
-    testimonial_list=LakshyaTestimonial.objects.order_by('?')[:2]
-    return render(request, 'donate.html', {
+    form.fields['referrer_url'].initial = request.get_full_path()
+    if request.get_full_path() == '/applicants':
+	return render(request, 'research_facilitator_applicants.html', {
+        'form': form
+    	})
+    elif request.get_full_path() == '/donate':
+        testimonial_list=LakshyaTestimonial.objects.order_by('?')[:2]
+	return render(request, 'donate.html', {
         'form': form, 'testimonial_list': testimonial_list
-    })
+    	})
  
 def payment_redirect(request):
+    referrer_url = ""
     if request.method == 'POST': # If the form has been submitted...
         form = PaymentTempForm(request.POST) # A form bound to the POST data
+        referrer_url = form.data['referrer_url']
+        sponsorhip_details = form.data['flex_field']
         if form.is_valid(): # All validation rules passes
             # Process the data in form.cleaned_data
             amount = form.cleaned_data['amount']
             email_address = form.cleaned_data['email_address']
             email_receipt = form.cleaned_data['email_receipt']
+	    sponsorhip_details = form.cleaned_data['flex_field']
             pt = PaymentTemp.objects.create(amount=amount, email_address=email_address, email_receipt=email_receipt)
             transaction_id = pt.id
             if settings.ENV == "dev":
@@ -96,10 +106,19 @@ def payment_redirect(request):
                               RequestContext(request, context))
     else:
         form = PaymentTempForm() # An unbound form
+    print "########################"
+    print referrer_url
+    print "########################"
 
-    return render(request, 'donate.html', {
-        'form': form,
-    })
+    if referrer_url == '/applicants':
+	return render(request, 'research_facilitator_applicants.html', {
+	'form': form,
+	})
+    elif referrer_url == '/donate':
+	return render(request, 'donate.html', {
+	'form': form,
+	})
+
     
 @csrf_exempt
 def return_view(request):   

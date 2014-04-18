@@ -39,7 +39,7 @@ urlpatterns = patterns('',
     url(r'^nem/registration-failure/?$', "nem.views.registration_failure", name='registration-failure'),  
     url(r'^corpus$', TemplateView.as_view(template_name="corpus.html")),
     url(r'^newsletter$', TemplateView.as_view(template_name="newsletter.html")),
-
+    url(r'^applicants/?$', "accounts.views.donate_home", name='research_facilitator_applicants'),
    
     # url(r'^$', 'lakshya.views.home', name='home'),
     # url(r'^lakshya/', include('lakshya.foo.urls')),
