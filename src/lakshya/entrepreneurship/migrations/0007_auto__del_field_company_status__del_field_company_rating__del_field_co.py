@@ -8,9 +8,20 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding field 'Company.curator'
-        db.add_column('entrepreneurship_company', 'curator',
-                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True, blank=True),
+        # Deleting field 'Company.status'
+        db.delete_column('entrepreneurship_company', 'status')
+
+        # Deleting field 'Company.rating'
+        db.delete_column('entrepreneurship_company', 'rating')
+
+        # Deleting field 'Company.curator'
+        db.delete_column('entrepreneurship_company', 'curator_id')
+
+
+    def backwards(self, orm):
+        # Adding field 'Company.status'
+        db.add_column('entrepreneurship_company', 'status',
+                      self.gf('django.db.models.fields.IntegerField')(default=0),
                       keep_default=False)
 
         # Adding field 'Company.rating'
@@ -18,21 +29,10 @@ class Migration(SchemaMigration):
                       self.gf('django.db.models.fields.IntegerField')(default=7),
                       keep_default=False)
 
-        # Adding field 'Company.status'
-        db.add_column('entrepreneurship_company', 'status',
-                      self.gf('django.db.models.fields.IntegerField')(default=0),
+        # Adding field 'Company.curator'
+        db.add_column('entrepreneurship_company', 'curator',
+                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True, blank=True),
                       keep_default=False)
-
-
-    def backwards(self, orm):
-        # Deleting field 'Company.curator'
-        db.delete_column('entrepreneurship_company', 'curator_id')
-
-        # Deleting field 'Company.rating'
-        db.delete_column('entrepreneurship_company', 'rating')
-
-        # Deleting field 'Company.status'
-        db.delete_column('entrepreneurship_company', 'status')
 
 
     models = {
@@ -85,18 +85,15 @@ class Migration(SchemaMigration):
             'contact_email': ('django.db.models.fields.EmailField', [], {'max_length': '40', 'blank': 'True'}),
             'contact_number': ('django.db.models.fields.CharField', [], {'max_length': '20', 'blank': 'True'}),
             'country': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'curator': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'null': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'founders': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['people.Person']", 'through': "orm['entrepreneurship.FounderDetail']", 'symmetrical': 'False'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'logo': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'postal_code': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'rating': ('django.db.models.fields.IntegerField', [], {'default': '7'}),
             'sectors': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['entrepreneurship.Sector']", 'symmetrical': 'False', 'blank': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '100', 'blank': 'True'}),
             'state': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'status': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'video_url': ('django.db.models.fields.URLField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
             'website_url': ('django.db.models.fields.URLField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'})
         },

@@ -89,27 +89,24 @@ def payment_redirect(request):
     if request.method == 'POST': # If the form has been submitted...
         form = PaymentTempForm(request.POST) # A form bound to the POST data
         referrer_url = form.data['referrer_url']
-        sponsorhip_details = form.data['flex_field']
+        notes = form.data['flex_field']
         if form.is_valid(): # All validation rules passes
             # Process the data in form.cleaned_data
             amount = form.cleaned_data['amount']
             email_address = form.cleaned_data['email_address']
             email_receipt = form.cleaned_data['email_receipt']
-	    sponsorhip_details = form.cleaned_data['flex_field']
+	    if referrer_url == '/applicants' and notes <> "":
+	    	notes = "Sponsorship for internship: "+form.cleaned_data['flex_field']
             pt = PaymentTemp.objects.create(amount=amount, email_address=email_address, email_receipt=email_receipt)
             transaction_id = pt.id
             if settings.ENV == "dev":
                 transaction_id = "dev" + str(pt.id)
             callback_url = "http://www.thelakshyafoundation.org/accounts/payment-return"
-            context = {"payment_dict" : get_post_object(callback_url, amount, email_address, transaction_id)}
+            context = {"payment_dict" : get_post_object(callback_url, amount, email_address, transaction_id, notes)}
             return render_to_response("payment_redirect.html", 
                               RequestContext(request, context))
     else:
         form = PaymentTempForm() # An unbound form
-    print "########################"
-    print referrer_url
-    print "########################"
-
     if referrer_url == '/applicants':
 	return render(request, 'research_facilitator_applicants.html', {
 	'form': form,
@@ -166,7 +163,7 @@ def return_view(request):
                                 donor=person,
                                 donation_fund=DonationFund.objects.filter(name__contains="Lakshya")[0],
                                 transacation_type=PAYMENT_GATEWAY,
-                                transaction_details="CCAvenue Id: "+str(request.POST.get("Order_Id")),
+                                transaction_details="CCAvenue Id: "+str(request.POST.get("Order_Id"))+" "+paymentTemp.flex_field,
                                 donation_type=DIRECT,
                                 is_repayment=False,)
         

@@ -1,15 +1,5 @@
 from django.db import models
 from people.models import Person
-from django.contrib.auth.models import User
-
-
-IN_PROGRESS = 0
-BASIC = 1
-COMPLETE = 2
-STATUS_CHOICES = ((IN_PROGRESS, "In Progress"),
-                  (BASIC, "Basic Details Done"),
-                  (COMPLETE, "Complete Details Done"))
-
 
 class Sector(models.Model):
     name = models.CharField(max_length=100)
@@ -54,10 +44,6 @@ class Company(models.Model):
     country = models.CharField("Country", max_length=50, blank=True)
     contact_number = models.CharField("Phone Number", max_length = 20, blank=True)
     contact_email = models.EmailField("Email Id", max_length = 40, blank=True)
-    
-    curator = models.ForeignKey(User, limit_choices_to=dict(id__in=User.objects.filter(is_staff = 1).values('pk')), null=True, blank=True)
-    rating = models.IntegerField(choices=((i,i) for i in range(10)), default=7)
-    status = models.IntegerField(choices=STATUS_CHOICES, default=0)
     
     def __unicode__(self):
         return self.name

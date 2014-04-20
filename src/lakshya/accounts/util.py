@@ -10,7 +10,7 @@ def calc_checksum(*args):
     checksum_string = "|".join(map(str,args))
     return adler32(checksum_string, 1) & 0xffffffff
 
-def get_post_object(callback_url, amount, email_address, transaction_id):
+def get_post_object(callback_url, amount, email_address, transaction_id, notes):
     try:
         donor = Person.objects.get(user__email=email_address)
         name = donor.name
@@ -46,6 +46,7 @@ def get_post_object(callback_url, amount, email_address, transaction_id):
             "delivery_cust_city" :city , 
             "delivery_cust_tel" :contact_number ,
             "delivery_zip_code" :zip_code ,
+            "delivery_cust_notes" : notes,
         }
     except:
         return {
@@ -70,7 +71,7 @@ def get_post_object(callback_url, amount, email_address, transaction_id):
             "delivery_cust_city" :"" , 
             "delivery_cust_tel" :"" ,
             "delivery_zip_code" :"" ,
-            "delivery_cust_notes" : "",
+            "delivery_cust_notes" : notes,
             "billing_zip_code" : "",
             "Merchant_Param" : "",
         }       

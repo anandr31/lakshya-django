@@ -37,16 +37,13 @@ function setFlexField(scholar_id)
 		<div class="md-modal md-effect-1" id="modal-1">
 			<div class="md-content">
 				<h3>Intern Sponsorship</h3>
-				{% for field in form.visible_fields %}
-					{% if field.name == 'flex_field' %}
-					<div id="div_id_{{ field.name }}" style="display: none">{{ field }}</div>
+
 					<table style="padding: 5px">
 					<tr><td style="padding: 15px" width="50%"><div id="popup_text" class="popup_text"></div></td>
 					<td><div class="donate_section">{% include "test.html" %}</div></td>
 					</tr>
 					</table>
-					{% endif %}
-				{% endfor %}
+
 				<button class="md-close">EXIT</button>
 			</div>
 		</div>
