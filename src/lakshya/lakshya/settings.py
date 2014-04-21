@@ -5,7 +5,7 @@ import os
 PROJECT_APP_DIR = os.path.realpath(os.path.dirname(__file__))
 PROJECT_DIR = os.path.dirname(PROJECT_APP_DIR)
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
