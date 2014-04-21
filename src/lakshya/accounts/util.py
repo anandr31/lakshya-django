@@ -11,10 +11,6 @@ def calc_checksum(*args):
     return adler32(checksum_string, 1) & 0xffffffff
 
 def get_post_object(callback_url, amount, email_address, transaction_id, notes):
-    print "#######inside payment_redirect#############"
-    print "notes = "notes
-    print "####################"
-
     try:
         donor = Person.objects.get(user__email=email_address)
         name = donor.name
@@ -42,7 +38,7 @@ def get_post_object(callback_url, amount, email_address, transaction_id, notes):
             "billing_cust_state" :state ,
             "billing_cust_city" :city , 
             "billing_zip_code" :zip_code ,             
-                                            
+            "billing_cust_notes" :notes,                                            
             "delivery_cust_name" :name , 
             "delivery_cust_address" :address , 
             "delivery_cust_country" :country , 
@@ -50,7 +46,6 @@ def get_post_object(callback_url, amount, email_address, transaction_id, notes):
             "delivery_cust_city" :city , 
             "delivery_cust_tel" :contact_number ,
             "delivery_zip_code" :zip_code ,
-            "delivery_cust_notes" : notes,
         }
     except:
         return {
@@ -67,7 +62,7 @@ def get_post_object(callback_url, amount, email_address, transaction_id, notes):
             "billing_cust_state" :"" ,
             "billing_cust_city" :"" , 
             "billing_zip" :"" ,             
-                                            
+            "billing_cust_notes" :notes,                                            
             "delivery_cust_name" :"" , 
             "delivery_cust_address" :"" , 
             "delivery_cust_country" :"" , 
@@ -75,7 +70,6 @@ def get_post_object(callback_url, amount, email_address, transaction_id, notes):
             "delivery_cust_city" :"" , 
             "delivery_cust_tel" :"" ,
             "delivery_zip_code" :"" ,
-            "delivery_cust_notes" : notes,
             "billing_zip_code" : "",
             "Merchant_Param" : "",
         }       
