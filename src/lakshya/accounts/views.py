@@ -86,6 +86,7 @@ def donate_home(request):
  
 def payment_redirect(request):
     referrer_url = ""
+    notes = ""
     if request.method == 'POST': # If the form has been submitted...
         form = PaymentTempForm(request.POST) # A form bound to the POST data
         referrer_url = form.data['referrer_url']
@@ -96,7 +97,7 @@ def payment_redirect(request):
             email_address = form.cleaned_data['email_address']
             email_receipt = form.cleaned_data['email_receipt']
 	    if referrer_url == '/applicants' and notes <> "":
-	    	notes = "Sponsorship for internship: "+form.cleaned_data['flex_field']
+	    	notes = "Sponsorship for internship: "+notes
             pt = PaymentTemp.objects.create(amount=amount, email_address=email_address, email_receipt=email_receipt)
             transaction_id = pt.id
             if settings.ENV == "stage":
@@ -107,6 +108,9 @@ def payment_redirect(request):
                               RequestContext(request, context))
     else:
         form = PaymentTempForm() # An unbound form
+    print "#######inside payment_redirect#############"
+    print "notes = "notes
+    print "####################"
     if referrer_url == '/applicants':
 	return render(request, 'research_facilitator_applicants.html', {
 	'form': form,

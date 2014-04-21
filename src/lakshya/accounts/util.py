@@ -11,6 +11,10 @@ def calc_checksum(*args):
     return adler32(checksum_string, 1) & 0xffffffff
 
 def get_post_object(callback_url, amount, email_address, transaction_id, notes):
+    print "#######inside payment_redirect#############"
+    print "notes = "notes
+    print "####################"
+
     try:
         donor = Person.objects.get(user__email=email_address)
         name = donor.name
