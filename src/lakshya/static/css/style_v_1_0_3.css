@@ -1889,3 +1889,25 @@ table.research_applicants td{
 	border-radius: 4px;
 	text-align: center;
 }
+/* --------------------------- END OF Research Applicants Block --------------------------- */
+/* --------------------------- START OF crowd funding block --------------------------- */
+
+.project-pledged-wrap {
+float: left;
+margin-left: 10px;
+margin-right: 10px;
+width: 340px;
+border-radius: 6px;
+left: 0px;
+height: 8px;
+background: #d0d5cb;
+padding: 0;
+margin: 0 0 15px;
+width: 330px;
+}
+
+.project-pledged {
+background: #76cc1e;
+border-radius: 6px;
+height: 8px;
+}
