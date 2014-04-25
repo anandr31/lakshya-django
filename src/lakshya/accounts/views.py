@@ -74,11 +74,11 @@ def donations_home(request):
 def donate_home(request):
     form = PaymentTempForm()
     form.fields['referrer_url'].initial = request.get_full_path()
-    if request.get_full_path() == '/applicants':
+    if '/applicants' in request.get_full_path():
 	return render(request, 'research_facilitator_applicants.html', {
         'form': form
     	})
-    elif request.get_full_path() == '/donate':
+    elif '/donate' in request.get_full_path():
         testimonial_list=LakshyaTestimonial.objects.order_by('?')[:2]
 	return render(request, 'donate.html', {
         'form': form, 'testimonial_list': testimonial_list
