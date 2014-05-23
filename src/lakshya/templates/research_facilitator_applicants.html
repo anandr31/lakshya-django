@@ -10,7 +10,7 @@
 function setFlexField(scholar_id)
 {
 	document.getElementById("id_flex_field").value = document.getElementById(scholar_id).innerHTML
-	intro_string = "To sponsor: Enter amount & email ID. Click on 'donate by credit/debit card' button</br></br>"
+	intro_string = "To sponsor: Enter amount & email ID. Click on 'donate by card/net banking' button</br></br>"
 	document.getElementById("popup_text").innerHTML = intro_string + "</br>Pledged: " + document.getElementById(scholar_id+"_pledged").innerHTML
 +" of "+document.getElementById(scholar_id+"_goal").innerHTML 
 +"</br></br>"+document.getElementById(scholar_id).innerHTML
