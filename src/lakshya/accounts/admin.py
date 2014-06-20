@@ -13,8 +13,8 @@ from accounts.models import Expense, DonationFund, Donation, Pledge
 
 
 class ExpenseOptions(admin.ModelAdmin):
-    list_display = ('amount', 'date_of_expense', 'expense_header_first_level', "expense_header_second_level", "status",)
-    list_filter = ('expense_header_first_level', 'expense_header_second_level', "status", )
+    list_display = ('amount', 'date_of_expense', 'expense_header_first_level', 'expense_header_second_level', 'status', 'details', 'payment_type')
+    list_filter = ('expense_header_first_level', 'expense_header_second_level', 'status', 'payment_type', 'amount', 'date_of_expense')
     date_hierarchy = 'date_of_expense'
 
 class DonationFundOptions(admin.ModelAdmin):
@@ -112,9 +112,9 @@ The Lakshya Team
 mail_receipt.short_description = "Mail Receipt"
     
 class DonationOptions(admin.ModelAdmin):
-    list_display = ('id', 'amount', 'date_of_donation', 'donor', 'receipt_number', )
-    list_filter = ('transacation_type', )
-    search_fields = ('donor__user__first_name', )
+    list_display = ('id', 'amount', 'date_of_donation', 'donor', 'receipt_number', 'donation_type', 'transacation_type', 'bank_details', 'transaction_details', )
+    list_filter = ('transacation_type', 'donation_type')
+    search_fields = ('donor__user__first_name', 'amount', 'date_of_donation')
     raw_id_fields = ('donor', 'donation_fund',)
     list_editable = ('receipt_number',)
     actions =[mail_receipt, ]
