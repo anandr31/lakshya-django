@@ -148,12 +148,9 @@ INSTALLED_APPS = (
     'south',
     'utils',
     'entrepreneurship',
-<<<<<<< HEAD
     'gunicorn',
-=======
     'notification',
     'nem',
->>>>>>> updatedUI
 )
 
 # A sample logging configuration. The only tangible logging
