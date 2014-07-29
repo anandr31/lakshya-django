@@ -5,15 +5,19 @@
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
 {% endblock title %}
 
+{%block header_slide%}
+	<a href="/team" title="Team" ><img src="{{STATIC_URL}}img/headers/projects.png" width="990" height="420" alt="Team"></a>
+{% endblock header_slide%}
+
 {% block content %}
 <br>
-<h2>Research Facilitator Program</h2>
-<div id="intro">
-	<p>This program provides funding to NIT Warangal UG and PG students whose work is chosen for presentation in top national/ international conferences and internships</p>
-</div>
+<h2 style="color: #2e93a8;">Research Facilitator Program</h2>
 <div id="research_main_content" class="left">
+	<p>This program provides funding to NIT Warangal UG and PG students whose work is chosen for presentation in top national/ international conferences and internships</p>
+
 	<div class="content_block">
-		<div class="content_block_inner">		
+		<div class="content_block_inner">
+		
 			<h3>Selection Criteria</h3>
 			<hr>
 			<p>NIT Warangal UG and PG students are eligible. Students must receive selection confirmation from conference organizers or internship providers.</p>
@@ -41,19 +45,11 @@
 		</div>
 	</div>
 
-	<div class="content_block">
-		<div class="content_block_inner">		
-			<h3>Apply For Funding</h3>
-			<hr>
-			<p>To apply for funding, Please mail to <a href="mailto:info@thelakshyafoundation.org">info@thelakshyafoundation.org</a></p>
-		</div>
-	</div>
-
 </div>
 
-<div class="left">
+<!--<div class="left">
 
-	<h2>Internships funded till date</h2>
+	<h2 style="color: #2e93a8;">Internships funded till date</h2>
 		<table class="internships-table" width="500px" >
 			<tr>
 				<th>Name</th><th>University/Company</th><th>Country</th><th>Funding (INR)</th>
@@ -77,7 +73,11 @@
 				<td>Chanukya Patnaik</td><td>Nanyang Technological University</td><td>Singapore</td><td>35,000</td>
 			</tr>
 		</table>
-	<h2>Conferences funded till date</h2>
+
+	<a class="button" href="/research/apply-internship-funding">Apply for funding for your internship</a>
+
+
+	<h2 style="color: #2e93a8;">Paper Presentations funded till date</h2>
 		<table class="internships-table" width="500px" >
 			<tr>
 				<th>Student Name</th><th>Conference</th><th>Place</th>
@@ -89,16 +89,24 @@
 				<td>Yagnamurthy sai saran</td><td>Nirma University International Conference on Engineering</td><td>Ahmedabad</td>
 			</tr>
 			<tr>
-				<td>Harpreet Singh Budwal</td><td> IEEE TENCON SPRING 2013</td><td>Sydney, </td>
+				<td>Harpreet Singh Budwal</td><td> IEEE TENCON SPRING 2013</td><td>Sydney, Australia</td>
 			</tr>
 			<tr>
 				<td>Sumanth Reddy</td><td> SCMT3 Conference, 2013</td><td>Kyoto, Japan</td>
 			</tr>
 		</table>
 
+	<a class="button" href="/research/apply-conference-funding">Apply for funding for paper presentation</a>
 
-
+</div>-->
+<div class = "right_navigation_div right">
+	<h3>Financial Assistance Program</h3>
+	<ul>
+		<li>Research Facilitator Program Home</li>
+		<li><a href="/research/about">About Internship Funding</a></li>
+	</ul>
 </div>
+
 <!-- <div id="research_image" class="left">
 	<br>
 	<img src="{{STATIC_URL}}img/research_facilitator/research_facilitator_program-1.jpg" width="480px"> 

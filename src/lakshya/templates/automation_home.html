@@ -7,9 +7,12 @@
 <script src="http://gettopup.com/releases/latest/top_up-min.js"></script>
 {% endblock %}
 
+{%block header_slide%}
+	<a href="/team" title="Team" ><img src="{{STATIC_URL}}img/headers/projects.png" width="990" height="420" alt="Team"></a>
+{%endblock header_slide%}
 {% block content %}
 <br>
-<h2>Administrative Process Automation</h2>
+<h2 style="color: #2e93a8;">Administrative Process Automation</h2>
 <div id="blockquote_div">
 	<blockquote> "One machine can do the work of fifty ordinary men. No machine can do the work of one extraordinary man."<p>-Elbert Hubbard, American writer, publisher, artist, and philosopher</p></blockquote>
 </div>
@@ -17,7 +20,7 @@
 	<p>Applying for official certificates, transcripts or documents from NIT Warangal will be as easy as booking a movie ticket. This has been made possible through IT infrastructure being built by Lakshya together with the institute for the administration.</p>
 </div>
 
-<h3> Certificates that you can apply for </h3>
+<h3 style="color: #2e93a8;"> Certificates that you can apply for </h3>
 <ul>
 <li> Transcripts </li>
 <li> Degree Certificate (Original and Duplicate)</li>
@@ -27,7 +30,8 @@
 </ul>
 
 <a id="automation_button" href="http://www.nitw.ac.in/alumnirequest/select.php">Apply now </a> 
-
-<h3>Planned Next Release</h3>
+<!--
+<h3 style="color: #2e93a8">Planned Next Release</h3>
 <p id="release_plan">Request monitoring and Tracking system will be released on <b>February 5th 2013</b></p>
+-->
 {% endblock content %}

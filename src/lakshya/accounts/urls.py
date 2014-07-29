@@ -11,4 +11,7 @@ urlpatterns = patterns('',
     url(r'^donations$', 'accounts.views.donations_home',),
     url(r'^expenses$', 'accounts.views.expenses_home',),
     url(r'^audits$', direct_to_template, {'template' : 'audits.html'}, name='audits'),
+    url(r'^payment-return$', 'accounts.views.return_view', name='payment-return'),
+    url(r'^payment-failure$', direct_to_template, {'template' : 'payment_failure.html'}, name='payment-failure'),
+    url(r'^payment-success$', direct_to_template, {'template' : 'payment_success.html'}, name='payment-success'),
 )

@@ -7,28 +7,38 @@ NEED_TO_REVIEW = 0
 REVIEWED = 1
 ACCEPTED = 4
 REJECTED = 5
-INNOVATION_APPLICATION_STATUS = ((NEED_TO_REVIEW, "Need to review"),
+APPLICATION_STATUS = ((NEED_TO_REVIEW, "Need to review"),
                                  (REVIEWED, "Reviewed"),
                                  (ACCEPTED, "Accepted"),
                                  (REJECTED, "Rejected"))
-class InnovationApplication(models.Model):
+class IspApplication(models.Model):
     date_of_submission = models.DateTimeField()
     year_of_submission = models.IntegerField()
     
     title = models.CharField(max_length=200)
-    description = models.TextField(help_text="What it is about, what problem you are trying to solve etc")
     abstract = models.FileField(upload_to="innovation_abstracts", null=True, blank=True)
-    team_members = models.ManyToManyField(Person, null=True, blank=True)
-    reviewer = models.ForeignKey(Person, related_name="reviewer", null=True, blank=True)
+    expected_expenditure = models.CharField(max_length=15)
+    member = models.ForeignKey(Person)
+    other_member_details = models.TextField(help_text="Enter your team member details")
     review = models.TextField(blank=True)
-    status = models.IntegerField(choices=INNOVATION_APPLICATION_STATUS, default=NEED_TO_REVIEW)
-
+    status = models.IntegerField(choices=APPLICATION_STATUS, default=NEED_TO_REVIEW)
     
     def __unicode__(self):
         return self.title
     
+    def get_member_detail(self):
+        retval = self.member.name() + "<br>" + self.member.get_course_display() + "," \
+                + self.member.get_department_display() \
+              + "," + str(self.member.year_of_passing) + "<br>" + self.member.email() + "<br>" \
+              + self.member.contact_number + "<br>" + \
+              "<a href='/admin/people/person/%d'>More Details</a>"%(self.member.id)        
+        return retval
+    
+    get_member_detail.allow_tags = True
+    get_member_detail.short_description = "Team Member Details"
+    
 class Innovation(models.Model):
-    application = models.OneToOneField(InnovationApplication)
+    application = models.OneToOneField(IspApplication)
     guide = models.ForeignKey(Person)
     
         

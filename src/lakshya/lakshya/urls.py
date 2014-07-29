@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from django.views.generic.simple import direct_to_template
+from django.views.generic import TemplateView
 from utils.urls import urlpatterns as util_urls
 from people.urls import urlpatterns as people_urls
 from entrepreneurship.urls import urlpatterns as entrepreneurship_urls
@@ -13,25 +13,34 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'lakshya.views.get_home_page', name='home'),
-    url(r'^about$', direct_to_template, {'template' : 'about.html'}, name='home'),
+    url(r'^about$', TemplateView.as_view(template_name="about.html")),
     url(r'^innovation/', include('innovation.urls')),
+    url(r'^research/', include('research.urls')),
     url(r'^scholarships/', include('scholarships.urls')),
     url(r'^accounts/', include('accounts.urls')),
-    url(r'^asthra/home$', direct_to_template, {'template' : 'asthra_home.html'}, name='home'),
-    url(r'^asthra/about$', direct_to_template, {'template' : 'about_asthra.html'}, name='home'),
-    url(r'^pilot-projects$', direct_to_template, {'template' : 'pilot_projects.html'}, name='home'),
-    url(r'^research/home$', direct_to_template, {'template' : 'research_facilitator_home.html'}, name='research_facilitator_home'),
-    url(r'^automation/home$', direct_to_template, {'template' : 'automation_home.html'}, name='automation_home'),    
-    url(r'^contact$', direct_to_template, {'template' : 'contact.html'}, name='home'),    
+    (r'^notifications/', include('notification.urls')),
+    url(r'^asthra/home$',TemplateView.as_view(template_name="ashtra_home.html")),
+    url(r'^asthra/about$', TemplateView.as_view(template_name="about_asthra.html")),
+    url(r'^pilot-projects$', TemplateView.as_view(template_name="pilot_projects.html")),
+    url(r'^automation/home$', TemplateView.as_view(template_name="automation_home.html")),    
+    url(r'^contact$',TemplateView.as_view(template_name="contact.html")),    
     url(r'^donate$', "accounts.views.donate_home", name='home'),  
     url(r'^seedfund', "accounts.views.seedfund", name='seedfund'),
     url(r'^payment_redirect$', "accounts.views.payment_redirect", name='payment_redirect'),  
     url(r'^payment-return$', "accounts.views.return_view", name='payment-return'),  
-    url(r'^payment-success$', direct_to_template, {'template' : 'payment_success.html'}, name='payment-success'),
-    url(r'^payment-failure$', direct_to_template, {'template' : 'payment_failure.html'}, name='payment-failure'),
-    url(r'^apply$', direct_to_template, {'template' : 'apply-vp.html'}, name='apply-vp'),
-
-       
+    url(r'^payment-success$',TemplateView.as_view(template_name="payment_success.html")),
+    url(r'^payment-failure$', TemplateView.as_view(template_name="payment_failure.html")),
+    url(r'^apply$',TemplateView.as_view(template_name="apply-vp.html")),
+    url(r'^nem/?$', "nem.views.show_home", name='nem'),  
+    url(r'^nem/register/?$', "nem.views.register", name='nem-registration'), 
+    url(r'^nem/student/?$', "nem.views.apply_student", name='nem-apply-student'), 
+    url(r'^nem/payment-return/?$', "nem.views.return_view", name='nem-payment-return'),    
+    url(r'^nem/registration-success/?$', "nem.views.registration_success", name='registration-success'),  
+    url(r'^nem/registration-failure/?$', "nem.views.registration_failure", name='registration-failure'),  
+    url(r'^corpus$', TemplateView.as_view(template_name="corpus.html")),
+    url(r'^newsletter$', TemplateView.as_view(template_name="newsletter.html")),
+    url(r'^applicants/?$', "accounts.views.donate_home", name='research_facilitator_applicants'),
+   
     # url(r'^$', 'lakshya.views.home', name='home'),
     # url(r'^lakshya/', include('lakshya.foo.urls')),
 
@@ -51,3 +60,6 @@ urlpatterns += entrepreneurship_urls
 urlpatterns += patterns('',
         (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT}))
+
+handler500 = "lakshya.views.server_error"
+

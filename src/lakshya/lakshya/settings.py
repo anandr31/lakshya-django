@@ -2,14 +2,14 @@
 import os
 
 #django 1.4, the settings file is moved inside the app. 
-PROJECT_APP_DIR = os.path.dirname(__file__)
+PROJECT_APP_DIR = os.path.realpath(os.path.dirname(__file__))
 PROJECT_DIR = os.path.dirname(PROJECT_APP_DIR)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+     ('Srihari Maneru', 'srihari@thelakshyafoundation.org'),
 )
 
 MANAGERS = ADMINS
@@ -63,7 +63,7 @@ MEDIA_URL = "/media/"
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'sitestatic')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -132,7 +132,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-#    'django.contrib.sites',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
@@ -143,11 +143,17 @@ INSTALLED_APPS = (
     'people',
     'accounts',
     'innovation',
+    'research',
     'scholarships',
     'south',
     'utils',
     'entrepreneurship',
+<<<<<<< HEAD
     'gunicorn',
+=======
+    'notification',
+    'nem',
+>>>>>>> updatedUI
 )
 
 # A sample logging configuration. The only tangible logging
@@ -179,7 +185,7 @@ LOGGING = {
     }
 }
 
-
+EMAIL_SUBJECT_PREFIX = ""
 
 # Load the local settings
 # This should be at the end for overriding

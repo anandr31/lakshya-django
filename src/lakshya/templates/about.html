@@ -4,8 +4,73 @@
 <title>About - Lakshya, an NITW alumni led organization</title>
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
 {% endblock title %}
+{% block scripts %}
+	<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', '{{GOOGLE_SITE_CODE}}' ]);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+		<script>(function(d, s, id) {
+  			var js, fjs = d.getElementsByTagName(s)[0];
+  			if (d.getElementById(id)) return;
+  			js = d.createElement(s); js.id = id;
+  			js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+	<script src="{{STATIC_URL}}js/jquery.min.js"></script>
+	<script src="{{STATIC_URL}}js/slides.min.jquery.js"></script>
+
+	<script>
+		$(function(){
+		$('#slides').slides({
+			preload: true,
+			preloadImage: '{{STATIC_URL}}img/loading.gif',
+			play: 5000,
+			pause: 2500,
+			hoverPause: true
+		});
+
+		$('#testimonial_slides').slides({
+			pagination: false,
+			container: 'testimonials_container',
+			preload: true,
+			preloadImage: '{{STATIC_URL}}img/loading.gif',
+			play: 0,
+			pause: 2500,
+			hoverPause: true
+
+		});
+
+		function showTheList() {
+		  var i = 1;
+		  function showOne() {
+		    if (i === 1) $('.ul li').hide();
+		    $('.ul li').eq(i - 1).delay(100).fadeIn(2000, function() {
+		      $('.ul li').eq(i - 1).fadeOut(4000, function() {
+		        if (++i > 3) i = 1;
+		        showOne();
+		      });
+		    });
+		  }
+		  showOne();
+		}
+		showTheList();
+	});
+	</script>
+
+	{% endblock %}	
+
 
 {% block content %}
+
 <div class = "content_with_page_title left">
 <!-- 	<h2>About Lakshya</h2>
  -->	
@@ -16,10 +81,12 @@
 	<h2>Vision</h2>
 	<p>Lakshya will achieve the following by 2018:</p>
 	<ul>
-		<li>Enable NIT Warangal to be rated among the top five technology institutes in India</li>
+
+		<li>Identify 500 thought leaders from among alumni who will each inspire and motivate five thought leaders from among the students</li>
+		<li>Enable the institute to file 10 patents annually</li>
 		<li>Incubate five technology startups a year which will have a combined net-worth of $1 million in
 		two years of operations</li>
-		<li>Enable the institute to file 10 patents annually</li>
+		<li>Enable NIT Warangal to be rated among the top five technology institutes in India</li>
 	</ul>
 
 	<h2>Mission</h2>
@@ -58,6 +125,4 @@
 		<li><a href="/team">Team</a></li>
 	</ul>
 </div>
-
-
 {% endblock content %}

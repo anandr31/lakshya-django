@@ -29,12 +29,16 @@ $(function(){
 </script>
 {% endblock %}
 
+{%block header_slide%}
+	<a href="/team" title="Team" ><img src="{{STATIC_URL}}img/headers/projects.png" width="990" height="420" alt="Team"></a>
+{% endblock header_slide%}
+
 {% block content %}
 <div class = "content_with_page_title left">
 	<h2>Scholars List</h2>
 	<div class="content_div">
 <!--Role of individual in Lakshya-->
-		<p>Synergy is one of our core values and it reflects in our team composition. Faculty, alumni, and students are all part of the organization, bringing all stakeholders of NIT Warangal together.</p>
+		<p>The profile of each scholars listed below is verified before granting financial assistance. These are students who have battled various hardships in life and have still come out on top.</p>
 		<div id="team-list" class="left cB">
 			{% for year, scholar_list in scholar_year_list %}
 				<h4 class="year" > {{year|add:"-4"}} - {{year}} batch</h4>

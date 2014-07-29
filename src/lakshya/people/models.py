@@ -4,9 +4,15 @@ from django.contrib.auth.models import User
 BTECH = 0
 MTECH = 1
 PHD = 2
+MBA = 3
+MSC= 4
+MCA = 5
 COURSE_CHOICES = ((BTECH, "B.Tech"),
                   (MTECH, "M.Tech"),
-                  (PHD, "Phd"))
+                  (PHD, "PHD"),
+                  (MBA, "MBA"),
+                  (MSC, "M.Sc"),
+                  (MCA, "MCA"),)
 
 ECE = 0
 EEE = 1
@@ -35,7 +41,7 @@ class Person(models.Model):
     billing_postal_code = models.CharField("Pin Code", max_length=30, blank=True)
     billing_country = models.CharField("Country", max_length=50, blank=True)
     contact_number = models.CharField("Phone Number", max_length = 20, blank=True)
-    pan_number = models.CharField("PAN Number", max_length = 20, blank=True)
+    pan_number = models.CharField("PAN Number", max_length = 10, blank=True)
         
     #if NITW
     is_nitw_alumni = models.BooleanField(blank=True)
@@ -51,8 +57,21 @@ class Person(models.Model):
         return self.user.first_name + " " + self.user.last_name
     
     def get_full_address(self):
-        return self.billing_address + ", Landmark: " + self.billing_landmark + ", " + self.billing_city + "- " + self.billing_postal_code + ", " + \
-            self.billing_state + ", " + self.billing_country
+        retval = self.billing_address
+        if self.billing_landmark:
+            retval += ", Landmark: " + self.billing_landmark
+	if self.billing_city:
+	    retval += ", " + self.billing_city 
+	if self.billing_postal_code:
+	    retval += "- " + self.billing_postal_code 
+	if self.billing_state:
+	    retval += ", " + self.billing_state
+	if self.billing_country:
+	    retval += ", " + self.billing_country
+        return retval
+            
+    def email(self):
+        return self.user.email
 
 class Person_preference(models.Model):
     person = models.OneToOneField(Person)

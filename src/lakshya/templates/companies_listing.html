@@ -35,6 +35,7 @@
 	<div class="left" id="companies_listing_right_pane">
 		<div id="sectors_list">
 			<p>Industries</p>
+<<<<<<< HEAD
 			{% if selected_sector %}
 			<a href="/entrepreneurs">All ({{ total_companies_count }})</a>
 			{% else %}
@@ -44,12 +45,19 @@
 				<div>
 					{% if selected_sector and sector.1 == selected_sector %}
 					<a href="/entrepreneurs?sector={{ sector.1 }}" class="selected_link">{{ sector.0 }} ({{ sector.2 }})</a>
+=======
+			{% for sector in sectors_list_details %}
+				<div>
+					{% if selected_sector and sector.1 == selected_sector %}
+					<a href="/entreprenuers?sector={{ sector.1 }}" class="selected">{{ sector.0 }} ({{ sector.2 }})</a>
+>>>>>>> updatedUI
 					{% else %}
 					<a href="/entrepreneurs?sector={{ sector.1 }}">{{ sector.0 }} ({{ sector.2 }})</a>					
 					{% endif %}
 				</div>	
 			{% endfor %}			
 		</div>
+<<<<<<< HEAD
 		<div id="sectors_list">
 			<p>Countries</p>
 			{% if selected_country %}
@@ -67,6 +75,8 @@
 				</div>	
 			{% endfor %}			
 		</div>
+=======
+>>>>>>> updatedUI
 <!-- 		<div id="batches_list">
 			<p>Batches</p>
 		</div> -->

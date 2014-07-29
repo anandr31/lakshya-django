@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from accounts.models import PaymentTemp, Pledge
 from django import forms
-from .utils import calc_checksum
+from .util import calc_checksum
 from django.core.exceptions import ValidationError
 from django.utils.encoding import smart_str
 
@@ -9,6 +9,17 @@ from django.utils.encoding import smart_str
 class PaymentTempForm(ModelForm):
     class Meta:
         model = PaymentTemp
+    
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        pan_card = self.cleaned_data['pan_card']
+        email_receipt = self.cleaned_data['email_receipt']
+        
+        if email_receipt and (not pan_card):
+            self._errors["pan_card"] = self.error_class(["Your pan card number is needed for us to email the receipt"])
+            del cleaned_data["pan_card"]  
+                            
+        return cleaned_data        
 
 class CCAVenueReturnForm(forms.Form):
     Order_Id = forms.CharField()

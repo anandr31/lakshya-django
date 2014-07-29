@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}
+<title>Testimonials - Lakshya, an NITW alumni led organization</title>
+<meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
+{% endblock title %}
+{% block content %}
+<div class = "content_no_sidebar">
+
+	<h2><br/>Testimonials</h2>
+<br/><br/>
+		{% for testimonial in testimonial_list %}
+	<div class="testimonial_content">
+			{% if testimonial.photo%}
+				<img class="testimonial_image" src="{{testimonial.photo.url}}"/> 
+				<div class="testimonial_name">{{testimonial.person}}</div>
+				<div class="testimonial_designation">{{testimonial.designation}}</div>
+				<p class="testimonial_text">{{testimonial.testimonial_text|safe}}</p>
+			{% else %}
+				<div class="testimonial_video">{{testimonial.video_link|safe}}</div>
+				<div class="testimonial_name">{{testimonial.person}}</div>
+				<div class="testimonial_designation">{{testimonial.designation}}</div>
+				<p class="testimonial_text">{{testimonial.testimonial_text|safe}}</p>
+			{% endif %}
+	</div>
+		{% endfor %}
+
+
+<!--	<div class="content_div">
+		{% for testimonial in testimonial_list %}
+		<div class="update">
+		<table class="testimonial_table">
+		<tr>
+		<td class="partition">
+			{% if testimonial.photo%}
+				<img src="{{testimonial.photo.url}}" width="100px" height="100px"/> 
+			{% endif %}
+			<div class="name">{{testimonial.person}}</div>
+		<div class="designation">{{testimonial.designation}}</div>
+			<hr>
+		</td>
+		<td class="testimonial_text" align="centre" valign="top" width=80%>
+			{{testimonial.testimonial_text|safe}}
+		</td>
+		</tr></table>
+		</div>
+		{% endfor %}
+	</div> -->
+</div>
+{% endblock content %}
+

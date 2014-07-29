@@ -8,32 +8,25 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'InnovationApplication'
-        db.create_table('innovation_innovationapplication', (
+        # Adding model 'IspApplication'
+        db.create_table('innovation_ispapplication', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('date_of_submission', self.gf('django.db.models.fields.DateTimeField')()),
             ('year_of_submission', self.gf('django.db.models.fields.IntegerField')()),
             ('title', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('description', self.gf('django.db.models.fields.TextField')()),
-            ('abstract', self.gf('django.db.models.fields.files.FileField')(max_length=100, blank=True)),
-            ('reviewer', self.gf('django.db.models.fields.related.ForeignKey')(related_name='reviewer', to=orm['people.Person'])),
+            ('abstract', self.gf('django.db.models.fields.files.FileField')(max_length=100, null=True, blank=True)),
+            ('expected_expenditure', self.gf('django.db.models.fields.CharField')(max_length=15)),
+            ('member', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['people.Person'])),
+            ('other_member_details', self.gf('django.db.models.fields.TextField')()),
             ('review', self.gf('django.db.models.fields.TextField')(blank=True)),
             ('status', self.gf('django.db.models.fields.IntegerField')(default=0)),
         ))
-        db.send_create_signal('innovation', ['InnovationApplication'])
-
-        # Adding M2M table for field team_members on 'InnovationApplication'
-        db.create_table('innovation_innovationapplication_team_members', (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('innovationapplication', models.ForeignKey(orm['innovation.innovationapplication'], null=False)),
-            ('person', models.ForeignKey(orm['people.person'], null=False))
-        ))
-        db.create_unique('innovation_innovationapplication_team_members', ['innovationapplication_id', 'person_id'])
+        db.send_create_signal('innovation', ['IspApplication'])
 
         # Adding model 'Innovation'
         db.create_table('innovation_innovation', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('application', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['innovation.InnovationApplication'])),
+            ('application', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['innovation.IspApplication'], unique=True)),
             ('guide', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['people.Person'])),
         ))
         db.send_create_signal('innovation', ['Innovation'])
@@ -42,7 +35,7 @@ class Migration(SchemaMigration):
         db.create_table('innovation_innovationupdate', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('innovation', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['innovation.Innovation'])),
-            ('date_of_update', self.gf('django.db.models.fields.DateField')(auto_now_add=True, null=True, blank=True)),
+            ('date_of_update', self.gf('django.db.models.fields.DateField')(null=True, blank=True)),
             ('update', self.gf('django.db.models.fields.TextField')()),
         ))
         db.send_create_signal('innovation', ['InnovationUpdate'])
@@ -51,7 +44,7 @@ class Migration(SchemaMigration):
         db.create_table('innovation_innovationupdateimage', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('innovation_update', self.gf('django.db.models.fields.related.ForeignKey')(related_name='images', to=orm['innovation.InnovationUpdate'])),
-            ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+            ('image', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
             ('caption', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
             ('sort_order', self.gf('django.db.models.fields.IntegerField')(default=0)),
         ))
@@ -78,11 +71,8 @@ class Migration(SchemaMigration):
 
 
     def backwards(self, orm):
-        # Deleting model 'InnovationApplication'
-        db.delete_table('innovation_innovationapplication')
-
-        # Removing M2M table for field team_members on 'InnovationApplication'
-        db.delete_table('innovation_innovationapplication_team_members')
+        # Deleting model 'IspApplication'
+        db.delete_table('innovation_ispapplication')
 
         # Deleting model 'Innovation'
         db.delete_table('innovation_innovation')
@@ -151,22 +141,9 @@ class Migration(SchemaMigration):
         },
         'innovation.innovation': {
             'Meta': {'object_name': 'Innovation'},
-            'application': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['innovation.InnovationApplication']"}),
+            'application': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['innovation.IspApplication']", 'unique': 'True'}),
             'guide': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['people.Person']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
-        },
-        'innovation.innovationapplication': {
-            'Meta': {'object_name': 'InnovationApplication'},
-            'abstract': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
-            'date_of_submission': ('django.db.models.fields.DateTimeField', [], {}),
-            'description': ('django.db.models.fields.TextField', [], {}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'review': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'reviewer': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'reviewer'", 'to': "orm['people.Person']"}),
-            'status': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'team_members': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['people.Person']", 'symmetrical': 'False'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'year_of_submission': ('django.db.models.fields.IntegerField', [], {})
         },
         'innovation.innovationpayment': {
             'Meta': {'object_name': 'InnovationPayment'},
@@ -177,7 +154,7 @@ class Migration(SchemaMigration):
         },
         'innovation.innovationupdate': {
             'Meta': {'object_name': 'InnovationUpdate'},
-            'date_of_update': ('django.db.models.fields.DateField', [], {'auto_now_add': 'True', 'null': 'True', 'blank': 'True'}),
+            'date_of_update': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'innovation': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['innovation.Innovation']"}),
             'update': ('django.db.models.fields.TextField', [], {})
@@ -186,7 +163,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'InnovationUpdateImage'},
             'caption': ('django.db.models.fields.CharField', [], {'max_length': '100', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
+            'image': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
             'innovation_update': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'images'", 'to': "orm['innovation.InnovationUpdate']"}),
             'sort_order': ('django.db.models.fields.IntegerField', [], {'default': '0'})
         },
@@ -198,6 +175,19 @@ class Migration(SchemaMigration):
             'sort_order': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'video': ('django.db.models.fields.files.FileField', [], {'max_length': '100'})
         },
+        'innovation.ispapplication': {
+            'Meta': {'object_name': 'IspApplication'},
+            'abstract': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            'date_of_submission': ('django.db.models.fields.DateTimeField', [], {}),
+            'expected_expenditure': ('django.db.models.fields.CharField', [], {'max_length': '15'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'member': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['people.Person']"}),
+            'other_member_details': ('django.db.models.fields.TextField', [], {}),
+            'review': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            'status': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
+            'year_of_submission': ('django.db.models.fields.IntegerField', [], {})
+        },
         'people.person': {
             'Meta': {'object_name': 'Person'},
             'billing_address': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
@@ -207,12 +197,14 @@ class Migration(SchemaMigration):
             'billing_postal_code': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
             'billing_state': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             'contact_number': ('django.db.models.fields.CharField', [], {'max_length': '20', 'blank': 'True'}),
-            'course': ('django.db.models.fields.IntegerField', [], {'default': '0', 'blank': 'True'}),
-            'department': ('django.db.models.fields.IntegerField', [], {'blank': 'True'}),
+            'course': ('django.db.models.fields.IntegerField', [], {'default': '0', 'null': 'True', 'blank': 'True'}),
+            'department': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'is_nitw_alumni': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'pan_number': ('django.db.models.fields.CharField', [], {'max_length': '20', 'blank': 'True'}),
+            'profile_pic': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
             'user': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['auth.User']", 'unique': 'True'}),
-            'year_of_passing': ('django.db.models.fields.IntegerField', [], {'blank': 'True'})
+            'year_of_passing': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
         }
     }
 
