@@ -151,6 +151,7 @@ INSTALLED_APPS = (
     'gunicorn',
     'notification',
     'nem',
+    'hackathon',
 )
 
 # A sample logging configuration. The only tangible logging
