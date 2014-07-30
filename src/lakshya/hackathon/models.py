@@ -5,8 +5,8 @@ class ProblemStatement(models.Model):
     name = models.CharField("Problem",max_length=100,blank=False)
 
     def __unicode__(self):
-        return  self.name;
-    
+        return  self.name
+
 class Participant(models.Model):
     name = models.CharField("Name",max_length=50,blank=False)
     email = models.EmailField("Email",blank=False)
@@ -15,5 +15,5 @@ class Participant(models.Model):
     team = models.CharField("Team",max_length=100,blank=False)
 
     def __unicode__(self):
-        return  self.name;
+        return  self.name
 
