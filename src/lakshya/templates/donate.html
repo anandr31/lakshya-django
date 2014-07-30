@@ -5,38 +5,78 @@
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
 {% endblock title %}
 
-{% block content %}
-<div class = "content_with_page_title left">
-	<h2>Donate</h2>
-	<div class="content_div">
-<!--		<p>You can donate to Lakshya in one of the below ways</p>
-		<a href="#">Why Seed Capital</a><a href="#">Why Corpus</a>-->
-		<h3 id="vision_block">Payment Gateway (Credit card, Debit card, Net Banking)</h3>	
-		<form action="payment_redirect" method="post">{% csrf_token %}
-		{{ form.as_p }}
-		<input type="submit" value="Submit" />
-		</form>
-		<h3 id="vision_block">Online Transfer</h3>
+{% block meta %}
 
+{% endblock %}
+{%block header_slide%}
+{%endblock header_slide%}
+
+{% block content %}
+	<h2 class="donate_header">Donate</h2>
+<div class = "donate_content">
+<p align="center">Where your donation goes</p>
+Vision Development Programs<br/>
+<ul>
+<li><b>Scholarships</b>: Various chapter and batches pledge to support students under our interest-free loan model. We finance students' institute fee which is repaid within five years of the student's graduation. Every single scholar who has graduated has started repaying and some have given over and above what they received.</li>
+<br>
+<li><b>Research, Entrepreneurship and Creativity Development</b>: We have an MoU with NIT Warangal to support and fund research and innovation by students and also sponsor innovative and research opportunities outside the MoU. We conduct events to creat non-credit learning opportunities like workshops, guest-lectures, networking events, competitions etc.</li>
+</ul>
+People and technology:<br/>
+<ul>We have 2 employees and hire interns from time to time to work on achieving our vision. We also develop technology to make the NIT Warangal administration more efficient. The Alumni Request Automation and Bills and Advances Tracking System are two such examples. Funds are also used to keep web servers running and for office space rentals.</ul>
+<hr color="#d9d9d9">
+<div id="testimonials_block" class="left">
+	<div id="testimonials_block_inner_div">
+	<h3>Testimonials - <a href=/testimonials>View all testimonials</a> </h3>
+		{% for testimonial in testimonial_list %}
+		<div class="donate_testimonial_content">
+			{% if testimonial.photo %}
+				<img class="testimonial_image" src="{{testimonial.photo.url}}"/> 
+				<div class="testimonial_name">{{testimonial.person}}</div>
+				<div class="testimonial_designation">{{testimonial.designation}}</div>
+				<p class="testimonial_text">{{testimonial.testimonial_text|safe}}</p>
+			{% else %}
+				<div class="testimonial_video">{{testimonial.video_link|safe}}</div>
+				<div class="testimonial_name">{{testimonial.person}}</div>
+				<div class="testimonial_designation">{{testimonial.designation}}</div>
+				<p class="testimonial_text">{{testimonial.testimonial_text|safe}}</p>
+			{% endif %}
+		</div>
+		{% endfor %} 
+
+	</div>
+
+</div>
+
+</div>
+<div class = "donate_right">
+	<div class="donate_content_div">
+
+<!-- Include donation portion -->
+{% include "test.html" %} 
+
+<!--		<h3 id="vision_block">Online Transfer</h3>-->
+		<h3 class="donate_subheader">Account Details</h3>
 		<dl id="account_details">
-		    <dt>Account Name :</dt>
+		    <dt>A/C Name:</dt>
 		    <dd>The Lakshya Foundation</dd>
-		    <dt>Account Number :</dt>
+		    <dt>A/C No.:</dt>
 		    <dd>020101005180</dd>
-		    <dt>Bank Details :</dt>
-		    <dd>ICICI BANK, Hanmakonda Branch, Warangal</dd>
-		    <dt>IFSC code :</dt>
+		    <dt>Bank:</dt>
+		    <dd>ICICI Bank, Hanmakonda</dd>
+		    <dt>City:</dt>
+		    <dd>Warangal, Andhra Pradesh</dd>
+		    <dt>IFSC:</dt>
 		    <dd>ICIC0000201</dd>
 		</dl>​
 		<p class="cB"></p>
-		<h3 id="vision_block">Cheques/Demand Drafts</h3>
-		<p>Post your Cheques/DD's to below address.  </p>
+		<h3 class="donate_subheader">Post cheques to</h3>
 		<div id="postal_address">		
 			<p>Prof. A. Venu Gopal,</p>
 			<p>Mechanical Engineering Department,</p>
 			<p>NIT Warangal,</p>
 			<p>Warangal - 506021.</p>
 			<p>Andhra Pradesh, India</p>
+			<p>Contact: 0870-2462338</p>
 		</div>
 	</div>
 </div>

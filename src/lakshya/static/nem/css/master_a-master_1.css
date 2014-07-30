@@ -1,0 +1,26 @@
+#u165
+{
+	border-style: none;
+	border-color: transparent;
+	background-color: #FFFFFF;
+	opacity: 0.99;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=99)";
+	filter: alpha(opacity=99);
+	position: relative;
+}
+
+#u166,#u172,#home
+{
+	position: relative;
+}
+
+#u177-4
+{
+	text-align: center;
+	font-size: 16px;
+	color: #FFFFFF;
+	font-family: abel, sans-serif;
+	font-weight: 400;
+	position: relative;
+}
+

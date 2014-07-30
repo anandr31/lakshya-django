@@ -3,6 +3,11 @@
 <title>Innovation Project - Lakshya, an NITW alumni led organization</title>
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
 {% endblock title %}
+
+{%block header_slide%}
+<a href="/team" title="Team" ><img src="{{STATIC_URL}}img/headers/projects.png" width="990" height="420" alt="Team"></a>
+{% endblock header_slide%}
+
 {% block content %}
 <div class = "content_with_page_title left">
 	<h2>Innovation Support Program</h2>
@@ -29,10 +34,14 @@
 		<div class="cB">
 			<p></p>
 		</div>
-		<h3>Submit your innovative idea</h3>
-		<p>Email your idea as per <a href="{{STATIC_URL}}docs/ip4-abstractguidelines.pdf" target="_blank"> these guidelines</a> before <b>March 16th, 2013</b> to <a href="mailto:info@thelakshyafoundation.org">info@thelakshyafoundation.org</a></p>		
-		<h3>Innovations</h3>
-		<p>Lakshya selects projects each semester and works with the student-faculty team to deliver a prototype. Given below are ideas currently being funded.</p>
+		<br>
+		<div>
+		<h3>Abstract Guidelines</h3>
+		<p>Follow these <a href="{{ STATIC_URL }}/docs/Abstract_Guidelines_2013.pdf" target="blank">guidelines</a> when preparing your abstract. Email to <a href="mailto:info@thelakshyafoundation.org?Subject=Query : Innovation Support Program" target="_top">info@thelakshyafoundation.org</a> if any queries.</p>
+		<p>Submit your idea through <a href="/innovation/apply">this form</a>. The last date for submission will be Aug 10th.</p> 
+		</div>
+		<h3 style="color: #2e93a8;">Innovations</h3>
+		
 		<div class="project_gist_list innovation_home_listing">
 			<a href="/innovation/innovations-list/hovamarine">		
 				<div class="project_gist left" >

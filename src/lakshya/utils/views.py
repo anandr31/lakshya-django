@@ -3,6 +3,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.template import RequestContext
 
 from utils.models import LakshyaUpdate
+from utils.models import LakshyaTestimonial
 from accounts.models import Donation
 from people.models import Person
 from django.db.models.aggregates import Sum
@@ -13,6 +14,12 @@ def get_updates(request):
     print update_list
     return render_to_response("all_updates.html", 
                               RequestContext(request, {'update_list':update_list}))# Create your views here.
+
+def get_testimonials(request):
+    testimonial_list = LakshyaTestimonial.objects.order_by('-sorting')  
+    print testimonial_list
+    return render_to_response("all_testimonials.html", 
+                              RequestContext(request, {'testimonial_list':testimonial_list}))# Create your views here.
     
 @staff_member_required
 def get_donation_details_for_analytics(request):

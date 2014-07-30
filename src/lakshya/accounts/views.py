@@ -1,23 +1,28 @@
 # Create your views here.
 #from reportlab.pdfgen import canvas
 #from django.http import HttpResponse
+
+from datetime import date
 from django.shortcuts import render_to_response, render, redirect
 from django.template.context import RequestContext
 from django.http import HttpResponseRedirect
 from django.db.models import Sum
-from django.contrib.gis.geoip import GeoIP
+#from django.contrib.gis.geoip import GeoIP
 from django.conf import settings
 
-
-from accounts.models import Expense, Donation
+from accounts.models import Expense, Donation, DonationFund, PAYMENT_GATEWAY,\
+    DIRECT
 from people.models import Person
+
 from accounts.forms import PaymentTempForm, PledgeForm
 from accounts.models import PaymentTemp, Pledge
-from accounts.utils import get_post_object
+from accounts.util import get_post_object
 from accounts.forms import CCAVenueReturnForm
 from django.views.decorators.csrf import csrf_exempt
 import math
-
+from django.contrib.auth.models import User
+from notification import models as notification
+from utils.models import LakshyaTestimonial
 
 def expenses_home(request):
     expenses_list = Expense.objects.all()
@@ -27,13 +32,22 @@ def expenses_home(request):
     
 def donations_home(request):
     donor_details_list = [] #list of tuples - name, batch, branch, amount, last Donated on
+    top_donor_details_list = [] #list of top donors
+    freq_donor_details_list = [] #list of most frequent donors
     for temp_dict in Donation.objects.values('donor').annotate(total=Sum('amount')):
         donor_id = temp_dict["donor"]
         total = temp_dict["total"]
         donor = Person.objects.get(id=donor_id)
+	count = Donation.objects.filter(donor = donor).count() ## top frequent donors
         last_donated_on = Donation.objects.filter(donor = donor).order_by("-date_of_donation")[0].date_of_donation
         donor_details = (donor.name, donor.year_of_passing, donor.get_department_display, total, last_donated_on)
+	freq_donor_details = (donor.name, count, total)
+	top_donor_details = (donor.name, total)
         donor_details_list.append(donor_details)
+	if not donor_id in [26,27]: # Excluding Anonymous and Bank Interest from these lists
+		top_donor_details_list.append(top_donor_details) ##
+		freq_donor_details_list.append(freq_donor_details) ##
+
     total_donation_amount = Donation.objects.all().aggregate(Sum("amount"))["amount__sum"]
     donor_distinct_set = set()
     for donation in Donation.objects.all():
@@ -41,45 +55,74 @@ def donations_home(request):
     total_donors = len(donor_distinct_set)
 
     avg_donation_amount = total_donation_amount/total_donors
+   
+    top_donor_details_list = sorted(top_donor_details_list, key=lambda donors: donors[1], reverse=True) ##
+    del top_donor_details_list[4:] ##
     
+    freq_donor_details_list = sorted(freq_donor_details_list, key=lambda donors: donors[1], reverse=True) ##
+    del freq_donor_details_list[4:] ##
+
     context = {"donor_details_list" : donor_details_list, 
                "total_donation_amount" : total_donation_amount, 
                "total_donors" : total_donors, 
-               "avg_donation_amount" : avg_donation_amount}
+               "avg_donation_amount" : avg_donation_amount,
+	       "top_donor_details_list" : top_donor_details_list,
+	       "freq_donor_details_list" : freq_donor_details_list}
     return render_to_response("donations.html", 
                               RequestContext(request, context)) 
     
 def donate_home(request):
     form = PaymentTempForm()
-    return render(request, 'donate.html', {
-        'form': form,
-    })
+    form.fields['referrer_url'].initial = request.get_full_path()
+    if '/applicants' in request.get_full_path():
+	return render(request, 'research_facilitator_applicants.html', {
+        'form': form
+    	})
+    elif '/donate' in request.get_full_path():
+        testimonial_list=LakshyaTestimonial.objects.order_by('?')[:2]
+	return render(request, 'donate.html', {
+        'form': form, 'testimonial_list': testimonial_list
+    	})
  
 def payment_redirect(request):
+    referrer_url = ""
+    notes = ""
     if request.method == 'POST': # If the form has been submitted...
         form = PaymentTempForm(request.POST) # A form bound to the POST data
+        referrer_url = form.data['referrer_url']
+        notes = form.data['flex_field']
         if form.is_valid(): # All validation rules passes
             # Process the data in form.cleaned_data
             amount = form.cleaned_data['amount']
             email_address = form.cleaned_data['email_address']
             email_receipt = form.cleaned_data['email_receipt']
+	    if referrer_url == '/applicants' and notes <> "":
+	    	notes = "Internship Sponroship for "+notes
             pt = PaymentTemp.objects.create(amount=amount, email_address=email_address, email_receipt=email_receipt)
             transaction_id = pt.id
-            callback_url = "http://127.0.0.1:8000/payment-return"
-            context = {"payment_dict" : get_post_object(callback_url, amount, email_address, transaction_id)}
+            if settings.ENV == "stage":
+                transaction_id = "stage" + str(pt.id)
+            callback_url = "http://www.thelakshyafoundation.org/accounts/payment-return"
+            context = {"payment_dict" : get_post_object(callback_url, amount, email_address, transaction_id, notes)}
             return render_to_response("payment_redirect.html", 
                               RequestContext(request, context))
     else:
         form = PaymentTempForm() # An unbound form
+    if referrer_url == '/applicants':
+	return render(request, 'research_facilitator_applicants.html', {
+	'form': form,
+	})
+    elif referrer_url == '/donate':
+	return render(request, 'donate.html', {
+	'form': form,
+	})
 
-    return render(request, 'donate.html', {
-        'form': form,
-    })
     
 @csrf_exempt
 def return_view(request):   
+#    import pdb; pdb.set_trace()
     if request.method == "POST":       
-        working_key = "95o6bpj72771v3yo7s"
+        working_key = "vsb2w5ampye1baft0hg62jlwrscw007u"
         merchant_id = "M_thelaksh_10884"
         
         form = CCAVenueReturnForm(merchant_id, working_key, request.POST)
@@ -89,6 +132,51 @@ def return_view(request):
        
         if form.cleaned_data['AuthDesc'] == 'N':
             return redirect('payment-failure')
+        
+        try:
+            temp_id = request.POST.get("Order_Id")
+            if settings.ENV == "dev":
+                #order_id will be like dev11
+                temp_id = int(request.POST.get("Order_Id").split("dev")[1])
+            paymentTemp = PaymentTemp.objects.get(id=temp_id)
+        except PaymentTemp.DoesNotExist:
+            print "Error: Shouldn't have come here.PaymentTemp is missing"
+            return redirect("payment-success")
+        
+        try:
+            user = User.objects.get(email=paymentTemp.email_address)
+        except User.DoesNotExist:
+            user = User.objects.create(username=paymentTemp.email_address[:28], 
+                                       email=paymentTemp.email_address, 
+                                       first_name=request.POST.get("delivery_cust_name"),
+                                       password="Lakshya123$")
+        try:
+            person = Person.objects.get(user=user)
+        except Person.DoesNotExist:
+            person = Person.objects.create(user=user)
+        
+        if paymentTemp.pan_card:
+            person.pan_number = paymentTemp.pan_card
+            person.save()
+        
+        Donation.objects.create(amount=request.POST.get("Amount"),
+                                date_of_donation=date.today(),
+                                donor=person,
+                                donation_fund=DonationFund.objects.filter(name__contains="Lakshya")[0],
+                                transacation_type=PAYMENT_GATEWAY,
+                                transaction_details="CCAvenue Id: "+str(request.POST.get("Order_Id"))+" "+paymentTemp.flex_field,
+                                donation_type=DIRECT,
+                                is_repayment=False,)
+        
+        info_user = User(first_name="Info", last_name="", 
+                       email="info@thelakshyafoundation.org", id=1)
+                
+        to_users = [user, info_user]
+        
+        context = {"name": request.POST.get("delivery_cust_name"),
+                   "amount": request.POST.get("Amount")}
+        
+        notification.send(to_users, "payment_confirmation", context)
         
         return redirect("payment-success")
     else:
@@ -101,9 +189,6 @@ def calc_amount(ip):
     """
     g = GeoIP(path=settings.PROJECT_DIR + "/libraries/geoip")
     country = g.country(ip)
-    print "-------------ip------------" + ip
-    print country
-    print "country"
     if country["country_code"] and country["country_code"] in ["AU", "AT", "JP", "US", "CA", "GB", "CH", "SE", \
                                                                 "ES", "SG", "DK", "JP", "IT", "DE" ]:
         return True
@@ -138,3 +223,4 @@ def seedfund(request):
                               RequestContext(request, {'form' : form, "donations" : donations, "pledges":pledges, 
                                                        "pledge_percentage":pledge_percentage, 
                                                        "show_success_message":show_success_message, "is_dollar" : is_dollar}))
+

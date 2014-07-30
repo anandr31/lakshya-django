@@ -9,76 +9,35 @@
 
 {% block content %}
 	<img src="{{STATIC_URL}}img/seed_capital_final.jpg" width="990px" height="100px" />
-	
-	<div id="companies_listing_left_pane" class="left" >
-		<br>
-		{% if company.logo %}
-		<img src="{{ company.logo.url }}" width="200px" height="200px">
-		<br>
-		<h3>Company Attributes</h3>
-		{% for attribute in company_attributes %}
-			<p><b>{{ attribute.option.name }}</b> : {{ attribute.value }}</p>
-		{% endfor %}
-		{% endif %}
-
-		<h3>Founders</h3>
-		{% for founder in founder_details %}
-			{% if founder.photo %}
-				<img src="{{ founder.photo.url }}" width="100px" height="100px">
-			{% endif %}
-			<p>{{ founder.person.name }}</p>
-			<p>{{ founder.designation }}</p>
-			{% if founder.fb_link%}
-				<a href="{{founder.fb_link}}"><img src="{{STATIC_URL}}img/facebook_icon.png" width="25px" height="25px"></a>
-			{% endif %}
-			{% if founder.linkedin_link%}
-				<a href="{{founder.linkedin_link}}"><img src="{{STATIC_URL}}img/linkedin_icon.png" width="25px" height="25px"></a>
-			{% endif %}	
-			{% if founder.twitter_link%}
-				<a href="{{founder.fb_link}}"><img src="{{STATIC_URL}}img/twitter_icon.png" width="25px" height="25px"></a>
-			{% endif %}
-			{% if founder.blog_link%}
-				<a href="{{founder.linkedin_link}}"><img src="{{STATIC_URL}}img/blog_icon.png" width="25px" height="25px"></a>
-			{% endif %}	
-		{% endfor %}
-
-	</div>
-
 	<div id="companies_detail" class="left">
-		<h2>{{company.name}}</h2>
-		<p>{{ sectors_name_list }}</p>
-		<a href="{{company.website_url}}">{{company.website_url}}</a>
+		<p>Name</p>
+		<p>{{company.name}}</p>
 		<br>
+		<p>Slug</p>
+		<p>{{company.slug}}</p>
 		<br>
-		{% if company.video_url %}
-			<iframe width="420" height="315" src="{{company.video_url}}" frameborder="0" allowfullscreen></iframe>
-		{% endif %}
-		<br>
-		<br>
-		<h3>Company Description</h3>
+		<p>Description</p>
 		<p>{{company.description}}</p>
 		<br>
+		<p>Website</p>
+		<p>{{company.website_url}}</p>
 		<br>
-		{% if other_companies_in_sector %}
-		<h3>Other companies in {{sectors_name_list}}</h3>
-		{% for com in other_companies_in_sector %}
-			<p><a href="/company/{{com.slug}}">{{ com.name }}</a></p>
-		{% endfor %}
-		{% endif %}
-		<br>
-		<br>
-	</div>
 
+	</div>
 	<div class="left" id="companies_listing_right_pane">
 		<div id="sectors_list">
 			<p>Industries</p>
+<<<<<<< HEAD
 			<a href="/entrepreneurs">All ({{ total_companies_count }})</a>
+=======
+>>>>>>> updatedUI
 			{% for sector in sectors_list_details %}
 				<div>
 					<a href="/entrepreneurs?sector={{ sector.1 }}">{{ sector.0 }} ({{ sector.2 }})</a>					
 				</div>	
 			{% endfor %}			
 		</div>
+<<<<<<< HEAD
 		<div id="sectors_list">
 			<p>Countries</p>
 			<a href="/entrepreneurs">All ({{ total_companies_count }})</a>
@@ -88,6 +47,8 @@
 				</div>	
 			{% endfor %}			
 		</div>
+=======
+>>>>>>> updatedUI
 <!-- 		<div id="batches_list">
 			<p>Batches</p>
 		</div> -->

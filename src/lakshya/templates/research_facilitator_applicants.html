@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Research Facilitator - Lakshya, an NITW alumni led organization</title>
+<meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
+{% endblock title %}
+
+{% block meta %}
+<script type="text/javascript">
+function setFlexField(scholar_id)
+{
+	document.getElementById("id_flex_field").value = document.getElementById(scholar_id).innerHTML
+	intro_string = "To sponsor: Enter amount & email ID. Click on 'donate by card/net banking' button</br></br>"
+	document.getElementById("popup_text").innerHTML = intro_string + "</br>Pledged: " + document.getElementById(scholar_id+"_pledged").innerHTML
++" of "+document.getElementById(scholar_id+"_goal").innerHTML 
++"</br></br>"+document.getElementById(scholar_id).innerHTML
++"</br>"+document.getElementById(scholar_id+"_college_conf").innerHTML
++"</br>"+ document.getElementById(scholar_id+"_duration").innerHTML
++"</br>CGPA: "+document.getElementById(scholar_id+"_cgpa").innerHTML
+
+}
+</script>
+
+{% endblock %}
+
+{%block header_slide%}
+	<a href="/team" title="Team" ><img src="{{STATIC_URL}}img/headers/projects.png" width="990" height="420" alt="Team"></a>
+{% endblock header_slide%}
+
+{% block content %}
+		<script src="{{STATIC_URL}}js/popup/modernizr.custom.js"></script>
+		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/popup/default.css" />
+		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/popup/component.css" />
+
+<!-- modal popups start -->
+
+		<div class="md-modal md-effect-1" id="modal-1">
+			<div class="md-content">
+				<h3>Intern Sponsorship</h3>
+
+					<table style="padding: 5px">
+					<tr><td style="padding: 15px" width="50%"><div id="popup_text" class="popup_text"></div></td>
+					<td><div class="donate_section">{% include "test.html" %}</div></td>
+					</tr>
+					</table>
+
+				<button class="md-close">EXIT</button>
+			</div>
+		</div>
+<!-- modal popups end -->
+
+<br>
+<h2 style="color: #2e93a8;">Research Facilitator Program - Sponsoring Interns</h2>
+
+<div class="left">
+
+<u>Sponsor (in part or full)</u>- Funding is routed through Lakshya to the students. You can use your card or internet enabled bank account here.<br/><br/>
+<u>Pledge</u> - If you wish to contribute directly to the student, please send us an email at <b>info@thelakshyafoundation.org</b>
+<br/><br/>
+<table class="research_applicants">
+		<tr>
+			<td><B>S.No.</B></td>
+			<td><B>Contribute</B></td>
+			<td><B>Name</B></td>
+			<td><B>University</B></td>
+			<td><B>Duration</B></td>
+			<td><B>Alumni Funding</B></td>
+			<td><B>Requested Funding</B></td>
+			<td><B>Stipend/Sponsorship</B></td>
+			<td><B>CGPA</B></td>
+		</tr>
+		<tr class="group1">
+			<td>1</td>
+			<td><button class="button" type="submit" value="Submit" disabled style="cursor: default; background-color: #808080">Funding closed</button></td>
+
+			<td><div id="arti">Arti Sengar</div></td>
+			<td><div id="arti_college_conf">UCLA, Los Angeles, USA</div></td>
+			<td><div id="arti_duration">19 May-11 July</div></td>
+			<td><div id="arti_pledged">$5,350.00</div></td>
+			<td><div id="arti_goal">$6,000.00</div></td>
+			<td><div id="arti_sponsorship">$0</div></td>
+			<td><div id="arti_cgpa">9.13</div></td>
+		</tr>
+		<tr class="group2">
+			<td>2</td>
+			<td><button class="button" type="submit" value="Submit" disabled style="cursor: default; background-color: #808080">Funding goal reached</button></td>
+			<td><div id="karthik">Karthik Eswara</div></td>
+			<td><div id="karthik_college_conf">Texas A&amp;M, College Station, USA</div></td>
+			<td><div id="karthik_duration">24 May-21 July</div></td>
+			<td><div id="karthik_pledged">Rs.61,890</td>
+			<td><div id="karthik_goal">$1,000.00</div></td>
+			<td><div id="karthik_sponsorship">$1000(Texas A&amp;M)</div></td>
+			<td><div id="karthik_cgpa">8.6</div></td>
+		</tr>
+		<tr class="group2">
+			<td>3</td>
+			<td><button class="button" type="submit" value="Submit" disabled style="cursor: default; background-color: #808080">Funding goal reached</button></td>
+			<td><div id="sailoosha">Sailoosha Patchineelam</div></td>
+			<td><div id="sailoosha_college_conf">Texas A&amp;M, College Station, USA</div></td>
+			<td><div id="sailoosha_duration">24 May-21 July</div></td>
+			<td><div id="sailoosha_pledged">Rs.61,000</div></td>
+			<td><div id="sailoosha_goal">$1,000.00</div></td>
+			<td><div id="sailoosha_sponsorship">$1000(Texas A&amp;M)</div></td>
+			<td><div id="sailoosha_cgpa">8.82</div></td>
+		</tr>
+		<tr class="group2">
+			<td>4</td>
+			<td><button class="md-trigger" data-modal="modal-1" onclick="setFlexField('sahitya')">Sponsor</button></td>
+			<td><div id="sahitya">Sahitya Saka</div></td>
+			<td><div id="sahitya_college_conf">Texas A&amp;M, College Station, USA</div></td>
+			<td><div id="sahitya_duration">24 May-21 July</div></td>
+			<td><div id="sahitya_pledged">Rs.47,700</div></td>
+			<td><div id="sahitya_goal">$1,000.00</div></td>
+			<td><div id="sahitya_sponsorship">$1000(Texas A&amp;M)</div></td>
+			<td><div id="sahitya_cgpa">8.7</div></td>
+		</tr>
+<!--
+		<tr class="group6">
+			<td>5</td>
+			<td><button class="md-trigger" data-modal="modal-1" onclick="setFlexField('amit')">Sponsor</button></td>
+			<td><div id="amit">Amit Maroo</div></td>
+			<td><div id="amit_college_conf">PM2014 Conference, Orlando, Florida, USA</div></td>
+			<td><div id="amit_duration">18-21 May (3 days)</div></td>
+			<td><div id="amit_pledged">$0</div></td>
+			<td><div id="amit_goal">$1,000 (as loan)</div></td>
+			<td><div id="amit_sponsorship">$0</div></td>
+			<td><div id="amit_cgpa">9.09</div></td>
+		</tr>
+-->
+		<tr class="group2">
+			<td>5</td>
+			<td><button class="md-trigger" data-modal="modal-1" onclick="setFlexField('priyanka')">Sponsor</button></td>
+			<td><div id="priyanka">Priyanka Prabhala</div></td>
+			<td><div id="priyanka_college_conf">Imperial College, London, UK</div></td>
+			<td><div id="priyanka_duration">15 May-15 July</div></td>
+			<td><div id="priyanka_pledged">Rs.0</div></td>
+			<td><div id="priyanka_goal">Rs.75,000</div></td>
+			<td><div id="priyanka_sponsorship">Rs.0</div></td>
+			<td><div id="priyanka_cgpa">6.5</div></td>
+		</tr>
+
+		<tr class="group3">
+			<td>6</td>
+			<td><button class="button" type="submit" value="Submit" disabled style="cursor: default; background-color: #808080">Funding goal reached</button></td>
+			<td><div id="vaishnavi">Vaishnavi Kilambi</div></td>
+			<td><div id="vaishnavi_college_conf">BARC, Mumbai, India</div></td>
+			<td><div id="vaishnavi_duration">2 Months (May, June)</div></td>
+			<td><div id="vaishnavi_pledged">Rs. 18,000</div></td>
+			<td><div id="vaishnavi_goal">Rs.18,000</div></td>
+			<td><div id="vaishnavi_sponsorship">-</div></td>
+			<td><div id="vaishnavi_cgpa">7.72</div></td>
+		</tr>
+		<tr class="group4">
+			<td>7</td>
+			<td><button class="md-trigger" data-modal="modal-1" onclick="setFlexField('balaajhi')">Sponsor</button></td>
+			<td><div id="balaajhi">M. Balaajhi</div></td>
+			<td><div id="balaajhi_college_conf">The Eskitis Institute-Griffith Unv, Brisbane, Australia</div></td>
+			<td><div id="balaajhi_duration">2 Months (May, June)</div></td>
+			<td><div id="balaajhi_pledged">$0</div></td>
+			<td><div id="balaajhi_goal">$2,000.00</div></td>
+			<td><div id="balaajhi_sponsorship">$0</div></td>
+			<td><div id="balaajhi_cgpa">7.74</div></td>
+		</tr>
+		<tr class="group5">
+			<td>8</td>
+			<td><button class="button" type="submit" value="Submit" disabled style="cursor: default; background-color: #808080">Funding goal reached</button></td>
+			<td><div id="prashanth">Gomatham Prashanth</div></td>
+			<td><div id="prashanth_college_conf">Livelabs, Singapore Mangement University</div></td>
+			<td><div id="prashanth_duration">2 months(May, June)</div></td>
+			<td><div id="prashanth_pledged">Rs.0</div></td>
+			<td><div id="prashanth_goal">Rs.17,000</div></td>
+			<td><div id="prashanth_sponsorship">S$1,800 p.m.</div></td>
+			<td><div id="prashanth_cgpa">8.41</div></td>
+		</tr>
+</table>
+
+
+</div>
+
+		<div class="md-overlay"></div><!-- the overlay element -->
+
+		<!-- classie.js by @desandro: https://github.com/desandro/classie -->
+		<script src="{{STATIC_URL}}js/popup/classie.js"></script>
+		<script src="{{STATIC_URL}}js/popup/modalEffects.js"></script>
+
+		<!-- for the blur effect -->
+		<!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
+		<script>
+			// this is important for IEs
+			var polyfilter_scriptpath = '{{STATIC_URL}}js/popup/';
+		</script>
+		<script src="{{STATIC_URL}}js/popup/cssParser.js"></script>
+		<script src="{{STATIC_URL}}js/popup/css-filters-polyfill.js"></script>
+
+
+
+{% endblock content %}

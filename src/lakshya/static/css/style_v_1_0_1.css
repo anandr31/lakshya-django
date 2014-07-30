@@ -1,0 +1,1713 @@
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.cB {
+	clear: both;
+}
+
+
+.cR {
+	clear: right;
+}
+
+.cL {
+	clear: left;
+}
+
+.hidden {
+	display: none;
+}
+
+.center {
+	text-align: center;
+}
+
+.images_inline{
+	display: block;
+}
+
+html,body{
+	margin:0;
+	height: 100%;
+}
+
+body p, li, a, td, span, dl, dt {
+	font-size: 12pt;
+	line-height: 20px;
+	font-family: 'Didact Gothic', sans-serif;
+}
+
+
+body h2 {
+	font-size: 22px;
+}
+
+body h3 {
+	font-size: 16px;
+}
+
+body h4 {
+	font-size: 16px;
+}
+
+body {
+	font-family: 'Didact Gothic', sans-serif;
+	color: #000;
+}
+
+body h2, body h3 {
+	color: #74B446;
+	font-weight: normal;
+}
+
+body h4{
+	font-weight: bold;
+}
+body a , body a h2, body a h3, body a h4{
+	color: #4B7099;
+	text-decoration: underline;
+}
+
+button {
+	-webkit-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+	-moz-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+	box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+	color:#fff;
+	background-color:#74B446;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border:none;
+	font-family:'Helvetica Neue',Arial,sans-serif;
+	text-shadow:#FE6 0 1px 0;
+	cursor: pointer;
+}
+
+div.stats_number {
+	font-size: 40px;
+	color: #000;
+	text-align: center;
+	padding-top: 10px;
+}
+
+div.stats_description {
+	font-size: 14px;
+	color: #000;
+	text-align: center;
+	padding-top: 10px;
+
+}
+
+#IElt9warning {
+	margin: auto;  
+	width: 100%;  
+	color: red;  
+	font-size: 50px;
+}
+
+/* --------------------------- START OF SLIDER --------------------------- */
+#example {
+	width:990px;
+	height:420px;
+	position:relative;
+	margin: auto;
+	font-family: 'Didact Gothic', sans-serif; 
+}
+
+
+/*
+	Slideshow
+*/
+
+#slides {
+	position:absolute;
+	top:-4px;
+	left:0px;
+	z-index:-1;
+}
+
+/*
+	Slides container
+	Important:
+	Set the width of your slides container
+	Set to display none, prevents content flash
+*/
+
+.slides_container {
+	width:990px;
+	height:419px;
+	overflow:hidden;
+	position:relative;
+	display:none;
+	border-bottom: 5px solid #2e93a8;
+}
+
+/*
+	Each slide
+	Important:
+	Set the width of your slides
+	If height not specified height will be set by the slide content
+	Set to display block
+*/
+
+.slides_container a {
+	width:570px;
+	height:270px;
+	display:block;
+}
+
+.slides_container a img {
+	display:block;
+}
+
+/*
+	Next/prev buttons
+*/
+
+#slides .next,#slides .prev {
+	position:absolute;
+	top:107px;
+	left:-39px;
+	width:24px;
+	height:43px;
+	display:block;
+	z-index:101;
+}
+
+#slides .next {
+	left:585px;
+}
+
+/*
+	Pagination
+*/
+
+.pagination {
+	position: relative;
+	margin:2px auto 0;
+	width:100px;
+	z-index:11100;
+	top: -25px;
+	left: 450px;
+}
+
+.pagination li {
+	float:left;
+	margin:0 1px;
+	list-style:none;
+}
+
+.pagination li a {
+	display:block;
+	width:12px;
+	height:0;
+	padding-top:12px;
+	background-image:url(../img/pagination.png);
+	background-position:0 0;
+	float:left;
+	overflow:hidden;
+}
+
+.pagination li.current a {
+	background-position:0 -12px;
+}
+
+
+
+/* --------------------------- START OF TESTIMONIAL SLIDER --------------------------- */
+
+.testimonial_slide {
+	padding: 0px 10px;
+	width: 54%;
+}
+
+.testimonial_image_div img{
+	padding: 10px 8px 20px 30px;
+}
+
+.testimonial_slide p.testimonial_text span {
+	font-size: 40px;
+}
+
+#testimonials_block_inner_div a.next {
+	float: right;
+}
+
+.testimonials_container {
+	height: 250px;
+}
+
+#testimonials_block_inner_div .arrow{
+	position: relative;
+	top: -83px;	
+	z-index: 1000;
+}
+
+#testimonials_block_inner_div .pagination {
+	display: none;
+}
+
+
+/* --------------------------- END OF TESTIMONIAL SLIDER --------------------------- */
+
+
+/* --------------------------- START OF HEADER --------------------------- */
+#header_wrapper {
+	width: 990px;
+	padding-top: 12px;
+}
+
+#secondary_navigation {
+	margin-right: 0px;
+}
+#secondary_navigation a {
+	padding-left: 8px;
+	color: rgb(255, 255, 255);
+	font-size: 15px;
+	text-decoration: none;
+	text-decoration:none;
+	display:inline-block;
+	vertical-align:middle;
+}
+
+#secondary_navigation a:hover {
+	color: #2e93a8;
+	
+}
+
+#primary_navigation{
+	position: relative;
+	display: inline-block;
+	height:38px;
+	bottom: 0px;
+
+}
+
+#primary_navigation a p{
+text-transform: capitalize;
+}
+
+#primary_navigation ul {
+	background: none; 
+	list-style: none;
+	position: relative;
+	display: inline-table;
+	height: 38px;
+	padding: 83px 0px 0px 0px;
+	z-index: 25;
+	padding-top: 0px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	text-transform: capitalize;
+}
+
+#primary_navigation li
+{
+	display: inline;
+}
+
+#primary_navigation .drop {
+	color: #000;
+	font-size: 15;
+	text-transform: capitalize;
+}
+
+
+#primary_navigation ul ul {
+	display: none;
+}
+
+#primary_navigation ul li:hover > ul {
+	display: block;
+}
+
+#primary_navigation ul:after {
+	content: ""; 
+	clear: both; 
+	display: block;
+}
+
+#primary_navigation > ul > li {
+	float: left;
+	border-right:0px solid rgb(46,147,168);
+
+}
+	
+#primary_navigation ul li:hover{
+	text-decoration: none;
+	background-image:url(../img/backgrounds/blue_texture.png);
+	background-repeat: repeat;
+}
+
+#primary_navigation ul li:hover a{
+	color: #000;
+
+}
+
+#primary_navigation ul li:hover ul a{
+	color: #fff;
+}
+
+#primary_navigation a{
+	font-size: 16px;
+}
+	
+#primary_navigation ul li a {
+	display: block; 
+	color: #000; 
+	text-decoration: none;
+	font-size: 13pt;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-right: 20px;
+	padding-left: 20px;
+	height: 22px;
+}
+
+#primary_navigation ul ul {
+	border-radius: 0px; 
+	padding: 0;
+	position: absolute; 
+	z-index: 25;
+}
+
+#primary_navigation ul ul li {
+	float: none; 
+	border-top: 1px solid #6b727c;
+	border-bottom: 1px solid #575f6a;
+	position: relative;
+}
+		
+#primary_navigation ul ul li a {
+	padding: 10px 20px;
+	color: #000;
+	background: #000;
+	opacity: 0.8;
+}	
+
+#primary_navigation ul ul#projects-menu li a {
+	padding: 10px 10px 10px 40px;
+}
+
+
+#primary_navigation ul ul li p{
+	padding: 0px 10px 0px 20px;
+	margin-bottom: 0px;
+	font-size: 16px;
+	font-weight: bold;
+	color:#2e93a8;
+	background-color: #000;
+	margin-top: 0px;
+	opacity: 0.93;
+}
+
+
+
+#primary_navigation ul ul li a:hover {
+	background-image: url(../img/backgrounds/blue_texture.png);
+	color: #fff;
+}
+
+
+
+/* --------------------------- END OF HEADER --------------------------- */
+
+/* --------------------------- START OF FOOTER --------------------------- */
+
+
+#footer {
+	width: 990px;
+	margin: auto;
+	background:rgb(107, 104, 104);
+	font-family: 'Didact Gothic', sans-serif;
+	position: relative;
+}
+
+table#footer_table {
+	table-layout: fixed;
+	width: 100%;
+	border-spacing: 0px;
+	margin-bottom: 2px;
+	border-bottom: 5px solid #fff;
+	padding-bottom: 20px;
+
+}
+
+table#footer_table th {
+	padding: 5px;
+}
+
+table#footer_table td {
+	padding: 4px;
+
+}
+
+table#footer_table th {
+	font-size: 14px;
+}
+
+table#footer_table tr th, table#footer_table tr td{
+	font-weight: normal;
+}
+
+tr#footer_header {
+	background: rgba(63, 63, 63, 0.63);
+	text-align: left;
+	color: #fff;
+}
+
+#content_wrapper {
+	width: 990px;
+	margin: auto;
+	margin-top: 0px;
+	min-height: 300px;
+}
+
+#content_wrapper h1 {
+	padding: 100px 0px;
+}
+
+#payment_footer {
+	background: transparent;
+	border-top: 1px bold #fff;
+	color: #fff;
+}
+
+#ccavenue_block img {
+	padding: 0px 5px;
+	vertical-align: middle;
+}
+
+#ccavenue_block, #follow_block {
+	padding: 20px 0px;	
+}
+
+#ccavenue_block span#copy_right {
+	font-size: 12px;
+	padding-left: 200px;
+}
+
+#follow_block {
+	position: relative;
+	top: -75px;
+	padding-right: 40px;
+}
+
+#follow_block a{
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+#footer_table a {
+	text-decoration: none;
+	color: #fff;
+}
+
+#footer_table a:hover {
+	color: rgba(0, 210, 255, 0.69);
+		
+}
+
+
+/* --------------------------- END OF FOOTER --------------------------- */
+
+/* --------------------------- START OF HOME PAGE --------------------------- */
+
+#image_slider {
+	background: #DCDCDC;
+	width: 100%;
+	border-bottom: 7px solid #74B446;
+	margin-bottom: 10px;
+}
+
+#image_slider h1 {
+	padding: 100px 400px;
+}
+
+#intro_block, #stats_block, #updates_block, #testimonials_block {
+	width: 49%;
+	margin-bottom: 10px;
+}
+
+
+#updates_block, #testimonials_block {
+	height: 310px;
+}
+
+#intro_block, #stats_block{
+	height: 225px;
+}
+
+#updates_block,  #testimonials_block, #stats, #announcement_block, #facebook_block {
+	
+}
+
+#updates_block_inner_div, #testimonials_block_inner_div{
+	padding: 10px 10px;
+}
+
+#updates_block_inner_div li {
+	padding: 10px 0px;
+}
+
+#updates_block_inner_div h3, #testimonials_block_inner_div h3 {
+	margin-top: 0px;
+	color: #2e93a8;
+	font-family: 'Didact Gothic', sans-serif;
+	font-size: 17;
+}
+
+#all_updates_link {
+	padding-bottom: 10px;
+}
+
+#testimonials_block h1 {
+	padding: 100px 80px;
+}
+
+#intro_block p {
+	padding: 5px 5 px;
+}
+
+#stats {
+	width: 100%;
+	height: 34%;
+	position: relative;
+	z-index: 10;
+}
+
+#announcemet_facebook_block{
+	width:100%;
+	height: 33%;
+	margin-top: 8px;
+	z-index: 15;
+}
+
+#announcement_block {
+	width: 100%;
+	height: 100%;
+	margin-bottom: 25px;
+}
+
+#facebook_block {
+	width: 100%;
+	height:33%;	
+}
+
+#announcement_block, #facebook_block p{
+	text-align: center;
+}
+
+#announcement_block {
+	height: 100%;
+	margin-bottom: 0px;
+}
+
+#facebook_block {
+	height: 100%;
+}
+
+#stats div.stats_number {
+	font-size: 55px;
+	padding: 20px 0px;
+}
+
+#stats li {
+	list-style-type: none;
+}
+
+#announcement_block a {
+	display: block;
+	width: 60%;
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	padding: 6px 12px;
+	background: #2e93a8;
+	margin : 14px auto;
+	border-radius: 8px;
+}
+
+#announcement_block a:hover {
+	display: block;
+	width: 60%;
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	padding: 6px 12px;
+	background: rgba(46, 147, 168, 0.75);
+	margin : 14px auto;
+	border-radius: 8px;
+}
+
+#lakhsya-homepage-intro {
+	padding-top: 0px;
+}
+
+#lakhsya-homepage-intro p {
+	font-size: 18px;
+	line-height: 28px;
+	text-align: justify;
+}
+
+#lakhsya-homepage-intro a {
+	font-size: 16px;
+}
+
+
+/* --------------------------- END OF HOME PAGE --------------------------- */
+
+/* --------------------------- START OF GENERIC INNER PAGES --------------------------- */
+
+.content_with_page_title {
+	width: 80%;
+	padding-right: 2px;
+}
+
+.content_with_page_title h2{
+	color: #2e93a8;
+}
+
+.right_navigation_div {
+	width: 19%;
+	border-left: 1px solid #DADADA;
+	height: 100%;
+}
+
+.right_navigation_div li {
+	padding-bottom: 10px;
+}
+
+.right_navigation_div h3 {
+	padding-left: 5px;
+	padding-top: 30px;
+	color: #2e93a8;
+}
+
+.content_div {
+	padding-left: 10px;
+	width: 100%;
+}
+
+.content_div h3{
+	color: #2e93a8;
+}
+
+/* --------------------------- END OF GENERIC INNER PAGES --------------------------- */
+
+/* --------------------------- START OF ABOUT PAGE --------------------------- */
+
+.project_gist_list {
+	padding-left: 30px;
+}
+.project_gist {
+	border: 1px solid #DADADA;
+	padding: 10px 10px;
+	width: 20%;
+	height: 250px;
+	margin-right: 12px;
+	margin-bottom: 20px;
+}
+
+#vision_block{
+	background-color: rgba(44, 135, 163, 0.2)
+	padding: 5px 5px;
+	margin: 5px 0px;
+}
+
+#vision_block h2{
+	color: #2e93a8;
+}
+
+.project_gist h3, .project_gist p, .project_gist img {
+	text-align: center;
+}
+
+.project_gist:hover h3{
+	text-decoration: underline;
+}
+
+.project_gist p{
+	color:	rgb(94, 94, 94);
+}
+
+#buckets-description h4{
+	padding-left: 30px;
+}
+
+#buckets-description p{
+	padding-left: 50px;
+}
+
+/* --------------------------- END OF ABOUT PAGE --------------------------- */
+
+/* --------------------------- START OF TEAM PAGE --------------------------- */
+#team-list {
+	border-right: 1px dotted grey;
+	width: 30%;
+}
+#content {
+	float: left;
+}
+
+#team-list h3 {
+	clear: both;
+	margin: 2px 0px;
+
+}
+
+.selected { 
+	
+}
+
+.thumbnail {
+	padding: 5px 2px;
+}
+
+#team_description {	
+	width: 68%;
+
+}
+
+#team_member_details {
+	padding-left: 20px;
+}
+
+#team_member_description {
+	padding-top: 20px;
+}
+
+
+/* --------------------------- END OF TEAM PAGE --------------------------- */
+
+/* --------------------------- Start OF Innovation Home PAGE --------------------------- */
+#innovation_project_desc {
+	width: 58%;
+}
+
+#innnovation_stats {
+	width: 38%;
+}
+
+#innnovation_stats h3 {
+	text-align: center;
+	margin: 0px 0px;
+	color: #2e93a8;
+}
+
+#innnovation_stats {
+	border: 1px solid #DADADA;
+	padding: 10px 5px;
+	margin-right: 10px;
+	margin-bottom: 25px;
+}
+
+.innovation_home_listing .project_gist {
+	height: 198px;
+}
+/* --------------------------- END OF Innovation Home PAGE --------------------------- */
+
+
+/* --------------------------- START OF About Innovation PAGE --------------------------- */
+
+/*.q_and_a {
+	padding-left: 30px;
+}*/
+
+.q_and_a p.question {
+	color: #727272;
+	font-weight: bold;
+}
+
+
+
+/* --------------------------- END OF About Innovation PAGE --------------------------- */
+
+/* --------------------------- Start OF Innovations list PAGE --------------------------- */
+
+#innovations_list .project_gist {
+	height: 56px;
+	cursor: pointer;
+	margin-bottom: 9px;
+	padding: 5px 10px;
+}
+
+#innovations_list .project_gist h3 {
+	font-size: 14px;
+	color: #4B7099;
+}
+
+#innovation_description .desc {
+	padding-left: 10px;
+	padding-top: 20px;
+}
+
+.project_numbers {
+	width: 40%;
+	margin: auto;
+}
+
+.project_numbers td.label {
+	color: #74B446;
+	padding-left: 0px;
+}
+
+#innovation_description dt {
+ float:left;
+ clear:left;  
+ text-align:right;
+ width:30%;
+}
+
+#innovation_description dd {
+ float:left;
+ margin-left:3em;
+ padding-bottom: 10px;
+}
+
+
+
+/* --------------------------- END OF Innovations list PAGE --------------------------- */
+
+/* --------------------------- START OF Innovations Apply PAGE --------------------------- */
+
+.application .field{
+	padding-bottom: 2px;
+}
+
+.application label{
+	width: 200px;
+	display: inline-block;
+}
+
+.application .error{
+	color: red;
+	font-size: 12px;
+}
+.application .second_column{
+	padding-left: 30px;
+}
+
+.application button {
+	display: block;
+	width: 60%;
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	padding: 6px 12px;
+	background: #2e93a8;
+	margin : 14px auto;
+	border-radius: 8px;
+}
+
+.application button {
+	display: block;
+	width: 60%;
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	padding: 6px 12px;
+	background: rgba(46, 147, 168, 0.75);
+	margin : 14px auto;
+	border-radius: 8px;
+}
+
+.application p.note{
+	font-size: 13px;
+	padding-top: 10px;
+}
+
+.application div#terms li{
+	font-size: 14px;
+}
+
+/* --------------------------- END OF Innovations Apply PAGE --------------------------- */
+
+/* --------------------------- START OF Feedback on Conference Funding PAGE --------------------------- */
+
+#conference_feedback_form #application_id, 
+
+#feedback_conference_details{
+	padding-right: 200px;
+	max-width: 400px;
+}
+
+
+/* --------------------------- END OF Feedback on Conference Funding PAGE --------------------------- */
+
+
+
+/* --------------------------- START OF Our-Core-Belief PAGE --------------------------- */
+
+blockquote {
+	border-left: 5px solid #2e93a8;
+	padding: 15px 15px;
+	font-size: 20px;
+}
+
+#blockquote_div {
+	padding: 10px 0px;
+}
+
+/* --------------------------- END OF Our-Core-Belief PAGE --------------------------- */
+
+/* --------------------------- START OF DONATIONS PAGE --------------------------- */
+#donations_table,{
+	background: #DCDCDC;
+	width: 100%;
+	border-bottom: 7px solid #74B446;
+	margin-bottom: 10px;
+}
+
+#donations_table h1,{
+	padding: 250px 400px;
+}
+
+
+/* --------------------------- END OF DONATIONS PAGE --------------------------- */
+
+/* --------------------------- START OF EXPENSES PAGE --------------------------- */
+
+.expense_stats {
+	width: 33%;
+	padding-bottom: 40px;
+}
+/* --------------------------- END OF EXPENSES PAGE --------------------------- */
+
+/* --------------------------- END OF EXPENSES PAGE --------------------------- */
+
+/* --------------------------- START OF Audits PAGE --------------------------- */
+
+.audits_list {
+	padding-left: 30px;
+}
+.audit_report {
+	padding: 10px 20px;
+	width: 20%;
+	height: 130px;
+}
+
+.audit_report img {
+	width: 80px;
+	height: 80px;
+	display: block;
+	margin: auto;
+}
+
+.audit_report a {
+	text-decoration: none;
+}
+
+.audit_report:hover a {
+	text-decoration: underline;
+}
+
+
+.audit_report h3, .audit_report p, .audit_report img, .audit_report h4 {
+	text-align: center;
+}
+
+/* --------------------------- END OF Audits PAGE --------------------------- */
+
+/* --------------------------- START OF ASTHRA PAGE --------------------------- */
+
+#asthra-intro li {
+	padding: 5px 0px;
+}
+
+#asthra-intro button {
+	font-size:20px;
+	padding:4px 16px;
+	margin: 20px 300px;
+}
+
+
+/* --------------------------- END OF ASTHRA PAGE --------------------------- */
+
+/* --------------------------- START OF PILOT PROJECTS PAGE --------------------------- */
+	
+table.internships_numbers{
+	margin: auto;
+	border: 1px solid #000;
+	border-collapse: collapse;
+}
+
+table.internships_numbers td {
+	padding: 10px 10px;
+}
+
+table.internships_numbers th {
+	padding: 10px 10px;
+	background: #2e93a8;
+	color: #fff;
+}
+
+#ek_jodi_kapada_desc {
+	width: 58%;
+}
+
+#ek_jodi_kapada_stats {
+	width: 38%;
+}
+
+#ek_jodi_kapada_stats div#stats_number {
+	font-size: 30px;
+	color: #fff;
+	text-align: center;
+	padding-top: 10px;
+}
+
+#ek_jodi_kapada_stats div#stats_description {
+	color: #888;
+	text-align: center;
+
+}
+
+#ek_jodi_kapada_stats h3 {
+	text-align: center;
+	margin: 0px 0px;
+}
+
+#ek_jodi_kapada_stats {
+	border: 1px solid #DADADA;
+	padding: 10px 5px;
+	margin-right: 10px;
+	margin-bottom: 25px;
+	margin-top: 30px;
+}
+
+/* --------------------------- END OF PILOT PROJECTS PAGE --------------------------- */
+
+/* --------------------------- START OF ALL UPDATES  PAGE --------------------------- */
+
+.update {
+	padding-bottom: 20px;
+}
+
+.update h4 {
+	margin: 0px 0px;
+}
+
+.update hr {
+	color: rgb(94, 94, 94);
+}
+
+.update img {
+	display: block;
+	margin: auto;
+	max-width: 400px;
+	max-height: 400px;
+}
+/* --------------------------- END OF ALL UPDATES  PAGE --------------------------- */
+
+/* --------------------------- START OF CONTACT PAGE --------------------------- */
+
+#fb_block {
+
+	padding-right: 50px;
+	border-right: 1px solid #000;
+	margin-bottom: 50px;
+}
+
+#contact_block {
+	padding-left: 50px;
+}
+
+#contact_block span {
+	padding-left: 40px;
+}
+
+#contact_block a {
+	font-size: 17px;
+}
+
+/* --------------------------- END OF CONTACT PAGE --------------------------- */
+
+
+/* --------------------------- START OF SCHOLARSHIPS PAGE --------------------------- */
+
+ul.funding_partners_list {
+	padding-left: 30px;
+}
+
+ul.funding_partners_list li {
+	line-height: 35px;
+}
+
+/* --------------------------- ENd OF SCHOLARSHIPS PAGE --------------------------- */
+
+
+/* --------------------------- START OF Funding Partners --------------------------- */
+
+.scholar_funded_list {
+	padding-left: 30px;
+}
+
+/* --------------------------- END OF Funding Partners --------------------------- */
+
+/* --------------------------- START OF Funding Partners --------------------------- */
+.scholar_year_list {
+	border: 1px solid #DADADA;
+	padding: 20px 50px;
+	margin: 20px 40px;
+}
+
+.scholar_year_list_with_head p, .scholar_year_list_with_head h3 {
+	text-align: center;
+}
+
+.scholar_year_list_with_head .year {
+	text-align: center;
+	font-size: 18px;
+}
+/* --------------------------- ENd OF SCHOLARSHIPS PAGE --------------------------- */
+
+/* --------------------------- START OF Scholar list page --------------------------- */
+#team_member_details dt {
+	float:left;
+	clear:left;  
+	text-align:right;
+ /*width:30%;*/
+}
+
+#team_member_details dd {
+ 	float:left;
+ 	margin-left:1em;
+ 	padding-bottom: 10px;
+}
+
+.scholar_highlight {
+	height: 150px;
+	padding: 30px 10px 5px;
+}
+
+.scholar_highlight_stat {
+	height: 75px;
+	background: #DADADA;
+}
+
+.scholar_highlight_stat span{
+	font-size: 25px;
+	width: 150px;
+	display: block;
+	text-align: center;
+	vertical-align: center;
+	padding-top: 30px;
+}
+
+.scholar_highlight_label{
+	height: 50px;
+	background: #F3F3F3;
+}
+
+.scholar_highlight_label span{
+	padding-top: 10px;
+	width: 150px;
+	display: block;
+	text-align: center;
+}
+
+.academic_highlight {
+	width: 30%;
+	padding-bottom: 20px;
+}
+
+table.scholar_academic_update_table{
+	margin: auto;
+	border: 1px solid #74B446;
+	border-collapse: collapse;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+table.scholar_academic_update_table td {
+	padding: 10px 10px;
+}
+
+table.scholar_academic_update_table th {
+	padding: 10px 10px;
+	background: #C0E06C;
+}
+
+#team-list .year {
+	margin-top: 4px;
+	margin-bottom: 0px;
+}
+
+#team-list h3{
+	color:#2e93a8;
+}
+/* --------------------------- START OF Scholar list page --------------------------- */
+
+/* --------------------------- START OF ABOUT PAGE --------------------------- */
+
+#account_details dt {
+	float:left;
+	clear:left;  
+	text-align:right;
+	width:17%;
+	font-size: 13pt;
+}
+
+#account_details dd {
+	float:left;
+	margin-left:1em;
+	padding-bottom: 10px;
+	font-size: 13pt;
+}
+
+#postal_address p {
+	padding-left: 30px;
+}
+
+#redirecting p {
+	padding: 200px 20px;
+	font-size: 18px;
+}
+/* --------------------------- END OF GENERIC INNER PAGES --------------------------- */
+
+/* --------------------------- START OF RESEARCH FACILITATOR PAGE --------------------------- */
+#research_image p{
+	text-align: center;
+}
+
+#research_main_content {
+	width:450px;
+	padding-right: 20px;
+}
+
+#research_image {
+	width: 400px;
+}
+
+.content_block_inner {
+	padding: 10px 20px;
+}
+
+.content_block_inner h3{
+	color: #2e93a8;
+}
+
+.content_block {
+	border: 1px solid #DADADA;
+	border-radius: 10px;
+	box-shadow: 1px 1px 1px #E7E3E3;
+	margin-bottom: 10px;
+}
+
+#content_block_contact {
+
+}
+/* --------------------------- END OF RESEARCH FACILITATOR PAGE --------------------------- */
+
+/* --------------------------- START OF AUTOMATION PAGE --------------------------- */
+#release_plan {
+	padding-left: 25px;
+	padding-bottom: 50px;
+}
+
+#automation_button {
+	display: block;
+	width: 8%;
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	padding: 10px 28px;
+	background: #2e93a8;
+	margin-left : 80px;
+	border-radius: 8px;
+}
+
+#automation_button:hover {
+	display: block;
+	width: 8%;
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	padding: 10px 28px;
+	background: rgba(46, 147, 168, 0.75);
+	margin-left : 80px;
+	border-radius: 8px;
+}
+/* --------------------------- END OF AUTOMATION PAGE --------------------------- */
+
+
+/* --------------------------- START OF DONATE PAGE --------------------------- */
+#payment_gateway {
+	border: 1px;
+}
+
+#id_amount {
+	margin-left: 42px;
+}
+/* --------------------------- END OF DONATE PAGE --------------------------- */
+
+/* --------------------------- START OF SEED FUND PAGE --------------------------- */
+
+#seedcapital_main {
+	width: 72%;
+	padding-right: 20px;
+}
+
+#seedfund_right_panel{
+	width: 25%;
+}
+
+#ceo_message_panel p{
+	font-size: 10.5px;
+	color: #808080;
+}
+
+#seed_fund_heading {
+	padding-top: 20px;
+	padding-left: 240px;
+}
+
+#seed_links{
+	padding: 20px 0px;
+}
+#why_seed_link {
+	padding-left: 200px;
+}
+
+#why_seed, #why_corpus {
+	height: 190px;
+}
+
+.seed-link-selected{
+	font-size: 20px;
+	color: #74B446;
+}
+
+.seed-link-not-selected{
+	font-size: 20px;
+	color: #4B7099;
+	text-decoration: underline;
+	cursor: hand; 
+	cursor: pointer;
+}
+
+.seed-link-not-selected:hover {
+}
+
+.stats_block{
+	padding: 20px 0px;
+}
+
+#seed_stats h2{
+	text-align: center;
+}
+
+#pledge_form{
+	padding-bottom: 30px;
+	background-color: #E9F8C6;
+}
+#pledge_form label, #pledge_form input{
+	display: block;
+}
+
+#pledge_form label{
+	font-size: 12px;
+}
+
+#pledge_form .fieldWrapper{
+	padding: 10px 10px 10px 10px;
+}
+
+#pledge_form input, #pledge_form select{
+	height: 40px;
+}
+
+#name_div input{
+	width: 200px;
+}
+
+#email_div input{
+	width: 450px;
+}
+
+#pledge_form select{ 
+	width: 150px;
+}
+
+#pledge_submit_div{
+	margin-top: 22px;
+	margin-left: 535px;
+}
+.pledge_submit {
+	background: #74B446;
+	border: none;
+	font-size: 16px;
+	background-image: -webkit-linear-gradient(top,#416427, #74B446);	
+	color: white;
+	text-align: center;
+	cursor: pointer;
+}
+
+.pledge_submit:hover {
+	background-image: -webkit-linear-gradient(top,#74B446, #416427);	
+}
+
+.result_div{
+	width: 190px;
+	height: 150px;
+	padding: 0px 16px 10px;
+	background-color: #F1F1F1;
+	box-shadow: 0px 1px 3px #BEAFAF;
+	margin: 5px 5px;
+	float: left;
+}
+
+.result_div h2{
+	color: #888;
+	font-size: 22px;
+	line-height: 40px;
+	font-weight: 300;
+	white-space: nowrap;
+}
+
+.result_div p{
+	font-size: 17px;
+	color: #888;
+}
+/* --------------------------- END OF SEED FUND PAGE --------------------------- */
+
+#show_pledge_thankyou{
+	margin-top: 40px;
+	margin-bottom: 40px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background: #E9F8C6;
+}
+
+/*#internships-table 
+{
+border: 1px solid #DADADA;
+}*/
+
+.internships-table th
+{
+border: 1px solid #DADADA;
+}
+
+.internships-table td
+{
+border: 1px solid #DADADA;
+padding: 1px 4px;
+}
+
+
+/*************************** Start of Companies Listing Page *********************/
+#companies_listing{
+	width: 70%;
+	height: 500px;
+}
+
+#companies_listing_right_pane{
+	width: 30%;
+}
+
+#companies_detail{
+	width: 70%;
+	height: 500px;	
+}
+
+
+/** Shadow Element **/
+.effect8
+{
+  	position:relative;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 0, 0, 0.4) ;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 0, 0, 0.4) ;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 0, 0, 0.4) ;
+}
+
+/** New Header **/
+#header_full{
+	min-width: 100%;
+	height:114px;
+	position: relative;
+	background-image:url(../img/backgrounds/blue_texture.png);
+	background-repeat: repeat;
+}
+
+#header_full > a > img{
+	position: absolute;
+	z-index: 9;
+	height: 100%;
+	left:10%;
+}
+
+#header_full_left{
+	background-color: #000;
+	width: 15%;
+	height: 100%;
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+}
+
+#header_full_left > a > img{
+	position: absolute;
+	height:114px;
+	left:296px;
+	z-index: -1;
+}
+
+#primary_nav_bar{
+	min-width:100%;
+	position: absolute;
+	display: inline-block;
+	height:33px;
+	background-color: #fff;
+	border-top: 1px solid #2e93a8;
+	border-bottom: 1px solid #2e93a8;
+	right:0px;
+	bottom: 0px;
+}
+
+#primary_nav_bar_inner{
+	width: 990px;
+	position: relative;
+	margin: 0px auto;
+	height: 33px;
+	z-index: 10;
+}
+
+.left_border{
+	border-left: 0px solid #2e93a8;
+}
+
+#footer_full{
+	position: absolute;
+	min-width: 100%;
+	height:245px;
+	background-color:#3a9baf;
+}
+
+#footer_top{
+	width: 990px;
+	margin: 0px auto;
+	position: relative;
+	height:245px;
+
+}
+
+#footer_table_left{
+	width: 53%;
+	height: 91%;
+	position: absolute;
+	border-right: 5px solid #7dbdca;
+	top: 13px;
+}
+
+#table_styler{
+	font-size: 14pt;
+	width: 95%;
+	height: 100%;
+	margin: auto;
+	cursor: auto;
+}
+
+#table_styler a{
+	text-decoration: none;
+	font-size: 12pt;
+	color: #fff;
+	position: relative;
+	top:10px;
+	font-weight: bold;
+}
+
+#table_styler_inner{
+	width: 90%;
+	height: 90%;
+	border:1px solid #7dbdca;
+	background-color:#7dbdca;
+}
+
+#table_styler_inner:hover{
+	background-color: #a9d4dc;
+}
+
+#footer_table_right{
+	height: 90%;
+	width:44%;
+	top:13px;
+	position: absolute;
+	left:555px;
+}
+
+#contact_us_text{
+	width: 100%;
+	height: 15%;
+	position: absolute;
+}
+
+#contact_us_text > img{
+	margin-left: 25px;
+}
+
+#contact_us_tab{
+	width: 100%;
+	position: absolute;
+	top: 16%;
+}
+
+#footer_copyright{
+	min-width: 100%;
+	height: 50px;
+	position: relative;
+	top: 245px;
+}
+
+#footer_copyright_inner{
+	width: 990px;
+	margin: 0px auto;
+	height: 60px;
+	position: relative;
+}
+
+#footer_copyright_inner > img{
+	position: absolute;
+	top:12px;
+}
+
+#lak_copyright{
+	color: #2e93a8;
+	height: 55px;
+	width: 250px;
+	position: absolute;
+	left:630px;
+	border-right: 1px solid #2e93a8;
+	top:8px;
+}
+
+#lak_copyright p{
+	line-height: 7px;
+}
+
+#facebook_twitter{
+	height: 60px;
+	width: 100px;
+	position: relative;
+	left:890px;
+	top:12px;
+}
+
+.img_arrow{
+	position: relative;
+	top: 3;
+	left: 2;
+}
+
+#map_link{
+	width: 180px;
+	height: 100px;
+	position: absolute;
+}
+

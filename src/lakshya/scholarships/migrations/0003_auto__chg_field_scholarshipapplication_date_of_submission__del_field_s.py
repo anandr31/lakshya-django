@@ -16,8 +16,8 @@ class Migration(SchemaMigration):
 
         # Adding field 'Scholar.person'
         db.add_column('scholarships_scholar', 'person',
-                      self.gf('django.db.models.fields.related.ForeignKey')(default=0, to=orm['people.Person']),
-                      keep_default=False)
+                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['people.Person']),
+			keep_default=False)
 
 
     def backwards(self, orm):
@@ -26,7 +26,7 @@ class Migration(SchemaMigration):
         db.alter_column('scholarships_scholarshipapplication', 'date_of_submission', self.gf('django.db.models.fields.DateTimeField')(null=True))
         # Adding field 'Scholar.scholar'
         db.add_column('scholarships_scholar', 'scholar',
-                      self.gf('django.db.models.fields.related.ForeignKey')(default=0, to=orm['people.Person']),
+                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['people.Person']),
                       keep_default=False)
 
         # Deleting field 'Scholar.person'

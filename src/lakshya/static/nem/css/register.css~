@@ -1,0 +1,171 @@
+html
+{
+	background: #FFFFFF url("../images/bg%203.png") repeat left top;
+}
+
+#page
+{
+	z-index: 1;
+	width: 960px;
+	min-height: 474px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#pu165
+{
+	width: 0.01px;
+	left: -100px;
+	position: relative;
+}
+
+#u165
+{
+	z-index: 2;
+	width: 1160px;
+	height: 83px;
+	margin-right: -10000px;
+}
+
+#u166
+{
+	z-index: 3;
+	width: 67px;
+	margin-right: -10000px;
+	margin-top: 8px;
+	left: 134px;
+}
+
+#u172
+{
+	z-index: 5;
+	width: 167px;
+	margin-right: -10000px;
+	margin-top: 12px;
+	left: 208px;
+}
+
+#home
+{
+	width: 22px;
+	margin-right: -10000px;
+	left: 201px;
+}
+
+#u177-4
+{
+	z-index: 7;
+	width: 333px;
+	min-height: 24px;
+	left: -7px;
+	margin-top: 3px;
+}
+
+#pu2559
+{
+	width: 0.01px;
+	margin-left: 52px;
+	margin-top: 19px;
+	position: relative;
+}
+
+#u2559
+{
+	z-index: 17;
+	width: 78px;
+	height: 78px;
+	position: relative;
+	margin-right: -10000px;
+	background: transparent url("../images/home-u2559-fr.png") no-repeat left top;
+	background-size: contain !important;
+}
+
+#u2559:hover
+{
+	margin: 0px -10000px 0px 0px;
+	background: transparent url("../images/home-u2559-r-fr.png") no-repeat left top;
+	background-size: contain !important;
+}
+
+#u2545
+{
+	z-index: 12;
+	width: 1px;
+	height: 450px;
+	border-style: none;
+	border-color: transparent;
+	background-color: #FFFFFF;
+	position: relative;
+	margin-right: -10000px;
+	left: 99px;
+}
+
+#u2546-4
+{
+	z-index: 13;
+	display: block;
+	vertical-align: top;
+	position: relative;
+	width: 326px;
+	margin-right: -10000px;
+	margin-top: 4px;
+	left: 132px;
+}
+
+body
+{
+	padding-bottom: 68px;
+}
+
+#page .verticalspacer
+{
+	clear: both;
+}
+
+#nem_registration_form{
+	position: fixed;
+	left: 500px;
+	top: 220px;
+	z-index: 1000;
+}
+
+.application .field{
+	padding-bottom: 2px;
+}
+
+.application input{
+	height: 30px;
+	width: 300px;
+}
+
+.application select{
+	height: 30px;
+	width: 300px;
+}
+
+.application label{
+	width: 200px;
+	display: inline-block;
+	padding-bottom: 20px;
+	font-size: 18px;
+	color: white;
+}
+
+.application .error{
+	color: red;
+	font-size: 12px;
+}
+
+.button {
+	display: block;
+	width: 60%;
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	padding: 6px 12px;
+	background: rgba(46, 147, 168, 0.75);
+	margin : 14px auto;
+	border-radius: 8px;
+	text-align: center;
+	cursor: pointer;
+}

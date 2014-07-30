@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 from people.models import Person
 from django.db.models.aggregates import Max
 
@@ -54,6 +55,9 @@ INDIRECT = 0
 DONATION_TYPE = ((DIRECT, "Direct"),
                  (INDIRECT, "Indirect"),)
 
+EXPENSE_PAYMENT_TYPE = ((DIRECT, "Direct"),
+                 (INDIRECT, "Indirect"),)
+
 
 class Expense(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -63,7 +67,9 @@ class Expense(models.Model):
     expense_header_first_level = models.IntegerField(choices=EXPENSE_HEADER_FIRST_LEVEL_CHOICES, blank=True)
     expense_header_second_level = models.IntegerField(choices=EXPENSE_HEADER_SECOND_LEVEL_CHOICES, blank=True)
     scan_bill = models.FileField(upload_to="expenses", blank=True)
-    details = models.TextField(blank=True)
+    details = models.TextField(blank=True, null=True)
+    payment_type = models.IntegerField(choices=EXPENSE_PAYMENT_TYPE, default=DIRECT)
+    transaction_number = models.CharField(max_length=100, null=True, blank=True, help_text="Check/DD No")
     
     def header(self):
         return self.expense_header_first_level_display()
@@ -83,7 +89,7 @@ class DonationFund(models.Model):
         verbose_name = "Donation Fund"
         verbose_name_plural = "Donation Fund"    
 
-        
+
 class Donation(models.Model):
     from scholarships.models import Scholar
     amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -91,11 +97,25 @@ class Donation(models.Model):
     donor = models.ForeignKey(Person)
     donation_fund = models.ForeignKey(DonationFund, blank=True)
     transacation_type = models.IntegerField(choices=TRANSACTION_CHOICES,)
-    transaction_details = models.CharField(max_length=200, blank=True) 
+    bank_details = models.CharField(max_length=200, null=True, blank=True,
+                                           help_text="Enter Bank and Branch Details. Mandatory \
+                                           if Cheque or DD id choosen")
+    transaction_details = models.CharField(max_length=200, null=True, blank=True,
+                                           help_text="'Cheque number xxx' or 'DD number xxx' or 'CCAvenue \
+                                           Transaction ID number xxx'")
     donation_type = models.IntegerField(choices=DONATION_TYPE, default=DIRECT)
-    is_repayment = models.BooleanField("Is this a repayment", default=False, help_text="Tick this only if its a repayment. Donar ~ Scholar for this donation")
-    receipt_number = models.IntegerField(blank=True, null=True)    
-    
+    is_repayment = models.BooleanField("Is this a repayment", default=False, help_text="Tick this only if its a repayment. Donor ~ Scholar for this donation")
+    receipt_number = models.IntegerField(blank=True, null=True)
+
+    def get_transaction_details(self):
+        if self.bank_details:
+            retval = "[%s]" % (self.bank_details,)
+            if self.transaction_details:
+                retval = "[%s, %s]" % (self.bank_details, self.transaction_details)
+            return retval
+        else:
+            return ""
+
     def get_donation_receipt(self):
         
         return "<a href='http://127.0.0.1:8000/accounts/donation-receipt'>Mail Receipt</a>"
@@ -108,22 +128,34 @@ class Donation(models.Model):
     def save(self, **kwargs):
         if not self.pk:
             #We need to create the invoice number when its getting created
-            self.receipt_number = (Donation.objects.filter(date_of_donation__year = self.date_of_donation.year).aggregate(Max('receipt_number'))["receipt_number__max"] or 0) + 1
+	    if self.date_of_donation.month in [1,2,3]:
+		financial_year_1 = self.date_of_donation.year-1
+		financial_year_2 = self.date_of_donation.year
+	    else:
+		financial_year_1 = self.date_of_donation.year
+		financial_year_2 = self.date_of_donation.year+1
+  	    date_1=date(financial_year_1, 4, 1)
+	    date_2=date(financial_year_2, 3, 31)
+            self.receipt_number = (Donation.objects.filter(date_of_donation__gte = date_1, date_of_donation__lte = date_2).aggregate(Max('receipt_number'))["receipt_number__max"] or 0) + 1
             super(Donation, self).save(**kwargs)
             return
         super(Donation, self).save(**kwargs)
     
 class PaymentTemp(models.Model):
-    email_address = models.EmailField('Email Address')
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    email_receipt = models.BooleanField("Send me the receipt", default=True)
+    email_address = models.EmailField('Email')
+    email_receipt = models.BooleanField("I want to save tax on this donation", default=False, help_text="What is 80G exemption?<br/>50% of donated amount is deductible from<br/>donor's taxable income.")
+    pan_card = models.CharField("PAN", max_length=10, null=True, blank=True, help_text="Required for donation receipt")
+    referrer_url = models.CharField("Referrer Field", max_length=100, null=True, blank=True)
+    flex_field = models.CharField("Flexible Field", default="Donation to Lakshya", max_length=100, null=True, blank=True)
     
 class Pledge(models.Model):
     name = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
     batch = models.IntegerField("Year of Graduation", choices = [(x,x) for x in reversed(range(1964, 2013))])
     rs_or_dollar = models.IntegerField(choices = [(10000, "Rs 10,000"), (500, "$ 500"),], blank=True)
-    month_of_donation = models.CharField(choices=[("may", "May, 2013"), ("jun", "June, 2013"), ("jul", "July, 2013"),], max_length="4")
+    month_of_donation = models.CharField(choices=[("may", "May, 2013"), ("jun", "June, 2013"), ("jul", "July, 2013"),
+                                                  ("aug", "Aug, 2013"), ("sep", "Sept, 2013"), ("oct", "Oct, 2013"),], max_length="4")
     has_donated = models.BooleanField(default=False,)
     donation_amount = models.DecimalField(max_digits=10, decimal_places=3, blank=True, null=True)
     donation = models.ForeignKey(Donation, blank=True, null=True)

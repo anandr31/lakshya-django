@@ -1,3 +1,4 @@
+<html>
 <head>
 	{% block title %}
 	<title>Lakshya - an NITW alumni led organization</title>
@@ -6,9 +7,12 @@
 	{% endblock title %}
 	{% block meta %}
 	{% endblock %}
-	<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?1"></LINK>
-	{% block scripts %}
-		<script type="text/javascript">
+	<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+	<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+	<script type="text/javascript" src="{{STATIC_URL}}js/modernizr.custom.04022.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
+		{% block scripts %}
+	<script type="text/javascript">
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', '{{GOOGLE_SITE_CODE}}' ]);
 		  _gaq.push(['_trackPageview']);
@@ -19,97 +23,195 @@
 		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		  })();
 		</script>
+		<script>(function(d, s, id) {
+  			var js, fjs = d.getElementsByTagName(s)[0];
+  			if (d.getElementById(id)) return;
+  			js = d.createElement(s); js.id = id;
+  			js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<script>
+		$(function(){
+		$('#slides').slides({
+			preload: true,
+			preloadImage: '{{STATIC_URL}}img/loading.gif',
+			play: 5000,
+			pause: 2500,
+			hoverPause: true
+		});
+
+		$('#testimonial_slides').slides({
+			pagination: false,
+			container: 'testimonials_container',
+			preload: true,
+			preloadImage: '{{STATIC_URL}}img/loading.gif',
+			play: 0,
+			pause: 2500,
+			hoverPause: true
+
+		});
+
+		function showTheList() {
+		  var i = 1;
+		  function showOne() {
+		    if (i === 1) $('.ul li').hide();
+		    $('.ul li').eq(i - 1).delay(100).fadeIn(2000, function() {
+		      $('.ul li').eq(i - 1).fadeOut(4000, function() {
+		        if (++i > 3) i = 1;
+		        showOne();
+		      });
+		    });
+		  }
+		  showOne();
+		}
+		showTheList();
+	});
+	</script>
+
 	{% endblock %}	
 </head>
-<body>
+<body style="background-image:url('{{STATIC_URL}}img/backgrounds/groovepaper.png'); background-attachment: fixed; position:relative;">
+
 {% block header %}
-    <!--[if lt IE 11]> 
-	    <img src="{{STATIC_URL}}img/ie_not_supported_lakshya.png" style="width:100%;padding-bottom: 100000px;"/>
-		<h1 style="text-align:center">It's broken in IE. We will fix it soon</div>
-	<![endif]--> 
-
-<div id="header_wrapper">
-
-	<div id="logo" class="left">
-		<a href="/"><img src="{{STATIC_URL}}img/logo.jpg"></a>
+<div id="header_full">
+	<div id="header_full_left" style="background-image:url('{{STATIC_URL}}img/headers/gray_left.png'); background-repeat: repeat;">
 	</div>
 
+	<a href="/"><img src="{{STATIC_URL}}img/headers/logo_name.png" /></a>
 
-	<div id="secondary_navigation" class = "right">
-		<a href="/team"> Team </a>
-		<a href="/contact"> Contact Us </a>
+	<div id="primary_nav_bar">
+	<div id="primary_nav_bar_inner">
+		<div id="primary_navigation" class = "right cR">
+			<ul>
+				<li class="left_border"><a href="/about">ABOUT US <img class="img_arrow" src="{{STATIC_URL}}img/headers/downarrow.png" /></a>
+					<ul>
+						<li><a href="/about">About Lakshya</a></li>
+						<li><a href="/team">Team</a></li>
+						<li><a href="/testimonials">Testimonials</a></li>
+						<li><a href="/newsletter">Newsletters</a></li>
+					</ul>
+				</li>
+				<li><a href="/innovation/home">PROJECTS <img class="img_arrow" src="{{STATIC_URL}}img/headers/downarrow.png" /></a>
+					<ul id="projects-menu">
+						<li><p>Innovation, Research and Entreprenuership</p></li>
+						<li><a href="/innovation/home">- Innovation Support Program</a></li>
+						<li><a href="/research/home">- Research Facilitator Program</a></li>
+						<li><p>Campus Enablers</p></li>
+						<li><a href="/automation/home">- Administrative Process Automation</a></li>
+						<li><p>Student Enablers</p></li>
+						<li><a href="/scholarships/home">- Financial Assistance Program</a></li>
+						<li><p>Others</p></li>
+						<li><a href="/pilot-projects">- Pilot Projects</a></li>
+					</ul>
+				</li>
+				<li><a href="/accounts/our-core-belief">FUNDS & TRANSPARENCY <img class="img_arrow" src="{{STATIC_URL}}img/headers/downarrow.png" /></a>
+					<ul>
+						<li><a href="/accounts/our-core-belief">Our core belief</a></li>
+						<li><a href="/accounts/donations">Donations</a></li>
+						<li><a href="/accounts/expenses">Expenses</a></li>
+						<li><a href="/accounts/audits">Audit Statements</a></li>				
+					</ul>
+				</li>
+				<li><a href="/donate">DONATE NOW <img class="img_arrow" src="{{STATIC_URL}}img/headers/downarrow.png" /></a>
+					<ul>
+						<li><a href="/donate">Generic Fund</a></li>
+						<li><a href="/applicants">Sponsor Interns</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
 	</div>
-	<div id="primary_navigation" class = "right cR">
-		<ul>
-		<li><a href="#">About Us<span class="drop">&#9660;</span></a>
-			<ul>
-				<li><a href="/about">About Lakshya</a></li>
-				<li><a href="/team">Team</a></li>
-			</ul>
-		</li>
-		<li><a href="#">Projects<span class="drop">&#9660;</span></a>
-			<ul id="projects-menu">
-				<li><p>Innovation, Research and Entreprenuership</p></li>
-				<li><a href="/innovation/home">- Innovation Support Program</a></li>
-				<li><a href="/research/home">- Research Facilitator Program</a></li>
-				<li><p>Campus Enablers</p></li>
-				<li><a href="/automation/home">- Administrative Process Automation</a></li>
-				<li><p>Student Enablers</p></li>
-				<li><a href="/scholarships/home">- Financial Assistance Program</a></li>
-				<li><p>Others</p></li>
-				<li><a href="/pilot-projects">- Pilot Projects</a></li>
-			</ul>
-		</li>
-		<li><a href="#">Funds & Transparency<span class="drop">&#9660;</span></a>
-			<ul>
-				<li><a href="/accounts/our-core-belief">Our core belief</a></li>
-				<li><a href="/accounts/donations">Donations</a></li>
-				<li><a href="/accounts/expenses">Expenses</a></li>
-				<li><a href="/accounts/audits">Audit Statements</a></li>				
-			</ul>
-		</li>
-		<li><a href="/donate">Donate Now</a></li>
-		</ul>
-	</div>	
+	</div>
 </div>
 {% endblock header %}
+
+
 <div id="content_wrapper" class="cB">
-	<span class="cB"></span>
-	{% block content %}
-	<h1 class="cB">Content Area</h1>
-    {% endblock content %}
+	<table style="width:100%; z-index:11;">
+		<tr>
+			<td style="padding-bottom:25px">
+				<span class="cB"></span>
+				{% block content %}
+				<h1 class="cB">Content Area</h1>
+    			{% endblock content %}
+    		</td>
+    	</tr>
+    </table>
 </div>
+
+
 {% block footer %}
-<div id="footer" class="cB">
-	<table id="footer_table">
-		<tr id="footer_header">
-			<th>About us</th><th>Projects</th><th>Funds & Transparency</th><th>Donate</th>
-		</tr>
-		<tr>
-			<td><a href="/about">About Lakshya</a></td><td><a href="/innovation/home">Innovation Support Program</a></td><td><a href="/accounts/our-core-belief">Our core belief</a></td><td><a href="/donate">Online Payment Gateway</a></td>
-		</tr>
-		<tr>
-			<td><a href="/team">The Team</a></td><td><a href="/research/home">Research Facilitator Program</a></td><td><a href="/accounts/donations">Donations</a></td><td><a href="/donate">Cheque/DD/Cash/NEFT</a></td>
-		</tr>
-		<tr>
-			<td><a href="/contact">Contact Us</a></td><td><a href="/automation/home">Administrative Process Automation</a></td><td><a href="/accounts/expenses">Expenses</a></td>
-		</tr>
-		<tr>
-			<td></td><td><a href="/scholarships/home">Financial Assistance Program</a></td><td><a href="/accounts/audits">Audit Reports</a></td><td></td>
-		</tr>
-	</table>
-	<div id="payment_footer">
-		<div id="ccavenue_block">
-					<span>Donations powered by</span> <img src="{{STATIC_URL}}img/ccavenue.png" width="100px" height="20px" />
-					<span id="copy_right">&#9400 thelakshyafoundation.com 2008-2015</span>
+<div id="footer_full">
+	<div id="footer_top">
+		<div id="footer_table_left">
+			<table id="table_styler">
+				<tr>
+					<th><div id="table_styler_inner"><a href="/about">About Lakshya</a></div></th>
+					<th><div id="table_styler_inner"><a href="/innovation/home">Innovation Support Program</a></div></th>
+				</tr>
+				<tr>
+					<th><div id="table_styler_inner"><a href="/team" id="table_styler_left">The Team</a></div></th>
+					<th><div id="table_styler_inner"><a href="/research/home">Research Facilitator Program</a></div></th>
+				</tr>
+				<tr>
+					<th><div id="table_styler_inner"><a href="/accounts/expenses">Expenses</a></div></th>
+					<th><div id="table_styler_inner"><a href="/automation/home">Administrative Process Automation</a></div></th>
+				</tr>
+				<tr>
+					<th><div id="table_styler_inner"><a href="/accounts/donations/">Donations</a></div></th>
+					<th><div id="table_styler_inner"><a href="/scholarships/home">Financial Assistance Program</a></div</th>
+				</tr>
+			</table>
 		</div>
 
-		<div class = "right" id="follow_block">
-			<span style="vertical-align:10px;">follow us on</span> <a href="https://www.facebook.com/thelakshyafoundation"><img src="{{STATIC_URL}}img/facebook_icon.png" width="25px" height="25px" /></a> 
-		</div>		
-	</div>
+		<div id="footer_table_right">
+			<div id="contact_us_text">
+				<img src="{{STATIC_URL}}img/headers/contact_us.png" />
+			</div>
+			<div id="contact_us_tab">
+				<section class="tabs">
+	            <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
+		        <label for="tab-1" class="tab-label-1">Hyderabad</label>
+		
+	            <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
+		        <label for="tab-2" class="tab-label-2">Warangal</label>
+            
+			    <div class="clear-shadow"></div>
+				
+		        <div class="content">
+			        <div class="content-1" style="background-image:url('{{STATIC_URL}}img/headers/hyderabad.png'); height:144px; width:400px; background-repeat:no-repeat; padding:0px 0px 0px 0px;">
+			        	<a href="http://goo.gl/maps/mpvuu" target="_blank"><div id="map_link"></div></a>
 
+				    </div>
+			        <div class="content-2" style="background-image:url('{{STATIC_URL}}img/headers/warangal.png');  height:144px; width:400px; background-repeat:no-repeat; padding:0px 0px 0px 0px;">
+			        	<a href="http://goo.gl/maps/wS5a9" target="_blank"><div id="map_link"></div></a>
+				    </div>
+		        </div>
+			</section>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="footer_copyright">
+	<div id="footer_copyright_inner">
+
+		<img src="{{STATIC_URL}}img/headers/ccavenue_blue.png" width="150px" height="50px" />
+
+		<div id="lak_copyright">
+			<p>&#9400 2008 - 2015 All Rights Reserved</p>
+			<p>The Lakshya Foundation</p>
+		</div>
+
+		<div id="facebook_twitter">
+			<a href="https://www.facebook.com/thelakshyafoundation"><img src="{{STATIC_URL}}img/headers/fb_0.png" onmouseover="this.src='{{STATIC_URL}}img/headers/fb_1.png'" onmouseout="this.src='{{STATIC_URL}}img/headers/fb_0.png'" width="40px" height="40px" /></a>
+
+			<a href="https://twitter.com/lakshyatweets"><img src="{{STATIC_URL}}img/headers/t_0.png" onmouseover="this.src='{{STATIC_URL}}img/headers/t_1.png'" onmouseout="this.src='{{STATIC_URL}}img/headers/t_0.png'" width="40px" height="40px" /></a> 
+		</div>
+	</div>
 </div>
 {% endblock footer%}
 </body>
+</html>
 

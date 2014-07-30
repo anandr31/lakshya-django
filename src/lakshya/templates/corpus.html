@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}
+<title>Testimonials - Lakshya, an NITW alumni led organization</title>
+<meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
+{% endblock title %}
+{% block content %}
+<div class = "content_no_sidebar">
+<div class = "donate_content">
+<h2><br/>Corpus</h2>
+
+<p>Few statements highlight the impact of investing in students more than this - <i>"If companies founded by Stanford graduates formed an independent nation, it would be the 10th largest economy in the world... [creating] 5.4 million jobs and [generating] annual revenues of $2.7 trillion".</i></p>
+This, in a sense, is what Lakshya strives to do for NIT Warangal.<br><br>
+
+<b>Impact Investing for a non-profit</b>
+<ul>Donors are to non-profits what customers are to for-profits. And both need investors to develop a strong financial footing. Unlike for-profit equity, investors realize a social rather than financial return on investment by providing endowment grants to non-profits.
+<br>Giving $1M will make NIT Warangal the first institute to have a dedicated alumni fund of this size towards research, entrepreneurship and innovation development. And everyone will want to know how it all started. Here, an investor also gets a lasting legacy.</ul>
+<b>Powers of Enterprise</b>
+<ul>This kind of an investment will ensure we harness the positive power of enterprise to bring social change. Traditional forms of philanthropy have been criticized for being short-sighted or unsustainable.</ul>
+
+<b>What a $1M endowment fund will do</b>
+<ol>
+<li>Immediate Impact:
+<ul>
+<li>- Raise NIT Warangal's profile, and that of its students and alumni. This has a cascading effect which reverberates in the student and industry circles, bringing in more talent and more funding leading to greater output.</li>
+<li>- Reassure donors that we are here for the long run. We have been around for five years, and an endowment means people trust us to stay on for decades more. This will help shape and work towards long-term visions.</li>
+</ul>
+</li>
+<li>Medium Term:
+<ul>
+<li>- Help bring on board many more professionals to work for the cause. As an example, a $1M fund will need fund managers of which there are several in the alumni community.</li>
+<li>- Many more students will start to solve real world problems using technology solutions. A massive need, especially in the Indian subcontinent.</li>
+</ul>
+</li>
+
+<li>Long term:
+<ul>
+<li>- Deep industry role facilitated through alumni in enabling NIT Warangal become a top institute. Creation of curriculum that generates leaders, a la top universities like MIT and Stanford.</li>
+</ul>
+</li>
+</ol>
+<p>Alumni who give will understandably have a more visible profile in the community. Startups who go for funding after the initial seed will approach known persons first to lead the rounds. There is no guarantee, but a very good chance of this happening, thus giving the impact investor a shot at making a killing with very early-stage investments.</p>
+
+<p>While investing in Lakshya does not come with an 'exit option', it opens the door to several more opportunities and the chance to bring lasting social change by running non-profits like for-profits.</p>
+
+</div>
+<br/><br/>
+
+<div class = "donate_right">
+	<div class="donate_content_div">
+<b>Donate</b>
+<table>
+	<tbody>
+	<tr>
+		<td>
+			<input type="radio" name="amount" id="input_amount_0" value="200" onclick="document.getElementById('id_amount').value=value;" style="">
+			<label for="input_amount_0">Rs.200</label>
+		</td>
+		<td>
+			<input type="radio" name="amount" id="input_amount_1" onclick="document.getElementById('id_amount').value=value;" value="500" style="">
+			<label for="input_amount_1">Rs.500</label>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<input type="radio" name="amount" id="input_amount_2" onclick="document.getElementById('id_amount').value=value;" value="1000" style="">
+			<label for="input_amount_2">Rs.1000</label>
+		</td>
+		<td>
+			<input type="radio" name="amount" id="input_amount_3" onclick="document.getElementById('id_amount').value=value;" value="2000" style="">
+			<label for="input_amount_3">Rs.2000</label>
+		</td>
+	</tr>
+		    <tr>
+		      <td class="radiobuttons-cell">
+		<input type="radio" name="amount" id="input_amount_other" value="Other" onclick="document.getElementById('input_amount_other_box').focus(); document.getElementById('id_amount').value=document.getElementById('input_amount_other_box').value;" style="">
+		<label for="input_amount_other">Other Rs.</label>
+		<input type="text" id="input_amount_other_box" size="3" autocomplete="off" value="" onchange="document.getElementById('id_amount').value=value;" style="">
+		      </td>
+		    </tr>
+
+
+	</tbody>
+</table>
+
+
+<!--		<form class="donation_choices" action="payment_redirect" method="post">{% csrf_token %}
+			{% for field in form.visible_fields %}
+				<div class="field">
+				{% if field.name == 'email_receipt' %}
+					<input type="checkbox" class="form-control"
+					name="{{ field.name }}"
+					id="id_{{ field.name }}"
+					value="{{ field.value }}" onclick="display_pan();"> <label>{{ field.label}}</label>
+<div class = "donate_help_text">{{ field.help_text|safe }} </div>
+				{% elif field.name == 'pan_card' %}
+					<div id="div_id_{{ field.name }}" style="display: none"><label>{{ field.label}}</label> <div>{{ field }}</div><div class = "donate_help_text">{{ field.help_text|safe }} </div></div>
+				{% elif field.name == 'amount' %}
+					<div id="div_id_{{ field.name }}" style="display: none"><label>{{ field.label}}</label> <div>{{ field }}</div></div>
+
+				{% else %}
+					<label>{{ field.label}}</label> <div>{{ field }}</div>
+				{% endif %}					
+		           	<p class="error">
+		           		{% for error in field.errors %}
+		           			{{error}}<br>
+		           		{% endfor %}
+		           	</p>
+		       	</div>
+		    {% endfor %}
+		<input type="submit" value="Donate by credit/debit card" onclick="test_func()"/>
+		</form> -->
+		</div> <!-- End of vision_block div-->
+<!--		<h3 id="vision_block">Online Transfer</h3>-->
+		<h3 class="donate_subheader">Account Details</h3>
+		<dl id="account_details">
+		    <dt>A/C Name:</dt>
+		    <dd>The Lakshya Foundation</dd>
+		    <dt>A/C No.:</dt>
+		    <dd>020101005180</dd>
+		    <dt>Bank:</dt>
+		    <dd>ICICI Bank, Hanmakonda</dd>
+		    <dt>City:</dt>
+		    <dd>Warangal, Andhra Pradesh</dd>
+		    <dt>IFSC:</dt>
+		    <dd>ICIC0000201</dd>
+		</dl>​
+		<p class="cB"></p>
+		<h3 class="donate_subheader">Post cheques to</h3>
+		<div id="postal_address">		
+			<p>Prof. A. Venu Gopal,</p>
+			<p>Mechanical Engineering Department,</p>
+			<p>NIT Warangal,</p>
+			<p>Warangal - 506021.</p>
+			<p>Andhra Pradesh, India</p>
+			<p>Contact: 0870-2462338</p>
+		</div>
+	</div>
+</div>
+
+
+
+</div> <!-- for content_no_sidebar-->
+{% endblock content %}
+
