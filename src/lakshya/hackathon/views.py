@@ -21,9 +21,9 @@ def register(request):
             participant = Participant(name=name,mobile=mobile,team=team,email=email,problem=problem)
             participant.save()
 
-            return render_to_response("hackathon/success.html", RequestContext(request,{}))
+            return render_to_response("hackathon/success.html", RequestContext(request,{'name':name}))
         else:
-            return render_to_response("hackathon/index.html", RequestContext(request, {}))
+            return render_to_response("hackathon/register.html", RequestContext(request, {}))
 
     form = RegForm()
     return render(request,'hackathon/register.html',{'form':form})

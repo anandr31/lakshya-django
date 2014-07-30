@@ -10,15 +10,28 @@
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
   <meta name="generator" content="2014.0.1.264"/>
   <link rel="shortcut icon" href="{% static 'images/favicon.ico?3840405322' %}"/>
-  <title>Register</title>
+  <title>Registered</title>
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="{% static 'css/site_global.css?208753328' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/master_b-master.css?234385031' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/register.css?499517477' %}" id="pagesheet"/>
+     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+     <link rel="stylesheet" type="text/css" href="{% static 'css/flat-ui.css' %}" />
   <!-- Other scripts -->
   <script type="text/javascript">
    document.documentElement.className += ' js';
 </script>
+     <style>
+         .form_styling {
+             max-width: 700px;
+             margin: auto;
+             text-align: center;
+         }
+
+         label {
+             font-size: 18pt;
+         }
+     </style>
    </head>
  <body>
 
@@ -32,15 +45,23 @@
     </div>
     <img class="pinned-colelem" id="u494-4" alt="AUGUST 23 &amp; 24 " width="210" height="26" src="{% static 'images/u494-4.png' %}"/><!-- rasterized frame -->
     <div class="browser_width colelem" id="u488-bw">
-     <div id="u488"><!-- simple frame --></div>
+     <div id= "u488"><!-- simple frame -->
+
+
+     <div class="form_styling">
+      <h4>{{name}}, Thanks for registering. We will update you with more details soon.</h4>
+    </form>
+    </div>
+     </div>
     </div>
    </div>
-
   </div>
+
   <div class="preload_images">
    <img class="preload" src="{% static 'images/u529_states-r.png' %}" alt=""/>
    <img class="preload" src="{% static 'images/u530_states-r.png' %}" alt=""/>
   </div>
+
   <!-- JS includes -->
   <script type="text/javascript">
    if (document.location.protocol != 'https:') document.write('\x3Cscript src="http://musecdn.businesscatalyst.com/scripts/4.0/jquery-1.8.3.min.js" type="text/javascript">\x3C/script>');
