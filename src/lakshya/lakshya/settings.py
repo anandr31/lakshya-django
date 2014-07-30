@@ -152,6 +152,7 @@ INSTALLED_APPS = (
     'notification',
     'nem',
     'hackathon',
+    'bootstrap3',
 )
 
 # A sample logging configuration. The only tangible logging
