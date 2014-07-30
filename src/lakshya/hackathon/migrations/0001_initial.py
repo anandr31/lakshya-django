@@ -20,7 +20,7 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('email', self.gf('django.db.models.fields.EmailField')(max_length=75)),
-            ('mobile', self.gf('django.db.models.fields.IntegerField')(max_length=10)),
+            ('mobile', self.gf('django.db.models.fields.IntegerField')()),
             ('problem', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['hackathon.ProblemStatement'], unique=True)),
             ('team', self.gf('django.db.models.fields.CharField')(max_length=100)),
         ))
@@ -40,7 +40,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Participant'},
             'email': ('django.db.models.fields.EmailField', [], {'max_length': '75'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'mobile': ('django.db.models.fields.IntegerField', [], {'max_length': '10'}),
+            'mobile': ('django.db.models.fields.IntegerField', [], {}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'problem': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['hackathon.ProblemStatement']", 'unique': 'True'}),
             'team': ('django.db.models.fields.CharField', [], {'max_length': '100'})

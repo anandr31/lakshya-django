@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from forms import RegistrationForm
+from forms import RegistrationForm, RegForm
+from django.shortcuts import render_to_response, render
+from django.template.context import RequestContext
 from models import *
 
 # Create your views here.
@@ -9,10 +10,20 @@ def index(request):
 
 def register(request):
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        form.save()
+        form = RegForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            mobile = form.cleaned_data['mobile']
+            team = form.cleaned_data['team']
+            email = form.cleaned_data['email']
+            problem = form.cleaned_data['problem']
 
-        return render(request,"hackathon/success.html",{})
-    else:
-        form = RegistrationForm()
-        return render(request,'project/register.html',{'form':form})
+            participant = Participant(name=name,mobile=mobile,team=team,email=email,problem=problem)
+            participant.save()
+
+            return render_to_response("hackathon/success.html", RequestContext(request,{}))
+        else:
+            return render_to_response("hackathon/index.html", RequestContext(request, {}))
+
+    form = RegForm()
+    return render(request,'hackathon/register.html',{'form':form})

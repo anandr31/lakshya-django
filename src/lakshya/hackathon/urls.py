@@ -6,5 +6,5 @@ from views import *
 
 urlpatterns = patterns('',
                        url(r'^$', index, name='index'),
-
+                       url(r'^register/?$', register, name='register'),
                        )
