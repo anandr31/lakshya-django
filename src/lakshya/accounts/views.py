@@ -7,7 +7,7 @@ from django.shortcuts import render_to_response, render, redirect
 from django.template.context import RequestContext
 from django.http import HttpResponseRedirect
 from django.db.models import Sum
-from django.contrib.gis.geoip import GeoIP
+#from django.contrib.gis.geoip import GeoIP
 from django.conf import settings
 
 from accounts.models import Expense, Donation, DonationFund, PAYMENT_GATEWAY,\
