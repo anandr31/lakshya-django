@@ -1,10 +1,608 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<html class="html">
+ <head>
+    {% load staticfiles %}
+    {% load static %}
+  <script type="text/javascript">
+   if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required":["jquery-1.8.3.min.js", "museutils.js", "jquery.scrolleffects.js", "jquery.musepolyfill.bgsize.js", "webpro.js", "musewpslideshow.js", "jquery.museoverlay.js", "touchswipe.js", "index.css"], "outOfDate":[]};
+</script>
 
-</body>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+  <meta name="generator" content="2014.0.1.264"/>
+  <link rel="shortcut icon" href="{% static 'images/favicon.ico?3840405322' %}"/>
+  <title>Hackathon</title>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/site_global.css?208753328' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/master_a-master.css?4128599870' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css?288746083' %}" id="pagesheet"/>
+  <!--[if lt IE 9]>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/iefonts_index.css?40799550' %}"/>
+  <![endif]-->
+  <!-- Other scripts -->
+  <script type="text/javascript">
+   document.documentElement.className += ' js';
+var __adobewebfontsappname__ = "muse";
+</script>
+  <!-- JS includes -->
+  <script type="text/javascript">
+   document.write('\x3Cscript src="' + (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//webfonts.creativecloud.com/source-sans-pro:n7,n4,n9:all.js" type="text/javascript">\x3C/script>');
+</script>
+    <!--HTML Widget code-->
+
+       <style>
+        body {
+    overflow: hidden;
+}
+
+
+#preloader {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:#ffffff; /* change if the mask should have another color then white */
+    opacity:0.8;
+    //z-index:99; /* makes sure it stays on top */
+}
+
+#status {
+    width:200px;
+    height:50px;
+    position:absolute;
+    left:50%; /* centers the loading animation horizontally one the screen */
+    top:50%; /* centers the loading animation vertically one the screen */
+    margin-left:-100px;
+    margin-top:55px;
+    font-size:12px;
+    color:;
+    text-align:center;
+    font-family:Verdana;
+}
+       </style>
+       <style>
+#floatingBarsG{
+position:absolute;
+    left:50%; /* centers the loading animation horizontally one the screen */
+    top:50%; /* centers the loading animation vertically one the screen */
+width:50px;
+margin-left:-25px;
+height:62px}
+
+.blockG{
+position:absolute;
+background-color:#ffffff;
+width:8px;
+height:19px;
+-moz-border-radius:7px 7px 0 0;
+-moz-transform:scale(0.4);
+-moz-animation-name:fadeG;
+-moz-animation-duration:1.28s;
+-moz-animation-iteration-count:infinite;
+-moz-animation-direction:linear;
+-webkit-border-radius:7px 7px 0 0;
+-webkit-transform:scale(0.4);
+-webkit-animation-name:fadeG;
+-webkit-animation-duration:1.28s;
+-webkit-animation-iteration-count:infinite;
+-webkit-animation-direction:linear;
+-ms-border-radius:7px 7px 0 0;
+-ms-transform:scale(0.4);
+-ms-animation-name:fadeG;
+-ms-animation-duration:1.28s;
+-ms-animation-iteration-count:infinite;
+-ms-animation-direction:linear;
+-o-border-radius:7px 7px 0 0;
+-o-transform:scale(0.4);
+-o-animation-name:fadeG;
+-o-animation-duration:1.28s;
+-o-animation-iteration-count:infinite;
+-o-animation-direction:linear;
+border-radius:7px 7px 0 0;
+transform:scale(0.4);
+animation-name:fadeG;
+animation-duration:1.28s;
+animation-iteration-count:infinite;
+animation-direction:linear;
+}
+
+#rotateG_01{
+left:0;
+top:23px;
+-moz-animation-delay:0.4800000000000001s;
+-moz-transform:rotate(-90deg);
+-webkit-animation-delay:0.4800000000000001s;
+-webkit-transform:rotate(-90deg);
+-ms-animation-delay:0.4800000000000001s;
+-ms-transform:rotate(-90deg);
+-o-animation-delay:0.4800000000000001s;
+-o-transform:rotate(-90deg);
+animation-delay:0.4800000000000001s;
+transform:rotate(-90deg);
+}
+
+#rotateG_02{
+left:6px;
+top:8px;
+-moz-animation-delay:0.64s;
+-moz-transform:rotate(-45deg);
+-webkit-animation-delay:0.64s;
+-webkit-transform:rotate(-45deg);
+-ms-animation-delay:0.64s;
+-ms-transform:rotate(-45deg);
+-o-animation-delay:0.64s;
+-o-transform:rotate(-45deg);
+animation-delay:0.64s;
+transform:rotate(-45deg);
+}
+
+#rotateG_03{
+left:21px;
+top:2px;
+-moz-animation-delay:0.8s;
+-moz-transform:rotate(0deg);
+-webkit-animation-delay:0.8s;
+-webkit-transform:rotate(0deg);
+-ms-animation-delay:0.8s;
+-ms-transform:rotate(0deg);
+-o-animation-delay:0.8s;
+-o-transform:rotate(0deg);
+animation-delay:0.8s;
+transform:rotate(0deg);
+}
+
+#rotateG_04{
+right:6px;
+top:8px;
+-moz-animation-delay:0.9600000000000002s;
+-moz-transform:rotate(45deg);
+-webkit-animation-delay:0.9600000000000002s;
+-webkit-transform:rotate(45deg);
+-ms-animation-delay:0.9600000000000002s;
+-ms-transform:rotate(45deg);
+-o-animation-delay:0.9600000000000002s;
+-o-transform:rotate(45deg);
+animation-delay:0.9600000000000002s;
+transform:rotate(45deg);
+}
+
+#rotateG_05{
+right:0;
+top:23px;
+-moz-animation-delay:1.12s;
+-moz-transform:rotate(90deg);
+-webkit-animation-delay:1.12s;
+-webkit-transform:rotate(90deg);
+-ms-animation-delay:1.12s;
+-ms-transform:rotate(90deg);
+-o-animation-delay:1.12s;
+-o-transform:rotate(90deg);
+animation-delay:1.12s;
+transform:rotate(90deg);
+}
+
+#rotateG_06{
+right:6px;
+bottom:6px;
+-moz-animation-delay:1.28s;
+-moz-transform:rotate(135deg);
+-webkit-animation-delay:1.28s;
+-webkit-transform:rotate(135deg);
+-ms-animation-delay:1.28s;
+-ms-transform:rotate(135deg);
+-o-animation-delay:1.28s;
+-o-transform:rotate(135deg);
+animation-delay:1.28s;
+transform:rotate(135deg);
+}
+
+#rotateG_07{
+bottom:0;
+left:21px;
+-moz-animation-delay:1.44s;
+-moz-transform:rotate(180deg);
+-webkit-animation-delay:1.44s;
+-webkit-transform:rotate(180deg);
+-ms-animation-delay:1.44s;
+-ms-transform:rotate(180deg);
+-o-animation-delay:1.44s;
+-o-transform:rotate(180deg);
+animation-delay:1.44s;
+transform:rotate(180deg);
+}
+
+#rotateG_08{
+left:6px;
+bottom:6px;
+-moz-animation-delay:1.6s;
+-moz-transform:rotate(-135deg);
+-webkit-animation-delay:1.6s;
+-webkit-transform:rotate(-135deg);
+-ms-animation-delay:1.6s;
+-ms-transform:rotate(-135deg);
+-o-animation-delay:1.6s;
+-o-transform:rotate(-135deg);
+animation-delay:1.6s;
+transform:rotate(-135deg);
+}
+
+@-moz-keyframes fadeG{
+0%{
+background-color:#dfae50}
+
+100%{
+background-color:#FFFFFF}
+
+}
+
+@-webkit-keyframes fadeG{
+0%{
+background-color:#dfae50}
+
+100%{
+background-color:#ffffff}
+
+}
+
+@-ms-keyframes fadeG{
+0%{
+background-color:#dfae50}
+
+100%{
+background-color:#ffffff}
+
+}
+
+@-o-keyframes fadeG{
+0%{
+background-color:#dfae50}
+
+100%{
+background-color:#ffffff}
+
+}
+
+@keyframes fadeG{
+0%{
+background-color:#dfae50}
+
+100%{
+background-color:#ffffff}
+
+}
+
+</style>
+
+
+
+
+
+<style type="text/css">
+
+html,body {overflow-x:hidden;}
+
+</style>
+
+
+
+<style type="text/css">
+
+
+
+
+</style>
+
+
+
+
+
+ </head>
+ <body>
+
+  <div class="rounded-corners clearfix" id="page"><!-- column -->
+   <div class="position_content" id="page_position_content">
+    <a class="anchor_item colelem" id="top"></a>
+    <div class="clip_frame pinned-colelem" id="u74"><!-- image -->
+     <img class="block" id="u74_img" src="{% static 'images/screenshot_26_07_14_7_17_pm.jpg' %}" alt="" width="271" height="88"/>
+    </div>
+    <a class="nonblock nontext pinned-colelem" id="u178" href="register.html"><!-- state-based BG images --><img id="u178_states" alt="REGISTER" src="{% static 'images/blank.gif' %}"/></a>
+    <div class="clearfix colelem" id="pu176"><!-- group -->
+     <div id="u176"><!-- simple frame --></div>
+     <img id="u177-4" alt="AUGUST 23 &amp; 24 " width="210" height="26" src="{% static 'images/u177-4.png' %}"/><!-- rasterized frame -->
+    </div>
+    <div class="browser_width" id="u80-bw">
+     <div class="pinned-colelem" id="u80"><!-- simple frame --></div>
+    </div>
+    <div class="browser_width" id="u369-bw">
+     <div class="ose_pre_init pinned-colelem" id="u369"><!-- simple frame --></div>
+    </div>
+    <div class="browser_width" id="u250-bw">
+     <div class="ose_pre_init pinned-colelem" id="u250"><!-- simple frame --></div>
+    </div>
+    <div class="ose_pre_init pinned-colelem" id="u423"><!-- simple frame --></div>
+    <img class="ose_pre_init pinned-colelem" id="u279-4" alt="HACKATHON v2.0" width="301" height="46" src="{% static 'images/u279-4.png' %}"/><!-- rasterized frame -->
+    <img class="ose_pre_init pinned-colelem" id="u368-4" alt="PARTICIPATE" width="301" height="46" src="{% static 'images/u368-4.png' %}"/><!-- rasterized frame -->
+    <div class="clip_frame ose_pre_init pinned-colelem" id="u86"><!-- image -->
+     <img class="block" id="u86_img" src="{% static 'images/imac.png' %}" alt="" width="574" height="470"/>
+    </div>
+    <img class="ose_pre_init pinned-colelem" id="u375-4" alt="1" width="104" height="104" src="{% static 'images/u375-4.png' %}"/><!-- rasterized frame -->
+    <img class="ose_pre_init pinned-colelem" id="u378-4" alt="3" width="104" height="104" src="{% static 'images/u378-4.png' %}"/><!-- rasterized frame -->
+    <div class="PamphletWidget clearfix colelem" id="pamphletu118"><!-- none box -->
+     <div class="ThumbGroup clearfix grpelem" id="u125"><!-- none box -->
+      <div class="popup_anchor">
+       <div class="Thumb popup_element rounded-corners clearfix ose_pre_init" id="u130"><!-- group -->
+        <img class="grpelem" id="u170" alt="What Is the Hackathon ?" src="{% static 'images/blank.gif' %}"/><!-- state-based BG images -->
+       </div>
+      </div>
+      <div class="popup_anchor">
+       <div class="Thumb popup_element rounded-corners clearfix ose_pre_init" id="u158"><!-- group -->
+        <img class="grpelem" id="u181" alt="When Is It ?" src="{% static 'images/blank.gif' %}"/><!-- state-based BG images -->
+       </div>
+      </div>
+      <div class="popup_anchor">
+       <div class="Thumb popup_element rounded-corners clearfix ose_pre_init" id="u164"><!-- group -->
+        <img class="grpelem" id="u182" alt="How Can I Join ?" src="{% static 'images/blank.gif' %}"/><!-- state-based BG images -->
+       </div>
+      </div>
+     </div>
+     <div class="popup_anchor" id="u132popup">
+      <div class="ContainerGroup clearfix" id="u132"><!-- stack box -->
+       <div class="Container museBGSize ose_pre_init grpelem" id="u141"><!-- simple frame --></div>
+       <div class="Container invi museBGSize ose_pre_init grpelem" id="u160"><!-- simple frame --></div>
+       <div class="Container invi clearfix ose_pre_init grpelem" id="u165"><!-- group -->
+        <div class="clip_frame grpelem" id="u439"><!-- image -->
+         <img class="block" id="u439_img" src="{% static 'images/register%20copy.jpg' %}" alt="" width="536" height="309"/>
+        </div>
+        <div class="clip_frame grpelem" id="u445"><!-- image -->
+         <img class="block" id="u445_img" src="{% static 'images/arrowup.png' %}" alt="" width="101" height="55"/>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <img class="ose_pre_init pinned-colelem" id="u265-20" alt="&nbsp;A Hackathon is a gathering where programmers, designers and content writers collaboratively code and build innovative solutions to real life problems, in an extreme manner and over a short period of time. The Hackathon was conceived last year at NITW with the intention to Increase interest in building innovative solutions through software and hardware development. After witnessing a remarkable round of intense coding and brainstorming, The Hackathon is back this year, Only this time with micro&#45;controllers, microprocessors, sensors and what not?. The second NITW Hackathon will be based on predefined problem statements which will be announced 7&#45;10 days before the event. Teams will be asked to pick a problem statement that they wish to work on and then will interact with the mentor associated with the chosen problem, to design the solution." width="952" height="325" src="{% static 'images/u265-20.png' %}"/><!-- rasterized frame -->
+    <div class="clip_frame ose_pre_init pinned-colelem" id="u93"><!-- image -->
+     <img class="block" id="u93_img" src="{% static 'images/glare.png' %}" alt="" width="574" height="470"/>
+    </div>
+    <img class="ose_pre_init pinned-colelem" id="u377-4" alt="2" width="104" height="104" src="{% static 'images/u377-4.png' %}"/><!-- rasterized frame -->
+    <div class="clearfix ose_pre_init pinned-colelem" id="u384-4"><!-- content -->
+     <p>PROBLEM STATEMENT</p>
+    </div>
+    <div class="clearfix ose_pre_init pinned-colelem" id="u386-4"><!-- content -->
+     <p>INNOVATE</p>
+    </div>
+    <a class="anchor_item colelem" id="phase1"></a>
+    <div class="clearfix ose_pre_init pinned-colelem" id="u379-4"><!-- content -->
+     <p>Various Problem statements are announced 7 to 10 days before the Hackathon. The problems will be from different fields and will be aimed at tackling real life problems. Select a problem that your team would like to work with.</p>
+    </div>
+    <div class="clearfix ose_pre_init pinned-colelem" id="u383-4"><!-- content -->
+     <p>Ring up the Mentor assigned to the Problem statement you have chosen, Discuss your idea and drive the solution all the way from design, through to Execution. Dont Forget to Innovate.</p>
+    </div>
+    <div class="colelem" id="u451"><!-- custom html -->
+
+
+<div id="preloader">
+    <div id="floatingBarsG">
+    <div class="blockG" id="rotateG_01">
+    </div>
+    <div class="blockG" id="rotateG_02">
+    </div>
+    <div class="blockG" id="rotateG_03">
+    </div>
+    <div class="blockG" id="rotateG_04">
+    </div>
+    <div class="blockG" id="rotateG_05">
+    </div>
+    <div class="blockG" id="rotateG_06">
+    </div>
+    <div class="blockG" id="rotateG_07">
+    </div>
+    <div class="blockG" id="rotateG_08">
+    </div>
+    </div>
+    <div id="status"></div>
+</div>
+
+</div>
+    <div class="clearfix colelem" id="pu429"><!-- group -->
+     <a class="nonblock nontext anim_swing museBGSize ose_pre_init" id="u429" href="index.html#phase1" data-mu-ie-matrix="progid:DXImageTransform.Microsoft.Matrix(M11=-1,M12=0,M21=0,M22=-1,SizingMethod='auto expand')" data-mu-ie-matrix-dx="0" data-mu-ie-matrix-dy="0"><!-- simple frame --></a>
+     <a class="nonblock nontext anim_swing museBGSize ose_pre_init" id="u425" href="index.html#top" data-mu-ie-matrix="progid:DXImageTransform.Microsoft.Matrix(M11=-1,M12=0,M21=0,M22=-1,SizingMethod='auto expand')" data-mu-ie-matrix-dx="0" data-mu-ie-matrix-dy="0"><!-- simple frame --></a>
+     <a class="nonblock nontext anim_swing museBGSize ose_pre_init" id="u319" href="index.html#phase1"><!-- simple frame --></a>
+     <a class="nonblock nontext anim_swing museBGSize ose_pre_init" id="u431" href="index.html#top" data-mu-ie-matrix="progid:DXImageTransform.Microsoft.Matrix(M11=-1,M12=0,M21=0,M22=-1,SizingMethod='auto expand')" data-mu-ie-matrix-dx="0" data-mu-ie-matrix-dy="0"><!-- simple frame --></a>
+     <a class="nonblock nontext anim_swing museBGSize ose_pre_init" id="u424" href="index.html#phase2"><!-- simple frame --></a>
+     <div class="clearfix ose_pre_init" id="u385-4"><!-- content -->
+      <p>TEAM FORMATION</p>
+     </div>
+     <div class="clearfix ose_pre_init" id="u382-4"><!-- content -->
+      <p>Round up your buddies, brainstorm and figure out which problem statement is something you think you find a solution to and execute flawlessly. Remember to include people that can contribute differently to the solution.</p>
+     </div>
+    </div>
+    <div class="colelem" id="u415"><!-- custom html -->
+
+
+
+
+
+
+
+
+</div>
+    <div class="clearfix colelem" id="pu289"><!-- group -->
+     <div class="clip_frame" id="u289"><!-- image -->
+      <img class="block" id="u289_img" src="{% static 'images/nitwlogo.png' %}" alt="" width="88" height="81"/>
+     </div>
+     <div class="clearfix" id="u287-4"><!-- content -->
+      <p>SPONSORED BY</p>
+     </div>
+     <a class="nonblock nontext museBGSize" id="u301" href="http://www.thelakshyafoundation.org"><!-- simple frame --></a>
+     <a class="nonblock nontext museBGSize" id="u544" href="http://www.emertxe.com"><!-- simple frame --></a>
+    </div>
+    <a class="nonblock nontext museBGSize pinned-colelem" id="u533" href="http://www.almabase.com"><!-- simple frame --></a>
+    <div class="clearfix colelem" id="u171-3"><!-- content -->
+     <p>&nbsp;</p>
+    </div>
+    <a class="anchor_item colelem" id="phase2"></a>
+   </div>
+  </div>
+  <div class="preload_images">
+   <img class="preload" src="{% static 'images/u178_states-r.png' %}" alt=""/>
+   <img class="preload" src="{% static 'images/u170-r.png' %}" alt=""/>
+   <img class="preload" src="{% static 'images/u170-m.png' %}" alt=""/>
+   <img class="preload" src="{% static 'images/u170-a.png' %}" alt=""/>
+   <img class="preload" src="{% static 'images/u181-r.png' %}" alt=""/>
+   <img class="preload" src="{% static 'images/u181-m.png' %}" alt=""/>
+   <img class="preload" src="{% static 'images/u181-a.png' %}" alt=""/>
+   <img class="preload" src="{% static 'images/u182-r.png' %}" alt=""/>
+   <img class="preload" src="{% static 'images/u182-m.png' %}" alt=""/>
+   <img class="preload" src="{% static 'images/u182-a.png' %}" alt=""/>
+   <img class="preload" src="{% static 'images/downarrow.png' %}" alt=""/>
+   <img class="preload" src="{% static 'images/lakshya-1.png' %}" alt=""/>
+   <img class="preload" src="{% static 'images/emertxe-layer%200.png' %}" alt=""/>
+   <img class="preload" src="{% static 'images/almabase-0.png' %}" alt=""/>
+  </div>
+  <!-- JS includes -->
+  <script type="text/javascript">
+   if (document.location.protocol != 'https:') document.write('\x3Cscript src="http://musecdn.businesscatalyst.com/scripts/4.0/jquery-1.8.3.min.js" type="text/javascript">\x3C/script>');
+</script>
+  <script type="text/javascript">
+   window.jQuery || document.write('\x3Cscript src="{% static 'scripts/jquery-1.8.3.min.js' %}" type="text/javascript">\x3C/script>');
+</script>
+  <script src="{% static 'scripts/museutils.js?353204447' %}" type="text/javascript"></script>
+  <script src="{% static 'scripts/jquery.scrolleffects.js?4083300337' %}" type="text/javascript"></script>
+  <script src="{% static 'scripts/jquery.musepolyfill.bgsize.js?323834883' %}" type="text/javascript"></script>
+  <script src="{% static 'scripts/webpro.js?317917375' %}" type="text/javascript"></script>
+  <script src="{% static 'scripts/musewpslideshow.js?177288662' %}" type="text/javascript"></script>
+  <script src="{% static 'scripts/jquery.museoverlay.js?524248676' %}" type="text/javascript"></script>
+  <script src="{% static 'scripts/touchswipe.js?367691663' %}" type="text/javascript"></script>
+  <!-- Other scripts -->
+  <script type="text/javascript">
+   $(document).ready(function() { try {
+(function(){var a={},b=function(a){if(a.match(/^rgb/))return a=a.replace(/\s+/g,"").match(/([\d\,]+)/gi)[0].split(","),(parseInt(a[0])<<16)+(parseInt(a[1])<<8)+parseInt(a[2]);if(a.match(/^\#/))return parseInt(a.substr(1),16);return 0};(function(){$('link[type="text/css"]').each(function(){var b=($(this).attr("href")||"").match(/\/?css\/([\w\-]+\.css)\?(\d+)/);b&&b[1]&&b[2]&&(a[b[1]]=b[2])})})();(function(){$("body").append('<div class="version" style="display:none; width:1px; height:1px;"></div>');
+for(var c=$(".version"),d=0;d<Muse.assets.required.length;){var f=Muse.assets.required[d],g=f.match(/([\w\-\.]+)\.(\w+)$/),l=g&&g[1]?g[1]:null,g=g&&g[2]?g[2]:null;switch(g.toLowerCase()){case "css":l=l.replace(/\W/gi,"_").replace(/^([^a-z])/gi,"_$1");c.addClass(l);var g=b(c.css("color")),h=b(c.css("background-color"));g!=0||h!=0?(Muse.assets.required.splice(d,1),"undefined"!=typeof a[f]&&(g!=a[f]>>>24||h!=(a[f]&16777215))&&Muse.assets.outOfDate.push(f)):d++;c.removeClass(l);break;case "js":l.match(/^jquery-[\d\.]+/gi)&&
+typeof $!="undefined"?Muse.assets.required.splice(d,1):d++;break;default:throw Error("Unsupported file type: "+g);}}c.remove();(Muse.assets.outOfDate.length||Muse.assets.required.length)&&alert("Some files on the server may be missing or incorrect. Clear browser cache and try again. If the problem persists please contact website author.")})()})();
+/* body */
+Muse.Utils.transformMarkupToFixBrowserProblemsPreInit();/* body */
+Muse.Utils.prepHyperlinks(true);/* body */
+$('#u369').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,900],"fade":107},{"in":[900,900],"opacity":100},{"opacity":100,"in":[900,Infinity],"fade":161}]);/* scroll effect */
+$('#u250').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,186.45],"fade":78.45},{"in":[186.45,186.45],"opacity":95},{"opacity":100,"in":[186.45,Infinity],"fade":145}]);/* scroll effect */
+$('#u423').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,899.95],"fade":107},{"in":[899.95,899.95],"opacity":15},{"opacity":15,"in":[899.95,Infinity],"fade":161}]);/* scroll effect */
+$('#u279-4').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,200],"fade":30.45},{"in":[200,200],"opacity":100},{"opacity":100,"in":[200,Infinity],"fade":119.55}]);/* scroll effect */
+$('#u368-4').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,950],"fade":50},{"in":[950,950],"opacity":100},{"opacity":100,"in":[950,Infinity],"fade":161}]);/* scroll effect */
+$('#u86').registerOpacityScrollEffect([{"opacity":100,"in":[-Infinity,19.6],"fade":50},{"in":[19.6,19.6],"opacity":100},{"opacity":0,"in":[19.6,Infinity],"fade":161.4}]);/* scroll effect */
+$('#u375-4').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,890],"fade":50},{"in":[890,890],"opacity":100},{"opacity":100,"in":[890,Infinity],"fade":161}]);/* scroll effect */
+$('#u378-4').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,890],"fade":50},{"in":[890,890],"opacity":100},{"opacity":100,"in":[890,Infinity],"fade":161}]);/* scroll effect */
+$('#u130').registerOpacityScrollEffect([{"opacity":100,"in":[-Infinity,26.7],"fade":50},{"in":[26.7,26.7],"opacity":79},{"opacity":0,"in":[26.7,Infinity],"fade":161}]);/* scroll effect */
+$('#u158').registerOpacityScrollEffect([{"opacity":100,"in":[-Infinity,26.7],"fade":50},{"in":[26.7,26.7],"opacity":79},{"opacity":0,"in":[26.7,Infinity],"fade":161}]);/* scroll effect */
+$('#u164').registerOpacityScrollEffect([{"opacity":100,"in":[-Infinity,25.05],"fade":50},{"in":[25.05,25.05],"opacity":79},{"opacity":0,"in":[25.05,Infinity],"fade":161}]);/* scroll effect */
+$('#u141').registerOpacityScrollEffect([{"opacity":100,"in":[-Infinity,16.25],"fade":51},{"in":[16.25,16.25],"opacity":100},{"opacity":0,"in":[16.25,Infinity],"fade":151}]);/* scroll effect */
+$('#u160').registerOpacityScrollEffect([{"opacity":100,"in":[-Infinity,16.25],"fade":50},{"in":[16.25,16.25],"opacity":100},{"opacity":0,"in":[16.25,Infinity],"fade":161}]);/* scroll effect */
+$('#u165').registerOpacityScrollEffect([{"opacity":100,"in":[-Infinity,16.25],"fade":50},{"in":[16.25,16.25],"opacity":100},{"opacity":0,"in":[16.25,Infinity],"fade":161}]);/* scroll effect */
+Muse.Utils.initWidget('#pamphletu118', function(elem) { new WebPro.Widget.ContentSlideShow(elem, {contentLayout_runtime:'stack',event:'click',deactivationEvent:'',autoPlay:false,displayInterval:4000,transitionStyle:'horizontal',transitionDuration:300,hideAllContentsFirst:false,shuffle:false,enableSwipe:true,resumeAutoplay:true,resumeAutoplayInterval:1000,playOnce:false}); });/* #pamphletu118 */
+$('#u265-20').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,188],"fade":59},{"in":[188,188],"opacity":100},{"opacity":100,"in":[188,Infinity],"fade":91}]);/* scroll effect */
+$('#u93').registerOpacityScrollEffect([{"opacity":100,"in":[-Infinity,20],"fade":50},{"in":[20,20],"opacity":100},{"opacity":0,"in":[20,Infinity],"fade":161}]);/* scroll effect */
+$('#u377-4').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,950],"fade":50},{"in":[950,950],"opacity":100},{"opacity":100,"in":[950,Infinity],"fade":161}]);/* scroll effect */
+$('#u384-4').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,890],"fade":50},{"in":[890,890],"opacity":100},{"opacity":100,"in":[890,Infinity],"fade":161}]);/* scroll effect */
+$('#u386-4').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,890],"fade":50},{"in":[890,890],"opacity":100},{"opacity":100,"in":[890,Infinity],"fade":161}]);/* scroll effect */
+$('#u379-4').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,890],"fade":50},{"in":[890,890],"opacity":100},{"opacity":100,"in":[890,Infinity],"fade":161}]);/* scroll effect */
+$('#u383-4').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,890],"fade":50},{"in":[890,890],"opacity":100},{"opacity":100,"in":[890,Infinity],"fade":161}]);/* scroll effect */
+$('#u429').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,900],"fade":107},{"in":[900,900],"opacity":90},{"opacity":90,"in":[900,Infinity],"fade":145}]);/* scroll effect */
+$('#u425').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,186],"fade":78},{"in":[186,186],"opacity":90},{"opacity":90,"in":[186,Infinity],"fade":145}]);/* scroll effect */
+$('#u319').registerOpacityScrollEffect([{"opacity":100,"in":[-Infinity,20],"fade":50},{"in":[20,20],"opacity":100},{"opacity":0,"in":[20,Infinity],"fade":161}]);/* scroll effect */
+$('#u431').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,900],"fade":107},{"in":[900,900],"opacity":90},{"opacity":90,"in":[900,Infinity],"fade":145}]);/* scroll effect */
+$('#u424').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,186],"fade":78},{"in":[186,186],"opacity":90},{"opacity":90,"in":[186,Infinity],"fade":145}]);/* scroll effect */
+$('#u385-4').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,950],"fade":50},{"in":[950,950],"opacity":100},{"opacity":100,"in":[950,Infinity],"fade":161}]);/* scroll effect */
+$('#u382-4').registerOpacityScrollEffect([{"opacity":0,"in":[-Infinity,950],"fade":50},{"in":[950,950],"opacity":100},{"opacity":100,"in":[950,Infinity],"fade":161}]);/* scroll effect */
+Muse.Utils.showWidgetsWhenReady();/* body */
+Muse.Utils.transformMarkupToFixBrowserProblems();/* body */
+} catch(e) { if (e && 'function' == typeof e.notify) e.notify(); else Muse.Assert.fail('Error calling selector function:' + e); }});
+</script>
+
+  <!--HTML Widget code-->
+
+       <script type="text/javascript">
+
+        $(window).load(function() { // makes sure the whole site is loaded
+            $('#status').fadeOut(); // will first fade out the loading animation
+            $('#preloader').delay(200).fadeOut('slow'); // will fade out the white DIV that covers the website.
+            $('body').delay(200).css({'overflow':'visible'});
+        })
+
+    </script>
+
+
+
+<script type="text/javascript">
+document.onmousewheel = function(){  (); }
+if(document.addEventListener){
+    document.addEventListener('DOMMouseScroll',  , false);
+}
+
+function  (e){
+    if(!e){ e = window.event; }
+    if(e.preventDefault) { e.preventDefault(); }
+    e.returnValue = false;
+}
+
+</script>
+
+
+
+
+<script language=JavaScript>
+
+
+var message="Right-click is disabled";
+
+
+function clickIE4(){
+if (event.button==2){
+alert(message);
+return false;
+}
+}
+
+function clickNS4(e){
+if (document.layers||document.getElementById&&!document.all){
+if (e.which==2||e.which==3){
+alert(message);
+return false;
+}
+}
+}
+
+if (document.layers){
+document.captureEvents(Event.MOUSEDOWN);
+document.onmousedown=clickNS4;
+}
+else if (document.all&&!document.getElementById){
+document.onmousedown=clickIE4;
+}
+
+document.oncontextmenu=new Function("alert(message);return false")
+
+
+</script>
+
+<script type="text/javascript">
+
+    function disableselect(e) {
+        return false
+    }
+
+    function reEnable() {
+        return true
+    }
+    //if IE4+
+    document.onselectstart = new Function("return false")
+
+    if (window.sidebar) {
+        document.onmousedown = disableselect
+        document.onclick = reEnable
+    }
+</script>
+
+
+
+
+   </body>
 </html>

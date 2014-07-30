@@ -1,0 +1,124 @@
+.version.problem_statement /* version checker */
+{
+	color: #0000E6;
+	background-color: #24004E;
+}
+
+.html
+{
+	background-color: #FFFFFF;
+}
+
+#page
+{
+	z-index: 1;
+	width: 960px;
+	min-height: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#page_position_content
+{
+	padding-top: 22px;
+	padding-bottom: 393px;
+}
+
+#u491
+{
+	z-index: 3;
+	width: 271px;
+	top: 0px;
+	left: 50%;
+	margin-left: -503px;
+}
+
+#u493
+{
+	z-index: 5;
+	width: 2px;
+	height: 51px;
+	top: 22px;
+	left: 50%;
+	margin-left: -239px;
+}
+
+#ppu531
+{
+	width: 0.01px;
+	padding-bottom: 53px;
+	margin-left: 556px;
+}
+
+#u531
+{
+	z-index: 11;
+	position: fixed;
+	top: 24px;
+	left: 50%;
+	margin-left: 76px;
+	background: url("../images/u531_states.png") no-repeat 0px 0px;
+}
+
+#u531_states
+{
+	height: 51px;
+	width: 260px;
+	vertical-align: top;
+}
+
+#u531:hover #u531_states
+{
+	background: url("../images/u531_states-r.png") no-repeat 0px 0px;
+}
+
+#u532
+{
+	z-index: 14;
+	position: fixed;
+	top: 22px;
+	left: 50%;
+	margin-left: 351px;
+	background: url("../images/u532_states.png") no-repeat 0px 0px;
+}
+
+#u532_states
+{
+	height: 51px;
+	width: 196px;
+	vertical-align: top;
+}
+
+#u532:hover #u532_states
+{
+	background: url("../images/u532_states-r.png") no-repeat 0px 0px;
+}
+
+#u494-4
+{
+	z-index: 6;
+	top: 34px;
+	left: 50%;
+	margin-left: -218px;
+}
+
+#u488
+{
+	z-index: 2;
+	height: 1px;
+}
+
+#u488-bw
+{
+	z-index: 2;
+	margin-top: 31px;
+	height: 1px;
+}
+
+body
+{
+	position: relative;
+	min-width: 960px;
+	padding-bottom: 36px;
+}
+
