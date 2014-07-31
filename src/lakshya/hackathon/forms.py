@@ -11,9 +11,14 @@ class RegistrationForm(forms.ModelForm):
         return super(RegistrationForm, self).clean()
 
 class RegForm(forms.Form):
-    name = forms.CharField(required=True,widget=forms.TextInput(attrs={'class' : 'form-control input-hg'}))
-    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class' : 'form-control input-hg'}))
-    mobile = forms.CharField(required=True, widget=forms.TextInput(attrs={'class' : 'form-control input-hg'}))
-    team = forms.CharField(required=True, widget=forms.TextInput(attrs={'class' : 'form-control input-hg' }))
-    problem = forms.ModelChoiceField(queryset=ProblemStatement.objects.all(), required=True)
+    name = forms.CharField(required=True,widget=forms.TextInput(attrs={'class' : 'form-control '}))
+    roll_no = forms.CharField(required=True,widget=forms.TextInput(attrs={'class' : 'form-control '}))
+    year = forms.ChoiceField(choices=YEAR_CHOICES,required=True,widget=forms.Select(attrs={'class' : 'form-control '}))
+    course = forms.ChoiceField(choices=COURSE_CHOICES,required=True,widget=forms.Select(attrs={'class' : 'form-control '}))
+    branch = forms.ChoiceField(choices=BRANCH_CHOICES,required=True,widget=forms.Select(attrs={'class' : 'form-control '}))
+    mess = forms.ChoiceField(choices=MESS_CHOICES,required=True,widget=forms.Select(attrs={'class' : 'form-control '}))
+    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class' : 'form-control '}))
+    mobile = forms.CharField(required=True, widget=forms.TextInput(attrs={'class' : 'form-control '}))
+    team = forms.CharField(required=True, widget=forms.TextInput(attrs={'class' : 'form-control ' }))
+    problem = forms.ModelChoiceField(queryset=ProblemStatement.objects.all(), required=True,widget=forms.Select(attrs={'class' : 'form-control '}))
 

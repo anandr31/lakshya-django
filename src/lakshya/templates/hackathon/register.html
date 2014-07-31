@@ -25,11 +25,26 @@
          .form_styling {
              max-width: 400px;
              margin: auto;
-             text-align: center;
+             text-align: left;
          }
 
          label {
-             font-size: 18pt;
+             font-size: 16pt;
+         }
+
+         input,select {
+             min-width: 250px;
+             max-height: 40px;
+             min-height: 40px;
+         }
+
+         button {
+             min-width: 400px;
+             align-self: center;
+         }
+
+         .stick_to_top {
+            position: static;
          }
      </style>
    </head>
@@ -56,6 +71,7 @@
         {% csrf_token %}
         <button class="btn btn-hg btn-primary">REGISTER</button>
     </form>
+         <br/>
     </div>
      </div>
     </div>
