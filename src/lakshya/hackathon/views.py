@@ -23,7 +23,7 @@ def register(request):
 
             return render_to_response("hackathon/success.html", RequestContext(request,{'name':name}))
         else:
-            return render_to_response("hackathon/register.html", RequestContext(request, {}))
+            return render_to_response("hackathon/register.html", RequestContext(request, {'form' : form}))
 
     form = RegForm()
     return render(request,'hackathon/register.html',{'form':form})
