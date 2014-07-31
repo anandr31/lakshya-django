@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from forms import RegistrationForm, RegForm
 from django.shortcuts import render_to_response, render
 from django.template.context import RequestContext
@@ -34,3 +35,14 @@ def register(request):
 
     form = RegForm()
     return render(request,'hackathon/register.html',{'form':form})
+
+def get_email(request):
+    if request.user.is_superuser:
+        participants = Participant.objects.all()
+        emails = []
+        for participant in participants:
+            emails.append(participant.email)
+
+        return render(request,"hackathon/emails.html",{'emails':emails})
+    else:
+        return HttpResponseRedirect('/admin/')
