@@ -33,10 +33,9 @@
          }
 
          input,select {
-             min-width: 250px;
-             max-height: 40px;
-             min-height: 40px;
+             min-width: 200px;
          }
+
 
          button {
              min-width: 400px;
@@ -45,6 +44,31 @@
 
          .stick_to_top {
             position: static;
+         }
+
+         .errorlist {
+             color: darkred;
+         }
+
+         td {
+             min-width: 300px;
+             padding: 3px;
+         }
+         
+         #u494-4 {
+             position: absolute;
+         }
+
+         #u491 {
+             position: absolute;
+         }
+
+         #u493 {
+             position: absolute;
+         }
+
+         #u529, #u530 {
+             position: absolute;
          }
      </style>
    </head>
@@ -64,13 +88,17 @@
 
 
      <div class="form_styling">
+         <table>
       <form action="/hackathon/register/" method="post">
           <h2>Registration</h2>
-          <br>
-        {{ form.as_p }}
-        {% csrf_token %}
-        <button class="btn btn-hg btn-primary">REGISTER</button>
-    </form>
+        {{ form.as_table }}
+
+
+
+             </table>
+         {% csrf_token %}
+         <button class="btn btn-hg btn-primary">REGISTER</button>
+         </form>
          <br/>
     </div>
      </div>
