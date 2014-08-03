@@ -46,3 +46,6 @@ def get_email(request):
         return render(request,"hackathon/emails.html",{'emails':emails})
     else:
         return HttpResponseRedirect('/admin/')
+
+def problems(request):
+    return render(request, 'hackathon/problems.html')
