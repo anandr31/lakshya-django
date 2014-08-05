@@ -51,6 +51,7 @@ GENDER_CHOICES = ((1,"MALE"),
 
 class ProblemStatement(models.Model):
     name = models.CharField("Problem",max_length=100,blank=False)
+    add_link = models.URLField("Additional Link",max_length=500,blank=False,null=True)
 
     def __unicode__(self):
         return  self.name

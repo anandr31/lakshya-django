@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from forms import RegistrationForm, RegForm
-from django.shortcuts import render_to_response, render
+from django.shortcuts import render_to_response, render, get_object_or_404
 from django.template.context import RequestContext
 from models import *
 
@@ -50,4 +50,14 @@ def get_email(request):
         return HttpResponseRedirect('/admin/')
 
 def problems(request):
-    return render(request, 'hackathon/problems.html')
+    problem_sts = ProblemStatement.objects.all()
+    context = {'problems':problem_sts}
+    return render(request, 'hackathon/problems.html',context)
+
+def get_problem_statement(request,problem_id):
+    problem = get_object_or_404(ProblemStatement,pk=problem_id)
+    context = {'problem':problem}
+    return render(request,'hackathon/problem_statement.html',context)
+
+def faq(request):
+    return render(request,'hackathon/faq.html')
