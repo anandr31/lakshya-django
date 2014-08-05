@@ -58,9 +58,13 @@
 
      <div class="form_styling">
          <h2>Problem Statements</h2>
+         <!--
      <h3><a href="https://docs.google.com/document/d/1Imh5x60IRviIFIG7WNAcCe7EIgJ1O6iFlat_wnMjOOM/edit?usp=sharing">Crowd Funding</a></h3>
      <h3><a href="https://docs.google.com/document/d/1glbRhn1afm3uhcy5AKIqYm7WqK7oscT7nQzJndO-lOM/edit?usp=sharing">The Egg Problem</a></h3>
-     <h3><a href="https://docs.google.com/document/d/1ylLC8qhnukT-AwYZqUe3TVTZT4JnRcwgyCacaQiSTao/edit?usp=sharing">Profile Picture Extractor</a></h3>
+     <h3><a href="https://docs.google.com/document/d/1ylLC8qhnukT-AwYZqUe3TVTZT4JnRcwgyCacaQiSTao/edit?usp=sharing">Profile Picture Extractor</a></h3>!-->
+         {% for problem in problems %}
+            <h3><a href="/hackathon/problems/{{problem.id}}/">{{problem.name}}</a></h3>
+         {% endfor %}
     </div>
 
      </div>

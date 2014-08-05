@@ -6,11 +6,11 @@
   <script type="text/javascript">
    if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required":["jquery-1.8.3.min.js", "museutils.js", "jquery.watch.js", "register.css"], "outOfDate":[]};
 </script>
-  
+
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
   <meta name="generator" content="2014.0.1.264"/>
   <link rel="shortcut icon" href="{% static 'images/favicon.ico?3840405322' %}"/>
-  <title>Registered</title>
+  <title>{{problem}}</title>
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="{% static 'css/site_global.css?208753328' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/master_b-master.css?234385031' %}"/>
@@ -25,15 +25,20 @@
          .form_styling {
              max-width: 700px;
              margin: auto;
-             text-align: center;
+             text-align: left;
          }
+
+          a:link {
+             text-decoration: none;
+              color: #c19d0c;
+         }
+
+          a:link:hover {
+              color: #1abc9c;
+          }
 
          label {
              font-size: 18pt;
-         }
-
-         a:link {
-             text-decoration: none;
          }
      </style>
    </head>
@@ -44,7 +49,6 @@
     <a class="nonblock nontext clip_frame pinned-colelem" id="u491" href="/hackathon"><!-- image --><img class="block" id="u491_img" src="{% static 'images/screenshot_26_07_14_7_17_pm.jpg' %}" alt="" width="271" height="88"/></a>
     <div class="pinned-colelem" id="u493"><!-- simple frame --></div>
     <div class="clearfix colelem" id="ppu529"><!-- group -->
-     <a class="nonblock nontext" id="u529" href="/hackathon/problems/"><!-- state-based BG images --><img id="u529_states" alt="PROBLEM STATEMENT" src="{% static 'images/blank.gif' %}"/></a>
      <a class="nonblock nontext" id="u530" href="/hackathon/"><!-- state-based BG images --><img id="u530_states" alt="HOME" src="{% static 'images/blank.gif' %}"/></a>
     </div>
     <img class="pinned-colelem" id="u494-4" alt="AUGUST 23 &amp; 24 " width="210" height="26" src="{% static 'images/u494-4.png' %}"/><!-- rasterized frame -->
@@ -53,10 +57,26 @@
 
 
      <div class="form_styling">
-      <h4>{{name}}, Thanks for registering. We will update you with more details soon.</h4>
-      <h5>Meanwhile, Check out the <a href="/hackathon/problems/">Problems and Forum</a>. You can also read more about the event in the <a href="/hackathon/faq/">FAQ.</a></h5>
-    </form>
+         <h3>{{problem}}</h3>
+         <h4><a href="{{problem.add_link}}">Additional Information</a></h4>
+         <p>For Any Doubts on the problem statement, Please Comment Below.</p>
+         <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'lakshyafoundation'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
     </div>
+
      </div>
     </div>
    </div>
