@@ -37,6 +37,17 @@ MESS_CHOICES = ((1,"First"),
                 (8,"LH"),
 )
 
+TEE_CHOICES = ((1,"S"),
+               (2,"M"),
+               (3,"L"),
+               (4,"XL"),
+               (5,"XXL"),
+)
+
+GENDER_CHOICES = ((1,"MALE"),
+                  (2,"FEMALE"),
+)
+
 
 class ProblemStatement(models.Model):
     name = models.CharField("Problem",max_length=100,blank=False)
@@ -55,6 +66,8 @@ class Participant(models.Model):
     mobile = models.CharField("Mobile",blank=False,max_length=10)
     problem = models.ForeignKey(ProblemStatement)
     team = models.CharField("Team",max_length=100,blank=False)
+    tee_shirt_size = models.CharField("Tee Size",choices=TEE_CHOICES,default=1,max_length=50)
+    gender = models.CharField("Gender",choices=GENDER_CHOICES,default=1,max_length=50)
 
     def __unicode__(self):
         return  self.name

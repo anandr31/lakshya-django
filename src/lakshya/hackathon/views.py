@@ -24,9 +24,11 @@ def register(request):
             branch = form.cleaned_data['branch']
             mess = form.cleaned_data['mess']
             roll_no = form.cleaned_data['roll_no']
+            tee = form.cleaned_data['tee']
+            gender = form.cleaned_data['gender']
 
             participant = Participant(name=name,mobile=mobile,team=team,email=email,problem=problem,year=year,course=course,
-                                      branch=branch,mess=mess,roll_no=roll_no)
+                                      branch=branch,mess=mess,roll_no=roll_no,tee_shirt_size=tee,gender=gender)
             participant.save()
 
             return render_to_response("hackathon/success.html", RequestContext(request,{'name':name}))
