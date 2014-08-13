@@ -49,6 +49,17 @@ def get_email(request):
     else:
         return HttpResponseRedirect('/admin/')
 
+def get_email_by_prob_statement(request,problem_id):
+    if request.user.is_superuser:
+        participants = Participant.objects.all().filter(problem_id=problem_id)
+        emails = []
+        for participant in participants:
+            emails.append(participant.email)
+
+        return render(request,"hackathon/emails.html",{'emails':emails})
+    else:
+        return HttpResponseRedirect('/admin/')
+
 def problems(request):
     problem_sts = ProblemStatement.objects.all()
     context = {'problems':problem_sts}
