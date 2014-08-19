@@ -88,7 +88,7 @@ class Participant(models.Model):
         return COURSE_CHOICES[index][1]
 
     def BRANCH(self):
-        index = get_index(self.course)
+        index = get_index(self.branch)
         return BRANCH_CHOICES[index][1]
 
     def GENDER(self):
