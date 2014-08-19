@@ -12,4 +12,5 @@ urlpatterns = patterns('',
                        url(r'^problems/?$',problems,name='problems'),
                        url(r'problems/(?P<problem_id>\d+)/?$',get_problem_statement, name='problem_statement'),
                        url(r'faq/?$',faq,name='faq'),
+                       url(r'students/?$',student_details,name='student'),
                        )
