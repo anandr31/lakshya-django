@@ -72,3 +72,10 @@ def get_problem_statement(request,problem_id):
 
 def faq(request):
     return render(request,'hackathon/faq.html')
+
+def student_details(request):
+    if request.user.is_superuser:
+        participants = Participant.objects.all()
+        return render(request,'hackathon/students.html',{'students':participants})
+    else:
+        return HttpResponseRedirect('/admin')

@@ -48,6 +48,8 @@ GENDER_CHOICES = ((1,"MALE"),
                   (2,"FEMALE"),
 )
 
+def get_index(x):
+    return int(x) - 1
 
 class ProblemStatement(models.Model):
     name = models.CharField("Problem",max_length=100,blank=False)
@@ -72,4 +74,24 @@ class Participant(models.Model):
 
     def __unicode__(self):
         return  self.name
+
+    def YEAR(self):
+        index = get_index(self.year)
+        return YEAR_CHOICES[index][1]
+
+    def MESS(self):
+        index = get_index(self.mess)
+        return MESS_CHOICES[index][1]
+
+    def COURSE(self):
+        index = get_index(self.course)
+        return COURSE_CHOICES[index][1]
+
+    def BRANCH(self):
+        index = get_index(self.course)
+        return BRANCH_CHOICES[index][1]
+
+    def GENDER(self):
+        index = get_index(self.gender)
+        return GENDER_CHOICES[index][1]
 
