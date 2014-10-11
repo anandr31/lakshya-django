@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}
+<title>Partners - Lakshya, an NITW alumni led organization</title>
+<meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
+{% endblock title %}
+{% block content %}
+<div id="partners_page" class = "content_no_sidebar">
+	<h2>Partners</h2>
+	<ul id="partners_list">
+		<li class="partner">
+			<div class="partner_left">
+				<a href="http://almabase.com" target="_blank">
+					<img class="partner_logo" src="{{STATIC_URL}}img/partners/almabase.png">
+				</a>
+			</div>
+			<div class="partner_right">
+				<p class="partner_name">Almabase</p>
+				<p class="partner_description">Almabase's award winning platform helps colleges create a thriving alumni fraternity. It brings people of one college together to leverage each other's strengths for the development of their institute.</p>
+				<!-- <p class="partner_description"></p> -->
+				<p class="partner_description">Technology today can be one of the greatest enablers for any organization, including Lakshya. As part of its CSR, Almabase has come forward to assist Lakshya to help build and support its required technologies.</p>
+			</div>
+			<p class="cB"></p>
+		</li>
+		<li class="partner">
+			<div class="partner_left">
+				<a href="http://www.emertxe.com" target="_blank">
+					<img class="partner_logo" src="{{STATIC_URL}}img/partners/emertxe.png">
+				</a>
+			</div>
+			<div class="partner_right">
+				<p class="partner_name">Emertxe</p>
+				<p class="partner_description">Having partnered for the second NITW Hackathon, Emertxe and Lakshya saw immense potential in taking this partnership to the next level and signed an MoU on 16 September 2014.</p>
+				<p class="partner_description">This partnership will enable Emretxe and Lakshya to utilize each other's strengths, eventually benefiting engineering students in creating innovative technologies.</p>
+				<p class="partner_description">The broad technology areas where we will work together include Internet of Things and the embedded systems domain. Under the agreement, we will also partner for other events we conduct on campus, internship opportunities, and support open source communities.</p>
+			</div>
+			<p class="cB"></p>
+		</li>
+	</ul>
+</div>
+{% endblock content %}

@@ -1889,3 +1889,45 @@ table.research_applicants td{
 	border-radius: 4px;
 	text-align: center;
 }
+
+
+/*********************** START of partners page **************************/
+#partners_page {
+
+}
+
+#partners_page>h2 {
+	margin: 15px 0px;
+}
+
+#partners_page ul#partners_list {
+	list-style: none;
+	margin-top: 25px;
+}
+
+#partners_page ul#partners_list li.partner {
+	margin-bottom: 50px;
+}
+
+#partners_page ul#partners_list li.partner div.partner_left {
+	float: left;
+	width: 300px;
+}
+
+#partners_page ul#partners_list li.partner div.partner_left img.partner_logo {
+	width: 200px;
+	margin-top: 70px;
+}
+
+#partners_page ul#partners_list li.partner div.partner_right {
+	float: left;
+	width: 600px;
+}
+
+#partners_page ul#partners_list li.partner div.partner_right p.partner_name {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+
+/*********************** END of partners page **************************/
