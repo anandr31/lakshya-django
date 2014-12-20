@@ -1,0 +1,5 @@
+django==1.6
+south
+reportlab
+mysql-python
+gunicorn
