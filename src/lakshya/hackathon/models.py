@@ -52,6 +52,7 @@ def get_index(x):
     return int(x) - 1
 
 class ProblemStatement(models.Model):
+    hackathon = models.ForeignKey('Hackathon',null=True)
     name = models.CharField("Problem",max_length=100,blank=False)
     add_link = models.URLField("Additional Link",max_length=500,blank=False,null=True)
 
@@ -59,6 +60,7 @@ class ProblemStatement(models.Model):
         return  self.name
 
 class Participant(models.Model):
+    hackathon = models.ForeignKey('Hackathon',null=True)
     name = models.CharField("Name",max_length=50,blank=False)
     roll_no = models.CharField("Roll Number",max_length=15,blank=False,default=0)
     year = models.CharField("Year",choices=YEAR_CHOICES,default=1,max_length=50)
@@ -94,4 +96,24 @@ class Participant(models.Model):
     def GENDER(self):
         index = get_index(self.gender)
         return GENDER_CHOICES[index][1]
+
+class Sponsors(models.Model):
+    name = models.CharField("Name",max_length=100)
+    desc = models.CharField("Description",max_length=100,blank=True,null=True)
+    url = models.URLField("Company URL",blank=True)
+    image = models.ImageField("Company Image",blank=True,null=True,upload_to='sponsors_hackathon')
+    hackathon = models.ForeignKey('Hackathon',null=True)
+
+    def __unicode__(self):
+        return self.name
+
+class Hackathon(models.Model):
+    version = models.CharField("Version",max_length=10)
+    start_time = models.DateTimeField("Start Time")
+    end_time = models.DateTimeField("End Time")
+    venue = models.CharField("Venue",max_length=200)
+    is_active = models.BooleanField("Active",default=False)
+
+    def __unicode__(self):
+        return self.version
 
