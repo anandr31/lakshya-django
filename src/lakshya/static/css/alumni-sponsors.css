@@ -1,0 +1,290 @@
+.version.alumni_sponsors /* version checker */
+{
+	color: #0000E4;
+	background-color: #7F7BF0;
+}
+
+.html
+{
+	background-color: #FFFFFF;
+}
+
+#page
+{
+	z-index: 1;
+	width: 960px;
+	min-height: 107px;
+	padding-bottom: 393px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#pu783
+{
+	width: 0.01px;
+	margin-right: -10000px;
+	margin-left: -100px;
+}
+
+#pu783_position_content
+{
+	margin-bottom: -20px;
+	padding-top: 127px;
+}
+
+#u783
+{
+	z-index: 3;
+	height: 106px;
+	top: 0px;
+}
+
+#u783-bw
+{
+	z-index: 3;
+}
+
+#u491
+{
+	z-index: 4;
+	width: 271px;
+	top: 0px;
+	left: 50%;
+	margin-left: -503px;
+}
+
+#u488
+{
+	z-index: 2;
+	height: 1px;
+	top: 106px;
+}
+
+#u488-bw
+{
+	z-index: 2;
+}
+
+#u493
+{
+	z-index: 6;
+	width: 2px;
+	height: 51px;
+	top: 22px;
+	left: 50%;
+	margin-left: -239px;
+}
+
+#u494-4
+{
+	z-index: 7;
+	top: 34px;
+	left: 50%;
+	margin-left: -218px;
+}
+
+#pamphletu735
+{
+	z-index: 11;
+	width: 0.01px;
+	height: 47px;
+	padding-bottom: 213px;
+	top: 17px;
+	left: 50%;
+	margin-left: 228px;
+}
+
+#u746popup
+{
+	z-index: 12;
+}
+
+#u746
+{
+	width: 241px;
+	top: 59px;
+}
+
+#u747
+{
+	z-index: 13;
+	width: 241px;
+	height: 201px;
+	margin-right: -10000px;
+}
+
+#menuu748
+{
+	z-index: 14;
+	width: 218px;
+	margin-right: -10000px;
+	margin-top: 8px;
+	left: 12px;
+}
+
+#u770
+{
+	width: 218px;
+}
+
+#u773
+{
+	width: 218px;
+	padding-bottom: 26px;
+	margin-right: -10000px;
+}
+
+#u773:hover
+{
+	margin: 0px -10000px 0px 0px;
+}
+
+#u773:active
+{
+	margin: 0px -10000px 0px 0px;
+}
+
+#u759
+{
+	width: 218px;
+	padding-bottom: 26px;
+	margin-right: -10000px;
+}
+
+#u773.MuseMenuActive,#u759:hover
+{
+	margin: 0px -10000px 0px 0px;
+}
+
+#u759:active
+{
+	margin: 0px -10000px 0px 0px;
+}
+
+#u774-4,#u760-4
+{
+	width: 218px;
+	min-height: 17px;
+	margin-right: -10000px;
+	top: 13px;
+}
+
+#u750
+{
+	width: 218px;
+	padding-bottom: 25px;
+	margin-right: -10000px;
+}
+
+#u759.MuseMenuActive,#u750:hover
+{
+	margin: 0px -10000px 0px 0px;
+}
+
+#u750:active
+{
+	margin: 0px -10000px 0px 0px;
+}
+
+#u756,#u749,#u763
+{
+	width: 218px;
+	margin-top: 2px;
+}
+
+#u766
+{
+	width: 218px;
+	padding-bottom: 25px;
+	margin-right: -10000px;
+}
+
+#u750.MuseMenuActive,#u766:hover
+{
+	margin: 0px -10000px 0px 0px;
+}
+
+#u766:active
+{
+	margin: 0px -10000px 0px 0px;
+}
+
+#u751-4,#u769-4
+{
+	width: 218px;
+	min-height: 17px;
+	margin-right: -10000px;
+	top: 12px;
+}
+
+#u736
+{
+	z-index: 39;
+	width: 47px;
+	margin-right: -10000px;
+	left: 189px;
+}
+
+#u737
+{
+	width: 47px;
+}
+
+#u737:hover
+{
+	margin: 0px;
+}
+
+#u737.PamphletThumbSelected
+{
+	margin: 0px;
+}
+
+#u738
+{
+	z-index: 41;
+	width: 47px;
+	margin-right: -10000px;
+}
+
+#u766.MuseMenuActive,#u737:hover #u738
+{
+	margin: 0px -10000px 0px 0px;
+}
+
+#u737.PamphletThumbSelected #u738
+{
+	margin: 0px -10000px 0px 0px;
+}
+
+#u778
+{
+	z-index: 44;
+	top: 17px;
+	left: 50%;
+	margin-left: 228px;
+}
+
+#u778_states
+{
+	height: 51px;
+	width: 151px;
+}
+
+#u779
+{
+	z-index: 46;
+	width: 1px;
+	height: 49px;
+	top: 19px;
+	left: 50%;
+	margin-left: 400px;
+}
+
+body
+{
+	position: relative;
+	min-width: 960px;
+	padding-bottom: 36px;
+}
+

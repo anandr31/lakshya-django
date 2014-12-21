@@ -1,84 +1,61 @@
-<!DOCTYPE html>
-<html class="html">
- <head>
-    {% load staticfiles %}
-     {% load static %}
-  <script type="text/javascript">
-   if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required":["jquery-1.8.3.min.js", "museutils.js", "jquery.watch.js", "register.css"], "outOfDate":[]};
-</script>
-  
-  <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
-  <meta name="generator" content="2014.0.1.264"/>
-  <link rel="shortcut icon" href="{% static 'images/favicon.ico?3840405322' %}"/>
-  <title>FAQ's</title>
-  <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/site_global.css?208753328' %}"/>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/master_b-master.css?234385031' %}"/>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/register.css?499517477' %}" id="pagesheet"/>
-     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
-     <link rel="stylesheet" type="text/css" href="{% static 'css/flat-ui.css' %}" />
-  <!-- Other scripts -->
-  <script type="text/javascript">
-   document.documentElement.className += ' js';
-</script>
-     <style>
-         .form_styling {
-             max-width: 950px;
-             margin: auto;
-             text-align: left;
-         }
+<div class="form_styling">
 
-          a:link {
-             text-decoration: none;
-              color: #c19d0c;
-         }
-
-          a:link:hover {
-              color: #1abc9c;
-          }
-
-         label {
-             font-size: 18pt;
-         }
-
-         #u494-4 {
-             position: absolute;
-         }
-
-         #u491 {
-             position: absolute;
-         }
-
-         #u493 {
-             position: absolute;
-         }
-
-         #u529, #u530 {
-             position: absolute;
-         }
-     </style>
-   </head>
- <body>
-
-  <div class="clearfix" id="page"><!-- column -->
-   <div class="position_content" id="page_position_content">
-    <a class="nonblock nontext clip_frame pinned-colelem" id="u491" href="/hackathon"><!-- image --><img class="block" id="u491_img" src="{% static 'images/screenshot_26_07_14_7_17_pm.jpg' %}" alt="" width="271" height="88"/></a>
-    <div class="pinned-colelem" id="u493"><!-- simple frame --></div>
-    <div class="clearfix colelem" id="ppu529"><!-- group -->
-     <a class="nonblock nontext" id="u530" href="/hackathon/"><!-- state-based BG images --><img id="u530_states" alt="HOME" src="{% static 'images/blank.gif' %}"/></a>
     </div>
-    <img class="pinned-colelem" id="u494-4" alt="AUGUST 23 &amp; 24 " width="210" height="26" src="{% static 'images/u494-4.png' %}"/><!-- rasterized frame -->
-    <div class="browser_width colelem" id="u488-bw">
-     <div id= "u488"><!-- simple frame -->
 
+<!DOCTYPE html>
+<html lang="en">
 
-     <div class="form_styling">
-         <h3>FAQ - Students</h3>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hackathon - Lakshya Foundation</title>
+    {% load staticfiles %}
+    {% load static %}
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/stylish-portfolio.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+    <body>
+        <aside class="callout" style="height:275px;">
+            <div class="text-vertical-center">
+                <h1>Frequently Asked Questions</h1>
+            </div>
+        </aside>
+
+        <aside class="call-to-action bg-primary">
+            <div class="container">
+                <div class="row">
+                    <div class="">
+                                 <h3>FAQ - Students</h3>
          <h5>When and where is the hackathon?</h5>
-         <p>23 (4PM) till 24(6PM) August in the Center for Innovation and Incubation, topFloor</p>
+        {% if hackathon %}
+        <p>Hackathon starts at {{hackathon.start_time}} till {{hackathon.end_time}} at {{hackathon.venue}}</p>
+        {% else %}
+        <p>Please keep a watch on the website for upcoming hackathons.</p>
+        {% endif %}
 
          <h5>Will food be provided?</h5>
-         <p>Yes. Snacks (sandwiches, chips, biscuits), beverages (tea,coffee, redbull), meals(dinner, from the mess on Saturday, breakfast, Pizza for Sunday Lunch)</p>
+         <p>Yes. There will be supply of food and beverages available throughout the Hackathon.</p>
 
          <h5>What should we bring?</h5>
          <p>Toothbrush, paste, one pillow. We’ll be providing you with mattresses.</p>
@@ -97,7 +74,7 @@
          </ul>
 
          <h5> Whom do we contact for doubts?</h5>
-         <p><a href="mailto:info@thelakshyafoundation.org">info@thelakshyafoundation.org</a>, or +91-98493 65735</p>
+         <p><a href="mailto:info@thelakshyafoundation.org" style="color:#fff">info@thelakshyafoundation.org</a>, or +91-98493 65735</p>
 
          <h5>Are girls allowed to attend the event?</h5>
          <p>Yes. We’ll get the required permission from the Chief Warden, hostel warden and security officials. This permission is only for registered participants.</p>
@@ -111,7 +88,11 @@
          <p>Having given the essentials for someone to solve the problem, the level of detail is left to you. If you want the solution to fit in closely with something already developed, you are free to provide additional data/resources so that students can develop accordingly. Although this event is meant to develop solutions as close to usability as possible, we also want to give students room to design as well as develop.</p>
 
          <h5>When and for how long is the hackathon?</h5>
-         <p>Tentative dates are August 23, 24 from 10am Saturday to 12 noon Sunday</p>
+         {% if hackathon %}
+        <p>Hackathon starts at {{hackathon.start_time}} till {{hackathon.end_time}} at {{hackathon.venue}}</p>
+        {% else %}
+        <p>Please keep a watch on the website for upcoming hackathons.</p>
+        {% endif %}
 
          <h5>Who is the mentor? What is his/her role?</h5>
          <p>A mentor is someone who can explain the problem in depth and possible solutions with students.</p>
@@ -121,40 +102,53 @@
 
          <h5>Do the mentors have to be at NIT Warangal for the event?</h5>
          <p>Students will select the problem statement they want to work on a week before the event. This will be the time when they can discuss the solution with you. Although not necessary, having you work with students during the event will help get a solution closest to what your company is looking for. Alternatively, the mentor can be available to guide development through Skype/Hangout with the student teams.</p>
-    </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="text-center">
+                            <a href="/hackathon/problems/" class="btn btn-lg btn-light">Problem Statements</a>
+                            <a href="/hackathon/faq/" class="btn btn-lg btn-light">Frequently Asked Questions</a>
+                </div>
+            </div>
+        </aside>
 
-     </div>
-    </div>
-   </div>
-  </div>
+        <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4><strong>Lakshya Foundation</strong>
+                    </h4>
+                    <p>Level 2, Oval Building<br>iLabs Centre, Madhapur<br>Hyderabad - 500 081</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-phone fa-fw"></i>0091 - 98493-65735</li>
+                        <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:info@thelakshyafoundation.org">info@thelakshyafoundation.org</a>
+                        </li>
+                    </ul>
 
-  <div class="preload_images">
-   <img class="preload" src="{% static 'images/u529_states-r.png' %}" alt=""/>
-   <img class="preload" src="{% static 'images/u530_states-r.png' %}" alt=""/>
-  </div>
+<!--
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
+                        </li>
+                    </ul>
+-->
+                    <hr class="small">
+                    <p class="text-muted">Copyright &copy; Lakshya Foundation 2015</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </body>
 
-  <!-- JS includes -->
-  <script type="text/javascript">
-   if (document.location.protocol != 'https:') document.write('\x3Cscript src="http://musecdn.businesscatalyst.com/scripts/4.0/jquery-1.8.3.min.js" type="text/javascript">\x3C/script>');
-</script>
-  <script type="text/javascript">
-   window.jQuery || document.write('\x3Cscript src="scripts/jquery-1.8.3.min.js" type="text/javascript">\x3C/script>');
-</script>
-  <script src="{% static 'scripts/museutils.js?353204447' %}" type="text/javascript"></script>
-  <script src="{% static 'scripts/jquery.watch.js?3923049248' %}" type="text/javascript"></script>
-  <!-- Other scripts -->
-  <script type="text/javascript">
-   $(document).ready(function() { try {
-(function(){var a={},b=function(a){if(a.match(/^rgb/))return a=a.replace(/\s+/g,"").match(/([\d\,]+)/gi)[0].split(","),(parseInt(a[0])<<16)+(parseInt(a[1])<<8)+parseInt(a[2]);if(a.match(/^\#/))return parseInt(a.substr(1),16);return 0};(function(){$('link[type="text/css"]').each(function(){var b=($(this).attr("href")||"").match(/\/?css\/([\w\-]+\.css)\?(\d+)/);b&&b[1]&&b[2]&&(a[b[1]]=b[2])})})();(function(){$("body").append('<div class="version" style="display:none; width:1px; height:1px;"></div>');
-for(var c=$(".version"),d=0;d<Muse.assets.required.length;){var f=Muse.assets.required[d],g=f.match(/([\w\-\.]+)\.(\w+)$/),l=g&&g[1]?g[1]:null,g=g&&g[2]?g[2]:null;switch(g.toLowerCase()){case "css":l=l.replace(/\W/gi,"_").replace(/^([^a-z])/gi,"_$1");c.addClass(l);var g=b(c.css("color")),h=b(c.css("background-color"));g!=0||h!=0?(Muse.assets.required.splice(d,1),"undefined"!=typeof a[f]&&(g!=a[f]>>>24||h!=(a[f]&16777215))&&Muse.assets.outOfDate.push(f)):d++;c.removeClass(l);break;case "js":l.match(/^jquery-[\d\.]+/gi)&&
-typeof $!="undefined"?Muse.assets.required.splice(d,1):d++;break;default:throw Error("Unsupported file type: "+g);}}c.remove();(Muse.assets.outOfDate.length||Muse.assets.required.length)&&alert("Some files on the server may be missing or incorrect. Clear browser cache and try again. If the problem persists please contact website author.")})()})();
-/* body */
-Muse.Utils.transformMarkupToFixBrowserProblemsPreInit();/* body */
-Muse.Utils.prepHyperlinks(true);/* body */
-Muse.Utils.resizeHeight()/* resize height */
-Muse.Utils.showWidgetsWhenReady();/* body */
-Muse.Utils.transformMarkupToFixBrowserProblems();/* body */
-} catch(e) { if (e && 'function' == typeof e.notify) e.notify(); else Muse.Assert.fail('Error calling selector function:' + e); }});
-</script>
-   </body>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 </html>

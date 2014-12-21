@@ -7,10 +7,25 @@ from models import *
 
 # Create your views here.
 
+
 def index(request):
-    return render(request, 'hackathon/index.html', {})
+    hackathon = Hackathon.objects.all().filter(is_active=True)[0]
+    context = {}
+    sponsors = Sponsors.objects.all()
+    if hackathon is None:
+        context = {'sponsors':sponsors,'finished':'True','Message':'Stay tuned for updates!'}
+        return render(request, 'hackathon/index.html',context)
+
+    sponsors = sponsors.filter(hackathon=hackathon)
+    context = {'hackathon':hackathon,'sponsors':sponsors}
+    return render(request, 'hackathon/index.html', context)
 
 def register(request):
+    hackathon = Hackathon.objects.all().filter(is_active=True)[0]
+
+    if hackathon is None:
+        return render_to_response('hackathon/register.html', RequestContext(request,{'finished':'True'}))
+
     if request.method == 'POST':
         form = RegForm(request.POST)
         if form.is_valid():
@@ -28,13 +43,13 @@ def register(request):
             gender = form.cleaned_data['gender']
 
             participant = Participant(name=name,mobile=mobile,team=team,email=email,problem=problem,year=year,course=course,
-                                      branch=branch,mess=mess,roll_no=roll_no,tee_shirt_size=tee,gender=gender)
+                                      branch=branch,mess=mess,roll_no=roll_no,tee_shirt_size=tee,gender=gender,hackathon=hackathon)
+
             participant.save()
 
-            return render_to_response("hackathon/success.html", RequestContext(request,{'name':name}))
+            return render_to_response('hackathon/success.html', RequestContext(request,{'name':name}))
         else:
-            return render_to_response("hackathon/register.html", RequestContext(request, {'form' : form}))
-
+            render_to_response('hackathon/register.html',RequestContext(request,{'form':form}))
     form = RegForm()
     return render(request,'hackathon/register.html',{'form':form})
 
@@ -61,7 +76,11 @@ def get_email_by_prob_statement(request,problem_id):
         return HttpResponseRedirect('/admin/')
 
 def problems(request):
-    problem_sts = ProblemStatement.objects.all()
+    hackathon = Hackathon.objects.all().filter(is_active=True)[0]
+    if hackathon is None:
+        problem_sts = ProblemStatement.objects.all()
+    else:
+        problem_sts = ProblemStatement.objects.all().filter(hackathon=hackathon)
     context = {'problems':problem_sts}
     return render(request, 'hackathon/problems.html',context)
 
@@ -71,7 +90,11 @@ def get_problem_statement(request,problem_id):
     return render(request,'hackathon/problem_statement.html',context)
 
 def faq(request):
-    return render(request,'hackathon/faq.html')
+    hackathon = Hackathon.objects.all().filter(is_active=True)[0]
+    if hackathon is None:
+        return render(request,'hackathon/faq.html')
+    else:
+        return render(request,'hackathon/faq.html',{'hackathon':hackathon})
 
 def student_details(request):
     if request.user.is_superuser:

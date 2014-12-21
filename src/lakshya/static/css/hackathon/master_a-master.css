@@ -1,0 +1,728 @@
+#u250
+{
+	border-color: #000000;
+	background-color: #DFAE50;
+	opacity: 0.95;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
+	filter: alpha(opacity=95);
+	position: fixed;
+}
+
+#u80
+{
+	border-color: #000000;
+	position: fixed;
+	background: #FFFFFF url("../images/bg.png") repeat center center;
+}
+
+#u369
+{
+	border-color: #000000;
+	background-color: #46B389;
+	position: fixed;
+}
+
+#u289
+{
+	background-color: transparent;
+	opacity: 0.64;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=64)";
+	filter: alpha(opacity=64);
+	position: fixed;
+}
+
+#u130
+{
+	border-color: #C4C4C4;
+	background-color: #000000;
+	opacity: 0.79;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=79)";
+	filter: alpha(opacity=79);
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-khtml-border-radius: 20px;
+	border-radius: 20px;
+	position: fixed;
+}
+
+#u130:hover
+{
+	border-color: #6B6B6B;
+	background-color: #000000;
+	opacity: 0.89;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=89)";
+	filter: alpha(opacity=89);
+}
+
+#u130:active
+{
+	border-color: #6B6B6B;
+	background-color: #6B6B6B;
+	opacity: 0.89;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=89)";
+	filter: alpha(opacity=89);
+}
+
+#u170
+{
+	vertical-align: top;
+	position: relative;
+	background: url("../images/u170.png") no-repeat 0px 0px;
+}
+
+#u130:hover #u170
+{
+	background: url("../images/u170-r.png") no-repeat 0px 0px;
+}
+
+#u130:active #u170
+{
+	background: url("../images/u170-m.png") no-repeat 0px 0px;
+}
+
+#u130.PamphletThumbSelected #u170
+{
+	background: url("../images/u170-a.png") no-repeat 0px 0px;
+}
+
+#u158
+{
+	border-color: #C4C4C4;
+	background-color: #000000;
+	opacity: 0.79;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=79)";
+	filter: alpha(opacity=79);
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-khtml-border-radius: 20px;
+	border-radius: 20px;
+	position: fixed;
+}
+
+#u158:hover
+{
+	border-color: #6B6B6B;
+	background-color: #000000;
+	opacity: 0.89;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=89)";
+	filter: alpha(opacity=89);
+}
+
+#u158:active
+{
+	border-color: #6B6B6B;
+	background-color: #6B6B6B;
+	opacity: 0.89;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=89)";
+	filter: alpha(opacity=89);
+}
+
+#u181
+{
+	vertical-align: top;
+	position: relative;
+	background: url("../images/u181.png") no-repeat 0px 0px;
+}
+
+#u158:hover #u181
+{
+	background: url("../images/u181-r.png") no-repeat 0px 0px;
+}
+
+#u158:active #u181
+{
+	background: url("../images/u181-m.png") no-repeat 0px 0px;
+}
+
+#u158.PamphletThumbSelected #u181
+{
+	background: url("../images/u181-a.png") no-repeat 0px 0px;
+}
+
+#u164
+{
+	border-color: #C4C4C4;
+	background-color: #000000;
+	opacity: 0.79;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=79)";
+	filter: alpha(opacity=79);
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-khtml-border-radius: 20px;
+	border-radius: 20px;
+	position: fixed;
+}
+
+#u164:hover
+{
+	border-color: #6B6B6B;
+	background-color: #000000;
+	opacity: 0.89;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=89)";
+	filter: alpha(opacity=89);
+}
+
+#u164:active
+{
+	border-color: #6B6B6B;
+	background-color: #6B6B6B;
+	opacity: 0.89;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=89)";
+	filter: alpha(opacity=89);
+}
+
+#u130.PamphletThumbSelected,#u158.PamphletThumbSelected,#u164.PamphletThumbSelected
+{
+	border-color: #FFFFFF;
+	background-color: #FFFFFF;
+	opacity: 1;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-khtml-border-radius: 20px;
+	border-radius: 20px;
+}
+
+#u182
+{
+	vertical-align: top;
+	position: relative;
+	background: url("../images/u182.png") no-repeat 0px 0px;
+}
+
+#u164:hover #u182
+{
+	background: url("../images/u182-r.png") no-repeat 0px 0px;
+}
+
+#u164:active #u182
+{
+	background: url("../images/u182-m.png") no-repeat 0px 0px;
+}
+
+#u164.PamphletThumbSelected #u182
+{
+	background: url("../images/u182-a.png") no-repeat 0px 0px;
+}
+
+#u141
+{
+	border-style: none;
+	border-color: transparent;
+	position: relative;
+	background: #7F7F7F url("../images/what.jpg") no-repeat center center;
+	background-size: cover;
+}
+
+#u160
+{
+	border-style: none;
+	border-color: transparent;
+	position: relative;
+	background: #7F7F7F url("../images/when.jpg") no-repeat center center;
+	background-size: cover;
+}
+
+#u165
+{
+	border-style: none;
+	border-color: transparent;
+	background-color: #7F7F7F;
+	position: relative;
+}
+
+#u439
+{
+	background-color: #ED1C24;
+	position: relative;
+}
+
+#u287-4
+{
+	line-height: 25px;
+	color: #333333;
+	font-size: 21px;
+	text-align: left;
+	font-family: source-sans-pro, sans-serif;
+	font-weight: 900;
+	position: fixed;
+}
+
+#u301
+{
+	opacity: 0.72;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=72)";
+	filter: alpha(opacity=72);
+	position: fixed;
+	background: transparent url("../images/lakshya-0.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u301:hover
+{
+	opacity: 1;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	background: transparent url("../images/lakshya-1.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u429
+{
+	opacity: 0.28;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=28.000000000000004)";
+	filter: alpha(opacity=28.000000000000004);
+	-webkit-transform: matrix(-1,0,0,-1,87,71);
+	-ms-transform: matrix(-1,0,0,-1,87,71);
+	-o-transform: matrix(-1,0,0,-1,87,71);
+	transform: matrix(-1,0,0,-1,87,71);
+	position: fixed;
+	background: transparent url("../images/downarrow-0.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u425
+{
+	opacity: 0.9;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	filter: alpha(opacity=90);
+	-webkit-transform: matrix(-1,0,0,-1,87,71);
+	-ms-transform: matrix(-1,0,0,-1,87,71);
+	-o-transform: matrix(-1,0,0,-1,87,71);
+	transform: matrix(-1,0,0,-1,87,71);
+	position: fixed;
+	background: transparent url("../images/downarrow-0.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u319
+{
+	position: fixed;
+	background: transparent url("../images/downarrow-0.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u431
+{
+	opacity: 0.9;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	filter: alpha(opacity=90);
+	-webkit-transform: matrix(-1,0,0,-1,87,71);
+	-ms-transform: matrix(-1,0,0,-1,87,71);
+	-o-transform: matrix(-1,0,0,-1,87,71);
+	transform: matrix(-1,0,0,-1,87,71);
+	position: fixed;
+	background: transparent url("../images/downarrow-0.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u424
+{
+	opacity: 0.9;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	filter: alpha(opacity=90);
+	position: fixed;
+	background: transparent url("../images/downarrow-0.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u429:hover,#u425:hover,#u319:hover,#u431:hover,#u424:hover
+{
+	background: transparent url("../images/downarrow.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u533
+{
+	position: fixed;
+	background: transparent url("../images/almabase-1.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u533:hover
+{
+	background: transparent url("../images/almabase-0.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u176
+{
+	border-color: #000000;
+	background-color: #000000;
+	opacity: 0.26;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=26)";
+	filter: alpha(opacity=26);
+	position: fixed;
+}
+
+#u423
+{
+	border-color: #000000;
+	background-color: #000000;
+	opacity: 0.15;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=15)";
+	filter: alpha(opacity=15);
+	position: fixed;
+}
+
+#u544
+{
+	opacity: 0.7;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+	filter: alpha(opacity=70);
+	position: fixed;
+	background: transparent url("../images/emertxe-1.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u544:hover
+{
+	opacity: 1;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	background: transparent url("../images/emertxe-layer%200.png") no-repeat left top;
+	background-size: contain;
+}
+
+#u289:hover,.js #u130.ose_pre_init,.js #u158.ose_pre_init,.js #u164.ose_pre_init,.js #u141.ose_pre_init,.js #u160.ose_pre_init,.js #u165.ose_pre_init,.js #u319.ose_pre_init,.js #u86.ose_pre_init,.js #u93.ose_pre_init
+{
+	opacity: 1;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+}
+
+#u557-6
+{
+	background-color: transparent;
+	opacity: 0.46;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=46)";
+	filter: alpha(opacity=46);
+	line-height: 28px;
+	color: #000000;
+	font-size: 23px;
+	text-align: center;
+	font-family: source-sans-pro, sans-serif;
+	font-weight: 700;
+	position: fixed;
+}
+
+#u557-6:hover
+{
+	opacity: 0.78;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=78)";
+	filter: alpha(opacity=78);
+}
+
+#u557-6:hover p
+{
+	color: #F7931E;
+	visibility: inherit;
+}
+
+#u384-4,#u385-4,#u386-4
+{
+	line-height: 28px;
+	color: #FFFFFF;
+	font-size: 23px;
+	text-align: center;
+	font-family: source-sans-pro, sans-serif;
+	font-weight: 700;
+	position: fixed;
+}
+
+#u379-4,#u382-4,#u383-4
+{
+	line-height: 20px;
+	color: #FFFFFF;
+	font-size: 17px;
+	text-align: center;
+	font-family: source-sans-pro, sans-serif;
+	font-weight: 400;
+	position: fixed;
+}
+
+#u74,#u132,#u86,#u93,#pamphletu605
+{
+	position: fixed;
+}
+
+#u612
+{
+	position: absolute;
+}
+
+#u623
+{
+	border-color: #999999;
+	background-color: #383838;
+	background-color: rgba(0, 0, 0, 0.78);
+	-moz-border-radius: 15px 15px 0px 15px ;
+	-webkit-border-radius: 15px 15px 0px 15px ;
+	-khtml-border-radius: 15px 15px 0px 15px ;
+	border-radius: 15px 15px 0px 15px ;
+	position: relative;
+	-pie-background: rgba(0, 0, 0, 0.78);
+}
+
+#menuu644
+{
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	-khtml-border-radius: 30px;
+	border-radius: 30px;
+	position: relative;
+}
+
+#u655
+{
+	border-color: #FFFFFF;
+	background-color: transparent;
+	-moz-border-radius: 11px;
+	-webkit-border-radius: 11px;
+	-khtml-border-radius: 11px;
+	border-radius: 11px;
+	position: relative;
+}
+
+#u655:hover
+{
+	background-color: #62BF9C;
+	background-color: rgba(71, 180, 139, 0.85);
+	-pie-background: rgba(71, 180, 139, 0.85);
+}
+
+#u655:active
+{
+	background-color: #818181;
+	background-color: rgba(107, 107, 107, 0.85);
+	-pie-background: rgba(107, 107, 107, 0.85);
+}
+
+#u655.MuseMenuActive
+{
+	background-color: #999999;
+	background-color: rgba(153, 153, 153, 1);
+	-pie-background: rgba(153, 153, 153, 1);
+}
+
+#u667
+{
+	border-color: #FFFFFF;
+	background-color: transparent;
+	-moz-border-radius: 11px;
+	-webkit-border-radius: 11px;
+	-khtml-border-radius: 11px;
+	border-radius: 11px;
+	position: relative;
+}
+
+#u667:hover
+{
+	background-color: #62BF9C;
+	background-color: rgba(71, 180, 139, 0.85);
+	-pie-background: rgba(71, 180, 139, 0.85);
+}
+
+#u667:active
+{
+	background-color: #818181;
+	background-color: rgba(107, 107, 107, 0.85);
+	-pie-background: rgba(107, 107, 107, 0.85);
+}
+
+#u667.MuseMenuActive
+{
+	background-color: #999999;
+	background-color: rgba(153, 153, 153, 1);
+	-pie-background: rgba(153, 153, 153, 1);
+}
+
+#u674
+{
+	border-color: #FFFFFF;
+	background-color: transparent;
+	-moz-border-radius: 11px;
+	-webkit-border-radius: 11px;
+	-khtml-border-radius: 11px;
+	border-radius: 11px;
+	position: relative;
+}
+
+#u674:hover
+{
+	background-color: #62BF9C;
+	background-color: rgba(71, 180, 139, 0.85);
+	-pie-background: rgba(71, 180, 139, 0.85);
+}
+
+#u674:active
+{
+	background-color: #818181;
+	background-color: rgba(107, 107, 107, 0.85);
+	-pie-background: rgba(107, 107, 107, 0.85);
+}
+
+#u674.MuseMenuActive
+{
+	background-color: #999999;
+	background-color: rgba(153, 153, 153, 1);
+	-pie-background: rgba(153, 153, 153, 1);
+}
+
+#u683
+{
+	border-color: #FFFFFF;
+	background-color: transparent;
+	-moz-border-radius: 11px;
+	-webkit-border-radius: 11px;
+	-khtml-border-radius: 11px;
+	border-radius: 11px;
+	position: relative;
+}
+
+#u683:hover
+{
+	background-color: #62BF9C;
+	background-color: rgba(71, 180, 139, 0.85);
+	-pie-background: rgba(71, 180, 139, 0.85);
+}
+
+#u683:active
+{
+	background-color: #818181;
+	background-color: rgba(107, 107, 107, 0.85);
+	-pie-background: rgba(107, 107, 107, 0.85);
+}
+
+#u683.MuseMenuActive
+{
+	background-color: #999999;
+	background-color: rgba(153, 153, 153, 1);
+	-pie-background: rgba(153, 153, 153, 1);
+}
+
+#u656-4,#u668-4,#u675-4,#u686-4
+{
+	color: #FFFFFF;
+	text-align: center;
+	font-family: source-sans-pro, sans-serif;
+	font-weight: 400;
+	position: relative;
+}
+
+.PamphletWidget .ThumbGroup .Thumb, .PamphletNextButton, .PamphletPrevButton, .PamphletCloseButton,.MenuItem /* pamphlet2 */
+{
+	cursor: pointer;
+}
+
+#top,#phase1,#phase2,#pamphletu118,#u125,#u445,#u171-3,#u652,#u666,#u673,#u680,#u608
+{
+	position: relative;
+}
+
+#u610
+{
+	position: absolute;
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#u610:hover
+{
+	border-style: none;
+	border-color: transparent;
+}
+
+#u610.PamphletThumbSelected
+{
+	background-color: transparent;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#u558
+{
+	background-color: transparent;
+	opacity: 0.54;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=54)";
+	filter: alpha(opacity=54);
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-khtml-border-radius: 15px;
+	border-radius: 15px;
+	position: relative;
+}
+
+#u610:hover #u558
+{
+	opacity: 0.64;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=64)";
+	filter: alpha(opacity=64);
+}
+
+#u610.PamphletThumbSelected #u558
+{
+	opacity: 0.54;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=54)";
+	filter: alpha(opacity=54);
+}
+
+#u178
+{
+	position: fixed;
+	background: url("../images/u178_states.png") no-repeat 0px 0px;
+}
+
+#u178_states
+{
+	vertical-align: top;
+}
+
+#u178:hover #u178_states
+{
+	background: url("../images/u178_states-r.png") no-repeat 0px 0px;
+}
+
+#u265-20,#u375-4,#u177-4,#u279-4,#u368-4,#u377-4,#u378-4
+{
+	display: block;
+	vertical-align: top;
+	position: fixed;
+}
+
+.js #u250.ose_pre_init,.js #u369.ose_pre_init,.js #u265-20.ose_pre_init,.js #u384-4.ose_pre_init,.js #u379-4.ose_pre_init,.js #u375-4.ose_pre_init,.js #u429.ose_pre_init,.js #u425.ose_pre_init,.js #u431.ose_pre_init,.js #u424.ose_pre_init,.js #u423.ose_pre_init,.js #u279-4.ose_pre_init,.js #u368-4.ose_pre_init,.js #u385-4.ose_pre_init,.js #u382-4.ose_pre_init,.js #u377-4.ose_pre_init,.js #u386-4.ose_pre_init,.js #u383-4.ose_pre_init,.js #u378-4.ose_pre_init
+{
+	opacity: 0;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+}
+
+#u564
+{
+	border-color: #000000;
+	background-color: #000000;
+	opacity: 0.53;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=53)";
+	filter: alpha(opacity=53);
+	position: fixed;
+}
+
+#u451,#u415
+{
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	position: relative;
+}
+
