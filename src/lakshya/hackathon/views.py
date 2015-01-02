@@ -81,7 +81,11 @@ def get_email_by_prob_statement(request,problem_id):
         return HttpResponseRedirect('/admin/')
 
 def problems(request):
-    hackathon = Hackathon.objects.all().filter(is_active=True)[0]
+    try:
+        hackathon = Hackathon.objects.all().filter(is_active=True)[0]
+    except Exception, e:
+        hackathon = None
+    
     if hackathon is None:
         problem_sts = ProblemStatement.objects.all()
     else:
