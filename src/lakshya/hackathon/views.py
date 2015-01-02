@@ -55,7 +55,14 @@ def register(request):
             return render_to_response('hackathon/success.html', RequestContext(request,{'name':name}))
         else:
             render_to_response('hackathon/register.html',RequestContext(request,{'form':form}))
-    form = RegForm()
+    try:
+        problem = ProblemStatement.objects.all().filter(is_active=True)[0]
+    except Exception,e:
+        problem = None
+    if problem is None:
+        form = RegForm()
+    else:
+        form = RegForm(initial = {'problem':problem})
     return render(request,'hackathon/register.html',{'form':form})
 
 def get_email(request):
