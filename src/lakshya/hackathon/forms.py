@@ -14,7 +14,7 @@ class RegForm(forms.Form):
     name = forms.CharField(required=True,widget=forms.TextInput(attrs={'class' : 'form-control '}))
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class' : 'form-control '}))
     mobile = forms.CharField(required=True, widget=forms.TextInput(attrs={'class' : 'form-control '}))
-    problem = forms.ModelChoiceField(queryset=ProblemStatement.objects.all(), required=True,widget=forms.Select(attrs={'class' : 'form-control '}))
+    problem = forms.ModelChoiceField(queryset=ProblemStatement.objects.all().filter(is_active=True), required=True,widget=forms.Select(attrs={'class' : 'form-control '}))
     team = forms.CharField(required=True, widget=forms.TextInput(attrs={'class' : 'form-control ' }))
     gender = forms.ChoiceField(choices=GENDER_CHOICES,required=True,widget=forms.Select(attrs={'class' : 'form-control '}))
     tee = forms.ChoiceField(choices=TEE_CHOICES,required=True,widget=forms.Select(attrs={'class' : 'form-control '}))

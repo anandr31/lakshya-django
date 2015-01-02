@@ -55,7 +55,8 @@ class ProblemStatement(models.Model):
     hackathon = models.ForeignKey('Hackathon',null=True)
     name = models.CharField("Problem",max_length=100,blank=False)
     add_link = models.URLField("Additional Link",max_length=500,blank=False,null=True)
-
+    is_active = models.BooleanField("Activated",default=True)
+    
     def __unicode__(self):
         return  self.name
 
