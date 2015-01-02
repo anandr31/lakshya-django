@@ -9,19 +9,26 @@ from models import *
 
 
 def index(request):
-    hackathon = Hackathon.objects.all().filter(is_active=True)[0]
-    context = {}
-    sponsors = Sponsors.objects.all()
-    if hackathon is None:
-        context = {'sponsors':sponsors,'finished':'True','Message':'Stay tuned for updates!'}
-        return render(request, 'hackathon/index.html',context)
-
-    sponsors = sponsors.filter(hackathon=hackathon)
-    context = {'hackathon':hackathon,'sponsors':sponsors}
-    return render(request, 'hackathon/index.html', context)
+    try:
+        hackathon = Hackathon.objects.all().filter(is_active=True)[0]
+    except Exception, e:
+        hackathon=None;
+        #return render(request, 'hackathon/index.html');
+        context = {}
+        sponsors = Sponsors.objects.all()
+        if hackathon is None:
+            context = {'sponsors':sponsors,'finished':'True','Message':'Stay tuned for updates!'}
+            return render(request, 'hackathon/index.html',context)
+        sponsors = sponsors.filter(hackathon=hackathon)
+        context = {'hackathon':hackathon,'sponsors':sponsors}
+        return render(request, 'hackathon/index.html', context)
 
 def register(request):
-    hackathon = Hackathon.objects.all().filter(is_active=True)[0]
+    try:
+        hackathon = Hackathon.objects.all().filter(is_active=True)[0]
+    except Exception, e:
+        hackathon=None;
+    
 
     if hackathon is None:
         return render_to_response('hackathon/register.html', RequestContext(request,{'finished':'True'}))
