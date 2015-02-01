@@ -7,6 +7,12 @@ function display_pan()
 	else
 		document.getElementById("div_id_pan_card").style.display = "inline";
 }
+
+function selectRadio()
+{
+	var n = document.getElementById("input_amount_other");
+	n.checked=true;
+}
 </script>
 {% endblock %}
 
@@ -39,7 +45,7 @@ function display_pan()
 		      <td class="radiobuttons-cell">
 		<input type="radio" name="amount" id="input_amount_other" value="Other" onclick="document.getElementById('input_amount_other_box').focus(); document.getElementById('id_amount').value=document.getElementById('input_amount_other_box').value;" style="">
 		<label for="input_amount_other">Other Rs.</label>
-		<input type="text" id="input_amount_other_box" size="3" autocomplete="off" value="" onchange="document.getElementById('id_amount').value=value;" style="">
+		<input type="text" id="input_amount_other_box" size="3" autocomplete="off" value="" onchange="document.getElementById('id_amount').value=value;" onfocus="selectRadio();" style="">
 		      </td>
 		    </tr>
 
