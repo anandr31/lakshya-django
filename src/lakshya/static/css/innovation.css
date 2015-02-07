@@ -1,0 +1,64 @@
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/******** Start innovation home page ************/
+#innovation_home_page {
+	padding: 25px;
+}
+
+#innovation_home_page ul#innovation_tabs {
+	width: 100%;
+	margin-bottom: 35px;
+}
+
+#innovation_home_page ul#innovation_tabs li {
+	display: inline-block;
+	width: 49%;
+	text-align: center;
+	cursor: pointer;
+}
+
+#innovation_home_page ul#innovation_tabs li:hover {
+	border-bottom: 1px solid #ccc;
+}
+
+#innovation_home_page ul#innovation_tabs li.active {
+	border-bottom: 1px solid #ccc;
+	cursor: initial;
+}
+
+#innovation_home_page #innovation_data_container>div {
+	width: 100%;
+	display: none;
+}
+
+#innovation_home_page #innovation_data_container>div.active {
+	display: block;
+}
+
+#innovation_home_page #innovation_data_container ul.instruments_list {
+
+}
+
+#innovation_home_page #innovation_data_container ul.instruments_list li.instrument {
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 10px;
+	width: 280px;
+	height: 300px;
+	margin-right: 15px;
+}
+
+#innovation_home_page #innovation_data_container ul.instruments_list li.instrument img.instrument_image {
+	height: 200px;
+	width: auto;
+	max-width: 280px;
+	display: block;
+	margin: 0 auto;
+}
+
+/******** End innovation home page ************/
