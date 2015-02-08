@@ -48,15 +48,27 @@ ul {
 	display: inline-block;
 	border: 1px solid #ccc;
 	padding: 10px;
-	width: 280px;
+	width: 270px;
 	height: 300px;
 	margin-right: 15px;
+	margin-bottom: 35px;
+	vertical-align: top;
+}
+
+#innovation_home_page #innovation_data_container ul.instruments_list li.instrument p.instrument_name {
+	font-weight: 700;
+	text-align: center;
+}
+
+#innovation_home_page #innovation_data_container ul.instruments_list li.instrument p.instrument_description {
+	font-size: 12pt;
+	text-align: center;
 }
 
 #innovation_home_page #innovation_data_container ul.instruments_list li.instrument img.instrument_image {
 	height: 200px;
 	width: auto;
-	max-width: 280px;
+	max-width: 270px;
 	display: block;
 	margin: 0 auto;
 }
