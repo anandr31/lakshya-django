@@ -30,17 +30,17 @@ $(function() {
 {% block content %}
 <div id="innovation_home_page">
 	<ul id="innovation_tabs">
-		<li class="active" data-value="need">
-			<p>What we intend to buy</p>
-		</li>
-  		<li data-value="have">
+  		<li data-value="have" class="active">
   			<p>What we have already bought</p>
   		</li>
+		<li data-value="need">
+			<p>What we intend to buy</p>
+		</li>
 	</ul>
 	<div id="innovation_data_container">
-		<div id="innovation_data_need" class="active">
+		<div id="innovation_data_have" class="active">
 			<ul class="instruments_list">
-				{% for instrument in instruments_need %}
+				{% for instrument in instruments_have %}
 				<li class="instrument">
 					<img class="instrument_image" src="{{instrument.image.url}}">
 					<p class="instrument_name">{{instrument.name}}</p>
@@ -49,9 +49,9 @@ $(function() {
 				{% endfor %}
 			</ul>
 		</div>
-		<div id="innovation_data_have">
+		<div id="innovation_data_need">
 			<ul class="instruments_list">
-				{% for instrument in instruments_have %}
+				{% for instrument in instruments_need %}
 				<li class="instrument">
 					<img class="instrument_image" src="{{instrument.image.url}}">
 					<p class="instrument_name">{{instrument.name}}</p>

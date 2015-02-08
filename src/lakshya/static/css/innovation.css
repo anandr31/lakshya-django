@@ -12,7 +12,7 @@ ul {
 
 #innovation_home_page ul#innovation_tabs {
 	width: 100%;
-	margin-bottom: 35px;
+	margin-bottom: 50px;
 }
 
 #innovation_home_page ul#innovation_tabs li {
@@ -23,11 +23,11 @@ ul {
 }
 
 #innovation_home_page ul#innovation_tabs li:hover {
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #2e93a8;
 }
 
 #innovation_home_page ul#innovation_tabs li.active {
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #2e93a8;
 	cursor: initial;
 }
 
