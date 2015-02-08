@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+<title>Innovation Garage - Lakshya, an NITW alumni led organization</title>
+<meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
+{% endblock title %}
+
+{% block extracss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/innovation.css"></LINK>
+{% endblock extracss %}
+
+{% block scripts %}
+<script src="{{STATIC_URL}}js/jquery-latest.min.js"></script>
+<script src="{{STATIC_URL}}js/slides.min.jquery.js"></script>
+
+<script>
+	$(function(){
+	$('#ig_slides').slides({
+		preload: true,
+		preloadImage: '{{STATIC_URL}}img/loading.gif',
+		play: 5000,
+		pause: 2500,
+		hoverPause: true
+	});
+}
+</script>
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=1491007234499273&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+{% endblock scripts %}
+
+{% block content %}
+<div id="ig_home">
+	<div id="ig_slides">
+		<div id="ig_slides_container" >
+				<a href="/innovation/innovations-list/hovamarine" title="Hovamarine - NITW's first patent application" ><img src="{{STATIC_URL}}img/jobi_header_3.jpg" alt="Hovamarine - NITW's first patent application"></a>
+		</div>
+	</div>
+
+	<div id="ig_container" style="width:990px;">
+		<div id="ig_home_block" style="width: 68%; display: inline-block;">
+			<div class="ig_home_text_block">
+				<p> Lorem ipsum lorem ipsum </p>
+				<a id="equipment-view-btn" class="ig-btn" href="#">View the Equipment</a>
+			</div>
+			<div class="ig_home_text_block">
+				<p> Lorem ipsum lorem ipsum </p>
+				<a id="support-ig-btn" class="ig-btn" href="#">Contribute to Innovation Garage</a>
+			</div>
+		</div>
+		<div id="ig_fb" style="margin: 10px 0 0 0;display: inline-block;width: 30%;">
+		<div class="fb-like-box" data-href="https://www.facebook.com/TheInnovationGarage" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" data-show-border="true"></div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

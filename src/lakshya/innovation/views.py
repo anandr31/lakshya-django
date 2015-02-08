@@ -61,3 +61,8 @@ class InnovationHomeView(TemplateView):
         context['instruments_have'] = InnovationInstrument.objects.filter(status=InnovationInstrument.HAVE)
         context['instruments_need'] = InnovationInstrument.objects.filter(status=InnovationInstrument.NEEDED)
         return context
+
+
+class InnovationGarageView(TemplateView):
+    template_name = 'innovation/ig-home.html'
+

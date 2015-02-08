@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 
-from innovation.views import InnovationHomeView
+from innovation.views import InnovationHomeView, InnovationGarageView
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -16,4 +16,6 @@ urlpatterns = patterns('',
     url(r'^innovations-list(/?)(?P<project_name>.*)$', 'innovation.views.get_innovation_list', name='innovations_list'),
     url(r'^apply/?$', 'innovation.views.apply_innovation', name="innovation_apply"),
     url(r'^newhome/?$', InnovationHomeView.as_view(), name="home"),
-)
+    url(r'^ig-home/?$', InnovationGarageView.as_view(), name="Innovation Garage home"),
+
+    )

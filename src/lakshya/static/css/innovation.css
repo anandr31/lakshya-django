@@ -74,3 +74,37 @@ ul {
 }
 
 /******** End innovation home page ************/
+
+#ig_slides {
+	width: 990px;
+	height: 300px;
+	position: relative;
+	margin: auto;
+	font-family: 'Didact Gothic', sans-serif;
+}
+
+#ig_fb {
+	margin: 10px 0 0 0;
+	float: right;
+}
+
+.ig_home_text_block {
+	padding:20px;
+}
+
+.ig-btn {
+	display: block;
+	width: 162px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	padding: 10px 28px;
+	background: rgba(46, 147, 168, 0.75);
+	margin-left: 80px;
+	border-radius: 8px;
+}
+/******** Start Innovation Garage page *********/
+
+
+
+/******** End Innovation Garage page *********/
