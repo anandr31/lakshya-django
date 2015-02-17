@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+<title>Innovation Project - Lakshya, an NITW alumni led organization</title>
+<meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
+{% endblock title %}
+
+{% block extracss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/innovation.css"></LINK>
+{% endblock extracss %}
+
+{% block scripts %}
+<script src="{{STATIC_URL}}js/jquery-latest.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('#innovation_tabs li').click(function() {
+		if($(this).hasClass('active')) return;
+		
+		var value = $(this).data('value');
+		$('#innovation_data_container>div').removeClass('active');
+		$('#innovation_data_'+value).addClass('active');
+		$('#innovation_tabs li').removeClass('active');
+		$(this).addClass('active');
+	});
+});
+</script>
+{% endblock scripts %}
+
+{% block content %}
+<div id="innovation_home_page">
+	<ul id="innovation_tabs">
+  		<li data-value="have" class="active">
+  			<p>What we have already bought</p>
+  		</li>
+		<li data-value="need">
+			<p>What we intend to buy</p>
+		</li>
+	</ul>
+	<div id="innovation_data_container">
+		<div id="innovation_data_have" class="active">
+			<ul class="instruments_list">
+				{% for instrument in instruments_have %}
+				<li class="instrument">
+					<img class="instrument_image" src="{{instrument.image.url}}">
+					<p class="instrument_name">{{instrument.name}}</p>
+					<p class="instrument_description">{{instrument.description}}</p>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div id="innovation_data_need">
+			<ul class="instruments_list">
+				{% for instrument in instruments_need %}
+				<li class="instrument">
+					<img class="instrument_image" src="{{instrument.image.url}}">
+					<p class="instrument_name">{{instrument.name}}</p>
+					<p class="instrument_description">{{instrument.description}}</p>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock content %}

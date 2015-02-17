@@ -1,0 +1,110 @@
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/******** Start innovation home page ************/
+#innovation_home_page {
+	padding: 25px;
+}
+
+#innovation_home_page ul#innovation_tabs {
+	width: 100%;
+	margin-bottom: 50px;
+}
+
+#innovation_home_page ul#innovation_tabs li {
+	display: inline-block;
+	width: 49%;
+	text-align: center;
+	cursor: pointer;
+}
+
+#innovation_home_page ul#innovation_tabs li:hover {
+	border-bottom: 1px solid #2e93a8;
+}
+
+#innovation_home_page ul#innovation_tabs li.active {
+	border-bottom: 1px solid #2e93a8;
+	cursor: initial;
+}
+
+#innovation_home_page #innovation_data_container>div {
+	width: 100%;
+	display: none;
+}
+
+#innovation_home_page #innovation_data_container>div.active {
+	display: block;
+}
+
+#innovation_home_page #innovation_data_container ul.instruments_list {
+
+}
+
+#innovation_home_page #innovation_data_container ul.instruments_list li.instrument {
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 10px;
+	width: 270px;
+	height: 300px;
+	margin-right: 15px;
+	margin-bottom: 35px;
+	vertical-align: top;
+}
+
+#innovation_home_page #innovation_data_container ul.instruments_list li.instrument p.instrument_name {
+	font-weight: 700;
+	text-align: center;
+}
+
+#innovation_home_page #innovation_data_container ul.instruments_list li.instrument p.instrument_description {
+	font-size: 12pt;
+	text-align: center;
+}
+
+#innovation_home_page #innovation_data_container ul.instruments_list li.instrument img.instrument_image {
+	height: 200px;
+	width: auto;
+	max-width: 270px;
+	display: block;
+	margin: 0 auto;
+}
+
+/******** End innovation home page ************/
+
+#ig_slides {
+	width: 990px;
+	height: 300px;
+	position: relative;
+	margin: auto;
+	font-family: 'Didact Gothic', sans-serif;
+}
+
+#ig_fb {
+	margin: 10px 0 0 0;
+	float: right;
+}
+
+.ig_home_text_block {
+	padding:20px;
+}
+
+.ig-btn {
+	display: block;
+	width: 162px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	padding: 10px 28px;
+	background: rgba(46, 147, 168, 0.75);
+	margin-left: 80px;
+	border-radius: 8px;
+}
+/******** Start Innovation Garage page *********/
+
+
+
+/******** End Innovation Garage page *********/
