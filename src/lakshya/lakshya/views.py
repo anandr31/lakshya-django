@@ -4,6 +4,7 @@ from utils.models import LakshyaUpdate
 from utils.models import LakshyaTestimonial
 from accounts.models import Donation
 from django.db.models import Sum
+from django.views.generic.base import TemplateView
 
 def get_home_page(request):
     update_list = LakshyaUpdate.objects.filter(sorting__in = [1,2,3]).order_by('sorting')  
@@ -17,3 +18,7 @@ def server_error(request):
     response = render(request, "500.html")
     response.status_code = 500
     return response
+
+
+class HomeView(TemplateView):
+    template_name = 'lakshya/home.html'

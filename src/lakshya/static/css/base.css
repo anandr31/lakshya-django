@@ -1,0 +1,57 @@
+/** Regular **/
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/gotham/Gotham-Light.otf') format('opentype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+/** Thin **/
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/gotham/Gotham-Thin.otf') format('opentype');
+  font-style: normal;
+  font-weight: 300;
+}
+
+/** Bold **/
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/gotham/Gotham-Bold.otf') format('opentype');
+  font-style: normal;
+  font-weight: 700;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: 'Gotham',Helvetica,Arial,sans-serif;
+	font-weight: normal;
+	font-size: 1.3rem;
+	color: #333;
+	text-shadow: none;
+  	padding:0;
+  	margin: 0;
+  	width:100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+#content_wrapper {
+	max-width: 98rem;
+	margin: 0 auto;
+	min-height: 40rem;
+}
+
+
+#footer {
+	background: #eee;
+	padding: 1rem 0.5rem;
+}
+
+p, a, li, span {
+	font-size: 1.3rem;
+}

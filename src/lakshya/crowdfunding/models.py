@@ -111,6 +111,7 @@ class Message(models.Model):
     def __unicode__(self):
         return str(self.title)
 
+
 class ProjectUpdate(models.Model):
     project = models.ForeignKey(Project, related_name='updates')
     author = models.ForeignKey(User, related_name='project_updates')
@@ -118,4 +119,4 @@ class ProjectUpdate(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return  update[:50]
+        return  self.update[:50]
