@@ -692,6 +692,10 @@ p, a, li, span {
 	color: #e31b4a;
 }
 
+#hackathon_mentorship p {
+	padding: 0 3rem;
+}
+
 #hackathon_sponsorship_container {
 	border-top: 2px solid #e31b4a;
 	padding: 4.2rem 0;
@@ -719,4 +723,14 @@ p, a, li, span {
 
 #hackathon_sponsorship div.column {
 	margin-bottom: 3rem;
+}
+
+#hackathon_sponsorship p {
+	padding: 0 3rem;
+}
+
+
+@media only screen and (max-width: 25em) { /* Small */
+#hackathon_upcoming p.title {
+	font-size: 3rem;
 }
