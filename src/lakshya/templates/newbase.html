@@ -20,6 +20,7 @@
 
 <LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/foundation/foundation.css"></LINK>
 <LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/foundation/normalize.css"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}font-awesome/css/font-awesome.min.css"></LINK>
 <LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/base.css"></LINK>
 
 {% block extracss %}
@@ -27,23 +28,24 @@
 
 <script src="{{STATIC_URL}}js/jquery-latest.min.js"></script>
 <script type="text/javascript">
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', '{{GOOGLE_SITE_CODE}}' ]);
-	  _gaq.push(['_trackPageview']);
+	  // var _gaq = _gaq || [];
+	  // _gaq.push(['_setAccount', '{{GOOGLE_SITE_CODE}}' ]);
+	  // _gaq.push(['_trackPageview']);
 
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
+	  // (function() {
+	  //   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	  //   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	  //   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  // })();
 	</script>
-	<script>(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-			fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
+	<script>
+	// (function(d, s, id) {
+	// 		var js, fjs = d.getElementsByTagName(s)[0];
+	// 		if (d.getElementById(id)) return;
+	// 		js = d.createElement(s); js.id = id;
+	// 		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	// 		fjs.parentNode.insertBefore(js, fjs);
+	// }(document, 'script', 'facebook-jssdk'));
 </script>
 
 {% block scripts %}
@@ -57,11 +59,24 @@
 			<nav class="top-bar" data-topbar role="navigation">
 			  <ul class="title-area">
 			    <li class="name text-left">
-			      <a href="/"><img src="{{STATIC_URL}}img/logo.png" id="logo"></a>
+			      <a href="/"><img src="{{STATIC_URL}}newimg/logo_top.png" id="logo"><span>The Lakshya Foundation</span></a>
 			    </li>
-			     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
 			    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+			    <li id="login"><a href="#"><img src="{{STATIC_URL}}newimg/icons/profile.svg"></a></li>
 			  </ul>
+			  <section class="top-bar-section">
+			    <ul class="left menu-items">
+			      <li class="grp-end"><a href="/"><img src="{{STATIC_URL}}newimg/icons/home.svg"><span>The Lakshya Foundation</span></a></li>
+			      <li><a href="#"><img src="{{STATIC_URL}}newimg/icons/ig.svg"><span>Innovation Garage</span></a></li>
+			      <li><a href="#"><img src="{{STATIC_URL}}newimg/icons/crowdfunding.svg"><span>Crowdfunding</span></a></li>
+			      <li><a href="#"><img src="{{STATIC_URL}}newimg/icons/hackathon.svg"><span>Hackathon</span></a></li>
+			      <li class="grp-end"><a href="#"><img src="{{STATIC_URL}}newimg/icons/otherprojects.svg"><span>Other Projects</span></a></li>
+			      <li><a href="#"><img src="{{STATIC_URL}}newimg/icons/about.svg"><span>About</span></a></li>
+			      <li class="grp-end"><a href="#"><img src="{{STATIC_URL}}newimg/icons/transparency.svg"><span>Funding and Transparency</span></a></li>
+			      <li><a href="#"><img src="{{STATIC_URL}}newimg/icons/mentors.svg"><span>Partners and Mentors</span></a></li>
+			      <li><a href="#"><img src="{{STATIC_URL}}newimg/icons/donate.svg"><span>Donate</span></a></li>
+			    </ul>
+			  </section>
 			</nav>
 		</div>
 		{% endblock header %}
@@ -75,71 +90,82 @@
 		<div id="footer">
 			<div class="row">
 				<div class="column small-12 medium-12 large-3">
-					<p class="heading">About</p>
-					<ul>
-						<li class="footer-item"><a href="/company">Company</a></li>
-						<li class="footer-item"><a href="/company/#advisors">The Team</a></li>
-						<li class="footer-item"><a href="http://blog.almabase.com/2015/03/we-are-looking-for-rockstar-web-developers/">Join Us</a></li>
-						<li class="footer-item"><a href="http://blog.almabase.com" target="_blank">Blog</a></li>
-					</ul>
-				</div>
-				<div class="column small-12 medium-12 large-3">
-					<p class="heading">Product</p>
-					<ul>
-						<li class="footer-item"><a href="/features/#website">Full-fledged Website</a></li>
-						<li class="footer-item"><a href="/features/#database">Alumni Networking</a></li>
-						<li class="footer-item"><a href="/features/#communication">Targeted Communication</a></li>
-						<li class="footer-item"><a href="/features/#hosting">Unlimited Hosting</a></li>
-						<li class="footer-item"><a href="/features">All Features</a></li>
-						<li class="footer-item show-for-large-up" id="footer-view-demo"><a href="http://imperial.almabasedemo.in/?k=4775cbf2099ac5f80ed8e544776aaea5e3b8275d" target="_blank" class="special">View Demo</a></li>
-					</ul>
-				</div>
-				<div class="column small-12 medium-12 large-3" id="contact">
-					<p class="heading">Contact</p>
-					<ul>
-						<li class="footer-item">
-							<span class="footer-icon mobile"></span>
-							<a class="contact-info" href="tel:+919972359354">+91 99723-59354</a>
-						</li>
-						<li class="footer-item">
-							<span class="footer-icon email"></span>
-							<a class="contact-info" href="mailto:sales@almabase.com">sales@almabase.com</a>
-						</li>
-						<li class="footer-item">
-							<span class="footer-icon skype"></span>
-							<a class="contact-info" href="skype:get_almabase">get_almabase</a>
-						</li>
-						<li id="address" class="footer-item">
-							<span class="footer-icon address"></span>
-							<a class="contact-info" href="https://www.google.com/maps/place/AlmaBase,+Flat+No.10A,+Regency+Pinnacle+Heights,+Rachenahalli+Main+Rd,+Rachenahalli,+Thanisandra/@13.062374,77.626134,14z/data=!4m7!1m4!3m3!1s0x3bae17bb235437cf:0xf1e75ccae375a8a0!2sAlmaBase,+Flat+No.10A,+Regency+Pinnacle+Heights,+Rachenahalli+Main+Rd,+Rachenahalli,+Thanisandra!3b1!3m1!1s0x3bae17bb235437cf:0xf1e75ccae375a8a0" target="_blank">Find us on the map</a>
-							<!-- <p>#10A, Aspen Block</p>
-							<p>Regency Pinnacle Heights</p>
-							<p>Rachenahalli, Thanisandra</p>
-							<p>Bangalore - 560077</p>
-							<p>India</p> -->
-						</li>
-					</ul>
-				</div>
-				<div class="column small-12 medium-12 large-3">
-					<img id="footer-logo" src="{{STATIC_URL}}img/logo.png" class="show-for-large-up">
-					<div id="footer-social" class="text-center">
-						<div id="footer-social-container" class="clearfix">
-							<a href="https://www.facebook.com/pages/AlmaBase/470930299685022" target="_blank" class="social facebook">Facebook</a>
-							<a href="https://www.linkedin.com/company/almabase" target="_blank" class="social linkedin">LinkedIn</a>
-							<a href="https://twitter.com/_almabase" target="_blank" class="social twitter">Twitter</a>
-							<a href="https://plus.google.com/u/1/+Almabase/posts" target="_blank" class="social gplus">Google +</a>
-						</div>
+					<div class="footer-group">
+						<table class="heading">
+							<tr>
+								<td class="heading_text"><span>About Lakshya</span></td>
+								<td class="heading_img"><img class="footer_icon" src="{{STATIC_URL}}newimg/icons/email_footer.svg"></td>
+							</tr>
+						</table>
+						<ul>
+							<li class="footer-item"><a href="#">Research Funding</a></li>
+							<li class="footer-item"><a href="#">Innovation Support</a></li>
+							<li class="footer-item"><a href="#">Donations</a></li>
+							<li class="footer-item"><a href="#">Transparency</a></li>
+						</ul>
 					</div>
-					<div id="copyright">
-						<p>&copy; Almabase 2015</p>
+				</div>
+				<div class="column small-12 medium-12 large-3">
+					<div class="footer-group">
+						<table class="heading">
+							<tr>
+								<td class="heading_text"><span>Hackathon</span></td>
+								<td class="heading_img"><img class="footer_icon" src="{{STATIC_URL}}newimg/icons/hackathon_footer.svg"></td>
+							</tr>
+						</table>
+						<ul>
+							<li class="footer-item"><a href="#">Register</a></li>
+							<li class="footer-item"><a href="#">Event Schedule</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="column small-12 medium-12 large-3">
+					<div class="footer-group">
+					<table class="heading">
+							<tr>
+								<td class="heading_text"><span>Innovation Garage</span></td>
+								<td class="heading_img"><img class="footer_icon" src="{{STATIC_URL}}newimg/icons/ig_footer.svg"></td>
+							</tr>
+						</table>
+						<ul>
+							<li class="footer-item"><a href="#">Start a Project</a></li>
+							<li class="footer-item"><a href="#">Explore</a></li>
+							<li class="footer-item"><a href="#">Book a machine</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="column small-12 medium-12 large-3">
+					<div class="footer-group">
+					<table class="heading">
+							<tr>
+								<td class="heading_text"><span>Crowd Funding</span></td>
+								<td class="heading_img"><img class="footer_icon" src="{{STATIC_URL}}newimg/icons/crowdfunding_footer.svg"></td>
+							</tr>
+						</table>
+						<ul>
+							<li class="footer-item"><a href="#">Start a Project</a></li>
+							<li class="footer-item"><a href="#">View Projects</a></li>
+							<li class="footer-item"><a href="#">How it works</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="column small-12 medium-12 large-12">
+					<div class="footer-group text-center">
+					<table class="heading">
+							<tr>
+								<td class="heading_text"><span>The Lakshya Foundation</span></td>
+							</tr>
+						</table>
+						<ul>
+							<li class="footer-item"><a href="#">+91 9123456789</a></li>
+							<li class="footer-item">
+								<a href="#"><img class="footer_icon" src="{{STATIC_URL}}newimg/icons/email_footer.svg"></a>
+								<a href="#"><img class="footer_icon" src="{{STATIC_URL}}newimg/icons/facebook_footer.svg"></a>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
-			<!-- <div class="row">
-				<div class="column text-right" id="copyright">
-					<p>&copy; Almabase 2015</p>
-				</div>
-			</div> -->
 		</div>
 		{% endblock footer %}
 	</div>
