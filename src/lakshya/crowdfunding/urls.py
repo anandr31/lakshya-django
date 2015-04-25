@@ -14,5 +14,6 @@ urlpatterns = patterns('',
                        url(r'^projects/?$', ProjectListView.as_view(),
                            name='view all projects'),
                        url(r'^_project/list/?$', ProjectListAPIView.as_view(), name='project-list-api'),
-                       url(r'^_project/detail/(?P<id>.*)?$', ProjectDetailAPIView.as_view(), name='project-detail-api'),
+                       url(r'^_project/detail/(?P<id>.*)/?$', ProjectDetailAPIView.as_view(),
+                           name='project-detail-api'),
                        url(r'^_pledge/create/?$', csrf_exempt(PledgeCreateAPIView.as_view()), name='pledge-create-api'))
