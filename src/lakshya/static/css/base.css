@@ -45,10 +45,31 @@ body {
 }
 
 
-#content_wrapper {
-	max-width: 98rem;
+/* Common */
+a.cta {
+	display: inline-block;
+	text-transform: uppercase;
+	color: #fff;
+	background: #00b4ff;
+	padding: 1rem 4rem;
+}
+
+#content_container {
+	width: 100%;
 	margin: 0 auto;
 	min-height: 40rem;
+}
+
+div.content {
+	max-width: 98rem;
+	margin: 0 auto;
+}
+
+p.heading {
+	text-transform: uppercase;
+	font-weight: 700;
+	color: #4b4b4b;
+	font-size: 1.8rem;
 }
 
 /* Menu */
@@ -209,4 +230,260 @@ body {
 
 p, a, li, span {
 	font-size: 1.3rem;
+}
+
+/* Home page */
+#home_page {
+
+}
+
+#home_hero {
+	height: 51.2rem;
+	background: url('../newimg/hero_lakshya.png');
+	background-size: cover;
+	background-position: center center;
+}
+
+#home_hero .initiative {
+	color: #fff;
+	text-align: center;
+	padding: 0 2rem;
+	height: 100%;
+}
+#home_hero .initiative:hover {
+	background: rgba(0,0,0,0.85);
+}
+
+#home_hero .initiative_main {
+	border-bottom: 1px solid #fff;
+	padding-bottom: 1.5rem;
+}
+
+#home_hero .initiative_main p.initiative_name {
+	font-size: 1.6rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin-top: 2rem;
+}
+
+#home_hero svg.initiative_logo {
+	width: 14rem;
+	border-radius: 100%;
+	border: 2px solid #fff;
+	margin-top: 4rem;
+}
+
+#home_hero .initiative_update p {
+	text-align: left;
+	padding: 2rem 0.5rem;
+	line-height: 1.3;
+	font-size: 1.5rem;
+	color: #fff;
+}
+
+#home_hero .initiative_update p a {
+	display: block;
+	text-align: center;
+	color: #fff;
+}
+
+#home_hero #home_hackathon:hover {
+	color: #e11c4a;
+}
+
+#home_hero #home_hackathon:hover svg.initiative_logo {
+	border-color: #e11c4a;
+}
+
+#home_hero #home_hackathon:hover svg.initiative_logo path {
+	fill: #e11c4a;
+}
+
+#home_hero #home_ig:hover {
+	color: #f75b22;
+}
+
+#home_hero #home_ig:hover svg.initiative_logo {
+	border-color: #f75b22;
+}
+
+#home_hero #home_ig:hover svg.initiative_logo path {
+	fill: #f75b22;
+}
+
+#home_hero #home_crowdfunding:hover {
+	color: #01b49e;
+}
+
+#home_hero #home_crowdfunding:hover svg.initiative_logo {
+	border-color: #01b49e;
+}
+
+#home_hero #home_crowdfunding:hover svg.initiative_logo path {
+	fill: #01b49e;
+}
+
+@media only screen and (max-width: 64em) { /* Small and medium */
+	#home_hero .initiative {
+		padding-top: 25rem;
+	}
+	#home_hero .initiative_main {
+		border: none;
+	}
+	#home_hero .initiative:hover {
+		background: transparent !important;
+	}
+	#home_hero #home_hackathon p.initiative_name {
+		color: #e31b4a;
+	}
+	#home_hero #home_ig p.initiative_name {
+		color: #f75b22;
+	}
+	#home_hero #home_crowdfunding p.initiative_name {
+		color: #01b49e;
+	}
+}
+
+#home_update_container {
+	background: #ededed;
+	padding: 4rem 0;
+}
+
+#home_update {
+	text-align: center;
+}
+
+#home_update a.cta {
+	margin-top: 1rem;
+}
+
+#home_stats {
+	padding: 4rem 0;
+}
+
+#home_stats .home_stat {
+	text-align: center;
+}
+
+#home_stats p.home_stat_number {
+	color: #72ceff;
+	font-size: 10rem;
+	font-weight: 300;
+	margin-bottom: -1rem;
+}
+
+#home_stats p.home_stat_text {
+	
+}
+
+#home_testimonial_container {
+	background: #f9f9f9;
+	padding: 4rem 0;
+}
+
+#home_testimonial {
+	text-align: center;
+}
+
+#home_testimonial #home_testimonial_text {
+	font-size: 1.5rem;
+	font-style: italic;
+	line-height: 2.2;
+	padding: 0 3rem;
+}
+
+#home_testimonial #home_testimonial_picture {
+	width: 8rem;
+	border-radius: 100%;
+	margin-top: 2rem;
+}
+
+#home_testimonial #home_testimonial_name {
+	margin-top: 1rem;
+	font-weight: 700;
+	margin: 0;
+}
+
+#home_testimonial #home_testimonial_designation {
+	font-style: italic;
+}
+
+#home_news {
+	padding: 4rem 0;
+	text-align: center;
+}
+
+#home_news p.heading {
+	
+}
+
+#home_news p.news_description {
+	margin-top: 1rem;
+	font-style: italic;
+	line-height: 2;
+	padding: 0 2rem;
+}
+
+#home_contact_container {
+	padding: 4rem 01;
+	background: #eaeaea;
+}
+
+#home_contact {
+	text-align: center;
+}
+
+#home_contact #home_contact_input {
+	background: #303030;
+	width: 100%;
+	max-width: 60rem;
+	height: 7rem;
+	margin: 0 auto;
+	padding: 0;
+}
+
+#home_contact #home_contact_input input {
+	width: 83%;
+	height: 100%;
+	outline: none;
+	border: none;
+	background: transparent;
+	color: #fff;
+	font-size: 2rem;
+	padding-left: 1.5rem;
+	float: left;
+}
+
+#home_contact #home_contact_submit {
+	float: right;
+	height: 100%;
+	background: #00b4ff;
+	color: #fff;
+	font-size: 1.4rem;
+	text-transform: uppercase;
+	line-height: 100%;
+	padding: 0 1rem;
+}
+
+#home_contact #home_contact_submit svg {
+	width: 5rem;
+	margin-top: 1rem;
+}
+
+#home_contact #enter_details_text {
+	margin-top: 2rem;
+	color: #808080;
+	font-size: 1.5rem;
+}
+
+#home_contact #follow_lakshya {
+	color: #808080;
+	font-weight: 700;
+	font-size: 1.5rem;
+}
+
+#home_contact #home_contact_submit_mobile {
+	padding: 1rem 6rem;
+	font-size: 1.8rem;
+	margin-top: 2rem;
 }

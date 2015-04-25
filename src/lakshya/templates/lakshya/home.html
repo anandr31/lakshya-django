@@ -1,8 +1,166 @@
 {% extends "newbase.html" %}
 
+{% block scripts %}
+<script type="text/javascript">
+	$(function() {
+		$('#home_contact_submit_mobile, #home_contact_submit').click(function() {
+			return false;
+		});
+	});
+</script>
+{% endblock scripts %}
+
 {% block content %}
 <div id="home_page">
-	<p>This is the home page</p>
+	<div id="home_hero">
+		<div class="row">
+			<div class="column large-4 small-4 initiative" id="home_hackathon">
+				<div class="initiative_main">
+					<svg class="initiative_logo" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+						<path fill="#FFF" d="M72.7,49.1h-2.5v-3.8c0-0.7-0.6-1.3-1.3-1.3h-0.6L73,31.6c3.1-0.4,5.4-3.2,5.9-7.2c0.6-5.1-1.9-11.3-9-13
+						c-0.5-0.1-1,0.1-1.3,0.5c-0.3,0.4-0.3,1,0,1.4c1.9,2.9,0.5,4.7-1.1,6.7c-0.7,0.8-1.3,1.6-1.7,2.5c-0.7,1.7-0.8,3.5-0.1,5
+						c0.3,0.8,0.8,1.5,1.4,2L60,42.4v-30c0-0.7-0.6-1.3-1.3-1.3H43.6c-0.7,0-1.3,0.6-1.3,1.3V44h-0.5l-7.2-14.5c0,0,0-0.1-0.1-0.1
+						c0,0,0,0,0-0.1c0,0,0,0-0.1-0.1c-0.1-0.1-0.2-0.2-0.2-0.2c0,0-0.1-0.1-0.1-0.1c0,0,0,0,0,0l-8.9-5.1c-0.4-0.2-0.9-0.2-1.3,0
+						c-0.4,0.3-0.6,0.7-0.6,1.2l1.3,10.1c0,0,0,0,0,0c0,0.1,0,0.1,0,0.1c0,0.1,0,0.2,0.1,0.2l4.1,8.3h-0.5c-0.7,0-1.3,0.6-1.3,1.3v34.2
+						c0,4.3,3.3,7.6,7.6,7.6h27.8c4.3,0,7.6-3.3,7.6-7.6V69.3h2.5c5.9,0,10.1-4.3,10.1-10.1S78.5,49.1,72.7,49.1z M68.1,23.6
+						c0.2-0.6,0.8-1.2,1.3-1.9c1.3-1.6,3-3.8,2.5-6.8c3.6,2,4.9,6,4.5,9.3c-0.3,2.3-1.5,5-4.2,5h0c-0.6,0-1.3-0.2-2-0.4
+						c-1.1-0.5-1.9-1.2-2.3-2.1C67.6,25.7,67.6,24.6,68.1,23.6z M69.3,31c0.4,0.2,0.7,0.3,1.1,0.4L65.6,44H62L69.3,31
+						C69.2,31,69.2,31,69.3,31z M44.8,13.7h12.6v5.1h-6.3c-0.7,0-1.3,0.6-1.3,1.3s0.6,1.3,1.3,1.3h6.3v2.5h-3.8c-0.7,0-1.3,0.6-1.3,1.3
+						s0.6,1.3,1.3,1.3h3.8v2.5h-6.3c-0.7,0-1.3,0.6-1.3,1.3s0.6,1.3,1.3,1.3h6.3v5.1h-3.8c-0.7,0-1.3,0.6-1.3,1.3S53,39,53.7,39h3.8V44
+						H44.8V13.7z M31.1,30.2L26.9,33l-0.7-5.6L31.1,30.2z M27.5,35.6l5.5-3.6L39,44h-7.3L27.5,35.6z M67.6,79.4c0,2.9-2.1,5.1-5.1,5.1
+						H34.7c-2.8,0-5.1-2.2-5.1-5.1V46.5h1.3H41h0h2.5h15.2h1.1h0c0,0,0,0,0,0h6.6h0h0h1.1V79.4z M72.7,66.8h-2.5V51.6h2.5
+						c4.5,0,7.6,3.1,7.6,7.6S77.1,66.8,72.7,66.8z"/>
+					</svg>
+					<p class="initiative_name">Hackathon</p>
+				</div>
+				<div class="initiative_update show-for-large-up">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+					<p><a href="#">Learn more ..</a></p>
+				</div>
+			</div>
+			<div class="column large-4 small-4 initiative" id="home_ig">
+				<div class="initiative_main">
+					<svg class="initiative_logo" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+					<path fill="#FFF" d="M83.1,25.3c-0.2-0.3-0.5-0.6-0.9-0.6c-0.4-0.1-0.8,0.1-1,0.3l-9.5,9.5h-5.3v-6.7l8.3-9.5
+						c0.2-0.3,0.3-0.6,0.3-1c-0.1-0.4-0.3-0.7-0.6-0.8c-2.9-1.5-6.1-2.3-9.4-2.3c-5.5,0-10.7,2.1-14.6,6c-6.1,6.1-7.8,15.3-4.2,23.1
+						L17.5,72c-1.4,1.3-2.1,3.1-2.1,5c0,1.9,0.7,3.7,2.1,5.1c1.3,1.3,3.1,2.1,5,2.1c1.9,0,3.7-0.7,5-2.1l28.7-28.7
+						c2.7,1.2,5.6,1.9,8.6,1.9c0,0,0,0,0,0c5.5,0,10.6-2.1,14.5-6C85.7,42.9,87.2,33.3,83.1,25.3z M77.7,47.6c-3.4,3.4-8,5.3-12.9,5.3h0
+						c-2.9,0-5.7-0.7-8.3-2c-0.5-0.2-1-0.1-1.4,0.2L25.9,80.4c-0.9,0.9-2.1,1.4-3.4,1.4c-1.3,0-2.5-0.5-3.4-1.4c-0.9-0.9-1.4-2.1-1.4-3.4
+						c0-1.3,0.5-2.5,1.4-3.4l29.3-29.3c0.4-0.4,0.5-0.9,0.2-1.4C45,36,46.4,27.5,52,21.8c3.4-3.4,8-5.3,12.9-5.3c2.4,0,4.8,0.5,6.9,1.4
+						l-7.6,8.7c-0.2,0.2-0.3,0.5-0.3,0.8v8.4c0,0.7,0.5,1.2,1.2,1.2h6.9c0.3,0,0.6-0.1,0.8-0.3l8.7-8.6C84.4,34.6,82.9,42.3,77.7,47.6z"
+						/>
+					<p class="initiative_name">Innovation Garage</p>
+				</div>
+				<div class="initiative_update show-for-large-up">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+					<p><a href="#">Learn more ..</a></p>
+				</div>
+			</div>
+			<div class="column large-4 small-4 initiative" id="home_crowdfunding">
+				<div class="initiative_main">
+					<svg class="initiative_logo" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+					<g>
+						<path fill="#FFF" d="M34.5,46.5h13.1v-2.3c0-2.3-1.5-4.4-3.5-5L37,37.4V35c2.9-1.9,4.9-5.3,4.9-9.3c0-6-4.5-10.8-10-10.8
+							c-5.5,0-10,4.9-10,10.8c0,3.8,1.9,7.2,4.6,9.1v2.6l-6.9,1.8c-2.1,0.6-3.7,2.7-3.7,4.9v2.4h15.7H34.5z M31.9,17.2
+							c3.6,0,6.5,2.7,7.4,6.3c-0.5,0.2-1.3,0.4-2.1,0.2c-0.7-0.1-2.1-0.5-2.8-1.8c-0.2-0.3-0.5-0.6-0.9-0.6c-0.4-0.1-0.7,0.1-1,0.3
+							c-2.4,2.4-5.9,2.4-8,1.5C25.5,19.7,28.4,17.2,31.9,17.2z M24.2,25.7c0-0.1,0-0.1,0-0.2c2.6,0.9,6.2,0.7,9-1.3
+							c0.9,1,2.2,1.7,3.7,1.9c0.3,0.1,0.7,0.1,1,0.1c0.6,0,1.2-0.1,1.7-0.2c-0.1,4.6-3.5,8.3-7.7,8.3C27.6,34.2,24.2,30.4,24.2,25.7z
+							 M18.2,44.1L18.2,44.1c0-1.2,0.9-2.4,2-2.7l8.6-2.3V36c1,0.3,2,0.5,3.1,0.5c1,0,1.9-0.2,2.8-0.4v3.1l8.8,2.3c1,0.3,1.7,1.5,1.7,2.7
+							H34.5h-3H18.2z"/>
+						<path fill="#FFF" d="M81.6,39.2l-7.1-1.8V35c2.9-1.9,4.9-5.3,4.9-9.3c0-6-4.5-10.8-10-10.8c-5.5,0-10,4.9-10,10.8
+							c0,3.8,1.9,7.2,4.6,9.1v2.6l-6.9,1.8c-2.1,0.6-3.7,2.7-3.7,4.9v2.4h15.7h3h13.1v-2.3C85.1,41.9,83.6,39.7,81.6,39.2z M69.4,17.2
+							c3.6,0,6.5,2.7,7.4,6.3c-0.5,0.2-1.3,0.4-2.1,0.2c-0.7-0.1-2.1-0.5-2.8-1.8c-0.2-0.3-0.5-0.6-0.9-0.6c-0.4-0.1-0.7,0.1-1,0.3
+							c-2.4,2.4-5.9,2.4-8,1.5C63,19.7,65.9,17.2,69.4,17.2z M61.7,25.7c0-0.1,0-0.1,0-0.2c2.6,0.9,6.2,0.7,9-1.3c0.9,1,2.2,1.7,3.7,1.9
+							c0.3,0.1,0.7,0.1,1,0.1c0.6,0,1.2-0.1,1.7-0.2c-0.1,4.6-3.5,8.3-7.7,8.3C65.1,34.2,61.7,30.4,61.7,25.7z M72,44.1h-3H55.8v-0.1
+							c0-1.1,0.9-2.3,2-2.6l8.6-2.3V36c1,0.3,2,0.5,3.1,0.5c1,0,1.9-0.2,2.8-0.4v3.1l8.8,2.3c1,0.3,1.7,1.5,1.7,2.7H72z"/>
+						<path fill="#FFF" d="M62.2,76.5l-6.7-1.9v-2.6c2.7-2,4.4-5.3,4.4-9c0-6-4.5-10.8-10-10.8s-10,4.9-10,10.8c0,3.7,1.8,7,4.4,9v2.6
+							l-6.7,1.9c-2.1,0.6-3.7,2.7-3.7,4.9V84h14.5h3h14.5v-2.7C65.9,79.2,64.2,77.1,62.2,76.5z M49.9,54.4c3.5,0,6.5,2.6,7.4,6.2
+							c-0.5,0.2-1.3,0.4-2.2,0.3c-0.7-0.1-2-0.5-2.7-1.8c-0.2-0.3-0.5-0.6-0.9-0.6c-0.4-0.1-0.7,0.1-1,0.3c-2.4,2.4-5.9,2.4-8,1.5
+							C43.6,56.9,46.5,54.4,49.9,54.4z M42.2,62.9c0-0.1,0-0.1,0-0.2c2.6,0.9,6.2,0.7,9-1.3c0.9,1,2.2,1.6,3.6,1.8c0.3,0,0.7,0.1,1,0.1
+							c0.6,0,1.3-0.1,1.8-0.3c0,4.6-3.5,8.4-7.7,8.4C45.7,71.4,42.2,67.6,42.2,62.9z M63.5,81.7H51.4h-3H36.3v-0.3c0-1.1,0.9-2.3,2-2.6
+							l8.4-2.4v-3.1c1,0.4,2.1,0.6,3.3,0.6c1.1,0,2.2-0.2,3.3-0.6v3.1l8.4,2.4c1.1,0.3,2,1.5,2,2.6V81.7z"/>
+						<path fill="#FFF" d="M34.5,56.9l-7.4-7.4c-0.5-0.5-1.2-0.5-1.7,0c-0.5,0.5-0.5,1.2,0,1.7l7.4,7.4c0.2,0.2,0.5,0.3,0.8,0.3
+							c0.3,0,0.6-0.1,0.8-0.3C34.9,58.1,34.9,57.3,34.5,56.9z"/>
+						<path fill="#FFF" d="M72.7,49.5l-7.4,7.4c-0.5,0.5-0.5,1.2,0,1.7c0.2,0.2,0.5,0.3,0.8,0.3c0.3,0,0.6-0.1,0.8-0.3l7.4-7.4
+							c0.5-0.5,0.5-1.2,0-1.7C73.9,49,73.2,49,72.7,49.5z"/>
+					</g>
+					</svg>
+					<p class="initiative_name">Crowd Funding</p>
+				</div>
+				<div class="initiative_update show-for-large-up">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+					<p><a href="#">Learn more ..</a></p>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div id="home_update_container">
+		<div id="home_update" class="content">
+			<p class="heading">Attention</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+			<a href="#" class="cta">Register Now</a>
+		</div>
+	</div>
+	<div id="home_stats" class="content">
+		<div class="row">
+			<div class="column large-4 medium-12 small-12 home_stat">
+				<p class="home_stat_number">3</p>
+				<p class="home_stat_text heading">Patents Filed</p>
+			</div>
+			<div class="column large-4 medium-12 small-12 home_stat">
+				<p class="home_stat_number">6.3m</p>
+				<p class="home_stat_text heading">INR Raised</p>
+			</div>
+			<div class="column large-4 medium-12 small-12 home_stat">
+				<p class="home_stat_number">45</p>
+				<p class="home_stat_text heading">Projects</p>
+			</div>
+		</div>
+	</div>
+	<div id="home_testimonial_container">
+		<div id="home_testimonial" class="content">
+			<p id="home_testimonial_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+			<img id="home_testimonial_picture" src="{{STATIC_URL}}newimg/barack.png">
+			<p id="home_testimonial_name">Barack Obama</p>
+			<p id="home_testimonial_designation">President, United States of America</p>
+		</div>
+	</div>
+	<div id="home_news" class="content">
+		<p class="heading">In the news</p>
+		<div class="row">
+			<div class="column small-12 large-6">
+				<img class="news_logo" src="{{STATIC_URL}}newimg/yourstory.png">
+				<p class="news_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua asfasf asf asf.</p>
+			</div>
+			<div class="column small-12 large-6">
+				<img class="news_logo" src="{{STATIC_URL}}newimg/thehans.png">
+				<p class="news_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ohwdg jba sf .</p>
+			</div>
+		</div>
+	</div>
+	<div id="home_contact_container">
+		<div id="home_contact" class="content">
+			<div id="home_contact_input" class="clearfix">
+				<input placeholder="Enter Email Address">
+				<a href='#' id="home_contact_submit" class="show-for-large-up">
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+					<path fill="#fff" d="M79.8,48.8c0.1-0.2,0.1-0.5,0-0.8c-0.1-0.1-0.1-0.2-0.2-0.3L67.6,35.8c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4l10.2,10.2
+						H21.1c-0.6,0-1,0.4-1,1c0,0.6,0.4,1,1,1h55.3L66.2,59.7c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.4,0.3,0.7,0.3s0.5-0.1,0.7-0.3l11.9-11.9
+						C79.7,49.1,79.7,48.9,79.8,48.8z"/>
+				</a>
+			</div>
+			<div class="hide-for-large-up">
+				<a href="#" id="home_contact_submit_mobile" class="cta">Submit</a>
+			</div>
+			<p id="enter_details_text">Leave us your contact details to get a consolidated update every month.</p>
+			<p id="follow_lakshya">Follow Lakshya on Facebook</p>
+
+		</div>		
+	</div>
 </div>
 
 {% endblock content %}
