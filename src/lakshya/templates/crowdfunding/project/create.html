@@ -1,0 +1,134 @@
+{%extends "crowdfunding/base.html"%}
+{%block content%} 
+<div class="container-fluid">
+
+    <div class="row">
+        {%if user.is_authenticated %} {%if messages %}{% for message in messages %}
+        <div class="container-fluid">
+            <div class="alert alert-{{message.tags}} fade in" style="text-align:center;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{ message|safe }}
+            </div>
+                    {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-error">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-error">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+            {% endif %}
+                </div>
+                {% endfor %}{% endif %}
+
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            {%if mode == 'create' %}
+            <form class="form-horizontal well" method="POST" action="{{BASE_URL}}/project/create" enctype="multipart/form-data" id="project_form">{% csrf_token %}
+            {% elif mode == 'edit' %}
+            <form class="form-horizontal well" method="POST" action="{{BASE_URL}}/project/{{id}}/edit" enctype="multipart/form-data" id="project_form">{% csrf_token %}
+            {% endif %}
+
+                <section><h1 style="text-align: center;">Create Project</h1></section>
+                
+               <br/> 
+                <p>{{ form.non_field_errors }}</p>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="control-label" for="project_name">Project Name</label>
+                    <div class="controls">
+                        {{form.title}}
+                    </div>
+                </div>
+                <!-- Textarea -->
+
+                <div class="form-group">
+                    <label class="control-label" for="project_desc">One Line Project Description</label>
+                    <div class="controls">
+                        {{form.summary}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="project_desc">Team</label>
+                    <div class="controls">
+                        {{form.team}}
+                    </div>
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="control-label" for="money_req">Money Required</label>
+                    <div class="controls">
+                        {{form.goal}}
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="control-label" for="days_req">Days required</label>
+                    <div class="controls">
+                        {{form.period}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="video_link">Link to video:</label>
+                    <div class="controls">
+                        {{form.video_url}}
+                    </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class="control-label" for="details">Detailed Explanation:</label>
+                    <div class="controls">
+                        {{form.description}}
+                    </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class="control-label" for="risks_and_challenges">Risks and Challenges:</label>
+                    <div class="controls">
+                        {{form.risks_and_challenges}}
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label" for="risks_and_challenges">Start Date: </label>
+                    <div class="controls">
+                        {{form.start_date}}
+                    </div>
+                </div>
+
+                
+                <div class="form-group">
+                    <label class="control-label" for="submit"></label>
+                    <div class="controls">
+                        <input type="button" id="btnSubmit" name="btnSubmit" class="btn btn-success" value="Submit" onclick="submit();">
+                    </div>
+                </div>
+
+                </fieldset>
+            </form>
+        </div>
+        <script>
+        function form_submit(){
+            var t=document.getElementById('project_form');
+            document.getElementById('project_form').submit();
+        }
+         
+        </script> 
+        {%else%}
+        <div class="jumbotron">
+            <p class="lead">You must be logged in to create a project.</p>
+        </div>
+        {%endif%}
+    </div>
+</div>
+{% endblock %}

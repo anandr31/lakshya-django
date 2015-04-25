@@ -8,6 +8,37 @@ PROJECT_DIR = os.path.dirname(PROJECT_APP_DIR)
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+LOGIN_URL          = '/login/'
+LOGIN_REDIRECT_URL = '/crowdfunding/project/'
+#LOGIN_ERROR_URL    = '/login-error/'
+FACEBOOK_APP_ID              = '1491007234499273'
+FACEBOOK_API_SECRET          = '4d66a689da751a7d5eeef54381a16c23'
+
+GOOGLE_OAUTH2_CLIENT_ID = '644166177318-3bcif9eb1k4oe18avmc2sucr0o3e61as.apps.googleusercontent.com'
+GOOGLE_OAUTH2_CLIENT_SECRET = 'iQ4XxxHStUuz0iwO8UgQKuhP'
+
+SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
+SOCIAL_AUTH_UID_LENGTH = 128
+SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
+SOCIAL_AUTH_NONCE_SERVER_URL_LENGTH = 16
+SOCIAL_AUTH_ASSOCIATION_SERVER_URL_LENGTH = 16
+SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
+SOCIAL_AUTH_ENABLED_BACKENDS = ('facebook', 'google')
+SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer'
+FACEBOOK_EXTENDED_PERMISSIONS = ['email']
+# Application definition
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_auth.backends.pipeline.social.social_auth_user',
+    'social_auth.backends.pipeline.associate.associate_by_email',
+    'social_auth.backends.pipeline.user.get_username',
+    'social_auth.backends.pipeline.user.create_user',
+    'social_auth.backends.pipeline.social.associate_user',
+    'social_auth.backends.pipeline.social.load_extra_data',
+    'social_auth.backends.pipeline.user.update_user_details'
+    )
+
+
 ADMINS = (
      ('Srihari Maneru', 'srihari@thelakshyafoundation.org'),
 )
@@ -141,6 +172,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'people',
+    'crowdfunding',
     'accounts',
     'innovation',
     'research',

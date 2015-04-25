@@ -1,0 +1,37 @@
+{%extends "crowdfunding/base.html"%}
+{%block content%} 
+
+
+<!--link rel="stylesheet" href="{{STATIC_URL}}css/style.css">
+<link rel="stylesheet" href="{{STATIC_URL}}css/animate.min.css">
+<link rel="stylesheet" href="{{STATIC_URL}}css/font-awesome.min.css"-->
+<!--[if lt IE 9]>
+    <script src="{{STATIC_URL}}js/html5shiv.js"></script>
+    <script src="{{STATIC_URL}}js/respond.min.js"></script>
+    <![endif]-->
+
+<div class="container-fluid">
+
+    <div class="row">
+        {%if user.is_authenticated %} {%if messages %}{% for message in messages %}
+        <div class="container-fluid">
+            <div class="alert alert-{{message.tags}} fade in" style="text-align:center;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{ message|safe }}
+            </div>
+         {% endfor %}{% endif %}
+        <div class="jumbotron">
+        	<div>
+        		{{project.title}} by {{project.author}}
+        	</div>
+        	
+        </div>
+        </div> 
+        {%else%}
+        <div class="jumbotron">
+            <p class="lead">You must be logged in to view project.</p>
+        </div>
+        {%endif%}
+    </div>
+</div>
+{% endblock %}
