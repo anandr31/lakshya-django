@@ -31,13 +31,12 @@ def register(request):
     if hackathon is None:
         return render_to_response('hackathon/register.html', RequestContext(request,{'finished':'True'}))
 
-    if request.method == 'POST':
+    if request.method == 'POST' and request.user.is_authenticated():
         form = RegForm(request.POST)
         if form.is_valid():
-            name = form.cleaned_data['name']
+            user = request.user
             mobile = form.cleaned_data['mobile']
             team = form.cleaned_data['team']
-            email = form.cleaned_data['email']
             problem = form.cleaned_data['problem']
             year = form.cleaned_data['year']
             course = form.cleaned_data['course']
@@ -70,7 +69,7 @@ def get_email(request):
         participants = Participant.objects.all()
         emails = []
         for participant in participants:
-            emails.append(participant.email)
+            emails.append(participant.user.email)
 
         return render(request,"hackathon/emails.html",{'emails':emails})
     else:
@@ -81,7 +80,7 @@ def get_email_by_prob_statement(request,problem_id):
         participants = Participant.objects.all().filter(problem_id=problem_id)
         emails = []
         for participant in participants:
-            emails.append(participant.email)
+            emails.append(participant.user.email)
 
         return render(request,"hackathon/emails.html",{'emails':emails})
     else:

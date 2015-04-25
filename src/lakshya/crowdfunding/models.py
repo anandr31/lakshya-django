@@ -64,7 +64,7 @@ class Project(models.Model):
 
     def get_image_urls(self):
         images = self.project_image.all().order_by('ordering')
-        return [i.image.url for i in images]
+        return [i.image.image for i in images]
 
     def get_primary_picture_url(self):
         images = self.project_image.all().order_by('ordering')
@@ -90,6 +90,9 @@ class ProjectImage(models.Model):
 	        else:
 	            self.ordering = 1
 	    super(ProjectImage, self).save(**kwargs)
+
+    def show_thumbnail(self):
+        return u'<img src="%s" width="100" height="100px"/>' % self.picture.url
 
 
 class Pledge(models.Model):

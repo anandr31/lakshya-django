@@ -1,7 +1,5 @@
 from django.contrib import admin
-from crowdfunding.models import Project, Pledge, ProjectImage, ProjectUpdate
-# Register your models here.
-
+from innovationgarage.models import Project, ProjectImage, Sponsor
 
 class ProjectImageInline(admin.TabularInline):
     model = ProjectImage
@@ -15,6 +13,5 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 
-admin.site.register(Project, ProjectAdmin)
-admin.site.register(Pledge)
-admin.site.register(ProjectUpdate)
+admin.site.register(Project, ProjectAdmin)admin.site.register(Sponsor)
+admin.site.register(Sponsor)

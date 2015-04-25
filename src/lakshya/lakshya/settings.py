@@ -38,6 +38,18 @@ SOCIAL_AUTH_PIPELINE = (
     'social_auth.backends.pipeline.user.update_user_details'
     )
 
+AUTHENTICATION_BACKENDS = (
+    # 'social.backends.open_id.OpenIdAuth',
+    #  'social_auth.backends.google.GoogleOpenId',
+    #  'social_auth.backends.google.GoogleOAuth2',
+    # 'social.backends.google.GoogleOAuth',
+    # 'social.backends.twitter.TwitterOAuth',
+    # 'social.backends.yahoo.YahooOpenId',
+    'social_auth.backends.google.GoogleOAuth2Backend',
+    'social_auth.backends.facebook.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend', # for django.contrib.auth username and password
+)
+
 
 ADMINS = (
      ('Srihari Maneru', 'srihari@thelakshyafoundation.org'),
@@ -135,7 +147,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'lakshya.urls'
@@ -157,6 +169,7 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
                                 "django.core.context_processors.static",
                                 "django.core.context_processors.tz",
                                 "django.contrib.messages.context_processors.messages",
+                                "social_auth.context_processors.social_auth_by_type_backends",
                                 "lakshya.context_processors.google_analytics",)
 
 INSTALLED_APPS = (
@@ -184,6 +197,8 @@ INSTALLED_APPS = (
     'notification',
     'nem',
     'hackathon',
+    'innovationgarage',
+    'social_auth',
 )
 
 # A sample logging configuration. The only tangible logging

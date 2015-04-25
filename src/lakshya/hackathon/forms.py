@@ -5,7 +5,7 @@ class RegistrationForm(forms.ModelForm):
 
     class Meta:
         model = Participant
-        fields =['name','email','mobile','team','problem']
+        fields =['mobile','team','problem']
 
     def clean(self):
         return super(RegistrationForm, self).clean()

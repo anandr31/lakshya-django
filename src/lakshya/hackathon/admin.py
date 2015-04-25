@@ -1,11 +1,11 @@
 from django.contrib import admin
 
-from hackathon.models import Participant, ProblemStatement, Hackathon, Sponsors, Contact, Mentor
+from hackathon.models import Participant, ProblemStatement, Hackathon, Sponsor, Mentor
 
 
 class ParticipantAdmin(admin.ModelAdmin):
-    list_display = ('name', 'YEAR', 'COURSE', 'BRANCH', 'email', 'mobile')
-    search_fields = ('name', 'email',)
+    list_display = ('NAME', 'YEAR', 'COURSE', 'BRANCH', 'email', 'mobile')
+    search_fields = ('NAME', 'email',)
     list_filter = ('year',)
 
 
@@ -20,15 +20,8 @@ class HackathonAdmin(admin.ModelAdmin):
 
 
 class SponsorsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'url', 'hackathon',)
-    search_fields = ('name', 'url',)
-
-
-class ContactAdmin(admin.ModelAdmin):
-    list_display = ('name', 'company', 'contact_info', 'type', 'created')
-    search_fields = ('name', 'contact_info', 'company')
-    list_filter = ('type',)
-
+    list_display = ('name', 'website', 'hackathon',)
+    search_fields = ('name', 'website',)
 
 class MentorAdmin(admin.ModelAdmin):
     list_display = ('name', 'hackathon',)
@@ -38,6 +31,5 @@ class MentorAdmin(admin.ModelAdmin):
 admin.site.register(Participant, ParticipantAdmin)
 admin.site.register(ProblemStatement, ProblemStatementAdmin)
 admin.site.register(Hackathon, HackathonAdmin)
-admin.site.register(Sponsors, SponsorsAdmin)
-admin.site.register(Contact, ContactAdmin)
+admin.site.register(Sponsor, SponsorsAdmin)
 admin.site.register(Mentor, MentorAdmin)
