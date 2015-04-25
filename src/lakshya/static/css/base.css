@@ -39,6 +39,11 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+table {
+	border: none;
+	background: transparent;
+}
+
 /* Overrides */
 .row {
 	max-width: 98rem;
@@ -52,6 +57,10 @@ a.cta {
 	color: #fff;
 	background: #00b4ff;
 	padding: 1rem 4rem;
+}
+
+a.cta.hackathon {
+	background: #e31b4a;
 }
 
 #content_container {
@@ -184,10 +193,8 @@ p.heading {
 }
 
 #footer table.heading {
-	border: none;
 	border-bottom: 1px solid #6f6f6f;
 	height: 6.5rem;
-	background: transparent;
 	width: 100%;
 }
 
@@ -404,7 +411,6 @@ p, a, li, span {
 #home_testimonial #home_testimonial_name {
 	margin-top: 1rem;
 	font-weight: 700;
-	margin: 0;
 }
 
 #home_testimonial #home_testimonial_designation {
@@ -489,4 +495,228 @@ p, a, li, span {
 	padding: 1rem 6rem;
 	font-size: 1.8rem;
 	margin-top: 2rem;
+}
+
+
+/* Hackathon home page */
+#hackathon_home {
+
+}
+
+#hackathon_hero {
+	height: 51.2rem;
+	background: url('../newimg/hero_hackathon.png');
+	background-size: cover;
+	background-position: center center;	
+}
+
+#hackathon_hero {
+	text-align: center;
+}
+
+#hackathon_hero #hackathon_logo {
+	margin: 8rem 0 3rem;
+	width: 16rem;
+}
+
+#hackathon_hero #hackathon_hero_content_container {
+	padding: 3rem 6rem;
+	background: #2f2f2f;
+	color: #fff;
+	max-width: 60rem;
+	margin: 0 auto;
+}
+
+#hackathon_hero #hackathon_hero_content_container #hackathon_hero_heading {
+	color: #e31b4a;	
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 1.6rem;
+}
+
+#hackathon_hero #hackathon_hero_content_container p {
+
+}
+
+#hackathon_upcoming_container {
+	background: #f3f3f3;
+	padding: 4rem 0;
+	text-align: center;
+}
+
+#hackathon_upcoming p.title {
+	font-weight: 300;
+	font-size: 4.5rem;
+	text-transform: uppercase;
+	color: #e31b4a;
+}
+
+#hackathon_upcoming div.column {
+	padding: 0 3rem;
+	margin-bottom: 5rem;
+}
+
+#hackathon_upcoming p.heading {
+	color: #9f9f9f;
+}
+
+#hackathon_upcoming img.participate_icon {
+	width: 4.5rem;
+	margin-bottom: 1rem;
+}
+
+#hackathon_upcoming p.participate_text {
+	font-size: 1.5rem;
+	line-height: 1.8;
+	margin-bottom: 1.5rem;
+}
+
+#hackathon_stats {
+	padding: 4rem 0;
+	text-align: center;
+}
+
+#hackathon_stats .hackathon_stat {
+	text-align: center;
+}
+
+#hackathon_stats p.hackathon_stat_number {
+	color: #e31b4a;
+	font-size: 10rem;
+	font-weight: 300;
+	margin-bottom: -1rem;
+}
+
+#hackathon_stats div.column {
+	margin-bottom: 4rem;
+}
+
+#hackathon_history_container {
+	background: #f9f9f9;
+}
+
+#hackathon_history {
+	padding: 6rem 0;
+	text-align: center;
+}
+
+#hackathon_history p.heading {
+	margin-bottom: 3rem;
+}
+
+#hackathon_history select {
+	height: 5.1rem;
+	max-width: 36.6rem;
+	width: 70%;
+	font-size: 1.6rem !important;
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+#hackathon_history a.cta.hackathon {
+	background: #a1a1a1;
+	display: inline-block;
+	padding: 0;
+	vertical-align: bottom;
+	margin-left: -5px;
+}
+
+#hackathon_history a.cta.hackathon svg {
+	height: 5.1rem;
+
+}
+
+#hackathon_history #hackathon_dropdown_container {
+	margin: 0 auto;
+}
+
+#hackathon_testimonial {
+	text-align: center;
+	padding: 6.7rem 0;
+}
+
+#hackathon_testimonial #hackathon_testimonial_text {
+	font-size: 1.5rem;
+	font-style: italic;
+	line-height: 2.2;
+	padding: 0 3rem;
+}
+
+#hackathon_testimonial #hackathon_testimonial_picture {
+	width: 8rem;
+	border-radius: 100%;
+	margin-top: 2rem;
+}
+
+#hackathon_testimonial #hackathon_testimonial_name {
+	margin: 2rem 0 0.8rem;
+	font-weight: 700;
+}
+
+#hackathon_testimonial #hackathon_testimonial_designation {
+	font-style: italic;
+}
+
+#hackathon_mentorship_container {
+	border-top: 2px solid #e31b4a;
+	padding: 4.2rem 0;
+	background: #f9f9f9;
+}
+
+#hackathon_mentorship {
+	text-align: center;
+}
+
+#hackathon_mentorship a.cta.hackathon {
+	text-align: center;
+	margin-top: 1.6rem;
+	margin-bottom: 3.2rem;
+}
+
+#hackathon_mentorship p.subheading {
+	text-transform: uppercase;
+	margin-bottom: 2.8rem;
+}
+
+#hackathon_mentorship div.mentor table {
+	margin: 0 auto;
+}
+
+#hackathon_mentorship div.mentor p.mentor_name {
+	font-weight: 700;
+	margin-top: 1rem;
+	margin-bottom: 0;
+}
+
+#hackathon_mentorship p.heading {
+	color: #e31b4a;
+}
+
+#hackathon_sponsorship_container {
+	border-top: 2px solid #e31b4a;
+	padding: 4.2rem 0;
+	background: #f9f9f9;
+}
+
+#hackathon_sponsorship {
+	text-align: center;
+}
+
+#hackathon_sponsorship a.cta.hackathon {
+	text-align: center;
+	margin-top: 1.6rem;
+	margin-bottom: 3.2rem;
+}
+
+#hackathon_sponsorship p.subheading {
+	text-transform: uppercase;
+	margin-bottom: 2.8rem;
+}
+
+#hackathon_sponsorship p.heading {
+	color: #e31b4a;
+}
+
+#hackathon_sponsorship div.column {
+	margin-bottom: 3rem;
 }

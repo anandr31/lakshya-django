@@ -6,6 +6,7 @@ from views import *
 
 urlpatterns = patterns('',
                        url(r'^$', index, name='index'),
+                       url(r'^newhome/?$', HackathonHomeView.as_view(), name='newhome'),
                        url(r'^register/?$', register, name='register'),
                        url(r'^emails/?$', get_email, name='emails'),
                        url(r'^emails/(?P<problem_id>\d+)/?$',get_email_by_prob_statement, name='emails_prob'),

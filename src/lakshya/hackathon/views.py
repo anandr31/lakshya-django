@@ -4,6 +4,7 @@ from forms import RegistrationForm, RegForm
 from django.shortcuts import render_to_response, render, get_object_or_404
 from django.template.context import RequestContext
 from models import *
+from django.views.generic.base import TemplateView
 
 # Create your views here.
 
@@ -117,3 +118,7 @@ def student_details(request):
         return render(request,'hackathon/students.html',{'students':participants})
     else:
         return HttpResponseRedirect('/admin')
+
+
+class HackathonHomeView(TemplateView):
+    template_name = 'hackathon/home.html'

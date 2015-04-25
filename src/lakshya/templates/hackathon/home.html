@@ -1,0 +1,162 @@
+{% extends "newbase.html" %}
+
+{% block scripts %}
+<script type="text/javascript">
+	$(function() {
+
+	});
+</script>
+{% endblock scripts %}
+
+{% block content %}
+<div id="hackathon_home">
+	<div id="hackathon_hero">
+		<img id="hackathon_logo" src="{{STATIC_URL}}newimg/icons/hackathon_mobile.svg">
+		<div id="hackathon_hero_content_container">
+			<p id="hackathon_hero_heading">Solving real problems together</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam Ut enim ad minim veniam</p>
+		</div>
+	</div>
+	<div id="hackathon_upcoming_container">
+		<div id="hackathon_upcoming" class="content">
+			<p class="heading">Upcoming event</p>
+			<p class="title">Hackathon 4.0</p>
+			<div class="row">
+				<div class="column large-4 small-12">
+					<img class="participate_icon" src="{{STATIC_URL}}newimg/icons/hacker.svg">
+					<p class="heading">Hacker</p>
+					<p class="participate_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+					<a href="#" class="cta hackathon">Register Now</a>
+				</div>
+				<div class="column large-4 small-12">
+					<img class="participate_icon" src="{{STATIC_URL}}newimg/icons/mentor.svg">
+					<p class="heading">Mentor</p>
+					<p class="participate_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+					<a href="#" class="cta hackathon">Mentor a Team</a>
+				</div>
+				<div class="column large-4 small-12">
+					<img class="participate_icon" src="{{STATIC_URL}}newimg/icons/sponsor.svg">
+					<p class="heading">Sponsor</p>
+					<p class="participate_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+					<a href="#" class="cta hackathon">Push Innovation</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="hackathon_stats" class="content">
+		<div class="row">
+			<div class="column large-4 medium-12 small-12 home_stat">
+				<p class="hackathon_stat_number">3</p>
+				<p class="hackathon_stat_text heading">Patents Filed</p>
+			</div>
+			<div class="column large-4 medium-12 small-12 hackathon_stat">
+				<p class="hackathon_stat_number">6.3m</p>
+				<p class="hackathon_stat_text heading">INR Raised</p>
+			</div>
+			<div class="column large-4 medium-12 small-12 hackathon_stat">
+				<p class="hackathon_stat_number">45</p>
+				<p class="hackathon_stat_text heading">Projects</p>
+			</div>
+		</div>
+	</div>
+	<div id="hackathon_history_container">
+		<div id="hackathon_history" class="content">
+			<p class="heading">Completed events</p>
+			<div id="hackathon_dropdown_container" class="clearfix">
+				<div>
+					<select>
+						<option>Jan 2014: Hackathon v1.0</option>
+						<option>Mar 2014: Hackathon v2.0</option>
+						<option>Jan 2014: Hackathon v3.0</option>
+					</select>
+					<a href="#" class="cta hackathon">
+						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+						<path fill="#fff" d="M79.8,48.8c0.1-0.2,0.1-0.5,0-0.8c-0.1-0.1-0.1-0.2-0.2-0.3L67.6,35.8c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4l10.2,10.2
+							H21.1c-0.6,0-1,0.4-1,1c0,0.6,0.4,1,1,1h55.3L66.2,59.7c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.4,0.3,0.7,0.3s0.5-0.1,0.7-0.3l11.9-11.9
+							C79.7,49.1,79.7,48.9,79.8,48.8z"/>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="hackathon_testimonial" class="content">
+		<p id="hackathon_testimonial_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+		<img id="hackathon_testimonial_picture" src="{{STATIC_URL}}newimg/barack.png">
+		<p id="hackathon_testimonial_name">Barack Obama</p>
+		<p id="hackathon_testimonial_designation">President, United States of America</p>
+	</div>
+	<div id="hackathon_mentorship_container">
+		<div id="hackathon_mentorship" class="content">
+			<p class="heading">Mentorship</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exer</p>
+			<a href="#" class="cta hackathon">Be a mentor</a>
+			<p class="subheading">Some previous mentors</p>
+			<div class="row">
+				<div class="column small-12 large-4 mentor">
+					<table>
+						<tr>
+							<td>
+								<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
+							</td>
+							<td>
+								<p class="mentor_name">Barack Obama</p>
+								<p class="mentor_designation">President</p>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="column small-12 large-4 mentor">
+					<table>
+						<tr>
+							<td>
+								<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
+							</td>
+							<td>
+								<p class="mentor_name">Barack Obama</p>
+								<p class="mentor_designation">President</p>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="column small-12 large-4 mentor">
+					<table>
+						<tr>
+							<td>
+								<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
+							</td>
+							<td>
+								<p class="mentor_name">Barack Obama</p>
+								<p class="mentor_designation">President</p>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="hackathon_sponsorship_container">
+		<div id="hackathon_sponsorship" class="content">
+			<p class="heading">Sponsorship</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exer</p>
+			<a href="#" class="cta hackathon">Be a sponsor</a>
+			<p class="subheading">Some previous sponsors</p>
+			<div class="row">
+				<div class="column small-6 large-3">
+					<img src="{{STATIC_URL}}newimg/sponsors/sponsor1.png">
+				</div>
+				<div class="column small-6 large-3">
+					<img src="{{STATIC_URL}}newimg/sponsors/sponsor2.png">
+				</div>
+				<div class="column small-6 large-3">
+					<img src="{{STATIC_URL}}newimg/sponsors/sponsor3.png">
+				</div>
+				<div class="column small-6 large-3">
+					<img src="{{STATIC_URL}}newimg/sponsors/sponsor4.png">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}
