@@ -28,6 +28,10 @@ def get_project_json_data(p, request):
     return data
 
 
+class IndexView(TemplateView):
+    template_name = 'crowdfunding/home.html'
+
+
 class ProjectCreateView(TemplateView):
 
     template_name = 'project/create.html'
