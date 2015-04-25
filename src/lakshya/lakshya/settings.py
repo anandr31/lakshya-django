@@ -157,7 +157,6 @@ INSTALLED_APPS = (
     'nem',
     'hackathon',
     'innovationgarage',
-    'social_auth',
     'tinymce',
 )
 
