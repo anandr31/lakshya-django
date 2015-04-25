@@ -137,6 +137,8 @@ p.heading {
 #menu .top-bar-section ul {
 	width: 80%;
 	max-width: 30rem;
+	z-index: 4;
+  	position: relative;
 }
 
 #menu .top-bar-section ul li {
@@ -266,11 +268,11 @@ p, a, li, span {
 	margin-top: 2rem;
 }
 
-#home_hero svg.initiative_logo {
+#home_hero .initiative_logo {
 	width: 14rem;
 	border-radius: 100%;
 	border: 2px solid #fff;
-	margin-top: 4rem;
+	margin: 4rem auto 0;
 }
 
 #home_hero .initiative_update p {
@@ -325,7 +327,7 @@ p, a, li, span {
 
 @media only screen and (max-width: 64em) { /* Small and medium */
 	#home_hero .initiative {
-		padding-top: 25rem;
+		height: 30%;
 	}
 	#home_hero .initiative_main {
 		border: none;
@@ -333,14 +335,15 @@ p, a, li, span {
 	#home_hero .initiative:hover {
 		background: transparent !important;
 	}
-	#home_hero #home_hackathon p.initiative_name {
-		color: #e31b4a;
+	#home_hero .initiative_logo {
+		border: none;
+		max-height: 8rem;
 	}
-	#home_hero #home_ig p.initiative_name {
-		color: #f75b22;
+	#home_hero .initiative:hover .initiative_name {
+		color: #fff;
 	}
-	#home_hero #home_crowdfunding p.initiative_name {
-		color: #01b49e;
+	#home_hero .initiative_main p.initiative_name {
+		margin-top: 0.8rem;
 	}
 }
 
