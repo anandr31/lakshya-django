@@ -1,54 +1,12 @@
 # Django settings for lakshya project.
 import os
 
-#django 1.4, the settings file is moved inside the app. 
+#django 1.4, the settings file is moved inside the app.
 PROJECT_APP_DIR = os.path.realpath(os.path.dirname(__file__))
 PROJECT_DIR = os.path.dirname(PROJECT_APP_DIR)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
-LOGIN_URL          = '/login/'
-LOGIN_REDIRECT_URL = '/crowdfunding/project/'
-#LOGIN_ERROR_URL    = '/login-error/'
-FACEBOOK_APP_ID              = '1491007234499273'
-FACEBOOK_API_SECRET          = '4d66a689da751a7d5eeef54381a16c23'
-
-GOOGLE_OAUTH2_CLIENT_ID = '644166177318-3bcif9eb1k4oe18avmc2sucr0o3e61as.apps.googleusercontent.com'
-GOOGLE_OAUTH2_CLIENT_SECRET = 'iQ4XxxHStUuz0iwO8UgQKuhP'
-
-SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
-SOCIAL_AUTH_UID_LENGTH = 128
-SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
-SOCIAL_AUTH_NONCE_SERVER_URL_LENGTH = 16
-SOCIAL_AUTH_ASSOCIATION_SERVER_URL_LENGTH = 16
-SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
-SOCIAL_AUTH_ENABLED_BACKENDS = ('facebook', 'google')
-SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer'
-FACEBOOK_EXTENDED_PERMISSIONS = ['email']
-# Application definition
-
-SOCIAL_AUTH_PIPELINE = (
-    'social_auth.backends.pipeline.social.social_auth_user',
-    'social_auth.backends.pipeline.associate.associate_by_email',
-    'social_auth.backends.pipeline.user.get_username',
-    'social_auth.backends.pipeline.user.create_user',
-    'social_auth.backends.pipeline.social.associate_user',
-    'social_auth.backends.pipeline.social.load_extra_data',
-    'social_auth.backends.pipeline.user.update_user_details'
-    )
-
-AUTHENTICATION_BACKENDS = (
-    # 'social.backends.open_id.OpenIdAuth',
-    #  'social_auth.backends.google.GoogleOpenId',
-    #  'social_auth.backends.google.GoogleOAuth2',
-    # 'social.backends.google.GoogleOAuth',
-    # 'social.backends.twitter.TwitterOAuth',
-    # 'social.backends.yahoo.YahooOpenId',
-    'social_auth.backends.google.GoogleOAuth2Backend',
-    'social_auth.backends.facebook.FacebookBackend',
-    'django.contrib.auth.backends.ModelBackend', # for django.contrib.auth username and password
-)
 
 
 ADMINS = (
@@ -95,7 +53,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_DIR,'media')
+MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -119,7 +77,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_DIR,'static'),
+    os.path.join(PROJECT_DIR, 'static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -159,7 +117,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_DIR,'templates'),
+    os.path.join(PROJECT_DIR, 'templates'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
@@ -182,6 +140,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'django.contrib.humanize',
+    'social.apps.django_app.default',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'people',
@@ -232,6 +191,42 @@ LOGGING = {
 }
 
 EMAIL_SUBJECT_PREFIX = ""
+
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'social.backends.facebook.Facebook2OAuth2',
+    'social.backends.google.GoogleOAuth2',
+)
+
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/'
+#LOGIN_ERROR_URL    = '/login-error/'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1491007234499273'
+SOCIAL_AUTH_FACEBOOK_SECRET = '4d66a689da751a7d5eeef54381a16c23'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_friends', 'public_profile']
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '73327416791-jf1gscj9uhnh9hfqd8i41kqmbspo6af5.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'u21sq8_SMCulJyqg0zZQpqpo'
+
+#SOCIAL_AUTH_USER_MODEL = 'django.contrib.auth.models.User'
+SOCIAL_AUTH_DEFAULT_USERNAME = 'socialauth_user'
+SOCIAL_AUTH_ERROR_KEY = 'socialauth_error'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/new_user'
+SOCIAL_AUTH_INACTIVE_USER_URL = '/'
+SOCIAL_AUTH_ERROR_KEY = 'social_errors'
+
+SOCIAL_AUTH_UID_LENGTH = 128
+SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
+SOCIAL_AUTH_NONCE_SERVER_URL_LENGTH = 16
+SOCIAL_AUTH_ASSOCIATION_SERVER_URL_LENGTH = 16
+SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
+
+SOUTH_MIGRATION_MODULES = {
+    'default': 'social.apps.django_app.default.south_migrations'
+}
 
 # Load the local settings
 # This should be at the end for overriding

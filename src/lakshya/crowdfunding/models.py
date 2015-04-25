@@ -124,4 +124,4 @@ class ProjectUpdate(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return update[:50]
+        return  self.update[:50]

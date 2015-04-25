@@ -8,13 +8,17 @@ from django.conf import settings
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from lakshya.views import HomeView
 admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'lakshya.views.get_home_page', name='home'),
+    url(r'^newhome/?$', HomeView.as_view(), name='home'),
+    url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^about$', TemplateView.as_view(template_name="about.html")),
     url(r'^innovation/', include('innovation.urls')),
+    url(r'^crowdfunding/', include('crowdfunding.urls')),
     url(r'^research/', include('research.urls')),
     url(r'^scholarships/', include('scholarships.urls')),
     url(r'^accounts/', include('accounts.urls')),

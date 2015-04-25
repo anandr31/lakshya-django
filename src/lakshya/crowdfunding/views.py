@@ -16,6 +16,18 @@ import json
 import re
 
 
+def get_project_json_data(p, request):
+    image_urls = [
+        'http://' + request.get_host() + url for url in p.get_image_urls()]
+    data = {'id': p.id, 'title': p.title, 'summary': p.summary, 'description': p.description,
+            'author_name': p.author.get_full_name(), 'goal': p.goal, 'days_remaining': p.days_remaining,
+            'video_url': p.video_url, 'team': p.team, 'risks_and_challenges': p.risks_and_challenges,
+            'percentage_pledged': p.percentage_pledged, 'pledged_amount': p.pledged_amount,
+            'total_backers': p.total_backers, 'image_urls': image_urls,
+            'primary_picture_url': p.primary_picture_url}
+    return data
+
+
 class ProjectCreateView(TemplateView):
 
     template_name = 'project/create.html'
@@ -62,7 +74,7 @@ class ProjectListAPIView(View):
                 'ordering')[start:start + num_projects]
             data = []
             for p in projects:
-                data.append(self.get_project_json_data(p, request))
+                data.append(get_project_json_data(p, request))
 
             response = {'success': 'true', 'projects': data,
                         'total_projects': Project.objects.count()}
@@ -70,16 +82,16 @@ class ProjectListAPIView(View):
             response = {'success': 'false', 'projects': []}
         return HttpResponse(json.dumps(response), content_type="application/json")
 
-    def get_project_json_data(self, p, request):
-        image_urls = [
-            'http://' + request.get_host() + url for url in p.get_image_urls()]
-        data = {'id': p.id, 'title': p.title, 'summary': p.summary, 'description': p.description,
-                'author_name': p.author.get_full_name(), 'goal': p.goal, 'days_remaining': p.days_remaining,
-                'video_url': p.video_url, 'team': p.team, 'risks_and_challenges': p.risks_and_challenges,
-                'percentage_pledged': p.percentage_pledged, 'pledged_amount': p.pledged_amount,
-                'total_backers': p.total_backers, 'image_urls': image_urls,
-                'primary_picture_url': p.primary_picture_url}
-        return data
+
+class ProjectDetailAPIView(View):
+    def get(self, request, **kwargs):
+        try:
+            project_id = int(kwargs.get('id', None))
+            project = Project.objects.get(id=project_id)
+            response = {'success': 'true', 'project': get_project_json_data(project, request)}
+        except ValueError:
+            response = {'success': 'false', 'project': {}}
+        return HttpResponse(json.dumps(response), content_type="application/json")
 
 
 class ProjectDetailView(TemplateView):
