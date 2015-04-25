@@ -12,6 +12,7 @@ class ParticipantAdmin(admin.ModelAdmin):
 class ProblemStatementAdmin(admin.ModelAdmin):
     list_display = ('name', 'add_link', 'hackathon')
     search_fields = ('name', 'add_link', 'hackathon__name')
+    list_filter = ('hackathon',)
 
 
 class HackathonAdmin(admin.ModelAdmin):
@@ -22,6 +23,7 @@ class HackathonAdmin(admin.ModelAdmin):
 class SponsorsAdmin(admin.ModelAdmin):
     list_display = ('name', 'website', 'hackathon',)
     search_fields = ('name', 'website',)
+
 
 class MentorAdmin(admin.ModelAdmin):
     list_display = ('name', 'hackathon',)

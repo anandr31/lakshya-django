@@ -4,6 +4,7 @@ from math import floor
 
 from django.db import models
 from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 
 from crowdfunding.utils import IntegerRangeField
 from crowdfunding.constants import PROJECT_STATUS, UNAPPROVED
@@ -13,13 +14,13 @@ from crowdfunding.constants import PROJECT_STATUS, UNAPPROVED
 class Project(models.Model):
     title = models.CharField(max_length=30)
     summary = models.CharField(max_length=50)
-    description = models.TextField(max_length=1000)
+    description = HTMLField(max_length=1000)
     author = models.ForeignKey(User)
     goal = IntegerRangeField(default=20000, min_value=20000, max_value=200000)
     period = IntegerRangeField(default=5, min_value=5, max_value=45)
     video_url = models.URLField(max_length=1000, blank=True)
-    team = models.TextField(max_length=1000)
-    risks_and_challenges = models.TextField(max_length=4000, blank=True)
+    team = HTMLField(max_length=1000)
+    risks_and_challenges = HTMLField(max_length=4000, blank=True)
     ordering = models.DecimalField(max_digits=4, decimal_places=1, blank=True)
     start_date = models.DateField()
     created = models.DateTimeField(auto_now_add=True)
@@ -30,13 +31,14 @@ class Project(models.Model):
         return str(self.title)
 
     def save(self, **kwargs):
-	    if not self.ordering:
-	        ordering = Project.objects.all().aggregate(models.Max('ordering'))['ordering__max']
-	        if ordering:
-	            self.ordering = floor(ordering + 1)
-	        else:
-	            self.ordering = 1
-	    super(Project, self).save(**kwargs)
+        if not self.ordering:
+            ordering = Project.objects.all().aggregate(
+                models.Max('ordering'))['ordering__max']
+            if ordering:
+                self.ordering = floor(ordering + 1)
+            else:
+                self.ordering = 1
+        super(Project, self).save(**kwargs)
 
     def get_days_remaining(self):
         remaining = self.period - (date.today() - self.start_date).days
@@ -72,24 +74,24 @@ class Project(models.Model):
     primary_picture_url = property(get_primary_picture_url)
 
 
-
 class ProjectImage(models.Model):
     project = models.ForeignKey(Project, related_name='project_image')
     image = models.ImageField(upload_to='projects')
-    ordering = models.DecimalField(default=1, max_digits=4, decimal_places=1, blank=True)
+    ordering = models.DecimalField(
+        default=1, max_digits=4, decimal_places=1, blank=True)
 
     def __unicode__(self):
         return str(self.project.title)
 
-	def save(self, **kwargs):
-	    if not self.ordering:
-	        ordering = ProjectImage.objects.filter(project=self.project)\
-	        .aggregate(models.Max('ordering'))['ordering__max']
-	        if ordering:
-	            self.ordering = floor(ordering + 1)
-	        else:
-	            self.ordering = 1
-	    super(ProjectImage, self).save(**kwargs)
+        def save(self, **kwargs):
+            if not self.ordering:
+                ordering = ProjectImage.objects.filter(project=self.project)\
+                    .aggregate(models.Max('ordering'))['ordering__max']
+                if ordering:
+                    self.ordering = floor(ordering + 1)
+                else:
+                    self.ordering = 1
+            super(ProjectImage, self).save(**kwargs)
 
     def show_thumbnail(self):
         return u'<img src="%s" width="100" height="100px"/>' % self.picture.url
@@ -114,11 +116,12 @@ class Message(models.Model):
     def __unicode__(self):
         return str(self.title)
 
+
 class ProjectUpdate(models.Model):
     project = models.ForeignKey(Project, related_name='updates')
     author = models.ForeignKey(User, related_name='project_updates')
-    update = models.TextField(max_length=300)
+    update = HTMLField(max_length=300)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return  update[:50]
+        return update[:50]

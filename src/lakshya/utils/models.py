@@ -1,5 +1,6 @@
 from django.db import models
 from people.models import Person
+from tinymce.models import HTMLField
 
 # Create your models here.
 class LakshyaUpdate(models.Model):
@@ -41,7 +42,7 @@ class Contact(models.Model):
 class Partner(models.Model):
     name = models.CharField(max_length=255)
     logo = models.ImageField(upload_to='partners/')
-    description = models.TextField(max_length=4000)
+    description = HTMLField(max_length=4000)
     priority = models.IntegerField(default=1)
 
     def __unicode__(self):

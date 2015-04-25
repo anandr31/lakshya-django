@@ -72,8 +72,7 @@ class Hackathon(models.Model):
     gallery_link = models.URLField(blank=True)
     report = models.FileField(
         "Report (PDF)", upload_to='hackathon_reports', blank=True)
-    facebook_event_code = models.CharField(max_length=255, blank=True)
-    pictures_link = models.CharField(max_length=1000, blank=True)
+    facebook_event_link = models.CharField(max_length=255, blank=True)
     venue = models.CharField("Venue", max_length=200, blank=True)
     is_active = models.BooleanField("Active", default=True)
 

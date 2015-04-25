@@ -1,6 +1,7 @@
 from django.contrib import admin
 from innovationgarage.models import Project, ProjectImage, Sponsor
 
+
 class ProjectImageInline(admin.TabularInline):
     model = ProjectImage
     fields = ('image', 'show_thumbnail')
@@ -8,10 +9,10 @@ class ProjectImageInline(admin.TabularInline):
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'goal', 'days_remaining')
+    list_display = ('title', 'author', 'team')
     inlines = (ProjectImageInline,)
     search_fields = ('title',)
 
 
-admin.site.register(Project, ProjectAdmin)admin.site.register(Sponsor)
+admin.site.register(Project, ProjectAdmin)
 admin.site.register(Sponsor)
