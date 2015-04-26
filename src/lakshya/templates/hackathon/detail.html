@@ -1,4 +1,4 @@
-{% extends "newbase.html" %}
+{% extends "hackathon/base.html" %}
 
 {% block scripts %}
 <script type="text/javascript">
@@ -13,8 +13,8 @@
 	<div id="hackathon_detail_hero">
 		<div class="content">
 			<div id="hackathon_detail_hero_content_container">
-				<p id="hackathon_date">14 Jan 2014</p>
-				<p id="hackathon_name">Hackathon 1.0</p>
+				<p id="hackathon_date">{{hackathon.start_time|date:"d M Y"}}</p>
+				<p id="hackathon_name">{{hackathon.name}}</p>
 			</div>
 		</div>
 	</div>
@@ -22,19 +22,21 @@
 		<div id="hackathon_detail_stats" class="content">
 			<div class="row">
 				<div class="column large-4 medium-12 small-12 home_stat">
-					<p class="hackathon_stat_number">114</p>
+					<p class="hackathon_stat_number">{{participant_count}}</p>
 					<p class="hackathon_stat_text heading">Hackers</p>
 				</div>
 				<div class="column large-4 medium-12 small-12 hackathon_stat">
-					<p class="hackathon_stat_number">7</p>
+					<p class="hackathon_stat_number">{{problem_statements.count}}</p>
 					<p class="hackathon_stat_text heading">Problem Statements</p>
 				</div>
 				<div class="column large-4 medium-12 small-12 hackathon_stat">
-					<p class="hackathon_stat_number">6</p>
+					<p class="hackathon_stat_number">{{mentors.count}}</p>
 					<p class="hackathon_stat_text heading">Mentors</p>
 				</div>
 			</div>
-			<a id="hackathon_detail_download" href="#" class="cta hackathon">Download PDF Report</a>
+			{% if hackathon.report %}
+			<a id="hackathon_detail_download" href="#" class="cta hackathon"><img src="{{STATIC_URL}}newimg/icons/download.svg"><span>Download PDF Report</span></a>
+			{% endif %}
 		</div>
 	</div>
 	<div id="hackathon_problem_statements" class="content">

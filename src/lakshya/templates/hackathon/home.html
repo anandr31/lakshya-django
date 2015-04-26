@@ -1,9 +1,14 @@
-{% extends "newbase.html" %}
+{% extends "hackathon/base.html" %}
 
 {% block scripts %}
 <script type="text/javascript">
 	$(function() {
-
+		$('a.cta.disabled').click(function() {
+			return false;
+		});
+		$('#go_to_hackathon').click(function() {
+			window.location = '/hackathon/' + $(this).siblings('select').val();
+		})
 	});
 </script>
 {% endblock scripts %}
@@ -26,7 +31,7 @@
 					<img class="participate_icon" src="{{STATIC_URL}}newimg/icons/hacker.svg">
 					<p class="heading">Hacker</p>
 					<p class="participate_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
-					<a href="#" class="cta hackathon">Register Now</a>
+					<a href="#" class="cta hackathon disabled">Register Now</a>
 				</div>
 				<div class="column large-4 small-12">
 					<img class="participate_icon" src="{{STATIC_URL}}newimg/icons/mentor.svg">
@@ -65,11 +70,11 @@
 			<div id="hackathon_dropdown_container" class="clearfix">
 				<div>
 					<select>
-						<option>Jan 2014: Hackathon v1.0</option>
-						<option>Mar 2014: Hackathon v2.0</option>
-						<option>Jan 2014: Hackathon v3.0</option>
+						{% for hackathon in hackathons %}
+						<option value="{{hackathon.id}}">{{hackathon.start_time|date:"M Y"}}: {{hackathon.name}}</option>
+						{% endfor %}
 					</select>
-					<a href="#" class="cta hackathon">
+					<a href="#" id="go_to_hackathon" class="cta hackathon">
 						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 							 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
 						<path fill="#fff" d="M79.8,48.8c0.1-0.2,0.1-0.5,0-0.8c-0.1-0.1-0.1-0.2-0.2-0.3L67.6,35.8c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4l10.2,10.2
@@ -94,45 +99,23 @@
 			<a href="#" class="cta hackathon">Be a mentor</a>
 			<p class="subheading">Some previous mentors</p>
 			<div class="row">
-				<div class="column small-12 large-4 mentor">
+				{% for mentor in mentors %}
+				<div class="column small-12 large-4 mentor {% if forloop.last %}end{% endif %}">
 					<table>
 						<tr>
 							<td>
-								<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
+								{% if mentor.picture %}
+								<img class="mentor_picture" src="{{mentor.picture.url}}">
+								{% endif %}
 							</td>
 							<td>
-								<p class="mentor_name">Barack Obama</p>
-								<p class="mentor_designation">President</p>
+								<p class="mentor_name">{{mentor.name}}</p>
+								<p class="mentor_designation"></p>
 							</td>
 						</tr>
 					</table>
 				</div>
-				<div class="column small-12 large-4 mentor">
-					<table>
-						<tr>
-							<td>
-								<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
-							</td>
-							<td>
-								<p class="mentor_name">Barack Obama</p>
-								<p class="mentor_designation">President</p>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div class="column small-12 large-4 mentor">
-					<table>
-						<tr>
-							<td>
-								<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
-							</td>
-							<td>
-								<p class="mentor_name">Barack Obama</p>
-								<p class="mentor_designation">President</p>
-							</td>
-						</tr>
-					</table>
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
@@ -143,18 +126,13 @@
 			<a href="#" class="cta hackathon">Be a sponsor</a>
 			<p class="subheading">Some previous sponsors</p>
 			<div class="row">
-				<div class="column small-6 large-3">
-					<img src="{{STATIC_URL}}newimg/sponsors/sponsor1.png">
+				{% for sponsor in sponsors %}
+				<div class="column small-6 large-3 {% if forloop.last %}end{% endif %}">
+					<a href="{{sponsor.website}}">
+						{% if sponsor.logo %}<img src="{{sponsor.logo}}">{% else %}<span>{{sponsor.name}}</span>{% endif %}
+					</a>
 				</div>
-				<div class="column small-6 large-3">
-					<img src="{{STATIC_URL}}newimg/sponsors/sponsor2.png">
-				</div>
-				<div class="column small-6 large-3">
-					<img src="{{STATIC_URL}}newimg/sponsors/sponsor3.png">
-				</div>
-				<div class="column small-6 large-3">
-					<img src="{{STATIC_URL}}newimg/sponsors/sponsor4.png">
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>

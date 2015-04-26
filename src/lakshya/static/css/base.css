@@ -68,6 +68,10 @@ a.cta.ig {
 	font-weight: 700;
 }
 
+a.cta.disabled {
+	background: #ccc;
+}
+
 #content_container {
 	width: 100%;
 	margin: 0 auto;
@@ -177,6 +181,7 @@ p.heading {
 }
 
 #menu .top-bar #login {
+	display: none; /* Temporary till we enable login */
 	position: absolute;
 	right: 0;
 	top: 0;
