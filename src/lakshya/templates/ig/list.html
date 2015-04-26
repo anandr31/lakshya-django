@@ -1,0 +1,57 @@
+{% extends "ig/base.html" %}
+
+
+{% block scripts %}
+<script type="text/javascript">
+$(function() {
+	
+});
+</script>
+{% endblock scripts %}
+
+{% block content %}
+<div id="ig_list">
+	<div class="content">
+		<p class="heading">Projects</p>
+		<div class="row">
+			<div class="column small-12 medium-6 large-4">
+				<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
+					<p class="ig_project_name">Innovation Garage</p>
+					<a href="/ig/1"></a>
+				</div>
+			</div>
+			<div class="column small-12 medium-6 large-4">
+				<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
+					<p class="ig_project_name">Self balancing Robot</p>
+					<a href="/ig/2"></a>
+				</div>
+			</div>
+			<div class="column small-12 medium-6 large-4">
+				<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
+					<p class="ig_project_name">Gyroscopic Two Wheeler</p>
+					<a href="/ig/3"></a>
+				</div>
+			</div>
+			<div class="column small-12 medium-6 large-4">
+				<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
+					<p class="ig_project_name">Innovation Garage</p>
+					<a href="/ig/1"></a>
+				</div>
+			</div>
+			<div class="column small-12 medium-6 large-4">
+				<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
+					<p class="ig_project_name">Self balancing Robot</p>
+					<a href="/ig/2"></a>
+				</div>
+			</div>
+			<div class="column small-12 medium-6 large-4">
+				<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
+					<p class="ig_project_name">Self balancing Robot</p>
+					<a href="/ig/2"></a>
+				</div>
+			</div>
+		</div>
+		<a href="/innovationgarage" class="cta ig">Back to innovation garage</a>
+	</div>
+</div>
+{% endblock content %}

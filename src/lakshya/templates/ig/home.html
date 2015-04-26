@@ -1,0 +1,199 @@
+{% extends "ig/base.html" %}
+
+{% block extracss %}
+{{block.super}}
+<style type="text/css">
+	#menu {
+		background: transparent;
+		z-index: 5;
+		position: relative;
+	}
+	#menu .top-bar:not(.expanded) {
+		background: transparent;
+	}
+	#menu .top-bar.expanded .title-area {
+		background: transparent;
+	}
+	#menu .top-bar .name {
+		padding-top: 2.8rem;
+	}
+	#menu .top-bar .name span {
+		color: #fff;
+	}
+	#menu .top-bar .toggle-topbar.menu-icon a span::after {
+	  box-shadow: 0 0 0 1px #fff, 0 7px 0 1px #fff, 0 14px 0 1px #fff;
+	}
+</style>
+{% endblock extracss %}
+
+{% block scripts %}
+<script type="text/javascript">
+var map_loaded = false;
+function loadMap() {
+	if(!map_loaded)
+	{
+		$('#ig_map').html('<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1897.4434413091415!2d79.533151!3d17.98399900000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a334fbc10f30791%3A0x7df0c062f328cc66!2sInnovation+and+Incubation+Centre!5e0!3m2!1sen!2sin!4v1430027943271" width="980" height="300" frameborder="0" style="border:0"></iframe>');
+		map_loaded = true;
+	}
+}
+
+$(function() {
+	loadMap();
+
+	$('.ig_project_snippet').click(function() {
+		window.location = $(this).find('a').attr('href');
+	})
+});
+</script>
+{% endblock scripts %}
+
+{% block header_login %}
+<li id="login">
+	<a href="#">
+		<svg style="width: 50px;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+		<path fill="#FFF" d="M50.4,16.2c-19,0-34.4,15.4-34.4,34.4c0,9.1,3.5,17.7,10,24.2l0,0l0,0C32.5,81.4,41.2,85,50.4,85
+			c9.3,0,18-3.6,24.5-10.3c6.4-6.5,9.9-15.1,9.9-24.2C84.9,31.6,69.4,16.2,50.4,16.2z M28.6,74.2c3-1.7,7.6-3.4,12-5
+			c1.5-0.5,3-1.1,4.4-1.6c0.4-0.2,0.7-0.6,0.7-1.1v-7.2c0-0.5-0.3-0.9-0.8-1.1c-0.1-0.1-3.6-1.4-3.6-7.6c0-0.6-0.5-1.1-1.1-1.1
+			c-0.3,0-0.6-0.8-0.6-1.7c0-1,0.4-1.7,0.6-1.7c0.6,0,1.1-0.5,1.1-1.1c0-0.3-0.1-0.7-0.3-1.5c-0.4-1.6-1.6-5.7-0.5-7.1
+			c0.2-0.2,0.5-0.5,1.3-0.5c0.3,0,0.6,0,1,0.1c0.6,0.1,1.2-0.3,1.3-0.8c0.5-2,4-3.5,8.3-3.5s7.8,1.5,8.3,3.5c0.7,2.7-0.5,6.5-1.1,8.3
+			c-0.3,0.8-0.4,1.2-0.4,1.6c0,0.6,0.5,1.1,1.1,1.1c0.3,0,0.6,0.8,0.6,1.7c0,1-0.4,1.7-0.6,1.7c-0.6,0-1.1,0.5-1.1,1.1
+			c0,6.2-3.4,7.5-3.6,7.6c-0.5,0.2-0.8,0.6-0.8,1.1v7.2c0,0.5,0.3,0.9,0.7,1.1c1.6,0.6,3.1,1.2,4.7,1.7c4.6,1.7,9,3.2,11.8,4.9
+			c-6,5.5-13.7,8.6-21.8,8.6C42.3,82.7,34.6,79.7,28.6,74.2z M74,72.5c-3-1.8-7.5-3.5-12.7-5.4c-1.3-0.5-2.6-0.9-3.9-1.4V60
+			c1.4-0.8,4.1-3,4.3-8.5c1.1-0.6,1.8-2,1.8-3.8c0-1.7-0.6-3-1.6-3.6c0-0.1,0-0.1,0-0.2c0.7-2.2,2-6.2,1.1-9.5
+			c-1-3.8-6.3-5.2-10.5-5.2c-3.9,0-8.6,1.1-10.2,4.2c-2-0.2-3.1,0.7-3.7,1.4c-1.8,2.3-0.5,6.7,0.1,9.1c0,0,0,0.1,0,0.1
+			c-1,0.6-1.6,2-1.6,3.6c0,1.8,0.7,3.2,1.8,3.8c0.3,5.5,3,7.7,4.3,8.5v5.7c-1.2,0.4-2.4,0.9-3.6,1.3c-4.8,1.7-9.8,3.5-12.9,5.5
+			c-5.6-6-8.6-13.7-8.6-21.9c0-17.7,14.4-32.1,32.1-32.1s32.1,14.4,32.1,32.1C82.6,58.8,79.5,66.5,74,72.5z"/>
+		</svg>
+	</a>
+</li>
+{% endblock header_login %}
+
+{% block content %}
+<div id="ig_home">
+	<div id="ig_hero">
+		<div class="content">
+			<div id="ig_hero_content">
+				<p id="hero_heading">Space to experiment, learn and create</p>
+				<div class="row">
+					<div class="column large-4 medium-12 small-12 ig_stat">
+						<p class="ig_stat_number">3</p>
+						<p class="ig_stat_text heading">Patents Filed</p>
+					</div>
+					<div class="column large-4 medium-12 small-12 ig_stat">
+						<p class="ig_stat_number">6.3m</p>
+						<p class="ig_stat_text heading">INR Raised</p>
+					</div>
+					<div class="column large-4 medium-12 small-12 ig_stat">
+						<p class="ig_stat_number">45</p>
+						<p class="ig_stat_text heading">Projects</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="ig_sponsors_container">
+		<div id="ig_sponsors" class="content">
+			<div class="row">
+				<div class="column small-12 large-3">
+					<img src="{{STATIC_URL}}newimg/sponsors/google.png">
+				</div>
+				<div class="column small-12 large-3">
+					<img src="{{STATIC_URL}}newimg/sponsors/samsung.png">
+				</div>
+				<div class="column small-12 large-3">
+					<img src="{{STATIC_URL}}newimg/sponsors/google.png">
+				</div>
+				<div class="column small-12 large-3">
+					<a href="#" class="cta ig">Become a sponsor</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="ig_projects" class="content">
+		<p class="heading">Projects</p>
+		<div class="row">
+			<div class="column small-12 medium-6 large-4">
+				<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
+					<p class="ig_project_name">Innovation Garage</p>
+					<a href="/ig/1"></a>
+				</div>
+			</div>
+			<div class="column small-12 medium-6 large-4">
+				<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
+					<p class="ig_project_name">Self balancing Robot</p>
+					<a href="/ig/2"></a>
+				</div>
+			</div>
+			<div class="column small-12 medium-6 large-4">
+				<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
+					<p class="ig_project_name">Gyroscopic Two Wheeler</p>
+					<a href="/ig/3"></a>
+				</div>
+			</div>
+			<div class="column small-12 medium-6 large-4">
+				<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
+					<p class="ig_project_name">Innovation Garage</p>
+					<a href="/ig/1"></a>
+				</div>
+			</div>
+			<div class="column small-12 medium-6 large-4">
+				<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
+					<p class="ig_project_name">Self balancing Robot</p>
+					<a href="/ig/2"></a>
+				</div>
+			</div>
+			<div class="column small-12 medium-6 large-4 end">
+				<div class="ig_project_snippet view_all_content">
+					<p>Explore</p><br>
+					<p>All Projects</p>
+					<a href="/innovationgarage/projects"></a>
+				</div>
+			</div>
+		</div>			
+	</div>
+	<div id="ig_explore" class="content">
+		<div class="row">
+			<div class="column large-8 small-12">
+				<p id="ig_explore_text">Explore the tech and create something.</p>
+			</div>
+			<div class="column large-4 small-12">
+				<a href="#" class="cta ig">Start New Project</a>
+			</div>
+		</div>
+	</div>
+	<div id="ig_notes">
+		<div class="row">
+			<div id="ig_google_calendar" class="column large-6 small-12">
+				<p class="heading">What's up next!</p>
+				<iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;wkst=1&amp;bgcolor=%23cccccc&amp;src=ig-nitw%40student.nitw.ac.in&amp;color=%23B1365F&amp;ctz=Asia%2FCalcutta" style=" border-width:0 " width="100%" height="180px" frameborder="0" scrolling="no"></iframe>
+			</div>
+			<div id="ig_tech_wiki" class="column large-6 small-12">
+				<p class="heading">Tech Wiki</p>
+				<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+				<div class="text-right">
+					<a href="#" class="cta ig">Explore Tech</a>
+				</div>
+			</div>
+			<div id="ig_rules" class="column large-6 small-12">
+				<p class="heading">Innovation has rules too!</p>
+				<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+				<div class="text-right">
+					<a href="#" class="cta ig">View Rules</a>
+				</div>
+			</div>
+			<div id="ig_rules" class="column large-6 small-12">
+				<p class="heading">Why should we brag?</p>
+				<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+			</div>
+		</div>
+	</div>
+	<div id="ig_testimonial" class="content">
+		<p id="ig_testimonial_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+		<img id="ig_testimonial_picture" src="{{STATIC_URL}}newimg/barack.png">
+		<p id="ig_testimonial_name">Barack Obama</p>
+		<p id="ig_testimonial_designation">President, United States of America</p>
+	</div>
+	<div id="ig_map" class="content"></div>
+</div>
+{% endblock content %}

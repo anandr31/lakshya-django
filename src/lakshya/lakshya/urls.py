@@ -47,6 +47,7 @@ urlpatterns = patterns('',
     url(r'^applicants/?$', "accounts.views.donate_home", name='research_facilitator_applicants'),
     url(r'^hackathon/?',include('hackathon.urls', namespace='hackathon')),
     url(r'^partners/?$', TemplateView.as_view(template_name="partners.html")),
+    url(r'^innovationgarage/?', include('innovationgarage.urls', namespace='ig')),
    
     # url(r'^$', 'lakshya.views.home', name='home'),
     # url(r'^lakshya/', include('lakshya.foo.urls')),

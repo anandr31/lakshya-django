@@ -63,6 +63,11 @@ a.cta.hackathon {
 	background: #e31b4a;
 }
 
+a.cta.ig {
+	background: #f75b22;
+	font-weight: 700;
+}
+
 #content_container {
 	width: 100%;
 	margin: 0 auto;
@@ -866,4 +871,218 @@ p, a, li, span {
 
 #hackathon_sponsors div.column {
 	margin-bottom: 3rem;
+}
+
+/* IG Home page */
+#ig_home {
+	padding-top: 42.3rem;
+}
+
+#ig_hero {
+	height: 51.2rem;
+	background: url('../newimg/hero_ig.png');
+	background-size: cover;
+	background-position: center center;		
+	border-bottom: 3px solid #f75b22;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+#ig_hero .content {
+	position: relative;
+	height: 100%;
+}
+
+#ig_hero_content {
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+#ig_hero_content #hero_heading {
+	font-size: 3rem;
+	font-weight: 700;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+#ig_hero .ig_stat {
+	text-align: center;
+}
+
+#ig_hero p.ig_stat_number {
+	color: #f75b22;
+	font-size: 10rem;
+	font-weight: 300;
+	margin-bottom: -1rem;
+}
+
+#ig_hero p.ig_stat_text {
+	color: #f75b22;
+}
+
+#ig_home #ig_sponsors_container {
+	background: #30302f;
+	padding: 4rem 0 1rem;
+}
+
+#ig_home #ig_sponsors div.column {
+	text-align: center;
+	margin-bottom: 3rem;
+}
+
+#ig_home #ig_sponsors img {
+	width: 15rem;
+}
+
+#ig_home #ig_sponsors a.cta {
+	background: #747474;
+	padding: 1.5rem 3rem;
+	font-weight: 700;
+}
+
+#ig_home #ig_projects {
+	text-align: center;
+	margin: 4rem auto 0;
+}
+
+div.ig_project_snipper p.heading {
+	padding-bottom: 2rem;
+	border-bottom: 1px solid #f75b22;
+	margin-bottom: 2rem;
+}
+
+div.ig_project_snippet {
+	width: 31rem;
+	height: 31rem;
+	margin: 0 auto 3rem;
+	position: relative;
+	background-position: cover;
+	background-position: center center;
+	cursor: pointer;
+}
+
+div.ig_project_snippet p.ig_project_name {
+	color: #fff;
+	text-align: center;
+	line-height: 4;
+	background: #30302f;
+	text-transform: uppercase;
+	font-weight: 700;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0;
+}
+
+div.ig_project_snippet:hover p.ig_project_name {
+	background: #4c4c4c;
+}
+
+div.ig_project_snippet.view_all_content {
+	background: #30302f;
+	padding-top: 12rem;
+	text-align: left;
+}
+
+div.ig_project_snippet.view_all_content p {
+	background: #f75b22;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 1.5rem;
+	padding: 0.5rem;
+	text-align: left;
+	max-width: 50%;
+	display: inline-block;
+	margin-bottom: 0.3rem;
+	margin-left: 10rem;
+}
+
+#ig_home #ig_explore {
+	background: url('../newimg/ig_explore_bg.png');
+	padding: 2rem 0;
+}
+
+#ig_home #ig_explore div.column {
+	text-align: center;
+}
+
+#ig_home #ig_explore_text {
+	color: #fff;
+	font-size: 2.5rem;
+	max-width: 30rem;
+	margin: 0 auto;
+}
+
+#ig_home #ig_explore a.cta {
+	display: inline-block;
+	margin: 1.5rem auto 0;
+
+}
+
+#ig_home #ig_notes {
+	padding: 5rem 0 0;
+}
+
+#ig_home #ig_notes div.column {
+	padding: 1rem 3rem;
+	margin-bottom: 4rem;
+}
+
+#ig_home #ig_notes #ig_google_calendar {
+	min-height: 25rem;
+}
+
+#ig_testimonial {
+	text-align: center;
+	margin-bottom: 5rem;
+}
+
+#ig_testimonial #ig_testimonial_text {
+	font-size: 1.5rem;
+	font-style: italic;
+	line-height: 2.2;
+	padding: 0 3rem;
+}
+
+#ig_testimonial #ig_testimonial_picture {
+	width: 8rem;
+	border-radius: 100%;
+	margin-top: 2rem;
+}
+
+#ig_testimonial #ig_testimonial_name {
+	margin: 2rem 0 0;
+	font-weight: 700;
+}
+
+#ig_testimonial #ig_testimonial_designation {
+	font-style: italic;
+}
+
+#ig_home #ig_map {
+	width: 100%;
+	height: 300px;
+	margin-bottom: 4rem;
+}
+
+
+/* IG listing page */
+#ig_list {
+	text-align: center;
+}
+
+#ig_list p.heading {
+	margin-bottom: 5rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid #f75b22;
+}
+
+#ig_list a.cta {
+	margin: 3rem 0;
 }
