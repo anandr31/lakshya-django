@@ -7,6 +7,12 @@ from innovationgarage.models import Project
 class IGHomeView(TemplateView):
     template_name = 'ig/home.html'
 
+    def get_context_data(self, **kwargs):
+        context = TemplateView.get_context_data(self, **kwargs)
+    	projects = Project.objects.all()
+        context['projects'] = projects
+        return context
+
 
 class IGProjectsView(TemplateView):
     template_name = 'ig/list.html'
