@@ -17,6 +17,13 @@ class IGHomeView(TemplateView):
 class IGProjectsView(TemplateView):
     template_name = 'ig/list.html'
 
+    def get_context_data(self, **kwargs):
+        context = TemplateView.get_context_data(self, **kwargs)
+        projects = Project.objects.all()
+        context['projects'] = projects
+        return context
+
+        
 class IGProjectDetailView(TemplateView):
     template_name = 'ig/detail.html'
 

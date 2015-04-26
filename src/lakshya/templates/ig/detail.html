@@ -7,8 +7,8 @@
                     <img src="{{project.get_primary_picture_url}}">
                 </div>
                 <div class="large-6 column">
-                    <div id="project_title">{{project.title}}</div>
-                    <div id="project_title">Objective</div>
+                    <div id="project_title">{{project.title | upper}}</div>
+                    <div id="project_objective">Objective</div>
                     <div id="project_summary">{{project.objective | safe}}</div>
                     <div>                       
                    </div>

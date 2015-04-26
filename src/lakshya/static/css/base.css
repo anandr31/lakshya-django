@@ -27,7 +27,7 @@ html {
 }
 
 body {
-	font-family: 'Gotham',Helvetica,Arial,sans-serif;
+	font-family: 'Gotham',Helvetica,Arial,sans-serif !important;
 	font-weight: normal;
 	font-size: 1.3rem;
 	color: #333;
@@ -998,6 +998,7 @@ p.hint {
 	font-weight: 700;
 	margin-top: 1rem;
 	margin-bottom: 0;
+	font-size: 1.4rem;
 }
 
 #hackathon_sponsors_container {
@@ -1309,11 +1310,17 @@ div.ig_project_snippet.view_all_content p {
 	margin: 0 auto;
 	border: 1px solid rgba(0,0,0,0.3);
 }
-#ig_project_detail_page #hero_content #project_title{
-	margin-top: 7rem;
+#ig_project_detail_page #hero_content #project_title, #ig_project_detail_page #hero_content #project_objective{
+	margin-top: 3rem;
 	color: #F75B22;
 	font-weight: bold;
-	font-size: 1.8rem;
+}
+#ig_project_detail_page #hero_content #project_title{
+	font-size: 2.2rem;
+	margin-top: 7rem;
+}
+#ig_project_detail_page #hero_content #project_objective{
+	font-size: 1.6rem;
 }
 #ig_project_detail_page #hero_content div#project_summary{
 	font-size: 1.6rem;
