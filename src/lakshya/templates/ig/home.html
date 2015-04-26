@@ -74,7 +74,7 @@ $(function() {
 	<div id="ig_hero">
 		<div id="ig_hero_mask" class="show-for-large-up"></div>
 		<video class="show-for-large-up" autoplay loop poster="{{STATIC_URL}}newimg/hero_ig.png" id="bgvid">
-			<source src="{{STATIC_URL}}newimg/hero_ig.mp4" type="video/mp4">
+			<source src="{{STATIC_URL}}newimg/hero_ig_3000.webm" type="video/mp4">
 		</video>
 		<div class="content">
 			<div id="ig_hero_content">
@@ -115,36 +115,14 @@ $(function() {
 		<div id="ig_projects" class="content">
 			<p class="heading">Projects</p>
 			<div class="row">
+				{%for project in projects %}
 				<div class="column small-12 medium-6 large-4">
-					<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
-						<p class="ig_project_name">Innovation Garage</p>
-						<a href="/ig/1"></a>
+					<div class="ig_project_snippet" style="background: url('{{project.get_primary_picture_url}}');">
+						<p class="ig_project_name">{{project.title}}</p>
+						<a href="/innovationgarage/project/{{project.id}}"></a>
 					</div>
 				</div>
-				<div class="column small-12 medium-6 large-4">
-					<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
-						<p class="ig_project_name">Self balancing Robot</p>
-						<a href="/ig/2"></a>
-					</div>
-				</div>
-				<div class="column small-12 medium-6 large-4">
-					<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
-						<p class="ig_project_name">Gyroscopic Two Wheeler</p>
-						<a href="/ig/3"></a>
-					</div>
-				</div>
-				<div class="column small-12 medium-6 large-4">
-					<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
-						<p class="ig_project_name">Innovation Garage</p>
-						<a href="/ig/1"></a>
-					</div>
-				</div>
-				<div class="column small-12 medium-6 large-4">
-					<div class="ig_project_snippet" style="background: url({{STATIC_URL}}newimg/ig_project.png);">
-						<p class="ig_project_name">Self balancing Robot</p>
-						<a href="/ig/2"></a>
-					</div>
-				</div>
+				{%endfor%}
 				<div class="column small-12 medium-6 large-4 end">
 					<div class="ig_project_snippet view_all_content">
 						<p>Explore</p><br>

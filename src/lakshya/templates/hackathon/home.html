@@ -125,6 +125,8 @@
 							<td>
 								{% if mentor.picture %}
 								<img class="mentor_picture" src="{{mentor.picture.url}}">
+								{%else%}
+								<img class="mentor_picture" src="{{STATIC_URL}}newimg/icons/icon_profile.png">
 								{% endif %}
 							</td>
 							<td>
