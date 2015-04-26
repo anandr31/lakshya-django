@@ -4,7 +4,7 @@
         <div id="hero_content">
             <div class="row">
                 <div class="large-6 column" id="project_image_container">
-                    <img src="{{STATIC_URL}}img/crowdfunding/default_project.jpg">
+                    <img src="{{project.get_primary_picture_url}}">
                 </div>
                 <div class="large-6 column">
                     <div id="project_title">{{project.title}}</div>
