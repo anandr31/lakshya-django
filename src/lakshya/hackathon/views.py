@@ -128,7 +128,14 @@ class HackathonHomeView(TemplateView):
         context = super(HackathonHomeView, self).get_context_data(**kwargs)
         context['hackathons'] = Hackathon.objects.all().order_by('start_time')
         context['mentors'] = Mentor.objects.all().order_by('-id')[:6]
-        context['sponsors'] = Sponsor.objects.all().order_by('-id')[:6]
+        sponsors = Sponsor.objects.all().order_by('-id')[:6]
+        seen = []
+        context['sponsors'] = []
+        for sponsor in sponsors:
+            if sponsor.name not in seen:
+                context['sponsors'].append(sponsor)
+                seen.append(sponsor.name)
+        
         return context
 
 
