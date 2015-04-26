@@ -1,0 +1,68 @@
+{%extends 'ig/base.html' %}
+{% block content %}
+    <div id="ig_project_detail_page">
+        <div id="hero_content">
+            <div class="row">
+                <div class="large-6 column" id="project_image_container">
+                    <img src="{{STATIC_URL}}img/crowdfunding/default_project.jpg">
+                </div>
+                <div class="large-6 column">
+                    <div id="project_title">{{project.title}}</div>
+                    <div id="project_title">Objective</div>
+                    <div id="project_summary">{{project.objective | safe}}</div>
+                    <div>                       
+                   </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="thumbnails" class="column large-6 medium-12 small-12">
+            </div>
+            <div id="disclaimer" class="column large-6 medium-12 small-12">
+                *This project is initiated on {{project.start_date}} and will end by 21 July 2015
+            </div>
+        </div>
+        <div class="row" id="detail_content">
+            <div class="column large-6 large-offset-1">
+                <div class="row project_content_title">
+                    <div class="column project_detail_title">
+                        {{project.title}}
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="column large-12 detail_title">
+						Objective
+                	</div>
+                	<div class="column large-12 detail_body">
+                		{{project.objective | safe}}
+                	</div>	
+                </div>
+                <div class="row">
+                	<div class="column large-12 detail_title">
+						Description
+                	</div>
+                	<div class="column large-12 detail_body">
+                		{{project.description | safe}}
+                	</div>	
+                </div>
+                <div class="row">
+                	<div class="column large-12 detail_title">
+						Key Components
+                	</div>
+                	<div class="column large-12 detail_body">
+                		{{project.key_components | safe}}
+                	</div>	
+                </div>
+            </div>
+            <div class="column large-4 large-offset-1">
+                <div class="row project_content_title">TEAM</div>
+                <div class="row team_members">{{project.team_size}} Members</div>
+                <div class="row">
+                    <div class="column team_details">
+                    	{{project.team | safe}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

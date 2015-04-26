@@ -1190,3 +1190,126 @@ div.ig_project_snippet.view_all_content p {
 #ig_list a.cta {
 	margin: 3rem 0;
 }
+
+/* IG Detail Page */
+#ig_project_detail_page #hero_content{
+	/*background: rgba(0,0,0,0.8);*/
+	background: url('../newimg/project_hero_overlay.png');
+}
+#ig_project_detail_page  #project_image_container{
+	margin-left: 3rem;
+	width: 45rem;
+	overflow: hidden;
+	padding: 3rem 0;
+}
+#ig_project_detail_page  #project_image_container img{
+	margin: 0 auto;
+	border: 1px solid rgba(0,0,0,0.3);
+}
+#ig_project_detail_page #hero_content #project_title{
+	margin-top: 7rem;
+	color: #F75B22;
+	font-weight: bold;
+	font-size: 1.8rem;
+}
+#ig_project_detail_page #hero_content div#project_summary{
+	font-size: 1.6rem;
+	padding : 0.7rem 0;
+	color: white;
+	font-style: justify;
+}
+#ig_project_detail_page #hero_content .project_progress{
+	background: rgba(255,255,255, 0.2);
+	padding : 0 0;
+	border: 0px;
+	margin: 0.5rem auto;
+}
+#ig_project_detail_page #hero_content .project_progress span{
+	background: #F75B22;
+}
+#ig_project_detail_page #hero_content .project_metric_number{
+	color: white;
+	font-weight: bold;
+}
+#ig_project_detail_page #hero_content .project_metric_label{
+	color: white;
+}
+#ig_project_detail_page #back_this_project_button{
+	background: #F75B22;
+	margin: 2rem auto;
+	padding: 1.8rem 2.5rem;
+	color: #222;
+	font-weight: bold;
+	font-size: 1.6rem;
+	font-family: 'Gotham',Helvetica,Arial,sans-serif;
+}
+#ig_project_detail_page #disclaimer{
+	font-size: 1.2rem;
+	color: #999;
+}
+#ig_project_detail_page div#detail_content{
+	margin: 5rem auto;
+	padding-bottom: 6rem;
+}
+#ig_project_detail_page #team_member_pic{
+	width: 3rem;
+	height: 3rem;
+}
+#ig_project_detail_page div#team_member_container{
+	margin: 1rem auto;
+}
+.project_update_title{
+	font-weight: bold;
+}
+.project_update_date{
+	font-size: 1.2rem;
+	margin-left: 0.5rem;
+}
+#ig_project_detail_page div.project_content_title{
+	font-weight: bold;
+	padding-bottom: 1rem;
+}
+#ig_project_detail_page #project_content_nav{
+	margin-bottom: 1rem;
+	border-bottom: 1px solid #ccc;
+}
+#ig_project_detail_page .update_content{
+	display: none;
+}
+#ig_project_detail_page .project_content_nav_item{
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+	cursor: pointer;
+	text-align: center;
+}
+#ig_project_detail_page .project_content_nav_item:hover , #ig_project_detail_page .project_content_nav_item.selected{
+	border-bottom: 3px solid #F75B22;
+	color: #F75B22;
+}
+.project_nav_container{
+	padding: 0 0;
+}
+#ig_project_detail_page .team_members{
+	padding: 1rem 0;
+	border-bottom: 1px solid #F75B22;
+}
+#ig_project_detail_page .update_item{
+	padding: 1rem 1rem;
+}
+#ig_project_detail_page .detail_title{
+	font-size: 1.6rem;
+	font-weight: bold;
+	padding : 1rem 0rem;
+	border-bottom: 1px solid #F75B22;
+}
+#ig_project_detail_page .detail_body{
+	padding: 1rem 0;
+	font-size: 1.4rem;
+}
+#ig_project_detail_page .team_details{
+	padding: 1rem 0;
+}
+#ig_project_detail_page .project_detail_title{
+	font-size: 2.4rem;
+	padding: 0 0 ;
+}
