@@ -1,11 +1,16 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
 
 {% block title %}
 <title>Research Facilitator - Lakshya, an NITW alumni led organization</title>
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
 {% endblock title %}
 
-{% block meta %}
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+{% endblock precss %}
+
+{% block scripts %}
 <script type="text/javascript">
 function setFlexField(scholar_id)
 {
@@ -28,6 +33,7 @@ function setFlexField(scholar_id)
 {% endblock header_slide%}
 
 {% block content %}
+<div class="content_wrap_old clearfix">
 		<script src="{{STATIC_URL}}js/popup/modernizr.custom.js"></script>
 		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/popup/default.css" />
 		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/popup/component.css" />
@@ -197,6 +203,6 @@ More details about the interns and their work can be found <a href="https://docs
 		<script src="{{STATIC_URL}}js/popup/css-filters-polyfill.js"></script>
 
 
-
+</div>
 {% endblock content %}
 

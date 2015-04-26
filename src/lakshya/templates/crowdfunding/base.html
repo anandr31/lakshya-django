@@ -1,6 +1,11 @@
 {% extends "newbase.html" %}
 {% block extracss %}
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/crowdfunding/crowdfunding.css">
+<style type="text/css">
+	#menu .top-bar .name {
+		padding-top: 2.8rem;
+	}
+</style>
 {% endblock extracss %}
 {% block header_title %}
 <a href="/crowdfunding"><span>Crowdfunding</span></a>
