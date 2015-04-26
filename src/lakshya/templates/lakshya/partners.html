@@ -1,0 +1,33 @@
+{% extends "newbase.html" %}
+{% block extracss %}
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/partners.css">
+{% endblock extracss %}
+{% block header_title %}
+  <a href="/partners"><img src="{{STATIC_URL}}newimg/logo_top.png" id="logo"><span>Our Partners</span></a>
+{% endblock header_title %}
+{% block content %}
+	<div id="partners_page">
+		<div id="hero_content">
+			<div id="title_container">
+				<div class="row">
+					<div id="hero_title">BE PART OF THE INNOVATION</div>
+				</div>
+				<div class="row button_container">
+					<div class="button large-3 large-centered columns">SUPPORT LAKSHYA</div>
+				</div>
+			</div>
+		</div>
+		<div id="partners_content">
+			<div class="row">
+				<div id="partners_title">PARTNERS</div>
+				{% for partner in partners %}
+				<div class="large-4 medium-6 small-12 column">
+					<img src="{{MEDIA_URL}}{{partner.logo}}" class="partner_logo" alt="{{partner.name}}">
+					<div class="partner_intro">{{partner.description | safe}}</div>
+				</div>
+				{%endfor%}
+			</div>
+			
+		</div>
+	</div>
+{% endblock content %}

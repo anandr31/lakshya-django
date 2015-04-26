@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
+from utils.views import PartnersView
 from utils.urls import urlpatterns as util_urls
 from people.urls import urlpatterns as people_urls
 from entrepreneurship.urls import urlpatterns as entrepreneurship_urls
@@ -24,6 +25,7 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('accounts.urls')),
     (r'^notifications/', include('notification.urls')),
     (r'^tinymce/', include('tinymce.urls')),
+    url(r'^newpartners/', PartnersView.as_view()),
     url(r'^asthra/home$',TemplateView.as_view(template_name="ashtra_home.html")),
     url(r'^asthra/about$', TemplateView.as_view(template_name="about_asthra.html")),
     url(r'^pilot-projects$', TemplateView.as_view(template_name="pilot_projects.html")),
