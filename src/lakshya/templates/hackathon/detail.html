@@ -10,7 +10,7 @@
 
 {% block content %}
 <div id="hackathon_detail">
-	<div id="hackathon_detail_hero">
+	<div id="hackathon_detail_hero" style="background: url('{% if hackathon.banner %}{{hackathon.banner.url}}{% else %}{{STATIC_URL}}newimg/hero_hackathon.png{% endif %}');">
 		<div class="content">
 			<div id="hackathon_detail_hero_content_container">
 				<p id="hackathon_date">{{hackathon.start_time|date:"d M Y"}}</p>
@@ -34,10 +34,18 @@
 					<p class="hackathon_stat_text heading">Mentors</p>
 				</div>
 			</div>
-			{% if hackathon.report %}
-			<a id="hackathon_detail_download" href="{{hackathon.report.url}}" target="_blank" class="cta hackathon"><img src="{{STATIC_URL}}newimg/icons/download.svg"><span>Download PDF Report</span></a>
-			{% endif %}
-		</div>
+			<div class="row" id="hackathon_actions">
+				<div class="column small-12 medium-6 large-6">
+					{% if hackathon.report %}
+					<a href="{{hackathon.report.url}}" target="_blank" class="cta hackathon hackathon_action_link"><img src="{{STATIC_URL}}newimg/icons/download.svg"><span>Download PDF Report</span></a>
+					{% endif %}
+				</div>	
+				<div class="column small-12 medium-6 large-6">
+					{% if hackathon.facebook_event_link %}
+					<a href="{{hackathon.facebook_event_link}}" target="_blank" class="cta hackathon hackathon_action_link"><img src="{{STATIC_URL}}newimg/icons/facebook_white.svg"><span>View event on FB</span></a>
+					{% endif %}
+				</div>
+			</div>
 	</div>
 	<div id="hackathon_problem_statements" class="content">
 		<p class="heading">Problem Statements</p>
@@ -51,11 +59,16 @@
 			{% endfor %}
 		</table>
 	</div>
+	{% if hackathon.gallery_link_image %}
 	<div id="hackathon_gallery_container">
 		<div id="hackathon_gallery" class="content">
 			<p class="heading">Gallery</p>
+			<a href="{{hackathon.gallery_link}}">
+				<img src="{{hackathon.gallery_link_image.url}}">
+			</a>
 		</div>
 	</div>
+	{% endif %}
 	<div id="hackathon_mentors" class="content">
 		<p class="heading">Mentors</p>
 		<div class="row">

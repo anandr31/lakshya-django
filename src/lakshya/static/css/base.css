@@ -57,6 +57,7 @@ a.cta {
 	color: #fff;
 	background: #00b4ff;
 	padding: 1rem 4rem;
+	font-weight: 700;
 }
 
 a.cta.hackathon {
@@ -88,6 +89,12 @@ p.heading {
 	font-weight: 700;
 	color: #4b4b4b;
 	font-size: 1.8rem;
+}
+
+p.hint {
+	font-size: 1rem;
+	color: #e31b4a;
+	margin-top: 0.5rem;
 }
 
 /* Menu */
@@ -283,6 +290,7 @@ p, a, li, span {
 	font-weight: 700;
 	text-transform: uppercase;
 	margin-top: 2rem;
+	color: #fff;
 }
 
 #home_hero .initiative_logo {
@@ -295,7 +303,7 @@ p, a, li, span {
 #home_hero .initiative_update p {
 	text-align: left;
 	padding: 2rem 0.5rem;
-	line-height: 1.3;
+	line-height: 1.6;
 	font-size: 1.5rem;
 	color: #fff;
 }
@@ -371,6 +379,8 @@ p, a, li, span {
 
 #home_update {
 	text-align: center;
+	max-width: 60rem;
+	margin: 0 auto;
 }
 
 #home_update a.cta {
@@ -403,6 +413,22 @@ p, a, li, span {
 
 #home_testimonial {
 	text-align: center;
+	position: relative;
+}
+
+.testimonial_start_icon, .testimonial_end_icon {
+	width: 6rem;
+	z-index: 1;
+	position: absolute;
+}
+
+.testimonial_start_icon svg, .testimonial_end_icon svg {
+	width: 100%;
+}
+
+#home_testimonial .testimonial_end_icon {
+	right: 13rem;
+	top: 4rem;
 }
 
 #home_testimonial #home_testimonial_text {
@@ -410,6 +436,8 @@ p, a, li, span {
 	font-style: italic;
 	line-height: 2.2;
 	padding: 0 3rem;
+	position: relative;
+	z-index: 3;
 }
 
 #home_testimonial #home_testimonial_picture {
@@ -640,6 +668,12 @@ p, a, li, span {
 #hackathon_testimonial {
 	text-align: center;
 	padding: 6.7rem 0;
+	position: relative;
+}
+
+#hackathon_testimonial .testimonial_end_icon {
+	right: 8rem;
+	top: 18rem;
 }
 
 #hackathon_testimonial #hackathon_testimonial_text {
@@ -647,6 +681,8 @@ p, a, li, span {
 	font-style: italic;
 	line-height: 2.2;
 	padding: 0 3rem;
+	position: relative;
+	z-index: 3;
 }
 
 #hackathon_testimonial #hackathon_testimonial_picture {
@@ -750,7 +786,6 @@ p, a, li, span {
 
 #hackathon_detail_hero {
 	height: 51.2rem;
-	background: url('../newimg/hero_hackathon.png');
 	background-size: cover;
 	background-position: center center;	
 }
@@ -811,11 +846,16 @@ p, a, li, span {
 	margin-bottom: 4rem;
 }
 
-#hackathon_detail #hackathon_detail_download {
+#hackathon_detail #hackathon_actions {
+	max-width: 60rem;
+	margin: 0 auto;
+}
+
+#hackathon_detail .hackathon_action_link {
 	text-transform: none;
 }
 
-#hackathon_detail #hackathon_detail_download img {
+#hackathon_detail .hackathon_action_link img {
 	width: 3rem;
 	margin-right: 1rem;
 }
@@ -850,6 +890,10 @@ p, a, li, span {
 
 #hackathon_gallery {
 	text-align: center;
+}
+
+#hackathon_gallery img {
+	width: 100%;
 }
 
 #hackathon_mentors {
@@ -954,7 +998,6 @@ p, a, li, span {
 	color: #f75b22;
 }
 
-
 @media only screen and (max-width: 64em) { /* Small */
 	#ig_hero #hero_heading {
 		font-size: 2rem;
@@ -964,14 +1007,16 @@ p, a, li, span {
 	}
 }
 
-
-
-
 #ig_home #ig_sponsors_container {
 	background: #30302f;
 	padding: 4rem 0 1rem;
 	position: relative;
 	z-index: 8;
+}
+
+#ig_home #ig_sponsors div.row {
+	max-width: 70rem;
+	margin: 0 auto;
 }
 
 #ig_home #ig_sponsors div.column {
@@ -1084,6 +1129,7 @@ div.ig_project_snippet.view_all_content p {
 #ig_home #ig_notes div.column {
 	padding: 1rem 3rem;
 	margin-bottom: 4rem;
+	min-height: 25rem;
 }
 
 #ig_home #ig_notes #ig_google_calendar {
@@ -1093,6 +1139,12 @@ div.ig_project_snippet.view_all_content p {
 #ig_testimonial {
 	text-align: center;
 	margin-bottom: 5rem;
+	position: relative;
+}
+
+#ig_testimonial .testimonial_end_icon {
+	right: 13rem;
+	top: 4rem;
 }
 
 #ig_testimonial #ig_testimonial_text {
@@ -1137,4 +1189,127 @@ div.ig_project_snippet.view_all_content p {
 
 #ig_list a.cta {
 	margin: 3rem 0;
+}
+
+/* IG Detail Page */
+#ig_project_detail_page #hero_content{
+	/*background: rgba(0,0,0,0.8);*/
+	background: url('../newimg/project_hero_overlay.png');
+}
+#ig_project_detail_page  #project_image_container{
+	margin-left: 3rem;
+	width: 45rem;
+	overflow: hidden;
+	padding: 3rem 0;
+}
+#ig_project_detail_page  #project_image_container img{
+	margin: 0 auto;
+	border: 1px solid rgba(0,0,0,0.3);
+}
+#ig_project_detail_page #hero_content #project_title{
+	margin-top: 7rem;
+	color: #F75B22;
+	font-weight: bold;
+	font-size: 1.8rem;
+}
+#ig_project_detail_page #hero_content div#project_summary{
+	font-size: 1.6rem;
+	padding : 0.7rem 0;
+	color: white;
+	font-style: justify;
+}
+#ig_project_detail_page #hero_content .project_progress{
+	background: rgba(255,255,255, 0.2);
+	padding : 0 0;
+	border: 0px;
+	margin: 0.5rem auto;
+}
+#ig_project_detail_page #hero_content .project_progress span{
+	background: #F75B22;
+}
+#ig_project_detail_page #hero_content .project_metric_number{
+	color: white;
+	font-weight: bold;
+}
+#ig_project_detail_page #hero_content .project_metric_label{
+	color: white;
+}
+#ig_project_detail_page #back_this_project_button{
+	background: #F75B22;
+	margin: 2rem auto;
+	padding: 1.8rem 2.5rem;
+	color: #222;
+	font-weight: bold;
+	font-size: 1.6rem;
+	font-family: 'Gotham',Helvetica,Arial,sans-serif;
+}
+#ig_project_detail_page #disclaimer{
+	font-size: 1.2rem;
+	color: #999;
+}
+#ig_project_detail_page div#detail_content{
+	margin: 5rem auto;
+	padding-bottom: 6rem;
+}
+#ig_project_detail_page #team_member_pic{
+	width: 3rem;
+	height: 3rem;
+}
+#ig_project_detail_page div#team_member_container{
+	margin: 1rem auto;
+}
+.project_update_title{
+	font-weight: bold;
+}
+.project_update_date{
+	font-size: 1.2rem;
+	margin-left: 0.5rem;
+}
+#ig_project_detail_page div.project_content_title{
+	font-weight: bold;
+	padding-bottom: 1rem;
+}
+#ig_project_detail_page #project_content_nav{
+	margin-bottom: 1rem;
+	border-bottom: 1px solid #ccc;
+}
+#ig_project_detail_page .update_content{
+	display: none;
+}
+#ig_project_detail_page .project_content_nav_item{
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+	cursor: pointer;
+	text-align: center;
+}
+#ig_project_detail_page .project_content_nav_item:hover , #ig_project_detail_page .project_content_nav_item.selected{
+	border-bottom: 3px solid #F75B22;
+	color: #F75B22;
+}
+.project_nav_container{
+	padding: 0 0;
+}
+#ig_project_detail_page .team_members{
+	padding: 1rem 0;
+	border-bottom: 1px solid #F75B22;
+}
+#ig_project_detail_page .update_item{
+	padding: 1rem 1rem;
+}
+#ig_project_detail_page .detail_title{
+	font-size: 1.6rem;
+	font-weight: bold;
+	padding : 1rem 0rem;
+	border-bottom: 1px solid #F75B22;
+}
+#ig_project_detail_page .detail_body{
+	padding: 1rem 0;
+	font-size: 1.4rem;
+}
+#ig_project_detail_page .team_details{
+	padding: 1rem 0;
+}
+#ig_project_detail_page .project_detail_title{
+	font-size: 2.4rem;
+	padding: 0 0 ;
 }
