@@ -62,7 +62,7 @@
 			  <ul class="title-area">
 			    <li class="name text-left">
 			      {% block header_title %}
-			      <a href="/newhome"><img src="{{STATIC_URL}}newimg/logo_top.png" id="logo"><span>The Lakshya Foundation</span></a>
+			      <a href="/"><img src="{{STATIC_URL}}newimg/logo_top.png" id="logo"><span>The Lakshya Foundation</span></a>
 			      {% endblock header_title %}
 			    </li>
 			    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
@@ -72,14 +72,14 @@
 			  </ul>
 			  <section class="top-bar-section">
 			    <ul class="left menu-items">
-			      <li class="grp-end"><a href="/newhome"><img src="{{STATIC_URL}}newimg/icons/home.svg"><span>The Lakshya Foundation</span></a></li>
+			      <li class="grp-end"><a href="/"><img src="{{STATIC_URL}}newimg/icons/home.svg"><span>The Lakshya Foundation</span></a></li>
 			      <li><a href="/innovationgarage"><img src="{{STATIC_URL}}newimg/icons/ig.svg"><span>Innovation Garage</span></a></li>
 			      <li><a href="/crowdfunding"><img src="{{STATIC_URL}}newimg/icons/crowdfunding.svg"><span>Crowdfunding</span></a></li>
-			      <li><a href="/hackathon/newhome"><img src="{{STATIC_URL}}newimg/icons/hackathon.svg"><span>Hackathon</span></a></li>
+			      <li><a href="/hackathon/"><img src="{{STATIC_URL}}newimg/icons/hackathon.svg"><span>Hackathon</span></a></li>
 			      <li class="grp-end"><a href="/innovation/home"><img src="{{STATIC_URL}}newimg/icons/otherprojects.svg"><span>Other Projects</span></a></li>
 			      <li><a href="/about"><img src="{{STATIC_URL}}newimg/icons/about.svg"><span>About</span></a></li>
 			      <li class="grp-end"><a href="/accounts/our-core-belief"><img src="{{STATIC_URL}}newimg/icons/transparency.svg"><span>Funding and Transparency</span></a></li>
-			      <li><a href="/newpartners"><img src="{{STATIC_URL}}newimg/icons/mentors.svg"><span>Partners</span></a></li>
+			      <li><a href="/partners"><img src="{{STATIC_URL}}newimg/icons/mentors.svg"><span>Partners</span></a></li>
 			      <li><a href="/donate"><img src="{{STATIC_URL}}newimg/icons/donate.svg"><span>Donate</span></a></li>
 			    </ul>
 			  </section>
@@ -104,10 +104,10 @@
 							</tr>
 						</table>
 						<ul>
-							<li class="footer-item"><a href="#">Research Funding</a></li>
-							<li class="footer-item"><a href="#">Innovation Support</a></li>
-							<li class="footer-item"><a href="#">Donations</a></li>
-							<li class="footer-item"><a href="#">Transparency</a></li>
+							<li class="footer-item"><a href="/research/home">Research Funding</a></li>
+							<li class="footer-item"><a href="/innovation/home">Innovation Support</a></li>
+							<li class="footer-item"><a href="/accounts/donations">Donations</a></li>
+							<li class="footer-item"><a href="/accounts/our-core-belief">Transparency</a></li>
 						</ul>
 					</div>
 				</div>
@@ -120,8 +120,8 @@
 							</tr>
 						</table>
 						<ul>
-							<li class="footer-item"><a href="#">Register</a></li>
-							<li class="footer-item"><a href="#">Event Schedule</a></li>
+							<li class="footer-item"><a href="/hackathon">Register</a></li>
+							<li class="footer-item"><a href="/hackathon">Event Schedule</a></li>
 						</ul>
 					</div>
 				</div>
@@ -134,9 +134,9 @@
 							</tr>
 						</table>
 						<ul>
-							<li class="footer-item"><a href="#">Start a Project</a></li>
-							<li class="footer-item"><a href="#">Explore</a></li>
-							<li class="footer-item"><a href="#">Book a machine</a></li>
+							<li class="footer-item"><a href="/innovationgarage">Start a Project</a></li>
+							<li class="footer-item"><a href="/innovationgarage/projects">Explore</a></li>
+							<li class="footer-item"><a href="/innovationgarage">Book a machine</a></li>
 						</ul>
 					</div>
 				</div>
@@ -149,9 +149,9 @@
 							</tr>
 						</table>
 						<ul>
-							<li class="footer-item"><a href="#">Start a Project</a></li>
-							<li class="footer-item"><a href="#">View Projects</a></li>
-							<li class="footer-item"><a href="#">How it works</a></li>
+							<li class="footer-item"><a href="/crowdfunding">Start a Project</a></li>
+							<li class="footer-item"><a href="/crowdfunding">View Projects</a></li>
+							<li class="footer-item"><a href="/crowdfunding">How it works</a></li>
 						</ul>
 					</div>
 				</div>
@@ -163,10 +163,10 @@
 							</tr>
 						</table>
 						<ul>
-							<li class="footer-item"><a href="#">+91 9123456789</a></li>
+							<li class="footer-item"><a href="tel:+919849365735">+91 98493 65735</a></li>
 							<li class="footer-item">
-								<a href="#"><img class="footer_icon" src="{{STATIC_URL}}newimg/icons/email_footer.svg"></a>
-								<a href="#"><img class="footer_icon" src="{{STATIC_URL}}newimg/icons/facebook_footer.svg"></a>
+								<a href="mailto:info@thelakshyafoundation.org"><img class="footer_icon" src="{{STATIC_URL}}newimg/icons/email_footer.svg"></a>
+								<a href="https://www.facebook.com/thelakshyafoundation" target="_blank"><img class="footer_icon" src="{{STATIC_URL}}newimg/icons/facebook_footer.svg"></a>
 							</li>
 						</ul>
 					</div>
