@@ -122,3 +122,7 @@ def student_details(request):
 
 class HackathonHomeView(TemplateView):
     template_name = 'hackathon/home.html'
+
+
+class HackathonDetailView(TemplateView):
+    template_name = 'hackathon/detail.html'

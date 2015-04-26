@@ -1,0 +1,170 @@
+{% extends "newbase.html" %}
+
+{% block scripts %}
+<script type="text/javascript">
+	$(function() {
+
+	});
+</script>
+{% endblock scripts %}
+
+{% block content %}
+<div id="hackathon_detail">
+	<div id="hackathon_detail_hero">
+		<div class="content">
+			<div id="hackathon_detail_hero_content_container">
+				<p id="hackathon_date">14 Jan 2014</p>
+				<p id="hackathon_name">Hackathon 1.0</p>
+			</div>
+		</div>
+	</div>
+	<div id="hackathon_detail_stats_container">
+		<div id="hackathon_detail_stats" class="content">
+			<div class="row">
+				<div class="column large-4 medium-12 small-12 home_stat">
+					<p class="hackathon_stat_number">114</p>
+					<p class="hackathon_stat_text heading">Hackers</p>
+				</div>
+				<div class="column large-4 medium-12 small-12 hackathon_stat">
+					<p class="hackathon_stat_number">7</p>
+					<p class="hackathon_stat_text heading">Problem Statements</p>
+				</div>
+				<div class="column large-4 medium-12 small-12 hackathon_stat">
+					<p class="hackathon_stat_number">6</p>
+					<p class="hackathon_stat_text heading">Mentors</p>
+				</div>
+			</div>
+			<a id="hackathon_detail_download" href="#" class="cta hackathon">Download PDF Report</a>
+		</div>
+	</div>
+	<div id="hackathon_problem_statements" class="content">
+		<p class="heading">Problem Statements</p>
+		<table>
+			<tr>
+				<td>1.</td>
+				<td>Chicken and Egg Problem</td>
+				<td><a href="#">View</a></td>
+			</tr>
+			<tr>
+				<td>2.</td>
+				<td>Chicken and Egg Problem</td>
+				<td><a href="#">View</a></td>
+			</tr>
+			<tr>
+				<td>3.</td>
+				<td>Chicken and Egg Problem</td>
+				<td><a href="#">View</a></td>
+			</tr>
+			<tr>
+				<td>4.</td>
+				<td>Chicken and Egg Problem</td>
+				<td><a href="#">View</a></td>
+			</tr>
+			<tr>
+				<td>5.</td>
+				<td>Chicken and Egg Problem</td>
+				<td><a href="#">View</a></td>
+			</tr>
+			<tr>
+				<td>6.</td>
+				<td>Chicken and Egg Problem</td>
+				<td><a href="#">View</a></td>
+			</tr>
+		</table>
+	</div>
+	<div id="hackathon_gallery_container">
+		<div id="hackathon_gallery" class="content">
+			<p class="heading">Gallery</p>
+		</div>
+	</div>
+	<div id="hackathon_mentors" class="content">
+		<p class="heading">Mentors</p>
+		<div class="row">
+			<div class="column small-12 large-4 mentor">
+				<table>
+					<tr>
+						<td>
+							<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
+						</td>
+						<td>
+							<p class="mentor_name">Barack Obama</p>
+							<p class="mentor_designation">President</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="column small-12 large-4 mentor">
+				<table>
+					<tr>
+						<td>
+							<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
+						</td>
+						<td>
+							<p class="mentor_name">Barack Obama</p>
+							<p class="mentor_designation">President</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="column small-12 large-4 mentor">
+				<table>
+					<tr>
+						<td>
+							<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
+						</td>
+						<td>
+							<p class="mentor_name">Barack Obama</p>
+							<p class="mentor_designation">President</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="column small-12 large-4 mentor">
+				<table>
+					<tr>
+						<td>
+							<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
+						</td>
+						<td>
+							<p class="mentor_name">Barack Obama</p>
+							<p class="mentor_designation">President</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="column small-12 large-4 mentor end">
+				<table>
+					<tr>
+						<td>
+							<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
+						</td>
+						<td>
+							<p class="mentor_name">Barack Obama</p>
+							<p class="mentor_designation">President</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div id="hackathon_sponsors_container">
+		<div id="hackathon_sponsors" class="content">
+			<p class="heading">Sponsors</p>
+			<div class="row">
+				<div class="column small-6 large-3">
+					<img src="{{STATIC_URL}}newimg/sponsors/sponsor1.png">
+				</div>
+				<div class="column small-6 large-3">
+					<img src="{{STATIC_URL}}newimg/sponsors/sponsor2.png">
+				</div>
+				<div class="column small-6 large-3">
+					<img src="{{STATIC_URL}}newimg/sponsors/sponsor3.png">
+				</div>
+				<div class="column small-6 large-3">
+					<img src="{{STATIC_URL}}newimg/sponsors/sponsor4.png">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}
