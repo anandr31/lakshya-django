@@ -4,7 +4,9 @@
 {% block scripts %}
 <script type="text/javascript">
 $(function() {
-	
+	$('.ig_project_snippet').click(function() {
+		window.location = $(this).find('a').attr('href');
+	})
 });
 </script>
 {% endblock scripts %}
