@@ -100,7 +100,7 @@
 				{% for sponsor in sponsors %}
 				<div class="column small-6 large-3 {% if forloop.last %}end{% endif %}">
 					<a href="{{sponsor.website}}">
-						{% if sponsor.logo %}<img src="{{sponsor.logo}}">{% else %}<span>{{sponsor.name}}</span>{% endif %}
+						{% if sponsor.logo %}<img src="{{sponsor.logo.url}}">{% else %}<span>{{sponsor.name}}</span>{% endif %}
 					</a>
 				</div>
 				{% endfor %}
