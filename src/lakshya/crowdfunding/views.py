@@ -99,7 +99,7 @@ class ProjectDetailAPIView(View):
 
 
 class ProjectDetailView(TemplateView):
-    template_name = 'project/detail.html'
+    template_name = 'crowdfunding/project/detail.html'
 
     def get_context_data(self, **kwargs):
         context = TemplateView.get_context_data(self, **kwargs)
