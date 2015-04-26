@@ -7,7 +7,7 @@ from hackathon.models import *
 from django.views.generic.base import TemplateView
 from django.http.response import Http404
 
-PREV_HACKATHON_PARTICIPANT_COUNTS = {1: 34, 2: 80, 3: 130}  # Hard coded for now since we dont have all the data
+PREV_HACKATHON_PARTICIPANT_COUNTS = {3: 34, 2: 80, 1: 130}  # Hard coded for now since we dont have all the data
 
 
 def index(request):
