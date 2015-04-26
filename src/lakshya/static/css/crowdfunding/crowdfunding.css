@@ -1,3 +1,6 @@
+#crowdfunding_home_page{
+	padding-bottom: 5rem;
+}
 #crowdfunding_hero_section{
 	position: relative;
 	background-image: url('../../img/crowdfunding/crowdfunding_hero.jpg');
@@ -64,6 +67,7 @@
 #crowdfunding_home_page .project_block{
 	border: 1px solid #01b49e;
 	padding: 1.5rem auto;
+	margin: 0 0;
 }
 div#crowdfunding_projects_section{
 	margin: 1.8em auto;
@@ -108,7 +112,8 @@ div#crowdfunding_projects_section{
 	font-size: 2rem;
 	text-align: center;
 	cursor: pointer;
-	padding-bottom: 3.5rem;
+	padding-bottom: 3rem;
+	padding-top: 3rem;
 }
 #crowdfunding_home_page #projects_explore_all:hover{
 	text-decoration: underline;
@@ -128,15 +133,75 @@ div#crowdfunding_projects_section{
 	padding: 1.5rem;
 	padding-bottom: 3.8rem;
 }
-#crowdfunding_analytics_section{
-	border: 1px solid #ccc;
+#crowdfunding_analytics_section #analytics_section_bg{
+	background: #F8F8F8;
 }
 #crowdfunding_analytics_section #makesomething_container{
 	background: url('../../img/crowdfunding/create_project_BG.png');
 	width: 100%;
+	padding: 2.5rem;
 }
 #makesomething_container .column{
+	color:white;
 	margin-top: 1rem;
+	font-size: 2rem;
+}
+#makesomething_container #startnew_button{
+	padding: 1rem;
+	max-width: 20rem;
+	margin-right: 18rem;
+	font-size: 1.4rem;
+	background: #E7E755;
+	color:#444;
+	font-weight: bold;
+}
+#crowdfunding_analytics_section .analytics_box{
+	padding: 3rem;
+	background: #F8F8F8;
+}
+#crowdfunding_analytics_section .analytics_number{
+	margin: 0 0 ;
+	text-align: center;
+	font-size: 9.6rem;
+	font-weight: 100;
+	color: #01B49E;
+}
+#crowdfunding_analytics_section .analytics_label{
+	margin : 0 auto ;
+	text-align: center;
+	font-weight: bold;
+	font-size: 2.2rem;
+	max-width: 20rem;
+}
+#crowdfunding_faq_section{
+	text-align: center;
+	padding: 3rem;
+}
+#crowdfunding_faq_section .row {
+	padding: 1.5rem;
+}
+#crowdfunding_faq_section .faq_about_icon{
+	width: 5rem;
+	height: 5rem;
+}
+#crowdfunding_faq_section .faq_box_head{
+	color: #24B399;
+	font-weight: bold;
+	font-size: 1.6rem;
+	padding: 0.7rem;
+}
+#crowdfunding_faq_section p{
+	font-style: justify !important;
+}
+#crowdfunding_faq_section .faq_box{
+	padding: 1.5rem;
+}
+#crowdfunding_faq_section p#faq_body{
+	font-style: justify;
+}
+#crowdfunding_faq_section #why_it_works{
+	font-weight: bold;
+	font-size: 2rem;
 }
 @media small and medium {
 	#crowdfunding_hero_section{
