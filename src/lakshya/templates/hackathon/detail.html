@@ -35,43 +35,20 @@
 				</div>
 			</div>
 			{% if hackathon.report %}
-			<a id="hackathon_detail_download" href="#" class="cta hackathon"><img src="{{STATIC_URL}}newimg/icons/download.svg"><span>Download PDF Report</span></a>
+			<a id="hackathon_detail_download" href="{{hackathon.report.url}}" target="_blank" class="cta hackathon"><img src="{{STATIC_URL}}newimg/icons/download.svg"><span>Download PDF Report</span></a>
 			{% endif %}
 		</div>
 	</div>
 	<div id="hackathon_problem_statements" class="content">
 		<p class="heading">Problem Statements</p>
 		<table>
+			{% for problem_statement in problem_statements %}
 			<tr>
-				<td>1.</td>
-				<td>Chicken and Egg Problem</td>
-				<td><a href="#">View</a></td>
+				<td>{{forloop.counter}}</td>
+				<td>{{problem_statement.name}}</td>
+				<td><a href="{{problem_statement.add_link}}" target="_blank">View</a></td>
 			</tr>
-			<tr>
-				<td>2.</td>
-				<td>Chicken and Egg Problem</td>
-				<td><a href="#">View</a></td>
-			</tr>
-			<tr>
-				<td>3.</td>
-				<td>Chicken and Egg Problem</td>
-				<td><a href="#">View</a></td>
-			</tr>
-			<tr>
-				<td>4.</td>
-				<td>Chicken and Egg Problem</td>
-				<td><a href="#">View</a></td>
-			</tr>
-			<tr>
-				<td>5.</td>
-				<td>Chicken and Egg Problem</td>
-				<td><a href="#">View</a></td>
-			</tr>
-			<tr>
-				<td>6.</td>
-				<td>Chicken and Egg Problem</td>
-				<td><a href="#">View</a></td>
-			</tr>
+			{% endfor %}
 		</table>
 	</div>
 	<div id="hackathon_gallery_container">
@@ -82,89 +59,36 @@
 	<div id="hackathon_mentors" class="content">
 		<p class="heading">Mentors</p>
 		<div class="row">
-			<div class="column small-12 large-4 mentor">
+			{% for mentor in mentors %}
+			<div class="column small-12 large-4 mentor {% if forloop.last %}end{% endif %}">
 				<table>
 					<tr>
 						<td>
-							<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
+							{% if mentor.picture %}
+							<img class="mentor_picture" src="{{mentor.picture.url}}">
+							{% endif %}
 						</td>
 						<td>
-							<p class="mentor_name">Barack Obama</p>
-							<p class="mentor_designation">President</p>
+							<p class="mentor_name">{{mentor.name}}</p>
+							<p class="mentor_designation"></p>
 						</td>
 					</tr>
 				</table>
 			</div>
-			<div class="column small-12 large-4 mentor">
-				<table>
-					<tr>
-						<td>
-							<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
-						</td>
-						<td>
-							<p class="mentor_name">Barack Obama</p>
-							<p class="mentor_designation">President</p>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="column small-12 large-4 mentor">
-				<table>
-					<tr>
-						<td>
-							<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
-						</td>
-						<td>
-							<p class="mentor_name">Barack Obama</p>
-							<p class="mentor_designation">President</p>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="column small-12 large-4 mentor">
-				<table>
-					<tr>
-						<td>
-							<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
-						</td>
-						<td>
-							<p class="mentor_name">Barack Obama</p>
-							<p class="mentor_designation">President</p>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="column small-12 large-4 mentor end">
-				<table>
-					<tr>
-						<td>
-							<img class="mentor_picture" src="{{STATIC_URL}}newimg/barack.png">
-						</td>
-						<td>
-							<p class="mentor_name">Barack Obama</p>
-							<p class="mentor_designation">President</p>
-						</td>
-					</tr>
-				</table>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
 	<div id="hackathon_sponsors_container">
 		<div id="hackathon_sponsors" class="content">
 			<p class="heading">Sponsors</p>
 			<div class="row">
-				<div class="column small-6 large-3">
-					<img src="{{STATIC_URL}}newimg/sponsors/sponsor1.png">
+				{% for sponsor in sponsors %}
+				<div class="column small-6 large-3 {% if forloop.last %}end{% endif %}">
+					<a href="{{sponsor.website}}">
+						{% if sponsor.logo %}<img src="{{sponsor.logo}}">{% else %}<span>{{sponsor.name}}</span>{% endif %}
+					</a>
 				</div>
-				<div class="column small-6 large-3">
-					<img src="{{STATIC_URL}}newimg/sponsors/sponsor2.png">
-				</div>
-				<div class="column small-6 large-3">
-					<img src="{{STATIC_URL}}newimg/sponsors/sponsor3.png">
-				</div>
-				<div class="column small-6 large-3">
-					<img src="{{STATIC_URL}}newimg/sponsors/sponsor4.png">
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>

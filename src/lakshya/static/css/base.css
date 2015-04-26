@@ -815,6 +815,11 @@ p, a, li, span {
 	text-transform: none;
 }
 
+#hackathon_detail #hackathon_detail_download img {
+	width: 3rem;
+	margin-right: 1rem;
+}
+
 #hackathon_problem_statements {
 	padding: 4rem 0;
 	text-align: center;
@@ -895,6 +900,25 @@ p, a, li, span {
 	right: 0;
 }
 
+#ig_hero video {
+	min-width: 100%;
+	min-height: 51.2rem;
+	position: absolute;
+	top: -15rem;
+	left: 0;
+	right: 0;
+}
+
+#ig_hero_mask {
+	height: 51.2rem;
+	background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.9));
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 3;
+}
+
 #ig_hero .content {
 	position: relative;
 	height: 100%;
@@ -905,6 +929,7 @@ p, a, li, span {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
+	z-index: 4;
 }
 
 #ig_hero_content #hero_heading {
@@ -929,9 +954,24 @@ p, a, li, span {
 	color: #f75b22;
 }
 
+
+@media only screen and (max-width: 64em) { /* Small */
+	#ig_hero #hero_heading {
+		font-size: 2rem;
+	}
+	#ig_hero p.ig_stat_number {
+		font-size: 5rem;	
+	}
+}
+
+
+
+
 #ig_home #ig_sponsors_container {
 	background: #30302f;
 	padding: 4rem 0 1rem;
+	position: relative;
+	z-index: 8;
 }
 
 #ig_home #ig_sponsors div.column {
@@ -947,6 +987,13 @@ p, a, li, span {
 	background: #747474;
 	padding: 1.5rem 3rem;
 	font-weight: 700;
+}
+
+#ig_home #ig_projects_container {
+	background: #fff;
+	position: relative;
+	z-index: 8;
+	padding: 4rem 0;
 }
 
 #ig_home #ig_projects {
