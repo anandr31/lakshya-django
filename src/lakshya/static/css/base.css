@@ -991,6 +991,7 @@ p.hint {
 }
 
 #hackathon_mentors div.mentor table {
+	width: 100%;
 	margin: 2rem auto 0;
 }
 
