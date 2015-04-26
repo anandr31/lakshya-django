@@ -148,7 +148,7 @@ class HackathonDetailView(TemplateView):
         else:
             context['participant_count'] = hackathon.participants.count()
 
-        context['problem_statements'] = hackathon.problem_statements.all()
+        context['problem_statements'] = hackathon.problem_statements.order_by('id')
         context['mentors'] = hackathon.mentors.all()
         context['sponsors'] = hackathon.sponsors.all()
 
