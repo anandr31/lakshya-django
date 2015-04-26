@@ -1,11 +1,22 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
 
 {% block title %}
 <title>Expenses - Lakshya, an NITW alumni led organization</title>
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
 {% endblock title %}
 
-{% block meta %}
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+	select {
+		height: 4rem !important;
+		width: 8rem !important;
+	}
+</style>
+{% endblock precss %}
+
+{% block scripts %}
 <LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/datatable/demo_table.css"></LINK>
 
 <script src="{{STATIC_URL}}js/jquery.min.js"></script>	
@@ -27,6 +38,8 @@ $(document).ready(function() {
 {%endblock header_slide%}
 
 {% block content %}
+<div class="content_wrap_old clearfix">
+
 <div class = "content_with_page_title left">
 	<h2>Expenses</h2>
 	<div class="content_div">
@@ -95,5 +108,6 @@ $(document).ready(function() {
 		<li>Expenses</li>
 		<li><a href="/accounts/audits">Audits</a></li>
 	</ul>
+</div>
 </div>
 {% endblock content %}

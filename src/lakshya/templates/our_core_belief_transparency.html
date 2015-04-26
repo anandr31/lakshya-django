@@ -1,15 +1,27 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
 
 {% block title %}
 <title>Core belief - Lakshya, an NITW alumni led organization</title>
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
 {% endblock title %}
 
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+	.right_navigation_div {
+		height: 20rem;
+	}
+</style>
+{% endblock precss %}
+
 {%block header_slide%}
 			<a href="/team" title="Team" ><img src="{{STATIC_URL}}img/headers/funds.png" width="990" height="420" alt="Team"></a>
 {% endblock header_slide%}
 
 {% block content %}
+<div class="content_wrap_old clearfix">
+
 <div class = "content_with_page_title left">
 	<h2>Our core belief</h2>
 
@@ -54,5 +66,6 @@
 		<li><a href="/accounts/expenses">Expenses</a></li>
 		<li><a href="/accounts/audits">Audits</a></li>
 	</ul>
+</div>
 </div>
 {% endblock content %}

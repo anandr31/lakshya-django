@@ -1,17 +1,24 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
 
 {% block title %}
 <title>Donate- Lakshya, an NITW alumni led organization</title>
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
 {% endblock title %}
 
-{% block meta %}
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+{% endblock precss %}
 
+{% block meta %}
 {% endblock %}
+
 {%block header_slide%}
 {%endblock header_slide%}
 
 {% block content %}
+<div class="content_wrap_old clearfix">
+	
 	<h2 class="donate_header">Donate</h2>
 <div class = "donate_content">
 <p align="center">Where your donation goes</p>
@@ -79,5 +86,7 @@ People and technology:<br/>
 			<p>Contact: 0870-2462338</p>
 		</div>
 	</div>
+</div>
+
 </div>
 {% endblock content %}

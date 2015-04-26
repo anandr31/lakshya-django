@@ -1,4 +1,16 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
+
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+</style>
+{% endblock precss %}
+
+{% block header %}
+{{block.super}}
+{% include "submenu_for_old.html" %}
+{% endblock header %}
 
 {% block title %}
 <title>Apply for Scholarships - Lakshya, an NITW alumni led organization</title>
@@ -17,6 +29,7 @@
 {% endblock header_slide%}
 
 {% block content %}
+<div class="content_wrap_old clearfix">
 <div class = "content_with_page_title left">
 	<h2>Apply for Lakshya Scholarships</h2>
 	<iframe src="https://docs.google.com/spreadsheet/embeddedform?formkey=dE81T0hZMzVqc1Fkak11TEhWNElXTUE6MQ" width="760" height="924" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
@@ -30,5 +43,6 @@
 		<li><a href="/scholarships/funding-partners">Funding Partners</a></li>
 		<li>Apply For Scholarships</li>		
 	</ul>
+</div>
 </div>
 {% endblock content %}

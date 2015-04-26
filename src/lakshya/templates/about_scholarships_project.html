@@ -1,4 +1,19 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
+
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+	.q_and_a p.question {
+		margin: 3rem 0 1.5rem;
+	}
+</style>
+{% endblock precss %}
+
+{% block header %}
+{{block.super}}
+{% include "submenu_for_old.html" %}
+{% endblock header %}
 
 {% block title %}
 <title>About Financial Assistance Project - Lakshya</title>
@@ -10,6 +25,7 @@
 {%endblock header_slide%}
 
 {% block content %}
+<div class="content_wrap_old clearfix">
 <div class = "content_with_page_title left">
 		<div id="blockquote_div">
 			<blockquote> "Education is not an expense... it is an investment"</h3><p>-Lyndon B Johnson, Former President of the United States (1963-1969)</p></blockquote>
@@ -40,5 +56,6 @@
 		<li><a href="/scholarships/funding-partners">Funding Partners</a></li>
 		<li><a href="/scholarships/apply-scholarships">Apply For Scholarships</a></li>		
 	</ul>
+</div>
 </div>
 {% endblock content %}

@@ -1,4 +1,23 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
+
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+	li {
+		list-style: disc;
+	}
+	#automation_button {
+		width: 15% !important;
+	}
+</style>
+{% endblock precss %}
+
+{% block header %}
+{{block.super}}
+{% include "submenu_for_old.html" %}
+{% endblock header %}
+
 {% block title %}
 <title>Adminstrative Process Automation - Lakshya</title>
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
@@ -11,6 +30,7 @@
 	<a href="/team" title="Team" ><img src="{{STATIC_URL}}img/headers/projects.png" width="990" height="420" alt="Team"></a>
 {%endblock header_slide%}
 {% block content %}
+<div class="content_wrap_old clearfix">
 <br>
 <h2 style="color: #2e93a8;">Administrative Process Automation</h2>
 <div id="blockquote_div">
@@ -34,4 +54,5 @@
 <h3 style="color: #2e93a8">Planned Next Release</h3>
 <p id="release_plan">Request monitoring and Tracking system will be released on <b>February 5th 2013</b></p>
 -->
+</div>
 {% endblock content %}

@@ -18,9 +18,11 @@
 	<title>Lakshya - an NITW alumni led organization</title>
 {% endblock title %}
 
+{% block precss %}
+{% endblock precss %}
+
 <LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/foundation/foundation.css"></LINK>
 <LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/foundation/normalize.css"></LINK>
-<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}font-awesome/css/font-awesome.min.css"></LINK>
 <LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/base.css"></LINK>
 
 {% block extracss %}
@@ -74,11 +76,11 @@
 			      <li><a href="/innovationgarage"><img src="{{STATIC_URL}}newimg/icons/ig.svg"><span>Innovation Garage</span></a></li>
 			      <li><a href="/crowdfunding"><img src="{{STATIC_URL}}newimg/icons/crowdfunding.svg"><span>Crowdfunding</span></a></li>
 			      <li><a href="/hackathon/newhome"><img src="{{STATIC_URL}}newimg/icons/hackathon.svg"><span>Hackathon</span></a></li>
-			      <li class="grp-end"><a href="#"><img src="{{STATIC_URL}}newimg/icons/otherprojects.svg"><span>Other Projects</span></a></li>
-			      <li><a href="#"><img src="{{STATIC_URL}}newimg/icons/about.svg"><span>About</span></a></li>
-			      <li class="grp-end"><a href="#"><img src="{{STATIC_URL}}newimg/icons/transparency.svg"><span>Funding and Transparency</span></a></li>
-			      <li><a href="#"><img src="{{STATIC_URL}}newimg/icons/mentors.svg"><span>Partners and Mentors</span></a></li>
-			      <li><a href="#"><img src="{{STATIC_URL}}newimg/icons/donate.svg"><span>Donate</span></a></li>
+			      <li class="grp-end"><a href="/innovation/home"><img src="{{STATIC_URL}}newimg/icons/otherprojects.svg"><span>Other Projects</span></a></li>
+			      <li><a href="/about"><img src="{{STATIC_URL}}newimg/icons/about.svg"><span>About</span></a></li>
+			      <li class="grp-end"><a href="/accounts/our-core-belief"><img src="{{STATIC_URL}}newimg/icons/transparency.svg"><span>Funding and Transparency</span></a></li>
+			      <li><a href="/newpartners"><img src="{{STATIC_URL}}newimg/icons/mentors.svg"><span>Partners</span></a></li>
+			      <li><a href="/donate"><img src="{{STATIC_URL}}newimg/icons/donate.svg"><span>Donate</span></a></li>
 			    </ul>
 			  </section>
 			</nav>

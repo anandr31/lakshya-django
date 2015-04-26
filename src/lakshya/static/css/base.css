@@ -39,6 +39,10 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+body * {
+	font-family: 'Gotham',Helvetica,Arial,sans-serif !important;
+}
+
 table {
 	border: none;
 	background: transparent;
@@ -47,6 +51,18 @@ table {
 /* Overrides */
 .row {
 	max-width: 98rem;
+}
+
+label, ul, input[type="text"], input[type="email"] {
+	font-size: 1.4rem;
+}
+
+ul {
+	list-style: none;
+}
+
+p, a, li, span {
+	font-size: 1.3rem;
 }
 
 
@@ -82,6 +98,19 @@ a.cta.disabled {
 div.content {
 	max-width: 98rem;
 	margin: 0 auto;
+}
+
+div.content_wrap_old { /* For old pages */
+	max-width: 98rem;
+	padding: 0 0 4rem;
+	margin: 0 auto;
+}
+
+div.content_wrap_old td, 
+div.content_wrap_old th,
+div.content_wrap_old dd {
+	font-size: 1.4rem !important;
+	line-height: 1.5 !important;
 }
 
 p.heading {
@@ -145,6 +174,7 @@ p.hint {
 
 #menu .top-bar .name a {
 	display: inline-block;
+	text-decoration: none;
 }
 
 #menu .top-bar .name span {
@@ -175,6 +205,7 @@ p.hint {
 	font-size: 1.4rem;
 	font-family: 'Gotham',Helvetica,Arial,sans-serif;
 	padding: 1rem 0;
+	text-decoration: none;
 }
 
 #menu .top-bar-section ul li img {
@@ -252,10 +283,60 @@ p.hint {
 	color: #acacac;
 	display: inline-block;
 	margin-bottom: 0.5rem;
+	text-decoration: none;
 }
 
-p, a, li, span {
+/* Submenu */
+#submenu_container {
+	max-width: 98rem;
+	margin: 0 auto 4rem;
+	text-align: center;
+}
+
+#submenu {
+	background: #303030;
+	display: inline-block;
+	/*width: 98rem;*/
+	font-size: 0;
+}
+
+#submenu li {
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	border-right: 1px solid #ccc;
+	width: 19.2rem;
+	cursor: pointer;
+	vertical-align: top;
+	min-height: 5rem;
+	text-align: center;
+}
+
+#submenu li a {
+	color: #fff;
+	text-decoration: none;
 	font-size: 1.3rem;
+}
+
+#submenu.small li {
+	padding: 1.5rem 1rem;
+}
+
+#submenu li:last-child {
+	border-right: none;
+}
+
+#submenu li:hover,
+#submenu li.active {
+	background: #2e93a8;
+}
+
+#submenu li:hover a,
+#submenu li.active a  {
+	color: #000;
+}
+
+#submenu li.active {
+	background: #2e93a8;
 }
 
 /* Home page */
@@ -1189,4 +1270,20 @@ div.ig_project_snippet.view_all_content p {
 
 #ig_list a.cta {
 	margin: 3rem 0;
+}
+
+
+
+/* Old pages override */
+.donate_content {
+	margin-top: 5rem;
+}
+
+.donate_right {
+	margin-top: 5rem;
+	font-size: 1.4rem;
+}
+
+.donate_content_div tr {
+	background: transparent !important;
 }

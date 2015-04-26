@@ -1,11 +1,35 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
+
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+	.project_gist {
+		width: 30%;
+	}
+	.content_with_page_title h2 {
+		margin-bottom: 4rem;
+	}
+	.content_div h3 {
+		margin: 3rem 0 1.5rem;
+	}
+	#innovations_list .project_gist h3 {
+		margin: 0;
+	}
+</style>
+{% endblock precss %}
+
+{% block header %}
+{{block.super}}
+{% include "submenu_for_old.html" %}
+{% endblock header %}
 
 {% block title %}
 <title>Innovations - Lakshya, an NITW alumni led organization</title>
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
 {% endblock title %}
 
-{% block meta %}
+{% block scripts %}
 <!-- <script src="{{STATIC_URL}}js/jquery.min.js"></script> -->
 <script src="http://gettopup.com/releases/latest/top_up-min.js"></script>
 <script type="text/javascript">
@@ -22,11 +46,13 @@ $(function(){
 });
 </script>
 {% endblock %}
+
 {%block header_slide%}
 	<a href="/team" title="Team" ><img src="{{STATIC_URL}}img/headers/projects.png" width="990" height="420" alt="Team"></a>
 {% endblock header_slide%}
 
 {% block content %}
+<div class="content_wrap_old clearfix">
 <div class = "content_with_page_title left">
 	<h2>Innovations</h2>
 	<div class="content_div">
@@ -241,8 +267,5 @@ $(function(){
 		<li>Innovations list</li>
 	</ul>
 </div>
-
-
-
-
+</div>
 {% endblock content %}

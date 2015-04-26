@@ -1,4 +1,27 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
+
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+	li {
+		list-style: disc;
+		font-size: 1.4rem !important;
+		line-height: 1.6;
+	}
+	.right {
+		height: 25rem;
+	}
+	.right li {
+		list-style: none;
+	}
+</style>
+{% endblock precss %}
+
+{% block header %}
+{{block.super}}
+{% include "submenu_for_old.html" %}
+{% endblock header %}
 
 {% block title %}
 <title>Research Facilitator - Lakshya, an NITW alumni led organization</title>
@@ -10,6 +33,7 @@
 {% endblock header_slide%}
 
 {% block content %}
+<div class="content_wrap_old clearfix">
 <br>
 <h2 style="color: #2e93a8;">Research Facilitator Program</h2>
 <div id="research_main_content" class="left">
@@ -114,4 +138,5 @@
 	<img src="{{STATIC_URL}}img/research_facilitator/research_facilitator_program-1.jpg" width="480px"> 
 
 </div> -->
+</div>
 {% endblock content %}

@@ -1,9 +1,23 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
+
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+</style>
+{% endblock precss %}
+
+{% block header %}
+{{block.super}}
+{% include "submenu_for_about.html" %}
+{% endblock header %}
+
 {% block title %}
 <title>Testimonials - Lakshya, an NITW alumni led organization</title>
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
 {% endblock title %}
 {% block content %}
+<div class="content_wrap_old clearfix">
 <div class = "content_no_sidebar">
 
 	<h2><br/>Testimonials</h2>
@@ -45,6 +59,7 @@
 		</div>
 		{% endfor %}
 	</div> -->
+</div>
 </div>
 {% endblock content %}
 

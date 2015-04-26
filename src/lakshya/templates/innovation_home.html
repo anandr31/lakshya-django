@@ -1,4 +1,24 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
+
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+	.content_with_page_title h2 {
+		margin-bottom: 2rem;
+	}
+	.innovation_home_listing .project_gist {
+		height: 250px;
+		width: 30%;
+	}
+	.content_div h3 {
+		font-size: 1.8rem;
+		margin: 3rem 0;
+	}
+</style>
+{% endblock precss %}
+
+
 {% block title %}
 <title>Innovation Project - Lakshya, an NITW alumni led organization</title>
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
@@ -8,7 +28,13 @@
 <a href="/team" title="Team" ><img src="{{STATIC_URL}}img/headers/projects.png" width="990" height="420" alt="Team"></a>
 {% endblock header_slide%}
 
+{% block header %}
+{{block.super}}
+{% include "submenu_for_old.html" %}
+{% endblock header %}
+
 {% block content %}
+<div class="content_wrap_old clearfix">
 <div class = "content_with_page_title left">
 	<h2>Innovation Support Program</h2>
 	<div class="content_div">
@@ -95,5 +121,6 @@
 		<li><a href="/innovation/about-innovation-project">About Innovation Support Program</a></li>
 		<li><a href="/innovation/innovations-list">Innovations list</a></li>
 	</ul>
+</div>
 </div>
 {% endblock content %}

@@ -1,14 +1,31 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
+
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+	.left li {
+		list-style: disc;
+	}
+</style>
+{% endblock precss %}
+
+{% block header %}
+{{block.super}}
+{% include "submenu_for_old.html" %}
+{% endblock header %}
 
 {% block title %}
 <title>Funding Partners - Lakshya, an NITW alumni led organization</title>
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
 {% endblock title %}
+
 {%block header_slide%}
 	<a href="/team" title="Team" ><img src="{{STATIC_URL}}img/headers/projects.png" width="990" height="420" alt="Team"></a>
 {% endblock header_slide%}
 
 {% block content %}
+<div class="content_wrap_old clearfix">
 <div class = "content_with_page_title left">
 	<h2>Funding Partners</h2>
 	<p>Lakshya is supported in various capacities by the NIT Warangal alumni. Given below is a list of alumni and alumni-led organizations which fund Lakshya for the specific purpose of providing scholarships.</p>
@@ -45,5 +62,6 @@
 		<li>Funding Partners</li>
 		<li><a href="/scholarships/apply-scholarships">Apply For Scholarships</a></li>		
 	</ul>
+</div>
 </div>
 {% endblock content %}

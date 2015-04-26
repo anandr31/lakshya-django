@@ -1,4 +1,16 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
+
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+</style>
+{% endblock precss %}
+
+{% block header %}
+{{block.super}}
+{% include "submenu_for_about.html" %}
+{% endblock header %}
 
 {% block title %}
 <title>About - Lakshya, an NITW alumni led organization</title>
@@ -70,7 +82,7 @@
 
 
 {% block content %}
-
+<div class="content_wrap_old clearfix">
 <div class = "content_with_page_title left">
 <!-- 	<h2>About Lakshya</h2>
  -->	
@@ -118,11 +130,5 @@
 
 	</div>
 </div>
-<div class = "right_navigation_div right">
-	<h3>About</h3>
-	<ul>
-		<li>About Lakshya</li>
-		<li><a href="/team">Team</a></li>
-	</ul>
 </div>
 {% endblock content %}

@@ -1,4 +1,17 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
+
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+	
+</style>
+{% endblock precss %}
+
+{% block header %}
+{{block.super}}
+{% include "submenu_for_old.html" %}
+{% endblock header %}
 
 {% block title %}
 <title>Apply for Research Facilitator Program</title>
@@ -6,6 +19,7 @@
 {% endblock title %}
 
 {% block content %}
+<div class="content_wrap_old clearfix">
 <br>
 <h2>Apply for Research Facilitator Program</h2>
 <div id="research_main_content" class="left">
@@ -24,5 +38,5 @@
 	</ul>
 </div>
 
-
+</div>
 {% endblock content %}

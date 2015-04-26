@@ -39,7 +39,7 @@ html,body{
 body p, li, a, td, span, dl, dt {
 	font-size: 12pt;
 	line-height: 20px;
-	font-family: 'Didact Gothic', sans-serif;
+	/*font-family: 'Didact Gothic', sans-serif;*/
 }
 
 
@@ -56,7 +56,7 @@ body h4 {
 }
 
 body {
-	font-family: 'Didact Gothic', sans-serif;
+	/*font-family: 'Didact Gothic', sans-serif;*/
 	color: #000;
 }
 
@@ -83,7 +83,7 @@ button {
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	border:none;
-	font-family:'Helvetica Neue',Arial,sans-serif;
+	/*font-family:'Helvetica Neue',Arial,sans-serif;*/
 	text-shadow:#FE6 0 1px 0;
 	cursor: pointer;
 }
@@ -116,7 +116,7 @@ div.stats_description {
 	height:300px;
 	position:relative;
 	margin: auto;
-	font-family: 'Didact Gothic', sans-serif; 
+	/*font-family: 'Didact Gothic', sans-serif; */
 }
 
 
@@ -421,11 +421,11 @@ text-transform: capitalize;
 
 
 #footer {
-	width: 990px;
-	margin: auto;
-	background:rgb(107, 104, 104);
-	font-family: 'Didact Gothic', sans-serif;
-	position: relative;
+	/*width: 990px;*/
+	/*margin: auto;*/
+	/*background:rgb(107, 104, 104);*/
+	/*font-family: 'Didact Gothic', sans-serif;*/
+	/*position: relative;*/
 }
 
 table#footer_table {
@@ -568,7 +568,7 @@ tr#footer_header {
 #updates_block_inner_div h3, #testimonials_block_inner_div h3 {
 	margin-top: 0px;
 	color: #2e93a8;
-	font-family: 'Didact Gothic', sans-serif;
+	/*font-family: 'Didact Gothic', sans-serif;*/
 	font-size: 17;
 }
 
@@ -1787,7 +1787,7 @@ padding:10px;
 .testimonial_name {
     padding-top:10px;
     text-align:left;
-    font-family: Arial;
+    /*font-family: Arial;*/
     font-weight:bold;
     font-size:15px;
 }
@@ -1801,7 +1801,7 @@ padding:10px;
     width:274px;
     line-height:1.5;
     vertical-align:left;
-    font-family: Arial;
+    /*font-family: Arial;*/
     font-size:14px;
     color:#686868;
     padding-bottom:40px;
@@ -1857,7 +1857,7 @@ padding:10px;
 }
 
 .media-text a{
-   font-family:"Times New Roman",Times,serif;
+   /*font-family:"Times New Roman",Times,serif;*/
    font-style: italic;
    color:#808080;
    font-size:16px;

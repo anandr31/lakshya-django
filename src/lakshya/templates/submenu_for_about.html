@@ -1,0 +1,21 @@
+<script type="text/javascript">
+	$(function() {
+		$('#submenu li').each(function() {
+			if(window.location.pathname.split('/')[1] == $(this).data('module'))
+			{
+				$(this).addClass('active');
+			}
+		});
+		$('#submenu li').click(function() {
+			window.location = $(this).find('a').attr('href');
+		});
+	});
+</script>
+<div id="submenu_container">
+	<ul id="submenu" class="small">
+		<li data-module="about"><a href="/about">About Lakshya</a></li>
+		<li data-module="team"><a href="/team">Team</a></li>
+		<li data-module="testimonials"><a href="/testimonials">Testimonials</a></li>
+		<li data-module="newsletter"><a href="/newsletter">Newsletters</a></li>
+	</ul>
+</div>

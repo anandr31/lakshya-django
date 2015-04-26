@@ -1,4 +1,22 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
+
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+	.content_div h3 {
+		margin: 3rem 0 1.5rem;
+	}
+	#schupdates {
+		margin-top: 16rem;
+	}
+</style>
+{% endblock precss %}
+
+{% block header %}
+{{block.super}}
+{% include "submenu_for_old.html" %}
+{% endblock header %}
 
 {% block title %}
 <title>Scholars list - Lakshya, an NITW alumni led organization</title>
@@ -6,7 +24,7 @@
 {% endblock title %}
 
 
-{% block meta %}
+{% block scripts %}
 <script src="{{STATIC_URL}}js/jquery.min.js"></script>	
 <script type="text/javascript">
 $(function(){
@@ -34,6 +52,7 @@ $(function(){
 {% endblock header_slide%}
 
 {% block content %}
+<div class="content_wrap_old clearfix">
 <div class = "content_with_page_title left">
 	<h2>Scholars List</h2>
 	<div class="content_div">
@@ -95,7 +114,8 @@ $(function(){
 					</div>	
 
 				</div>				
-				<h3>Scholar Updates</h3>
+				<br>
+				<h3 id="schupdates">Scholar Updates</h3>
 				{% if scholar.updates %}
 					<ul>
 					{% for update in scholar.updates %}
@@ -152,5 +172,6 @@ $(function(){
 		<li><a href="/scholarships/funding-partners">Funding Partners</a></li>
 		<li><a href="/scholarships/apply-scholarships">Apply For Scholarships</a></li>		
 	</ul>
+</div>
 </div>
 {% endblock content %}

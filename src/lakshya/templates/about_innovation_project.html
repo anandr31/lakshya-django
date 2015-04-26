@@ -1,4 +1,20 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
+
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+	.q_and_a p.question {
+		margin: 3rem 0 1.5rem;
+	}
+</style>
+{% endblock precss %}
+
+{% block header %}
+{{block.super}}
+{% include "submenu_for_old.html" %}
+{% endblock header %}
+
 
 {% block title %}
 <title>About Innovation Project - Lakshya, an NITW alumni led organization</title>
@@ -11,6 +27,7 @@
 
 
 {% block content %}
+<div class="content_wrap_old clearfix">
 <div class = "content_with_page_title left">
 		<div id="blockquote_div">
 			<blockquote> "Ideas are like rabbits. You get a couple and learn how to handle them, and pretty soon you have a dozen"</h3><p>-John Steinbeck, Nobel Laureate, Literature (1962)</p></blockquote>
@@ -48,5 +65,6 @@
 		<li>About Innovation Support Program</li>
 		<li><a href="/innovation/innovations-list">Innovations list</a></li>
 	</ul>
+</div>
 </div>
 {% endblock content %}

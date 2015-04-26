@@ -1,14 +1,24 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
 {% load humanize %}
+
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+	select {
+		height: 4rem !important;
+		width: 8rem !important;
+	}
+</style>
+{% endblock precss %}
 
 {% block title %}
 <title>Donations- Lakshya, an NITW alumni led organization</title>
 <meta name="description" content="Lakshya an NIT Warangal alumni led registered organization">
 {% endblock title %}
 
-{% block meta %}
+{% block scripts %}
 <LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/datatable/demo_table.css"></LINK>
-
 <script type="text/javascript" src= "{{STATIC_URL}}js/jquery.min.js"></script>
 <script type="text/javascript" language="javascript" src="{{STATIC_URL}}js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
@@ -22,13 +32,15 @@ $(document).ready(function() {
     } );
 } );
 </script>
-{% endblock %}
+{% endblock scripts %}
 
 {%block header_slide%}
 	<a href="/team" title="Team" ><img src="{{STATIC_URL}}img/headers/funds.png" width="990" height="420" alt="Team"></a>
 {%endblock header_slide%}
 
 {% block content %}
+<div class="content_wrap_old clearfix">
+
 <div class = "content_with_page_title left">
 	<h2>Donations</h2>
 	<div class="content_div">
@@ -132,5 +144,7 @@ $(document).ready(function() {
 		<li><a href="/accounts/expenses">Expenses</a></li>
 		<li><a href="/accounts/audits">Audits</a></li>
 	</ul>
+</div>
+
 </div>
 {% endblock content %}
