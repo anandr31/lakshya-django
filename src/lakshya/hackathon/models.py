@@ -51,7 +51,7 @@ GENDER_CHOICES = ((1, "MALE"),
 
 
 class ProblemStatement(models.Model):
-    hackathon = models.ForeignKey('Hackathon', null=True)
+    hackathon = models.ForeignKey('Hackathon', null=True, related_name='problem_statements')
     name = models.CharField("Problem", max_length=100, blank=False)
     summary = models.CharField("Summary", max_length=300, blank=False)
     add_link = models.URLField(
@@ -81,7 +81,7 @@ class Hackathon(models.Model):
 
 
 class Participant(models.Model):
-    hackathon = models.ForeignKey(Hackathon, null=True)
+    hackathon = models.ForeignKey(Hackathon, null=True, related_name='participants')
     user = models.ForeignKey(User)
     roll_no = models.CharField(
         "Roll Number", max_length=15, blank=False, default=0)
@@ -138,14 +138,14 @@ class Sponsor(models.Model):
     website = models.URLField("Company URL", blank=True)
     logo = models.ImageField(
         "Company Logo", blank=True, null=True, upload_to='hackathon_sponsors')
-    hackathon = models.ForeignKey(Hackathon, null=True)
+    hackathon = models.ForeignKey(Hackathon, null=True, related_name='sponsors')
 
     def __unicode__(self):
         return self.name
 
 
 class Mentor(models.Model):
-    hackathon = models.ForeignKey(Hackathon, null=True)
+    hackathon = models.ForeignKey(Hackathon, null=True, related_name='mentors')
     name = models.CharField(max_length=255)
     picture = models.ImageField(
         max_length=1000, upload_to='hackathon_mentors', blank=True, null=True)

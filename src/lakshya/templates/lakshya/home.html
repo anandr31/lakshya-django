@@ -4,13 +4,21 @@
 <script type="text/javascript">
 	$(function() {
 		$('#home_contact_submit_mobile, #home_contact_submit').click(function() {
-			return false;
+			$('form#mc-embedded-subscribe-form').submit();
 		});
 	});
 </script>
 {% endblock scripts %}
 
 {% block content %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3&appId=1491007234499273";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div id="home_page">
 	<div id="home_hero">
 		<div class="row">
@@ -152,21 +160,27 @@
 	</div>
 	<div id="home_contact_container">
 		<div id="home_contact" class="content">
-			<div id="home_contact_input" class="clearfix">
-				<input placeholder="Enter Email Address">
-				<a href='#' id="home_contact_submit" class="show-for-large-up">
-					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-						 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
-					<path fill="#fff" d="M79.8,48.8c0.1-0.2,0.1-0.5,0-0.8c-0.1-0.1-0.1-0.2-0.2-0.3L67.6,35.8c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4l10.2,10.2
-						H21.1c-0.6,0-1,0.4-1,1c0,0.6,0.4,1,1,1h55.3L66.2,59.7c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.4,0.3,0.7,0.3s0.5-0.1,0.7-0.3l11.9-11.9
-						C79.7,49.1,79.7,48.9,79.8,48.8z"/>
-				</a>
-			</div>
+			<form action="//thelakshyafoundation.us3.list-manage.com/subscribe/post?u=273367d87612b051254836e04&amp;id=19ed7e0107" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+				<div id="home_contact_input" class="clearfix">
+					<input placeholder="Enter Email Address" name="EMAIL" autocomplete="off">
+					<a href='#' id="home_contact_submit" class="show-for-large-up">
+						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+						<path fill="#fff" d="M79.8,48.8c0.1-0.2,0.1-0.5,0-0.8c-0.1-0.1-0.1-0.2-0.2-0.3L67.6,35.8c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4l10.2,10.2
+							H21.1c-0.6,0-1,0.4-1,1c0,0.6,0.4,1,1,1h55.3L66.2,59.7c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.4,0.3,0.7,0.3s0.5-0.1,0.7-0.3l11.9-11.9
+							C79.7,49.1,79.7,48.9,79.8,48.8z"/>
+					</a>
+				</div>
+			</form>
+
 			<div class="hide-for-large-up">
 				<a href="#" id="home_contact_submit_mobile" class="cta">Submit</a>
 			</div>
 			<p id="enter_details_text">Leave us your contact details to get a consolidated update every month.</p>
 			<p id="follow_lakshya">Follow Lakshya on Facebook</p>
+			<div>
+				<div class="fb-like" data-href="https://www.facebook.com/thelakshyafoundation" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+			</div>
 
 		</div>		
 	</div>
