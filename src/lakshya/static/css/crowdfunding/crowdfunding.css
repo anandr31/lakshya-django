@@ -4,6 +4,8 @@
 #crowdfunding_hero_section{
 	position: relative;
 	background-image: url('../../img/crowdfunding/crowdfunding_hero.jpg');
+	background-size: cover;
+	background-position: center center;
 	height: 51.2rem;
 	display: block;
 }

@@ -651,6 +651,12 @@ p.hint {
 	margin: 0 auto;
 }
 
+@media only screen and (max-width: 40em) { /* Small */
+	#hackathon_hero #hackathon_hero_content_container {
+		padding: 2rem 1rem;
+	}
+}
+
 #hackathon_hero #hackathon_hero_content_container #hackathon_hero_heading {
 	color: #e31b4a;	
 	text-transform: uppercase;
