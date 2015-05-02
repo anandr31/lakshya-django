@@ -10,7 +10,7 @@
 
 {% block content %}
 <div id="hackathon_detail">
-	<div id="hackathon_detail_hero" style="background: url('{% if hackathon.banner %}{{hackathon.banner.url}}{% else %}{{STATIC_URL}}newimg/hero_hackathon.png{% endif %}');">
+	<div id="hackathon_detail_hero" style="background-image: url('{% if hackathon.banner %}{{hackathon.banner.url}}{% else %}{{STATIC_URL}}newimg/hero_hackathon.png{% endif %}');">
 		<div class="content">
 			<div id="hackathon_detail_hero_content_container">
 				<p id="hackathon_date">{{hackathon.start_time|date:"d M Y"}}</p>

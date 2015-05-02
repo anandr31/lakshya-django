@@ -507,18 +507,26 @@ p.hint {
 	width: 100%;
 }
 
-#home_testimonial .testimonial_end_icon {
-	right: 13rem;
-	top: 4rem;
+.testimonial_content_container {
+	position: relative;
 }
 
-#home_testimonial #home_testimonial_text {
+.testimonial_end_icon {
+	right: 0;
+	bottom: 0;
+}
+
+.testimonial_text {
+	position: relative;
+	z-index: 2;
 	font-size: 1.5rem;
 	font-style: italic;
 	line-height: 2.2;
 	padding: 0 3rem;
-	position: relative;
-	z-index: 3;
+}
+
+#home_testimonial #home_testimonial_text {
+	
 }
 
 #home_testimonial #home_testimonial_picture {
@@ -752,18 +760,8 @@ p.hint {
 	position: relative;
 }
 
-#hackathon_testimonial .testimonial_end_icon {
-	right: 8rem;
-	top: 18rem;
-}
-
 #hackathon_testimonial #hackathon_testimonial_text {
-	font-size: 1.5rem;
-	font-style: italic;
-	line-height: 2.2;
-	padding: 0 3rem;
-	position: relative;
-	z-index: 3;
+	
 }
 
 #hackathon_testimonial #hackathon_testimonial_picture {
@@ -1144,11 +1142,11 @@ div.ig_project_snipper p.heading {
 }
 
 div.ig_project_snippet {
-	width: 31rem;
+	max-width: 31rem;
 	height: 31rem;
 	margin: 0 auto 3rem;
 	position: relative;
-	background-position: cover;
+	background-size: cover;
 	background-position: center center;
 	cursor: pointer;
 }
@@ -1203,7 +1201,7 @@ div.ig_project_snippet.view_all_content p {
 #ig_home #ig_explore_text {
 	color: #fff;
 	font-size: 2.5rem;
-	max-width: 30rem;
+	max-width: 50rem;
 	margin: 0 auto;
 }
 
@@ -1233,16 +1231,8 @@ div.ig_project_snippet.view_all_content p {
 	position: relative;
 }
 
-#ig_testimonial .testimonial_end_icon {
-	right: 13rem;
-	top: 4rem;
-}
-
 #ig_testimonial #ig_testimonial_text {
-	font-size: 1.5rem;
-	font-style: italic;
-	line-height: 2.2;
-	padding: 0 3rem;
+	
 }
 
 #ig_testimonial #ig_testimonial_picture {

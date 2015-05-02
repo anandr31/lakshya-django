@@ -49,6 +49,14 @@
 			fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
 </script>
+<script type="text/javascript">
+	$(function() {
+		$(window).on('click', function(e) {
+			//Click is not on the menu icon and the menu is open, then close the menu
+			if($(e.target).closest('li.menu-icon').length == 0 && $('#menu .top-bar').hasClass('expanded')) $('#menu .top-bar').removeClass('expanded');
+		});
+	});
+</script>
 
 {% block scripts %}
 {% endblock scripts %}

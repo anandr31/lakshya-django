@@ -32,7 +32,7 @@ var map_loaded = false;
 function loadMap() {
 	if(!map_loaded)
 	{
-		$('#ig_map').html('<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1897.4434413091415!2d79.533151!3d17.98399900000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a334fbc10f30791%3A0x7df0c062f328cc66!2sInnovation+and+Incubation+Centre!5e0!3m2!1sen!2sin!4v1430027943271" width="980" height="300" frameborder="0" style="border:0"></iframe>');
+		$('#ig_map').html('<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1897.4434413091415!2d79.533151!3d17.98399900000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a334fbc10f30791%3A0x7df0c062f328cc66!2sInnovation+and+Incubation+Centre!5e0!3m2!1sen!2sin!4v1430027943271" width="100%" height="100%" frameborder="0" style="border:0"></iframe>');
 		map_loaded = true;
 	}
 }
@@ -117,7 +117,7 @@ $(function() {
 			<div class="row">
 				{%for project in projects %}
 				<div class="column small-12 medium-6 large-4">
-					<div class="ig_project_snippet" style="background: url('{{project.get_primary_picture_url}}'); background-position: center, center;">
+					<div class="ig_project_snippet" style="background-image: url('{{project.get_primary_picture_url}}');">
 						<p class="ig_project_name">{{project.title}}</p>
 						<a href="/innovationgarage/project/{{project.id}}"></a>
 					</div>
@@ -136,7 +136,7 @@ $(function() {
 	<div id="ig_explore" class="content">
 		<div class="row">
 			<div class="column large-8 small-12">
-				<p id="ig_explore_text">Explore the tech and create something.</p>
+				<p id="ig_explore_text">Enough tinkering? Get ready to start work on an idea-to-prototype project!</p>
 			</div>
 			<div class="column large-4 small-12">
 				<a href="mailto:info@thelakshyafoundation?subject='Hey!, I want to start an IG Project'" class="cta ig">Start New Project</a>
@@ -165,33 +165,35 @@ $(function() {
 			</div>
 			<div id="ig_rules" class="column large-6 small-12">
 				<p class="heading">Why should we brag?</p>
-				<p class="text">we believe that each and every student has immense potential within them which can be realized by giving them a chance to learn, without fear of failure and a platform to exhibit. Innovation Garage is an effort to create such environment of freedom, encouraging creativity through fully equipped collaborative workspace.</p>
+				<p class="text">We believe that each and every student has immense potential within them which can be realized by giving them a chance to learn, without fear of failure and a platform to exhibit. Innovation Garage is an effort to create such environment of freedom, encouraging creativity through fully equipped collaborative workspace.</p>
 			</div>
 		</div>
 	</div>
 	<div id="ig_testimonial" class="content">
-		<div class="testimonial_start_icon">
-			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				 viewBox="288.4 171.9 240 170.9" enable-background="new 288.4 171.9 240 170.9" xml:space="preserve">
-			<g enable-background="new    ">
-				<path fill="#f1f1f1" d="M528.4,205.3c-36.6,3.7-54.7,22.3-52,52.6h32.9v84.9h-86v-71.7c0-70.1,35-98.2,98.2-99.3L528.4,205.3z M393.5,205.3
-					c-36.6,3.7-54.7,22.3-52,52.6h32.9v84.9h-86v-71.7c0-70.1,35-98.2,98.2-99.3L393.5,205.3z"/>
-			</g>
-			</svg>
+		<div class="testimonial_content_container">
+			<div class="testimonial_start_icon">
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					 viewBox="288.4 171.9 240 170.9" enable-background="new 288.4 171.9 240 170.9" xml:space="preserve">
+				<g enable-background="new    ">
+					<path fill="#f1f1f1" d="M528.4,205.3c-36.6,3.7-54.7,22.3-52,52.6h32.9v84.9h-86v-71.7c0-70.1,35-98.2,98.2-99.3L528.4,205.3z M393.5,205.3
+						c-36.6,3.7-54.7,22.3-52,52.6h32.9v84.9h-86v-71.7c0-70.1,35-98.2,98.2-99.3L393.5,205.3z"/>
+				</g>
+				</svg>
+			</div>
+			<p id="ig_testimonial_text" class="testimonial_text">Pleased and impressed about this initiative at NIT Warangal.Supporting alumni, enthusiastic students & open innovation space-quite the right ingredients.Conveying my wishes to the entire team.</p>
+			<div class="testimonial_end_icon">
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					 viewBox="288.4 171.9 240 170.9" enable-background="new 288.4 171.9 240 170.9" xml:space="preserve">
+				<g enable-background="new    ">
+					<path fill="#f1f1f1" d="M295.3,171.9c63.2,1.1,98.2,29.2,98.2,99.3v71.7h-86v-84.9h32.9c2.7-30.3-15.4-48.8-52-52.6L295.3,171.9z M430.1,171.9
+						c63.2,1.1,98.2,29.2,98.2,99.3v71.7h-86v-84.9h32.9c2.7-30.3-15.4-48.8-52-52.6L430.1,171.9z"/>
+				</g>
+				</svg>
+			</div>
 		</div>
-		<p id="ig_testimonial_text">Pleased and impressed about this initiative at NIT Warangal.Supporting alumni, enthusiastic students & open innovation space-quite the right ingredients.Conveying my wishes to the entire team.</p>
 		<img id="ig_testimonial_picture" src="{{STATIC_URL}}newimg/sijo_profile.png">
 		<p id="ig_testimonial_name">Sijo Kuruvilla George</p>
 		<p id="ig_testimonial_designation">CEO, Startup Village</p>
-		<div class="testimonial_end_icon">
-			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				 viewBox="288.4 171.9 240 170.9" enable-background="new 288.4 171.9 240 170.9" xml:space="preserve">
-			<g enable-background="new    ">
-				<path fill="#f1f1f1" d="M295.3,171.9c63.2,1.1,98.2,29.2,98.2,99.3v71.7h-86v-84.9h32.9c2.7-30.3-15.4-48.8-52-52.6L295.3,171.9z M430.1,171.9
-					c63.2,1.1,98.2,29.2,98.2,99.3v71.7h-86v-84.9h32.9c2.7-30.3-15.4-48.8-52-52.6L430.1,171.9z"/>
-			</g>
-			</svg>
-		</div>
 	</div>
 	<div id="ig_map" class="content"></div>
 </div>
