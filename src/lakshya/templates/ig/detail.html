@@ -3,15 +3,13 @@
     <div id="ig_project_detail_page">
         <div id="hero_content">
             <div class="row">
-                <div class="large-6 column" id="project_image_container">
+                <div class="large-6 small-12 column" id="project_image_container">
                     <img src="{{project.get_primary_picture_url}}">
                 </div>
-                <div class="large-6 column">
-                    <div id="project_title">{{project.title | upper}}</div>
-                    <div id="project_objective">Objective</div>
-                    <div id="project_summary">{{project.objective | safe}}</div>
-                    <div>                       
-                   </div>
+                <div class="large-6 small-12 column">
+                    <p id="project_title">{{project.title | upper}}</p>
+                    <p id="project_objective">Objective</p>
+                    <p id="project_summary">{{project.objective | safe}}</p>
                 </div>
             </div>
         </div>

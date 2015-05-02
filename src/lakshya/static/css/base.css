@@ -907,6 +907,17 @@ p.hint {
 	margin: 0;
 }
 
+@media only screen and (max-width: 40em) { /* small */
+	#hackathon_detail #hackathon_detail_hero_content_container {
+		width: 100%;
+	}
+	#hackathon_detail #hackathon_detail_hero #hackathon_name {
+		font-size: 2.5rem;
+		text-align: center;
+		padding: 1rem;
+	}
+}
+
 #hackathon_detail_stats_container {
 	background: #f3f3f3;
 	padding: 4rem 0;
@@ -1292,28 +1303,28 @@ div.ig_project_snippet.view_all_content p {
 	background: url('../newimg/project_hero_overlay.png');
 }
 #ig_project_detail_page  #project_image_container{
-	margin-left: 3rem;
-	width: 45rem;
 	overflow: hidden;
-	padding: 3rem 0;
+	padding: 0;
+	margin: 0 auto;
 }
 #ig_project_detail_page  #project_image_container img{
 	margin: 0 auto;
 	border: 1px solid rgba(0,0,0,0.3);
+	width: 100%;
 }
-#ig_project_detail_page #hero_content #project_title, #ig_project_detail_page #hero_content #project_objective{
-	margin-top: 3rem;
+#ig_project_detail_page #hero_content #project_title, 
+#ig_project_detail_page #hero_content #project_objective {
+	padding-top: 3rem;
 	color: #F75B22;
 	font-weight: bold;
 }
 #ig_project_detail_page #hero_content #project_title{
 	font-size: 2.2rem;
-	margin-top: 7rem;
 }
 #ig_project_detail_page #hero_content #project_objective{
 	font-size: 1.6rem;
 }
-#ig_project_detail_page #hero_content div#project_summary{
+#ig_project_detail_page #hero_content #project_summary{
 	font-size: 1.6rem;
 	padding : 0.7rem 0;
 	color: white;
