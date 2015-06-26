@@ -96,7 +96,7 @@ def payment_redirect(request):
             amount = form.cleaned_data['amount']
             email_address = form.cleaned_data['email_address']
             email_receipt = form.cleaned_data['email_receipt']
-            pan_card = form.cleaned_data['pan_number']
+            pan_card = form.cleaned_data['pan_card']
 	    if referrer_url == '/applicants' and notes <> "":
 	    	notes = "Internship Sponroship for "+notes
             pt = PaymentTemp.objects.create(amount=amount, email_address=email_address, email_receipt=email_receipt, pan_card=pan_card)
