@@ -127,11 +127,11 @@ def return_view(request):
         
         form = CCAVenueReturnForm(merchant_id, working_key, request.POST)
         if not form.is_valid():
-            return redirect('payment-failure')
+            return redirect("payment-failure")
         
        
         if form.cleaned_data['AuthDesc'] == 'N':
-            return redirect('payment-failure')
+            return redirect("payment-failure")
         
         try:
             temp_id = request.POST.get("Order_Id")
