@@ -153,7 +153,7 @@ def return_view(request):
                                        password="Lakshya123$")
         try:
             person = Person.objects.get(user=user)
-            person.update(billing_address=str(request.POST.get("billing_cust_address")),
+            person._dict_.update(billing_address=str(request.POST.get("billing_cust_address")),
                           billing_city=str(request.POST.get("billing_cust_city")),
                           billing_state=str(request.POST.get("billing_cust_state")),
                           billing_postal_code=str(request.POST.get("billing_zip_code")),
