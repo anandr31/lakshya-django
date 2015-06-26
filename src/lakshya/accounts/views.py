@@ -148,7 +148,7 @@ def return_view(request):
         except User.DoesNotExist:
             user = User.objects.create(username=paymentTemp.email_address[:28], 
                                        email=paymentTemp.email_address, 
-                                       first_name=request.POST.get("delivery_cust_name"),
+                                       first_name=request.POST.get("billing_cust_name"),
                                        password="Lakshya123$")
         try:
             person = Person.objects.get(user=user)
@@ -173,14 +173,14 @@ def return_view(request):
                 
         to_users = [user, info_user]
         
-        context = {"name": request.POST.get("delivery_cust_name"),
+        context = {"name": request.POST.get("billing_cust_name"),
                    "amount": request.POST.get("Amount")}
         
         notification.send(to_users, "payment_confirmation", context)
         
         return redirect("payment-success")
     else:
-        return redirect('payment-failure')
+        return redirect("payment-failure")
     
     
 def calc_amount(ip):
