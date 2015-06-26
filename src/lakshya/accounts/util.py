@@ -58,7 +58,7 @@ def get_post_object(callback_url, amount, email_address, transaction_id, notes):
             "billing_cust_address" :"" , 
             "billing_cust_country" :"" ,
             "billing_cust_tel" :"" ,
-            "billing_cust_email" :"" ,  
+            "billing_cust_email" :email ,  
             "billing_cust_state" :"" ,
             "billing_cust_city" :"" , 
             "billing_zip" :"" ,             

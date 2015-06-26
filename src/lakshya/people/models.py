@@ -44,7 +44,7 @@ class Person(models.Model):
     pan_number = models.CharField("PAN Number", max_length = 10, blank=True)
         
     #if NITW
-    is_nitw_alumni = models.BooleanField(blank=True)
+    is_nitw_alumni = models.BooleanField(blank=True, default=False)
     course = models.IntegerField(choices=COURSE_CHOICES, default=BTECH, blank=True, null=True)
     department = models.IntegerField(choices=DEPARTMENT_CHOICES, blank=True, null=True)
     year_of_passing = models.IntegerField(blank=True, null=True)

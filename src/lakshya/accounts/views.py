@@ -153,9 +153,21 @@ def return_view(request):
                                        password="Lakshya123$")
         try:
             person = Person.objects.get(user=user)
+            person.update(billing_address=str(request.POST.get("billing_cust_address")),
+                          billing_city=str(request.POST.get("billing_cust_city")),
+                          billing_state=str(request.POST.get("billing_cust_state")),
+                          billing_postal_code=str(request.POST.get("billing_zip_code")),
+                          billing_country=str(request.POST.get("billing_cust_country")),
+                          contact_number=str(request.POST.get("billing_cust_tel")))
         except Person.DoesNotExist:
-            person = Person.objects.create(user=user)
-        
+            person = Person.objects.create(user=user,
+                                           billing_address=str(request.POST.get("billing_cust_address")),
+                                           billing_city=str(request.POST.get("billing_cust_city")),
+                                           billing_state=str(request.POST.get("billing_cust_state")),
+                                           billing_postal_code=str(request.POST.get("billing_zip_code")),
+                                           billing_country=str(request.POST.get("billing_cust_country")),
+                                           contact_number=str(request.POST.get("billing_cust_tel")),
+                                           )
         if paymentTemp.pan_card:
             person.pan_number = paymentTemp.pan_card
             person.save()
@@ -169,7 +181,7 @@ def return_view(request):
                                 donation_type=DIRECT,
                                 is_repayment=False,)
         
-        info_user = User(first_name="Info", last_name="", 
+        info_user = User(first_name="Lakshya", last_name="Foundation", 
                        email="info@thelakshyafoundation.org", id=1)
                 
         to_users = [user, info_user]
