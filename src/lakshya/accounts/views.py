@@ -159,6 +159,7 @@ def return_view(request):
             person.billing_postal_code=str(request.POST.get("billing_zip_code"))
             person.billing_country=str(request.POST.get("billing_cust_country"))
             person.contact_number=str(request.POST.get("billing_cust_tel"))
+            person.save()
         except Person.DoesNotExist:
             person = Person.objects.create(user=user,
                                            billing_address=str(request.POST.get("billing_cust_address")),
