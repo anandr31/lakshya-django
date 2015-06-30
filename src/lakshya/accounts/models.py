@@ -18,11 +18,15 @@ SCHOLARSHIPS = 1
 INNOVATION = 2
 INTERNSHIPS = 3
 ADMINISTRATION_EXPENSES = 4
+HACKATHON = 5
+INNOVATION_GARAGE = 6
 EXPENSE_HEADER_FIRST_LEVEL_CHOICES = ((GENERAL, "General"),
-                                (SCHOLARSHIPS, "Scholarships project"),
-                                (INNOVATION, "Innovation project"),
-                                (INTERNSHIPS, "Internships project"),
-                                (ADMINISTRATION_EXPENSES, "Administrative Expenses"))
+                                (SCHOLARSHIPS, "Scholarships"),
+                                (INNOVATION, "Innovation Project"),
+                                (INTERNSHIPS, "Internships"),
+                                (ADMINISTRATION_EXPENSES, "Administrative Expenses"),
+                                (HACKATHON, "Hackathon"),
+                                (INNOVATION_GARAGE, "Innovation Garage"))
 
 
 WEBSITE = 0
@@ -31,11 +35,17 @@ SCHOLARSHIPS = 2
 ACCOUNTING = 3
 OTHERS = 4
 SALARY = 5
+TRAVEL = 6
+EQUIPMENT = 7
+CONSUMABLES = 8
 EXPENSE_HEADER_SECOND_LEVEL_CHOICES = ((WEBSITE, "Website"),
                                        (PUBLICITY, "Publicity"),
                                        (SCHOLARSHIPS, "Scholarships"),
                                        (ACCOUNTING, "Accounting"),
                                        (SALARY, "Salary"),                                       
+                                       (TRAVEL, "Travel"),
+                                       (EQUIPMENT, "Equipment"),
+                                       (CONSUMABLES, "Consumables"),
                                        (OTHERS, "Others"))
 
 

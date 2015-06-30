@@ -44,7 +44,8 @@ export_csv_expenses.short_description = u"Export CSV"
 
 class ExpenseOptions(admin.ModelAdmin):
     list_display = ('amount', 'date_of_expense', 'expense_header_first_level', 'expense_header_second_level', 'status', 'details', 'payment_type')
-    list_filter = ('expense_header_first_level', 'expense_header_second_level', 'status', 'payment_type', 'amount', 'date_of_expense')
+    search_fields = ('amount', 'expense_header_first_level', 'expense_header_second_level', 'details', 'payment_type')
+    list_filter = ('expense_header_first_level', 'expense_header_second_level', 'status', 'payment_type', 'date_of_expense')
     date_hierarchy = 'date_of_expense'
     actions =[export_csv_expenses]
 
@@ -188,10 +189,11 @@ export_csv_donations.short_description = u"Export CSV"
 
 class DonationOptions(admin.ModelAdmin):
     list_display = ('id', 'amount', 'date_of_donation', 'donor', 'receipt_number', 'donation_type', 'transacation_type', 'bank_details', 'transaction_details')
-    list_filter = ('transacation_type', 'donation_type', 'donation_fund', 'is_repayment')
+    list_filter = ('transacation_type', 'donation_type', 'donation_fund', 'is_repayment', 'date_of_donation')
     search_fields = ('donor__user__first_name', 'donor__user__last_name', 'donor__user__email', 'id', 'amount', 'receipt_number', 'donation_type', 'transacation_type', 'bank_details', 'transaction_details',)
     raw_id_fields = ('donor', 'donation_fund',)
     list_editable = ('receipt_number',)
+    date_hierarchy = 'date_of_donation'
     actions =[mail_receipt, export_csv_donations]
     
 class PledgeOptions(admin.ModelAdmin):
