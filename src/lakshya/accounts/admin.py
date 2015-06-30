@@ -10,12 +10,43 @@ from reportlab.pdfgen import canvas
 
 from libraries.num2word import number2word
 from accounts.models import Expense, DonationFund, Donation, Pledge
+from django.http import HttpResponse
 
+
+# export expenses to csv
+def export_csv_expenses(modeladmin, request, queryset):
+    import csv
+    from django.utils.encoding import smart_str
+    response = HttpResponse(mimetype='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=Lakshya-Expenses.csv'
+    writer = csv.writer(response, csv.excel)
+    response.write(u'\ufeff'.encode('utf8')) # BOM (optional...Excel needs it to open UTF-8 file properly)
+    writer.writerow([
+        smart_str(u"Amount"),
+        smart_str(u"Date of Expense"),
+        smart_str(u"Expense Header"),
+        smart_str(u"Expense Subheader"),
+        smart_str(u"Details"),
+        smart_str(u"Payment Type")
+            ])
+    for obj in queryset:
+        writer.writerow([
+            smart_str(obj.amount),
+            smart_str(obj.date_of_expense),
+            smart_str(obj.get_expense_header_first_level_display()),
+            smart_str(obj.get_expense_header_second_level_display()),
+            smart_str(obj.details),
+            smart_str(obj.get_payment_type_display())
+        ])
+    return response
+export_csv_expenses.short_description = u"Export CSV"
+#ends here#
 
 class ExpenseOptions(admin.ModelAdmin):
     list_display = ('amount', 'date_of_expense', 'expense_header_first_level', 'expense_header_second_level', 'status', 'details', 'payment_type')
     list_filter = ('expense_header_first_level', 'expense_header_second_level', 'status', 'payment_type', 'amount', 'date_of_expense')
     date_hierarchy = 'date_of_expense'
+    actions =[export_csv_expenses]
 
 class DonationFundOptions(admin.ModelAdmin):
     list_display = ('name', 'description', )
@@ -111,13 +142,57 @@ The Lakshya Team
         msg.send()
 mail_receipt.short_description = "Mail Receipt"
     
+
+# export donation to csv
+def export_csv_donations(modeladmin, request, queryset):
+    import csv
+    from django.utils.encoding import smart_str
+    response = HttpResponse(mimetype='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=Lakshya-Donations.csv'
+    writer = csv.writer(response, csv.excel)
+    response.write(u'\ufeff'.encode('utf8')) # BOM (optional...Excel needs it to open UTF-8 file properly)
+    writer.writerow([
+        smart_str(u"ID"),
+        smart_str(u"Amount"),
+        smart_str(u"Date of Donation"),
+        smart_str(u"Donor"),
+        smart_str(u"PAN Number"),
+        smart_str(u"Receipt Number"),
+        smart_str(u"Donation Type"),
+        smart_str(u"Transaction Type"),
+        smart_str(u"Bank Details"),
+        smart_str(u"Transaction Details"),
+        smart_str(u"Donor Address"),
+        smart_str(u"Donor Contact"),
+        smart_str(u"Donor Email")
+    ])
+    for obj in queryset:
+        writer.writerow([
+            smart_str(obj.id),
+            smart_str(obj.amount),
+            smart_str(obj.date_of_donation),
+            smart_str(obj.donor.name()),
+            smart_str(obj.donor.pan_number),
+            smart_str(obj.receipt_number),
+            smart_str(obj.get_donation_type_display()),
+            smart_str(obj.get_transacation_type_display()),
+            smart_str(obj.bank_details),
+            smart_str(obj.transaction_details),
+            smart_str(obj.donor.get_full_address()),
+            smart_str(obj.donor.contact_number),
+            smart_str(obj.donor.email())
+        ])
+    return response
+export_csv_donations.short_description = u"Export CSV"
+#ends here#
+
 class DonationOptions(admin.ModelAdmin):
-    list_display = ('id', 'amount', 'date_of_donation', 'donor', 'receipt_number', 'donation_type', 'transacation_type', 'bank_details', 'transaction_details', )
-    list_filter = ('transacation_type', 'donation_type')
-    search_fields = ('donor__user__first_name', 'amount', 'date_of_donation')
+    list_display = ('id', 'amount', 'date_of_donation', 'donor', 'receipt_number', 'donation_type', 'transacation_type', 'bank_details', 'transaction_details')
+    list_filter = ('transacation_type', 'donation_type', 'donation_fund', 'is_repayment')
+    search_fields = ('donor__user__first_name', 'donor__user__last_name', 'donor__user__email', 'id', 'amount', 'receipt_number', 'donation_type', 'transacation_type', 'bank_details', 'transaction_details',)
     raw_id_fields = ('donor', 'donation_fund',)
     list_editable = ('receipt_number',)
-    actions =[mail_receipt, ]
+    actions =[mail_receipt, export_csv_donations]
     
 class PledgeOptions(admin.ModelAdmin):
     list_display = ("name", "batch", "rs_or_dollar", "month_of_donation", "donation")
