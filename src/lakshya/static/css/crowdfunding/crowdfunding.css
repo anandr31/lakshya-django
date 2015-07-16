@@ -260,7 +260,7 @@ div#crowdfunding_projects_section{
 
 #crowdfunding_project_detail_page #hero_content{
 	background: url('../../img/crowdfunding/default_project.jpg');
-	filter: blur(1rem);
+	filter: blur(0rem);
 }
 #crowdfunding_project_detail_page  #project_image_container{
 	margin-left: 3rem;

@@ -31,6 +31,11 @@ def get_project_json_data(p, request):
 class IndexView(TemplateView):
     template_name = 'crowdfunding/home.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context['projects'] = Project.objects.all
+        return context
+
 
 class ProjectCreateView(TemplateView):
 

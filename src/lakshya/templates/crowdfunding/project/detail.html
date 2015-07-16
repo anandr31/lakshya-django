@@ -24,27 +24,27 @@
         <div id="hero_content">
             <div class="row">
                 <div class="large-6 column" id="project_image_container">
-                    <img src="{{STATIC_URL}}img/crowdfunding/default_project.jpg">
+                    <img src="{{project.get_primary_picture_url}}">
                 </div>
                 <div class="large-6 column">
-                    <div id="project_title">INNOVATION GARAGE</div>
-                    <div id="project_summary">Innovation Garage is NIT Warangal's first maker space with state of the art facility. We have 6000sft space with state of the art technology and 3D printing facilities.</div>
+                    <div id="project_title">{{project.title}}</div>
+                    <div id="project_summary">{{project.summary}}</div>
                     <div>
                         <div class="column project_progress progress nice large-10">
-                            <span class="meter" style="width:72%"></span>
+                            <span class="meter" style="width:{{project.get_percentage_pledged}}%"></span>
                         </div>
                         <div class="row">
                             <div class="large-4 small-4 medium-4 column">
-                              <div class="project_metric_number">72%</div>
+                              <div class="project_metric_number">{{project.get_percentage_pledged}}%</div>
                               <div class="project_metric_label">Funded</div>
                             </div>
                             <div class="large-4 small-4 medium-4 column">
-                              <div class="project_metric_number">Rs.1000000</div>
+                              <div class="project_metric_number">Rs.{{project.goal}}</div>
                               <div class="project_metric_label">Goal</div>
                             </div>
                             <div class="large-4 small-4 medium-4 column">
-                              <div class="project_metric_number">150 days</div>
-                              <div class="project_metric_label">left</div>
+                              <div class="project_metric_number">{{project.get_days_remaining}} Days</div>
+                              <div class="project_metric_label">Remaining</div>
                             </div>
                           </div>  
                     </div>
@@ -57,14 +57,14 @@
                 
             </div>
             <div id="disclaimer" class="column large-6 medium-12 small-12">
-                *This project is initiated on 31 Jan 2015 and will end by 21 July 2015
+                *Campaign initiated on {{project.start_date}}
             </div>
         </div>
         <div class="row" id="detail_content">
             <div class="column large-6 large-offset-1">
                 <div class="row project_content_title">
                     <div class="column">
-                        INNOVATION GARAGE
+                        {{project.title}}
                     </div>
                 </div>
                 <div class="row" id="project_content_nav">
@@ -74,55 +74,21 @@
                 </div>
                 </div>
                     <div class="row update_content">
+                        {% for update in project.updates.all %}
                         <div class="row update_item">
                             <div class="column large-6">
-                                <span class="project_update_title">TEST SUCCESS</span>
-                                <span class="project_update_date">27 APR 2015</span>
+                                <!--span class="project_update_title">TEST SUCCESS</span-->
+                                <span class="project_update_date">{{update.timestamp}}</span>
                             </div>
                             <div class="column large-12">
-                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod.
+                                {{update.update}}
                             </div>
                         </div>
-                        <div class="row update_item">
-                            <div class="column large-6">
-                                <span class="project_update_title">TEST SUCCESS</span>
-                                <span class="project_update_date">27 APR 2015</span>
-                            </div>
-                            <div class="column large-12">
-                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod.
-                            </div>
-                        </div>  
-                        <div class="row update_item">
-                            <div class="column large-6">
-                                <span class="project_update_title">TEST SUCCESS</span>
-                                <span class="project_update_date">27 APR 2015</span>
-                            </div>
-                            <div class="column large-12">
-                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod.
-                            </div>
-                        </div>  
-                        <div class="row update_item">
-                            <div class="column large-6">
-                                <span class="project_update_title">TEST SUCCESS</span>
-                                <span class="project_update_date">27 APR 2015</span>
-                            </div>
-                            <div class="column large-12">
-                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod.
-                            </div>
-                        </div>  
-                        <div class="row update_item">
-                            <div class="column large-6">
-                                <span class="project_update_title">TEST SUCCESS</span>
-                                <span class="project_update_date">27 APR 2015</span>
-                            </div>
-                            <div class="column large-12">
-                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod.
-                            </div>
-                        </div>  
+                        {% endfor %}
                     </div> 
                     <div class="row description_content">
                         <div class="large-12 column">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod temporLorem ipsum dolor sit amet consectetur adipiscing elit sed do elousmod.
+                            {{project.description}}
                         </div>
                     </div>
             </div>
@@ -155,7 +121,7 @@
         </div>
     <div id="crowdfunding_projects_section" class="content-width">
     <div id="crowdfunding_project_grid" class="row">
-    <div class="column large-4 medium-6 small-12 project_block_container">
+    <!--div class="column large-4 medium-6 small-6 project_block_container">
       <div class="project_block row">
         <div class="project_image_container">
           <img class="project_image" src="{{STATIC_URL}}img/crowdfunding/default_project.jpg">
@@ -184,67 +150,7 @@
             </div>
           </div>
       </div>
-    </div>
-    <div class="column large-4 medium-6 small-12 project_block_container">
-      <div class="project_block row">
-        <div class="project_image_container">
-          <img class="project_image" src="{{STATIC_URL}}img/crowdfunding/default_project.jpg">
-        </div>
-          <div class="project_content ">
-            <div class="project_content_heading column">Innovation Garage</div>
-            <div class="project_content_summary column">Innovation Garage is NIT Warangal's first maker space with state of the art facility.</div>
-          </div>
-          <div class="project_numbers column">
-            <div class="column project_progress progress nice large-12">
-                <span class="meter" style="width:72%"></span>
-            </div>
-          </div>
-          <div class="column">
-            <div class="large-4 small-4 medium-4 column">
-              <div class="project_metric_number">72%</div>
-              <div class="project_metric_label">Funded</div>
-            </div>
-            <div class="large-4 small-4 medium-4 column">
-              <div class="project_metric_number">Rs.1000000</div>
-              <div class="project_metric_label">Goal</div>
-            </div>
-            <div class="large-4 small-4 medium-4 column">
-              <div class="project_metric_number">150</div>
-              <div class="project_metric_label">days left</div>
-            </div>
-          </div>
-      </div>
-    </div>
-    <div class="column large-4 medium-6 small-6 project_block_container">
-      <div class="project_block row">
-        <div class="project_image_container">
-          <img class="project_image" src="{{STATIC_URL}}img/crowdfunding/default_project.jpg">
-        </div>
-          <div class="project_content ">
-            <div class="project_content_heading column">Innovation Garage</div>
-            <div class="project_content_summary column">Innovation Garage is NIT Warangal's first maker space with state of the art facility.</div>
-          </div>
-          <div class="project_numbers column">
-            <div class="column project_progress progress nice large-12">
-                <span class="meter" style="width:72%"></span>
-            </div>
-          </div>
-          <div class="column">
-            <div class="large-4 small-4 medium-4 column">
-              <div class="project_metric_number">72%</div>
-              <div class="project_metric_label">Funded</div>
-            </div>
-            <div class="large-4 small-4 medium-4 column">
-              <div class="project_metric_number">Rs.1000000</div>
-              <div class="project_metric_label">Goal</div>
-            </div>
-            <div class="large-4 small-4 medium-4 column">
-              <div class="project_metric_number">150</div>
-              <div class="project_metric_label">days left</div>
-            </div>
-          </div>
-      </div>
-    </div>
+    </div-->
     </div>
   </div>
     </div>
