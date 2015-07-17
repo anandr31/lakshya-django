@@ -259,13 +259,19 @@ div#crowdfunding_projects_section{
 /***** Crowdfunding project_detail page ******/
 
 #crowdfunding_project_detail_page #hero_content{
-	background: url('../../img/crowdfunding/default_project.jpg');
-	filter: blur(0rem);
+	background: url('../../img/crowdfunding/CF_bg.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	overflow: hidden;
+    position: relative;
 }
 #crowdfunding_project_detail_page  #project_image_container{
 	margin-left: 3rem;
 	width: 45rem;
 	overflow: hidden;
+	border-style: solid;
+    border-width: 1px;
+    border-color: #c0c0c0;
 }
 #crowdfunding_project_detail_page  #project_image_container img{
 	margin: 0 auto;
@@ -274,10 +280,10 @@ div#crowdfunding_projects_section{
 	margin-top: 7rem;
 	color: white;
 	font-weight: bold;
-	font-size: 1.6rem;
+	font-size: 2.5rem;
 }
 #crowdfunding_project_detail_page #hero_content div#project_summary{
-	font-size: 1.2rem;
+	font-size: 1.7rem;
 	padding : 0.7rem 0;
 	color: white;
 	font-style: justify;
@@ -308,8 +314,8 @@ div#crowdfunding_projects_section{
 	font-family: 'Gotham',Helvetica,Arial,sans-serif;
 }
 #crowdfunding_project_detail_page #disclaimer{
-	font-size: 1.2rem;
-	color: #999;
+	font-size: 1.5rem;
+	color: #222222;
 }
 #crowdfunding_project_detail_page div#detail_content{
 	margin: 5rem auto;
@@ -329,6 +335,7 @@ div#crowdfunding_projects_section{
 .project_update_date{
 	font-size: 1.2rem;
 	margin-left: 0.5rem;
+	font-weight: bold;
 }
 #crowdfunding_project_detail_page div.project_content_title{
 	font-weight: bold;

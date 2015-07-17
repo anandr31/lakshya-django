@@ -1,6 +1,6 @@
 from django.shortcuts import render, render_to_response
 from django.views.generic.base import View, TemplateView
-from crowdfunding.models import Project, Pledge, Message
+from crowdfunding.models import Project, Pledge, Message, ProjectImage
 from django.contrib import messages
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
@@ -14,7 +14,8 @@ from django.core.urlresolvers import reverse
 from crowdfunding.forms import ProjectForm
 import json
 import re
-
+import os
+import logging
 
 def get_project_json_data(p, request):
     image_urls = [
@@ -39,34 +40,49 @@ class IndexView(TemplateView):
 
 class ProjectCreateView(TemplateView):
 
-    template_name = 'project/create.html'
+    template_name = 'crowdfunding/project/create.html'
 
     def get_context_data(self, **kwargs):
         context = TemplateView.get_context_data(self, **kwargs)
-        project = Project.objects.get(id=kwargs.get('id'))
-        if project and self.request.user == project.author:
+        project_id=kwargs.get('id', '')
+        try:
+            project = Project.objects.get(id=kwargs.get('id'))
             context['form'] = ProjectForm(instance=project)
             context['mode'] = 'edit'
             context['id'] = project.id
-        elif not project:
+        except:
             context['form'] = ProjectForm()
             context['mode'] = 'create'
-        else:
-            raise Http404
         return context
 
     def post(self, request, *args, **kwargs):
+        valid_extensions = ['.jpg', '.png', '.svg', '.jpeg']
+        images=[]
         project = Project(author=request.user)
         id = kwargs.get('id')
         if id:
             project = Project.objects.get(id=id)
-        form_data = ProjectForm(request.POST, instance=project)
+        form_data = ProjectForm(request.POST, request.FILES['project_image'], instance=project)
         if form_data.is_valid():
             form_data.save()
+            if request.FILES.get('project_image', ''):
+                images = request.FILES.getlist('project_image')
+                for i in images:
+                    extension = os.path.splitext(request.FILES['project_image'].name)[1]
+                    print extension
+                    if not any(extension.lower() in s for s in valid_extensions):
+                        print 'Please upload only jpg, png, svg, or jpeg'
+                        error = "Please upload only jpg, png, svg, or jpeg"
+                    else:
+                        project_image = ProjectImage.objects.create(project=project, image=i)
+                        print 'Finished uploading images'
             response = {'success':  'true'}
         else:
             response = {'success': 'false'}
         return HttpResponse(json.dumps(response))
+                    # return HttpResponseRedirect('/p/' + presentation.slug + '/?k=' + presentation.presenter_key)
+        # return render(request, 'home.html', {'error': error})
+
 
 
 class ProjectView(TemplateView):
@@ -110,8 +126,8 @@ class ProjectDetailView(TemplateView):
         context = TemplateView.get_context_data(self, **kwargs)
         project = Project.objects.get(id=kwargs.get('id'))
         context['project'] = project
+        context['related_projects'] = Project.objects.exclude(id=kwargs.get('id'))[:3]
         return context
-
 
 class ProjectListView(TemplateView):
     template_name = 'project/list.html'

@@ -1,5 +1,12 @@
 {%extends "crowdfunding/base.html"%}
 {%block content%} 
+
+<script type="text/javascript">
+var ALLOWED_EXTENSIONS = ['jpg', 'png', 'svg', 'jpeg'];
+
+
+</script>
+
 <div class="container-fluid">
 
     <div class="row">
@@ -28,9 +35,9 @@
 
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
             {%if mode == 'create' %}
-            <form class="form-horizontal well" method="POST" action="{{BASE_URL}}/project/create" enctype="multipart/form-data" id="project_form">{% csrf_token %}
+            <form class="form-horizontal well" method="POST" action="{{BASE_URL}}/crowdfunding/project/create" enctype="multipart/form-data" id="project_form">{% csrf_token %}
             {% elif mode == 'edit' %}
-            <form class="form-horizontal well" method="POST" action="{{BASE_URL}}/project/{{id}}/edit" enctype="multipart/form-data" id="project_form">{% csrf_token %}
+            <form class="form-horizontal well" method="POST" action="{{BASE_URL}}/crowdfunding/project/{{id}}/edit" enctype="multipart/form-data" id="project_form">{% csrf_token %}
             {% endif %}
 
                 <section><h1 style="text-align: center;">Create Project</h1></section>
@@ -47,11 +54,19 @@
                 <!-- Textarea -->
 
                 <div class="form-group">
-                    <label class="control-label" for="project_desc">One Line Project Description</label>
+                    <label class="control-label" for="project_desc">One Line Project Summary</label>
                     <div class="controls">
                         {{form.summary}}
                     </div>
                 </div>
+                
+                <div class="form-group">
+                    <label class="control-label" for="project_desc">Upload Images for this campaign</label>
+                    <div class="controls">                      
+                        <input type="file" multiple id="project_image" name="project_image">
+                    </div>
+                </div>
+
 
                 <div class="form-group">
                     <label class="control-label" for="project_desc">Team</label>
@@ -61,7 +76,7 @@
                 </div>
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="control-label" for="money_req">Money Required</label>
+                    <label class="control-label" for="money_req">Funding Goal</label>
                     <div class="controls">
                         {{form.goal}}
                     </div>
@@ -69,14 +84,14 @@
 
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="control-label" for="days_req">Days required</label>
+                    <label class="control-label" for="days_req">Campaign Duration in Days</label>
                     <div class="controls">
                         {{form.period}}
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="video_link">Link to video:</label>
+                    <label class="control-label" for="video_link">Link to video</label>
                     <div class="controls">
                         {{form.video_url}}
                     </div>
@@ -84,7 +99,7 @@
 
                 <!-- Textarea -->
                 <div class="form-group">
-                    <label class="control-label" for="details">Detailed Explanation:</label>
+                    <label class="control-label" for="details">Detailed Project Description</label>
                     <div class="controls">
                         {{form.description}}
                     </div>
@@ -92,21 +107,19 @@
 
                 <!-- Textarea -->
                 <div class="form-group">
-                    <label class="control-label" for="risks_and_challenges">Risks and Challenges:</label>
+                    <label class="control-label" for="risks_and_challenges">Risks and Challenges</label>
                     <div class="controls">
                         {{form.risks_and_challenges}}
                     </div>
                 </div>
 
-
                 <div class="form-group">
-                    <label class="control-label" for="risks_and_challenges">Start Date: </label>
+                    <label class="control-label" for="risks_and_challenges">Start Date</label>
                     <div class="controls">
                         {{form.start_date}}
                     </div>
                 </div>
-
-                
+        
                 <div class="form-group">
                     <label class="control-label" for="submit"></label>
                     <div class="controls">

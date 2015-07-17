@@ -69,14 +69,14 @@ class Project(models.Model):
         return [i.image.image for i in images]
 
     def get_primary_picture_url(self):
-        images = self.project_image.all().order_by('ordering')
+        images = self.project_images.all().order_by('ordering')
         return images[0].image.url if images else ''
     primary_picture_url = property(get_primary_picture_url)
 
 
 class ProjectImage(models.Model):
-    project = models.ForeignKey(Project, related_name='project_image')
-    image = models.ImageField(upload_to='projects')
+    project = models.ForeignKey(Project, related_name='project_images')
+    image = models.ImageField(upload_to='projects/%Y/%m/%d')
     ordering = models.DecimalField(
         default=1, max_digits=4, decimal_places=1, blank=True)
 
