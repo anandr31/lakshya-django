@@ -5,6 +5,7 @@ from utils.urls import urlpatterns as util_urls
 from people.urls import urlpatterns as people_urls
 from entrepreneurship.urls import urlpatterns as entrepreneurship_urls
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 
 
 # Uncomment the next two lines to enable the admin:
@@ -25,6 +26,7 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('accounts.urls')),
     (r'^notifications/', include('notification.urls')),
     (r'^tinymce/', include('tinymce.urls')),
+    url(r'^logout$', auth_views.logout, {'next_page': '/'},),
     url(r'^partners/', PartnersView.as_view()),
     url(r'^asthra/home$',TemplateView.as_view(template_name="ashtra_home.html")),
     url(r'^asthra/about$', TemplateView.as_view(template_name="about_asthra.html")),

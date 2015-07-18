@@ -139,7 +139,6 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'django.contrib.humanize',
-    'social.apps.django_app.default',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'people',
@@ -157,6 +156,7 @@ INSTALLED_APPS = (
     'hackathon',
     'innovationgarage',
     'tinymce',
+    'social.apps.django_app.default',  # Python social auth for Django
 )
 
 # A sample logging configuration. The only tangible logging
@@ -190,6 +190,7 @@ LOGGING = {
 
 EMAIL_SUBJECT_PREFIX = ""
 
+"""Social auth settings"""
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -212,7 +213,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'u21sq8_SMCulJyqg0zZQpqpo'
 SOCIAL_AUTH_DEFAULT_USERNAME = 'socialauth_user'
 SOCIAL_AUTH_ERROR_KEY = 'socialauth_error'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
-SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/new_user'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/'
 SOCIAL_AUTH_INACTIVE_USER_URL = '/'
 SOCIAL_AUTH_ERROR_KEY = 'social_errors'
 
@@ -225,6 +226,19 @@ SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
 SOUTH_MIGRATION_MODULES = {
     'default': 'social.apps.django_app.default.south_migrations'
 }
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.social_auth.associate_by_email',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details'
+)
 
 # Load the local settings
 # This should be at the end for overriding

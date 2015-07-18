@@ -13,7 +13,7 @@ from crowdfunding.constants import PROJECT_STATUS, UNAPPROVED
 
 class Project(models.Model):
     title = models.CharField(max_length=30)
-    summary = models.CharField(max_length=50)
+    summary = models.CharField(max_length=160)
     description = HTMLField(max_length=1000)
     author = models.ForeignKey(User)
     goal = IntegerRangeField(default=20000, min_value=20000, max_value=200000)
@@ -22,10 +22,9 @@ class Project(models.Model):
     team = HTMLField(max_length=1000)
     risks_and_challenges = HTMLField(max_length=4000, blank=True)
     ordering = models.DecimalField(max_digits=4, decimal_places=1, blank=True)
-    start_date = models.DateField()
+    start_date = models.DateField(default=date.today)
     created = models.DateTimeField(auto_now_add=True)
-    status = models.SmallIntegerField(
-        default=UNAPPROVED, choices=PROJECT_STATUS)
+    status = models.SmallIntegerField(default=UNAPPROVED, choices=PROJECT_STATUS)
 
     def __unicode__(self):
         return str(self.title)
@@ -45,6 +44,9 @@ class Project(models.Model):
         return remaining if remaining > 0 else 0
     days_remaining = property(get_days_remaining)
 
+    def is_expired(self):
+        return self.get_days_remaining() <= 0
+
     def get_total_pledged_amount(self):
         pledge_amounts = self.pledges.all().values_list('amount', flat=True)
         total = 0
@@ -59,6 +61,9 @@ class Project(models.Model):
         ratio = float(self.get_total_pledged_amount()) / self.goal
         return int(ratio * 100)
     percentage_pledged = property(get_percentage_pledged)
+
+    def is_fully_pledged(self):
+        return self.get_percentage_pledged() >= 100
 
     def get_total_backers(self):
         return self.pledges.count()

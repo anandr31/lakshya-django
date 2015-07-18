@@ -1,4 +1,32 @@
 {% extends "crowdfunding/base.html" %}
+{% load humanize %}
+
+{% block scripts %}
+<script type="text/javascript">
+$(function() {
+    $('#see_all_projects').click(function() {
+      smoothScroll($('#crowdfunding_projects_section').offset().top);
+      return false;
+    });
+
+    $('#crowdfunding_project_grid .project_block span.edit').click(function() {
+      window.location = $(this).data('href');
+      return false;
+    });
+
+    $('#startnew_button').click(function() {
+      {% if not user.is_authenticated %}
+      $('#login_modal a').attr('href', $('#login_modal a').attr('href') + '?next=/crowdfunding/project/create');
+      $('#login_modal').foundation('reveal', 'open');
+      {% else %}
+      window.location = '/crowdfunding/project/create';
+      {% endif %}
+    });
+});
+</script>
+{% endblock scripts %}
+
+
 {% block content %}
 <div id="crowdfunding_home_page">
   
@@ -44,7 +72,7 @@
      </div>
 
       <div id="crowdfunding_hero_cta">
-          <a href="projects" class="cta crowdfunding">See all projects</a>
+          <a href="#" id="see_all_projects" class="cta crowdfunding">See all projects</a>
       </div>
 
     </div>
@@ -57,10 +85,17 @@
         <div class="column large-4 medium-6 small-12 project_block_container {% if forloop.last %}end{% endif %}">
             <a href="project/{{project.id}}">
               <div class="project_block row">
-                <div class="project_image_container" style="background-image:url({{project.get_primary_picture_url}});"></div>
+                <div class="project_image_container" style="background-image:url({{project.get_primary_picture_url}});">
+                  {% if project.is_fully_pledged %}
+                  <div class="status_bar completed">Fully funded</div>
+                  {% elif project.is_expired %}
+                  <div class="status_bar expired">Project expired</div>
+                  {% endif %}
+                  {% if project.author.id == user.id %}<span class="edit" data-href="/crowdfunding/project/{{project.id}}/edit">Edit</span>{% endif %}
+                </div>
                 <div class="project_content">
-                    <p class="project_content_heading">{{project.title}}</p>
-                    <p class="project_content_summary">{{project.summary}}</p>
+                    <p class="project_content_heading"><span>{{project.title}}</span></p>
+                    <p class="project_content_summary">{{project.summary|truncatechars:90}}</p>
                     <div class="project_numbers">
                         <div class="project_progress progress nice">
                             <span class="meter" style="width:{{project.get_percentage_pledged}}%"></span>
@@ -72,12 +107,12 @@
                           <div class="project_metric_label">Pledged</div>
                         </div>
                         <div class="large-4 small-4 medium-4 column">
-                          <div class="project_metric_number">Rs.{{project.goal}}</div>
+                          <div class="project_metric_number">Rs. {{project.goal|intcomma}}</div>
                           <div class="project_metric_label">Goal</div>
                         </div>
                         <div class="large-4 small-4 medium-4 column project_days_container">
                           <div class="project_metric_number">{{project.get_days_remaining}} Days</div>
-                          <div class="project_metric_label">Remaining</div>
+                          <div class="project_metric_label">To go</div>
                         </div>
                     </div>
                 </div>
@@ -92,10 +127,12 @@
     </div>
   </div-->
   
-<!--   <div id="crowdfunding_analytics_section" class="content-width">
+  <div id="crowdfunding_analytics_section" class="content-width">
     <div class="row" id="makesomething_container">
-      <div class="large-4 large-offset-2 column">{ Make (Something); <br>Today; } </div>
-      <div class="large-5 large-offset-1 column button" id="startnew_button">START NEW PROJECT</div>
+      <div class="large-4 large-offset-2 column"><p>{ Make (Something); <br>Today; }</p></div>
+      <div class="large-5 large-offset-1 column" id="startnew_btn_container">
+        <div id="startnew_button" class="button">START NEW PROJECT</div>
+      </div>
     </div>
     <div class="row" id="analytics_section_bg">
       <div class="column large-4 analytics_box">
@@ -111,7 +148,8 @@
         <div class="row analytics_label">STUDENTS</div>
       </div>
     </div>
-  </div> -->
+  </div>
+
   <div id="crowdfunding_faq_section">
     <div class="row" id="why_it_works">WHY IT WORKS ?</div>
     <div class="row">

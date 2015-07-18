@@ -16,6 +16,8 @@ import json
 import re
 import os
 import logging
+from django.template.loader import render_to_string
+from lakshya.util import send_email_from_template
 
 def get_project_json_data(p, request):
     image_urls = [
@@ -34,35 +36,41 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        context['projects'] = Project.objects.all
+        context['projects'] = Project.objects.order_by('-created')
         return context
 
 
 class ProjectCreateView(TemplateView):
-
+    mode = 'create'
     template_name = 'crowdfunding/project/create.html'
 
     def get_context_data(self, **kwargs):
         context = TemplateView.get_context_data(self, **kwargs)
-        project_id=kwargs.get('id', '')
-        try:
-            project = Project.objects.get(id=kwargs.get('id'))
-            context['form'] = ProjectForm(instance=project)
-            context['mode'] = 'edit'
-            context['id'] = project.id
-        except:
+        if self.mode == 'create':
             context['form'] = ProjectForm()
             context['mode'] = 'create'
+        else:
+            try:
+                project_id = int(kwargs.get('id', ''))
+                project = Project.objects.get(id=project_id)
+                context['form'] = ProjectForm(instance=project)
+                context['mode'] = 'edit'
+                context['id'] = project.id
+                if project.author != self.request.user:
+                    raise Http404
+            except (Project.DoesNotExist, ValueError):
+                raise Http404
+        context['mode'] = self.mode
         return context
 
     def post(self, request, *args, **kwargs):
         valid_extensions = ['.jpg', '.png', '.svg', '.jpeg']
-        images=[]
+        images = []
         project = Project(author=request.user)
-        id = kwargs.get('id')
+        id = kwargs.get('id', None)
         if id:
             project = Project.objects.get(id=id)
-        form_data = ProjectForm(request.POST, request.FILES['project_image'], instance=project)
+        form_data = ProjectForm(request.POST, request.FILES.get('project_image', []), instance=project)
         if form_data.is_valid():
             form_data.save()
             if request.FILES.get('project_image', ''):
@@ -76,13 +84,17 @@ class ProjectCreateView(TemplateView):
                     else:
                         project_image = ProjectImage.objects.create(project=project, image=i)
                         print 'Finished uploading images'
-            response = {'success':  'true'}
+            response = {'success': 'true'}
+            if self.mode == 'create':
+                #Send email to author of the project
+                subject = '[NITW Crowdfund] We received your project'
+                context = {'project': project, 'request': request}
+                send_email_from_template('emails/project_created_author.html', context, subject, project.author.email)
         else:
             response = {'success': 'false'}
         return HttpResponse(json.dumps(response))
                     # return HttpResponseRedirect('/p/' + presentation.slug + '/?k=' + presentation.presenter_key)
         # return render(request, 'home.html', {'error': error})
-
 
 
 class ProjectView(TemplateView):
@@ -124,9 +136,16 @@ class ProjectDetailView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = TemplateView.get_context_data(self, **kwargs)
-        project = Project.objects.get(id=kwargs.get('id'))
-        context['project'] = project
-        context['related_projects'] = Project.objects.exclude(id=kwargs.get('id'))[:3]
+        try:
+            project = Project.objects.get(id=kwargs.get('id'))
+            context['project'] = project
+            context['related_projects'] = Project.objects.exclude(id=kwargs.get('id'))[:3]
+            user = self.request.user
+            if user.is_authenticated() and Pledge.objects.filter(project=project, user=user).exists():
+                context['user_pledge'] = Pledge.objects.filter(project=project, user=user).first()
+        except (Project.DoesNotExist, ValueError):
+            raise Http404
+
         return context
 
 class ProjectListView(TemplateView):
@@ -145,30 +164,39 @@ class PledgeCreateAPIView(View):
         if errors:
             response = {'success': 'false', 'errors': errors}
         else:
-            Pledge.objects.create(user=user, amount=amount, project=project)
+            if Pledge.objects.filter(user=user, project=project).exists():
+                #Since a user cannot create multiple pledges for a project, we assume he is editing his current pledge.
+                pledge = Pledge.objects.filter(user=user, project=project).first()
+                pledge.amount = amount
+                pledge.save()
+            else:
+                Pledge.objects.create(user=user, amount=amount, project=project)
             response = {'success': 'true'}
         return HttpResponse(json.dumps(response), content_type="application/json")
 
     def get_params(self, request):
         errors = []
+        amount = 0
         try:
             amount = int(request.POST.get('amount', ''))
-            if not amount:
-                errors.append('Amount cannot be zero')
+            if amount <= 0:
+                errors.append('Amount has to be positive')
         except ValueError:
-            errors.append(
-                'Amount [' + request.POST.get('amount', '') + '] is not a valid integer')
+            errors.append('Amount is not a valid integer')
 
-        user = None
-        try:
-            user_id = int(request.POST.get('user_id', ''))
-            user = User.objects.get(id=user_id)
-        except ValueError:
-            errors.append(
-                'User ID [' + request.POST.get('user_id', '') + '] is not a valid integer')
-        except User.DoesNotExist:
-            errors.append(
-                'No valid user exists with ID [' + request.POST.get('user_id', '') + ']')
+        if request.user.is_authenticated():
+            user = request.user
+        else:
+            user = None
+            try:
+                user_id = int(request.POST.get('user_id', ''))
+                user = User.objects.get(id=user_id)
+            except ValueError:
+                errors.append(
+                    'User ID [' + request.POST.get('user_id', '') + '] is not a valid integer')
+            except User.DoesNotExist:
+                errors.append(
+                    'No valid user exists with ID [' + request.POST.get('user_id', '') + ']')
 
         project = None
         try:

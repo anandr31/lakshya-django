@@ -50,10 +50,52 @@
 	}(document, 'script', 'facebook-jssdk'));
 </script>
 <script type="text/javascript">
+function smoothScroll(position, callback)
+{
+	$('html, body').animate({
+        scrollTop: position
+    }, 600, 'swing', function() {
+    	if(callback)
+    	{
+    		callback();
+    	}
+    });
+}
+
 	$(function() {
 		$(window).on('click', function(e) {
 			//Click is not on the menu icon and the menu is open, then close the menu
 			if($(e.target).closest('li.menu-icon').length == 0 && $('#menu .top-bar').hasClass('expanded')) $('#menu .top-bar').removeClass('expanded');
+		});
+
+		$('#menu li.menu-icon').click(function() {
+			if($('#menu .top-bar').hasClass('expanded'))
+			{
+				$('#menu ul.menu-items').hide();
+			}
+			else
+			{
+				$('#menu ul.menu-items').show();
+			}
+		});
+
+		$('#menu #user_container').click(function() {
+			$('#logout_container').toggle();
+			if($('#logout_container').is(':visible')) {
+				$(window).on('click', function() {
+					if($('#logout_container').is(':visible')) $('#logout_container').hide();
+				});
+			}
+			else
+			{
+				$(window).off('click');
+			}
+			return false;
+		});
+
+		$('#logout_container').click(function() {
+			window.location = '/logout';
+			return false;
 		});
 	});
 </script>
@@ -75,7 +117,18 @@
 			    </li>
 			    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
 			    {% block header_login %}
-			    <li id="login"><a href="#"><img src="{{STATIC_URL}}newimg/icons/profile.svg"></a></li>
+			    {% if user.is_authenticated %}
+			    <li id="login">
+			    	<div id="user_container">
+			    		<a href="#"><img src="{{STATIC_URL}}newimg/icons/profile.svg"><span>{{user.first_name}}</span></a>
+				    	<div id="logout_container">
+				    		<a href="/logout">Logout</a>
+				    	</div>
+			    	</div>
+			    </li>
+			    {% else %}
+			    <li id="login"><a href="#" data-reveal-id="login_modal">Login</a></li>
+			    {% endif %}
 			    {% endblock header_login %}
 			  </ul>
 			  <section class="top-bar-section">
@@ -182,9 +235,16 @@
 			</div>
 		</div>
 		{% endblock footer %}
+		<div id="login_modal" class="reveal-modal tiny" data-reveal aria-labelledby="Login Modal" aria-hidden="true" role="dialog">
+			<p id="login_heading">Login to Lakshya</p>
+			<a href="/login/facebook"><div class="social_connect facebook"></div></a>
+			<a href="/login/google-oauth2"><div class="social_connect google"></div></a>
+		  	<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+		</div>
 	</div>
 	<script src="{{STATIC_URL}}js/foundation/foundation.js"></script>
 	<script src="{{STATIC_URL}}js/foundation/foundation.topbar.js"></script>
+	<script src="{{STATIC_URL}}js/foundation/foundation.reveal.js"></script>
 	<!-- Other JS plugins can be included here -->
 	<script>
 		$(document).foundation();

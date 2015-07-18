@@ -138,6 +138,10 @@ p.hint {
 	/*border-bottom: 1px solid #464646;*/
 }
 
+#menu .top-bar {
+	overflow: visible;
+}
+
 #menu .top-bar:not(.expanded) {
 	background: #fff;
 	height: 100%;
@@ -197,7 +201,11 @@ p.hint {
 	width: 80%;
 	max-width: 30rem;
 	z-index: 4;
-  	position: relative;
+  	position: absolute;
+}
+
+#menu .top-bar-section ul.menu-items {
+	display: none;
 }
 
 #menu .top-bar-section ul li {
@@ -223,7 +231,6 @@ p.hint {
 }
 
 #menu .top-bar #login {
-	display: none; /* Temporary till we enable login */
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -234,8 +241,62 @@ p.hint {
 	margin-top: 0;
 }
 
+#menu .top-bar #login a {
+	color: #464646;
+	line-height: 4.4rem;
+}
+
 #menu .top-bar #login img {
 	width: 4rem;
+}
+
+#menu .top-bar #login #user_container {
+	position: relative;
+	overflow: visible;
+}
+
+#menu .top-bar #login #logout_container {
+	position: absolute;
+	top: 4rem;
+	right: 0;
+	width: auto;
+	background: #fff;
+	text-transform: none;
+	padding: 0 2rem;
+	border: 1px solid #ccc;
+	z-index: 50000;
+	-moz-box-shadow: -3px 2px 3px 0px rgba(0, 0, 0, 0.1);
+  	-webkit-box-shadow: -3px 2px 3px 0px rgba(0, 0, 0, 0.1);
+  	box-shadow: -3px 2px 3px 0px rgba(0, 0, 0, 0.1);
+	display: none;
+}
+
+/* Login modal */
+#login_modal {
+	
+}
+#login_modal .social_connect {
+	margin: 1rem auto;
+}
+
+#login_modal #login_heading {
+	text-align: center;
+	font-size: 1.4rem;
+	font-weight: bold;
+}
+
+div.social_connect {
+	width: 162px;
+	height: 43px;
+	background-image: url('../newimg/social_connect.jpg');
+}
+
+div.social_connect.facebook {
+	background-position: 0 0;
+}
+
+div.social_connect.google {
+	background-position: 0 -48px;
 }
 
 /* Footer */

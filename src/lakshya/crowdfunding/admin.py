@@ -20,5 +20,8 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 
+class PledgeAdmin(admin.ModelAdmin):
+    list_display = ('project', 'amount', 'user')
+
 admin.site.register(Project, ProjectAdmin)
-admin.site.register(Pledge)
+admin.site.register(Pledge, PledgeAdmin)

@@ -40,7 +40,7 @@ var ALLOWED_EXTENSIONS = ['jpg', 'png', 'svg', 'jpeg'];
             <form class="form-horizontal well" method="POST" action="{{BASE_URL}}/crowdfunding/project/{{id}}/edit" enctype="multipart/form-data" id="project_form">{% csrf_token %}
             {% endif %}
 
-                <section><h1 style="text-align: center;">Create Project</h1></section>
+                <section><h1 style="text-align: center;">{{mode|title}} Project</h1></section>
                 
                <br/> 
                 <p>{{ form.non_field_errors }}</p>
@@ -113,12 +113,12 @@ var ALLOWED_EXTENSIONS = ['jpg', 'png', 'svg', 'jpeg'];
                     </div>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="control-label" for="risks_and_challenges">Start Date</label>
                     <div class="controls">
                         {{form.start_date}}
                     </div>
-                </div>
+                </div> -->
         
                 <div class="form-group">
                     <label class="control-label" for="submit"></label>
