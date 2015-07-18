@@ -85,6 +85,10 @@ a.cta.ig {
 	font-weight: 700;
 }
 
+a.cta.crowdfunding {
+	background: #01b49e;
+}
+
 a.cta.disabled {
 	background: #ccc;
 }
