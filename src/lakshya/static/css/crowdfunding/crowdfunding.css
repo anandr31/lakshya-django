@@ -209,7 +209,8 @@ div#crowdfunding_projects_section{
 
 #crowdfunding_project_grid .project_block .project_progress .meter{
 	background: #01b49e;
-	margin:0;
+	max-width: 100%;
+	margin: 0;
 	padding: 0;
 }
 
@@ -367,6 +368,7 @@ div#crowdfunding_projects_section{
 }
 #crowdfunding_project_detail_page #hero_content .project_progress span{
 	background: #00B49E;
+	max-width: 100%;
 }
 #crowdfunding_project_detail_page #hero_content .project_metric_number{
 	color: white;
