@@ -84,7 +84,7 @@ class ProjectCreateView(TemplateView):
                     else:
                         project_image = ProjectImage.objects.create(project=project, image=i)
                         print 'Finished uploading images'
-            response = {'success': 'true'}
+            response = {'success': 'true', 'project_id': Project.objects.project_id}
             if self.mode == 'create':
                 #Send email to author of the project
                 subject = '[NITW Crowdfund] We received your project'
@@ -92,7 +92,8 @@ class ProjectCreateView(TemplateView):
                 send_email_from_template('emails/project_created_author.html', context, subject, project.author.email)
         else:
             response = {'success': 'false'}
-        return HttpResponse(json.dumps(response))
+        return HttpResponse(json.dumps(response), content_type="application/json")
+        # return HttpResponse(json.dumps(response))
                     # return HttpResponseRedirect('/p/' + presentation.slug + '/?k=' + presentation.presenter_key)
         # return render(request, 'home.html', {'error': error})
 

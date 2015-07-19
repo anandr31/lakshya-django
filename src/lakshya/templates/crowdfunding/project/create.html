@@ -33,7 +33,7 @@ var ALLOWED_EXTENSIONS = ['jpg', 'png', 'svg', 'jpeg'];
                 </div>
                 {% endfor %}{% endif %}
 
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+        <div id = "project_create_edit_form" class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
             {%if mode == 'create' %}
             <form class="form-horizontal well" method="POST" action="{{BASE_URL}}/crowdfunding/project/create" enctype="multipart/form-data" id="project_form">{% csrf_token %}
             {% elif mode == 'edit' %}
@@ -46,7 +46,7 @@ var ALLOWED_EXTENSIONS = ['jpg', 'png', 'svg', 'jpeg'];
                 <p>{{ form.non_field_errors }}</p>
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="control-label" for="project_name">Project Name</label>
+                    <label class="control-label" for="project_name">Project Title (<30 Char)</label>
                     <div class="controls">
                         {{form.title}}
                     </div>
@@ -54,29 +54,15 @@ var ALLOWED_EXTENSIONS = ['jpg', 'png', 'svg', 'jpeg'];
                 <!-- Textarea -->
 
                 <div class="form-group">
-                    <label class="control-label" for="project_desc">One Line Project Summary</label>
+                    <label class="control-label" for="project_desc">One Line Project Summary (<160 Char)</label>
                     <div class="controls">
                         {{form.summary}}
                     </div>
                 </div>
-                
-                <div class="form-group">
-                    <label class="control-label" for="project_desc">Upload Images for this campaign</label>
-                    <div class="controls">                      
-                        <input type="file" multiple id="project_image" name="project_image">
-                    </div>
-                </div>
-
-
-                <div class="form-group">
-                    <label class="control-label" for="project_desc">Team</label>
-                    <div class="controls">
-                        {{form.team}}
-                    </div>
-                </div>
+  
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="control-label" for="money_req">Funding Goal</label>
+                    <label class="control-label" for="money_req">Funding Goal (min-Rs.20,000 | max-Rs.200,000)</label>
                     <div class="controls">
                         {{form.goal}}
                     </div>
@@ -84,9 +70,16 @@ var ALLOWED_EXTENSIONS = ['jpg', 'png', 'svg', 'jpeg'];
 
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="control-label" for="days_req">Campaign Duration in Days</label>
+                    <label class="control-label" for="days_req">Campaign Duration in Days (min-5 days | max-45 days)</label>
                     <div class="controls">
                         {{form.period}}
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label" for="project_desc">Upload Images for this campaign. Mulitple images can be uploaded.</label>
+                    <div class="controls">                      
+                        <input type="file" multiple id="project_image" name="project_image">
                     </div>
                 </div>
 
@@ -97,9 +90,17 @@ var ALLOWED_EXTENSIONS = ['jpg', 'png', 'svg', 'jpeg'];
                     </div>
                 </div>
 
+
+                <div class="form-group">
+                    <label class="control-label" for="project_desc">Team Members</label>
+                    <div class="controls">
+                        {{form.team}}
+                    </div>
+                </div>
+
                 <!-- Textarea -->
                 <div class="form-group">
-                    <label class="control-label" for="details">Detailed Project Description</label>
+                    <label class="control-label" for="details">Detailed Project Description (<1000 Char)</label>
                     <div class="controls">
                         {{form.description}}
                     </div>
@@ -107,7 +108,7 @@ var ALLOWED_EXTENSIONS = ['jpg', 'png', 'svg', 'jpeg'];
 
                 <!-- Textarea -->
                 <div class="form-group">
-                    <label class="control-label" for="risks_and_challenges">Risks and Challenges</label>
+                    <label class="control-label" for="risks_and_challenges">Risks and Challenges (<4000 Chars)</label>
                     <div class="controls">
                         {{form.risks_and_challenges}}
                     </div>
@@ -123,7 +124,7 @@ var ALLOWED_EXTENSIONS = ['jpg', 'png', 'svg', 'jpeg'];
                 <div class="form-group">
                     <label class="control-label" for="submit"></label>
                     <div class="controls">
-                        <input type="button" id="btnSubmit" name="btnSubmit" class="btn btn-success" value="Submit" onclick="submit();">
+                        <input type="button" id="btnSubmit" name="btnSubmit" class="create-project-btn btn-success" value="Submit" onclick="submit();">
                     </div>
                 </div>
 
@@ -131,10 +132,16 @@ var ALLOWED_EXTENSIONS = ['jpg', 'png', 'svg', 'jpeg'];
             </form>
         </div>
         <script>
-        function form_submit(){
-            var t=document.getElementById('project_form');
-            document.getElementById('project_form').submit();
-        }
+        function submit(){
+            // var t=document.getElementById('project_form');
+            // document.getElementById('project_form').submit();
+            $.post($('#project_create_edit_form form').attr('action'), $('#project_create_edit_form form').serialize(), function(response) {
+                if(response.success == 'true')
+                {
+                    // window.location.reload();
+                }            
+           });
+            }
          
         </script> 
         {%else%}

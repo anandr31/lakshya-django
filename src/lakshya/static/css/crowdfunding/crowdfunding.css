@@ -341,9 +341,9 @@ div#crowdfunding_projects_section{
 	margin-left: 3rem;
 	width: 45rem;
 	overflow: hidden;
-	border-style: solid;
+/*	border-style: solid;
     border-width: 1px;
-    border-color: #c0c0c0;
+    border-color: #c0c0c0;*/
 }
 #crowdfunding_project_detail_page  #project_image_container img{
 	margin: 0 auto;
@@ -401,19 +401,50 @@ div#crowdfunding_projects_section{
 	display: inline-block;
 	vertical-align: top;
 	width: 20rem;
+	border: none;
 }
 
-#crowdfunding_project_detail_page #pledge_form #pledge_submit {
+#crowdfunding_project_detail_page #pledge_form #pledge_submit{
 	height: 3rem;
 	display: inline-block;
 	vertical-align: top;
-	margin-left: 2rem;
+	margin-left: -1rem;
 	background: #01B49E;
 	color: #222;
 	line-height: 3rem;
 	padding: 0 2rem;
 	font-weight: bold;
 	cursor: pointer;
+}
+
+.upload-image-buton{
+	height: 3rem;
+	display: inline-block;
+	vertical-align: top;
+	margin-left: -1rem;
+	background: #01B49E;
+	color: #222;
+	line-height: 3rem;
+	padding: 0 2rem;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.create-project-btn{
+	width: 20rem;
+	height: 5rem;
+	display: inline-block;
+	vertical-align: top;
+	margin-left: -1rem;
+	background: #01B49E;
+	color: #222;
+	line-height: 3rem;
+	padding: 0 2rem;
+	font-weight: bold;
+	cursor: pointer;
+	border: none;
+	font-size: 2rem;
+
 }
 
 #crowdfunding_project_detail_page #pledge_form #pledge_submit.disabled {
@@ -456,8 +487,9 @@ div#crowdfunding_projects_section{
 }
 
 #crowdfunding_project_detail_page #disclaimer{
+	margin-top: 1rem;
+	color : rgb(134,134,134);
 	font-size: 1.5rem;
-	color: #222222;
 }
 #crowdfunding_project_detail_page div#detail_content{
 	margin: 5rem auto;
@@ -494,11 +526,15 @@ div#crowdfunding_projects_section{
 	padding-bottom: 1rem;
 	padding-top: 1rem;
 	cursor: pointer;
+	text-align: center;
+	font-weight: bold;
 }
 #crowdfunding_project_detail_page .project_content_nav_item:hover , #crowdfunding_project_detail_page .project_content_nav_item.selected{
 	border-bottom: 3px solid #00B49E;
 	color: #00B49E;
-	background: #eee;
+	text-align: center;
+	font-weight: bold;
+	/*background: #eee;*/
 }
 .project_nav_container{
 	padding: 0 0;
@@ -509,4 +545,36 @@ div#crowdfunding_projects_section{
 }
 #crowdfunding_project_detail_page .update_item{
 	padding: 1rem 1rem;
+}
+
+.control-label{
+	font-weight: bold;
+}
+.controls textarea{
+	width: 50%;
+	font-size: 1.4rem;
+
+}
+.controls input[type="text"], input[type="number"],input[type="url"]{
+
+	width: 50%;
+	font-size: 1.4rem;
+	box-shadow: none;
+	border: none;
+	border-bottom: 1px solid #CACACA;
+}
+.controls input[type="text"]:focus, input[type="number"]:focus, input[type="url"]:focus{
+	box-shadow: none;
+	border: none;
+	background-color: #ffffff;
+	border-bottom: 2px solid #01b49e;
+}
+.controls textarea:focus{
+	box-shadow: none;
+	border: none;
+	background-color: #ffffff;
+	border: 2px solid #01b49e;
+}
+.form-group{
+	padding-bottom: 50px;
 }
