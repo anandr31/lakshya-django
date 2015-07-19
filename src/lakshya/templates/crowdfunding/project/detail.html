@@ -1,7 +1,30 @@
 {% extends "crowdfunding/base.html" %}
+{% load humanize %}
 
 {% block scripts %}
     <script type="text/javascript">
+
+    function submitPledge(){
+        if($(this).hasClass('disabled')) return;
+            $(this).addClass('disabled').siblings('img.loading').show();
+            $.post($('#pledge_form form').attr('action'), $('#pledge_form form').serialize(), function(response) {
+                if(response.success == 'true')
+                {
+                    window.location.reload();
+                }
+                else
+                {
+                    $('#pledge_form p.errors').html('Could not submit pledge. ');
+                    for(var i=0; i<response.errors.length; i++)
+                    {
+                        $('#pledge_form p.errors').append(response.errors[i] + '. ');
+                    }
+                    $('#pledge_form p.errors').show();
+                    $('#pledge_submit').removeClass('disabled').siblings('img.loading').hide();
+                }
+            });
+    }
+
     $(function(){
         $('#description_tab').click(function(){
             $('.update_content').fadeOut();
@@ -24,25 +47,20 @@
         });
 
         $('#pledge_submit').click(function() {
-            if($(this).hasClass('disabled')) return;
-            $(this).addClass('disabled').siblings('img.loading').show();
-            $.post($('#pledge_form form').attr('action'), $('#pledge_form form').serialize(), function(response) {
-                if(response.success == 'true')
-                {
-                    window.location.reload();
-                }
-                else
-                {
-                    $('#pledge_form p.errors').html('Could not submit pledge. ');
-                    for(var i=0; i<response.errors.length; i++)
-                    {
-                        $('#pledge_form p.errors').append(response.errors[i] + '. ');
-                    }
-                    $('#pledge_form p.errors').show();
-                    $('#pledge_submit').removeClass('disabled').siblings('img.loading').hide();
-                }
-            });
+            submitPledge();
         });
+        // Pledge even if user presses Enter inside text box
+        $('#pledge_amount').keydown(function(event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    submitPledge();
+                 }
+            });
+
+
+
+
+
         $('#crowdfunding_project_detail_page p#already_pledged_message a').click(function() {
             $('#pledge_form').removeClass('hidden');
             $('#already_pledged_message').addClass('hidden');
@@ -79,7 +97,7 @@
                               <div class="project_metric_label">Pledged</div>
                             </div>
                             <div class="large-4 small-4 medium-4 column">
-                              <div class="project_metric_number">Rs.{{project.goal}}</div>
+                              <div class="project_metric_number">Rs.{{project.goal|intcomma}}</div>
                               <div class="project_metric_label">Goal</div>
                             </div>
                             <div class="large-4 small-4 medium-4 column">
@@ -148,67 +166,50 @@
             <div class="column large-4 large-offset-1">
                 <div class="row project_content_title">TEAM</div>
                 <div class="row team_members">{{project.team|safe}}</div>
-                <!--div class="row">
-                    <div id="team_member_container">
-                        <img id="team_member_pic" src="{{STATIC_URL}}newimg/barack.png">
-                        <span>Barack Obama</span>
-                    </div>
-                    <div id="team_member_container">
-                        <img id="team_member_pic" src="{{STATIC_URL}}newimg/barack.png">
-                        <span>Barack Obama</span>
-                    </div>
-                    <div id="team_member_container">
-                        <img id="team_member_pic" src="{{STATIC_URL}}newimg/barack.png">
-                        <span>Barack Obama</span>
-                    </div>
-                    <div id="team_member_container">
-                        <img id="team_member_pic" src="{{STATIC_URL}}newimg/barack.png">
-                        <span>Barack Obama</span>
-                    </div>
-                    <div id="team_member_container">
-                        <img id="team_member_pic" src="{{STATIC_URL}}newimg/barack.png">
-                        <span>Barack Obama</span>
-                    </div>
-                </div-->
             </div>
         </div>
     <div id="crowdfunding_projects_section" class="content-width">
-    <div id="crowdfunding_project_grid" class="row">
-    {% for related_project in related_projects %}
-    <div class="column large-4 medium-6 small-12 project_block_container">
-    <a href="./{{related_project.id}}">
-      <div class="project_block row">
-        <div class="project_image_container">
-          <img class="project_image" src="{{related_project.get_primary_picture_url}}">
-        </div>
-          <div class="project_content">
-            <div class="project_content_heading column">{{related_project.title}}</div>
-            <div class="project_content_summary column">{{related_project.summary}}</div>
-          </div>
-          <div class="project_numbers column">
-            <div class="column project_progress progress nice large-12">
-                <span class="meter" style="width:{{related_project.get_percentage_pledged}}%"></span>
-            </div>
-          </div>
-          <div class="column">
-            <div class="large-4 small-4 medium-4 column">
-              <div class="project_metric_number">{{related_project.get_percentage_pledged}}%</div>
-              <div class="project_metric_label">Funded</div>
-            </div>
-            <div class="large-4 small-4 medium-4 column">
-              <div class="project_metric_number">Rs.{{related_project.goal}}</div>
-              <div class="project_metric_label">Goal</div>
-            </div>
-            <div class="large-4 small-4 medium-4 column project_days_container">
-              <div class="project_metric_number">{{related_project.get_days_remaining}} Days</div>
-              <div class="project_metric_label">Remaining</div>
-            </div>
-          </div>
-      </div>
-      </a>
-    </div>
-    {% endfor %}
 
+    <div id="crowdfunding_project_grid" class="row">
+        {% for project in related_projects %}
+        <div class="column large-4 medium-6 small-12 project_block_container {% if forloop.last %}end{% endif %}">
+            <a href="./{{project.id}}">
+              <div class="project_block row">
+                <div class="project_image_container" style="background-image:url({{project.get_primary_picture_url}});">
+                  {% if project.is_fully_pledged %}
+                  <div class="status_bar completed">Fully funded</div>
+                  {% elif project.is_expired %}
+                  <div class="status_bar expired">Project expired</div>
+                  {% endif %}
+                  {% if project.author.id == user.id %}<span class="edit" data-href="/crowdfunding/project/{{project.id}}/edit">Edit</span>{% endif %}
+                </div>
+                <div class="project_content">
+                    <p class="project_content_heading"><span>{{project.title}}</span></p>
+                    <p class="project_content_summary">{{project.summary|truncatechars:90}}</p>
+                    <div class="project_numbers">
+                        <div class="project_progress progress nice">
+                            <span class="meter" style="width:{{project.get_percentage_pledged}}%"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-4 small-4 medium-4 column">
+                          <div class="project_metric_number">{{project.get_percentage_pledged}}%</div>
+                          <div class="project_metric_label">Pledged</div>
+                        </div>
+                        <div class="large-4 small-4 medium-4 column">
+                          <div class="project_metric_number">Rs. {{project.goal|intcomma}}</div>
+                          <div class="project_metric_label">Goal</div>
+                        </div>
+                        <div class="large-4 small-4 medium-4 column project_days_container">
+                          <div class="project_metric_number">{{project.get_days_remaining}} Days</div>
+                          <div class="project_metric_label">To go</div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </a>
+        </div>
+        {% endfor %}
     </div>
   </div>
     </div>
