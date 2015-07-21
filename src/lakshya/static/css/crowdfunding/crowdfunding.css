@@ -417,6 +417,19 @@ div#crowdfunding_projects_section{
 	cursor: pointer;
 }
 
+#project_create_edit_submit{
+	height: 3rem;
+	display: inline-block;
+	vertical-align: top;
+	margin-left: -1rem;
+	background: #01B49E;
+	color: #222;
+	line-height: 3rem;
+	padding: 0 2rem;
+	font-weight: bold;
+	cursor: pointer;
+}
+
 .upload-image-buton{
 	height: 3rem;
 	display: inline-block;
@@ -549,6 +562,7 @@ div#crowdfunding_projects_section{
 
 .control-label{
 	font-weight: bold;
+	cursor: text;
 }
 .controls textarea{
 	width: 50%;

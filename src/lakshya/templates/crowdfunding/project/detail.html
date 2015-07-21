@@ -10,7 +10,8 @@
             $.post($('#pledge_form form').attr('action'), $('#pledge_form form').serialize(), function(response) {
                 if(response.success == 'true')
                 {
-                    window.location.href="http://www.google.com";
+                    window.location.reload();
+                    // window.location.href="http://www.google.com";
                 }
                 else
                 {
@@ -28,15 +29,28 @@
     $(function(){
         $('#description_tab').click(function(){
             $('.update_content').fadeOut();
+            $('.challenges_content').fadeOut();
             $('.description_content').fadeIn();
             $('#updates_tab').removeClass('selected');
+            $('#challenges_tab').removeClass('selected');
             if(!$(this).hasClass('selected'))
                 $('#description_tab').addClass('selected');
         });
+        $('#challenges_tab').click(function(){
+            $('.description_content').fadeOut();
+            $('.update_content').fadeOut();
+            $('.challenges_content').fadeIn();
+            $('#description_tab').removeClass('selected');
+            $('#update_tab').removeClass('selected');
+            if(!$(this).hasClass('selected'))
+                $('#challenges_tab').addClass('selected');
+        });
         $('#updates_tab').click(function(){
             $('.description_content').fadeOut();
+            $('.challenges_content').fadeOut();            
             $('.update_content').fadeIn();
             $('#description_tab').removeClass('selected');
+            $('#challenges_tab').removeClass('selected');
             if(!$(this).hasClass('selected'))
                 $('#updates_tab').addClass('selected');
         });
@@ -139,9 +153,11 @@
                     </div>
                 </div>
                 <div class="row" id="project_content_nav">
-                <div class="large-6 column project_nav_container">
-                    <div class="column large-6 project_content_nav_item selected" id="description_tab">Description</div>
-                    <div class="column large-6 project_content_nav_item" id="updates_tab">Updates</div>
+                <div class="large-12 column project_nav_container">
+                    <div class="column large-4 project_content_nav_item selected" id="description_tab">Description</div>
+                    <div class="column large-4 project_content_nav_item" id="challenges_tab">Challenges</div>
+                    <div class="column large-4 project_content_nav_item" id="updates_tab">Updates</div>
+                    
                 </div>
                 </div>
                     <div class="row update_content">
@@ -160,6 +176,11 @@
                     <div class="row description_content">
                         <div class="large-12 column">
                             {{project.description|safe}}
+                        </div>
+                    </div>
+                    <div class="row challenges_content">
+                        <div class="large-12 column">
+                            {{project.risks_and_challenges|safe}}
                         </div>
                     </div>
             </div>

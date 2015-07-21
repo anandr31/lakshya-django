@@ -84,7 +84,7 @@ class ProjectCreateView(TemplateView):
                     else:
                         project_image = ProjectImage.objects.create(project=project, image=i)
                         print 'Finished uploading images'
-            response = {'success': 'true', 'project_id': Project.objects.project_id}
+            response = {'success': 'true', 'project_id': project.id}
             if self.mode == 'create':
                 #Send email to author of the project
                 subject = '[NITW Crowdfund] We received your project'

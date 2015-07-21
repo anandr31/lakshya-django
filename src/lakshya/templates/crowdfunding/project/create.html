@@ -3,9 +3,24 @@
 
 <script type="text/javascript">
 var ALLOWED_EXTENSIONS = ['jpg', 'png', 'svg', 'jpeg'];
-
-
 </script>
+
+<script>
+function submit(){
+    $.post($('#project_create_edit_form form').attr('action'), $('#project_create_edit_form form').serialize(), function(response) {
+        if(response.success == 'true')
+        {
+            window.location = "/crowdfunding/project/"+response.project_id;
+        }            
+   });
+}
+     
+$(function(){
+     $('#project_create_edit_submit').click(function() {
+            submit();
+        });
+    });
+        </script> 
 
 <div class="container-fluid">
 
@@ -113,37 +128,17 @@ var ALLOWED_EXTENSIONS = ['jpg', 'png', 'svg', 'jpeg'];
                         {{form.risks_and_challenges}}
                     </div>
                 </div>
-
-                <!-- <div class="form-group">
-                    <label class="control-label" for="risks_and_challenges">Start Date</label>
-                    <div class="controls">
-                        {{form.start_date}}
-                    </div>
-                </div> -->
-        
+                
                 <div class="form-group">
                     <label class="control-label" for="submit"></label>
                     <div class="controls">
-                        <input type="button" id="btnSubmit" name="btnSubmit" class="create-project-btn btn-success" value="Submit" onclick="submit();">
+                        <div class="btn" id="project_create_edit_submit">Submit</div>
                     </div>
                 </div>
 
                 </fieldset>
             </form>
         </div>
-        <script>
-        function submit(){
-            // var t=document.getElementById('project_form');
-            // document.getElementById('project_form').submit();
-            $.post($('#project_create_edit_form form').attr('action'), $('#project_create_edit_form form').serialize(), function(response) {
-                if(response.success == 'true')
-                {
-                    // window.location.reload();
-                }            
-           });
-            }
-         
-        </script> 
         {%else%}
         <div class="jumbotron">
             <p class="lead">You must be logged in to create a project.</p>
