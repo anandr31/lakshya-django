@@ -120,8 +120,18 @@
                             </div>
                           </div>  
                     </div>
+
                     {% if not user.is_authenticated %}
                     <div class="button need_login" id="back_this_project_button">BACK THIS PROJECT</div>
+                    {% elif project.is_expired and project.is_fully_pledged %}
+                        <p id="already_pledged_message" {% if not user_pledge %}class="hidden"{% endif %}><span>SUCCESSFULLY FUNDED! Thanks for pledging Rs. {{user_pledge.amount}} to this project. You will receive a mail soon to fulfill your pledge.</span></p>
+                        <div id="pledge_form" {% if user_pledge %}class="hidden"{% endif %}>
+                        <p> This campaign was a success and pledges are now closed!</p>
+                        <div class="btn" id="pledge_submit_disabled">SUCCESSFULLY FUNDED!</div></div>
+                    {% elif project.is_expired and not project.is_fully_pledged %}
+                        <p id="already_pledged_message" {% if not user_pledge %}class="hidden"{% endif %}><span>CAMPAIGN UNSUCCESFUL - Thanks for pledging Rs. {{user_pledge.amount}} to this project. However, this campaign was unsuccessful in raising the required funding. Please continue supporting projects, we're sure many will be funded successfully!</span></p>
+                        <div id="pledge_form" {% if user_pledge %}class="hidden"{% endif %}>
+                        <p> CAMPAIGN UNSUCCESFUL - This campaign has expired and was unable to raise the reuired funding.</p><div class="btn" id="pledge_submit_disabled">CAMPAIGN CLOSED</div></div>                        
                     {% else %}
                     <p id="already_pledged_message" {% if not user_pledge %}class="hidden"{% endif %}><span>You have pledged Rs. {{user_pledge.amount}} to this project. </span><a href="#">Edit pledge</a></p>
                     <div id="pledge_form" {% if user_pledge %}class="hidden"{% endif %}>
