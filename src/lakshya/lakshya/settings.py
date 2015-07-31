@@ -157,6 +157,7 @@ INSTALLED_APPS = (
     'innovationgarage',
     'tinymce',
     'social.apps.django_app.default',  # Python social auth for Django
+    'tinymce',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -239,6 +240,18 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details'
 )
+
+TINYMCE_JS_URL = os.path.join(STATIC_URL, "js/tinymce/tinymce.min.js")
+TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "js/tinymce")
+
+# TINYMCE_DEFAULT_CONFIG = {
+#     'plugins': "table,spellchecker,paste,searchreplace",
+#     'theme': "advanced",
+#     'cleanup_on_startup': True,
+#     'custom_undo_redo_levels': 10,
+# }
+# TINYMCE_SPELLCHECKER = True
+# TINYMCE_COMPRESSOR = True
 
 # Load the local settings
 # This should be at the end for overriding
