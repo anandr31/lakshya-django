@@ -1,6 +1,6 @@
 from django.contrib import admin
 from crowdfunding.models import Project, Pledge, ProjectImage, ProjectUpdate
-from mce_filebrowser.admin import MCEFilebrowserAdmin
+# from mce_filebrowser.admin import MCEFilebrowserAdmin
 
 
 # Register your models here.

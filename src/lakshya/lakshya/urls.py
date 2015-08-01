@@ -62,7 +62,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^mce_filebrowser/', include('mce_filebrowser.urls')),
+    # url(r'^mce_filebrowser/', include('mce_filebrowser.urls')),
 )
 
 urlpatterns += util_urls
