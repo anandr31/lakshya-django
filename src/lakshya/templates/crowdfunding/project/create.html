@@ -1,6 +1,7 @@
 {%extends "crowdfunding/base.html"%}
 {%block content%} 
-
+<script type="text/javascript" src="{{STATIC_URL}}js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript" src="{% url "tinymce-js" "AllTextAreas" %}"></script>
 <script type="text/javascript">
 var ALLOWED_EXTENSIONS = ['jpg', 'png', 'svg', 'jpeg'];
 </script>
@@ -21,9 +22,6 @@ $(function(){
         });
     });
         </script> 
-
-<script type="text/javascript" src="{{ STATIC_URL }}js/tinymce/tinymce.min.js"></script>
-<script type="text/javascript" src="{% url "tinymce-js" "AllTextAreas" %}"></script>
 
 <div class="container-fluid">
 

@@ -158,6 +158,8 @@ INSTALLED_APPS = (
     'tinymce',
     'social.apps.django_app.default',  # Python social auth for Django
     'tinymce',
+    'sorl.thumbnail',
+    'mce_filebrowser',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -243,6 +245,10 @@ SOCIAL_AUTH_PIPELINE = (
 
 TINYMCE_JS_URL = os.path.join(STATIC_URL, "js/tinymce/tinymce.min.js")
 TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "js/tinymce")
+
+TINYMCE_DEFAULT_CONFIG = {
+  'file_browser_callback': 'mce_filebrowser'
+}
 
 # TINYMCE_DEFAULT_CONFIG = {
 #     'plugins': "table,spellchecker,paste,searchreplace",
