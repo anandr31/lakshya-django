@@ -157,7 +157,6 @@ INSTALLED_APPS = (
     'innovationgarage',
     'tinymce',
     'social.apps.django_app.default',  # Python social auth for Django
-    'tinymce',
     'sorl.thumbnail',
     'mce_filebrowser',
 )
