@@ -1,0 +1,21 @@
+<script type="text/javascript">
+	$(function() {
+		// $('#submenu li').each(function() {
+		// 	if(window.location.pathname.split('/')[1] == $(this).data('module'))
+		// 	{
+		// 		$(this).addClass('active');
+		// 	}
+		// });
+		$('#submenu li').click(function() {
+			window.location = $(this).find('a').attr('href');
+		});
+	});
+</script>
+<div id="submenu_container">
+	<ul id="submenu">
+		<li><a href="home">About</a></li>
+		<li><a href="guidelines">Submission Guidelines</a></li>
+		<li><a href="editorial-team">Editorial Team</a></li>
+		<li><a href="submit">Submission Form</a></li>
+	</ul>
+</div>

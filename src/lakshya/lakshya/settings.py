@@ -157,6 +157,7 @@ INSTALLED_APPS = (
     'hackathon',
     'innovationgarage',
     'tinymce',
+    'nurj',
 )
 
 # A sample logging configuration. The only tangible logging
