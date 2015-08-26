@@ -64,6 +64,12 @@
         $('#pledge_submit').click(function() {
             submitPledge();
         });
+    
+        $('#crowdfunding_project_detail_page #hero_content span.edit').click(function() {
+          window.location = $(this).data('href');
+          return false;
+        });
+
         // Pledge even if user presses Enter inside text box
         $('#pledge_amount').keydown(function(event) {
                 if (event.keyCode == 13) {
@@ -106,6 +112,7 @@
                 </div>
                 </div>
                 <div class="large-6 column">
+                {% if project.author.id == user.id %}<span class="edit" data-href="/crowdfunding/project/{{project.id}}/edit">Edit</span>{% endif %}
                     <div id="project_title">{{project.title}}</div>
                     <div id="project_summary">{{project.summary}}</div>
                     <div>
