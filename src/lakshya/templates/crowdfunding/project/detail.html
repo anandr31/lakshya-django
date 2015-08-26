@@ -1,5 +1,6 @@
 {% extends "crowdfunding/base.html" %}
 {% load humanize %}
+{% load embed_video_tags %}
 
 {% block scripts %}
     <script type="text/javascript">
@@ -91,6 +92,12 @@
             <div class="row">
                 <div class="large-6 column" id="project_image_container">
                 <div class="cover-images">
+                        {% if project.video_url %}
+                        <div>
+                            {% video project.video_url 'tiny' %}
+                        </div>
+                        {% endif %}                         
+
                         {% for project_image in project.project_images.all %}
                             <div>
                                 <img src="{{project_image.image.url}}">

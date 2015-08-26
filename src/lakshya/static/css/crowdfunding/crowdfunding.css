@@ -279,6 +279,16 @@ div#crowdfunding_projects_section{
 	font-weight: bold;
 	margin-top: 2.5rem;
 }
+#startnew_button{
+	padding: 1rem;
+	max-width: 20rem;
+	font-size: 1.4rem;
+	background: #E7E755;
+	color:#444;
+	font-weight: bold;
+	margin-top: 2.5rem;
+}
+
 #crowdfunding_analytics_section .analytics_box{
 	padding: 3rem;
 	background: #F8F8F8;
