@@ -39,6 +39,24 @@ class IndexView(TemplateView):
         context['projects'] = Project.objects.order_by('-created')
         return context
 
+class MyProjectsView(TemplateView):
+    template_name = 'crowdfunding/myprojects.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(MyProjectsView, self).get_context_data(**kwargs)
+        context['projects'] = Project.objects.order_by('-created')
+        return context
+
+class BackedProjectsView(TemplateView):
+    template_name = 'crowdfunding/backedprojects.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(BackedProjectsView, self).get_context_data(**kwargs)
+        user = self.request.user
+        if user.is_authenticated() and Pledge.objects.filter(user=user).exists():
+            context['projects'] = Project.objects.filter(pledges__user=user)
+
+        return context    
 
 class ProjectCreateView(TemplateView):
     mode = 'create'
@@ -147,7 +165,7 @@ class ProjectDetailView(TemplateView):
         except (Project.DoesNotExist, ValueError):
             raise Http404
 
-        return context
+        return context    
 
 class ProjectListView(TemplateView):
     template_name = 'project/list.html'

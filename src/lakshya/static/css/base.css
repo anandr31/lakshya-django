@@ -244,6 +244,7 @@ p.hint {
 #menu .top-bar #login a {
 	color: #464646;
 	line-height: 4.4rem;
+	white-space: nowrap;
 }
 
 #menu .top-bar #login img {
