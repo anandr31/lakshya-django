@@ -5,6 +5,7 @@ from math import floor
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
+from tinymce import models as tinymce_models
 
 from crowdfunding.utils import IntegerRangeField
 from crowdfunding.constants import PROJECT_STATUS, UNAPPROVED
@@ -14,13 +15,13 @@ from crowdfunding.constants import PROJECT_STATUS, UNAPPROVED
 class Project(models.Model):
     title = models.CharField(max_length=30)
     summary = models.CharField(max_length=160)
-    description = HTMLField(max_length=1000)
+    description = tinymce_models.HTMLField(max_length=1000)
     author = models.ForeignKey(User)
     goal = IntegerRangeField(default=20000, min_value=20000, max_value=200000)
     period = IntegerRangeField(default=5, min_value=5, max_value=45)
     video_url = models.URLField(max_length=1000, blank=True)
-    team = HTMLField(max_length=1000)
-    risks_and_challenges = HTMLField(max_length=4000, blank=True)
+    team = tinymce_models.HTMLField(max_length=1000)
+    risks_and_challenges = tinymce_models.HTMLField(max_length=4000, blank=True)
     ordering = models.DecimalField(max_digits=4, decimal_places=1, blank=True)
     start_date = models.DateField(default=date.today)
     created = models.DateTimeField(auto_now_add=True)
@@ -125,7 +126,7 @@ class Message(models.Model):
 class ProjectUpdate(models.Model):
     project = models.ForeignKey(Project, related_name='updates')
     author = models.ForeignKey(User, related_name='project_updates')
-    update = HTMLField(max_length=300)
+    update = tinymce_models.HTMLField(max_length=300)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):

@@ -78,10 +78,6 @@
                  }
             });
 
-
-
-
-
         $('#crowdfunding_project_detail_page p#already_pledged_message a').click(function() {
             $('#pledge_form').removeClass('hidden');
             $('#already_pledged_message').addClass('hidden');
@@ -184,7 +180,7 @@
                     
                 </div>
                 </div>
-                    <div class="row update_content">
+                    <div class="row update_content" style="display: none;">
                         {% for update in project.updates.all %}
                         <div class="row update_item">
                             <div class="column large-6">
@@ -202,7 +198,7 @@
                             {{project.description|safe}}
                         </div>
                     </div>
-                    <div class="row challenges_content">
+                    <div class="row challenges_content" style="display: none;">
                         <div class="large-12 column">
                             {{project.risks_and_challenges|safe}}
                         </div>

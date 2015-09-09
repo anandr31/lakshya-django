@@ -158,9 +158,9 @@ INSTALLED_APPS = (
     'innovationgarage',
     'tinymce',
     'social.apps.django_app.default',  # Python social auth for Django
-    'tinymce',
-    'sorl.thumbnail',
-    'mce_filebrowser',
+    # 'tinymce',
+    # 'sorl.thumbnail',
+    # 'mce_filebrowser',
     'embed_video',
 )
 
@@ -245,19 +245,19 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.user_details'
 )
 
-TINYMCE_JS_URL = os.path.join(STATIC_URL, "js/tinymce/tinymce.min.js")
-TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "js/tinymce")
+TINYMCE_JS_URL = os.path.join(STATIC_URL, "js/tiny_mce/tiny_mce.js")
+TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "js/tiny_mce")
 
 # TINYMCE_DEFAULT_CONFIG = {
 #   'file_browser_callback': 'mce_filebrowser'
 # }
 
-# TINYMCE_DEFAULT_CONFIG = {
-#     'plugins': "table,spellchecker,paste,searchreplace",
-#     'theme': "advanced",
-#     'cleanup_on_startup': True,
-#     'custom_undo_redo_levels': 10,
-# }
+TINYMCE_DEFAULT_CONFIG = {
+    # 'plugins': "table,spellchecker,paste,searchreplace",
+    'theme': "advanced",
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 10,
+}
 # TINYMCE_SPELLCHECKER = True
 # TINYMCE_COMPRESSOR = True
 

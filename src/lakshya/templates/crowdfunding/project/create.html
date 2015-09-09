@@ -1,27 +1,7 @@
 {%extends "crowdfunding/base.html"%}
 {%block content%} 
-<script type="text/javascript" src="{{STATIC_URL}}js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/tiny_mce/tiny_mce.js"></script>
 <script type="text/javascript" src="{% url "tinymce-js" "AllTextAreas" %}"></script>
-<script type="text/javascript">
-var ALLOWED_EXTENSIONS = ['jpg', 'png', 'svg', 'jpeg'];
-</script>
-
-<script>
-function submit(){
-    $.post($('#project_create_edit_form form').attr('action'), $('#project_create_edit_form form').serialize(), function(response) {
-        if(response.success == 'true')
-        {
-            window.location = "/crowdfunding/project/"+response.project_id;
-        }            
-   });
-}
-     
-$(function(){
-     $('#project_create_edit_submit').click(function() {
-            submit();
-        });
-    });
-        </script> 
 
 <div class="container-fluid">
 
@@ -70,7 +50,7 @@ $(function(){
                 <!-- Textarea -->
 
                 <div class="form-group">
-                    <label class="control-label" for="project_desc">One Line Project Summary (<160 Char)</label>
+                    <label class="control-label" for="project_summary">One Line Project Summary (<160 Char)</label>
                     <div class="controls">
                         {{form.summary}}
                     </div>
@@ -93,9 +73,9 @@ $(function(){
                 </div>
                 
                 <div class="form-group">
-                    <label class="control-label" for="project_desc">Upload Images for this campaign. Mulitple images can be uploaded.</label>
+                    <label class="control-label" for="project_image">Upload Images for this campaign. Mulitple images can be uploaded.</label>
                     <div class="controls">                      
-                        <input type="file" multiple id="project_image" name="project_image">
+                        <input type="file" multiple id="project_image" name="project_image"/>
                     </div>
                 </div>
 
@@ -108,7 +88,7 @@ $(function(){
 
 
                 <div class="form-group">
-                    <label class="control-label" for="project_desc">Team Members</label>
+                    <label class="control-label" for="project_team">Team Members</label>
                     <div class="controls">
                         {{form.team}}
                     </div>
@@ -133,7 +113,8 @@ $(function(){
                 <div class="form-group">
                     <label class="control-label" for="submit"></label>
                     <div class="controls">
-                        <div class="btn" id="project_create_edit_submit">Submit</div>
+                        <input class ="btn" type="submit" id="project_create_edit_submit" value="Submit">
+                        <!-- <div class="btn" id="project_create_edit_submit">Submit</div> -->
                     </div>
                 </div>
 

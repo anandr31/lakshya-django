@@ -82,16 +82,20 @@ class ProjectCreateView(TemplateView):
         return context
 
     def post(self, request, *args, **kwargs):
+        print '**********inside post**********'
         valid_extensions = ['.jpg', '.png', '.svg', '.jpeg']
         images = []
         project = Project(author=request.user)
         id = kwargs.get('id', None)
         if id:
             project = Project.objects.get(id=id)
-        form_data = ProjectForm(request.POST, request.FILES.get('project_image', []), instance=project)
+            print '**********if id = true**********'
+        form_data = ProjectForm(request.POST, request.FILES, instance=project)
         if form_data.is_valid():
+            print request.FILES
             form_data.save()
             if request.FILES.get('project_image', ''):
+                print '**********request.FILES.get(project_image) = true**********'
                 images = request.FILES.getlist('project_image')
                 for i in images:
                     extension = os.path.splitext(request.FILES['project_image'].name)[1]
@@ -103,18 +107,20 @@ class ProjectCreateView(TemplateView):
                         project_image = ProjectImage.objects.create(project=project, image=i)
                         print 'Finished uploading images'
             response = {'success': 'true', 'project_id': project.id}
+            print '**********success = true**********'
             if self.mode == 'create':
                 #Send email to author of the project
+                print '**********mode = create**********'
                 subject = '[NITW Crowdfund] We received your project'
                 context = {'project': project, 'request': request}
                 send_email_from_template('emails/project_created_author.html', context, subject, project.author.email)
+            return HttpResponseRedirect(reverse('view project',kwargs={'id': project.id}))
         else:
-            response = {'success': 'false'}
-        return HttpResponse(json.dumps(response), content_type="application/json")
-        # return HttpResponse(json.dumps(response))
-                    # return HttpResponseRedirect('/p/' + presentation.slug + '/?k=' + presentation.presenter_key)
-        # return render(request, 'home.html', {'error': error})
-
+            response = {'success': 'false', 'errors': form_data.errors}
+            print '**********success = false**********'
+            print form_data.errors
+            print '**********success = false /end**********'
+            return HttpResponse(json.dumps(response), content_type="application/json")
 
 class ProjectView(TemplateView):
     template_name = 'project/view.html'
