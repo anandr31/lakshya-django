@@ -1,0 +1,21 @@
+<p>Dear {{pledge.user.first_name}} {{pledge.user.last_name}},</p>
+
+<p>We are delighted to inform you that a project you backed has successfully achieved its funding goal! </p>
+
+<p>All backers have 10 days (from the time of receiving this email) to fulfil their pledge.</p>
+<p>Amount you pledged: Rs.{{pledge.amount}}<br/>
+Project Title: {{pledge.project.title}}<br/>
+Campaign Goal: Rs.{{pledge.project.goal}}<br/></p>
+<p>
+	Link to campaign page: <a href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}">http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}</a><br/>
+</p>
+
+<div id="fulfill_pledge" style="background: #00B49E; margin: 2rem auto; padding: 1.8rem 2.5rem; color: #222;font-weight: bold;font-size: 1.6rem;font-family: 'Gotham',Helvetica,Arial,sans-serif">Click here to complete pledge</div>
+
+<p>Please contact us (info@thelakshyafoundation.org) if you need more time to fulfil your pledge.</p>
+
+<p>Thanks,<br/>
+NITW Crowdfund Team<br/>
+Lakshya Foundation<br/></p>
+
+

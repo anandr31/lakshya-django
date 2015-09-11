@@ -82,36 +82,28 @@ class ProjectCreateView(TemplateView):
         return context
 
     def post(self, request, *args, **kwargs):
-        print '**********inside post**********'
         valid_extensions = ['.jpg', '.png', '.svg', '.jpeg']
         images = []
         project = Project(author=request.user)
         id = kwargs.get('id', None)
         if id:
             project = Project.objects.get(id=id)
-            print '**********if id = true**********'
         form_data = ProjectForm(request.POST, request.FILES, instance=project)
         if form_data.is_valid():
-            print request.FILES
             form_data.save()
             if request.FILES.get('project_image', ''):
-                print '**********request.FILES.get(project_image) = true**********'
                 images = request.FILES.getlist('project_image')
                 for i in images:
                     extension = os.path.splitext(request.FILES['project_image'].name)[1]
-                    print extension
                     if not any(extension.lower() in s for s in valid_extensions):
-                        print 'Please upload only jpg, png, svg, or jpeg'
                         error = "Please upload only jpg, png, svg, or jpeg"
                     else:
                         project_image = ProjectImage.objects.create(project=project, image=i)
                         print 'Finished uploading images'
             response = {'success': 'true', 'project_id': project.id}
-            print '**********success = true**********'
             if self.mode == 'create':
                 #Send email to author of the project
-                print '**********mode = create**********'
-                subject = '[NITW Crowdfund] We received your project'
+                subject = '[NITW Crowdfund] Your campaign is live!'
                 context = {'project': project, 'request': request}
                 send_email_from_template('emails/project_created_author.html', context, subject, project.author.email)
             return HttpResponseRedirect(reverse('view project',kwargs={'id': project.id}))
@@ -193,10 +185,28 @@ class PledgeCreateAPIView(View):
                 #Since a user cannot create multiple pledges for a project, we assume he is editing his current pledge.
                 pledge = Pledge.objects.filter(user=user, project=project).first()
                 pledge.amount = amount
-                pledge.save()
+                pledge.save()                
             else:
-                Pledge.objects.create(user=user, amount=amount, project=project)
+                pledge = Pledge.objects.create(user=user, amount=amount, project=project)
             response = {'success': 'true'}
+            subject = '[NITW Crowdfund] Thank you for pledging!'
+            context = {'pledge': pledge, 'request': request}
+            #Send email to backer
+            send_email_from_template('emails/pledge_created_backer.html', context, subject, pledge.user.email)
+            #Send email to author
+            subject= '[NITW Crowdfund] New pledge!'
+            send_email_from_template('emails/pledge_created_author.html', context, subject, pledge.project.author.email)
+            if pledge.project.get_total_pledged_amount >= pledge.project.goal:
+                subject='[NITW Crowdfund] Campaign Successfully Funded!'
+                send_email_from_template('emails/campaign_successful_author.html', context, subject, pledge.project.author.email)
+                print "@@@@@@@@@@@@@@@@@@"
+                print pledge.project.author.email
+                print Pledge.objects.filter(project=project).values_list('user__email')
+                print Pledge.objects.filter(project=project).values_list('user__email', flat=True)
+                print map(str,Pledge.objects.filter(project=project).values_list('user__email',flat=True))
+                print "@@@@@@@@@@@@@@@@@@"
+                subject='[NITW Crowdfund] Campaign you backed is successfully funded!'
+                send_email_from_template('emails/campaign_successful_backer.html', context, subject, map(str,Pledge.objects.filter(project=project).values_list('user__email', flat=True)))
         return HttpResponse(json.dumps(response), content_type="application/json")
 
     def get_params(self, request):

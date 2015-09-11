@@ -1,11 +1,20 @@
 <p>Hi {{project.author.first_name}},</p>
 
-<p>Congratulations on submitting your latest project! We are reviewing the details to make sure it complies with all the rules and has all the necessary information to attract maximum pledges.</p>
+<p>Congratulations on submitting your latest project campaign! </p>
+<p>You can now view it on the crowdfunding home page. We will review your campaign to make sure it complies with all our rules and has all the necessary information. You will be sent an email if there are changes needed.</p>
 
-<p>You can continue adding more information to your project till it is approved. Click <a href="http://{{request.get_host}}/crowdfunding/project/{{project.id}}">here</a> to access the project.</p>
+<p>Also, you have to be logged in to edit your campaign. Go ahead and post the link on social networking websites and share it with friends and family.</p>
 
-<p>You will receive an email when the project is approved (normally within 48 hours) or if we have any doubts. You can reply to this email if you have any questions.</p>
+<p>Write to us at info@thelakshyafoundation.org for any questions.</p>
 
-<p>Thanks,<br>
-NITW Crowdfund Team<br>
-Lakshya Foundation</p>
+<p>Link to your campaign page: <a href="http://{{request.get_host}}/crowdfunding/project/{{project.id}}">http://{{request.get_host}}/crowdfunding/project/{{project.id}}</a><br/>
+Edit your campaign: <a href="http://{{request.get_host}}/crowdfunding/project/{{project.id}}/edit">http://{{request.get_host}}/crowdfunding/project/{{project.id}}/edit</a><br/>
+Project Title: {{project.title}} <br/>
+Campaign Goal: {{project.goal}}<br/>
+Campaign Duration: {{project.duration}}</p>
+
+<p>Thanks and all the best!<br/>
+NITW Crowdfund Team<br/>
+Lakshya Foundation<br/></p>
+
+

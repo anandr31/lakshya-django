@@ -3,6 +3,14 @@
 {% load embed_video_tags %}
 
 {% block scripts %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4&appId=1491007234499273";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <script type="text/javascript">
 
     function submitPledge(){
@@ -108,8 +116,7 @@
                 </div>
                 </div>
                 <div class="large-6 column">
-                {% if project.author.id == user.id %}<span class="edit" data-href="/crowdfunding/project/{{project.id}}/edit">Edit</span>{% endif %}
-                    <div id="project_title">{{project.title}}</div>
+                    <div id="project_title">{% if project.author.id == user.id %}<span class="edit" data-href="/crowdfunding/project/{{project.id}}/edit">Edit Campaign</span>{% endif %}<br/><br/>{{project.title}}</div>
                     <div id="project_summary">{{project.summary}}</div>
                     <div>
                         <div class="column project_progress progress nice large-10">
@@ -167,11 +174,11 @@
         </div>
         <div class="row" id="detail_content">
             <div class="column large-6 large-offset-1">
-                <div class="row project_content_title">
+                <!-- <div class="row project_content_title">
                     <div class="column">
                         {{project.title}}
                     </div>
-                </div>
+                </div> -->
                 <div class="row" id="project_content_nav">
                 <div class="large-12 column project_nav_container">
                     <div class="column large-4 project_content_nav_item selected" id="description_tab">Description</div>
@@ -207,6 +214,15 @@
             <div class="column large-4 large-offset-1">
                 <div class="row project_content_title">TEAM</div>
                 <div class="row team_members">{{project.team|safe}}</div>
+                Share campaign with friends - <br/>
+                <!-- Share on Facebook -->
+                <div class="fb-share-button" data-href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}" data-layout="box_count"></div>
+                <!-- Share on Twitter -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this project campaign" data-via="lakshyatweets" data-hashtags="nitwCrowdfunding" data-count="vertical">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                <!-- Share on LinkedIn -->
+                <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US
+                </script><script type="IN/Share" data-counter="top"></script>
             </div>
         </div>
     <div id="crowdfunding_projects_section" class="content-width">

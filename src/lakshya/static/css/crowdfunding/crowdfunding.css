@@ -370,7 +370,7 @@ div#crowdfunding_projects_section{
 	font-size: 2.5rem;
 }
 #crowdfunding_project_detail_page #hero_content span.edit{
-	margin-left: 1rem;
+	/*margin-left: 1rem;*/
 	color: #fff;
 	font-size: 1.3rem;
 	font-weight: bold;
@@ -379,9 +379,9 @@ div#crowdfunding_projects_section{
 	cursor:pointer;
 	-webkit-border-radius: 1.5rem;
 	        border-radius: 1.5rem;
-	position: absolute;
-	bottom: 1rem;
-	right: 1rem;	
+	/*position: absolute;*/
+	/*bottom: 1rem;
+	right: 1rem;	*/
 }
 
 #crowdfunding_project_detail_page #hero_content div#project_summary{
