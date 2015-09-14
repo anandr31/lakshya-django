@@ -1,6 +1,16 @@
+
 tinyMCE.init({
     mode: "textareas",
-    theme: "advanced"});
+    theme: "advanced",
+    browser_spellcheck: true,
+    setup: function(ed) 
+    {
+        if ($('#'+ed.id).prop('readonly')) 
+        {
+            ed.settings.readonly = true;
+        }
+    }
+    });
 
 //     plugins:  [
 //     "autoresize advlist autolink lists link image charmap print preview hr anchor pagebreak",

@@ -71,7 +71,23 @@ class ProjectCreateView(TemplateView):
             try:
                 project_id = int(kwargs.get('id', ''))
                 project = Project.objects.get(id=project_id)
-                context['form'] = ProjectForm(instance=project)
+                form = ProjectForm(instance=project)
+                # logic for conditional editing
+                # Google - How to make read only fields within Django form instance
+                if project.is_expired():
+                    form.fields['title'].widget.attrs['readonly'] = True
+                    form.fields['summary'].widget.attrs['readonly'] = True
+                    form.fields['goal'].widget.attrs['readonly'] = True
+                    form.fields['period'].widget.attrs['readonly'] = True
+                    form.fields['description'].widget.attrs['readonly'] = True
+                    form.fields['team'].widget.attrs['readonly'] = True
+                    form.fields['risks_and_challenges'].widget.attrs['readonly'] = True
+                else:
+                    form.fields['title'].widget.attrs['readonly'] = True
+                    form.fields['summary'].widget.attrs['readonly'] = True
+                    form.fields['goal'].widget.attrs['readonly'] = True
+                    form.fields['period'].widget.attrs['readonly'] = True
+                context['form'] = form
                 context['mode'] = 'edit'
                 context['id'] = project.id
                 if project.author != self.request.user:
