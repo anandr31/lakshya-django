@@ -1,0 +1,77 @@
+{%extends "crowdfunding/base.html"%}
+{%block content%}
+<script type="text/javascript" src="{{STATIC_URL}}js/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="{% url "tinymce-js" "AllTextAreas" %}"></script>
+
+<div class="container-fluid">
+
+    <div class="row">
+        {%if user.is_authenticated %} {%if messages %}{% for message in messages %}
+        <div class="container-fluid">
+            <div class="alert alert-{{message.tags}} fade in" style="text-align:center;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{ message|safe }}
+            </div>
+                    {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-error">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-error">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+            {% endif %}
+                </div>
+                {% endfor %}{% endif %}
+
+        <div id = "project_create_edit_form" class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <form class="form-horizontal well" method="POST" action="{{BASE_URL}}/crowdfunding/project/{{id}}/update" enctype="multipart/form-data" id="project_form">{% csrf_token %}
+
+                <section><h1 style="text-align: center;">Update Project Progress</h1></section>
+                <br/>
+                <p>{{ form.non_field_errors }}</p>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="control-label" for="project_name">Project Title (<30 Char)</label>
+                    <div class="controls">
+                        {{form.update}}
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label class="control-label" for="submit"></label>
+                    <div class="controls">
+                        <input class ="btn" type="submit" id="project_create_edit_submit" value="Submit">
+                        <!-- <div class="btn" id="project_create_edit_submit">Submit</div> -->
+                    </div>
+                </div>
+
+                </fieldset>
+            </form>
+        </div>
+        <section><h1 style="text-align: center;">Previous Progres Updates</h1></section>
+        {% for update in project.updates.all %}
+        <div class="row update_item">
+            <div class="column large-6">
+                <!--span class="project_update_title">TEST SUCCESS</span-->
+                <span class="project_update_date">{{update.timestamp}}</span>
+            </div>
+            <div class="column large-12">
+                {{update.update|safe}}
+            </div>
+        </div>
+        {% endfor %}
+        {%else%}
+        <div class="jumbotron">
+            <p class="lead">You must be logged in to create a project.</p>
+        </div>
+        {%endif%}
+    </div>
+</div>
+{% endblock %}

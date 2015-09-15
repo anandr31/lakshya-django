@@ -116,7 +116,7 @@
                 </div>
                 </div>
                 <div class="large-6 column">
-                    <div id="project_title">{% if project.author.id == user.id %}<span class="edit" data-href="/crowdfunding/project/{{project.id}}/edit">Edit Campaign</span>{% endif %}<br/><br/>{{project.title}}</div>
+                    <div id="project_title">{% if project.author.id == user.id %}<span class="edit" data-href="/crowdfunding/project/{{project.id}}/edit">Edit Campaign</span>&nbsp;<span class="edit" data-href="/crowdfunding/project/{{project.id}}/update">Post Progress Update</span>{% endif %}<br/><br/>{{project.title}}</div>
                     <div id="project_summary">{{project.summary}}</div>
                     <div>
                         <div class="column project_progress progress nice large-10">

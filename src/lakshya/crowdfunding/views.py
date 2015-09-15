@@ -11,7 +11,7 @@ import datetime
 from django.utils import timezone
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
-from crowdfunding.forms import ProjectForm
+from crowdfunding.forms import ProjectForm, ProjectUpdateForm
 import json
 import re
 import os
@@ -128,6 +128,45 @@ class ProjectCreateView(TemplateView):
             print '**********success = false**********'
             print form_data.errors
             print '**********success = false /end**********'
+            return HttpResponse(json.dumps(response), content_type="application/json")
+
+
+class ProjectUpdateView(TemplateView):
+    template_name = 'crowdfunding/project/update.html'
+
+    def get_context_data(self, **kwargs):
+        context = TemplateView.get_context_data(self, **kwargs)
+        context['form'] = ProjectUpdateForm()
+        try:
+            project_id = int(kwargs.get('id', ''))
+            project = Project.objects.get(id=project_id)
+            context['project'] = project
+            # form = ProjectUpdateForm(instance=project)
+            if project.author != self.request.user:
+                raise Http404
+        except (Project.DoesNotExist, ValueError):
+            raise Http404
+        # context['mode'] = self.mode
+        return context
+
+    def post(self, request, *args, **kwargs):
+        # project = Project(author=request.user)
+        id = kwargs.get('id', None)
+        project = Project.objects.get(id=id)
+        form_data = ProjectUpdateForm(request.POST)
+        if form_data.is_valid():
+            project_update = form_data.save(commit=False)
+            project_update.project = project
+            project_update.author = request.user
+            project_update.save()
+            response = {'success': 'true', 'project_id': project.id}
+            #Send email to author of the project
+            # subject = '[NITW Crowdfund] Your campaign is live!'
+            # context = {'project': project, 'request': request}
+            # send_email_from_template('emails/project_created_author.html', context, subject, project.author.email)
+            return HttpResponseRedirect(reverse('view project',kwargs={'id': project.id}))
+        else:
+            response = {'success': 'false', 'errors': form_data.errors}
             return HttpResponse(json.dumps(response), content_type="application/json")
 
 class ProjectView(TemplateView):
