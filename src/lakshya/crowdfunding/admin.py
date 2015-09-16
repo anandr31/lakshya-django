@@ -14,7 +14,7 @@ class ProjectImageInline(admin.TabularInline):
 
 class ProjectUpdate(admin.TabularInline):
     model = ProjectUpdate
-    fields = ('author', 'update')
+    fields = ('author', 'update', 'mail_status')
 
 
 class ProjectAdmin(admin.ModelAdmin):

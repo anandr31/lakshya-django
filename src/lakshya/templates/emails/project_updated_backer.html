@@ -1,21 +1,17 @@
 <p>Dear {{pledge.user.first_name}} {{pledge.user.last_name}},</p>
 
+<p>
+	Campaign: <a href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}">http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}</a><br/>
+</p>
 <p>There is a new update to a project you've backed</p>
 
-<p>Update: {{update.timestamp}}</p>
-<p>
-{{update.update}}
-</p>
-
-<p>Pledge Amount: Rs.{{pledge.amount}}<br/>
-Project Title: {{pledge.project.title}}<br/>
-Campaign Goal: Rs.{{pledge.project.goal}}<br/>
-Funds Pldeged: Rs.{{pledge.project.get_total_pledged_amount}}</p>
-
-<p>
-	Link to campaign page: <a href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}">http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}</a><br/>
-</p>
-
+<h1>New Updates</h1>
+{% for update in updates %}
+-------------------------------------------------------------<br/>
+	<p>Update: {{update.timestamp|safe}}</p>
+	<p>{{update.update|safe}}</p>
+{% endfor %}
+-------------------------------------------------------------<br/>
 <p>We follow an all-or-nothing funding policy. Funds are collected from backers and disbursed to the project team only if the campaign is able to raise 100% or more of its funding goal. Please contact us (info@thelakshyafoundation.org) for any queries.</p>
 
 <p>Thanks,<br/>

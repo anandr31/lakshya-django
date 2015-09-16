@@ -4,12 +4,11 @@
 
 <p>But hey, you're still on campus, are still super young, and have already made a bright start! We're giving you all the data we have so you can pour over it to analyze how you can make the next campaign event better with better images, an awesome video, or with a brief about your previous projects in the team or description section.</p>
 
-<p>Amount you pledged: Rs.{{pledge.amount}}<br/>
-Project Title: {{pledge.project.title}}<br/>
-Campaign Goal: Rs.{{pledge.project.goal}}
-Funds Pldeged: Rs.{{pledge.project.get_total_pledged_amount}}
-Number of backers: {{pledge.project.get_total_backers}}
-The Campaign was initiatied on {{pledge.project.start_date}} for a period of {{pledge.project.period}} days<br/></p>
+<p>Project Title: {{project.title}}<br/>
+Campaign Goal: Rs.{{project.goal}}<br/>
+Funds Pledged: Rs.{{project.get_total_pledged_amount}} ({{project.get_percentage_pledged}}%)<br/>
+Number of backers: {{project.get_total_backers}}<br/>
+The Campaign was initiatied on {{project.start_date}} for a period of {{project.period}} days<br/></p>
 <p>
 	Link to campaign page: <a href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}">http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}</a><br/>
 </p>

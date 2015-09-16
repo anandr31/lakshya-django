@@ -8,9 +8,10 @@ from tinymce.models import HTMLField
 from tinymce import models as tinymce_models
 
 from crowdfunding.utils import IntegerRangeField
-from crowdfunding.constants import PROJECT_STATUS, UNAPPROVED, MAIL_NOT_SENT, CAMPAIGN_FULLY_BACKED_MAIL_SENT, CAMPAIGN_EXPIRED_UNSUCCESSFULLY_MAIL_SENT
+from crowdfunding.constants import PROJECT_STATUS, UNAPPROVED, MAIL_NOT_SENT, CAMPAIGN_FULLY_BACKED_MAIL_SENT, \
+                                    CAMPAIGN_EXPIRED_UNSUCCESSFULLY_MAIL_SENT, UPDATE_MAIL_NOT_SENT, UPDATE_MAIL_SENT, \
+                                    PROJECT_MAIL_STATUSES, UPDATE_MAIL_STATUSES
 # Create your models here.
-
 
 class Project(models.Model):
     title = models.CharField(max_length=30)
@@ -133,6 +134,7 @@ class ProjectUpdate(models.Model):
     author = models.ForeignKey(User, related_name='project_updates')
     update = tinymce_models.HTMLField(max_length=300)
     timestamp = models.DateTimeField(auto_now_add=True)
+    mail_status = models.SmallIntegerField(default=UPDATE_MAIL_NOT_SENT, choices=UPDATE_MAIL_STATUSES)
 
     class Meta:
         ordering=('-timestamp',)

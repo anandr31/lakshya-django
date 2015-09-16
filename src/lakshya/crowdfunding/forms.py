@@ -14,4 +14,4 @@ class ProjectUpdateForm(ModelForm):
 
   class Meta:
 	model = ProjectUpdate
-	exclude = ("project", "author", "timestamp")
+	exclude = ("project", "author", "timestamp", "mail_status")
