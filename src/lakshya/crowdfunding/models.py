@@ -8,7 +8,7 @@ from tinymce.models import HTMLField
 from tinymce import models as tinymce_models
 
 from crowdfunding.utils import IntegerRangeField
-from crowdfunding.constants import PROJECT_STATUS, UNAPPROVED
+from crowdfunding.constants import PROJECT_STATUS, UNAPPROVED, MAIL_NOT_SENT, CAMPAIGN_FULLY_BACKED_MAIL_SENT, CAMPAIGN_EXPIRED_UNSUCCESSFULLY_MAIL_SENT
 # Create your models here.
 
 
@@ -26,6 +26,7 @@ class Project(models.Model):
     start_date = models.DateField(default=date.today)
     created = models.DateTimeField(auto_now_add=True)
     status = models.SmallIntegerField(default=UNAPPROVED, choices=PROJECT_STATUS)
+    # *****mail_status = models.SmallIntegerField(default=MAIL_NOT_SENT)
 
     def __unicode__(self):
         return str(self.title)
@@ -108,10 +109,14 @@ class Pledge(models.Model):
     amount = IntegerRangeField(default=1000, min_value=1000)
     project = models.ForeignKey(Project, related_name='pledges')
     timestamp = models.DateTimeField(auto_now_add=True)
+    # *****pledge_fulfilled (default=PLEDGE_CREATED, CHOICES=FULFILLED, PROJECT_EXPIREDN, NOT_FULFILLED, DISBURSED)
 
     def __unicode__(self):
         return self.project.title + ' - ' + (self.user.get_full_name() or self.user.username)
-
+# PledgeFulfillment(models.Model)
+    # pledge_id=models.ForeignKey(Pledge, related_name='pledge')
+    # txn_amount = models.IntegerField()
+    # *****status=models.SmallIntegerField(default=FAILURE)
 
 class Message(models.Model):
     project = models.ForeignKey(Project, related_name='messages')

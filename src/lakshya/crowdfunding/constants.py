@@ -6,10 +6,14 @@ EXPIRED = 3
 SUCCESSFUL = 4
 CANCELLED = 5
 
-
 PROJECT_STATUS = ((UNAPPROVED, 'Unapproved'),
 				   (APPROVED, 'Approved'),
 				   (EXPIRED, 'Expired'),
 				   (SUCCESSFUL, 'Successful'),
 				   (CANCELLED, 'Cancelled'),
 			   )
+
+
+MAIL_NOT_SENT = 0
+CAMPAIGN_FULLY_BACKED_MAIL_SENT = 1
+CAMPAIGN_EXPIRED_UNSUCCESSFULLY_MAIL_SENT = 2

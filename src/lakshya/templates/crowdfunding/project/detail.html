@@ -39,30 +39,48 @@
         $('#description_tab').click(function(){
             $('.update_content').fadeOut();
             $('.challenges_content').fadeOut();
+            $('.backers_content').fadeOut();
             $('.description_content').fadeIn();
             $('#updates_tab').removeClass('selected');
             $('#challenges_tab').removeClass('selected');
+            $('#backers_tab').removeClass('selected');
             if(!$(this).hasClass('selected'))
                 $('#description_tab').addClass('selected');
         });
         $('#challenges_tab').click(function(){
             $('.description_content').fadeOut();
             $('.update_content').fadeOut();
+            $('.backers_content').fadeOut();
             $('.challenges_content').fadeIn();
             $('#description_tab').removeClass('selected');
             $('#update_tab').removeClass('selected');
+            $('#backers_tab').removeClass('selected');
             if(!$(this).hasClass('selected'))
                 $('#challenges_tab').addClass('selected');
         });
         $('#updates_tab').click(function(){
             $('.description_content').fadeOut();
             $('.challenges_content').fadeOut();            
+            $('.backers_content').fadeOut();
             $('.update_content').fadeIn();
             $('#description_tab').removeClass('selected');
             $('#challenges_tab').removeClass('selected');
+            $('#backers_tab').removeClass('selected');
             if(!$(this).hasClass('selected'))
                 $('#updates_tab').addClass('selected');
         });
+        $('#backers_tab').click(function(){
+            $('.description_content').fadeOut();
+            $('.challenges_content').fadeOut();            
+            $('.update_content').fadeOut();
+            $('.backers_content').fadeIn();
+            $('#description_tab').removeClass('selected');
+            $('#challenges_tab').removeClass('selected');
+            $('#updates_tab').removeClass('selected');
+            if(!$(this).hasClass('selected'))
+                $('#backers_tab').addClass('selected');
+        });
+
 
         $('#back_this_project_button').click(function() {
             $('#login_modal a').attr('href', $('#login_modal a').attr('href') + '?next=/crowdfunding/project/{{project.id}}');
@@ -181,9 +199,10 @@
                 </div> -->
                 <div class="row" id="project_content_nav">
                 <div class="large-12 column project_nav_container">
-                    <div class="column large-4 project_content_nav_item selected" id="description_tab">Description</div>
-                    <div class="column large-4 project_content_nav_item" id="challenges_tab">Challenges</div>
-                    <div class="column large-4 project_content_nav_item" id="updates_tab">Updates</div>
+                    <div class="column large-3 project_content_nav_item selected" id="description_tab">Description</div>
+                    <div class="column large-3 project_content_nav_item" id="challenges_tab">Challenges</div>
+                    <div class="column large-3 project_content_nav_item" id="updates_tab">Updates</div>
+                    <div class="column large-3 project_content_nav_item" id="backers_tab">Backers({{project.get_total_backers}})</div>
                     
                 </div>
                 </div>
@@ -210,6 +229,13 @@
                             {{project.risks_and_challenges|safe}}
                         </div>
                     </div>
+                    <div class="row backers_content" style="display: none;">
+                        {% for backer in pledges %}
+                            <div class="column large-12">
+                                {{backer.user.first_name}} {{backer.user.last_name}}
+                            </div>
+                        {% endfor %}
+                    </div>                    
             </div>
             <div class="column large-4 large-offset-1">
                 <div class="row project_content_title">TEAM</div>

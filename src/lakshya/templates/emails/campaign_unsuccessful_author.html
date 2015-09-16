@@ -1,0 +1,21 @@
+<p>Hi {{project.author.first_name}},</p>
+
+<p>Your project campaign was not able to raise the funding goal within the campaign period. As you know, we follow an all-or-nothing funding policy. Funds are collected from backers and disbursed to the project team only if the campaign is able to raise 100% or more of its funding goal.</p>
+
+<p>But hey, you're still on campus, are still super young, and have already made a bright start! We're giving you all the data we have so you can pour over it to analyze how you can make the next campaign event better with better images, an awesome video, or with a brief about your previous projects in the team or description section.</p>
+
+<p>Amount you pledged: Rs.{{pledge.amount}}<br/>
+Project Title: {{pledge.project.title}}<br/>
+Campaign Goal: Rs.{{pledge.project.goal}}
+Funds Pldeged: Rs.{{pledge.project.get_total_pledged_amount()}}
+Number of backers: {{pledge.project.get_total_backers()}}
+The Campaign was initiatied on {{pledge.project.start_date}} for a period of {{pledge.project.period}} days<br/></p>
+<p>
+	Link to campaign page: <a href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}">http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}</a><br/>
+</p>
+
+<p>We follow an all-or-nothing funding policy. Funds are collected from backers and disbursed to the project team only if the campaign is able to raise 100% or more of its funding goal. Please contact us (info@thelakshyafoundation.org) if you'd like to know more about how you could improve your campaign and reach out to more backers.</p>
+
+<p>Thanks,<br/>
+NITW Crowdfund Team<br/>
+Lakshya Foundation<br/></p>

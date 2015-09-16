@@ -1,22 +1,20 @@
 <p>Dear {{pledge.user.first_name}} {{pledge.user.last_name}},</p>
 
-<p>We have received the following pledge from you:</p>
-<p>Pledge Amount: Rs.{{pledge.amount}}<br/>
-Project Title: {{pledge.project.title}}<br/>
-Campaign Goal: Rs.{{pledge.project.goal}}<br/>
-Funds Pldeged: Rs.{{pledge.project.get_total_pledged_amount()}}
-Campaign Ends in: {{pledge.project.get_days_remaining}} days<br/></p>
+<p>You recently backed a project on the NITW Crowdfund platform. Unfortunately, the project could not reach its funding goal within the campaign period. Backers of this project campaign will not be asked to fulfill their pledge.</p>
 
+<p>This is a learning process for the student team and we’re sure they’ll be back with a better, more awesome campaign!</p>
+
+<p>Amount you pledged: Rs.{{pledge.amount}}<br/>
+Project Title: {{pledge.project.title}}<br/>
+Campaign Goal: Rs.{{pledge.project.goal}}
+Funds Pldeged: Rs.{{pledge.project.get_total_pledged_amount()}}
+The Campaign was initiatied on {{pledge.project.start_date}} for a period of {{pledge.project.period}} days<br/></p>
 <p>
 	Link to campaign page: <a href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}">http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}</a><br/>
 </p>
-
-<p>Thank you for being a part of the crowdfunding community and enhancing the maker culture at NIT! We shall send you important updates about the project status and will mail you when the campaign period is about to end.</p>
 
 <p>We follow an all-or-nothing funding policy. Funds are collected from backers and disbursed to the project team only if the campaign is able to raise 100% or more of its funding goal. Please contact us (info@thelakshyafoundation.org) for any queries.</p>
 
 <p>Thanks,<br/>
 NITW Crowdfund Team<br/>
 Lakshya Foundation<br/></p>
-
-

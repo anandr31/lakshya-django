@@ -160,10 +160,6 @@ class ProjectUpdateView(TemplateView):
             project_update.author = request.user
             project_update.save()
             response = {'success': 'true', 'project_id': project.id}
-            #Send email to author of the project
-            # subject = '[NITW Crowdfund] Your campaign is live!'
-            # context = {'project': project, 'request': request}
-            # send_email_from_template('emails/project_created_author.html', context, subject, project.author.email)
             return HttpResponseRedirect(reverse('view project',kwargs={'id': project.id}))
         else:
             response = {'success': 'false', 'errors': form_data.errors}
@@ -212,6 +208,7 @@ class ProjectDetailView(TemplateView):
             project = Project.objects.get(id=kwargs.get('id'))
             context['project'] = project
             context['related_projects'] = Project.objects.exclude(id=kwargs.get('id'))[:3]
+            context['pledges'] = Pledge.objects.filter(project=project).all()
             user = self.request.user
             if user.is_authenticated() and Pledge.objects.filter(project=project, user=user).exists():
                 context['user_pledge'] = Pledge.objects.filter(project=project, user=user).first()
@@ -254,14 +251,14 @@ class PledgeCreateAPIView(View):
             if pledge.project.get_total_pledged_amount >= pledge.project.goal:
                 subject='[NITW Crowdfund] Campaign Successfully Funded!'
                 send_email_from_template('emails/campaign_successful_author.html', context, subject, pledge.project.author.email)
-                print "@@@@@@@@@@@@@@@@@@"
-                print pledge.project.author.email
-                print Pledge.objects.filter(project=project).values_list('user__email')
-                print Pledge.objects.filter(project=project).values_list('user__email', flat=True)
-                print map(str,Pledge.objects.filter(project=project).values_list('user__email',flat=True))
-                print "@@@@@@@@@@@@@@@@@@"
-                subject='[NITW Crowdfund] Campaign you backed is successfully funded!'
-                send_email_from_template('emails/campaign_successful_backer.html', context, subject, map(str,Pledge.objects.filter(project=project).values_list('user__email', flat=True)))
+                # print "@@@@@@@@@@@@@@@@@@"
+                # print pledge.project.author.email
+                # print Pledge.objects.filter(project=project).values_list('user__email')
+                # print Pledge.objects.filter(project=project).values_list('user__email', flat=True)
+                # print map(str,Pledge.objects.filter(project=project).values_list('user__email',flat=True))
+                # print "@@@@@@@@@@@@@@@@@@"
+                # subject='[NITW Crowdfund] Campaign you backed is successfully funded!'
+                # send_email_from_template('emails/campaign_successful_backer.html', context, subject, map(str,Pledge.objects.filter(project=project).values_list('user__email', flat=True)))
         return HttpResponse(json.dumps(response), content_type="application/json")
 
     def get_params(self, request):
