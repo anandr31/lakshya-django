@@ -251,8 +251,8 @@
                 </script><script type="IN/Share" data-counter="top"></script>
             </div>
         </div>
+    <section><h1 style="text-align: center;">More Project Campaigns</h1></section>
     <div id="crowdfunding_projects_section" class="content-width">
-
     <div id="crowdfunding_project_grid" class="row">
         {% for project in related_projects %}
         <div class="column large-4 medium-6 small-12 project_block_container {% if forloop.last %}end{% endif %}">
@@ -260,9 +260,9 @@
               <div class="project_block row">
                 <div class="project_image_container" style="background-image:url({{project.get_primary_picture_url}});">
                   {% if project.is_fully_pledged %}
-                  <div class="status_bar completed">Fully funded</div>
+                    <div class="status_bar completed">Fully funded</div>
                   {% elif project.is_expired %}
-                  <div class="status_bar expired">Project expired</div>
+                    <div class="status_bar expired">Project expired</div>
                   {% endif %}
                   {% if project.author.id == user.id %}<span class="edit" data-href="/crowdfunding/project/{{project.id}}/edit">Edit</span>{% endif %}
                 </div>
