@@ -26,7 +26,7 @@ class Project(models.Model):
     start_date = models.DateField(default=date.today)
     created = models.DateTimeField(auto_now_add=True)
     status = models.SmallIntegerField(default=UNAPPROVED, choices=PROJECT_STATUS)
-    # *****mail_status = models.SmallIntegerField(default=MAIL_NOT_SENT)
+    # *****mail_status = models.SmallIntegerField(default=MAIL_NOT_SENT, choices=PROJECT_MAIL_STATUSES)
 
     def __unicode__(self):
         return str(self.title)

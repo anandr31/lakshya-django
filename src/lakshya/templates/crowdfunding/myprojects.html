@@ -84,7 +84,6 @@ $(function() {
     <p id="projects_title">CREATED PROJECTS</p>
     <div id="crowdfunding_project_grid" class="row">
         {% for project in projects %}
-        {% if project.author.id == user.id %}
         <div class="column large-4 medium-6 small-12 project_block_container {% if forloop.last %}end{% endif %}">
             <a href="project/{{project.id}}">
               <div class="project_block row">
@@ -122,7 +121,6 @@ $(function() {
               </div>
             </a>
         </div>
-        {% endif %}
         {% endfor %}
     </div>
     <!-- <div id="projects_explore_all" >Explore All</div> -->

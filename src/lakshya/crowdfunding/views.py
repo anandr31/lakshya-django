@@ -45,7 +45,10 @@ class MyProjectsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(MyProjectsView, self).get_context_data(**kwargs)
-        context['projects'] = Project.objects.order_by('-created')
+        if self.request.user.is_authenticated():
+            context['projects'] = Project.objects.filter(author=self.request.user).order_by('-created')
+        else:
+            raise Http404
         return context
 
 class BackedProjectsView(TemplateView):
@@ -207,13 +210,13 @@ class ProjectDetailView(TemplateView):
         context = TemplateView.get_context_data(self, **kwargs)
         try:
             related_project_list = []
-            for related_project in Project.objects.exclude(id=kwargs.get('id')):
+            for related_project in Project.objects.exclude(id=kwargs.get('id')).order_by('?'):
                 if not related_project.is_expired():
                     related_project_list.append(related_project)
             project = Project.objects.get(id=kwargs.get('id'))
             context['project'] = project
             # context['related_projects'] = Project.objects.exclude(id=kwargs.get('id').order_by('?'))[:3]
-            context['related_projects'] = random.sample(related_project_list,3)
+            context['related_projects'] = related_project_list[:3]
             context['pledges'] = Pledge.objects.filter(project=project).all()
             user = self.request.user
             if user.is_authenticated() and Pledge.objects.filter(project=project, user=user).exists():
