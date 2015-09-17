@@ -18,7 +18,7 @@ class ProjectUpdate(admin.TabularInline):
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'goal', 'days_remaining')
+    list_display = ('title', 'author', 'goal', 'get_percentage_pledged', 'days_remaining', 'mail_status')
     inlines = (ProjectImageInline, ProjectUpdate,)
     search_fields = ('title',)
 

@@ -27,7 +27,14 @@ def send_email_from_template(template_name, context, subject, recipients):
 
 def send_cron_job_emails(request):
     projects = Project.objects.all()
-    for project in projects:
+    for count, project in enumerate(projects):
+        print "**********"+str(count)+"**********"
+        print "Proect = " + project.title
+        print "Campaign fully backed and mail not sent? - " + str(campaign_fully_backed(project))
+        print "Campaign expired unsuccessfully and mail not sent? - " + str(campaign_expired_unsuccessfully(project))
+        print "Campaign within 3 days of expiry and is active (not fully funded or expired)? - " + str(campaign_within_three_days_expiry(project))
+        print "Campaign new update? - " + str(campaign_new_update(project))
+        print "************END************"
         if campaign_fully_backed(project):
             send_email_fully_funded_backers(project, request)
             update_project_sent_email_status(project, CAMPAIGN_FULLY_BACKED_MAIL_SENT)
@@ -58,7 +65,7 @@ def campaign_new_update(project):
 
 
 def campaign_within_three_days_expiry(project):
-    return (project.get_days_remaining() <= 3)
+    return (project.get_days_remaining() <= 3 and project.mail_status == MAIL_NOT_SENT)
 
 
 def update_project_sent_email_status(project, status):

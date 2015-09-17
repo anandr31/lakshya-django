@@ -3,11 +3,11 @@
 <p>We are delighted to inform you that a project you backed has successfully achieved its funding goal! </p>
 
 <p>Please ensure you fulfill your pledge in the next 10 days.</p>
-<p>Amount you pledged: Rs.{{pledge.amount}}<br/>
+<p><b>Amount you pledged: Rs.{{pledge.amount}}<br/>
 Project Title: {{pledge.project.title}}<br/>
 Campaign Goal: Rs.{{pledge.project.goal}}<br/>
-Funds Pldeged: Rs.{{pledge.project.get_total_pledged_amount}}
-</p>
+Funds Pldeged: Rs.{{pledge.project.get_total_pledged_amount}} ({{pledge.project.get_percentage_pledged}})
+</b></p>
 <p>
 	Link to campaign page: <a href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}">http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}</a><br/>
 </p>

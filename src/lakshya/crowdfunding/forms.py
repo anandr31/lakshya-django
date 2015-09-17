@@ -8,7 +8,7 @@ class ProjectForm(ModelForm):
 	
   class Meta:
     model = Project
-    exclude = ("author", "status", "ordering", "start_date")
+    exclude = ("author", "status", "ordering", "start_date", "mail_status")
 
 class ProjectUpdateForm(ModelForm):
 

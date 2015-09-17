@@ -163,6 +163,7 @@ class ProjectUpdateView(TemplateView):
             project_update.project = project
             project_update.author = request.user
             project_update.save()
+            # send_cron_job_emails(request)
             response = {'success': 'true', 'project_id': project.id}
             return HttpResponseRedirect(reverse('view project',kwargs={'id': project.id}))
         else:

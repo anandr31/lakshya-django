@@ -1,14 +1,15 @@
-<p>Hey {{pledge.project.author.first_name}},</p>
+<p>Hey {{project.author.first_name}},</p>
 
-<p>Congratulations!</p>
-<p>Your campaign {{pledge.project.title}} has successfully raised Rs.{{pledge.project.get_total_pledged_amount}} against a goal of Rs.{{pledge.project.goal}} with {{pledge.project.get_days_remaining}} days remaining!
+<p><b>Congratulations!</b></p>
+
+<p>Your campaign {{project.title}} has <b>successfully raised Rs.{{project.get_total_pledged_amount}}</b> against a goal of Rs.{{project.goal}} with {{project.get_days_remaining}} days remaining!
 
 <p>List of Backers can be found on the project campaign details page.<br/></p>
 
 <p>Backers will now start converting their pledges into donations and we will disburse the amount to your team 14 days from now.</p>
 
 <p>
-	Link to campaign page: <a href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}">http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}</a><br/>
+	Link to campaign page: <a href="http://{{request.get_host}}/crowdfunding/project/{{project.id}}">http://{{request.get_host}}/crowdfunding/project/{{project.id}}</a><br/>
 </p>
 
 <p>Please write to us at info@thelakshyafoundation.org for any clarifications.</p>
