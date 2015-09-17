@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, url
 from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import TemplateView
 
 from crowdfunding.views import ProjectCreateView, ProjectDetailView, ProjectListView, ProjectListAPIView, \
     PledgeCreateAPIView, ProjectDetailAPIView, IndexView, MyProjectsView, BackedProjectsView, ProjectUpdateView
@@ -15,6 +16,7 @@ urlpatterns = patterns('',
                        url(r'^_project/detail/(?P<id>.*)/?$', ProjectDetailAPIView.as_view(),name='project-detail-api'),
                        url(r'^_pledge/create/?$', csrf_exempt(PledgeCreateAPIView.as_view()), name='pledge-create-api'),
                        url(r'^myprojects/?$', MyProjectsView.as_view(), name='myprojects'),
-                       url(r'^backedprojects/?$', BackedProjectsView.as_view(), name='backedprojects'))
+                       url(r'^backedprojects/?$', BackedProjectsView.as_view(), name='backedprojects'),
+                       url(r'^faqs/?$', TemplateView.as_view(template_name="crowdfunding/faqs.html"), name='faqs'))
 
 
