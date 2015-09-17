@@ -1,9 +1,28 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
+{% block scripts %}
+<script type="text/javascript">
+// $(function() {
+//     $('#contact_button').click(function() {
+//       window.scrollTo(0,document.body.scrollHeight);
+//       smoothScroll($('#faq_project_authors').offset().top);
+//       return false;
+//     });
+</script>
+{% endblock scripts %}
+
 {% block content %}
-<div class = "content_with_page_title left">
-	<div class="content_div">
-		<h2>Sorry!</h2>
-		<p>The page you were looking for could not be found.</p>
+<div id = "page_not_found">
+	<div id="content_div">
+		<div class="large-12 column">
+			<div class="column large-6"></div>
+			<div class="column large-6" id="text_404_main">
+				:( we couldn't find the page<br/>
+				you're looking for.
+				<div id="text_404_sub">something fishy? <a class="contact_button" id="contact_button">Contact Us</a></div>
+				<div id="home_page_button"><a href="/">Go To Home Page</a></div>
+			</div>		
+			</div>
+		</div>
 	</div>
 </div>
 {% endblock content %}
