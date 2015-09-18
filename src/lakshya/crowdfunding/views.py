@@ -259,6 +259,7 @@ class PledgeCreateAPIView(View):
             subject= '[NITW Crowdfund] New pledge!'
             send_email_from_template('emails/pledge_created_author.html', context, subject, pledge.project.author.email)
             if pledge.project.get_total_pledged_amount() >= pledge.project.goal:
+                context = {'project': project, 'request': request}
                 subject='[NITW Crowdfund] Campaign Successfully Funded!'
                 send_email_from_template('emails/campaign_successful_author.html', context, subject, pledge.project.author.email)
                 # print "@@@@@@@@@@@@@@@@@@"

@@ -134,7 +134,7 @@
                 </div>
                 </div>
                 <div class="large-6 column">
-                    <div id="project_title">{% if project.author.id == user.id %}<span class="edit" data-href="/crowdfunding/project/{{project.id}}/edit">Edit Campaign</span>&nbsp;<span class="edit" data-href="/crowdfunding/project/{{project.id}}/update">Post Progress Update</span>{% endif %}<br/><br/>{{project.title}}</div>
+                    <div id="project_title">{% if project.author.id == user.id %}<div><span class="edit" data-href="/crowdfunding/project/{{project.id}}/edit">Edit Campaign</span>&nbsp;<span class="edit" data-href="/crowdfunding/project/{{project.id}}/update">Post Progress Update</span></div>{% endif %}{{project.title}}</div>
                     <div id="project_summary">{{project.summary}}</div>
                     <div>
                         <div class="column project_progress progress nice large-10">
@@ -164,11 +164,11 @@
                         <p> This campaign was a success and pledges are now closed!</p>
                         <div class="btn" id="pledge_submit_disabled">SUCCESSFULLY FUNDED!</div></div>
                     {% elif project.is_expired and not project.is_fully_pledged %}
-                        <p id="already_pledged_message" {% if not user_pledge %}class="hidden"{% endif %}><span>CAMPAIGN UNSUCCESFUL - Thanks for pledging Rs. {{user_pledge.amount}} to this project. However, this campaign was unsuccessful in raising the required funding. Please continue supporting projects, we're sure many will be funded successfully!</span></p>
+                        <p id="already_pledged_message" {% if not user_pledge %}class="hidden"{% endif %}><span>CAMPAIGN UNSUCCESFUL - Thanks for pledging Rs. {{user_pledge.amount}} for this project. However, this campaign was unsuccessful in raising the required funding.</span></p>
                         <div id="pledge_form" {% if user_pledge %}class="hidden"{% endif %}>
-                        <p> CAMPAIGN UNSUCCESFUL - This campaign has expired and was unable to raise the reuired funding.</p><div class="btn" id="pledge_submit_disabled">CAMPAIGN CLOSED</div></div>                        
+                        <p> CAMPAIGN UNSUCCESFUL - This campaign has expired and was unable to raise the required funding.</p><div class="btn" id="pledge_submit_disabled">CAMPAIGN CLOSED</div></div>                        
                     {% else %}
-                    <p id="already_pledged_message" {% if not user_pledge %}class="hidden"{% endif %}><span>You have pledged Rs. {{user_pledge.amount}} to this project. </span><a href="#">Edit pledge</a></p>
+                    <p id="already_pledged_message" {% if not user_pledge %}class="hidden"{% endif %}><span>You have pledged Rs. {{user_pledge.amount}} to this project. </span><a href="#" class="edit">Edit pledge</a></p>
                     <div id="pledge_form" {% if user_pledge %}class="hidden"{% endif %}>
                         <form method="POST" action="/crowdfunding/_pledge/create">{% csrf_token %}
                             <input type="hidden" name="project_id" value="{{project.id}}">
