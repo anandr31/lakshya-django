@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.base import View, TemplateView
 from nurj.models import Content
+from nurj.forms import ApplicationForm
 from nurj.constants import CT_ABOUT, CT_GUIDELINES, CT_TEAM
 
 class HomeView(TemplateView):
@@ -41,3 +42,11 @@ class EditorialTeamView(TemplateView):
 
 class SubmissionFormView(TemplateView):
     template_name = "nurj/submit.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(SubmissionFormView, self).get_context_data(**kwargs)
+        context['form'] = ApplicationForm()
+
+        return context
+
+    def post(self,request,*args,**kwargs):
