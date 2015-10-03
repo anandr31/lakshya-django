@@ -130,6 +130,13 @@ p.hint {
 	margin-top: 0.5rem;
 }
 
+.tooltip_trigger {
+  margin-left: 0.7rem;
+  text-transform: none;
+  font-weight: normal;
+  border: none;
+}
+
 /* Menu */
 #menu {
 	height: 8.4rem;
@@ -278,6 +285,10 @@ p.hint {
 }
 #login_modal .social_connect {
 	margin: 1rem auto;
+}
+
+#login_modal a {
+	display: block;
 }
 
 #login_modal #login_heading {
@@ -1502,11 +1513,12 @@ div.ig_project_snippet.view_all_content p {
 
 #page_not_found{
 	background: url('../img/page404/purty_wood.png');
-	background-position: center;
+	background-position: center center;
 	background-repeat: repeat;
 	overflow: hidden;
     position: relative;
 	height: 100%;
+	min-height: 65rem;
 }
 
 #page_not_found #content_div{
@@ -1539,6 +1551,8 @@ div.ig_project_snippet.view_all_content p {
 	font-size: 1.8rem;
 	/*font-weight: 400;*/
 	margin-left: 2rem;
+	margin-top: 1.5rem;
+	display: inline-block;
 	padding: 1rem;
 	background: none;
 	border: solid;

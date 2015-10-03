@@ -1,4 +1,7 @@
 
+import random
+import string
+
 from django.core.mail.message import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.conf import settings
@@ -7,6 +10,10 @@ from datetime import date
 from crowdfunding.constants import MAIL_NOT_SENT, CAMPAIGN_FULLY_BACKED_MAIL_SENT, \
         CAMPAIGN_EXPIRED_UNSUCCESSFULLY_MAIL_SENT, UPDATE_MAIL_NOT_SENT, UPDATE_MAIL_SENT
 
+
+
+def generate_random_string(n):
+    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(n))
 
 
 def send_html_mail(subject, html_content, recipients, sender=None):

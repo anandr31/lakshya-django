@@ -16,7 +16,9 @@ $(function() {
 
     $('#startnew_button').click(function() {
       {% if not user.is_authenticated %}
-      $('#login_modal a').attr('href', $('#login_modal a').attr('href') + '?next=/crowdfunding/project/create');
+      $('#login_modal a:not(.close-reveal-modal)').each(function() {
+        $(this).attr('href', $(this).attr('href') + '?next=/crowdfunding/project/create');
+      });
       $('#login_modal').foundation('reveal', 'open');
       {% else %}
       window.location = '/crowdfunding/project/create';

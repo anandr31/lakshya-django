@@ -1,5 +1,6 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, redirect
 from django.views.generic.base import View, TemplateView
+from django.conf import settings
 from crowdfunding.models import Project, Pledge, Message, ProjectImage
 from django.contrib import messages
 from django.http import Http404, HttpResponseRedirect, HttpResponse
@@ -18,7 +19,10 @@ import os
 import logging
 import random
 from django.template.loader import render_to_string
-from lakshya.util import send_email_from_template
+from lakshya.util import send_email_from_template, generate_random_string
+from accounts.forms import PaymentTempForm, CCAVenueReturnForm
+from accounts.models import PaymentTemp
+from accounts.util import get_post_object
 
 def get_project_json_data(p, request):
     image_urls = [
@@ -60,7 +64,7 @@ class BackedProjectsView(TemplateView):
         if user.is_authenticated() and Pledge.objects.filter(user=user).exists():
             context['projects'] = Project.objects.filter(pledges__user=user)
 
-        return context    
+        return context
 
 class ProjectCreateView(TemplateView):
     mode = 'create'
@@ -126,7 +130,7 @@ class ProjectCreateView(TemplateView):
                 subject = '[NITW Crowdfund] Your campaign is live!'
                 context = {'project': project, 'request': request}
                 send_email_from_template('emails/project_created_author.html', context, subject, project.author.email)
-            return HttpResponseRedirect(reverse('view project',kwargs={'id': project.id}))
+            return HttpResponseRedirect(reverse('view project', kwargs={'id': project.id}))
         else:
             response = {'success': 'false', 'errors': form_data.errors}
             print '**********success = false**********'
@@ -165,7 +169,7 @@ class ProjectUpdateView(TemplateView):
             project_update.save()
             # send_cron_job_emails(request)
             response = {'success': 'true', 'project_id': project.id}
-            return HttpResponseRedirect(reverse('view project',kwargs={'id': project.id}))
+            return HttpResponseRedirect(reverse('view project', kwargs={'id': project.id}))
         else:
             response = {'success': 'false', 'errors': form_data.errors}
             return HttpResponse(json.dumps(response), content_type="application/json")
@@ -225,7 +229,7 @@ class ProjectDetailView(TemplateView):
         except (Project.DoesNotExist, ValueError):
             raise Http404
 
-        return context    
+        return context
 
 class ProjectListView(TemplateView):
     template_name = 'project/list.html'
@@ -247,7 +251,7 @@ class PledgeCreateAPIView(View):
                 #Since a user cannot create multiple pledges for a project, we assume he is editing his current pledge.
                 pledge = Pledge.objects.filter(user=user, project=project).first()
                 pledge.amount = amount
-                pledge.save()                
+                pledge.save()
             else:
                 pledge = Pledge.objects.create(user=user, amount=amount, project=project)
             response = {'success': 'true'}
@@ -256,11 +260,11 @@ class PledgeCreateAPIView(View):
             #Send email to backer
             send_email_from_template('emails/pledge_created_backer.html', context, subject, pledge.user.email)
             #Send email to author
-            subject= '[NITW Crowdfund] New pledge!'
+            subject = '[NITW Crowdfund] New pledge!'
             send_email_from_template('emails/pledge_created_author.html', context, subject, pledge.project.author.email)
             if pledge.project.get_total_pledged_amount() >= pledge.project.goal:
                 context = {'project': project, 'request': request}
-                subject='[NITW Crowdfund] Campaign Successfully Funded!'
+                subject = '[NITW Crowdfund] Campaign Successfully Funded!'
                 send_email_from_template('emails/campaign_successful_author.html', context, subject, pledge.project.author.email)
                 # print "@@@@@@@@@@@@@@@@@@"
                 # print pledge.project.author.email
@@ -308,3 +312,74 @@ class PledgeCreateAPIView(View):
                 'No valid project exists with ID [' + request.POST.get('project_id', '') + ']')
 
         return (amount, user, project, errors)
+
+
+class FulfillPledgeView(TemplateView):
+    template_name = 'crowdfunding/fulfill_pledge.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(FulfillPledgeView, self).get_context_data(**kwargs)
+        try:
+            pledge_id = int(self.request.GET.get('id', ''))
+            context['pledge'] = pledge = Pledge.objects.get(id=pledge_id)
+        except (Pledge.DoesNotExist, ValueError):
+            raise Http404
+
+        payment_temp = PaymentTemp.objects.create(amount=pledge.amount, email_address=pledge.user.email,
+                                flex_field="Fulfillment of pledge " + str(pledge.id) + " " + generate_random_string(5),
+                                referrer_url=self.request.get_full_path())
+        form = PaymentTempForm(instance=payment_temp)
+        form.fields['referrer_url'].initial = self.request.get_full_path()
+        context['form'] = form
+        context['pt_id'] = payment_temp.id
+        return context
+
+
+class CrowdFundingPaymentRedirectView(View):
+
+    def post(self, request, *args, **kwargs):
+        form = PaymentTempForm(request.POST)
+        referrer_url = form.data['referrer_url']
+        print referrer_url
+        notes = form.data['flex_field']
+        if form.is_valid():  # All validation rules passes
+            # Process the data in form.cleaned_data
+            amount = form.cleaned_data['amount']
+            email_address = form.cleaned_data['email_address']
+            try:
+                pt_id = int(form.data['pt_id'])
+                pt = PaymentTemp.objects.get(id=pt_id)
+            except ValueError:
+                raise Http404
+            transaction_id = pt.id
+            if settings.ENV == "stage":
+                transaction_id = "stage" + str(pt.id)
+            callback_url = "http://stage.thelakshyafoundation.org/crowdfunding/payment-return"
+            context = {"payment_dict": get_post_object(callback_url, amount, email_address, transaction_id, notes)}
+            return render_to_response("payment_redirect.html", RequestContext(request, context))
+
+
+class CrowdFundingPaymentReturnView(View):
+    def post(self, request, *args, **kwargs):
+        working_key = "vsb2w5ampye1baft0hg62jlwrscw007u"
+        merchant_id = "M_thelaksh_10884"
+
+        form = CCAVenueReturnForm(merchant_id, working_key, request.POST)
+        if not form.is_valid():
+            return redirect("payment-failure")
+        if form.cleaned_data['AuthDesc'] == 'N':
+            return redirect("payment-failure")
+
+        try:
+            temp_id = request.POST.get("Order_Id")
+            print temp_id
+            if settings.ENV == "dev":
+                #order_id will be like dev11
+                temp_id = int(request.POST.get("Order_Id").split("dev")[1])
+            paymentTemp = PaymentTemp.objects.get(id=temp_id)
+            print paymentTemp
+        except PaymentTemp.DoesNotExist:
+            print "Error: Shouldn't have come here.PaymentTemp is missing"
+            return redirect("payment-success")
+
+        return redirect("payment-success")

@@ -1,0 +1,48 @@
+{% extends "crowdfunding/base.html" %}
+{% load humanize %}
+
+{% block scripts %}
+<script type="text/javascript">
+$(function() {
+
+});
+</script>
+{% endblock scripts %}
+
+
+{% block content %}
+<div id="fulfill_pledge_page">
+  <form action="/crowdfunding/crowdfunding_payment_redirect" method="post">{% csrf_token %}
+    <input type="hidden" name="pt_id" value="{{pt_id}}">
+      {% for field in form.visible_fields %}
+        <div class="field">
+        {% if field.name == 'referrer_url' %}
+          <div id="div_id_{{ field.name }}" style="display: none">{{ field }}</div>
+        {% elif field.name == 'email_receipt' %}
+          <input type="checkbox" class="form-control" name="{{ field.name }}" id="id_{{ field.name }}" value="{{ field.value }}" onclick="display_pan();">
+          <label>{{ field.label}}</label>
+          <div class = "donate_help_text">{{ field.help_text|safe }} </div>
+          {% elif field.name == 'pan_card' %}
+          <div id="div_id_{{ field.name }}" style="display: none">
+            <label>{{ field.label}}</label>
+            <div>{{ field }}</div>
+            <div class = "donate_help_text">{{ field.help_text|safe }} </div>
+          </div>
+        {% elif field.name == 'amount' %}
+          <div id="div_id_{{ field.name }}" style="display: none">
+            <label>{{ field.label}}</label>
+            <div>{{ field }}</div>
+          </div>
+        {% elif field.name == 'email_address' %}
+          <label>{{ field.label}}</label>
+          <div>{{ field }}</div>
+        {% elif field.name == 'flex_field' %}
+          <div id="div_id_{{ field.name }}" style="display: none">{{ field }}</div>
+        {% endif %}         
+          <p class="error">{% for error in field.errors %}{{error}}<br>{% endfor %}</p>
+        </div>
+        {% endfor %}
+    <input type="submit" value="Donate by card/net banking"/>
+    </form>
+</div>
+{% endblock content %}

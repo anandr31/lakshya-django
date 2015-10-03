@@ -42,7 +42,7 @@
                 <p>{{ form.non_field_errors }}</p>
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="control-label" for="project_name">Project Title (<30 Char)</label>
+                    <label class="control-label" for="project_name">Project Title (<30 Char) <span data-tooltip aria-haspopup="true" class="tooltip_trigger has-tip" title="Please ensure that the title is meaningful and crisp. It has to be less than 30 characters in length.">[ ? ]</span></label>
                     <div class="controls">
                         {{form.title}}
                     </div>

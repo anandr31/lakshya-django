@@ -83,7 +83,9 @@
 
 
         $('#back_this_project_button').click(function() {
-            $('#login_modal a').attr('href', $('#login_modal a').attr('href') + '?next=/crowdfunding/project/{{project.id}}');
+            $('#login_modal a:not(.close-reveal-modal)').each(function() {
+                $(this).attr('href', $(this).attr('href') + '?next=/crowdfunding/project/{{project.id}}');
+            });
             $('#login_modal').foundation('reveal', 'open');
         });
 
@@ -118,7 +120,7 @@
     <div id="crowdfunding_project_detail_page">
         <div id="hero_content">
             <div class="row">
-                <div class="large-6 column" id="project_image_container">
+                <div class="large-6 small-12 column" id="project_image_container">
                 <div class="cover-images">
                         {% if project.video_url %}
                         <div>
@@ -127,13 +129,11 @@
                         {% endif %}                         
 
                         {% for project_image in project.project_images.all %}
-                            <div>
-                                <img src="{{project_image.image.url}}">
-                            </div>
+                            <div style="background-image:url({{project_image.image.url}});"></div>
                         {% endfor %} 
                 </div>
                 </div>
-                <div class="large-6 column">
+                <div class="large-6 small-12 column">
                     <div id="project_title">{% if project.author.id == user.id %}<div><span class="edit" data-href="/crowdfunding/project/{{project.id}}/edit">Edit Campaign</span>&nbsp;<span class="edit" data-href="/crowdfunding/project/{{project.id}}/update">Post Progress Update</span></div>{% endif %}{{project.title}}</div>
                     <div id="project_summary">{{project.summary}}</div>
                     <div>
@@ -299,7 +299,7 @@
     <script type="text/javascript" src="{{STATIC_URL}}js/slick/slick.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-          $('.cover-images').slick({dots: true,
+          $('.cover-images').slick({dots: false,
                                     infinite: true,
                                     });
         });

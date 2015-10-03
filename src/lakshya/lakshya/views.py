@@ -5,6 +5,7 @@ from utils.models import LakshyaTestimonial
 from accounts.models import Donation
 from django.db.models import Sum
 from django.views.generic.base import TemplateView
+from django.http.response import HttpResponseRedirect
 
 def get_home_page(request):
     update_list = LakshyaUpdate.objects.filter(sorting__in = [1,2,3]).order_by('sorting')  
@@ -22,3 +23,9 @@ def server_error(request):
 
 class HomeView(TemplateView):
     template_name = 'lakshya/home.html'
+
+    def get(self, request, *args, **kwargs):
+        next_url = request.GET.get('next', '')
+        if next_url and next_url.startswith('/'):
+            return HttpResponseRedirect(next_url)
+        return super(HomeView, self).get(request, *args, **kwargs)
