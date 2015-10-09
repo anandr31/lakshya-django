@@ -14,15 +14,15 @@ from crowdfunding.constants import PROJECT_STATUS, UNAPPROVED, MAIL_NOT_SENT, CA
 # Create your models here.
 
 class Project(models.Model):
-    title = models.CharField(max_length=30)
-    summary = models.CharField(max_length=160)
-    description = tinymce_models.HTMLField(max_length=10000)
+    title = models.CharField(max_length=50)
+    summary = models.CharField(max_length=150)
+    description = tinymce_models.HTMLField(max_length=20000)
     author = models.ForeignKey(User)
     goal = IntegerRangeField(default=20000, min_value=20000, max_value=200000)
     period = IntegerRangeField(default=5, min_value=5, max_value=45)
-    video_url = models.URLField(max_length=1000, blank=True)
-    team = tinymce_models.HTMLField(max_length=1000)
-    risks_and_challenges = tinymce_models.HTMLField(max_length=10000, blank=True)
+    video_url = models.URLField(max_length=1000, blank=False, default='https://www.youtube.com/watch?v=TRVbrwh4dAQ')
+    team = tinymce_models.HTMLField(max_length=10000)
+    risks_and_challenges = tinymce_models.HTMLField(max_length=10000, blank=False)
     ordering = models.DecimalField(max_digits=4, decimal_places=1, blank=True)
     start_date = models.DateField(default=date.today)
     created = models.DateTimeField(auto_now_add=True)

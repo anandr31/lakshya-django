@@ -240,15 +240,19 @@
             <div class="column large-3 large-offset-1">
                 <div class="row project_content_title">TEAM</div>
                 <div class="row team_members">{{project.team|safe}}</div>
-                Share campaign with friends - <br/>
+                <!-- Share campaign with friends<br/> -->
                 <!-- Share on Facebook -->
-                <div class="fb-share-button" data-href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}" data-layout="box_count"></div>
+                <div style="display: inline-block;" class="fb-share-button" data-href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}" data-layout="box_count"></div>
                 <!-- Share on Twitter -->
-                <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this project campaign" data-via="lakshyatweets" data-hashtags="nitwCrowdfunding" data-count="vertical">Tweet</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                <div style="display: inline-block;">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-text="Crowdfunding at NIT!" data-via="lakshyatweets" data-hashtags="nitwCrowdfunding" data-count="vertical">Tweet</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                </div>
                 <!-- Share on LinkedIn -->
-                <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US </script>
-                <script type="IN/Share" data-counter="top"></script>
+                <div style="display: inline-block; padding-top:2px;">
+                    <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US </script>
+                    <script type="IN/Share" data-counter="top"></script>
+                </div>
             </div>
         </div>
     <section><h1 style="text-align: center;">More Project Campaigns</h1></section>

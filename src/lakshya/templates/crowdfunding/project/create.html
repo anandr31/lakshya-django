@@ -40,9 +40,11 @@
                 
                <br/> 
                 <p>{{ form.non_field_errors }}</p>
+
+                <div class="create_edit_page_header_message">Read through the <a href="{{BASE_URL}}/crowdfunding/faqs">FAQs section</a> to know more about creating a new project campaign</div><br/><br/>
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="control-label" for="project_name">Project Title (<30 Char) <span data-tooltip aria-haspopup="true" class="tooltip_trigger has-tip" title="Please ensure that the title is meaningful and crisp. It has to be less than 30 characters in length.">[ ? ]</span></label>
+                    <label class="control-label" for="project_name">Project Title<span data-tooltip aria-haspopup="true" class="tooltip_trigger has-tip" title="Please ensure that the title is meaningful and crisp. It has to be less than 50 characters.">[?]</span></label>
                     <div class="controls">
                         {{form.title}}
                     </div>
@@ -50,7 +52,7 @@
                 <!-- Textarea -->
 
                 <div class="form-group">
-                    <label class="control-label" for="project_summary">One Line Project Summary (<160 Char)</label>
+                    <label class="control-label" for="project_summary">One Line Project Summary<span data-tooltip aria-haspopup="true" class="tooltip_trigger has-tip" title="This is a short summary and has to be less than 150 characters.">[?]</span></label>
                     <div class="controls">
                         {{form.summary}}
                     </div>
@@ -58,7 +60,7 @@
   
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="control-label" for="money_req">Funding Goal (min-Rs.20,000 | max-Rs.200,000)</label>
+                    <label class="control-label" for="money_req">Funding Goal<span data-tooltip aria-haspopup="true" class="tooltip_trigger has-tip" title="Funding goal is the amount you want to raise through the campaign. Your campaign should raise a minimum of Rs.20,000 and can raise upto Rs.2,00,000.">[?]</span></label>
                     <div class="controls">
                         {{form.goal}}
                     </div>
@@ -66,21 +68,21 @@
 
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="control-label" for="days_req">Campaign Duration in Days (min-5 days | max-45 days)</label>
+                    <label class="control-label" for="days_req">Campaign Duration<span data-tooltip aria-haspopup="true" class="tooltip_trigger has-tip" title="Campaign duration is the number of days you are giving yourslef to reach the funding goal. You have to reach 100% or more of the goal in order to receive the grant (all-or-nothing).">[?]</span></label>
                     <div class="controls">
                         {{form.period}}
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label class="control-label" for="project_image">Upload Images for this campaign. Mulitple images can be uploaded.</label>
+                    <label class="control-label" for="project_image">Upload Images for this campaign. Mulitple images can be uploaded.<span data-tooltip aria-haspopup="true" class="tooltip_trigger has-tip" title="Images are worth a thousand words. Clear, high-definition images of your work also provide credibility to your campaign.">[?]</span></label>
                     <div class="controls">                      
                         <input type="file" multiple id="project_image" name="project_image"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="video_link">Link to video</label>
+                    <label class="control-label" for="video_link">Link to video<span data-tooltip aria-haspopup="true" class="tooltip_trigger has-tip" title="Your video is displayed at the top of the campaign detail page. Campaigns with videos have a much higher liklihood of reaching their goal. Go to the FAQs section to learn more about how to create an awesome campaign video.">[?]</span></label>
                     <div class="controls">
                         {{form.video_url}}
                     </div>
@@ -88,7 +90,7 @@
 
 
                 <div class="form-group">
-                    <label class="control-label" for="project_team">Team Members</label>
+                    <label class="control-label" for="project_team">Team Members<span data-tooltip aria-haspopup="true" class="tooltip_trigger has-tip" title="Apart from featuring in the video, you can provide details about your team here. You can include your profile photos, links to your profiles on social media, or even a group image of your team.">[?]</span></label>
                     <div class="controls">
                         {{form.team}}
                     </div>
@@ -96,7 +98,7 @@
 
                 <!-- Textarea -->
                 <div class="form-group">
-                    <label class="control-label" for="details">Detailed Project Description (<1000 Char)</label>
+                    <label class="control-label" for="details">Detailed Project Description<span data-tooltip aria-haspopup="true" class="tooltip_trigger has-tip" title="Donors interested in your work will get details of your project idea here. You can include videos (Edit HTML source and include video embed code), GIFs, images, and text. Limited to 20,000 characters.">[?]</span></label>
                     <div class="controls">
                         {{form.description}}
                     </div>
@@ -104,7 +106,7 @@
 
                 <!-- Textarea -->
                 <div class="form-group">
-                    <label class="control-label" for="risks_and_challenges">Risks and Challenges (<4000 Chars)</label>
+                    <label class="control-label" for="risks_and_challenges">Risks and Challenges<span data-tooltip aria-haspopup="true" class="tooltip_trigger has-tip" title="Highlight the greatest risks your team might face during projject execution. Anticipating challenges will help your team plan better.">[?]</span></label>
                     <div class="controls">
                         {{form.risks_and_challenges}}
                     </div>

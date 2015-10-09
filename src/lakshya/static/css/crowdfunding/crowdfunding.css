@@ -734,3 +734,19 @@ transition:box-shadow 0.2s;
 .form-group{
 	padding-bottom: 50px;
 }
+
+.tooltip {
+  font-size: 1.2rem;
+}
+
+.create_edit_page_header_message, .create_edit_page_header_message a{
+	color: #24B399;
+	font-weight: bold;
+	font-size: 1.6rem;
+	padding: 0.7rem;
+	text-transform: uppercase;
+	text-align: center;
+}
+.create_edit_page_header_message a{
+	text-decoration: underline;
+}

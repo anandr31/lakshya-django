@@ -2,6 +2,10 @@
 tinyMCE.init({
     mode: "textareas",
     theme: "advanced",
+    plugins : "autoresize",
+    // width: "50%",
+    theme_advanced_resizing : true,
+    // resize: "both",
     browser_spellcheck: true,
     setup: function(ed) 
     {
