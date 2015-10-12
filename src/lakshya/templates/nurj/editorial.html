@@ -1,0 +1,23 @@
+{% extends "nurj/nurjbase.html" %}
+{% block content %}
+	{{ block.super }}
+<div class="content_wrap_old clearfix">
+	<div class = "content_with_page_title left">
+		<h2>NIT Undergraduate Research Journal Editorial Team</h2>
+		<div class="content_div">
+			<div id="nurj_editorial" class="left">
+				{% if team %}
+					<p>{{team.text | safe}}</p>
+				{% else %}
+				<p>Team content comes here</p>
+				{% endif %}
+
+			</div>
+			<div class="cB">
+				<p></p>
+			</div>
+			<br>
+		</div>
+	</div>
+</div>
+{% endblock content %}

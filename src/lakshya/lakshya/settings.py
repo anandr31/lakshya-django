@@ -162,6 +162,7 @@ INSTALLED_APPS = (
     # 'sorl.thumbnail',
     # 'mce_filebrowser',
     'embed_video',
+    'nurj',
 )
 
 # A sample logging configuration. The only tangible logging

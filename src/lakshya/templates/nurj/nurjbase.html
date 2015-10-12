@@ -1,0 +1,27 @@
+{% extends "newbase.html" %}
+
+{% block header %}
+	{{ block.super }}
+	{% include "nurj/submenu.html" %}
+{% endblock header %}
+
+{% block precss %}
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_v_1_0_3.css?1"></LINK>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style_1.css"></LINK>
+<style type="text/css">
+	.content_with_page_title h2 {
+		margin-bottom: 2rem;
+	}
+	.innovation_home_listing .project_gist {
+		height: 250px;
+		width: 30%;
+	}
+	.content_div h3 {
+		font-size: 1.8rem;
+		margin: 3rem 0;
+	}
+	.content_div ul{
+		list-style-type: square;
+	}
+</style>
+{% endblock precss %}
