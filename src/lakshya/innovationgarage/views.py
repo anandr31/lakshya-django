@@ -29,10 +29,10 @@ class IGProjectDetailView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = TemplateView.get_context_data(self, **kwargs)
-        id = kwargs.get('id', '')
         try:
-        	project = Project.objects.get(id=id)
-        except Project.DoesNotExist:
-        	raise Http404
+            project_id = int(kwargs.get('id', ''))
+            project = Project.objects.get(id=project_id)
+        except (Project.DoesNotExist, ValueError):
+            raise Http404
         context['project'] = project
         return context
