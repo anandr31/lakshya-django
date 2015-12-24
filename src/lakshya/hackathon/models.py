@@ -81,8 +81,8 @@ class Hackathon(models.Model):
 
 
 class Participant(models.Model):
-    hackathon = models.ForeignKey(Hackathon, null=True, related_name='participants')
-    user = models.ForeignKey(User)
+    hackathon = models.ForeignKey(Hackathon, null=True, related_name='participants', editable=False)
+    user = models.ForeignKey(User, editable=False)
     roll_no = models.CharField(
         "Roll Number", max_length=15, blank=False, default=0)
     year = models.SmallIntegerField("Year", choices=YEAR_CHOICES, default=1)
@@ -99,8 +99,12 @@ class Participant(models.Model):
     gender = models.SmallIntegerField(
         "Gender", choices=GENDER_CHOICES, default=1)
 
+    # class Meta:
+    #   unique_together = ('user', 'hackathon')
+
     def __unicode__(self):
-        return self.user.full_name
+        # return self.user.full_name
+        return self.user.first_name
 
     def get_index(self, x):
         return int(x) - 1
@@ -110,7 +114,8 @@ class Participant(models.Model):
     email = property(get_email)
     
     def NAME(self):
-        return self.user.full_name
+        # return self.user.full_name
+        return self.user.first_name
 
     def YEAR(self):
         index = self.get_index(self.year)

@@ -1,7 +1,9 @@
 .version.register /* version checker */
 {
-	color: #0000E4;
-	background-color: #7F7BF0;
+	/*color: #0000E4;*/
+	color: #FFFFFF;
+	/*background-color: #7F7BF0;*/
+	background-color: #000000;
 }
 
 .html
@@ -288,3 +290,17 @@ body
 	padding-bottom: 36px;
 }
 
+label
+{
+	color: #FFFFFF;
+}
+
+select
+{
+	height: auto;
+}
+
+div
+{
+	color: #000000;
+}

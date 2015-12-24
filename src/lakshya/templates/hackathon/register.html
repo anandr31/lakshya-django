@@ -1,3 +1,5 @@
+{% extends "hackathon/base.html" %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +14,7 @@
     <title>Hackathon - Lakshya Foundation</title>
     {% load staticfiles %}
     {% load static %}
+    <link href="{% static 'css/hackathon/register.css' %}" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
@@ -34,7 +37,9 @@
     <body>
         <aside class="callout" style="height:275px;">
             <div class="text-vertical-center">
-                <h1>Registration</h1>
+                <h1 style="color:#ffffff">Registration</h1>
+                <h2 style="color:#ffffff">Hackathon 5.0</h2>
+                <h2 style="color:#ffffff">Welcome {{user}}</h2>
             </div>
         </aside>
 
@@ -42,16 +47,24 @@
             <div class="container">
                 <div class="row">
                     {% if finished %}
-                            <h3>Registrations for Hackathon 3.0 are closed</h3>
-                            <hr class="small">
+                        <h3>Registrations for Hackathon 5.0 are closed</h3>
+                        <!-- <hr class="small"> -->
+                    {% elif registered %}
+                        <h3>You have already registered for Hackathon 5.0 with the following details:</h3>
+                        {% for reg_user in registered_user %}
+                            <h3 style="color:#ffffff">Problem: {{ reg_user.problem }} </h3>
+                            <h3 style="color:#ffffff">Team: {{ reg_user.team }} </h3>
+                            <h3 style="color:#ffffff">Mobile: {{ reg_user.mobile }} </h3>
+                        {% endfor %}
+                        <h3>Write to us (info[at]TheLakshyaFoundation[dot]org) if you have any queries</h3>
+                        <!-- <hr class="small"> -->
                     {% else %}
-                    <form method="post" action="/hackathon/register/">
+                        <form method="post" action="/hackathon/register/">{% csrf_token %}
                     {% for field in form %}
                     <div class="col-lg-6">
                         {{ field.errors }}
                         {{ field.label_tag }} {{ field }}
-                    </div>
-                    {% csrf_token %}
+                    </div>                   
                     {% endfor %}
                     <div class="text-center">
                         <button type="submit" class="btn btn-lg btn-light">Register</button>
@@ -66,39 +79,6 @@
                 </div>
             </div>
         </aside>
-
-        <footer id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h4><strong>Lakshya Foundation</strong>
-                    </h4>
-                    <p>Level 2, Oval Building<br>iLabs Centre, Madhapur<br>Hyderabad - 500 081</p>
-                    <ul class="list-unstyled">
-                        <li><i class="fa fa-phone fa-fw"></i>0091 - 98493-65735</li>
-                        <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:info@thelakshyafoundation.org">info@thelakshyafoundation.org</a>
-                        </li>
-                    </ul>
-
-<!--
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
-                        </li>
-                    </ul>
--->
-                    <hr class="small">
-                    <p class="text-muted">Copyright &copy; Lakshya Foundation 2015</p>
-                </div>
-            </div>
-        </div>
-    </footer>
     </body>
 
     <!-- jQuery -->
@@ -107,3 +87,4 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 </html>
+{% endblock content %}

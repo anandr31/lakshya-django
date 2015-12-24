@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from forms import RegistrationForm, RegForm
+# from forms import RegistrationForm, RegForm
+from forms import RegistrationForm
 from django.shortcuts import render_to_response, render, get_object_or_404
 from django.template.context import RequestContext
 from hackathon.models import *
@@ -29,12 +30,16 @@ def register(request):
     try:
         hackathon = Hackathon.objects.all().filter(is_active=True)[0]
     except Exception, e:
-        hackathon = None;
+        hackathon = None
+    if hackathon is not None:
+        registered_user = Participant.objects.all().filter(user=request.user, hackathon=hackathon)
+        if registered_user is not None:
+            return render_to_response('hackathon/register.html', RequestContext(request, {'registered':'True', 'registered_user':Participant.objects.all().filter(user=request.user, hackathon=hackathon)}))
     if hackathon is None:
         return render_to_response('hackathon/register.html', RequestContext(request, {'finished':'True'}))
-
     if request.method == 'POST' and request.user.is_authenticated():
-        form = RegForm(request.POST)
+        # form = RegForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             user = request.user
             mobile = form.cleaned_data['mobile']
@@ -45,25 +50,26 @@ def register(request):
             branch = form.cleaned_data['branch']
             mess = form.cleaned_data['mess']
             roll_no = form.cleaned_data['roll_no']
-            tee = form.cleaned_data['tee']
+            tee = form.cleaned_data['tee_shirt_size']
             gender = form.cleaned_data['gender']
 
-            participant = Participant(name=name, mobile=mobile, team=team, email=email, problem=problem, year=year, course=course,
-                                      branch=branch, mess=mess, roll_no=roll_no, tee_shirt_size=tee, gender=gender, hackathon=hackathon)
+            participant = Participant(hackathon=hackathon, user=user, roll_no=roll_no, year=year, course=course,
+                                      branch=branch, mess=mess,  mobile=mobile, problem=problem, team=team, tee_shirt_size=tee, gender=gender, )
 
             participant.save()
 
-            return render_to_response('hackathon/success.html', RequestContext(request, {'name':name}))
+            return render_to_response('hackathon/success.html', RequestContext(request, {'name':user}))
         else:
             render_to_response('hackathon/register.html', RequestContext(request, {'form':form}))
     try:
-        problem = ProblemStatement.objects.all().filter(is_active=True)[0]
+        problem = ProblemStatement.objects.all().filter(is_active=True)
     except Exception, e:
         problem = None
     if problem is None:
-        form = RegForm()
+        form = RegistrationForm()
     else:
-        form = RegForm(initial={'problem':problem})
+        form = RegistrationForm()
+        form.fields['problem'].queryset = problem
     return render(request, 'hackathon/register.html', {'form':form})
 
 def get_email(request):
@@ -93,7 +99,6 @@ def problems(request):
         hackathon = Hackathon.objects.all().filter(is_active=True)[0]
     except Exception, e:
         hackathon = None
-
     if hackathon is None:
         problem_sts = ProblemStatement.objects.all()
     else:

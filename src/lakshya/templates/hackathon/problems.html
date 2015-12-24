@@ -1,3 +1,6 @@
+{% extends "hackathon/base.html" %}
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,44 +51,15 @@
                 <hr>
                 <div class="text-center">
                     <a href="/hackathon/" class="btn btn-lg btn-light">Go Home!</a>
-                    <a href="/hackathon/register/" class="btn btn-lg btn-light">Register</a>
+                    {% if not user.is_authenticated %}
+                        <div class="cta hackathon" id="hackathon_register_button">Register Now</div>
+                    {% else %}                    
+                        <a href="/hackathon/register/" class="btn btn-lg btn-light">Register</a>
+                    {% endif %}                    
                     <a href="/hackathon/faq/" class="btn btn-lg btn-light">Frequently Asked Questions</a>
                 </div>
             </div>
         </aside>
-
-        <footer id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h4><strong>Lakshya Foundation</strong>
-                    </h4>
-                    <p>Level 2, Oval Building<br>iLabs Centre, Madhapur<br>Hyderabad - 500 081</p>
-                    <ul class="list-unstyled">
-                        <li><i class="fa fa-phone fa-fw"></i>0091 - 98493-65735</li>
-                        <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:info@thelakshyafoundation.org">info@thelakshyafoundation.org</a>
-                        </li>
-                    </ul>
-
-<!--
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
-                        </li>
-                    </ul>
--->
-                    <hr class="small">
-                    <p class="text-muted">Copyright &copy; Lakshya Foundation 2015</p>
-                </div>
-            </div>
-        </div>
-    </footer>
     </body>
 
     <!-- jQuery -->
@@ -94,3 +68,4 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 </html>
+{% endblock content %}

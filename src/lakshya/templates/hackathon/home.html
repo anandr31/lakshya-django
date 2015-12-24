@@ -2,14 +2,25 @@
 
 {% block scripts %}
 <script type="text/javascript">
-	$(function() {
+	$(function(){
 		$('a.cta.disabled').click(function() {
 			return false;
 		});
+		
 		$('#go_to_hackathon').click(function() {
 			window.location = '/hackathon/' + $(this).siblings('select').val();
-		})
+		});
+		
+		$('#hackathon_register_button').click(function() {
+		    $('#login_modal a:not(.close-reveal-modal)').each(function() {
+		        $(this).attr('href', $(this).attr('href') + '?next=/hackathon/register');
+		    });
+        	$('#login_modal').foundation('reveal', 'open');
+    	});	
+
 	});
+    
+
 </script>
 {% endblock scripts %}
 
@@ -25,14 +36,18 @@
 	<div id="hackathon_upcoming_container">
 		<div id="hackathon_upcoming" class="content">
 			<p class="heading">Upcoming event</p>
-			<p class="title">Hackathon 4.0</p>
+			<p class="title">Hackathon 5.0</p>
 			<div class="row">
 				<div class="column large-4 small-12">
 					<img class="participate_icon" src="{{STATIC_URL}}newimg/icons/hacker.svg">
 					<p class="heading">Hacker</p>
 					<p class="participate_text">Ideate, design & build to solve a specific problem using technology. Collaborate with fellow hackers across disciplines and learn more about what technology has to offer!</p>
-					<a href="/hackathon/register" class="cta hackathon">Register Now</a>
-					<p class="hint">Open now</p>
+					{% if not user.is_authenticated %}
+                    	<div class="cta hackathon" id="hackathon_register_button">Register Now</div>
+                    {% else %}
+						<a href="/hackathon/register" class="cta hackathon">Register Now</a>
+					{% endif %}
+					<!-- <p class="hint">Open now</p> -->
 				</div>
 				<div class="column large-4 small-12">
 					<img class="participate_icon" src="{{STATIC_URL}}newimg/icons/mentor.svg">

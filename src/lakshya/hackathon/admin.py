@@ -4,11 +4,11 @@ from hackathon.models import Participant, ProblemStatement, Hackathon, Sponsor, 
 
 
 class ParticipantAdmin(admin.ModelAdmin):
-    list_display = ('NAME', 'YEAR', 'COURSE', 'BRANCH', 'email', 'mobile')
-    search_fields = ('NAME', 'email',)
-    list_filter = ('year',)
-
-
+    readonly_fields=('hackathon','user')
+    list_display = ('user', 'hackathon', 'year', 'course', 'branch', 'email', 'mobile')
+    search_fields = ('hackathon', 'user', 'email','year', 'course', 'branch')
+    list_filter = ('year','hackathon',)
+    
 class ProblemStatementAdmin(admin.ModelAdmin):
     list_display = ('name', 'add_link', 'hackathon')
     search_fields = ('name', 'add_link', 'hackathon__name')
