@@ -21,7 +21,7 @@ from accounts.forms import CCAVenueReturnForm
 from django.views.decorators.csrf import csrf_exempt
 import math
 from django.contrib.auth.models import User
-from notification import models as notification_models
+from ext.notification import models as notification_models
 from utils.models import LakshyaTestimonial
 
 def expenses_home(request):
@@ -191,7 +191,7 @@ def return_view(request):
         context = {"name": request.POST.get("billing_cust_name"),
                    "amount": request.POST.get("Amount")}
 
-        notification.send(to_users, "payment_confirmation", context)
+        notification_models.send(to_users, "payment_confirmation", context)
 
         return redirect("payment-success")
     else:
