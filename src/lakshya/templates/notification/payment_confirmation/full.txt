@@ -1,17 +1,18 @@
 {% block mail_content %}
 Dear {{name}},
 
-You are awesome!
-
 Thank you so much for donating Rs.{{ amount }} towards Lakshya. Your support will enable us achieve our mission of building an ecosystem of research and entrepreneurship through creativity and innovation at NIT Warangal.
-
-Our growth has been possible because of a steady stream of donations from persons like you. This has helped us build a team of dedicated alumni who work full-time for Lakshya. We are guided by a proficient alumni-faculty Advisory Board and supported by a passionate student team, all of whom work together to ensure that the alumni-institute synergy reaps rich dividends for the college.
-
-Please visit our website for more information - www.TheLakshyaFoundation.org.
 
 Your donation has been updated on our donations page - www.TheLakshyaFoundation.org/accounts/donations
 
-Thanks once again!
-The Lakshya Team
+Our growth has been possible because of a steady stream of donations from generous supporter like yourself. This has helped us build a team of dedicated alumni who work full-time for Lakshya. We are guided by a proficient alumni-faculty Advisory Board and supported by a passionate student team, all of whom work together to ensure that the alumni-institute synergy reaps rich dividends for the college.
+
+Please visit our website for more information - www.TheLakshyaFoundation.org.
+
+And do subscribe to our monthly newsletter - http://www.thelakshyafoundation.org/newsletter
+
+Thanks,
+Anand Rajagopalan
+CEO, Lakshya
 
 {%endblock%}
