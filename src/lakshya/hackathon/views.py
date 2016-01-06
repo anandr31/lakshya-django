@@ -33,9 +33,9 @@ def register(request):
         hackathon = None
     if hackathon is not None:
         registered_user = Participant.objects.all().filter(user=request.user, hackathon=hackathon)
-        if registered_user is not None:
+        if registered_user:
             return render_to_response('hackathon/register.html', RequestContext(request, {'registered':'True', 'registered_user':Participant.objects.all().filter(user=request.user, hackathon=hackathon)}))
-    if hackathon is None:
+    if not hackathon:
         return render_to_response('hackathon/register.html', RequestContext(request, {'finished':'True'}))
     if request.method == 'POST' and request.user.is_authenticated():
         # form = RegForm(request.POST)
