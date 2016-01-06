@@ -43,7 +43,7 @@
 					<p class="heading">Hacker</p>
 					<p class="participate_text">Ideate, design & build to solve a specific problem using technology. Collaborate with fellow hackers across disciplines and learn more about what technology has to offer!</p>
 					{% if not user.is_authenticated %}
-                    	<div class="cta hackathon" id="hackathon_register_button">Register Now</div>
+                    	<div style="cursor: pointer;" class="cta hackathon" id="hackathon_register_button">Register Now</div>
                     {% else %}
 						<a href="/hackathon/register" class="cta hackathon">Register Now</a>
 					{% endif %}
@@ -53,13 +53,13 @@
 					<img class="participate_icon" src="{{STATIC_URL}}newimg/icons/mentor.svg">
 					<p class="heading">Mentor</p>
 					<p class="participate_text">Play a vital role in hand-holding and guiding students built solutions for you, your startup or industry. Mentor them for 24 hours, become a guru for life!</p>
-					<a href="#" class="cta hackathon">Mentor a Team</a>
+					<!-- <a href="#" class="cta hackathon">Mentor a Team</a> -->
 				</div>
 				<div class="column large-4 small-12">
 					<img class="participate_icon" src="{{STATIC_URL}}newimg/icons/sponsor.svg">
 					<p class="heading">Sponsor</p>
 					<p class="participate_text">Money makes the world go round, and pays for equipment, food and caffeine. Connect us with your company or startup, help us get equipment, or a food sponsor!</p>
-					<a href="#" class="cta hackathon">Push Innovation</a>
+					<!-- <a href="#" class="cta hackathon">Push Innovation</a> -->
 				</div>
 			</div>
 		</div>

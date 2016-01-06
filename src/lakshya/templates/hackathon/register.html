@@ -2,7 +2,21 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
+{% block scripts %}
+<script type="text/javascript">
+    $(function(){               
+        $('#hackathon_register_button').click(function() {
+            $('#login_modal a:not(.close-reveal-modal)').each(function() {
+                $(this).attr('href', $(this).attr('href') + '?next=/hackathon/register');
+            });
+            $('#login_modal').foundation('reveal', 'open');
+        }); 
 
+    });
+    
+
+</script>
+{% endblock scripts %}
 <head>
 
     <meta charset="utf-8">
@@ -39,7 +53,9 @@
             <div class="text-vertical-center">
                 <h1 style="color:#ffffff">Registration</h1>
                 <h2 style="color:#ffffff">Hackathon 5.0</h2>
+                {% if not login_needed %}
                 <h2 style="color:#ffffff">Welcome {{user}}</h2>
+                {% endif %}
             </div>
         </aside>
 
@@ -49,6 +65,8 @@
                     {% if finished %}
                         <h3>Registrations for Hackathon 5.0 are closed</h3>
                         <!-- <hr class="small"> -->
+                    {% elif login_needed %}
+                        <div style="cursor: pointer;" class="cta hackathon" id="hackathon_register_button">Please click here to login before registering</div>
                     {% elif registered %}
                         <h3>You have already registered for Hackathon 5.0 with the following details:</h3>
                         {% for reg_user in registered_user %}

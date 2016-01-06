@@ -80,6 +80,19 @@ a.cta.hackathon {
 	background: #e31b4a;
 }
 
+div.cta {
+	display: inline-block;
+	text-transform: uppercase;
+	color: #fff;
+	background: #00b4ff;
+	padding: 1rem 4rem;
+	font-weight: 700;
+}
+
+div.cta.hackathon {
+	background: #e31b4a;
+}
+
 a.cta.ig {
 	background: #f75b22;
 	font-weight: 700;

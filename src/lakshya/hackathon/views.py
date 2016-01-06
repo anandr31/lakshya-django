@@ -27,6 +27,8 @@ def index(request):
     return render(request, 'hackathon/index.html', context)
 
 def register(request):
+    if not request.user.is_authenticated():
+        return render_to_response('hackathon/register.html', RequestContext(request, {'login_needed':'True'}))
     try:
         hackathon = Hackathon.objects.all().filter(is_active=True)[0]
     except Exception, e:
