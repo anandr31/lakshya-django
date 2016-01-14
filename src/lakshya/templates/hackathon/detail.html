@@ -69,7 +69,7 @@
 		</div>
 	</div>
 	{% endif %}
-	<div id="hackathon_mentors" class="content">
+	<div id="hackathon_mentorship" class="content">
 		<p class="heading">Mentors</p>
 		<div class="row">
 			{% for mentor in mentors %}
@@ -78,14 +78,19 @@
 					<tr>
 						<td>
 							{% if mentor.picture %}
-							<img class="mentor_picture" src="{{mentor.picture.url}}">
+								<img class="mentor_picture" src="{{mentor.picture.url}}">
 							{%else%}
 								<img class="mentor_picture" src="{{STATIC_URL}}newimg/icons/icon_profile.png">
 							{% endif %}
 						</td>
 						<td>
 							<p class="mentor_name">{{mentor.name}}</p>
-							<p class="mentor_designation"></p>
+							<p>
+							{% if mentor.linkedin_profile %}
+								<a href={{mentor.linkedin_profile}}><img src="{{STATIC_URL}}newimg/icons/linkedin.png"></a>
+							{% endif %}
+							</p>
+							<!-- <p class="mentor_designation"></p> -->
 						</td>
 					</tr>
 				</table>
@@ -93,14 +98,14 @@
 			{% endfor %}
 		</div>
 	</div>
-	<div id="hackathon_sponsors_container">
-		<div id="hackathon_sponsors" class="content">
+	<div id="hackathon_sponsorship_container">
+		<div id="hackathon_sponsorship" class="content">
 			<p class="heading">Sponsors</p>
 			<div class="row">
 				{% for sponsor in sponsors %}
 				<div class="column small-6 large-3 {% if forloop.last %}end{% endif %}">
 					<a href="{{sponsor.website}}">
-						{% if sponsor.logo %}<img src="{{sponsor.logo.url}}">{% else %}<span>{{sponsor.name}}</span>{% endif %}
+						{% if sponsor.logo %}<img src="{{sponsor.logo.url}}" title="{{sponsor.name}}">{% else %}<span>{{sponsor.name}}</span>{% endif %}
 					</a>
 				</div>
 				{% endfor %}

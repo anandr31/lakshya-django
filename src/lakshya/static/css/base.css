@@ -912,7 +912,9 @@ div.social_connect.google {
 
 #hackathon_mentorship img.mentor_picture{
 	width: 10rem;
-	height: 10rem;
+	/*height: 10rem;*/
+
+
 }
 #hackathon_mentorship p.heading {
 	color: #e31b4a;
