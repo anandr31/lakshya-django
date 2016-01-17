@@ -5,6 +5,7 @@ YEAR_CHOICES = ((1, "First"),
                 (2, "Second"),
                 (3, "Third"),
                 (4, "Final"),
+                (5, "ALUMNI"),
                 )
 
 COURSE_CHOICES = ((1, "B.Tech"),
@@ -36,6 +37,7 @@ MESS_CHOICES = ((1, "First"),
                 (6, "IFC-A"),
                 (7, "IFC-B"),
                 (8, "LH"),
+                (9, "ALUMNI"),
                 )
 
 TEE_CHOICES = ((1, "S"),
@@ -115,7 +117,7 @@ class Participant(models.Model):
     
     def NAME(self):
         # return self.user.full_name
-        return self.user.first_name
+        return self.user.first_name + ' ' + self.user.last_name
 
     def YEAR(self):
         index = self.get_index(self.year)
@@ -137,6 +139,9 @@ class Participant(models.Model):
         index = self.get_index(self.gender)
         return GENDER_CHOICES[index][1]
 
+    def TEE(self):
+        index = self.get_index(self.tee_shirt_size)
+        return TEE_CHOICES[index][1]
 
 class Sponsor(models.Model):
     name = models.CharField("Name", max_length=255)
