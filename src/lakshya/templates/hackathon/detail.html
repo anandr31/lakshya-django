@@ -56,7 +56,7 @@
 		<p class="heading">Problem Statements</p>
 		<table>
 			{% for problem_statement in problem_statements %}
-			<tr>
+			<tr title="{{problem_statement.summary}}">
 				<td>{{forloop.counter}}</td>
 				<td>{{problem_statement.name}}</td>
 				<td><a href="{{problem_statement.add_link}}" target="_blank">View</a></td>
