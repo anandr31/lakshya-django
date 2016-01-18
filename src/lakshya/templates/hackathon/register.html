@@ -54,17 +54,28 @@
 </head>
 
     <body>
+            <!--FB Share button code starts here-->
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=1491007234499273";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+            <!--FB Share button code end here-->
+
         <aside class="callout" style="height:275px;">
             <div class="text-vertical-center">
                 <h1 style="color:#ffffff">Registration</h1>
                 <h2 style="color:#ffffff">Hackathon 5.0</h2>
                 {% if not login_needed %}
-                <h2 style="color:#ffffff">Welcome {{user}}</h2>
+                <!-- <h2 style="color:#ffffff">Welcome {{user.first_name}}</h2> -->
                 {% endif %}
             </div>
         </aside>
 
-        <aside class="call-to-action bg-primary">
+        <aside class="call-to-action bg-primary" >
             <div class="container">
                 <div class="row">
                     {% if finished %}
@@ -73,13 +84,18 @@
                     {% elif login_needed %}
                         <div style="cursor: pointer;" class="cta hackathon" id="hackathon_register_button">Please click here to login before registering</div>
                     {% elif registered %}
-                        <h3>You have already registered for Hackathon 5.0 with the following details:</h3>
+                        <h3 align="center">You have already registered</h3>
                         {% for reg_user in registered_user %}
-                            <h3 style="color:#ffffff">Problem: {{ reg_user.problem }} </h3>
-                            <h3 style="color:#ffffff">Team: {{ reg_user.team }} </h3>
-                            <h3 style="color:#ffffff">Mobile: {{ reg_user.mobile }} </h3>
+                            <div align="center" style="color:#000000">Name - {{ reg_user.user.first_name }} {{ reg_user.user.last_name }}</div>
+                            <div align="center" style="color:#000000">Problem - {{ reg_user.problem }} </div>
+                            <div align="center" style="color:#000000">Team - {{ reg_user.team }} </div>
                         {% endfor %}
-                        <h3>Write to us (info[at]TheLakshyaFoundation[dot]org) if you have any queries</h3>
+                        </br></br>
+                        <div align="center">
+                            <h3><span class="fb-share-button" data-href="https://www.facebook.com/events/480687235450724/" data-layout="button"></span> the event with friends!</h3>
+                        </div>
+                        </br></br>
+                        <div align="center">Write to us at info@TheLakshyaFoundation.org for queries</div>
                         <!-- <hr class="small"> -->
                     {% else %}
                         <form method="post" action="/hackathon/register/">{% csrf_token %}

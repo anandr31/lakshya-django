@@ -8,7 +8,12 @@
 {% block scripts %}
 <script type="text/javascript">
 	$(function() {
-
+		$('#hackathon_register_button').click(function() {
+		    $('#login_modal a:not(.close-reveal-modal)').each(function() {
+		        $(this).attr('href', $(this).attr('href') + '?next=/hackathon/register');
+		    });
+        	$('#login_modal').foundation('reveal', 'open');
+    	});	
 	});
 </script>
 {% endblock scripts %}
@@ -42,15 +47,22 @@
 			<div class="row" id="hackathon_actions">
 				<div class="column small-12 medium-6 large-6">
 					{% if hackathon.report %}
-					<a href="{{hackathon.report.url}}" target="_blank" class="cta hackathon hackathon_action_link"><img src="{{STATIC_URL}}newimg/icons/download.svg"><span>Download PDF Report</span></a>
+						<a href="{{hackathon.report.url}}" target="_blank" class="cta hackathon hackathon_action_link"><img src="{{STATIC_URL}}newimg/icons/download.svg"><span>Download PDF Report</span></a>
+					{% else %}
+						<h3>Hackathon Report will be out soon!</h3>
 					{% endif %}
 				</div>	
-				<div class="column small-12 medium-6 large-6">
+				<div align="center" class="column small-12 medium-6 large-6">
 					{% if hackathon.facebook_event_link %}
-					<a href="{{hackathon.facebook_event_link}}" target="_blank" class="cta hackathon hackathon_action_link"><img src="{{STATIC_URL}}newimg/icons/facebook_white.svg"><span>View event on FB</span></a>
+					<a href="{{hackathon.facebook_event_link}}" target="_blank" class="cta hackathon hackathon_action_link"><img src="{{STATIC_URL}}newimg/icons/facebook_white.svg"><span>Facebook Event</span></a>
 					{% endif %}
-				</div>
+				</div>			
 			</div>
+			{% if not user.is_authenticated %}
+            	<div style="cursor: pointer;" class="cta hackathon" id="hackathon_register_button">Register Now</div>
+            {% else %}
+				<div><a href="/hackathon/register" class="cta hackathon">Register Now</a></div>
+			{% endif %}				
 	</div>
 	<div id="hackathon_problem_statements" class="content">
 		<p class="heading">Problem Statements</p>

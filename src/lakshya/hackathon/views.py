@@ -60,7 +60,7 @@ def register(request):
 
             participant.save()
 
-            return render_to_response('hackathon/success.html', RequestContext(request, {'name':user}))
+            return render_to_response('hackathon/success.html', RequestContext(request, {'name':user.first_name}))
         else:
             render_to_response('hackathon/register.html', RequestContext(request, {'form':form}))
     try:

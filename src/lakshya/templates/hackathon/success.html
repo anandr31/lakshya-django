@@ -1,3 +1,6 @@
+{% extends "hackathon/base.html" %}
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +35,18 @@
 </head>
 
     <body>
+
+    <!--FB Share button code starts here-->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=1491007234499273";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <!--FB Share button code end here-->
+
         <aside class="callout" style="height:275px;">
             <div class="text-vertical-center">
                 <h1>Registration</h1>
@@ -42,8 +57,11 @@
             <div class="container">
                 <div class="row">
                     <div class="text-center">
-                        <h2>{{name}}, Thanks for registering. We will update you with more details soon.</h2>
+                        <h2 style="color:#000000">Hey {{name}}, thanks for registering. See you on Jan 30 at NIT Warangal!</h2>
                     </div>
+                        <div align="center">
+                            <h3 style="color:#000000"><span class="fb-share-button" data-href="https://www.facebook.com/events/480687235450724/" data-layout="button"></span> the event with friends!</h3>
+                        </div>
                 </div>
                 <hr>
                 <div class="text-center">
@@ -53,38 +71,6 @@
             </div>
         </aside>
 
-        <footer id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h4><strong>Lakshya Foundation</strong>
-                    </h4>
-                    <p>Level 2, Oval Building<br>iLabs Centre, Madhapur<br>Hyderabad - 500 081</p>
-                    <ul class="list-unstyled">
-                        <li><i class="fa fa-phone fa-fw"></i>0091 - 98493-65735</li>
-                        <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:info@thelakshyafoundation.org">info@thelakshyafoundation.org</a>
-                        </li>
-                    </ul>
-
-<!--
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
-                        </li>
-                    </ul>
--->
-                    <hr class="small">
-                    <p class="text-muted">Copyright &copy; Lakshya Foundation 2015</p>
-                </div>
-            </div>
-        </div>
-    </footer>
     </body>
 
     <!-- jQuery -->
@@ -93,3 +79,4 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 </html>
+{% endblock content %}
