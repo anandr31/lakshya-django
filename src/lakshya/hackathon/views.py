@@ -120,6 +120,13 @@ def faq(request):
     else:
         return render(request, 'hackathon/faq.html', {'hackathon':hackathon})
 
+def code(request):
+    hackathon = Hackathon.objects.all().filter(is_active=True)[0]
+    if hackathon is None:
+        return render(request, 'hackathon/code.html', {'hackathon':"Hackathon"})
+    else:
+        return render(request, 'hackathon/code.html', {'hackathon':hackathon})
+
 def student_details(request):
     if request.user.is_superuser:
         participants = Participant.objects.all()

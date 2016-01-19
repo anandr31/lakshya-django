@@ -98,7 +98,7 @@
                         <div align="center">Write to us at info@TheLakshyaFoundation.org for queries</div>
                         <!-- <hr class="small"> -->
                     {% else %}
-                        <form method="post" action="/hackathon/register/">{% csrf_token %}
+                    <form method="post" action="/hackathon/register/">{% csrf_token %}
                     {% for field in form %}
                     <div class="col-lg-6">
                         {{ field.errors }}
@@ -106,6 +106,7 @@
                     </div>                   
                     {% endfor %}
                     <div class="text-center">
+                    <p><input type="checkbox" required> I agree to adhere by the <a href="/hackathon/code/" style="color:#000; font-size:14px; text-decoration: underline">Code of Conduct</a></p>
                         <button type="submit" class="btn btn-lg btn-light">Register</button>
                     </div>
                     </form>

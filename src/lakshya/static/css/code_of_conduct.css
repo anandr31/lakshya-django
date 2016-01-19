@@ -1,0 +1,70 @@
+body { 
+	padding: 0px;
+	margin: 0px;
+    color: #2F3028;
+    /*font-family: "Open Sans",Helvetica,sans-serif;*/
+    font-size: 18px;
+    font-weight: lighter;
+    line-height: 1.5;
+    background-color: #fff;
+}
+
+body * {
+	font-family: Merriweather, serif !important;
+	font-size: 14px !important;
+	line-height: 2;
+	/*padding-bottom: 1em;
+	margin-bottom: 100px;*/
+
+}
+
+#code-of-conduct h1{
+	font-family: "Open Sans",Helvetica,sans-serif;
+	font-size: 30px !important;
+	color: #2F3028;
+	margin-top: 0.3em;
+	font-weight: 700;
+	line-height: 1;
+}
+
+#code-of-conduct h2{
+	font-family: "Open Sans",Helvetica,sans-serif;
+	font-size: 20px !important;
+	color: #2F3028;
+	margin-top: 0.3em;
+	font-weight: 700;
+	line-height: 1;
+}
+ 
+#code-of-conduct h3{
+	font-family: "Open Sans",Helvetica,sans-serif;
+	font-size: 16px !important;
+	color: #2F3028;
+	margin-top: 0.3em;
+	font-weight: 700;
+	line-height: 1;
+}
+
+
+#code-of-conduct ul { 
+	list-style: circle !important;
+	margin-left: 50px;
+/*	overflow: hidden; 
+	margin-top: 0; */
+}
+/*@media only screen and (min-width: 670px) { #configure ul li { float: left; width: 48%; }
+ul li:first-child { margin-right: 4%; }
+ul li input { width: 100%; max-width: none; } }
+ol { counter-reset: configure-counter; overflow: hidden; margin: 0; padding: 0; }
+ol > li { position: relative; list-style: none; padding-left: 48px; margin: 2em 0; }
+ol > li h2 { line-height: 36px; margin-bottom: 0; color: #fff; }
+ol > li:before { display: inline-block; float: left; position: absolute; left: 0; width: 36px; line-height: 36px; font-size: 24px; font-weight: bold; border-radius: 36px; text-align: center; color: rgba(0, 0, 0, 0.25); color: #fff; background: #A1D33C; content: counter(configure-counter); counter-increment: configure-counter; }
+*/
+/*#apply { opacity: 0.5; transition: opacity 0.3s; }
+.configuring #apply { opacity: 1; }*/
+
+/*#snippet { width: 100%; max-width: none; font-size: 0.8em; height: 8em; }
+
+article.page- h1 { font-size: 4em; }
+article.page- h1 a { color: inherit; text-decoration: none; }
+article.page- h1 .version { color: #333; font-size: 18px; font-weight: normal; }*/
