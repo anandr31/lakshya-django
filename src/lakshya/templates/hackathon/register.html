@@ -81,6 +81,8 @@
                     {% if finished %}
                         <h3>Registrations for Hackathon 5.0 are closed</h3>
                         <!-- <hr class="small"> -->
+                    {% elif registrations_full %}
+                        <h3>Registrations for Hackathon 5.0 have reached {{limit}} and are closed (for now). We will let everyone know about re-opening registrations on our <a href = "https://www.facebook.com/events/480687235450724/" target="_blank" style="color:#000; font-size: 14pt;">Facebook Events Page.</a></h3>
                     {% elif login_needed %}
                         <div style="cursor: pointer;" class="cta hackathon" id="hackathon_register_button">Please click here to login before registering</div>
                     {% elif registered %}

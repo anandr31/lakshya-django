@@ -9,7 +9,7 @@ from django.views.generic.base import TemplateView
 from django.http.response import Http404
 
 PREV_HACKATHON_PARTICIPANT_COUNTS = {3: 34, 2: 80, 1: 130}  # Hard coded for now since we dont have all the data
-
+HACKATHON_PARTICIPATION_LIMIT = 200
 
 def index(request):
     try:
@@ -39,6 +39,8 @@ def register(request):
             return render_to_response('hackathon/register.html', RequestContext(request, {'registered':'True', 'registered_user':Participant.objects.all().filter(user=request.user, hackathon=hackathon)}))
     if not hackathon:
         return render_to_response('hackathon/register.html', RequestContext(request, {'finished':'True'}))
+    elif hackathon.participants.count() == HACKATHON_PARTICIPATION_LIMIT:
+        return render_to_response('hackathon/register.html', RequestContext(request, {'registrations_full':'True', 'limit':HACKATHON_PARTICIPATION_LIMIT}))
     if request.method == 'POST' and request.user.is_authenticated():
         # form = RegForm(request.POST)
         form = RegistrationForm(request.POST)
