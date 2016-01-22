@@ -134,7 +134,7 @@ def stats(request):
     if hackathon is None:
         return render(request, 'hackathon/stats.html', {'hackathon':"Hackathon"})
     else:
-        return render(request, 'hackathon/stats.html', {'hackathon':hackathon})
+        return render(request, 'hackathon/stats.html', {'hackathon':hackathon, 'count':hackathon.participants.count()})
 
 def student_details(request):
     if request.user.is_superuser:
