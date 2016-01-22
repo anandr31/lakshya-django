@@ -1,0 +1,22 @@
+{% extends "hackathon/base.html" %}
+{% block meta %}
+	<meta property="og:image" content="{{STATIC_URL}}newimg/hero_hackathon.png" />
+	<meta property="og:title" content="NITW Hackathon Stats" />
+	<meta property="og:description" content="Insights into participation at the NITW Hackahton 5.0" />
+{% endblock meta %}
+
+{% block scripts %}
+{% endblock scripts %}
+
+{% block content %}
+
+<h1>Participation at {{hackathon.name}}</h1>
+<iframe width="1095" height="616.7874999999999" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1z-slxf3utNtaZXwmC654edJf4X9jXbbx5iIc_5P_waQ/pubchart?oid=2046870157&amp;format=interactive"></iframe>
+
+<iframe width="860" height="530" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1z-slxf3utNtaZXwmC654edJf4X9jXbbx5iIc_5P_waQ/pubchart?oid=830821560&amp;format=interactive"></iframe>
+
+<iframe width="860" height="530" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1z-slxf3utNtaZXwmC654edJf4X9jXbbx5iIc_5P_waQ/pubchart?oid=1664881051&amp;format=interactive"></iframe>
+
+<iframe width="1000" height="530" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1z-slxf3utNtaZXwmC654edJf4X9jXbbx5iIc_5P_waQ/pubchart?oid=379060355&amp;format=interactive"></iframe>
+
+{% endblock content %}
