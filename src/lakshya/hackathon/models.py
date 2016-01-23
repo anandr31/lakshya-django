@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-YEAR_CHOICES = ((1, "First"),
-                (2, "Second"),
-                (3, "Third"),
+YEAR_CHOICES = (
+                # (1, "First"),
+                # (2, "Second"),
+                # (3, "Third"),
                 (4, "Final"),
                 (5, "ALUMNI"),
                 )
