@@ -7,9 +7,11 @@ from django.template.context import RequestContext
 from hackathon.models import *
 from django.views.generic.base import TemplateView
 from django.http.response import Http404
+import datetime
 
 PREV_HACKATHON_PARTICIPANT_COUNTS = {3: 34, 2: 80, 1: 130}  # Hard coded for now since we dont have all the data
 HACKATHON_PARTICIPATION_LIMIT = 250
+HACKATHON_DEADLINE = "2016-01-24 21:00"
 
 def index(request):
     try:
@@ -27,6 +29,7 @@ def index(request):
     return render(request, 'hackathon/index.html', context)
 
 def register(request):
+    now = datetime.datetime.now()
     if not request.user.is_authenticated():
         return render_to_response('hackathon/register.html', RequestContext(request, {'login_needed':'True'}))
     try:
@@ -39,6 +42,8 @@ def register(request):
             return render_to_response('hackathon/register.html', RequestContext(request, {'registered':'True', 'registered_user':Participant.objects.all().filter(user=request.user, hackathon=hackathon)}))
     if not hackathon:
         return render_to_response('hackathon/register.html', RequestContext(request, {'finished':'True'}))
+    elif now.strftime("%Y-%m-%d %H:%M") > HACKATHON_DEADLINE:
+        return render_to_response('hackathon/register.html', RequestContext(request, {'registrations_deadline':'True', 'limit':HACKATHON_DEADLINE}))
     elif hackathon.participants.count() == HACKATHON_PARTICIPATION_LIMIT:
         return render_to_response('hackathon/register.html', RequestContext(request, {'registrations_full':'True', 'limit':HACKATHON_PARTICIPATION_LIMIT}))
     if request.method == 'POST' and request.user.is_authenticated():
