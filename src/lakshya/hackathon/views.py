@@ -11,7 +11,8 @@ import datetime
 
 PREV_HACKATHON_PARTICIPANT_COUNTS = {3: 34, 2: 80, 1: 130}  # Hard coded for now since we dont have all the data
 HACKATHON_PARTICIPATION_LIMIT = 250
-HACKATHON_DEADLINE = "2016-01-24 21:00"
+HACKATHON_OPEN = "2016-01-25 18:30"
+HACKATHON_DEADLINE = "2016-01-25 18:45"
 
 def index(request):
     try:
@@ -42,11 +43,13 @@ def register(request):
             return render_to_response('hackathon/register.html', RequestContext(request, {'registered':'True', 'registered_user':Participant.objects.all().filter(user=request.user, hackathon=hackathon)}))
     if not hackathon:
         return render_to_response('hackathon/register.html', RequestContext(request, {'finished':'True'}))
-    elif now.strftime("%Y-%m-%d %H:%M") > HACKATHON_DEADLINE:
+    elif now.strftime("%Y-%m-%d %H:%M") >= HACKATHON_DEADLINE or now.strftime("%Y-%m-%d %H:%M") < HACKATHON_OPEN:
         return render_to_response('hackathon/register.html', RequestContext(request, {'registrations_deadline':'True', 'limit':HACKATHON_DEADLINE}))
+    # elif now.strftime("%Y-%m-%d %H:%M") > HACKATHON_OPEN and now.strftime("%Y-%m-%d %H:%M") < HACKATHON_DEADLINE:
+    #     return render_to_response('hackathon/register.html', RequestContext(request, {'registrations_open':'True'}))
     elif hackathon.participants.count() == HACKATHON_PARTICIPATION_LIMIT:
         return render_to_response('hackathon/register.html', RequestContext(request, {'registrations_full':'True', 'limit':HACKATHON_PARTICIPATION_LIMIT}))
-    if request.method == 'POST' and request.user.is_authenticated():
+    if request.method == 'POST' and request.user.is_authenticated() and now.strftime("%Y-%m-%d %H:%M") >= HACKATHON_OPEN and now.strftime("%Y-%m-%d %H:%M") < HACKATHON_DEADLINE:
         # form = RegForm(request.POST)
         form = RegistrationForm(request.POST)
         if form.is_valid():
