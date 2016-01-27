@@ -11,8 +11,8 @@ import datetime
 
 PREV_HACKATHON_PARTICIPANT_COUNTS = {3: 34, 2: 80, 1: 130}  # Hard coded for now since we dont have all the data
 HACKATHON_PARTICIPATION_LIMIT = 250
-HACKATHON_OPEN = "2016-01-25 23:00"
-HACKATHON_DEADLINE = "2016-01-25 23:15"
+HACKATHON_OPEN = "2016-01-27 23:30"
+HACKATHON_DEADLINE = "2016-01-28 00:05"
 
 def index(request):
     try:
