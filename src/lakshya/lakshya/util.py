@@ -29,39 +29,38 @@ def send_html_mail(subject, html_content, recipients, sender=None):
 
 def send_email_from_template(template_name, context, subject, recipients):
     body = render_to_string(template_name, context)
-    send_html_mail(subject, body, recipients)
+    print "---------------------------------------------"
+    print "Subject: " + subject
+    print "Recipients: " + recipients
+    print "Body: " + body
+    # send_html_mail(subject, body, recipients)
 
 
-def send_cron_job_emails(request):
+def send_cron_job_emails():
     projects = Project.objects.all()
     for count, project in enumerate(projects):
-        print "**********"+str(count)+"**********"
-        print "Proect = " + project.title
-        print "Campaign fully backed and mail not sent? - " + str(campaign_fully_backed(project))
-        print "Campaign expired unsuccessfully and mail not sent? - " + str(campaign_expired_unsuccessfully(project))
-        print "Campaign within 3 days of expiry and is active (not fully funded or expired)? - " + str(campaign_within_three_days_expiry(project))
-        print "Campaign new update? - " + str(campaign_new_update(project))
-        print "************END************"
         if campaign_fully_backed(project):
-            send_email_fully_funded_backers(project, request)
+            # This happens after campaign is fully backed AND is expired
+            send_email_fully_funded_backers(project)
+            send_email_fully_funded_author(project)
             update_project_sent_email_status(project, CAMPAIGN_FULLY_BACKED_MAIL_SENT)
         elif campaign_expired_unsuccessfully(project):
-            send_email_campaign_unsuccessful_backers(project, request)
-            send_email_campaign_unsuccessful_author(project, request)
+            send_email_campaign_unsuccessful_backers(project)
+            send_email_campaign_unsuccessful_author(project)
             update_project_sent_email_status(project, CAMPAIGN_EXPIRED_UNSUCCESSFULLY_MAIL_SENT)
         elif campaign_within_three_days_expiry(project):
-            send_email_campaign_close_to_expiry_author(project, request)
-
+            send_email_campaign_close_to_expiry_author(project)
         if campaign_new_update(project):
-            send_email_campaign_update_backers(project, request)
+            send_email_campaign_update_backers(project)
 
 
 def campaign_fully_backed(project):
-    return (project.is_fully_pledged() and project.mail_status == MAIL_NOT_SENT)
+    # 'Project is successfully funded' mail is sent out after campaign period ends
+    return (project.is_expired() and project.is_fully_pledged() and project.mail_status == MAIL_NOT_SENT)
 
 
 def campaign_expired_unsuccessfully(project):
-    return (project.is_expired() and (project.get_total_pledged_amount() < project.goal) and \
+    return (project.is_expired() and not project.is_fully_pledged() and \
                                         project.mail_status == MAIL_NOT_SENT)
 
 
@@ -72,7 +71,7 @@ def campaign_new_update(project):
 
 
 def campaign_within_three_days_expiry(project):
-    return (project.get_days_remaining() <= 3 and project.mail_status == MAIL_NOT_SENT)
+    return project.get_days_remaining() in [3,2,1]
 
 
 def update_project_sent_email_status(project, status):
@@ -80,52 +79,58 @@ def update_project_sent_email_status(project, status):
     project.save()
 
 
-def send_email_fully_funded_backers(project, request):
+def send_email_fully_funded_backers(project):
     subject = '[NITW Crowdfund] Campaign you backed gets fully funded!'
     template = 'emails/campaign_successful_backer.html'
     pledges = Pledge.objects.filter(project=project).all()
     # recipients = map(str,Pledge.objects.filter(project=project).values_list('user__email', flat=True))
     for pledge in pledges:
-        context = {'pledge': pledge, 'request': request}
+        context = {'pledge': pledge}
         recipient = pledge.user.email
         send_email_from_template(template, context, subject, recipient)
 
+def send_email_fully_funded_author(project):
+    subject = '[NITW Crowdfund] Campaign Successfully Closed'
+    context = {'project': project}
+    template = 'emails/campaign_closed_successfully_author.html'
+    recipient = project.author.email
+    send_email_from_template(template, context, subject, recipient)
 
-def send_email_campaign_unsuccessful_backers(project, request):
+def send_email_campaign_unsuccessful_backers(project):
     subject = '[NITW Crowdfund] Campaign Ended'
     template = 'emails/campaign_unsuccessful_backer.html'
     pledges = Pledge.objects.filter(project=project).all()
     # recipients = map(str,Pledge.objects.filter(project=project).values_list('user__email', flat=True))
     for pledge in pledges:
-        context = {'pledge': pledge, 'request': request}
+        context = {'pledge': pledge}
         recipient = pledge.user.email
         send_email_from_template(template, context, subject, recipient)
 
 
-def send_email_campaign_unsuccessful_author(project, request):
+def send_email_campaign_unsuccessful_author(project):
     subject = '[NITW Crowdfund] Campaign Ended'
-    context = {'project': project, 'request': request}
+    context = {'project': project}
     template = 'emails/campaign_unsuccessful_author.html'
     recipient = project.author.email
     send_email_from_template(template, context, subject, recipient)
 
 
-def send_email_campaign_update_backers(project, request):
+def send_email_campaign_update_backers(project):
     subject = '[NITW Crowdfund] New Project Campaign Update'
     template = 'emails/project_updated_backer.html'
     pledges = Pledge.objects.filter(project=project).all()
     # recipients = map(str,Pledge.objects.filter(project=project).values_list('user__email', flat=True))
     for pledge in pledges:
-        context = {'pledge': pledge, 'request': request, 'updates': ProjectUpdate.objects.filter(project=project, mail_status=UPDATE_MAIL_NOT_SENT)}
+        context = {'pledge': pledge, 'updates': ProjectUpdate.objects.filter(project=project, mail_status=UPDATE_MAIL_NOT_SENT)}
         recipient = pledge.user.email
         send_email_from_template(template, context, subject, recipient)
     ProjectUpdate.objects.filter(project=project, mail_status=UPDATE_MAIL_NOT_SENT).update(mail_status = UPDATE_MAIL_SENT)
         # ProjectUpdate.save()
 
 
-def send_email_campaign_close_to_expiry_author(project, request):
-    subject = '[NITW Crowdfund] Your Campaign is about to end'
-    context = {'project': project, 'request': request}
+def send_email_campaign_close_to_expiry_author(project):
+    subject = '[NITW Crowdfund] Your Campaign is about to end in' + str[project.get_days_remaining()] + ' days'
+    context = {'project': project}
     template = 'emails/campaign_close_to_expiry_author.html'
     recipient = project.author.email
     send_email_from_template(template, context, subject, recipient)

@@ -1,14 +1,14 @@
 <p>Dear {{pledge.user.first_name}} {{pledge.user.last_name}},</p>
 
 <p>
-	Campaign: <a href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}">http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}</a><br/>
+	Campaign: <a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}">{{pledge.project.title}}</a><br/>
 </p>
 <p>There is a new update to a project you've backed</p>
 
 <h1>New Updates</h1>
 {% for update in updates %}
 -------------------------------------------------------------<br/>
-	<p><b>Updated on: {{update.timestamp|safe}}</b></p>
+	<p>{{update.timestamp|safe}}</p>
 	<p>{{update.update|safe}}</p>
 {% endfor %}
 -------------------------------------------------------------<br/>

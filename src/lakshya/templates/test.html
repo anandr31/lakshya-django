@@ -64,7 +64,7 @@ function selectRadio()
 					name="{{ field.name }}"
 					id="id_{{ field.name }}"
 					value="{{ field.value }}" onclick="display_pan();"> <label>{{ field.label}}</label>
-<div class = "donate_help_text">{{ field.help_text|safe }} </div>
+					<div class = "donate_help_text">{{ field.help_text|safe }} </div>
 				{% elif field.name == 'pan_card' %}
 					<div id="div_id_{{ field.name }}" style="display: none"><label>{{ field.label}}</label> <div>{{ field }}</div><div class = "donate_help_text">{{ field.help_text|safe }} </div></div>
 				{% elif field.name == 'amount' %}

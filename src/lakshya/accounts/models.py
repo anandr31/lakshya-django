@@ -158,6 +158,7 @@ class PaymentTemp(models.Model):
     pan_card = models.CharField("PAN", max_length=10, null=True, blank=True, help_text="Required for donation receipt")
     referrer_url = models.CharField("Referrer Field", max_length=100, null=True, blank=True)
     flex_field = models.CharField("Flexible Field", default="Donation to Lakshya", max_length=100, null=True, blank=True)
+    pledge_id = models.IntegerField(blank=True, null=True, help_text='Only used for crowdfunding pledge fulfilment transactions')
     
 class Pledge(models.Model):
     name = models.CharField(max_length=200)

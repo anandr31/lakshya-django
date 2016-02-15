@@ -2,14 +2,10 @@
 
 <p>We have received the following pledge from you:</p>
 <p><b>Pledge Amount: Rs.{{pledge.amount}}<br/>
-Project Title: {{pledge.project.title}}<br/>
+Project Title:  <a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}">{{pledge.project.title}} </a> <br/>
 Campaign Goal: Rs.{{pledge.project.goal}}<br/>
 Total Pledge from all backers: Rs.{{pledge.project.get_total_pledged_amount}} ({{pledge.project.get_percentage_pledged}}%)<br/>
 Campaign Ends in: {{pledge.project.get_days_remaining}} days<br/></b></p>
-
-<p>
-	Link to campaign page: <a href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}">http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}</a><br/>
-</p>
 
 <p>Thank you for being a part of the crowdfunding community and enhancing the maker culture at NIT! We shall send you important updates about the project status and will mail you when the campaign period is about to end.</p>
 

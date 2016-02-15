@@ -1,16 +1,76 @@
 {% extends "crowdfunding/base.html" %}
 {% load humanize %}
+{% load embed_video_tags %}
 
 {% block scripts %}
 <script type="text/javascript">
-$(function() {
+function display_pan()
+{
+  if (!document.getElementById("id_email_receipt").checked)
+    document.getElementById("div_id_pan_card").style.display = "none";
+  else
+    document.getElementById("div_id_pan_card").style.display = "inline";
+}
 
-});
+function selectRadio()
+{
+  var n = document.getElementById("input_amount_other");
+  n.checked=true;
+}
 </script>
+<LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}js/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}js/slick/slick-theme.css"/>
 {% endblock scripts %}
 
 
 {% block content %}
+<!-- Project Header Portion STARTS HERE-->
+    <div id="crowdfunding_project_detail_page">
+        <div id="hero_content">
+            <div class="row">
+                <div class="large-6 small-12 column" id="project_image_container">
+                <div class="cover-images">
+                        {% if project.video_url %}
+                        <div>
+                            {% video project.video_url 'tiny' %}
+                        </div>
+                        {% endif %}                         
+
+                        {% for project_image in project.project_images.all %}
+                            <div style="background-image:url({{project_image.image.url}});"></div>
+                        {% endfor %} 
+                </div>
+                </div>
+                <div class="large-6 small-12 column">
+                    <div id="project_title">{% if project.author.id == user.id %}<div><span class="edit" data-href="/crowdfunding/project/{{project.id}}/edit">Edit Campaign</span>&nbsp;<span class="edit" data-href="/crowdfunding/project/{{project.id}}/update">Post Progress Update</span></div>{% endif %}{{project.title}}</div>
+                    <div id="project_summary">{{project.summary}}</div>
+                    <div>
+                        <div class="column project_progress progress nice large-10">
+                            <span class="meter" style="width:{{project.get_percentage_pledged}}%"></span>
+                        </div>
+                        <div class="row">
+                            <div class="large-4 small-4 medium-4 column">
+                              <div class="project_metric_number">{{project.get_percentage_pledged}}%</div>
+                              <div class="project_metric_label">Pledged</div>
+                            </div>
+                            <div class="large-4 small-4 medium-4 column">
+                              <div class="project_metric_number">Rs.{{project.goal|intcomma}}</div>
+                              <div class="project_metric_label">Goal</div>
+                            </div>
+                            <div class="large-4 small-4 medium-4 column">
+                              <div class="project_metric_number">{{project.get_days_remaining}} Days</div>
+                              <div class="project_metric_label">To go</div>
+                            </div>
+                          </div>  
+                    </div>
+
+                </div>
+            </div>
+        </div>
+      </div>
+<!-- ENDS HERE -->
+
+
 <div id="fulfill_pledge_page">
   <form action="/crowdfunding/crowdfunding_payment_redirect" method="post">{% csrf_token %}
     <input type="hidden" name="pt_id" value="{{pt_id}}">
@@ -45,4 +105,12 @@ $(function() {
     <input type="submit" value="Donate by card/net banking"/>
     </form>
 </div>
+<script type="text/javascript" src="{{STATIC_URL}}js/slick/slick.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('.cover-images').slick({dots: false,
+                                infinite: true,
+                                });
+    });
+</script>
 {% endblock content %}

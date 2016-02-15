@@ -3,13 +3,10 @@
 <p>You recently backed a project on the NITW Crowdfund platform. Unfortunately, the project could not reach its funding goal.</p>
 
 <p><b>Amount you pledged: Rs.{{pledge.amount}}<br/>
-Project Title: {{pledge.project.title}}<br/>
+Project Title: <a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}">{{pledge.project.title}}</a><br/>
 Campaign Goal: Rs.{{pledge.project.goal}}<br/>
 Total Pledge from all backers: Rs.{{pledge.project.get_total_pledged_amount}}  ({{pledge.project.get_percentage_pledged}}%)</b><br/>
 The Campaign was initiatied on {{pledge.project.start_date}} for a period of {{pledge.project.period}} days<br/></p>
-<p>
-	Link to campaign page: <a href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}">http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}</a><br/>
-</p>
 
 <p>We follow an <b>all-or-nothing</b> funding policy. Funds are collected from backers and disbursed to the project team only if the campaign is able to raise 100% or more of its funding goal. Please contact us (info@thelakshyafoundation.org) for any queries.</p>
 

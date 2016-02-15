@@ -2,19 +2,14 @@
 
 <p>We are delighted to inform you that a project you backed has successfully achieved its funding goal! </p>
 
-<p>Please ensure you fulfill your pledge in the next 10 days.</p>
+<p>We request you fulfil the pledge within 10 days of receiving this email.</p>
 <p><b>Amount you pledged: Rs.{{pledge.amount}}<br/>
-Project Title: {{pledge.project.title}}<br/>
+Project Title: <a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}">{{pledge.project.title}} </a><br/>
 Campaign Goal: Rs.{{pledge.project.goal}}<br/>
 Total Pledge from all backers: Rs.{{pledge.project.get_total_pledged_amount}} ({{pledge.project.get_percentage_pledged}}%)
 </b></p>
-<p>
-	Link to campaign page: <a href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}">http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}</a><br/>
-</p>
 
-<div id="fulfill_pledge" style="background: #00B49E; margin: 2rem auto; padding: 1.8rem 2.5rem; color: #222;font-weight: bold;font-size: 1.6rem;font-family: 'Gotham',Helvetica,Arial,sans-serif">Click here to complete pledge</div>
-
-<p>Please contact us (info@thelakshyafoundation.org) if you need more time to fulfil your pledge.</p>
+<a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}"><div id="fulfil_pledge" style="background: #00B49E; margin: 2rem auto; padding: 1.8rem 2.5rem; color: #222;font-weight: bold;font-size: 1.6rem;font-family: 'Gotham',Helvetica,Arial,sans-serif">Click here to fulfil pledge</div></a>
 
 <p>Thanks,<br/>
 NITW Crowdfund Team<br/>

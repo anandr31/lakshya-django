@@ -140,16 +140,16 @@ $(function() {
     </div>
     <div class="row" id="analytics_section_bg">
       <div class="column large-4 analytics_box">
-        <div class="row analytics_number">0</div>
-        <div class="row analytics_label">RUPEES FUNDED</div>
+        <div class="row analytics_number">{{ total_goal }}</div>
+        <div class="row analytics_label">FUNDING TARGET</div>
       </div>
       <div class="column large-4 analytics_box">
-        <div class="row analytics_number">0</div>
+        <div class="row analytics_number">{{ projects.count }}</div>
         <div class="row analytics_label">PROJECTS</div>
       </div>
       <div class="column large-4 analytics_box">
-        <div class="row analytics_number">0</div>
-        <div class="row analytics_label">STUDENTS</div>
+        <div class="row analytics_number">{{ total_pledge }}</div>
+        <div class="row analytics_label">PLEDGED</div>
       </div>
     </div>
   </div>

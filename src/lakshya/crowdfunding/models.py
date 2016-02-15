@@ -107,17 +107,13 @@ class ProjectImage(models.Model):
 
 class Pledge(models.Model):
     user = models.ForeignKey(User, related_name='pledges')
-    amount = IntegerRangeField(default=1000, min_value=1000)
+    amount = models.IntegerField()
     project = models.ForeignKey(Project, related_name='pledges')
     timestamp = models.DateTimeField(auto_now_add=True)
-    # *****pledge_fulfilled (default=PLEDGE_CREATED, CHOICES=FULFILLED, PROJECT_EXPIREDN, NOT_FULFILLED, DISBURSED)
+    pledge_fulfilled = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.project.title + ' - ' + (self.user.get_full_name() or self.user.username)
-# PledgeFulfillment(models.Model)
-    # pledge_id=models.ForeignKey(Pledge, related_name='pledge')
-    # txn_amount = models.IntegerField()
-    # *****status=models.SmallIntegerField(default=FAILURE)
 
 class Message(models.Model):
     project = models.ForeignKey(Project, related_name='messages')
@@ -127,7 +123,6 @@ class Message(models.Model):
 
     def __unicode__(self):
         return str(self.title)
-
 
 class ProjectUpdate(models.Model):
     project = models.ForeignKey(Project, related_name='updates')

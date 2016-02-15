@@ -3,10 +3,9 @@
 <p>We are almost near the finish line! Your project is {{project.get_days_remaining}} days from completing the campaign period and has so far raised {{project.get_percentage_pledged}}% of the set goal.</p>
 
 <p>Go ahead and post the link on Facebook, Twitter, LinkedIn and share it with friends and family.</p>
-
-<p>Link to your campaign page: <a href="http://{{request.get_host}}/crowdfunding/project/{{project.id}}">http://{{request.get_host}}/crowdfunding/project/{{project.id}}</a><br/>
-Edit your campaign: <a href="http://{{request.get_host}}/crowdfunding/project/{{project.id}}/edit">http://{{request.get_host}}/crowdfunding/project/{{project.id}}/edit</a><br/>
-<b>Project Title: {{project.title}} <br/>
+<br/>
+<a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{project.id}}/edit">Click here</a> to edit your campaign <br/>
+<b>Project Title: <a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{project.id}}">{{project.title}} </a><br/>
 Campaign Goal: {{project.goal}}<br/>
 Campaign Duration: {{project.period}}</b></p>
 
