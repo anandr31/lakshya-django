@@ -7,7 +7,6 @@
     <meta property="og:image" content="{{project.project_images.all.0.image.url}}" /> 
     <meta property="og:url" content="{{STATIC_URL}}crowdfunding/project/{{project.id}}" />
     {% if project.video_url %}
-        <meta property="og:type" content="video.movie" />
         <meta property="og:video" content="{{project.video_url}}"/>    
     {% endif %}                         
 {% endblock meta %}
