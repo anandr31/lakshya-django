@@ -1,5 +1,5 @@
- """A management command to send emails to authors and pledgers based on the status of the projects.
-This will be run using a cron job once every day."""
+# A management command to send emails to authors and pledgers based on the status of the projects.
+# This will be run using a cron job once every day.
 
 from lakshya.util import send_cron_job_emails
 from django.core.management.base import BaseCommand
