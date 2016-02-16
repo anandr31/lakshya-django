@@ -5,8 +5,7 @@ from lakshya.util import send_cron_job_emails
 from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):
-    args = ''
-    help = 'Sends emails to pledgers and authors based on the status of the project'
-
-    def handle(self, *args, **options):
-        send_cron_job_emails()
+	args = ''
+	help = 'Sends emails to pledgers and authors based on the status of the project'
+	def handle(self, *args, **options):
+		send_cron_job_emails()
