@@ -29,11 +29,14 @@ def send_html_mail(subject, html_content, recipients, sender=None):
 
 def send_email_from_template(template_name, context, subject, recipients):
     body = render_to_string(template_name, context)
-    # print "---------------------------------------------"
-    # print "Subject: " + subject
-    # print "Recipients: " + recipients
-    # print "Body: " + body
-    send_html_mail(subject, body, recipients)
+    print "Subject: " + subject
+    print "Recipients: " + recipients
+    print "Body: " + body
+    if recipients:
+        send_html_mail(subject, body, recipients)
+    else:
+        print "******NO EMAIL ID FOR ABOVE******"
+
 
 
 def send_cron_job_emails():
