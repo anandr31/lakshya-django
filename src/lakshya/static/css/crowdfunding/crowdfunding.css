@@ -545,7 +545,19 @@ transition:box-shadow 0.2s;
 	}
 }
 
-#pledge_submit_disabled{
+#pledge_submit_disabled_success{
+	height: 3rem;
+	display: inline-block;
+	vertical-align: top;
+	margin-left: -1rem;
+	background: #01b49e;
+	color: #222;
+	line-height: 3rem;
+	padding: 0 2rem;
+	font-weight: bold;
+}
+
+#pledge_submit_disabled_failed{
 	height: 3rem;
 	display: inline-block;
 	vertical-align: top;
@@ -555,9 +567,7 @@ transition:box-shadow 0.2s;
 	line-height: 3rem;
 	padding: 0 2rem;
 	font-weight: bold;
-	cursor: pointer;
 }
-
 
 #project_create_edit_submit{
 	height: 3rem;

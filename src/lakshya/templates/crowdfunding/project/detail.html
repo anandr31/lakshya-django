@@ -166,53 +166,63 @@
 
                     {% if not user.is_authenticated %}
                     <div class="button need_login" id="back_this_project_button">LOGIN TO BACK THIS PROJECT</div>
-                    {% elif project.is_expired and project.is_fully_pledged and user_pledge%}
-                        {% if user_pledge.pledge_fulfilled %}
-                            <p id="already_pledged_message"><span>SUCCESSFULLY FUNDED!</span></p>
-                            <p id="already_pledged_message">Payment Received - You have fulfilled your pledge for this proect</p>
-                        {% else %}
-                            <p id="already_pledged_message"><span>SUCCESSFULLY FUNDED!</span></p>
-                            <form action="/crowdfunding/crowdfunding_payment_redirect" method="post">{% csrf_token %}
-                                <input type="hidden" name="pt_id" value="{{pt_id}}">
-                                {% for field in form.visible_fields %}
-                                    <div class="field">
-                                    {% if field.name == 'referrer_url' %}
-                                      <div id="div_id_{{ field.name }}" style="display: none">{{ field }}</div>
-                                    {% elif field.name == 'amount' %}
-                                      <div id="div_id_{{ field.name }}" style="display: none">
-                                        <label>{{ field.label}}</label>
-                                        <div>{{ field }}</div>
-                                      </div>
-                                    {% elif field.name == 'email_address' %}
-                                      <div style="display: none">{{ field }}</div>
-                                    {% elif field.name == 'flex_field' %}
-                                      <div id="div_id_{{ field.name }}" style="display: none">{{ field }}</div>
-                                    {% endif %}         
-                                      <p class="error">{% for error in field.errors %}{{error}}<br>{% endfor %}</p>
-                                    </div>
-                                {% endfor %}
-                                <input class="button need_login" style="font-size:12pt;" type="submit" value="Fulfill your pledge of Rs.{{user_pledge.amount}}"/>
-                            </form>
+                    {% elif project.is_expired and project.is_fully_pledged %}
+                        {% if user_pledge %}
+                            {% if user_pledge.pledge_fulfilled %}
+                                <p id="already_pledged_message"><span>SUCCESSFULLY FUNDED!</span></p>
+                                <p id="already_pledged_message">Payment Received - You have fulfilled your pledge for this proect</p>
+                            {% else %}
+                                <p id="already_pledged_message"><span>SUCCESSFULLY FUNDED!</span></p>
+                                <form action="/crowdfunding/crowdfunding_payment_redirect" method="post">{% csrf_token %}
+                                    <input type="hidden" name="pt_id" value="{{pt_id}}">
+                                    {% for field in form.visible_fields %}
+                                        <div class="field">
+                                        {% if field.name == 'referrer_url' %}
+                                          <div id="div_id_{{ field.name }}" style="display: none">{{ field }}</div>
+                                        {% elif field.name == 'amount' %}
+                                          <div id="div_id_{{ field.name }}" style="display: none">
+                                            <label>{{ field.label}}</label>
+                                            <div>{{ field }}</div>
+                                          </div>
+                                        {% elif field.name == 'email_address' %}
+                                          <div style="display: none">{{ field }}</div>
+                                        {% elif field.name == 'flex_field' %}
+                                          <div id="div_id_{{ field.name }}" style="display: none">{{ field }}</div>
+                                        {% endif %}         
+                                          <p class="error">{% for error in field.errors %}{{error}}<br>{% endfor %}</p>
+                                        </div>
+                                    {% endfor %}
+                                    <input class="button need_login" style="font-size:12pt;" type="submit" value="Fulfill your pledge of Rs.{{user_pledge.amount}}"/>
+                                </form>
+                            {% endif %}
+                        {% else %} 
+                            <div id="pledge_form">
+                            <p> This campaign was a success and pledges are now closed!</p>
+                            <div class="btn" id="pledge_submit_disabled_success">SUCCESSFULLY FUNDED!</div></div>
                         {% endif %}
-                        <div id="pledge_form" {% if user_pledge %}class="hidden"{% endif %}>
-                        <p> This campaign was a success and pledges are now closed!</p>
-                        <div class="btn" id="pledge_submit_disabled">SUCCESSFULLY FUNDED!</div></div>
                     {% elif project.is_expired and not project.is_fully_pledged %}
-                        <p id="already_pledged_message" {% if not user_pledge %}class="hidden"{% endif %}><span>CAMPAIGN UNSUCCESFUL - Thanks for pledging Rs. {{user_pledge.amount}} for this project. However, this campaign was unsuccessful in raising the required funding.</span></p>
-                        <div id="pledge_form" {% if user_pledge %}class="hidden"{% endif %}>
-                        <p> CAMPAIGN UNSUCCESFUL - This campaign has expired and was unable to raise the required funding.</p><div class="btn" id="pledge_submit_disabled">CAMPAIGN CLOSED</div></div>                        
-                    {% else %}
-                    <p id="already_pledged_message" {% if not user_pledge %}class="hidden"{% endif %}><span>You have pledged Rs. {{user_pledge.amount}} to this project. </span><a href="#" class="edit">Edit pledge</a></p>
-                    <div id="pledge_form" {% if user_pledge %}class="hidden"{% endif %}>
-                        <form method="POST" action="/crowdfunding/_pledge/create">{% csrf_token %}
-                            <input type="hidden" name="project_id" value="{{project.id}}">
-                            <input type="text" placeholder="Enter pledge amount(Rs)" name="amount" id="pledge_amount" value="{{user_pledge.amount}}">
-                            <div class="btn" id="pledge_submit">Pledge</div>
-                            <img src="{{STATIC_URL}}newimg/spinner_transparent.gif" class="loading">
-                            <p class="errors">Could not submit pledge</p>
-                        </form>
-                    </div>
+                        {% if user_pledge %}
+                            <p id="already_pledged_message"><span>CAMPAIGN UNSUCCESFUL - Thanks for pledging Rs. {{user_pledge.amount}} for this project. However, this campaign was unsuccessful in raising the required funding.</span></p>
+                        {% else %}
+                            <div id="pledge_form">
+                            <p> CAMPAIGN UNSUCCESFUL - This campaign has expired and was unable to raise the required funding.</p><div class="btn" id="pledge_submit_disabled_failed">CAMPAIGN CLOSED</div></div>                        
+                        {% endif %}
+                    {% elif not project.is_expired %}
+                        {% if user_pledge %}
+                            <p id="already_pledged_message"><span>You have pledged Rs. {{user_pledge.amount}} to this project. </span><a href="#" class="edit">Edit pledge</a></p>
+                        {% else %}
+                            <div id="pledge_form">
+                                <form method="POST" action="/crowdfunding/_pledge/create">{% csrf_token %}
+                                    <input type="hidden" name="project_id" value="{{project.id}}">
+                                    <input type="text" placeholder="Enter pledge amount(Rs)" name="amount" id="pledge_amount" value="{{user_pledge.amount}}">
+                                    <div class="btn" id="pledge_submit">Pledge</div>
+                                    <img src="{{STATIC_URL}}newimg/spinner_transparent.gif" class="loading">
+                                    <p class="errors">Could not submit pledge</p>
+                                </form>
+                            </div>
+                        {% endif %}
                     {% endif %}
+
                 </div>
             </div>
         </div>
