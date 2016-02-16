@@ -2,10 +2,11 @@
 {% load humanize %}
 {% load embed_video_tags %}
 {% block meta %}
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="{{project.title}}" />
     <meta property="og:description" content="{{project.summary}}" />
     <meta property="og:image" content="{{project.project_images.all.0.image.url}}" /> 
-    <meta property="og:url" content="{{STATIC_URL}}crowdfunding/project/{{project.id}}" />
+    <meta property="og:url" content="http://{{request.get_host}}/crowdfunding/project/{{project.id}}" />
     {% if project.video_url %}
         <meta property="og:video" content="{{project.video_url}}"/>    
     {% endif %}                         
