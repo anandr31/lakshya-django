@@ -1,0 +1,31 @@
+<p>Dear {{pledge.user.first_name}} {{pledge.user.last_name}},</p>
+
+<p>We are delighted to inform you that <a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}">{{pledge.project.title}}</a> has successfully achieved its funding goal! </p>
+
+<p>We request you fulfil the pledge within 10 days of receiving this email.</p>
+<table>
+	<tr>
+		<td>Amount you pledged:</td>
+		<td>Rs.{{pledge.amount}}</td>
+	</tr>
+	<tr>
+		<td>Project Title:</td>
+		<td><a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}">{{pledge.project.title}}</a></td>
+	</tr>
+	<tr>
+		<td>Campaign Goal:</td>
+		<td>Rs.{{pledge.project.goal}}</td>
+	</tr>
+	<tr>
+		<td>Total Pledge from all backers:</td>
+		<td>Rs.{{pledge.project.get_total_pledged_amount}} ({{pledge.project.get_percentage_pledged}}%)</td>
+	</tr>
+</table>
+
+<a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}"><div id="fulfil_pledge" style="background: #00B49E; margin: 2rem auto; padding: 1.8rem 2.5rem; color: #222;font-weight: bold;font-size: 1.6rem;font-family: 'Gotham',Helvetica,Arial,sans-serif">Click here to fulfil pledge</div></a>
+
+<p>Thanks,<br/>
+NITW Crowdfund Team<br/>
+Lakshya Foundation<br/></p>
+
+

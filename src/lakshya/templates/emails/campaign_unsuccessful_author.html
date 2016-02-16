@@ -2,15 +2,30 @@
 
 <p>Your project campaign was not able to raise the funding goal within the campaign period. As you know, we follow an all-or-nothing funding policy. Funds are collected from backers and disbursed to the project team only if the campaign is able to raise 100% or more of its funding goal.</p>
 
-<p>But hey, you're still on campus, are still super young, and have already made a bright start! We're giving you all the data we have so you can pour over it to analyze how you can <b>make the next campaign event better with better images, an awesome video, or with a brief about your previous projects </b>in the team or description section.</p>
+<p>But hey, you're still on campus, are still super young, and have already made a bright start! We're giving you all the data we have so you can pour over it to analyze how you can make the next campaign event better with better images, an awesome video, or with a brief about your previous projects in the team or description section.</p>
 
-<p><b>Project Title:<a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{project.id}}"> {{project.title}}</a><br/>
-Campaign Goal: Rs.{{project.goal}}<br/>
-Funds Pledged: Rs.{{project.get_total_pledged_amount}} ({{project.get_percentage_pledged}}%)<br/>
-Number of backers: {{project.get_total_backers}}<br/>
-The Campaign was initiatied on {{project.start_date}} for a period of {{project.period}} days</b><br/></p>
 
-<p>We follow an <b>all-or-nothing</b> funding policy. Funds are collected from backers and disbursed to the project team only if the campaign is able to raise 100% or more of its funding goal. Please contact us (info@thelakshyafoundation.org) if you'd like to know more about how you could improve your campaign and reach out to more backers.</p>
+<table>
+	<tr>
+		<td>Project Title</td>
+		<td><a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{project.id}}"> {{project.title}}</a></td>
+	</tr>
+	<tr>
+		<td>Campaign Goal:</td>
+		<td>Rs.{{project.goal}}</td>
+	</tr>
+	<tr>
+		<td>Funds Pledged:</td>
+		<td>Rs.{{project.get_total_pledged_amount}} ({{project.get_percentage_pledged}}%)</td>
+	</tr>
+	<tr>
+		<td>Number of backers:</td>
+		<td>{{project.get_total_backers}}</td>
+	</tr>
+</table>
+
+The Campaign was initiatied on {{project.start_date}} for a period of {{project.period}} days.
+<p>Please contact us (info@thelakshyafoundation.org) if you'd like to know more about how you could improve your campaign and reach out to more backers.<p>
 
 <p>Thanks,<br/>
 NITW Crowdfund Team<br/>

@@ -1,12 +1,21 @@
 <p>Hi {{pledge.project.author.first_name}},</p>
 
 <p>You have a new pledge for your project <a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}"><b>{{pledge.project.title}}</b> </a> </p>
-<p><b>Pledge Amount: Rs.{{pledge.amount}}<br/>
-Backer Name: {{pledge.user.first_name}} {{pledge.user.last_name}}</b><br/></p>
 
-<p>You have reached <b>Rs.{{pledge.project.get_total_pledged_amount}} ({{pledge.project.get_percentage_pledged}}%)</b> of your campaign goal of Rs.{{pledge.project.goal}}. Your campaign ends in {{pledge.project.get_days_remaining}} days.</p>
+<table>
+	<tr>
+		<td>Pledge Amount:</td>
+		<td>Rs.{{pledge.amount}}</td>
+	</tr>
+	<tr>
+		<td>Backer Name:</td>
+		<td>{{pledge.user.first_name}} {{pledge.user.last_name}}</td>
+	</tr>	
+</table>
 
-<p>We follow an <b>all-or-nothing</b> funding policy. Funds are collected from backers and disbursed to the project team only if the campaign is able to raise 100% or more of its funding goal. Please contact us (info@thelakshyafoundation.org) for any queries.</p>
+<p>You have reached Rs.{{pledge.project.get_total_pledged_amount}} ({{pledge.project.get_percentage_pledged}}%) of your campaign goal of Rs.{{pledge.project.goal}}. Your campaign ends in {{pledge.project.get_days_remaining}} days.</p>
+
+<p>We follow an all-or-nothing funding policy. Funds are collected from backers and disbursed to the project team only if the campaign is able to raise 100% or more of its funding goal within the campaign period. Please contact us (info@thelakshyafoundation.org) for any queries.</p>
 <p>Thanks,<br/>
 NITW Crowdfund Team<br/>
 Lakshya Foundation<br/></p>

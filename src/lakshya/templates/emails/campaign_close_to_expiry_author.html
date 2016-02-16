@@ -1,17 +1,30 @@
 <p>Hi {{project.author.first_name}},</p>
 
-<p>We are almost near the finish line! Your project is {{project.get_days_remaining}} days from completing the campaign period and has so far raised {{project.get_percentage_pledged}}% of the set goal.</p>
+<p>We are almost near the finish line! Your campaign is {{project.get_days_remaining}} days from closing and has so far raised {{project.get_percentage_pledged}}% of the goal.</p>
 
 <p>Go ahead and post the link on Facebook, Twitter, LinkedIn and share it with friends and family.</p>
 <br/>
 <a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{project.id}}/edit">Click here</a> to edit your campaign <br/>
-<b>Project Title: <a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{project.id}}">{{project.title}} </a><br/>
-Campaign Goal: {{project.goal}}<br/>
-Campaign Duration: {{project.period}}</b></p>
+
+<table>
+	<tr>
+		<td>Project Title:</td>
+		<td><a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{project.id}}">{{project.title}} </a></td>
+	</tr>
+	<tr>
+		<td>Campaign Goal:</td>
+		<td>Rs.{{project.goal}}</td>
+	</tr>
+	<tr>
+		<td>Campaign Duration:</td>
+		<td>{{project.period}}</td>
+	</tr>
+</table>
+
 
 <p>We follow an <b>all-or-nothing</b> funding policy. Funds are collected from backers and disbursed to the project team only if the campaign is able to raise 100% or more of its funding goal. Please contact us (info@thelakshyafoundation.org) for any queries.</p>
 
-<p>Thanks and all the best!<br/>
+<p>All the best!<br/>
 NITW Crowdfund Team<br/>
 Lakshya Foundation<br/></p>
 

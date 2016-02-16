@@ -1,17 +1,27 @@
 <p>Hi {{project.author.first_name}},</p>
 
-<p>Congratulations on submitting your latest project campaign! </p>
+<p>Congratulations on submitting your project campaign! </p>
 <p>You can now view it on the crowdfunding home page. We will review your campaign to make sure it complies with all our rules and has all the necessary information. You will be sent an email if there are changes needed.</p>
 
-<p>Also, you have to be logged in to edit your campaign. Go ahead and post the link on social networking websites and share it with friends and family.</p>
+<p>You can edit your campaign from the 'Edit Campaign' section and post updates from the 'Post Progress Update' section accessible from buttons located on the top of your <a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{project.id}}">campaign page</a>. You have to be logged in to see these buttons. Go ahead and post the link on social media and share it with friends and family.</p>
 
-<a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{project.id}}/edit">Click here </a>to edit your campaign<br/>
-<b>Project Title: <a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{project.id}}">{{project.title}} </a><br/>
-Campaign Goal: {{project.goal}}<br/>
-Campaign Duration: {{project.period}}</b></p>
+<table>
+	<tr>
+		<td>Project Title</td>
+		<td><a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{project.id}}"> {{project.title}}</a></td>
+	</tr>
+	<tr>
+		<td>Campaign Goal:</td>
+		<td>Rs.{{project.goal}}</td>
+	</tr>
+	<tr>
+		<td>Campaign Duration:</td>
+		<td>{{project.period}}</td>
+	</tr>
+</table>
 
-<p>We follow an <b>all-or-nothing</b> funding policy. Funds are collected from backers and disbursed to the project team only if the campaign is able to raise 100% or more of its funding goal. Please contact us (info@thelakshyafoundation.org) for any queries.</p>
+<p>We follow an all-or-nothing funding policy. Funds are collected from backers and disbursed to the project team only if the campaign is able to raise 100% or more of its funding goal. Please contact us (info@thelakshyafoundation.org) for any queries.</p>
 
-<p>Thanks and all the best!<br/>
+<p>All the best!<br/>
 NITW Crowdfund Team<br/>
 Lakshya Foundation<br/></p>

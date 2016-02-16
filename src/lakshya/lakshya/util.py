@@ -81,7 +81,7 @@ def update_project_sent_email_status(project, status):
 
 def send_email_fully_funded_backers(project):
     subject = '[NITW Crowdfund] Campaign you backed gets fully funded!'
-    template = 'emails/campaign_successful_backer.html'
+    template = 'emails/campaign_closed_successfully_backer.html'
     pledges = Pledge.objects.filter(project=project).all()
     # recipients = map(str,Pledge.objects.filter(project=project).values_list('user__email', flat=True))
     for pledge in pledges:
