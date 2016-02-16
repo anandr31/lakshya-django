@@ -24,7 +24,7 @@ from lakshya.util import send_email_from_template, generate_random_string, send_
 from accounts.forms import PaymentTempForm, CCAVenueReturnForm
 from accounts.models import PaymentTemp
 from accounts.util import get_post_object
-locale.setlocale(locale.LC_ALL, 'en_IN')
+locale.setlocale(locale.LC_ALL, 'en_IN.UTF-8')
 def get_project_json_data(p, request):
     image_urls = [
         'http://' + request.get_host() + url for url in p.get_image_urls()]
