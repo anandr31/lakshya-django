@@ -1,0 +1,21 @@
+/*Introjs CSS*/
+
+.introjs-helperLayer{
+	background: rgba(255, 255, 255, 0.5);
+	border: 1px solid #777;
+
+}
+
+.introjs-helperNumberLayer{
+	font-size: 11px;
+	padding: 3px;
+	line-height: 10px;
+}
+
+.introjs-skipbutton {
+	border-radius: 0;
+	color: red;
+}
+/*.introjs-overlay{
+	opacity: 0.98;
+}*/

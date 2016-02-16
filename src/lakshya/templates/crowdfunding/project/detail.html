@@ -1,7 +1,15 @@
 {% extends "crowdfunding/base.html" %}
 {% load humanize %}
 {% load embed_video_tags %}
-
+{% block meta %}
+    <meta property="og:image" content="{{project.project_images.all.0.image.url}}" />    
+    <meta property="og:title" content="{{project.title}}" />
+    {% if project.video_url %}
+        <meta property="og:type" content="video.movie" />
+        <meta property="og:url" content={{project.video_url}}/>    
+    {% endif %}                         
+    <meta property="og:description" content="{{project.summary}}" />
+{% endblock meta %}
 {% block scripts %}
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -15,24 +23,26 @@
 
     function submitPledge(){
         if($(this).hasClass('disabled')) return;
-            $(this).addClass('disabled').siblings('img.loading').show();
-            $.post($('#pledge_form form').attr('action'), $('#pledge_form form').serialize(), function(response) {
-                if(response.success == 'true')
+        // $(this).addClass('disabled').siblings('img.loading').show();
+        $('#pledge_submit').addClass('disabled');
+        $('#pledge_form img.loading').show();
+        $.post($('#pledge_form form').attr('action'), $('#pledge_form form').serialize(), function(response) {
+            if(response.success == 'true')
+            {
+                window.location.reload();
+                // window.location.href="http://www.google.com";
+            }
+            else
+            {
+                $('#pledge_form p.errors').html('Could not submit pledge. ');
+                for(var i=0; i<response.errors.length; i++)
                 {
-                    window.location.reload();
-                    // window.location.href="http://www.google.com";
+                    $('#pledge_form p.errors').append(response.errors[i] + '. ');
                 }
-                else
-                {
-                    $('#pledge_form p.errors').html('Could not submit pledge. ');
-                    for(var i=0; i<response.errors.length; i++)
-                    {
-                        $('#pledge_form p.errors').append(response.errors[i] + '. ');
-                    }
-                    $('#pledge_form p.errors').show();
-                    $('#pledge_submit').removeClass('disabled').siblings('img.loading').hide();
-                }
-            });
+                $('#pledge_form p.errors').show();
+                $('#pledge_submit').removeClass('disabled').siblings('img.loading').hide();
+            }
+        });
     }
 
     function display_pan()
@@ -121,6 +131,8 @@
     });
     </script>
     <LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}js/slick/slick.css"/>
+    <LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/introjs/introjs.min.css"/>
+    <LINK rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/introjs/custom-introjs.css"/>
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}js/slick/slick-theme.css"/>
 {% endblock scripts %}
 
@@ -144,7 +156,7 @@
                 <div class="large-6 small-12 column">
                     <div id="project_title">{% if project.author.id == user.id %}<div><span class="edit" data-href="/crowdfunding/project/{{project.id}}/edit">Edit Campaign</span>&nbsp;<span class="edit" data-href="/crowdfunding/project/{{project.id}}/update">Post Progress Update</span></div>{% endif %}{{project.title}}</div>
                     <div id="project_summary">{{project.summary}}</div>
-                    <div>
+                    <div id="progress_section">
                         <div class="column project_progress progress nice large-10">
                             <span class="meter" style="width:{{project.get_percentage_pledged}}%"></span>
                         </div>
@@ -163,7 +175,7 @@
                             </div>
                           </div>  
                     </div>
-
+                    <div id="support_campaign">
                     {% if not user.is_authenticated %}
                     <div class="button need_login" id="back_this_project_button">LOGIN TO BACK THIS PROJECT</div>
                     {% elif project.is_expired and project.is_fully_pledged %}
@@ -198,18 +210,27 @@
                         {% else %} 
                             <div id="pledge_form">
                             <p> This campaign was a success and pledges are now closed!</p>
-                            <div class="btn" id="pledge_submit_disabled_success">SUCCESSFULLY FUNDED!</div></div>
+                            <div class="btn" id="pledge_submit_disabled_success">SUCCESSFULLY FUNDED!</div> </div>
                         {% endif %}
                     {% elif project.is_expired and not project.is_fully_pledged %}
                         {% if user_pledge %}
                             <p id="already_pledged_message"><span>CAMPAIGN UNSUCCESFUL - Thanks for pledging Rs. {{user_pledge.amount}} for this project. However, this campaign was unsuccessful in raising the required funding.</span></p>
                         {% else %}
                             <div id="pledge_form">
-                            <p> CAMPAIGN UNSUCCESFUL - This campaign has expired and was unable to raise the required funding.</p><div class="btn" id="pledge_submit_disabled_failed">CAMPAIGN CLOSED</div></div>                        
+                            <p> CAMPAIGN UNSUCCESFUL - This campaign has expired and was unable to raise the required funding.</p><div class="btn" id="pledge_submit_disabled_failed">CAMPAIGN CLOSED</div> </div>                        
                         {% endif %}
                     {% elif not project.is_expired %}
                         {% if user_pledge %}
                             <p id="already_pledged_message"><span>You have pledged Rs. {{user_pledge.amount}} to this project. </span><a href="#" class="edit">Edit pledge</a></p>
+                            <div id="pledge_form" class="hidden">
+                                <form method="POST" action="/crowdfunding/_pledge/create">{% csrf_token %}
+                                    <input type="hidden" name="project_id" value="{{project.id}}">
+                                    <input type="text" placeholder="Enter pledge amount(Rs)" name="amount" id="pledge_amount" value="{{user_pledge.amount}}">
+                                    <div class="btn" id="pledge_submit">Pledge</div>
+                                    <img src="{{STATIC_URL}}newimg/loading.gif" class="loading">
+                                    <p class="errors">Could not submit pledge</p>
+                                </form>
+                            </div>                            
                         {% else %}
                             <div id="pledge_form">
                                 <form method="POST" action="/crowdfunding/_pledge/create">{% csrf_token %}
@@ -222,7 +243,10 @@
                             </div>
                         {% endif %}
                     {% endif %}
-
+                                <div class="column large-12">
+                <a class="button need_login" style="font-size: 14px;" onclick="startIntro()"> Help - Take a Tour</a>
+            </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -275,9 +299,11 @@
                         {% endfor %}
                     </div>                    
             </div>
-            <div class="column large-3 large-offset-1">
-                <div class="row project_content_title">TEAM</div>
-                <div class="row team_members">{{project.team|safe}}</div>
+            <div class="column large-3 large-offset-1" id="campaign_team">
+                <div>
+                    <div class="row project_content_title">TEAM</div>
+                    <div class="row team_members">{{project.team|safe}}</div>
+                </div>
                 <!-- Share campaign with friends<br/> -->
                 <!-- Share on Facebook -->
                 <div style="display: inline-block;" class="fb-share-button" data-href="http://{{request.get_host}}/crowdfunding/project/{{pledge.project.id}}" data-layout="box_count"></div>
@@ -339,11 +365,67 @@
   </div>
     </div>
     <script type="text/javascript" src="{{STATIC_URL}}js/slick/slick.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/introjs/intro.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
           $('.cover-images').slick({dots: false,
                                     infinite: true,
                                     });
         });
+    </script>
+    <script type="text/javascript">
+      function startIntro(){
+        var intro = introJs();
+          intro.setOptions({
+            steps: [
+              { 
+                intro: "Hi! Lets walk through the Crowdfunding campaign page!"
+              },
+              {
+                element: '#project_title',
+                intro: "This is the project title"
+              },
+              {
+                element: '#project_summary',
+                intro: "And here's the summary"
+              },
+              {
+                element: '#progress_section',
+                intro: "This is a snapshot of how the campaign is doing"
+              },
+              {
+                element: '#support_campaign',
+                intro: "Here is where you support the campaign!",
+              },
+              {
+                element: '#campaign_team',
+                intro: "Know more about the campaign team in this section",
+                position: "top"
+              },
+              {
+                element: '#description_tab',
+                intro: "Authors provide a detailed description of the project here",
+                position: "top"
+              },
+              {
+                element: '#challenges_tab',
+                intro: "Project specific risks and challenges are provided here",
+                position: "top"
+              },
+              {
+                element: '#updates_tab',
+                intro: "This is where the author communicates with all backers. Also, any entry made in this section automatically sends out an email to all backers with the update.",
+                position: "top"
+              },
+              {
+                element: '#backers_tab',
+                intro: "Click here to view a real-time, complete list of backers who will fund the campaign.",
+                position: "top"
+              }                                                        
+            ]
+          });
+          intro.setOption('showProgress', true, 'showBullets', false).start();
+
+      }
     </script>
 {% endblock content %}
