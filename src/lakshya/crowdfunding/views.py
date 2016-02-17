@@ -377,7 +377,7 @@ class CrowdFundingPaymentRedirectView(View):
             transaction_id = pt.id
             if settings.ENV == "stage":
                 transaction_id = "stage" + str(pt.id)
-            callback_url = "http://dev.thelakshyafoundation.org:8000/crowdfunding/payment-return"
+            callback_url = "http://www.thelakshyafoundation.org/crowdfunding/payment-return"
             context = {"payment_dict": get_post_object(callback_url, amount, email_address, transaction_id, notes)}
             return render_to_response("payment_redirect.html", RequestContext(request, context))
 
