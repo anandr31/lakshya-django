@@ -821,7 +821,16 @@ div.social_connect.google {
 }
 
 #hackathon_history p.heading {
-	margin-bottom: 3rem;
+	margin-bottom: .5rem;
+}
+
+#hackathon_history p.subheading {
+	text-transform: uppercase;
+	font-weight: 500;
+	color: #4b4b4b;
+	font-size: 1.2rem;
+	margin-bottom: .2rem;
+
 }
 
 #hackathon_history select {
