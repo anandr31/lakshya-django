@@ -161,6 +161,12 @@ class HackathonHomeView(TemplateView):
         context['hackathons'] = Hackathon.objects.all().order_by('start_time')
         context['mentors'] = Mentor.objects.all().order_by('-id')[:6]
         sponsors = Sponsor.objects.all().order_by('-id')[:6]
+        total_participation = Participant.objects.all().count() + PREV_HACKATHON_PARTICIPANT_COUNTS[1] + PREV_HACKATHON_PARTICIPANT_COUNTS[2] + PREV_HACKATHON_PARTICIPANT_COUNTS[3]
+        context['total_participation'] = total_participation
+        total_hackathons = Hackathon.objects.all().count()
+        context['total_hackathons'] = total_hackathons
+        total_prob_stmts = ProblemStatement.objects.all().count()
+        context['total_prob_stmts'] = total_prob_stmts        
         seen = []
         context['sponsors'] = []
         for sponsor in sponsors:

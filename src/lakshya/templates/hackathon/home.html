@@ -30,7 +30,7 @@
 		<img id="hackathon_logo" src="{{STATIC_URL}}newimg/icons/hackathon_mobile.svg">
 		<div id="hackathon_hero_content_container">
 			<p id="hackathon_hero_heading">Solving real problems together</p>
-			<p>NITW hackathons are a melting pot of ideas and creative energies fuelled by passion and pizza! Students come together for a weekend of coding, hacking and making. Together with mentors and experienced hackers, they go from idea to prototype within a span of 24 to 48 hours.</p>
+			<p>NITW hackathons are a melting pot of ideas and creative energies! Students come together for a weekend of coding, hacking and making. Together with mentors and experienced hackers, they go from idea to prototype within a span of 24 hours.</p>
 		</div>
 	</div>
 	<div id="hackathon_upcoming_container">
@@ -67,16 +67,16 @@
 	<div id="hackathon_stats" class="content">
 		<div class="row">
 			<div class="column large-4 medium-12 small-12 home_stat">
-				<p class="hackathon_stat_number">3</p>
+				<p class="hackathon_stat_number">{{total_hackathons}}</p>
 				<p class="hackathon_stat_text heading">Hackathons</p>
 			</div>
 			<div class="column large-4 medium-12 small-12 hackathon_stat">
-				<p class="hackathon_stat_number">14</p>
-				<p class="hackathon_stat_text heading">Prototypes</p>
+				<p class="hackathon_stat_number">{{total_prob_stmts}}</p>
+				<p class="hackathon_stat_text heading">Problem Statements</p>
 			</div>
 			<div class="column large-4 medium-12 small-12 hackathon_stat">
-				<p class="hackathon_stat_number">250+</p>
-				<p class="hackathon_stat_text heading">Student Participants</p>
+				<p class="hackathon_stat_number">{{total_participation}}</p>
+				<p class="hackathon_stat_text heading">Participants</p>
 			</div>
 		</div>
 	</div>
