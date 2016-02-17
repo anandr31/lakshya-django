@@ -166,7 +166,7 @@ class HackathonHomeView(TemplateView):
         total_hackathons = Hackathon.objects.all().count()
         context['total_hackathons'] = total_hackathons
         total_prob_stmts = ProblemStatement.objects.all().count()
-        context['total_prob_stmts'] = total_prob_stmts        
+        context['total_prob_stmts'] = total_prob_stmts
         seen = []
         context['sponsors'] = []
         for sponsor in sponsors:

@@ -33,20 +33,50 @@
 			<p>NITW hackathons are a melting pot of ideas and creative energies! Students come together for a weekend of coding, hacking and making. Together with mentors and experienced hackers, they go from idea to prototype within a span of 24 hours.</p>
 		</div>
 	</div>
+	<div id="hackathon_history_container">
+		<div id="hackathon_history" class="content">
+			<p class="heading">Completed events</p>
+			<div id="hackathon_dropdown_container" class="clearfix">
+				<div>
+					<select>
+						{% for hackathon in hackathons %}
+						<option value="{{hackathon.id}}">{{hackathon.start_time|date:"M Y"}}: {{hackathon.name}}</option>
+						{% endfor %}
+					</select>
+					<a href="#" id="go_to_hackathon" class="cta hackathon">
+						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+						<path fill="#fff" d="M79.8,48.8c0.1-0.2,0.1-0.5,0-0.8c-0.1-0.1-0.1-0.2-0.2-0.3L67.6,35.8c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4l10.2,10.2
+							H21.1c-0.6,0-1,0.4-1,1c0,0.6,0.4,1,1,1h55.3L66.2,59.7c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.4,0.3,0.7,0.3s0.5-0.1,0.7-0.3l11.9-11.9
+							C79.7,49.1,79.7,48.9,79.8,48.8z"/>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>	
 	<div id="hackathon_upcoming_container">
 		<div id="hackathon_upcoming" class="content">
-			<p class="heading">Upcoming event</p>
-			<p class="title">Hackathon 5.0</p>
+			{% for hackathon in hackathons %}
+				{% if hackathon.is_active %}
+					<p class="heading">Upcoming event</p>
+					<p class="title">{{hackathon.name}}</p>
+				{% endif %}
+			{% endfor %}
 			<div class="row">
 				<div class="column large-4 small-12">
 					<img class="participate_icon" src="{{STATIC_URL}}newimg/icons/hacker.svg">
 					<p class="heading">Hacker</p>
 					<p class="participate_text">Ideate, design & build to solve a specific problem using technology. Collaborate with fellow hackers across disciplines and learn more about what technology has to offer!</p>
-					{% if not user.is_authenticated %}
-                    	<div style="cursor: pointer;" class="cta hackathon" id="hackathon_register_button">Register Now</div>
-                    {% else %}
-						<a href="/hackathon/register" class="cta hackathon">Register Now</a>
-					{% endif %}
+					{% for hackathon in hackathons %}
+						{% if hackathon.is_active %}
+							{% if not user.is_authenticated %}
+	                    		<div style="cursor: pointer;" class="cta hackathon" id="hackathon_register_button">Register Now</div>
+	                    	{% else %}
+								<a href="/hackathon/register" class="cta hackathon">Register Now</a>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
 					<!-- <p class="hint">Open now</p> -->
 				</div>
 				<div class="column large-4 small-12">
@@ -77,28 +107,6 @@
 			<div class="column large-4 medium-12 small-12 hackathon_stat">
 				<p class="hackathon_stat_number">{{total_participation}}</p>
 				<p class="hackathon_stat_text heading">Participants</p>
-			</div>
-		</div>
-	</div>
-	<div id="hackathon_history_container">
-		<div id="hackathon_history" class="content">
-			<p class="heading">Completed events</p>
-			<div id="hackathon_dropdown_container" class="clearfix">
-				<div>
-					<select>
-						{% for hackathon in hackathons %}
-						<option value="{{hackathon.id}}">{{hackathon.start_time|date:"M Y"}}: {{hackathon.name}}</option>
-						{% endfor %}
-					</select>
-					<a href="#" id="go_to_hackathon" class="cta hackathon">
-						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-							 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
-						<path fill="#fff" d="M79.8,48.8c0.1-0.2,0.1-0.5,0-0.8c-0.1-0.1-0.1-0.2-0.2-0.3L67.6,35.8c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4l10.2,10.2
-							H21.1c-0.6,0-1,0.4-1,1c0,0.6,0.4,1,1,1h55.3L66.2,59.7c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.4,0.3,0.7,0.3s0.5-0.1,0.7-0.3l11.9-11.9
-							C79.7,49.1,79.7,48.9,79.8,48.8z"/>
-						</svg>
-					</a>
-				</div>
 			</div>
 		</div>
 	</div>
