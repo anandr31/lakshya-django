@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
-
+from accounts.models import Donation, Expense
 
 class Project(models.Model):
     # Project Status
@@ -69,3 +69,12 @@ class Sponsor(models.Model):
     logo = models.ImageField(upload_to='igsponsors/')
     website = models.URLField()
     description = models.TextField(max_length=2000)
+
+class Event(models.Model):
+    title = models.CharField(max_length=255)
+    summary = models.CharField(max_length=2000)
+    date = models.DateField()
+    participation = models.IntegerField()
+    event_report = models.URLField(blank=True, null=True)
+    expense = models.ForeignKey(Expense, blank=True, null=True)
+    income = models.ForeignKey(Donation, blank=True, null=True)

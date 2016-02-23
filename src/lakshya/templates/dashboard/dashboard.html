@@ -1,0 +1,186 @@
+{% extends "dashboard/base.html" %}
+{% load humanize %}
+
+{% block scripts %}
+{% endblock scripts %}
+
+{% block content %}
+<p>Hello World</p>
+
+<!-- 		<div>
+			<div class="expense_stats left">
+				<div class="stats_number">{{total_donors}}</div>
+				<div class="stats_description">Number of Unique Donors</div>
+			</div>
+
+			<div class="expense_stats left">
+				<div class="stats_number">{{total_donation_amount|floatformat:"0"|intcomma}}</div>
+				<div class="stats_description">Total Amount Raised</div>
+			</div>
+
+			<div class="expense_stats left">
+				<div class="stats_number">{{avg_donation_amount|floatformat:"0"|intcomma}}</div>
+				<div class="stats_description">Avg Donation by a Donor</div>
+			</div>
+		</div> -->
+<div class="row">
+	<div class="large-12 column">
+		<span  class="large-4 column">
+			<h1>DONATIONS</h1>
+			<table>
+				<tr>
+					<th>Year</th>
+					<th>Total</th>
+				</tr>
+			{% for year, total in annual_donations %}
+				<tr>
+					<td>{{year}}</td>
+					<td>{{total}}</td>				
+				</tr>
+			{% endfor %}
+			</table>		
+			<table>
+				<tr>
+					<th>Month</th>
+					<th>Total</th>
+				</tr>
+			{% for month, total in monthly_donations %}
+				<tr>
+					<td>{{month}}</td>
+					<td>{{total}}</td>				
+				</tr>
+			{% endfor %}
+			</table>
+		</span>
+		
+
+		<span class="large-4 column">
+			<h1>EXPENSES</h1>
+			<table>
+				<tr>
+					<th>Year</th>
+					<th>Total</th>
+				</tr>
+			{% for year, total in annual_expenses %}
+				<tr>
+					<td>{{year}}</td>
+					<td>{{total}}</td>				
+				</tr>
+			{% endfor %}
+			</table>		
+			<table>
+				<tr>
+					<th>Month</th>
+					<th>Total</th>
+				</tr>
+			{% for month, total in monthly_expenses %}
+				<tr>
+					<td>{{month}}</td>
+					<td>{{total}}</td>				
+				</tr>
+			{% endfor %}
+			</table>
+		</span>		
+		
+		<span class="large-4 column">
+			<h1>EVENT PARTICIPATION</h1>
+			<h3>Total Events - {{total_events_count}}</h3>
+			<h3>Total Participation - {{total_participation}}</h3>
+			<table>
+				<tr>
+					<th>Month</th>
+					<th>Participation</th>
+				</tr>
+			{% for month, count in monthly_participation %}
+				<tr>
+					<td>{{month}}</td>
+					<td>{{count}}</td>				
+				</tr>
+			{% endfor %}
+			</table>
+			<table>
+				<tr>
+					<th>Country</th>
+					<th>No. of Donors</th>
+					<th>As % of total Donors</th>
+				</tr>
+			{% for region, total, percent in donors_by_geo_list %}
+				<tr>
+					<td>{{region}}</td>
+					<td>{{total}}</td>
+					<td>{{percent|floatformat:"1"}}%</td>
+				</tr>
+			{% endfor %}				
+			</table>
+			<table>
+				<tr>
+					<th>Country</th>
+					<th>Donation Amount</th>
+					<th>As a % of total</th>
+				</tr>
+			{% for region, total, percent in donation_by_geo_list %}
+				<tr>
+					<td>{{region}}</td>
+					<td>{{total|floatformat:"0"|intcomma}}</td>
+					<td>{{percent|floatformat:"1"}}%</td>
+				</tr>
+			{% endfor %}				
+			</table>
+			<table>
+				<tr>
+					<th>Freq of donation</th>
+					<th>No of donations</th>
+					<th>As a % of total donation instances</th>
+				</tr>
+			{% for freq, total, percent in freq_of_donation_stats %}
+				<tr>
+					<td>{{freq}}</td>
+					<td>{{total}}</td>
+					<td>{{percent|floatformat:"1"}}%</td>					
+				</tr>
+			{% endfor %}				
+			</table>
+			<table>
+				<tr>
+					<th>Bank</th>
+					<th>Account Type</th>
+					<th>Date</th>
+					<th>Balance</th>
+				</tr>
+			{% for bank, type, date, balance in bank_balance_list %}
+				<tr>
+					<td>{{bank}}</td>
+					<td>{{type}}</td>
+					<td>{{date}}</td>
+					<td>{{balance|floatformat:"0"|intcomma}}</td>
+				</tr>
+			{% endfor %}				
+			</table>
+			<table>
+				<tr>
+					<th>Milestone</th>
+					<th>Target</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+					<th>Progress</th>
+					<th>Progress %</th>
+					<th>Committment</th>
+				</tr>
+			{% for milestone in milestones %}
+				<tr>
+					<td>{{milestone.title}}</td>
+					<td>{{milestone.target_amount|floatformat:"0"|intcomma}}</td>
+					<td>{{milestone.start_date}}</td>
+					<td>{{milestone.end_date}}</td>
+					<td>{{milestone.raised_amount|floatformat:"0"|intcomma}}</td>
+					<td>{{milestone.raised_precent|floatformat:"2"|intcomma}}%</td>
+					<td>{{milestone.committed_amount|floatformat:"0"|intcomma}}</td>
+				</tr>
+			{% endfor %}				
+			</table>
+
+		</span>		
+
+	</div>
+</div>
+{% endblock content %}

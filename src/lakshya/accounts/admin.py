@@ -9,7 +9,7 @@ from django.http import Http404, HttpResponseNotFound
 from reportlab.pdfgen import canvas
 
 from libraries.num2word import number2word
-from accounts.models import Expense, DonationFund, Donation, Pledge, PaymentTemp
+from accounts.models import Expense, DonationFund, Donation, Pledge, PaymentTemp, BankAccount, BankBalance, Milestone
 from django.http import HttpResponse
 
 
@@ -204,9 +204,20 @@ class PledgeOptions(admin.ModelAdmin):
 class PaymentTempAdmin(admin.ModelAdmin):
     list_display = ('id', 'amount', 'email_address', 'flex_field')
 
+class BankAccountAdmin(admin.ModelAdmin):
+    list_display = ('bank', 'branch', 'account_number', 'account_type', 'contact_person', 'contact_email', 'contact_phone')
+
+class BankBalanceAdmin(admin.ModelAdmin):
+    list_display = ('account', 'date', 'balance')
+
+class MilestoneAdmin(admin.ModelAdmin):
+    list_display = ('title', 'target_amount', 'start_date', 'end_date', 'committed_amount', 'raised_amount', 'raised_precent')
 
 admin.site.register(Expense, ExpenseOptions)
 admin.site.register(DonationFund, DonationFundOptions)
 admin.site.register(Donation, DonationOptions)
 admin.site.register(Pledge, PledgeOptions)
 admin.site.register(PaymentTemp, PaymentTempAdmin)
+admin.site.register(BankAccount, BankAccountAdmin)
+admin.site.register(BankBalance, BankBalanceAdmin)
+admin.site.register(Milestone, MilestoneAdmin)

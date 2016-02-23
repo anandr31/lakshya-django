@@ -2,6 +2,7 @@ from django.db import models
 from datetime import date
 from people.models import Person
 from django.db.models.aggregates import Max
+from django.db.models import Sum
 
 
 ENTERED = 0
@@ -67,7 +68,6 @@ DONATION_TYPE = ((DIRECT, "Direct"),
 
 EXPENSE_PAYMENT_TYPE = ((DIRECT, "Direct"),
                  (INDIRECT, "Indirect"),)
-
 
 class Expense(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -171,4 +171,43 @@ class Pledge(models.Model):
     donation_amount = models.DecimalField(max_digits=10, decimal_places=3, blank=True, null=True)
     donation = models.ForeignKey(Donation, blank=True, null=True)
         
+class BankAccount(models.Model):
+    bank = models.CharField(max_length=100)
+    branch = models.CharField(max_length=100)
+    account_number = models.CharField(max_length=100)
+    account_type = models.CharField(choices=[("savings", "Savings Account"), ("fd", "Fixed Deposit/Term Deposit"), ("fcra", "FCRA"),], max_length="10")
+    contact_person = models.CharField(max_length=100)
+    contact_email = models.EmailField(max_length=50)
+    contact_phone = models.CharField(max_length=10)
+   
+    def __unicode__(self):
+        return str(self.bank) + " " + str(self.account_type)
+
+class BankBalance(models.Model):
+    account = models.ForeignKey(BankAccount)
+    date = models.DateField()
+    balance = models.DecimalField(max_digits=10, decimal_places=2)
     
+class Milestone(models.Model):
+  title = models.CharField(max_length=100)
+  target_amount = models.DecimalField(max_digits=10, decimal_places=0)
+  start_date = models.DateField()
+  end_date = models.DateField()
+  committed_amount = models.DecimalField(max_digits=10, decimal_places=0, null=True, blank=True, default=0)
+  # raised_amount = models.ForeignKey(Donation, null=True, blank=True)
+
+  def get_raised_amount(self):
+    "Returns total amount raised"
+    amount = Donation.objects.filter(donation_fund__name=self.title).aggregate(Sum("amount"))["amount__sum"]
+    return (amount if amount else 0)
+  
+  raised_amount = property(get_raised_amount)
+
+  def get_raised_percent(self):
+    "Returns amount raised as a percent of target amount"
+    if not self.raised_amount:
+      return 0
+    ratio = self.raised_amount / self.target_amount
+    return float(ratio * 100)
+  
+  raised_precent = property(get_raised_percent)

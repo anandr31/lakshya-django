@@ -6,6 +6,7 @@ from people.urls import urlpatterns as people_urls
 from entrepreneurship.urls import urlpatterns as entrepreneurship_urls
 from django.conf import settings
 from django.contrib.auth import views as auth_views
+from views import *
 
 
 # Uncomment the next two lines to enable the admin:
@@ -65,6 +66,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^404$', TemplateView.as_view(template_name="404.html")),
+    url(r'^dashboard/?$', DashboardView.as_view(), name='dashboard'),
     # url(r'^mce_filebrowser/', include('mce_filebrowser.urls')),
 )
 
