@@ -20,7 +20,7 @@ import logging
 import random
 import locale
 from django.template.loader import render_to_string
-from lakshya.util import send_email_from_template, generate_random_string, send_cron_job_emails
+from lakshya.util import send_email_from_template, generate_random_string, send_cron_job_emails, send_email_campaign_update_backers
 from accounts.forms import PaymentTempForm, CCAVenueReturnForm
 from accounts.models import PaymentTemp
 from accounts.util import get_post_object
@@ -179,7 +179,8 @@ class ProjectUpdateView(TemplateView):
             project_update.project = project
             project_update.author = request.user
             project_update.save()
-            send_cron_job_emails()
+            send_email_campaign_update_backers(project.id)
+            # send_cron_job_emails()
             response = {'success': 'true', 'project_id': project.id}
             return HttpResponseRedirect(reverse('view project', kwargs={'id': project.id}))
         else:
