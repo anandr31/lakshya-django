@@ -108,7 +108,7 @@
 				<tr>
 					<td>{{region}}</td>
 					<td>{{total}}</td>
-					<td>{{percent|floatformat:"1"}}%</td>
+					<td>{{percent|floatformat:"0"}}%</td>
 				</tr>
 			{% endfor %}				
 			</table>
@@ -122,21 +122,23 @@
 				<tr>
 					<td>{{region}}</td>
 					<td>{{total|floatformat:"0"|intcomma}}</td>
-					<td>{{percent|floatformat:"1"}}%</td>
+					<td>{{percent|floatformat:"0"}}%</td>
 				</tr>
 			{% endfor %}				
 			</table>
 			<table>
 				<tr>
 					<th>Freq of donation</th>
-					<th>No of donations</th>
+					<th>No. of donations</th>
 					<th>As a % of total donation instances</th>
+					<th>As a % of total donation amount</th>
 				</tr>
-			{% for freq, total, percent in freq_of_donation_stats %}
+			{% for freq, total, percent_donation_instances, percent_amount in freq_of_donation_stats %}
 				<tr>
 					<td>{{freq}}</td>
 					<td>{{total}}</td>
-					<td>{{percent|floatformat:"1"}}%</td>					
+					<td>{{percent_donation_instances|floatformat:"0"}}%</td>
+					<td>{{percent_amount|floatformat:"0"}}%</td>
 				</tr>
 			{% endfor %}				
 			</table>
@@ -173,7 +175,7 @@
 					<td>{{milestone.start_date}}</td>
 					<td>{{milestone.end_date}}</td>
 					<td>{{milestone.raised_amount|floatformat:"0"|intcomma}}</td>
-					<td>{{milestone.raised_precent|floatformat:"2"|intcomma}}%</td>
+					<td>{{milestone.raised_precent|floatformat:"0"|intcomma}}%</td>
 					<td>{{milestone.committed_amount|floatformat:"0"|intcomma}}</td>
 				</tr>
 			{% endfor %}				
