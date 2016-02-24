@@ -151,36 +151,24 @@ class DashboardView(TemplateView):
             # ... number of donations made once, twice and more than twice. freq_donor_details_list = [name, no. of times donated, sum of all donations]
             freq_details_list = Counter(elem[1] for elem in freq_donor_details_list) 
 
-            # freq_details_list = ({1(donated once): 200, 2(donated twice):100 , 3:50, 4:30, 5:20 etc})
-            donated_once = sum(v for k, v in freq_details_list.iteritems() if k == 1)
-            donated_twice = sum(v for k, v in freq_details_list.iteritems() if k == 2)
-            donated_more_than_twice = sum(v for k, v in freq_details_list.iteritems() if k > 2)
+            # freq_details_list contains (example) - ({1(donated once): 200, 2(donated twice):100 , 3:50, 4:30, 5:20 etc})
+            donated_once = sum(v for k, v in freq_details_list.iteritems() if k == 1) #Number of donors who donated once
+            donated_twice = sum(v for k, v in freq_details_list.iteritems() if k == 2) #Number of donors who donated twice
+            donated_more_than_twice = sum(v for k, v in freq_details_list.iteritems() if k > 2) #Number of donors who donated more than twice
             
-            
-            donated_once_list = filter(lambda a: a[1]==1, freq_donor_details_list)
-            donated_once_amount = sum(item[2] for item in donated_once_list)
+            # Get % of total donations against frequency data            
+            donated_once_list = filter(lambda a: a[1]==1, freq_donor_details_list) #List of donors who donated once
+            donated_once_amount = sum(item[2] for item in donated_once_list) #Total amount of donations from those who donated once 
 
-            donated_twice_list = filter(lambda a: a[1]==2, freq_donor_details_list)
-            donated_twice_amount = sum(item[2] for item in donated_twice_list)
+            donated_twice_list = filter(lambda a: a[1]==2, freq_donor_details_list) #List of donors who donated twice
+            donated_twice_amount = sum(item[2] for item in donated_twice_list) #Total amount of donations from those who donated twice
 
-            donated_more_than_twice_list = filter(lambda a: a[1]>2, freq_donor_details_list)
-            donated_more_than_twice_amount = sum(item[2] for item in donated_more_than_twice_list)
-
-
-            print "donated once sum = "+ str(donated_once_amount)
-            print "donated twice sum = "+ str(donated_twice_amount)
-            print "donated more than twice sum = "+ str(donated_more_than_twice_amount)
-            # donated_once_amount = freq_donor_details_list.filter(count=1).aggregate(Sum('total'))['total__sum']
-            # print "donated once sum = "+ str(donated_once_amount)
-            # donated_twice_amount = sum(v for k, v in freq_details_list.iteritems() if k == 2)
-            # donated_more_than_twice_amount = sum(v for k, v in freq_details_list.iteritems() if k > 2)
+            donated_more_than_twice_list = filter(lambda a: a[1]>2, freq_donor_details_list) #List of donors who donated more than twice
+            donated_more_than_twice_amount = sum(item[2] for item in donated_more_than_twice_list) #Total amount of donations from those who donated more than twice
 
             freq_of_donation_stats = (('Once',donated_once, 100*donated_once/total_donors, 100*donated_once_amount/total_donations), 
                                       ('Twice',donated_twice, 100*donated_twice/total_donors, 100*donated_twice_amount/total_donations), 
                                       ('More than twice',donated_more_than_twice, 100*donated_more_than_twice/total_donors, 100*donated_more_than_twice_amount/total_donations))
-
-            # Get % of total donations against frequency data
-
 
             # ...ends here
 
