@@ -10,7 +10,7 @@ class PersonOptions(admin.ModelAdmin):
                                                   ('billing_state', 'billing_postal_code'), ('billing_country', 'contact_number', 'pan_number',), ]}), 
                  ("Alumni Details", {"fields" : [('is_nitw_alumni',), ('course', 'department', 'year_of_passing',)]}), ]
     
-    list_display = ('user', 'is_nitw_alumni', 'course', "department", "year_of_passing",)
+    list_display = ('user', 'is_nitw_alumni', 'course', "department", "year_of_passing","billing_country")
     list_filter = ('is_nitw_alumni', 'course', "department", "year_of_passing", )
     search_fields = ('user__first_name', )
     raw_id_fields = ('user', )
