@@ -2,30 +2,67 @@
 {% load humanize %}
 
 {% block scripts %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {packages:['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+  	// Annual Financials
+	var annual_financials_chart_data = google.visualization.arrayToDataTable([
+        ['Year', 'Inflow', 'Expenditure'],
+        {% for item in annual_financials_list %} ['{{item.0.0}}', {{item.0.1}}, {{item.1.1}}],	{% endfor %}
+        ]);	
+
+	var options = {
+		title: 'Annual Financials',
+		width: '100%',
+        height: 400,
+		bar: {groupWidth: "65%"}
+		// explorer: {}
+	};	
+	var chart = new google.visualization.ColumnChart(document.getElementById('annual_financials_chart'));
+	chart.draw(annual_financials_chart_data, options);
+
+	// // Monthly Inflow
+	// var monthly_inflow_chart_data = google.visualization.arrayToDataTable([
+	// 	{% for monthly_donation in monthly_donations %} ['{{monthly_donation.0}}', {{monthly_donation.1}}] {% endfor %}
+	// 	]);
+ //    options = {
+ //        hAxis: {
+ //          title: 'Time'
+ //        },
+ //        vAxis: {
+ //          title: 'Popularity'
+ //        },
+ //        series: {
+ //          1: {curveType: 'function'}
+ //        }
+ //      };
+
+ //    chart = new google.visualization.LineChart(document.getElementById('monthly_inflow'));
+ //    chart.draw(monthly_inflow_chart_data, options);
+
+
+    }
+
+</script>
 {% endblock scripts %}
 
 {% block content %}
-<p>Hello World</p>
-
-<!-- 		<div>
-			<div class="expense_stats left">
-				<div class="stats_number">{{total_donors}}</div>
-				<div class="stats_description">Number of Unique Donors</div>
-			</div>
-
-			<div class="expense_stats left">
-				<div class="stats_number">{{total_donation_amount|floatformat:"0"|intcomma}}</div>
-				<div class="stats_description">Total Amount Raised</div>
-			</div>
-
-			<div class="expense_stats left">
-				<div class="stats_number">{{avg_donation_amount|floatformat:"0"|intcomma}}</div>
-				<div class="stats_description">Avg Donation by a Donor</div>
-			</div>
-		</div> -->
 <div class="row">
 	<div class="large-12 column">
-		<span  class="large-4 column">
+		<div id="annual_financials_chart"/></div>
+	</div>		
+</div>
+<div class="row">
+	<div class="large-12 column">
+		<div id="monthly_inflow"/></div>
+	</div>		
+</div>
+
+<div class="row">
+	<div class="large-12 column">
+<!-- 		<span  class="large-4 column">
 			<h1>DONATIONS</h1>
 			<table>
 				<tr>
@@ -51,10 +88,10 @@
 				</tr>
 			{% endfor %}
 			</table>
-		</span>
+		</span> -->
 		
 
-		<span class="large-4 column">
+<!-- 		<span class="large-4 column">
 			<h1>EXPENSES</h1>
 			<table>
 				<tr>
@@ -80,10 +117,33 @@
 				</tr>
 			{% endfor %}
 			</table>
-		</span>		
-		
-		<span class="large-4 column">
-			<h1>EVENT PARTICIPATION</h1>
+		</span>		 -->
+
+	<div>
+		<span class="large-12 column">
+			<table>
+				<tr>
+					<th>Milestone</th>
+					<th>Target</th>
+					<!-- <th>Start Date</th> -->
+					<th>Progress</th>
+					<th>Progress %</th>
+					<th>committed</th>
+					<th>End Date</th>					
+				</tr>
+			{% for milestone in milestones %}
+				<tr>
+					<td>{{milestone.title}}</td>
+					<td>{{milestone.target_amount|floatformat:"0"|intcomma}}</td>
+					<td>{{milestone.raised_amount|floatformat:"0"|intcomma}}</td>
+					<td>{{milestone.raised_precent|floatformat:"0"|intcomma}}%</td>
+					<td>{{milestone.committed_amount|floatformat:"0"|intcomma}}</td>
+					<!-- <td>{{milestone.start_date}}</td> -->
+					<td>{{milestone.end_date}}</td>
+				</tr>
+			{% endfor %}				
+			</table>		
+<!-- 			<h1>EVENT PARTICIPATION</h1>
 			<h3>Total Events - {{total_events_count}}</h3>
 			<h3>Total Participation - {{total_participation}}</h3>
 			<table>
@@ -97,6 +157,22 @@
 					<td>{{count}}</td>				
 				</tr>
 			{% endfor %}
+			</table> -->
+			<table>
+				<tr>
+					<th>Bank</th>
+					<th>Account Type</th>
+					<th>Date</th>
+					<th>Balance</th>
+				</tr>
+			{% for bank, type, date, balance in bank_balance_list %}
+				<tr>
+					<td>{{bank}}</td>
+					<td>{{type}}</td>
+					<td>{{date}}</td>
+					<td>{{balance|floatformat:"0"|intcomma}}</td>
+				</tr>
+			{% endfor %}				
 			</table>
 			<table>
 				<tr>
@@ -142,47 +218,9 @@
 				</tr>
 			{% endfor %}				
 			</table>
-			<table>
-				<tr>
-					<th>Bank</th>
-					<th>Account Type</th>
-					<th>Date</th>
-					<th>Balance</th>
-				</tr>
-			{% for bank, type, date, balance in bank_balance_list %}
-				<tr>
-					<td>{{bank}}</td>
-					<td>{{type}}</td>
-					<td>{{date}}</td>
-					<td>{{balance|floatformat:"0"|intcomma}}</td>
-				</tr>
-			{% endfor %}				
-			</table>
-			<table>
-				<tr>
-					<th>Milestone</th>
-					<th>Target</th>
-					<th>Start Date</th>
-					<th>End Date</th>
-					<th>Progress</th>
-					<th>Progress %</th>
-					<th>Committment</th>
-				</tr>
-			{% for milestone in milestones %}
-				<tr>
-					<td>{{milestone.title}}</td>
-					<td>{{milestone.target_amount|floatformat:"0"|intcomma}}</td>
-					<td>{{milestone.start_date}}</td>
-					<td>{{milestone.end_date}}</td>
-					<td>{{milestone.raised_amount|floatformat:"0"|intcomma}}</td>
-					<td>{{milestone.raised_precent|floatformat:"0"|intcomma}}%</td>
-					<td>{{milestone.committed_amount|floatformat:"0"|intcomma}}</td>
-				</tr>
-			{% endfor %}				
-			</table>
 
 		</span>		
-
+	</div>
 	</div>
 </div>
 {% endblock content %}

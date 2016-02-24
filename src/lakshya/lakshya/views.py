@@ -76,24 +76,29 @@ class DashboardView(TemplateView):
             monthly_donations = []
             annual_donations = []
             monthly_expenses = []
-            annual_expenses = []            
+            annual_expenses = []
+
             years = [2008,2009,2010,2011,2012,2013,2014,2015,2016]
             for year in years:
                 # Donations
                 object_by_year = Donation.objects.filter(date_of_donation__year=year)
                 donation_list_by_year = object_by_year.aggregate(total=Sum('amount'))
                 donations = (year, donation_list_by_year["total"])
+                if not object_by_year:
+                    donations = (year, 0)
                 annual_donations.append(donations)
                 donation_list_by_month = object_by_year.extra({'month' : "MONTH(date_of_donation)"}).values('month').annotate(total=Sum('amount')).order_by('month')
                 for temp_dict in donation_list_by_month:
                     month = temp_dict["month"]
                     total = temp_dict["total"]
                     donations = (month, total)
-                    monthly_donations.append(donations)                
+                    monthly_donations.append(donations)                    
                 # Expenses
                 object_by_year = Expense.objects.filter(date_of_expense__year=year)
                 expenses_list_by_year = object_by_year.aggregate(total=Sum('amount'))
                 expenses = (year, expenses_list_by_year["total"])
+                if not object_by_year:
+                    expenses = (year, 0)
                 annual_expenses.append(expenses)
                 expenses_list_by_month = object_by_year.extra({'month' : "MONTH(date_of_expense)"}).values('month').annotate(total=Sum('amount')).order_by('month')
                 for temp_dict in expenses_list_by_month:
@@ -184,8 +189,6 @@ class DashboardView(TemplateView):
             # Track milestones... starts here
             milestones = Milestone.objects.all()
             # ...ends here
-
-
             context = {"donor_details_list" : donor_details_list,
                         "total_donation_amount" : total_donation_amount,
                         "total_donors" : total_donors,
@@ -206,7 +209,8 @@ class DashboardView(TemplateView):
                         "donation_by_geo_list": donation_by_geo_list,
                         "freq_of_donation_stats": freq_of_donation_stats,
                         "bank_balance_list": bank_balance_list,
-                        "milestones": milestones
+                        "milestones": milestones,
+                        "annual_financials_list": zip(annual_donations, annual_expenses),
                         }
 
             return context
