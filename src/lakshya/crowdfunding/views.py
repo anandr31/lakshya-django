@@ -234,7 +234,8 @@ class ProjectDetailView(TemplateView):
             context['project'] = project
             # context['related_projects'] = Project.objects.exclude(id=kwargs.get('id').order_by('?'))[:3]
             context['related_projects'] = related_project_list[:3]
-            context['pledges'] = Pledge.objects.filter(project=project).all()
+            context['pledges'] = Pledge.objects.filter(project=project).all().order_by('-pledge_fulfilled')
+            context['total_pledge_fulfilled'] = Pledge.objects.filter(project=project, pledge_fulfilled=True).count()
             user = self.request.user
             if user.is_authenticated() and Pledge.objects.filter(project=project, user=user).exists():
                 # starts here

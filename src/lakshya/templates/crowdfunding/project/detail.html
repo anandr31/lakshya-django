@@ -293,21 +293,26 @@
                         </div>
                     </div>
                     <div class="row backers_content" style="display: none;">
+                    {% if user.id == project.author.id or user.id ==  user.is_superuser %}
+                    <div>Pledges Fulfilled: {{total_pledge_fulfilled}} of {{project.get_total_backers}}</div>
+                    {% endif %}
                         <table>
                             <tr>
                                 {% if pledges %}
                                 <th style="font-size: 10pt">Backer Name</th>
-                                {% if project.author.id == user.id %}
+                                {% if user.id == project.author.id or user.id ==  user.is_superuser %}
                                 <th style="font-size: 10pt">Pledge Amount</th>
+                                <th style="font-size: 10pt">Pledge Fulfilled</th>
                                 {% endif %}
                                 {% endif %}
                             </tr>
                             {% for backer in pledges %}
                             <div class="column large-12">
-                                <tr>
+                                <tr >
                                     <td style="font-size: 10pt">{{backer.user.first_name}} {{backer.user.last_name}}</td>
-                                    {% if project.author.id == user.id %}
+                                    {% if user.id == project.author.id or user.id ==  user.is_superuser %}
                                     <td style="font-size: 10pt">INR {{backer.amount}}</td>
+                                    <td style="font-size: 10pt">{% if backer.pledge_fulfilled %} Yes {% else %} No {% endif %}</td>
                                     {% endif %}
                                 </tr>
                             </div>
