@@ -55,12 +55,21 @@ def send_cron_job_emails():
             send_email_campaign_close_to_expiry_author(project)
         if campaign_new_update(project):
             send_email_campaign_update_backers(project)
+        if unfulfilled_pledges_exist(project):
+            # If campaign eneded successfully and it has been over 10 days since it closed
+            send_email_incomplete_pledges(project)
+
 
 
 def campaign_fully_backed(project):
     # 'Project is successfully funded' mail is sent out after campaign period ends
     return (project.is_expired() and project.is_fully_pledged() and project.mail_status == MAIL_NOT_SENT)
 
+def unfulfilled_pledges_exist(project):
+    # Does this project have unfulfilled pldeges and has it been over 10 days since campaign ended
+    unfulfilled_pledges = Pledge.objects.filter(project=project, pledge_fulfilled=False).all()
+    days_since_campaign_ended = (date.today() - project.start_date).days - project.period 
+    return (project.is_expired() and project.is_fully_pledged() and unfulfilled_pledges and (days_since_campaign_ended > 10))
 
 def campaign_expired_unsuccessfully(project):
     return (project.is_expired() and not project.is_fully_pledged() and \
@@ -81,6 +90,17 @@ def update_project_sent_email_status(project, status):
     project.mail_status = status
     project.save()
 
+
+def send_email_incomplete_pledges(project):
+    days_since_campaign_ended = (date.today() - project.start_date).days - project.period 
+    subject = '[NITW Crowdfund] Fulfilling your pledge'
+    template = 'emails/unfulfilled_pledge_backer.html'
+    pledges = Pledge.objects.filter(project=project, pledge_fulfilled=False).all()
+    # recipients = map(str,Pledge.objects.filter(project=project).values_list('user__email', flat=True))
+    for pledge in pledges:
+        context = {'pledge': pledge, 'days_since_campaign_ended': days_since_campaign_ended}
+        recipient = pledge.user.email
+        send_email_from_template(template, context, subject, recipient)
 
 def send_email_fully_funded_backers(project):
     subject = '[NITW Crowdfund] Campaign you backed gets fully funded!'
@@ -119,7 +139,7 @@ def send_email_campaign_unsuccessful_author(project):
 
 
 def send_email_campaign_update_backers(project):
-    subject = '[NITW Crowdfund] New Project Campaign Update'
+    subject = '[NITW Crowdfund] New Campaign Update'
     template = 'emails/project_updated_backer.html'
     pledges = Pledge.objects.filter(project=project).all()
     # recipients = map(str,Pledge.objects.filter(project=project).values_list('user__email', flat=True))
@@ -132,7 +152,7 @@ def send_email_campaign_update_backers(project):
 
 
 def send_email_campaign_close_to_expiry_author(project):
-    subject = '[NITW Crowdfund] Your Campaign is about to end in' + str[project.get_days_remaining()] + ' days'
+    subject = '[NITW Crowdfund] Campaign closes in ' + str(project.get_days_remaining()) + ' days'
     context = {'project': project}
     template = 'emails/campaign_close_to_expiry_author.html'
     recipient = project.author.email

@@ -1,8 +1,23 @@
-<p>Dear {{pledge.user.first_name}} {{pledge.user.last_name}},</p>
+<div style="padding: 20px 0 0 0; font-size: 13px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;">
+Dear {{pledge.user.first_name}} {{pledge.user.last_name}},
 
-<p>We are delighted to inform you that <a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}">{{pledge.project.title}}</a> has successfully achieved its funding goal! </p>
+<p>We are delighted to inform you that <a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}" style="text-decoration: none; font-weight: bold">{{pledge.project.title}}</a> has successfully achieved its funding goal! </p>
 
-<p>We request you fulfil the pledge within 10 days of receiving this email.</p>
+<p>Please click on the button below to fulfil your pledge. Makers are excited to get started as quickly as possible. We hence request all our backers to fulfil their respective pledges within 10 days of receiving this email.</p>
+
+<a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}" style="text-decoration: none"><div id="fulfil_pledge_button" style="background: #00B49E; 
+	color: white;
+	text-transform: uppercase;
+	font-family: 'Gotham',Helvetica,Arial,sans-serif ;
+    border: none;
+	border-radius: 8px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 300px;">Fulfil pledge</div></a>
+
 <table>
 	<tr>
 		<td>Amount you pledged:</td>
@@ -10,7 +25,7 @@
 	</tr>
 	<tr>
 		<td>Project Title:</td>
-		<td><a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}">{{pledge.project.title}}</a></td>
+		<td><a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}" style="text-decoration: none; font-weight: bold">{{pledge.project.title}}</a></td>
 	</tr>
 	<tr>
 		<td>Campaign Goal:</td>
@@ -22,10 +37,20 @@
 	</tr>
 </table>
 
-<a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}"><div id="fulfil_pledge" style="background: #00B49E; margin: 2rem auto; padding: 1.8rem 2.5rem; color: #222;font-weight: bold;font-size: 1.6rem;font-family: 'Gotham',Helvetica,Arial,sans-serif">Click here to fulfil pledge</div></a>
+<div class="row" style="background: url('http://www.thelakshyafoundation.org/static/img/crowdfunding/create_project_BG.png'); width: 100%">
 
-<p>Thanks,<br/>
-NITW Crowdfund Team<br/>
-Lakshya Foundation<br/></p>
-
-
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 500px;" class="responsive-table">
+		<tbody>
+			<tr>
+	            <td align="center" style="font-size: 11px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#ffffff;">
+	                Level 2, Center for Innovation and Incubation, NIT Warangal, Warangal-506004, India
+	                <br>
+	                <a href="http://thelakshyafoundation.org" target="_blank" style="color: #ffffff; text-decoration: none;">Lakshya Foundation</a>
+	                <span style="font-family: Arial, sans-serif; font-size: 11px; color: #ffffff;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+	                <a href="http://nitw.ac.in" target="_blank" style="color: #ffffff; text-decoration: none;">NIT Warangal</a>
+	            </td>
+	        </tr>
+	    </tbody>
+	</table>
+</div>
+</div>

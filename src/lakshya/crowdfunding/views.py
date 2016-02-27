@@ -20,7 +20,7 @@ import logging
 import random
 import locale
 from django.template.loader import render_to_string
-from lakshya.util import send_email_from_template, generate_random_string, send_cron_job_emails, send_email_campaign_update_backers
+from lakshya.util import send_email_from_template, generate_random_string, send_cron_job_emails, send_email_campaign_update_backers, send_email_incomplete_pledges
 from accounts.forms import PaymentTempForm, CCAVenueReturnForm
 from accounts.models import PaymentTemp
 from accounts.util import get_post_object
@@ -179,8 +179,13 @@ class ProjectUpdateView(TemplateView):
             project_update.project = project
             project_update.author = request.user
             project_update.save()
-            send_email_campaign_update_backers(project.id)
+            # uncomment below line after testing
+            send_email_campaign_update_backers(project)
+
+            # Comment out below lines after testing... starts here
+            # send_email_incomplete_pledges(project)
             # send_cron_job_emails()
+            # ...ends here
             response = {'success': 'true', 'project_id': project.id}
             return HttpResponseRedirect(reverse('view project', kwargs={'id': project.id}))
         else:
@@ -337,16 +342,12 @@ class FulfillPledgeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(FulfillPledgeView, self).get_context_data(**kwargs)
         try:
-            # pledge_id = int(self.request.GET.get('id', ''))
-            # pledge_id = 19
             context['pledge'] = pledge = Pledge.objects.get(id=pledge_id)
-            # Attempting coding
             project_id = pledge.project.id
             project = Project.objects.get(id=project_id)
             print "^&^&*************************^&%^&%^&"
             print project_id
             context['project'] = project
-            # Attempt ends here
         except (Pledge.DoesNotExist, ValueError):
             raise Http404
 

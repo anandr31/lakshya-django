@@ -1,6 +1,7 @@
-<p>Hi {{pledge.project.author.first_name}},</p>
+<div style="padding: 20px 0 0 0; font-size: 13px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;">
+Hi {{pledge.project.author.first_name}},
 
-<p>You have a new pledge for your project <a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}"><b>{{pledge.project.title}}</b> </a> </p>
+<p>You have a new pledge for your campaign <a href="http://www.thelakshyafoundation.org/crowdfunding/project/{{pledge.project.id}}" style="text-decoration: none; font-weight: bold"><b>{{pledge.project.title}}</b> </a> </p>
 
 <table>
 	<tr>
@@ -16,8 +17,20 @@
 <p>You have reached Rs.{{pledge.project.get_total_pledged_amount}} ({{pledge.project.get_percentage_pledged}}%) of your campaign goal of Rs.{{pledge.project.goal}}. Your campaign ends in {{pledge.project.get_days_remaining}} days.</p>
 
 <p>We follow an all-or-nothing funding policy. Funds are collected from backers and disbursed to the project team only if the campaign is able to raise 100% or more of its funding goal within the campaign period. Please contact us (info@thelakshyafoundation.org) for any queries.</p>
-<p>Thanks,<br/>
-NITW Crowdfund Team<br/>
-Lakshya Foundation<br/></p>
+<div class="row" style="background: url('http://www.thelakshyafoundation.org/static/img/crowdfunding/create_project_BG.png'); width: 100%">
 
-
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 500px;" class="responsive-table">
+		<tbody>
+			<tr>
+	            <td align="center" style="font-size: 11px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#ffffff;">
+	                Level 2, Center for Innovation and Incubation, NIT Warangal, Warangal-506004, India
+	                <br>
+	                <a href="http://thelakshyafoundation.org" target="_blank" style="color: #ffffff; text-decoration: none;">Lakshya Foundation</a>
+	                <span style="font-family: Arial, sans-serif; font-size: 11px; color: #ffffff;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+	                <a href="http://nitw.ac.in" target="_blank" style="color: #ffffff; text-decoration: none;">NIT Warangal</a>
+	            </td>
+	        </tr>
+	    </tbody>
+	</table>
+</div>
+</div>
