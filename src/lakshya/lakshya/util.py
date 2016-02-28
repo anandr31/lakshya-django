@@ -69,7 +69,7 @@ def unfulfilled_pledges_exist(project):
     # Does this project have unfulfilled pldeges and has it been over 10 days since campaign ended
     unfulfilled_pledges = Pledge.objects.filter(project=project, pledge_fulfilled=False).all()
     days_since_campaign_ended = (date.today() - project.start_date).days - project.period 
-    return (project.is_expired() and project.is_fully_pledged() and unfulfilled_pledges and (days_since_campaign_ended > 10))
+    return (project.is_expired() and project.is_fully_pledged() and unfulfilled_pledges and (days_since_campaign_ended in [5, 10, 12, 15, 20, 25]))
 
 def campaign_expired_unsuccessfully(project):
     return (project.is_expired() and not project.is_fully_pledged() and \
