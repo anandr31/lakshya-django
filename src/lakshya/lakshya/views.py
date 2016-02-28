@@ -38,7 +38,7 @@ class DashboardView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super(DashboardView, self).get_context_data(**kwargs)
-        if self.request.user.is_superuser:
+        if self.request.user.is_staff or self.request.user.is_superuser:
             donations = Donation.objects.all()
             expenses = Expense.objects.all()
 
@@ -211,11 +211,13 @@ class DashboardView(TemplateView):
                         "bank_balance_list": bank_balance_list,
                         "milestones": milestones,
                         "annual_financials_list": zip(annual_donations, annual_expenses),
+                        "logged_in": True
                         }
 
             return context
         else:
-            raise Http404
+            context = {"logged_in": False}
+            return context
 
 class HomeView(TemplateView):
     template_name = 'lakshya/home.html'

@@ -46,9 +46,25 @@
     }
 
 </script>
+
+<script type="text/javascript">
+    $(function(){
+        $('#view_dashboard_button').click(function() {
+            $('#login_modal a:not(.close-reveal-modal)').each(function() {
+                $(this).attr('href', $(this).attr('href') + '?next=/dashboard');
+            });
+            $('#login_modal').foundation('reveal', 'open');
+        });
+
+});
+</script>
 {% endblock scripts %}
 
 {% block content %}
+{% if not logged_in %}
+	<div class="button need_login" id="view_dashboard_button" style="display: block; margin-left: auto; margin-right: auto; width: 20%; font-size: 1.5rem; font-weight: bold;">CLICK HERE TO LOGIN</div>
+
+{% else %}
 <div class="row">
 	<div class="large-12 column">
 		<div id="annual_financials_chart"/></div>
@@ -128,7 +144,7 @@
 					<!-- <th>Start Date</th> -->
 					<th>Progress</th>
 					<th>Progress %</th>
-					<th>committed</th>
+					<th>Committed</th>
 					<th>End Date</th>					
 				</tr>
 			{% for milestone in milestones %}
@@ -192,7 +208,7 @@
 				<tr>
 					<th>Country</th>
 					<th>Donation Amount</th>
-					<th>As a % of total</th>
+					<th>As % of total</th>
 				</tr>
 			{% for region, total, percent in donation_by_geo_list %}
 				<tr>
@@ -206,7 +222,7 @@
 				<tr>
 					<th>Freq of donation</th>
 					<th>No. of donors</th>
-					<th>As a % of total number of donors</th>
+					<th>As % of total number of donors</th>
 					<th>Contribution % of total donation amount</th>
 				</tr>
 			{% for freq, total, percent_donation_instances, percent_amount in freq_of_donation_stats %}
@@ -223,4 +239,5 @@
 	</div>
 	</div>
 </div>
+{% endif %}
 {% endblock content %}
