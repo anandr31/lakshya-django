@@ -6,6 +6,7 @@ class PreferenceInline(admin.TabularInline):
 
 class PersonOptions(admin.ModelAdmin):
     fieldsets = [(None, {"fields" : [('user', 'profile_pic'),]}), 
+                 ("Personal Information", {"fields" : [('name', 'email'),]}), 
                  ("Billing Details", {"fields" : [('billing_address',),('billing_landmark', 'billing_city',), 
                                                   ('billing_state', 'billing_postal_code'), ('billing_country', 'contact_number', 'pan_number',), ]}), 
                  ("Alumni Details", {"fields" : [('is_nitw_alumni',), ('course', 'department', 'year_of_passing',)]}), ]
@@ -14,6 +15,7 @@ class PersonOptions(admin.ModelAdmin):
     list_filter = ('is_nitw_alumni', 'course', "department", "year_of_passing", )
     search_fields = ('user__first_name', )
     raw_id_fields = ('user', )
+    readonly_fields = ('name', 'email')
     inlines = (PreferenceInline, )
     
 class TeamMemberOptions(admin.ModelAdmin):

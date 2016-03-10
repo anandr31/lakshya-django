@@ -55,19 +55,19 @@ class Person(models.Model):
     
     def name(self):
         return self.user.first_name + " " + self.user.last_name
-    
+
     def get_full_address(self):
         retval = self.billing_address
         if self.billing_landmark:
             retval += ", Landmark: " + self.billing_landmark
-	if self.billing_city:
-	    retval += ", " + self.billing_city 
-	if self.billing_postal_code:
-	    retval += "- " + self.billing_postal_code 
-	if self.billing_state:
-	    retval += ", " + self.billing_state
-	if self.billing_country:
-	    retval += ", " + self.billing_country
+      	if self.billing_city:
+      	    retval += ", " + self.billing_city 
+      	if self.billing_postal_code:
+      	    retval += "- " + self.billing_postal_code 
+      	if self.billing_state:
+      	    retval += ", " + self.billing_state
+      	if self.billing_country:
+      	    retval += ", " + self.billing_country
         return retval
             
     def email(self):
