@@ -179,6 +179,7 @@ class DashboardView(TemplateView):
 
             # Show bank balance details... starts here
             bank_balance_list = []
+            total_balance = BankBalance.objects.all().aggregate(Sum("balance"))["balance__sum"]
             for account in BankAccount.objects.all():
                 balance_amount = BankBalance.objects.filter(account=account).reverse()[0].balance
                 date = BankBalance.objects.filter(account=account).reverse()[0].date
@@ -211,6 +212,8 @@ class DashboardView(TemplateView):
                         "bank_balance_list": bank_balance_list,
                         "milestones": milestones,
                         "annual_financials_list": zip(annual_donations, annual_expenses),
+                        "donor_donations_by_geo_list": zip(donation_by_geo_list, donors_by_geo_list),
+                        "total_balance": total_balance,
                         "logged_in": True
                         }
 

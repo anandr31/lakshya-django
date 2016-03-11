@@ -13,15 +13,50 @@
         {% for item in annual_financials_list %} ['{{item.0.0}}', {{item.0.1}}, {{item.1.1}}],	{% endfor %}
         ]);	
 
-	var options = {
+	var annual_financials_chart_options = {
 		title: 'Annual Financials',
 		width: '100%',
         height: 400,
 		bar: {groupWidth: "65%"}
 		// explorer: {}
 	};	
-	var chart = new google.visualization.ColumnChart(document.getElementById('annual_financials_chart'));
-	chart.draw(annual_financials_chart_data, options);
+	var annual_financials_chart = new google.visualization.ColumnChart(document.getElementById('annual_financials_chart'));
+	annual_financials_chart.draw(annual_financials_chart_data, annual_financials_chart_options);
+
+
+
+	// Comparison of donors, donations among different geographies
+	var donor_donations_by_geo_chart_data = google.visualization.arrayToDataTable([
+    ['Location', '% donors', '%donations'],
+    {% for item in donor_donations_by_geo_list %} ['{{item.0.0}}', {{item.1.2}}, {{item.0.2}}],	{% endfor %}
+    ]);	
+
+	var donor_donations_by_geo_chart_options = {
+		title: 'Donors and Donations by Location',
+		width: '100%',
+        height: 400,
+		bar: {groupWidth: "65%"}
+		// explorer: {}
+	};	
+	var donor_donations_by_geo_chart = new google.visualization.ColumnChart(document.getElementById('donors_donations_by_geography'));
+	donor_donations_by_geo_chart.draw(donor_donations_by_geo_chart_data, donor_donations_by_geo_chart_options);
+
+
+	// Frequecy of giving
+	var freq_of_donation_chart_data = google.visualization.arrayToDataTable([
+    ['Frequecy of giving', '% donors', '%donations'],
+    {% for item in freq_of_donation_stats %} ['{{item.0}}', {{item.2}}, {{item.3}}],	{% endfor %}
+    ]);	
+
+	var freq_of_donation_chart_options = {
+		title: 'Frequecy of Donations',
+		width: '100%',
+        height: 400,
+		bar: {groupWidth: "65%"}
+		// explorer: {}
+	};	
+	var freq_of_donation_chart = new google.visualization.ColumnChart(document.getElementById('freq_of_donation_chart'));
+	freq_of_donation_chart.draw(freq_of_donation_chart_data, freq_of_donation_chart_options);
 
 	// // Monthly Inflow
 	// var monthly_inflow_chart_data = google.visualization.arrayToDataTable([
@@ -67,7 +102,54 @@
 {% else %}
 <div class="row">
 	<div class="large-12 column">
+			<table>
+				<tr>
+					<th>Bank</th>
+					<!-- <th>Account Type</th> -->
+					<th>Date</th>
+					<th>Balance</th>
+				</tr>
+			{% for bank, type, date, balance in bank_balance_list %}
+				<tr>
+					<td>{{bank}}</td>
+					<!-- <td>{{type}}</td> -->
+					<td>{{date}}</td>
+					<td>{{balance|floatformat:"0"|intcomma}}</td>
+				</tr>
+			{% endfor %}				
+				<tr>
+					<td style="font-weight:bold">Total Balance</td>
+					<!-- <td>{{type}}</td> -->
+					<td></td>
+					<td style="font-weight:bold">{{total_balance|floatformat:"0"|intcomma}}</td>
+				</tr>
+			</table>	
+			<table>
+				<tr>
+					<th>Milestone</th>
+					<th>Target</th>
+					<!-- <th>Start Date</th> -->
+					<th>Progress</th>
+					<th>Progress %</th>
+					<th>Committed</th>
+					<th>End Date</th>					
+				</tr>
+			{% for milestone in milestones %}
+				<tr>
+					<td>{{milestone.title}}</td>
+					<td>{{milestone.target_amount|floatformat:"0"|intcomma}}</td>
+					<td>{{milestone.raised_amount|floatformat:"0"|intcomma}}</td>
+					<td>{{milestone.raised_precent|floatformat:"0"|intcomma}}%</td>
+					<td>{{milestone.committed_amount|floatformat:"0"|intcomma}}</td>
+					<!-- <td>{{milestone.start_date}}</td> -->
+					<td>{{milestone.end_date}}</td>
+				</tr>
+			{% endfor %}				
+			</table>		
+			
 		<div id="annual_financials_chart"/></div>
+		<div id="donors_donations_by_geography"/></div>
+		<div id="freq_of_donation_chart"/></div>
 	</div>		
 </div>
 <div class="row">
@@ -137,28 +219,6 @@
 
 	<div>
 		<span class="large-12 column">
-			<table>
-				<tr>
-					<th>Milestone</th>
-					<th>Target</th>
-					<!-- <th>Start Date</th> -->
-					<th>Progress</th>
-					<th>Progress %</th>
-					<th>Committed</th>
-					<th>End Date</th>					
-				</tr>
-			{% for milestone in milestones %}
-				<tr>
-					<td>{{milestone.title}}</td>
-					<td>{{milestone.target_amount|floatformat:"0"|intcomma}}</td>
-					<td>{{milestone.raised_amount|floatformat:"0"|intcomma}}</td>
-					<td>{{milestone.raised_precent|floatformat:"0"|intcomma}}%</td>
-					<td>{{milestone.committed_amount|floatformat:"0"|intcomma}}</td>
-					<!-- <td>{{milestone.start_date}}</td> -->
-					<td>{{milestone.end_date}}</td>
-				</tr>
-			{% endfor %}				
-			</table>		
 <!-- 			<h1>EVENT PARTICIPATION</h1>
 			<h3>Total Events - {{total_events_count}}</h3>
 			<h3>Total Participation - {{total_participation}}</h3>
@@ -174,22 +234,7 @@
 				</tr>
 			{% endfor %}
 			</table> -->
-			<table>
-				<tr>
-					<th>Bank</th>
-					<th>Account Type</th>
-					<th>Date</th>
-					<th>Balance</th>
-				</tr>
-			{% for bank, type, date, balance in bank_balance_list %}
-				<tr>
-					<td>{{bank}}</td>
-					<td>{{type}}</td>
-					<td>{{date}}</td>
-					<td>{{balance|floatformat:"0"|intcomma}}</td>
-				</tr>
-			{% endfor %}				
-			</table>
+
 			<table>
 				<tr>
 					<th>Country</th>
