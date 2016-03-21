@@ -68,6 +68,7 @@ urlpatterns = patterns('',
     url(r'^404$', TemplateView.as_view(template_name="404.html")),
     url(r'^dashboard/?$', DashboardView.as_view(), name='dashboard'),
     url(r'^(?i)IGTeam/?$', TemplateView.as_view(template_name="IGTeam.html")),
+    url(r'^(?i)IGAwards/?$', TemplateView.as_view(template_name="IGAwards.html")),
     # url(r'^mce_filebrowser/', include('mce_filebrowser.urls')),
 )
 

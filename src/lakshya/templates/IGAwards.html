@@ -1,0 +1,43 @@
+{% extends "newbase.html" %}
+{% block scripts %}
+<script type="text/javascript">
+// $(function() {
+//     $('#contact_button').click(function() {
+//       window.scrollTo(0,document.body.scrollHeight);
+//       smoothScroll($('#faq_project_authors').offset().top);
+//       return false;
+//     });
+</script>
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/crowdfunding/crowdfunding.css">
+{% endblock scripts %}
+
+{% block content %}
+
+<img src="{{STATIC_URL}}images/IGAwards.jpg" style="display: block; margin-left: auto; margin-right: auto"> </img>
+
+ <div id="crowdfunding_faq_page" class="content-width" style="width:75%;margin: 0 auto; display:block;">
+      <div class="column large-12 small-12 faq_box">
+        <!-- <img class="faq_about_icon" src="{{STATIC_URL}}img/icons/icon_about.svg"> -->
+        <div class="faq_box_head">Innovation Garage Awards</div>
+        <p class="faq_body">The Innovation Garage Awards recognize top hobbysits and innovators from among NIT Warangal students. They are meant to inspire students from all batches and branches to build, tinker, and innovate.</p>
+      </div>
+
+       <div class="column large-12 small-12 faq_box">
+        <!-- <img class="faq_about_icon" src="{{STATIC_URL}}img/icons/icon_about.svg"> -->
+        <div class="faq_box_head">IG Award Categories</div>
+        <p class="faq_body">Awards will be given in five categories:<br/>
+        <ul>
+	        <li><b>Best Hobby Project Award</b>: Awarded to the best hobby project. The project is judged on innovative value and a working prototype.</li>
+	        <li><b>Best Campus Enabler Award</b>: Awarded to the best innovation that has helped the campus administration, students, or faculty.</li>
+	        <li><b>Woman in Tech Award</b>: Awarded to the best women innovator on campus. This is judged on the basis of the work done by the candidates on and off campus and accolades received in the areas of technology innovation (in any field).</li>
+	        <li><b>Best Mentor Award</b>: The Innovation Garage encourages students to share their experience and knowledge with juniors to make it a truly collaborative environment. The Best Mentor Award will go to that student who gives back to the community in the form of mentorship and guidance, spending considerable time and effort with junior students.</li>
+	        <li><b>Best Innovation Award</b>: The flagship Puvvada Subhadra IG Award is given to the best innovation developed by students. This is judged based on innovation quotient, implementation, scalability etc.</li>
+        </ul>
+        Best Hobby Project, Best Campus Enabler, and Best Innovation Award will all need functional prototypes of the entries. While videos demonstrating the project idea are also mandatory, entries without a working prototype will not be considered.
+        </p>
+      </div>
+
+<iframe style="margin: 0 auto; display:block;" src="https://docs.google.com/forms/d/1IUNlJkS8O5y8rxkKbipIpiFsBVrtUosSpBIR6ptw4_Q/viewform?embedded=true" width="760" height="1000" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+
+</div>
+{% endblock content %}
