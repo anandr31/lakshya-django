@@ -138,7 +138,319 @@
 {% endblock scripts %}
 
 {% block content %}
-<div id="crowdfunding_faq_section">
+<!-- <div id="crowdfunding_faq_section">
     <div class="row" id="why_it_works">We'll be back soon</div>
-    Hi! We're currently fixing issues and will be up and running latest by 15 April 5PM IST. For urgent queries, please write to us at info@TheLakshyaFoundation.org. The crowdfunding campaigns are running and will be visible here soon.</div>
+    Hi! We're currently fixing issues and will be up and running latest by 15 April 5PM IST. For urgent queries, please write to us at info@TheLakshyaFoundation.org. The crowdfunding campaigns are running and will be visible here soon.</div> -->
+     
+    <div id="crowdfunding_project_detail_page">
+        <div id="hero_content">
+            <div class="row">
+                <div class="large-6 small-12 column" id="project_image_container">
+                <div class="cover-images">
+                        {% if project.video_url %}
+                        <div>
+                            {% video project.video_url 'tiny' %}
+                        </div>
+                        {% endif %}                         
+
+                        {% for project_image in project.project_images.all %}
+                            <div style="background-image:url({{project_image.image.url}});"></div>
+                        {% endfor %} 
+                </div>
+                </div>
+                <div class="large-6 small-12 column">
+                    <div id="project_title">{% if project.author.id == user.id %}<div><span class="edit" data-href="/crowdfunding/project/{{project.id}}/edit">Edit Campaign</span>&nbsp;<span class="edit" data-href="/crowdfunding/project/{{project.id}}/update">Post Progress Update</span></div>{% endif %}{{project.title}}</div>
+                    <div id="project_summary">{{project.summary}}</div>
+                    <div id="progress_section">
+                        <div class="column project_progress progress nice large-10">
+                            <span class="meter" style="width:{{project.get_percentage_pledged}}%"></span>
+                        </div>
+                        <div class="row">
+                            <div class="large-4 small-4 medium-4 column">
+                              <div class="project_metric_number">{{project.get_percentage_pledged}}%</div>
+                              <div class="project_metric_label">Pledged</div>
+                            </div>
+                            <div class="large-4 small-4 medium-4 column">
+                              <div class="project_metric_number">Rs.{{project.goal|intcomma}}</div>
+                              <div class="project_metric_label">Goal</div>
+                            </div>
+                            <div class="large-4 small-4 medium-4 column">
+                              <div class="project_metric_number">{{project.get_days_remaining}} Days</div>
+                              <div class="project_metric_label">To go</div>
+                            </div>
+                          </div>  
+                    </div>
+                    <div id="support_campaign">
+                    {% if not user.is_authenticated %}
+                    <div class="button need_login" id="back_this_project_button">LOGIN TO BACK THIS PROJECT</div>
+                    {% elif project.is_expired and project.is_fully_pledged %}
+                        {% if user_pledge %}
+                            {% if user_pledge.pledge_fulfilled %}
+                                <p id="already_pledged_message"><span>SUCCESSFULLY FUNDED!</span></p>
+                                <p id="already_pledged_message">Payment Received - You have fulfilled your pledge for this proect</p>
+                            {% else %}
+                                <p id="already_pledged_message"><span>SUCCESSFULLY FUNDED!</span></p>
+                                <form action="/crowdfunding/crowdfunding_payment_redirect" method="post">{% csrf_token %}
+                                    <input type="hidden" name="pt_id" value="{{pt_id}}">
+                                    {% for field in form.visible_fields %}
+                                        <div class="field">
+                                        {% if field.name == 'referrer_url' %}
+                                          <div id="div_id_{{ field.name }}" style="display: none">{{ field }}</div>
+                                        {% elif field.name == 'amount' %}
+                                          <div id="div_id_{{ field.name }}" style="display: none">
+                                            <label>{{ field.label}}</label>
+                                            <div>{{ field }}</div>
+                                          </div>
+                                        {% elif field.name == 'email_address' %}
+                                          <div style="display: none">{{ field }}</div>
+                                        {% elif field.name == 'flex_field' %}
+                                          <div id="div_id_{{ field.name }}" style="display: none">{{ field }}</div>
+                                        {% endif %}         
+                                          <p class="error">{% for error in field.errors %}{{error}}<br>{% endfor %}</p>
+                                        </div>
+                                    {% endfor %}
+                                    <input class="button need_login" style="font-size:12pt;" type="submit" value="Fulfill your pledge of Rs.{{user_pledge.amount}}"/>
+                                </form>
+                            {% endif %}
+                        {% else %} 
+                            <div id="pledge_form">
+                            <p> This campaign was a success and pledges are now closed!</p>
+                            <div class="btn" id="pledge_submit_disabled_success">SUCCESSFULLY FUNDED!</div> </div>
+                        {% endif %}
+                    {% elif project.is_expired and not project.is_fully_pledged %}
+                        {% if user_pledge %}
+                            <p id="already_pledged_message"><span>CAMPAIGN UNSUCCESFUL - Thanks for pledging Rs. {{user_pledge.amount}} for this project. However, this campaign was unsuccessful in raising the required funding.</span></p>
+                        {% else %}
+                            <div id="pledge_form">
+                            <p> CAMPAIGN UNSUCCESFUL - This campaign has expired and was unable to raise the required funding.</p><div class="btn" id="pledge_submit_disabled_failed">CAMPAIGN CLOSED</div> </div>                        
+                        {% endif %}
+                    {% elif not project.is_expired %}
+                        {% if user_pledge %}
+                            <p id="already_pledged_message"><span>You have pledged Rs. {{user_pledge.amount}} to this project. </span><a href="#" class="edit">Edit pledge</a></p>
+                            <div id="pledge_form" class="hidden">
+                                <form method="POST" action="/crowdfunding/_pledge/create">{% csrf_token %}
+                                    <input type="hidden" name="project_id" value="{{project.id}}">
+                                    <input type="text" placeholder="Enter amount(Rs)" name="amount" id="pledge_amount" value="{{user_pledge.amount}}">
+                                    <div class="btn" id="pledge_submit">Fund this Project</div>
+                                    <img src="{{STATIC_URL}}newimg/loading.gif" class="loading">
+                                    <p class="errors">Could not submit pledge</p>
+                                </form>
+                            </div>                            
+                        {% else %}
+                            <div id="pledge_form">
+                                <form method="POST" action="/crowdfunding/_pledge/create">{% csrf_token %}
+                                    <input type="hidden" name="project_id" value="{{project.id}}">
+                                    <input type="text" placeholder="Enter amount(Rs)" name="amount" id="pledge_amount" value="{{user_pledge.amount}}">
+                                    <div class="btn" id="pledge_submit">Fund this Project</div>
+                                    <img src="{{STATIC_URL}}newimg/loading.gif" class="loading">
+                                    <p class="errors">Could not submit pledge</p>
+                                </form>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                                <div class="column large-12">
+                <a class="button need_login" style="font-size: 14px;" onclick="startIntro()"> Help - Take a Tour</a>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="thumbnails" class="column large-6 medium-12 small-12">
+                
+            </div>
+            <div id="disclaimer" class="column large-6 medium-12 small-12">
+                *Campaign initiated on {{project.start_date}}
+            </div>
+        </div>
+        <div class="row" id="detail_content">
+            <div class="column large-8">
+                <div class="row" id="project_content_nav">
+                <div class="large-12 column project_nav_container">
+                    <div class="column large-3 project_content_nav_item selected" id="description_tab">Description</div>
+                    <div class="column large-3 project_content_nav_item" id="challenges_tab">Challenges</div>
+                    <div class="column large-3 project_content_nav_item" id="updates_tab">Updates({{project.updates.count}})</div>
+                    <div class="column large-3 project_content_nav_item" id="backers_tab">Backers({{project.get_total_backers}})</div>
+                    
+                </div>
+                </div>
+                    <div class="row update_content" style="display: none;">
+                        {% for update in project.updates.all %}
+                        <div class="row update_item">
+                            <div class="column large-6">
+                                <span class="project_update_date">{{update.timestamp}}</span>
+                            </div>
+                            <div class="column large-12">
+                                {{update.update|safe}}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div> 
+                    <div class="row description_content">
+                        <div class="large-12 column">
+                            {{project.description|safe}}
+                        </div>
+                    </div>
+                    <div class="row challenges_content" style="display: none;">
+                        <div class="large-12 column">
+                            {{project.risks_and_challenges|safe}}
+                        </div>
+                    </div>
+                    <div class="row backers_content" style="display: none;">
+                    {% if user.id == project.author.id or user.id ==  user.is_superuser %}
+                    <div>Pledges Fulfilled: {{total_pledge_fulfilled}} of {{project.get_total_backers}}</div>
+                    {% endif %}
+                        <table>
+                            <tr>
+                                {% if pledges %}
+                                <th style="font-size: 10pt">Backer Name</th>
+                                {% if user.id == project.author.id or user.id ==  user.is_superuser %}
+                                <th style="font-size: 10pt">Pledge Amount</th>
+                                <th style="font-size: 10pt">Pledge Fulfilled</th>
+                                {% endif %}
+                                {% endif %}
+                            </tr>
+                            {% for backer in pledges %}
+                            <div class="column large-12">
+                                <tr >
+                                    <td style="font-size: 10pt">{{backer.user.first_name}} {{backer.user.last_name}}</td>
+                                    {% if user.id == project.author.id or user.id ==  user.is_superuser %}
+                                    <td style="font-size: 10pt">INR {{backer.amount}}</td>
+                                    <td style="font-size: 10pt">{% if backer.pledge_fulfilled %} Yes {% else %} No {% endif %}</td>
+                                    {% endif %}
+                                </tr>
+                            </div>
+                            {% endfor %}
+                        </table>
+                    </div>                    
+            </div>
+            <div class="column large-3 large-offset-1" id="campaign_team">
+                <div>
+                    <div class="row project_content_title">TEAM</div>
+                    <div class="row team_members">{{project.team|safe}}</div>
+                </div>
+                <!-- Share campaign with friends<br/> -->
+                <!-- Share on Facebook -->
+                <div style="display: inline-block;" class="fb-share-button" data-href="http://{{request.get_host}}/crowdfunding/project/{{project.id}}" data-layout="box_count"></div>
+                <!-- Share on Twitter -->
+                <div style="display: inline-block;">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-text="Crowdfunding at NIT!" data-via="lakshyatweets" data-hashtags="nitwCrowdfunding" data-count="vertical">Tweet</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                </div>
+                <!-- Share on LinkedIn -->
+                <div style="display: inline-block; padding-top:2px;">
+                    <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US </script>
+                    <script type="IN/Share" data-counter="top"></script>
+                </div>
+            </div>
+        </div>
+    <section><h1 style="text-align: center;">More Project Campaigns</h1></section>
+    <div id="crowdfunding_projects_section" class="content-width">
+    <div id="crowdfunding_project_grid" class="row">
+        {% for project in related_projects %}
+        <div class="column large-4 medium-6 small-12 project_block_container {% if forloop.last %}end{% endif %}">
+            <a href="./{{project.id}}">
+              <div class="project_block row">
+                <div class="project_image_container" style="background-image:url({{project.get_primary_picture_url}});">
+                  {% if project.is_fully_pledged %}
+                    <div class="status_bar completed">Fully funded</div>
+                  {% elif project.is_expired %}
+                    <div class="status_bar expired">Project expired</div>
+                  {% endif %}
+                  {% if project.author.id == user.id %}<span class="edit" data-href="/crowdfunding/project/{{project.id}}/edit">Edit</span>{% endif %}
+                </div>
+                <div class="project_content">
+                    <p class="project_content_heading"><span>{{project.title}}</span></p>
+                    <p class="project_content_summary">{{project.summary|truncatechars:90}}</p>
+                    <div class="project_numbers">
+                        <div class="project_progress progress nice">
+                            <span class="meter" style="width:{{project.get_percentage_pledged}}%"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-4 small-4 medium-4 column">
+                          <div class="project_metric_number">{{project.get_percentage_pledged}}%</div>
+                          <div class="project_metric_label">Pledged</div>
+                        </div>
+                        <div class="large-4 small-4 medium-4 column">
+                          <div class="project_metric_number">Rs. {{project.goal|intcomma}}</div>
+                          <div class="project_metric_label">Goal</div>
+                        </div>
+                        <div class="large-4 small-4 medium-4 column project_days_container">
+                          <div class="project_metric_number">{{project.get_days_remaining}} Days</div>
+                          <div class="project_metric_label">To go</div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+    </div>
+    <script type="text/javascript" src="{{STATIC_URL}}js/slick/slick.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/introjs/intro.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('.cover-images').slick({dots: false,
+                                    infinite: true,
+                                    });
+        });
+    </script>
+    <script type="text/javascript">
+      function startIntro(){
+        var intro = introJs();
+          intro.setOptions({
+            steps: [
+              { 
+                intro: "Hi! Lets walk through the Crowdfunding campaign page!"
+              },
+              {
+                element: '#project_title',
+                intro: "This is the project title"
+              },
+              {
+                element: '#project_summary',
+                intro: "And here's the summary"
+              },
+              {
+                element: '#progress_section',
+                intro: "This is a snapshot of how the campaign is doing"
+              },
+              {
+                element: '#support_campaign',
+                intro: "Here is where you support the campaign!",
+              },
+              {
+                element: '#campaign_team',
+                intro: "Know more about the campaign team in this section",
+                position: "top"
+              },
+              {
+                element: '#description_tab',
+                intro: "Authors provide a detailed description of the project here",
+                position: "top"
+              },
+              {
+                element: '#challenges_tab',
+                intro: "Project specific risks and challenges are provided here",
+                position: "top"
+              },
+              {
+                element: '#updates_tab',
+                intro: "This is where the author communicates with all backers. Also, any entry made in this section automatically sends out an email to all backers with the update.",
+                position: "top"
+              },
+              {
+                element: '#backers_tab',
+                intro: "Click here to view a real-time, complete list of backers who will fund the campaign.",
+                position: "top"
+              }                                                        
+            ]
+          });
+          intro.setOption('showProgress', true, 'showBullets', false).start();
+
+      }
+    </script>    
 {% endblock content %}
