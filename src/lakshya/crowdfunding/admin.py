@@ -24,7 +24,8 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 class PledgeAdmin(admin.ModelAdmin):
-    list_display = ('project', 'amount', 'user', 'pledge_fulfilled')
+    list_display = ('project', 'amount', 'user', 'email', 'pledge_fulfilled')
+    list_filter = ('project','pledge_fulfilled')
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Pledge, PledgeAdmin)

@@ -111,7 +111,11 @@ class Pledge(models.Model):
     project = models.ForeignKey(Project, related_name='pledges')
     timestamp = models.DateTimeField(auto_now_add=True)
     pledge_fulfilled = models.BooleanField(default=False)
-
+    
+    def get_email(self):
+      return self.user.email
+    email = property(get_email)
+    
     def __unicode__(self):
         return self.project.title + ' - ' + (self.user.get_full_name() or self.user.username)
 
