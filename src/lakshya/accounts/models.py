@@ -3,6 +3,7 @@ from datetime import date
 from people.models import Person
 from django.db.models.aggregates import Max
 from django.db.models import Sum
+from common.utils import format_and_split_name
 
 
 ENTERED = 0
@@ -159,6 +160,91 @@ class PaymentTemp(models.Model):
     referrer_url = models.CharField("Referrer Field", max_length=100, null=True, blank=True)
     flex_field = models.CharField("Flexible Field", default="Donation to Lakshya", max_length=100, null=True, blank=True)
     pledge_id = models.IntegerField(blank=True, null=True, help_text='Only used for crowdfunding pledge fulfilment transactions')
+
+
+# New structure for CCAvenue FCRA PG. Taking help from kalyan@almabase.com
+
+# class PGTransactionManager(BaseSiteModelManager):
+class PGTransactionManager(models.Model):
+    def create_transaction(self, amount, account, currency, productinfo='', user=None, mode='', content_object=None):
+        txnid = str(get_random_number(10))
+        name, email, phone = self.get_user_details(user)
+        txn = self.model.objects(self.site_id).create(creator=user, txnid=txnid, amount=amount, productinfo=productinfo,
+                                                      mode=mode, name=name, email=email, phone=phone,
+                                                      account=account, currency=currency, content_object=content_object)
+        return txn
+
+    def get_user_details(self, user):
+        name, email, phone = '', '', ''
+        if user:
+            profile = user.profile
+            name = profile.full_name if profile else user.get_full_name()
+            email = profile.email if profile else user.email
+            phone = profile.mobile_number if profile else ''
+        return (name, email, phone)
+
+
+class PGTransaction(models.Model):
+    """A payment gateway transaction."""
+    #Transaction statuses
+    TS_UNPROCESSED, TS_SUCCESS, TS_FAILED, TS_PENDING, TS_ERROR = 1, 2, 3, 4, 5
+    TXN_STATUSES = ((TS_UNPROCESSED, "Unprocessed"), (TS_SUCCESS, "Success"),
+                    (TS_FAILED, "Failed"), (TS_PENDING, "Pending"), (TS_ERROR, "Error"))
+
+    creator = models.ForeignKey(SiteUser, null=True, blank=True)
+    account = models.ForeignKey(PGAccount)
+    txnid = models.CharField(max_length=255, unique=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    currency = models.SmallIntegerField(choices=CURRENCIES, default=C_USD)
+    productinfo = models.CharField(max_length=255, blank=True)
+    name = models.CharField(max_length=255, blank=True)
+    email = models.CharField(max_length=255, blank=True)
+    phone = models.CharField(max_length=255, blank=True)
+    request_hash = models.CharField(max_length=255, blank=True)
+    mode = models.CharField(max_length=255, blank=True)
+    #Response from PG
+    pg_txnid = models.CharField(max_length=255, blank=True)
+    status = models.SmallIntegerField(choices=TXN_STATUSES, default=TS_UNPROCESSED, null=True)
+    error = models.CharField(max_length=255, blank=True)
+    response_hash = models.CharField(max_length=255, blank=True)
+    response_data = models.TextField(max_length=5000, blank=True)
+    content_type = models.ForeignKey(ContentType, null=True)
+    object_id = models.PositiveIntegerField(null=True)
+    content_object = generic.GenericForeignKey('content_type', 'object_id')
+    created = models.DateTimeField(auto_now_add=True)
+
+    @classmethod
+    def objects(cls, site_id):
+        return PGTransactionManager(cls, site_id)
+
+    class Meta:
+        verbose_name = 'Transaction'
+
+    def __unicode__(self):
+        return self.txnid
+
+    def get_first_name(self):
+        return format_and_split_name(self.name)[0]
+
+    def get_last_name(self):
+        return format_and_split_name(self.name)[1]
+
+    def has_user_details(self):
+        #Name, email, mobile are mandatory fields. Return true if the transaction has all these details
+        return self.name and self.email and self.phone
+
+    def get_parent(self):
+        return self.content_type
+    parent = property(get_parent)
+
+    def get_account_name(self):
+        return self.account.name if self.account else ''
+    get_account_name.short_description = 'Account'
+
+    def is_successful(self):
+        return self.status == self.TS_SUCCESS
+
+
     
 class Pledge(models.Model):
     name = models.CharField(max_length=200)
