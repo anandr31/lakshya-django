@@ -1,9 +1,16 @@
+
+from datetime import date, datetime
+
 from django.db import models
-from datetime import date
-from people.models import Person
 from django.db.models.aggregates import Max
 from django.db.models import Sum
-from common.utils import format_and_split_name
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
+from django.contrib.auth.models import User
+
+from people.models import Person
+from lakshya.constants import CURRENCIES, C_INR
+from lakshya.util import format_and_split_name, get_random_number, get_currency_iso_code
 
 
 ENTERED = 0
@@ -161,90 +168,6 @@ class PaymentTemp(models.Model):
     flex_field = models.CharField("Flexible Field", default="Donation to Lakshya", max_length=100, null=True, blank=True)
     pledge_id = models.IntegerField(blank=True, null=True, help_text='Only used for crowdfunding pledge fulfilment transactions')
 
-
-# New structure for CCAvenue FCRA PG. Taking help from kalyan@almabase.com
-
-# class PGTransactionManager(BaseSiteModelManager):
-class PGTransactionManager(models.Model):
-    def create_transaction(self, amount, account, currency, productinfo='', user=None, mode='', content_object=None):
-        txnid = str(get_random_number(10))
-        name, email, phone = self.get_user_details(user)
-        txn = self.model.objects(self.site_id).create(creator=user, txnid=txnid, amount=amount, productinfo=productinfo,
-                                                      mode=mode, name=name, email=email, phone=phone,
-                                                      account=account, currency=currency, content_object=content_object)
-        return txn
-
-    def get_user_details(self, user):
-        name, email, phone = '', '', ''
-        if user:
-            profile = user.profile
-            name = profile.full_name if profile else user.get_full_name()
-            email = profile.email if profile else user.email
-            phone = profile.mobile_number if profile else ''
-        return (name, email, phone)
-
-
-class PGTransaction(models.Model):
-    """A payment gateway transaction."""
-    #Transaction statuses
-    TS_UNPROCESSED, TS_SUCCESS, TS_FAILED, TS_PENDING, TS_ERROR = 1, 2, 3, 4, 5
-    TXN_STATUSES = ((TS_UNPROCESSED, "Unprocessed"), (TS_SUCCESS, "Success"),
-                    (TS_FAILED, "Failed"), (TS_PENDING, "Pending"), (TS_ERROR, "Error"))
-
-    creator = models.ForeignKey(SiteUser, null=True, blank=True)
-    account = models.ForeignKey(PGAccount)
-    txnid = models.CharField(max_length=255, unique=True)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
-    currency = models.SmallIntegerField(choices=CURRENCIES, default=C_USD)
-    productinfo = models.CharField(max_length=255, blank=True)
-    name = models.CharField(max_length=255, blank=True)
-    email = models.CharField(max_length=255, blank=True)
-    phone = models.CharField(max_length=255, blank=True)
-    request_hash = models.CharField(max_length=255, blank=True)
-    mode = models.CharField(max_length=255, blank=True)
-    #Response from PG
-    pg_txnid = models.CharField(max_length=255, blank=True)
-    status = models.SmallIntegerField(choices=TXN_STATUSES, default=TS_UNPROCESSED, null=True)
-    error = models.CharField(max_length=255, blank=True)
-    response_hash = models.CharField(max_length=255, blank=True)
-    response_data = models.TextField(max_length=5000, blank=True)
-    content_type = models.ForeignKey(ContentType, null=True)
-    object_id = models.PositiveIntegerField(null=True)
-    content_object = generic.GenericForeignKey('content_type', 'object_id')
-    created = models.DateTimeField(auto_now_add=True)
-
-    @classmethod
-    def objects(cls, site_id):
-        return PGTransactionManager(cls, site_id)
-
-    class Meta:
-        verbose_name = 'Transaction'
-
-    def __unicode__(self):
-        return self.txnid
-
-    def get_first_name(self):
-        return format_and_split_name(self.name)[0]
-
-    def get_last_name(self):
-        return format_and_split_name(self.name)[1]
-
-    def has_user_details(self):
-        #Name, email, mobile are mandatory fields. Return true if the transaction has all these details
-        return self.name and self.email and self.phone
-
-    def get_parent(self):
-        return self.content_type
-    parent = property(get_parent)
-
-    def get_account_name(self):
-        return self.account.name if self.account else ''
-    get_account_name.short_description = 'Account'
-
-    def is_successful(self):
-        return self.status == self.TS_SUCCESS
-
-
     
 class Pledge(models.Model):
     name = models.CharField(max_length=200)
@@ -297,3 +220,144 @@ class Milestone(models.Model):
     return float(ratio * 100)
   
   raised_precent = property(get_raised_percent)
+
+
+# New structure for CCAvenue FCRA PG. Taking help from kalyan@almabase.com
+
+class PGTransactionManager(models.Manager):
+    def create_transaction(self, amount, currency, productinfo='', user=None, mode='', content_object=None):
+        txnid = str(get_random_number(10))
+        name = user.get_full_name() if user else ''
+        email = user.email if user else ''
+        txn = self.model.objects.create(creator=user, txnid=txnid, amount=amount, productinfo=productinfo,
+                                                      mode=mode, name=name, email=email, phone='',
+                                                      currency=currency, content_object=content_object)
+        return txn
+
+
+class PGTransaction(models.Model):
+    """A payment gateway transaction."""
+    #Transaction statuses
+    TS_UNPROCESSED, TS_SUCCESS, TS_FAILED, TS_PENDING, TS_ERROR = 1, 2, 3, 4, 5
+    TXN_STATUSES = ((TS_UNPROCESSED, "Unprocessed"), (TS_SUCCESS, "Success"),
+                    (TS_FAILED, "Failed"), (TS_PENDING, "Pending"), (TS_ERROR, "Error"))
+
+    creator = models.ForeignKey(User, null=True, blank=True)
+    txnid = models.CharField(max_length=255, unique=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    currency = models.SmallIntegerField(choices=CURRENCIES, default=C_INR)
+    productinfo = models.CharField(max_length=255, blank=True)
+    name = models.CharField(max_length=255, blank=True)
+    email = models.CharField(max_length=255, blank=True)
+    phone = models.CharField(max_length=255, blank=True)
+    request_hash = models.CharField(max_length=255, blank=True)
+    mode = models.CharField(max_length=255, blank=True)
+    #Response from PG
+    pg_txnid = models.CharField(max_length=255, blank=True)
+    status = models.SmallIntegerField(choices=TXN_STATUSES, default=TS_UNPROCESSED, null=True)
+    error = models.CharField(max_length=255, blank=True)
+    response_hash = models.CharField(max_length=255, blank=True)
+    response_data = models.TextField(max_length=5000, blank=True)
+    content_type = models.ForeignKey(ContentType, null=True)
+    object_id = models.PositiveIntegerField(null=True)
+    content_object = generic.GenericForeignKey('content_type', 'object_id')
+    created = models.DateTimeField(auto_now_add=True)
+
+    objects = PGTransactionManager()
+
+    class Meta:
+        verbose_name = 'Payment Gateway Transaction'
+        verbose_name_plural = 'Payment Gateway Transactions'
+
+    def __unicode__(self):
+        return self.txnid
+
+    def get_first_name(self):
+        return format_and_split_name(self.name)[0]
+
+    def get_last_name(self):
+        return format_and_split_name(self.name)[1]
+
+    def has_user_details(self):
+        #Name, email, mobile are mandatory fields. Return true if the transaction has all these details
+        return self.name and self.email and self.phone
+
+    def get_parent(self):
+        return self.content_type
+    parent = property(get_parent)
+
+    def is_successful(self):
+        return self.status == self.TS_SUCCESS
+
+
+class FCRADonation(models.Model):
+    donor = models.ForeignKey(Person, related_name='fcra_donations')
+    transactions = generic.GenericRelation(PGTransaction)
+    amount = models.IntegerField()
+    currency = models.SmallIntegerField(choices=CURRENCIES, default=C_INR)
+    donation_fund = models.ForeignKey(DonationFund, blank=True)
+    transacation_type = models.IntegerField(choices=TRANSACTION_CHOICES,)
+    donation_type = models.IntegerField(choices=DONATION_TYPE, default=DIRECT)
+    bank_details = models.CharField(max_length=200, null=True, blank=True,
+                                           help_text="Enter Bank and Branch Details. Mandatory \
+                                           if Cheque or DD id choosen")
+    is_repayment = models.BooleanField("Is this a repayment", default=False,
+                        help_text="Tick this only if its a repayment. Donor ~ Scholar for this donation")
+    receipt_number = models.IntegerField(blank=True, null=True)
+    email_receipt = models.BooleanField(default=False)
+    pan_card = models.CharField("PAN Card", max_length=10, null=True, blank=True)
+    time = models.DateTimeField(default=datetime.now)
+    completed = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = 'FCRA Donation'
+        verbose_name_plural = 'FCRA Donations'
+
+    def __unicode__(self):
+        return ' for '.join(filter(None, [self.donor.user.get_full_name(),
+                                          self.donation_fund.name if self.donation_fund else '']))
+
+    def get_succesful_transactions(self):
+        return self.transactions.filter(status=PGTransaction.TS_SUCCESS)
+
+    def get_latest_succesful_transaction(self):
+        return self.transactions.filter(status=PGTransaction.TS_SUCCESS).order_by('created').first()
+
+    def get_currency_code(self):
+        return get_currency_iso_code(self.currency)
+    get_currency_code.short_description = 'Currency'
+
+    def on_payment_response(self, txn):
+        if txn.status == PGTransaction.TS_SUCCESS:
+            self.completed = True
+            self.save()
+            #donation_complete.send(sender=Donation, donation=self)
+
+    def populate_context(self, context):
+        context['title'] = 'Thank you for your donation'
+        context['object_name'] = self.project.name
+        context['object_url'] = '/fundraising/' + self.project.slug
+        context['object_label'] = 'project'
+        context['all_objects_url'] = '/fundraising'
+        context['payment_url'] = '/fundraising/' + self.project.slug + '/pay'
+
+    def get_payment_data(self):
+        """Return a dict with necessary info to be shown for payment history"""
+        return {'amount': self.amount, 'currency': self.currency, 'type': 'donation', 'time': self.time,
+                'text': 'Donated to <a class="subtle" href="/fundraising/' + self.project.slug + '">' + \
+                self.project.name + '</a>'}
+
+    def save(self, **kwargs):
+        if not self.receipt_number:
+            if self.time.month in [1, 2, 3]:
+                financial_year_1 = self.time.year - 1
+                financial_year_2 = self.time.year
+            else:
+                financial_year_1 = self.time.year
+                financial_year_2 = self.time.year + 1
+            date_1 = date(financial_year_1, 4, 1)
+            date_2 = date(financial_year_2, 3, 31)
+            self.receipt_number = (FCRADonation.objects.filter(time__gte=date_1,
+                                    time__lte=date_2).aggregate(Max('receipt_number'))["receipt_number__max"] or 0) + 1
+
+        super(FCRADonation, self).save(**kwargs)

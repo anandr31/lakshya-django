@@ -1,4 +1,5 @@
 
+import re
 import random
 import string
 
@@ -9,11 +10,60 @@ from crowdfunding.models import Project, Pledge, Message, ProjectImage, ProjectU
 from datetime import date
 from crowdfunding.constants import MAIL_NOT_SENT, CAMPAIGN_FULLY_BACKED_MAIL_SENT, \
         CAMPAIGN_EXPIRED_UNSUCCESSFULLY_MAIL_SENT, UPDATE_MAIL_NOT_SENT, UPDATE_MAIL_SENT
-
+from lakshya.constants import CURRENCY_ISO_CODES
 
 
 def generate_random_string(n):
     return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(n))
+
+
+def get_random_number(num_digits):
+    """Generate and return a random number with the given number of digits"""
+    range_start = 10 ** (num_digits - 1)
+    range_end = (10 ** num_digits) - 1
+    return random.randint(range_start, range_end)
+
+
+# Removes all the non ASCII characters from the string
+def removeNonAsciiChars(s):
+    if not isinstance(s, str) and not isinstance(s, unicode):
+        return str(s)
+    if not s:
+        return s
+    return "".join(i for i in s if ord(i) < 128)
+
+
+def format_and_split_name(name):
+    """Given a name, do some basic formatting and return the first name and last name"""
+    if not name:
+        return ''
+    name = removeNonAsciiChars(name).strip().title()
+    words = name.split(' ', 1)
+    if len(words) > 1:
+        return words[0], words[1]
+    else:
+        return words[0], ''
+
+
+def slugify(name):
+    """Return slug for the given name"""
+    if name is None:
+        return None
+    if not isinstance(name, str):
+        name = unicode(name)
+
+    name = name.strip().lower()
+    # Any non word characters (letters, digits, and underscores) are replaced by '-'
+    name = re.sub(r'\W+', '-', name)
+    # Removing any trailing or leading dash
+    name = re.sub(r'^-|-$', '', name)
+    #Replace multiple continuous hipens with one
+    name = re.sub('-+', '-', name)
+    return name
+
+
+def get_currency_iso_code(currency):
+    return CURRENCY_ISO_CODES.get(currency, '')
 
 
 def send_html_mail(subject, html_content, recipients, sender=None):
@@ -68,7 +118,7 @@ def campaign_fully_backed(project):
 def unfulfilled_pledges_exist(project):
     # Does this project have unfulfilled pldeges and has it been over 10 days since campaign ended
     unfulfilled_pledges = Pledge.objects.filter(project=project, pledge_fulfilled=False).all()
-    days_since_campaign_ended = (date.today() - project.start_date).days - project.period 
+    days_since_campaign_ended = (date.today() - project.start_date).days - project.period
     return (project.is_expired() and project.is_fully_pledged() and unfulfilled_pledges and (days_since_campaign_ended in [5, 10, 12, 15, 20, 25]))
 
 def campaign_expired_unsuccessfully(project):
@@ -83,7 +133,7 @@ def campaign_new_update(project):
 
 
 def campaign_within_three_days_expiry(project):
-    return project.get_days_remaining() in [3,2,1]
+    return project.get_days_remaining() in [3, 2, 1]
 
 
 def update_project_sent_email_status(project, status):
@@ -92,7 +142,7 @@ def update_project_sent_email_status(project, status):
 
 
 def send_email_incomplete_pledges(project):
-    days_since_campaign_ended = (date.today() - project.start_date).days - project.period 
+    days_since_campaign_ended = (date.today() - project.start_date).days - project.period
     subject = '[NITW Crowdfund] Fulfilling your pledge'
     template = 'emails/unfulfilled_pledge_backer.html'
     pledges = Pledge.objects.filter(project=project, pledge_fulfilled=False).all()
@@ -147,7 +197,7 @@ def send_email_campaign_update_backers(project):
         context = {'pledge': pledge, 'updates': ProjectUpdate.objects.filter(project=project, mail_status=UPDATE_MAIL_NOT_SENT)}
         recipient = pledge.user.email
         send_email_from_template(template, context, subject, recipient)
-    ProjectUpdate.objects.filter(project=project, mail_status=UPDATE_MAIL_NOT_SENT).update(mail_status = UPDATE_MAIL_SENT)
+    ProjectUpdate.objects.filter(project=project, mail_status=UPDATE_MAIL_NOT_SENT).update(mail_status=UPDATE_MAIL_SENT)
         # ProjectUpdate.save()
 
 

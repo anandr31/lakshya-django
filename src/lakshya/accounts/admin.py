@@ -9,7 +9,8 @@ from django.http import Http404, HttpResponseNotFound
 from reportlab.pdfgen import canvas
 
 from libraries.num2word import number2word
-from accounts.models import Expense, DonationFund, Donation, Pledge, PaymentTemp, BankAccount, BankBalance, Milestone
+from accounts.models import Expense, DonationFund, Donation, Pledge, PaymentTemp, BankAccount, BankBalance, Milestone,\
+    PGTransaction, FCRADonation
 from django.http import HttpResponse
 
 
@@ -213,6 +214,37 @@ class BankBalanceAdmin(admin.ModelAdmin):
 class MilestoneAdmin(admin.ModelAdmin):
     list_display = ('title', 'target_amount', 'start_date', 'end_date', 'committed_amount', 'raised_amount', 'raised_precent')
 
+
+class PGTransactionAdmin(admin.ModelAdmin):
+    list_display = ('txnid', 'creator', 'email', 'amount', 'currency', 'created', 'status',)
+    search_fields = ('amount', 'name', 'email')
+    raw_id_fields = ('creator',)
+    readonly_fields = ('created',)
+    list_filter = ('status',)
+
+    fieldsets = [
+        ("Main", {"fields": (('creator'),
+                              ('status', 'created'))}),
+        ("Request", {"fields": (('txnid'),
+                                ('currency', 'amount'),
+                                ('productinfo', 'name'),
+                                ('email', 'phone'),
+                                ('request_hash',))}),
+        ("Response", {"fields": (('pg_txnid', 'mode'),
+                                 ('response_hash',),
+                                 ('error',),
+                                 ('response_data',))})
+                ]
+
+
+class FCRADonationAdmin(admin.ModelAdmin):
+    list_display = ('id', 'completed', 'amount', 'time', 'donor', 'receipt_number', 'donation_type', 'transacation_type',)
+    list_filter = ('transacation_type', 'donation_type', 'donation_fund', 'is_repayment',)
+    search_fields = ('donor__user__first_name', 'donor__user__last_name', 'donor__user__email',
+                     'receipt_number', 'bank_details',)
+    raw_id_fields = ('donor', 'donation_fund',)
+
+
 admin.site.register(Expense, ExpenseOptions)
 admin.site.register(DonationFund, DonationFundOptions)
 admin.site.register(Donation, DonationOptions)
@@ -221,3 +253,5 @@ admin.site.register(PaymentTemp, PaymentTempAdmin)
 admin.site.register(BankAccount, BankAccountAdmin)
 admin.site.register(BankBalance, BankBalanceAdmin)
 admin.site.register(Milestone, MilestoneAdmin)
+admin.site.register(PGTransaction, PGTransactionAdmin)
+admin.site.register(FCRADonation, FCRADonationAdmin)

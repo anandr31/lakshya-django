@@ -16,6 +16,23 @@
 {%block header_slide%}
 {%endblock header_slide%}
 
+{% block scripts %}
+<script>
+$(function() {
+	$('#donation_form input[type="button"]').click(function() {
+		if($(this).attr('id') == 'btn_fcra_donate')
+		{
+			$('#donation_form').attr('action', 'accounts/fcra_payment_redirect').submit();
+		}
+		else
+		{
+			$('#donation_form').submit();
+		}
+	});
+});
+</script>
+{% endblock scripts %}
+
 {% block content %}
 <div class="content_wrap_old clearfix">
 	

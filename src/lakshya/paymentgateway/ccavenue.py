@@ -7,7 +7,7 @@ from urllib import urlencode
 from django.conf import settings
 from django.core.urlresolvers import reverse
 
-from common.utils import slugify, get_currency_iso_code
+from lakshya.util import get_currency_iso_code, slugify
 from paymentgateway.base import BaseGateway
 
 
@@ -17,13 +17,37 @@ class CCAvenueGateway(BaseGateway):
     working_key = ''
     access_code = ''
     pg_form_template = 'paymentgateway/ccavenue_form.html'
-    # payment_url = settings.CCAVENUE_PAYMENT_URL
-    payment_url = 'https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction'
+    payment_url = settings.CCAVENUE_PAYMENT_URL
 
-    def __init__(self, metadata={}):
-        self.merchant_id = metadata.get('merchant_id', '')
-        self.working_key = metadata.get('working_key', '')
-        self.access_code = metadata.get('access_code', '')
+    def __init__(self):
+        self.merchant_id = settings.CCAVENUE_MERCHANT_ID
+        self.working_key = settings.CCAVENUE_WORKING_KEY
+        self.access_code = settings.CCAVENUE_ACCESS_CODE
+
+    def set_form_context(self, context, request, txn):
+        context['encoded_request_data'] = self.get_encoded_request_data(request, txn)
+        context['access_code'] = self.access_code
+        context['pgform_request_url'] = self.payment_url
+        context['pg_form_template'] = self.pg_form_template
+        return
+
+    def get_encoded_request_data(self, request, txn):
+        redirect_url = 'http://' + request.get_host() + '/pg/response/' + slugify(self.name)
+        params = [('merchant_id', self.merchant_id),
+                ('order_id', txn.txnid),
+                ('currency', get_currency_iso_code(txn.currency)),
+                ('amount', txn.amount),
+                ('redirect_url', redirect_url),
+                ('cancel_url', redirect_url),
+                ('language', 'en'),
+                ('billing_name', txn.name),
+                ('billing_tel', txn.phone),
+                ('billing_email', txn.email),
+                ('delivery_name', txn.name),
+                ('delivery_tel', txn.phone)]
+        request_data = urlencode(params)
+        encoded_data = CCAvenueAESCipher().encrypt(request_data, self.working_key)
+        return encoded_data
 
     def get_txn_id_from_response_data(self, data):
         return data.get('orderNo', '')
@@ -51,36 +75,8 @@ class CCAvenueGateway(BaseGateway):
         decoded_response = CCAvenueAESCipher().decrypt(encoded_response, self.working_key)
         return decoded_response
 
-    def set_form_context(self, context, request, txn):
-        context['encoded_request_data'] = self.get_encoded_request_data(request, txn)
-        context['access_code'] = self.access_code
-        context['pgform_request_url'] = self.payment_url
-        context['pg_form_template'] = self.pg_form_template
-        return
-
-    def get_encoded_request_data(self, request, txn):
-        # redirect_url = 'http://' + request.get_host() + reverse('pg-response', kwargs={'pg': slugify(self.name)})
-        # redirect_url = 'http://www.thelakshyafoundation.org/accounts/payment-return'
-        redirect_url = 'http://www.thelakshyafoundation.org/crowdfunding/payment-return'
-        
-        params = [('merchant_id', self.merchant_id),
-                ('order_id', txn.txnid),
-                ('currency', get_currency_iso_code(txn.currency)),
-                ('amount', txn.amount),
-                ('redirect_url', redirect_url),
-                ('cancel_url', redirect_url),
-                ('language', 'en'),
-                ('billing_name', txn.name),
-                ('billing_tel', txn.phone),
-                ('billing_email', txn.email),
-                ('delivery_name', txn.name),
-                ('delivery_tel', txn.phone)]
-        request_data = urlencode(params)
-        encoded_data = CCAvenueAESCipher().encrypt(request_data, self.working_key)
-        return encoded_data
-
     def _get_status(self, data):
-        from paymentgateway.models import PGTransaction
+        from accounts.models import PGTransaction
         status_map = {'success': PGTransaction.TS_SUCCESS,
                       'failure': PGTransaction.TS_FAILED,
                       'invalid': PGTransaction.TS_PENDING,

@@ -1,10 +1,7 @@
-from common.utils import slugify
-# from paymentgateway.payu import PayUGateway
-# from paymentgateway.bluepay import BluePayGateway
-# from paymentgateway.paypal import PayPalGateway
-# from paymentgateway.authorizenet import AuthorizeNetGateway
+from lakshya.util import slugify
+
 from paymentgateway.ccavenue import CCAvenueGateway
-# from paymentgateway.hdfc import HDFCGateway
+#Import other payment gateways here in the future
 
 #All other constants and maps are built based on this. Make sure all new gateways are added to this list.
 #That should be sufficient to make it reflect everywhere

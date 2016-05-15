@@ -19,21 +19,16 @@ class PGTransactionView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(PGTransactionView, self).get_context_data(**kwargs)
-        site_id = self.request.site_id
         txnid = kwargs['txnid'].replace('/', '')
-        context['txn'] = txn = self.get_txn(site_id, txnid, self.request.user)
-        gateway = get_gateway_object(txn.account)
+        context['txn'] = txn = self.get_txn(txnid)
+        gateway = get_gateway_object('ccavenue')  # Later it could be dynamic.
         gateway.set_form_context(context, self.request, txn)
-        context['havedetails'] = txn.has_user_details()
         return context
 
-    def get_txn(self, site_id, txnid, user):
+    def get_txn(self, txnid):
         try:
-            txn = PGTransaction.objects(site_id).get(txnid=txnid)
+            txn = PGTransaction.objects.get(txnid=txnid)
         except PGTransaction.DoesNotExist:
-            raise Http404
-        # Not current user's transaction or already processed
-        if txn.creator != user or txn.status != PGTransaction.TS_UNPROCESSED:
             raise Http404
         return txn
 

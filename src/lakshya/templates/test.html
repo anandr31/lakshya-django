@@ -54,7 +54,7 @@ function selectRadio()
 </table>
 
 
-		<form class="donation_choices" action="payment_redirect" method="post">{% csrf_token %}
+		<form class="donation_choices" action="payment_redirect" method="post" id="donation_form">{% csrf_token %}
 			{% for field in form.visible_fields %}
 				<div class="field">
 				{% if field.name == 'referrer_url' %}
@@ -83,7 +83,8 @@ function selectRadio()
 		           	</p>
 		       	</div>
 		    {% endfor %}
-		<input type="submit" value="Donate by card/net banking"/>
+		<input type="button" value="Donate by card/net banking" id="btn_donate"/>
+		<input type="button" value="FCRA Donation" id="btn_fcra_donate"/>
 		</form>
 		</div> <!-- End of vision_block div-->
 
