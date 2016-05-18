@@ -1,0 +1,51 @@
+{% extends "newbase.html" %}
+<!-- {% block extracss %}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/crowdfunding/crowdfunding.css">
+<style type="text/css">
+	#menu .top-bar .name {
+		padding-top: 2.8rem;
+	}
+</style>
+{% endblock extracss %} -->
+{% block header_title %}
+<a href="/terms"><span>Terms and Conditions</span></a>
+{% endblock header_title %}
+
+{% block meta %}
+	<!-- <meta property="og:image" content="{{STATIC_URL}}newimg/hero_hackathon.png" /> -->
+	<meta property="og:title" content="Terms and Conditions" />
+	<meta property="og:description" content="Terms, conditions, privacy policy and refund policy for users of www.TheLakshyaFoundation.org" />
+{% endblock meta %}
+
+{% block scripts %}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/code_of_conduct.css">
+<link href="http://fonts.googleapis.com/css?family=Oswald:300,700,400|Open+Sans:400,700|Merriweather:300,400,700,900" rel="stylesheet" type="text/css">
+{% endblock scripts %}
+
+{% load humanize %}
+{% block content %}
+
+<div class="container">
+	<div id="code-of-conduct">
+
+		<h2>Terms of Use</h2>
+		<p>These Terms and Conditions, including all documents referenced herein, represent the entire understanding between The Lakshya Foundation (hereafter referred to as 'Lakshya') and you regarding your use of this Site and supersede any prior statements or representations. The Site's Privacy Policy is incorporated into these Terms and Conditions by reference and is made a part hereof. Access to and use of this Site is subject to all applicable laws and regulations.</p>
+
+		<h2>Use of Materials</h2>
+		<p>Materials on this Site (including those streamed or downloaded from the Site), including but not limited to software, images, text, graphics, music, videos, long form programs, user interfaces, logos and trademarks, along with the overall "look and feel" of the Site (collectively referred to as the "Material"), are owned or licensed by Lakshya and are protected under various intellectual property laws.</p>
+		
+		<h2>Privacy Policy</h2>
+		<p>Personal information collected by Lakshya and our website is stored in secure operating environments that are not available to the public. Lakshya will secure your personal information no matter where we process or store your data. We do not collect or retain any information other than that necessary for us to provide our services to you. If you opt in, we may from time to time share your mailing list information with kindred third party organizations.</p>
+		
+		<h2>Refunds and Cancellations</h2>
+		<p>Should Lakshya have to cancel a program for any reason a full refund will be offered. Should anyone have to cancel participation in a program, the nonrefundable deposit less transaction and administrative fees will be credited to a future program conducted within a year, provided that at least two weeks notice is given of cancellation. No credit will given if less than two weeks notice is given of cancellation.</p>
+		
+		<h2>History</h2>
+		<p>Lakshya (www.TheLakshyaFoundation.org), a non-profit trust, was founded in 2008 by NIT Warangal alumni to work with the institute administration, faculty, alumni, industry and relevant partners to build a world-class ecosystem of innovation and entrepreneurship at NIT Warangal.</p>
+		
+		<h2>Changes to our Policy</h2>
+		<p>From time to time it may be necessary for us to review and revise this policy. We reserve the right to change our policy at any time and should this occur the amendment would be posted on our website.</p>
+	</div>
+</div>
+{% endblock content %}
