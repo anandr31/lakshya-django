@@ -262,7 +262,8 @@ TINYMCE_DEFAULT_CONFIG = {
 # TINYMCE_SPELLCHECKER = True
 # TINYMCE_COMPRESSOR = True
 
-CCAVENUE_PAYMENT_URL = 'https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction'
+# CCAVENUE_PAYMENT_URL = 'https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction'
+CCAVENUE_PAYMENT_URL = 'https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction'
 CCAVENUE_MERCHANT_ID = '91521'
 CCAVENUE_WORKING_KEY = 'A7D078B36AF0009FD1141D6AF9F8291E'
 CCAVENUE_ACCESS_CODE = 'AVDJ64DB14BU63JDUB'
