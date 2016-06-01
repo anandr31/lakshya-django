@@ -9,6 +9,7 @@ from django.core.urlresolvers import reverse
 
 from lakshya.util import get_currency_iso_code, slugify
 from paymentgateway.base import BaseGateway
+from people.models import Person
 
 
 class CCAvenueGateway(BaseGateway):
@@ -33,6 +34,38 @@ class CCAvenueGateway(BaseGateway):
 
     def get_encoded_request_data(self, request, txn):
         redirect_url = 'http://' + request.get_host() + '/pg/response/' + slugify(self.name)
+        # try:
+        donor = Person.objects.get(user__email=txn.email)
+        name = donor.name()
+        address = donor.billing_address
+        country = donor.billing_country
+        contact_number = donor.contact_number
+        # email = email_address
+        state = donor.billing_state
+        city = donor.billing_city
+        zip_code = donor.billing_postal_code
+        # except:
+        #     name = 'test name'
+        #     address = ''
+        #     country = ''
+        #     contact_number = ''
+        #     # email = email_address
+        #     state = ''
+        #     city = ''
+        #     zip_code = ''
+
+        # params = [('merchant_id', self.merchant_id),
+        #         ('order_id', txn.txnid),
+        #         ('currency', get_currency_iso_code(txn.currency)),
+        #         ('amount', txn.amount),
+        #         ('redirect_url', redirect_url),
+        #         ('cancel_url', redirect_url),
+        #         ('language', 'en'),
+        #         ('billing_name', txn.name),
+        #         ('billing_tel', txn.phone),
+        #         ('billing_email', txn.email),
+        #         ('delivery_name', txn.name),
+        #         ('delivery_tel', txn.phone)]
         params = [('merchant_id', self.merchant_id),
                 ('order_id', txn.txnid),
                 ('currency', get_currency_iso_code(txn.currency)),
@@ -40,11 +73,16 @@ class CCAvenueGateway(BaseGateway):
                 ('redirect_url', redirect_url),
                 ('cancel_url', redirect_url),
                 ('language', 'en'),
-                ('billing_name', txn.name),
-                ('billing_tel', txn.phone),
+                ('billing_name', name),
+                ('billing_tel', contact_number),
                 ('billing_email', txn.email),
-                ('delivery_name', txn.name),
-                ('delivery_tel', txn.phone)]
+                ('billing_address', address),
+                ('billing_city', city),
+                ('billing_state', state),
+                ('billing_country', country),
+                ('billing_zip', zip_code),
+                ('delivery_name', name),
+                ('delivery_tel', contact_number)]
         request_data = urlencode(params)
         encoded_data = CCAvenueAESCipher().encrypt(request_data, self.working_key)
         return encoded_data
