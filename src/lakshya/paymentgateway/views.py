@@ -70,19 +70,10 @@ class PGResponseView(TemplateView):
         return self.process_response(request, request.POST, self.get_gateway(**kwargs))
 
     def process_response(self, request, data, gateway):
-        site_id = request.site_id
         txnid = gateway.get_txn_id_from_response_data(data)
-        txn = self.get_txn(site_id, txnid)
+        txn = self.get_txn(txnid)
         txn.response_data = json.dumps(data)
         txn.save()
-        gateway.update_from_account(txn.account)  # Update merchant ID etc on object to validate response
-
-        #Extra step for some PGs - Get transaction details from server. Eg: Paypal
-        new_data = gateway.get_txn_details_from_server(txn, data)
-        if new_data:
-            data = new_data
-            txn.response_data = json.dumps(data)
-            txn.save()
 
         if not gateway.verify_response(data, txn):
             txn.status = PGTransaction.TS_ERROR
@@ -96,9 +87,9 @@ class PGResponseView(TemplateView):
 
         return render(request, self.template_name, context)
 
-    def get_txn(self, site_id, txnid):
+    def get_txn(self, txnid):
         try:
-            return PGTransaction.objects(site_id).get(txnid=txnid)
+            return PGTransaction.objects.get(txnid=txnid)
         except PGTransaction.DoesNotExist:
             logger.error("Could not find transaction with txnid [" + txnid + "]")
             raise Http404

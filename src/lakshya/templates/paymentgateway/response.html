@@ -1,0 +1,19 @@
+{% extends "newbase.html" %}
+{% load humanize %}
+
+{% block meta %}
+<title>Payment response</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="content_with_page_title text-center" style="margin-top:100px;">
+	{% if txn.is_successful %}
+	<p class="title">Thank you for your donation of Rs. {{txn.amount|intcomma}}.</p>
+	<p class="subtitle">Transaction successful.</p>
+	<p><a href="/">Go to home page</a></p>
+	{% else %}
+	<p class="title">Transaction failed. Please try again.</p>
+	<p><a href="/donate">Try again</a></p>
+	{% endif %}
+</div>
+{% endblock content %}

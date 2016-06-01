@@ -331,15 +331,9 @@ class FCRADonation(models.Model):
         if txn.status == PGTransaction.TS_SUCCESS:
             self.completed = True
             self.save()
-            #donation_complete.send(sender=Donation, donation=self)
 
     def populate_context(self, context):
         context['title'] = 'Thank you for your donation'
-        context['object_name'] = self.project.name
-        context['object_url'] = '/fundraising/' + self.project.slug
-        context['object_label'] = 'project'
-        context['all_objects_url'] = '/fundraising'
-        context['payment_url'] = '/fundraising/' + self.project.slug + '/pay'
 
     def get_payment_data(self):
         """Return a dict with necessary info to be shown for payment history"""
