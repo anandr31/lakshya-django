@@ -13,6 +13,13 @@ from paymentgateway.utils import get_gateway_object, get_gateway_class_from_slug
 from lakshya.util import send_email_from_template
 from people.models import Person
 from django.contrib.auth.models import User
+from accounts.models import FCRADonation
+import datetime
+import textwrap
+from reportlab.pdfgen import canvas
+from libraries.num2word import number2word
+from django.core.mail import EmailMessage
+from django.conf import settings
 
 logger = logging.getLogger('GROUPIFY')
 
@@ -93,6 +100,12 @@ class PGResponseView(TemplateView):
             email_context = {'amount': txn.amount, 'name': person.name()}
             #Send email to donor
             send_email_from_template('emails/fcra_thank_you.html', email_context, subject, txn.email)
+            user = User.objects.get(email=txn.email)
+            donor = Person.objects.get(user=user)
+            donation = FCRADonation.objects.get(donor=donor, amount=txn.amount, receipt_sent=False)
+            self.mail_receipt(donation)
+            donation.receipt_sent = True
+            donation.save()
 
         return render(request, self.template_name, context)
 
@@ -102,6 +115,66 @@ class PGResponseView(TemplateView):
         except PGTransaction.DoesNotExist:
             logger.error("Could not find transaction with txnid [" + txnid + "]")
             raise Http404
+
+    # send receipt in email... starts here
+    def get_financial_year(self, donation):
+        date=donation.time.date()
+        months=date.month
+        if months<=3:
+            return '%d-%d'%(date.year-1,date.year)
+        return '%d-%d'%(date.year,date.year+1)
+
+
+    def generate_receipt(self, donation):
+        p = canvas.Canvas("Lakshya-FCRA-Donation-Receipt-" + str(donation.id) + ".pdf")
+        p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/receipt-header.jpg", 2, 720, 600, 100)
+        p.setFontSize(10)
+        p.drawString(40, 680, datetime.date.today().strftime("%B %d, %Y"))
+        p.drawString(430, 680, "No. "+str(donation.receipt_number) + "/FCRA/" + self.get_financial_year(donation))
+        p.setFontSize(18)
+        p.drawString(200, 650, "Receipt For Donation")
+        p.setFontSize(12)
+        content = '''Received with thanks an amount of Rs.%.2f (Rupees %s only) from %s on %s towards charitable donation vide %s, %s.
+        ''' % (donation.amount, number2word.to_card(donation.amount), donation.donor.name(), 
+               donation.time.date(), donation.get_transacation_type_display(),
+               donation.donor.get_full_address())
+        content_start=620
+        for line in textwrap.wrap(content, 90):
+            p.drawString(40, content_start, line)
+            content_start -= 20
+            
+        p.drawString(40, 490, "For The Lakshya Foundation")
+        p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/managing_trustee_sign.jpg", 40, 440, 80, 35)
+        p.drawString(40,430, "Dr K.Padma")
+        p.drawString(40, 410, "Managing Trustee")
+        p.drawImage(settings.PROJECT_DIR + "/static/img/receipt/receipt_footer.jpg", 2, 25, 600, 230)
+        
+        p.showPage()
+        p.save()
+        print "**************Inside generate_receipt"
+        return "Lakshya-FCRA-Donation-Receipt-" + str(donation.id) + ".pdf"
+
+    def mail_receipt(self, donation):
+
+        text_content = ('''
+        Dear %s,
+
+        Thank you for donating to Lakshya. Please find attached the receipt for your donation made on %s.
+
+        Please feel free to contact us for any queries.
+
+        Regards,
+        The Lakshya Team
+                ''') % (donation.donor.name(), donation.time.date())
+        msg = EmailMessage("Lakshya Donation Receipt [FCRA]", text_content, "info@thelakshyafoundation.org", 
+                           [donation.donor.user.email,], 
+                           bcc=['anand@thelakshyafoundation.org'])
+                
+        msg.attach_file(self.generate_receipt(donation))
+        # msg.attach_file("static/docs/lakshya_80G_tax_exemption.pdf")
+        msg.send()
+        # self.mail_receipt.short_description = "Mail Receipt"
+    # ... ends here
 
 
 class PGPostFromServerView(View):

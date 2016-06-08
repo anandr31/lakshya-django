@@ -111,20 +111,16 @@ class CCAvenueGateway(BaseGateway):
         email=response_data.get('billing_email', '')
         try:
             user = User.objects.get(email=email)
-            user.first_name=str(response_data.get('billing_name', ''))
+            user.first_name=str(response_data.get('billing_name', '')).split(None, 1)[0]
+            user.last_name=str(response_data.get('billing_name', '')).split(None, 1)[1]
             user.save()
-            print "first name - " + str(response_data.get('billing_name', ''))
-            print "first name - " + user.first_name
-            print"user exists"
         except User.DoesNotExist:
-            print "user does not exist"
             user = User.objects.create(username=email[:28],
                                        email=email,
                                        first_name=str(response_data.get('billing_name', '')),
                                        password="Lakshya123$")
         try:
             person = Person.objects.get(user=user)
-            print "person exists"
             person.billing_address = str(response_data.get('billing_address', ''))
             person.billing_city = str(response_data.get('billing_city', ''))
             person.billing_state = str(response_data.get('billing_state', ''))

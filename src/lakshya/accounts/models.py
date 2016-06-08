@@ -311,6 +311,7 @@ class FCRADonation(models.Model):
     pan_card = models.CharField("PAN Card", max_length=10, null=True, blank=True)
     time = models.DateTimeField(default=datetime.now)
     completed = models.BooleanField(default=True)
+    receipt_sent = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'FCRA Donation'

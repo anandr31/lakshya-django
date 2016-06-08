@@ -261,6 +261,7 @@ class FCRAPaymentView(View):
         txn = PGTransaction.objects.create_transaction(amount, C_INR, '', user, content_object=donation)
         return HttpResponseRedirect('/pg/transaction/' + txn.txnid)
 
+
     def get_or_create_user_and_person(self, email):
         try:
             user = User.objects.get(email=email)
