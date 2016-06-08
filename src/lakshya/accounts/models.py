@@ -289,6 +289,9 @@ class PGTransaction(models.Model):
     def is_successful(self):
         return self.status == self.TS_SUCCESS
 
+    def is_cancelled(self):
+        return self.status == self.TS_PENDING
+
 
 class FCRADonation(models.Model):
     donor = models.ForeignKey(Person, related_name='fcra_donations')

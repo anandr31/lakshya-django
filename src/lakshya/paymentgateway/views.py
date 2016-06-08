@@ -10,6 +10,9 @@ from django.shortcuts import render
 # from paymentgateway.models import PGTransaction
 from accounts.models import PGTransaction
 from paymentgateway.utils import get_gateway_object, get_gateway_class_from_slug
+from lakshya.util import send_email_from_template
+from people.models import Person
+from django.contrib.auth.models import User
 
 logger = logging.getLogger('GROUPIFY')
 
@@ -38,7 +41,7 @@ class PGTransactionView(TemplateView):
         name, phone, email = request.POST.get('name', ''), request.POST.get('phone', ''), request.POST.get('email', '')
         txn = self.get_txn(site_id, txnid, request.user)
         self.update_txn(txn, name, email, phone)
-        #TODO: Update profile also
+        #TODO: Update profile also        
         return HttpResponseRedirect(request.path)
 
     def update_txn(self, txn, name, email, phone):
@@ -80,10 +83,16 @@ class PGResponseView(TemplateView):
         else:
             gateway.update_txn(data, txn)
         txn.save()
-
-        context = {'txn': txn}
+        user = User.objects.get(email=txn.email)
+        person = Person.objects.get(user=user)
+        context = {'txn': txn, 'person': person}
         txn.content_object.on_payment_response(txn)
         txn.content_object.populate_context(context)
+        if txn.status == PGTransaction.TS_SUCCESS:
+            subject = 'Thank you!'
+            email_context = {'amount': txn.amount, 'name': person.name()}
+            #Send email to donor
+            send_email_from_template('emails/fcra_thank_you.html', email_context, subject, txn.email)
 
         return render(request, self.template_name, context)
 

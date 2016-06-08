@@ -5,15 +5,49 @@
 <title>Payment response</title>
 {% endblock meta %}
 
+{% block extracss %}
+<style type="text/css">
+	html, body {
+	    width: 100%;
+	}
+	table {
+		width: 30%;
+	    margin: 0 auto;
+	}
+	table tbody tr td {
+		font-size: 10pt;
+		line-height: 4rem;
+	}
+</style>
+{% endblock extracss %}
+
 {% block content %}
 <div class="content_with_page_title text-center" style="margin-top:100px;">
 	{% if txn.is_successful %}
-	<p class="title">Thank you for your donation of Rs. {{txn.amount|intcomma}}.</p>
-	<p class="subtitle">Transaction successful.</p>
-	<p><a href="/">Go to home page</a></p>
+	<p class="title">Thank you so much for your donation of Rs. {{txn.amount|intcomma}}! We have sent you a receipt for the donation via email.</p>
+	<table class="content_with_page_title text-center" style="margin-top:100px;">
+		<tr>
+			<td>Amount</td>
+			<td>{{txn.amount|intcomma}}</td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td>{{person.name}}</td>
+		</tr>		
+		<tr>
+			<td>Email</td>
+			<td>{{txn.email}}</td>
+		</tr>
+	</table>
+	<p>Go to <a href="/">Home Page</a> | <a href="/crowdfunding">Crowdfunding</a> | <a href="/hackathon">Hackathon</a></p>
+	{%elif txn.is_cancelled%}
+	<p class="subtitle">The transaction was cancelled.</p>
+	<p><a href="/donate">Try donating again</a> or contact us on info@TheLakshyaFoundation.org / +91-9849 365 735</p>
+	<p>Go to <a href="/">Home Page</a> | <a href="/crowdfunding">Crowdfunding</a> | <a href="/hackathon">Hackathon</a></p>
 	{% else %}
-	<p class="title">Transaction failed. Please try again.</p>
-	<p><a href="/donate">Try again</a></p>
+	<p class="title">The transaction failed to go through.</p>
+	<p><a href="/donate">Try donating again</a> or contact us on info@TheLakshyaFoundation.org / +91-9849 365 735</p>
+	<p>Go to <a href="/">Home Page</a> | <a href="/crowdfunding">Crowdfunding</a> | <a href="/hackathon">Hackathon</a></p>	
 	{% endif %}
 </div>
 {% endblock content %}

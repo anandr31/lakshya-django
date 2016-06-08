@@ -10,6 +10,7 @@ from django.core.urlresolvers import reverse
 from lakshya.util import get_currency_iso_code, slugify
 from paymentgateway.base import BaseGateway
 from people.models import Person
+from django.contrib.auth.models import User
 
 
 class CCAvenueGateway(BaseGateway):
@@ -105,6 +106,49 @@ class CCAvenueGateway(BaseGateway):
         txn.mode = response_data.get('payment_mode', '')
         txn.status = self._get_status(response_data)
         txn.save()
+
+        # Store donor data in DB... starts here
+        email=response_data.get('billing_email', '')
+        try:
+            user = User.objects.get(email=email)
+            user.first_name=str(response_data.get('billing_name', ''))
+            user.save()
+            print "first name - " + str(response_data.get('billing_name', ''))
+            print "first name - " + user.first_name
+            print"user exists"
+        except User.DoesNotExist:
+            print "user does not exist"
+            user = User.objects.create(username=email[:28],
+                                       email=email,
+                                       first_name=str(response_data.get('billing_name', '')),
+                                       password="Lakshya123$")
+        try:
+            person = Person.objects.get(user=user)
+            print "person exists"
+            person.billing_address = str(response_data.get('billing_address', ''))
+            person.billing_city = str(response_data.get('billing_city', ''))
+            person.billing_state = str(response_data.get('billing_state', ''))
+            person.billing_postal_code = str(response_data.get('billing_zip', ''))
+            person.billing_country = str(response_data.get('billing_country', ''))
+            person.contact_number = str(response_data.get('billing_tel', ''))
+            person.save()
+        except Person.DoesNotExist:
+            print "person does not exist"
+            person = Person.objects.create(user=user,
+                                           billing_address=str(response_data.get('billing_address', '')),
+                                           billing_city=str(response_data.get('billing_city', '')),
+                                           billing_state=str(response_data.get('billing_state', '')),
+                                           billing_postal_code=str(response_data.get('billing_zip', '')),
+                                           billing_country=str(response_data.get('billing_country', '')),
+                                           contact_number=str(response_data.get('billing_tel', '')),
+                                           )
+        # pan_card = response_data.get('pan_card', '')
+        # if pan_card:
+        #     person.pan_number = pan_card
+        #     person.save()        
+        # ...ends here
+
+
 
     def get_decoded_response_data(self, data, txn):
         encoded_response = data.get('encResp', '')
