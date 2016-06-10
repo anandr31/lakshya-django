@@ -9,11 +9,13 @@ from django.http import HttpResponseRedirect
 from django.db.models import Sum
 #from django.contrib.gis.geoip import GeoIP
 from django.conf import settings
+from django.views.generic.base import View
+from django.http.response import Http404
 
-from accounts.models import Expense, Donation, DonationFund, PAYMENT_GATEWAY, \
-    DIRECT
+from lakshya.constants import C_INR
 from people.models import Person
-
+from accounts.models import Expense, Donation, DonationFund, PAYMENT_GATEWAY, \
+    DIRECT, FCRADonation, PGTransaction
 from accounts.forms import PaymentTempForm, PledgeForm
 from accounts.models import PaymentTemp, Pledge
 from accounts.util import get_post_object
@@ -239,3 +241,37 @@ def seedfund(request):
                                                        "pledge_percentage":pledge_percentage,
                                                        "show_success_message":show_success_message, "is_dollar" : is_dollar}))
 
+
+class FCRAPaymentView(View):
+    def post(self, request, *args, **kwargs):
+        try:
+            amount = int(request.POST.get('amount', ''))
+        except ValueError:
+            return HttpResponseRedirect('/donate')
+        email = request.POST.get('email_address', '')
+        if not email:
+            return HttpResponseRedirect('/donate')
+        email_receipt = request.POST.get('email_receipt', False)
+        pan_card = request.POST.get('pan_card', '')
+        user, person = self.get_or_create_user_and_person(email)
+        donation_fund = DonationFund.objects.filter(name__contains="Lakshya").first()
+        donation = FCRADonation.objects.create(donor=person, donation_fund=donation_fund, amount=amount,
+                            completed=False, currency=C_INR, transacation_type=PAYMENT_GATEWAY, donation_type=DIRECT,
+                            pan_card=pan_card, email_receipt=email_receipt)
+        txn = PGTransaction.objects.create_transaction(amount, C_INR, '', user, content_object=donation)
+        return HttpResponseRedirect('/pg/transaction/' + txn.txnid)
+
+
+    def get_or_create_user_and_person(self, email):
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            user = User.objects.create(username=email[:28],
+                                       email=email,
+                                       password="Lakshya123$")
+
+        try:
+            person = Person.objects.get(user=user)
+        except Person.DoesNotExist:
+            person = Person.objects.create(user=user,)
+        return (user, person)

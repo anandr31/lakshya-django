@@ -55,6 +55,7 @@ urlpatterns = patterns('',
     url(r'^hackathon/?',include('hackathon.urls', namespace='hackathon')),
     url(r'^oldpartners/?$', TemplateView.as_view(template_name="partners.html")),
     url(r'^innovationgarage/?', include('innovationgarage.urls', namespace='ig')),
+    url(r'^pg/?', include('paymentgateway.urls', namespace='pg')),
    
     # url(r'^$', 'lakshya.views.home', name='home'),
     # url(r'^lakshya/', include('lakshya.foo.urls')),

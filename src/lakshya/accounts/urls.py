@@ -3,6 +3,7 @@ from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from accounts.views import FCRAPaymentView
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -18,4 +19,6 @@ urlpatterns = patterns('',
     url(r'^payment-failure$', TemplateView.as_view(template_name="payment_failure.html"), name="payment-failure"),
     #url(r'^payment-success$', direct_to_template, {'template' : 'payment_success.html'}, name='payment-success'),
     url(r'^payment-success$', TemplateView.as_view(template_name="payment_success.html"), name="payment-success"),
+
+    url(r'^fcra_payment_redirect/?$', FCRAPaymentView.as_view(), name='fcra_payment_redirect'),
 )

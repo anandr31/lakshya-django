@@ -8,9 +8,9 @@
 <script src="{{STATIC_URL}}js/jquery.min.js"></script>	
 
 <script type="text/javascript">
-$(document).ready(function() {
-	$('#payform').submit()
-    } );
+$(function() {
+	$('#pgform_container form').submit();
+});
 </script>
 
 {% endblock %}
@@ -18,15 +18,13 @@ $(document).ready(function() {
 <div class = "content_with_page_title center">
 	<div class="content_div">
 		<div id = "redirecting">
-			<h3 style="text-align:center;margin-top:100px;">Redirecting to the Payment Gateway...</h3>
+			<h3 style="margin-top:100px;text-align:center;">Redirecting to the Payment Gateway...</h3>
 		</div>
 	</div>
 
-	<form action="https://www.ccavenue.com/shopzone/cc_details.jsp" id="payform" method="POST">
-	{% for name, value in payment_dict.iteritems %}
-		<input  type="hidden" name="{{ name }}" value="{{ value }}"/>
-	{% endfor %}
-	</form>
+	<div id="pgform_container" style="display:none;">
+		{% include pg_form_template %}
+	</div>
 
 </div>
 {% endblock content %}
