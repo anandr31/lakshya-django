@@ -29,6 +29,7 @@ INTERNSHIPS = 3
 ADMINISTRATION_EXPENSES = 4
 HACKATHON = 5
 INNOVATION_GARAGE = 6
+CROWDFUNDING = 7
 EXPENSE_HEADER_FIRST_LEVEL_CHOICES = ((GENERAL, "General"),
                                 (SCHOLARSHIPS, "Scholarships"),
                                 (INNOVATION, "Innovation Project"),
@@ -48,6 +49,7 @@ SALARY = 5
 TRAVEL = 6
 EQUIPMENT = 7
 CONSUMABLES = 8
+CROWDFUNDING_PAYOUT = 9
 EXPENSE_HEADER_SECOND_LEVEL_CHOICES = ((WEBSITE, "Website"),
                                        (PUBLICITY, "Publicity"),
                                        (SCHOLARSHIPS, "Scholarships"),
