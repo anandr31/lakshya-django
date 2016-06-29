@@ -35,7 +35,8 @@ EXPENSE_HEADER_FIRST_LEVEL_CHOICES = ((GENERAL, "General"),
                                 (INTERNSHIPS, "Internships"),
                                 (ADMINISTRATION_EXPENSES, "Administrative Expenses"),
                                 (HACKATHON, "Hackathon"),
-                                (INNOVATION_GARAGE, "Innovation Garage"))
+                                (INNOVATION_GARAGE, "Innovation Garage"),
+                                (CROWDFUNDING, "Crowdfunding"))
 
 
 WEBSITE = 0
@@ -55,6 +56,7 @@ EXPENSE_HEADER_SECOND_LEVEL_CHOICES = ((WEBSITE, "Website"),
                                        (TRAVEL, "Travel"),
                                        (EQUIPMENT, "Equipment"),
                                        (CONSUMABLES, "Consumables"),
+                                       (CROWDFUNDING_PAYOUT, "Crowdfunding Payout"),
                                        (OTHERS, "Others"))
 
 
