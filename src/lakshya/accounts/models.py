@@ -30,6 +30,7 @@ ADMINISTRATION_EXPENSES = 4
 HACKATHON = 5
 INNOVATION_GARAGE = 6
 CROWDFUNDING = 7
+PAYMENT_GATEWAY = 8
 EXPENSE_HEADER_FIRST_LEVEL_CHOICES = ((GENERAL, "General"),
                                 (SCHOLARSHIPS, "Scholarships"),
                                 (INNOVATION, "Innovation Project"),
@@ -37,7 +38,8 @@ EXPENSE_HEADER_FIRST_LEVEL_CHOICES = ((GENERAL, "General"),
                                 (ADMINISTRATION_EXPENSES, "Administrative Expenses"),
                                 (HACKATHON, "Hackathon"),
                                 (INNOVATION_GARAGE, "Innovation Garage"),
-                                (CROWDFUNDING, "Crowdfunding"))
+                                (CROWDFUNDING, "Crowdfunding"),
+                                (PAYMENT_GATEWAY, "Payment Gateway"))
 
 
 WEBSITE = 0
@@ -50,6 +52,8 @@ TRAVEL = 6
 EQUIPMENT = 7
 CONSUMABLES = 8
 CROWDFUNDING_PAYOUT = 9
+CCAVENUE_INR = 10
+CCAVENUE_FCRA = 11
 EXPENSE_HEADER_SECOND_LEVEL_CHOICES = ((WEBSITE, "Website"),
                                        (PUBLICITY, "Publicity"),
                                        (SCHOLARSHIPS, "Scholarships"),
@@ -59,6 +63,8 @@ EXPENSE_HEADER_SECOND_LEVEL_CHOICES = ((WEBSITE, "Website"),
                                        (EQUIPMENT, "Equipment"),
                                        (CONSUMABLES, "Consumables"),
                                        (CROWDFUNDING_PAYOUT, "Crowdfunding Payout"),
+                                       (CCAVENUE_INR, "CCAvenue INR account"),
+                                       (CCAVENUE_FCRA, "CCAvenue FCRA account"),
                                        (OTHERS, "Others"))
 
 
