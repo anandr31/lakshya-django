@@ -67,8 +67,8 @@ def register(request):
 def return_view(request):   
 #    import pdb; pdb.set_trace()
     if request.method == "POST":       
-        working_key = "vsb2w5ampye1baft0hg62jlwrscw007u"
-        merchant_id = "M_thelaksh_10884"
+        working_key = settings.CCAVENUE_WORKING_KEY
+        merchant_id = settings.CCAVENUE_MERCHANT_ID
         
         form = CCAVenueReturnForm(merchant_id, working_key, request.POST)
 

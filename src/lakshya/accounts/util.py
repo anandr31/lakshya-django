@@ -1,4 +1,7 @@
 from zlib import adler32
+
+from django.conf import settings
+
 from people.models import Person
 
 def calc_checksum(*args):
@@ -21,53 +24,53 @@ def get_post_object(callback_url, amount, email_address, transaction_id, notes):
         zip_code = donor.billing_postal_code
 
         return {
-            "Merchant_Id" :"M_thelaksh_10884" ,
+            "Merchant_Id" :settings.CCAVENUE_MERCHANT_ID ,
             "Amount" :amount ,
             "Order_Id" :transaction_id ,
             "Redirect_Url" :callback_url ,
-            
-            "Checksum" :calc_checksum("M_thelaksh_10884", transaction_id, amount, callback_url, "vsb2w5ampye1baft0hg62jlwrscw007u") ,
-            
-            "billing_cust_name" :name , 
-            "billing_cust_address" :address , 
+
+            "Checksum" :calc_checksum(settings.CCAVENUE_MERCHANT_ID, transaction_id, amount, callback_url, settings.CCAVENUE_WORKING_KEY) ,
+
+            "billing_cust_name" :name ,
+            "billing_cust_address" :address ,
             "billing_cust_country" :country ,
             "billing_cust_tel" :contact_number ,
-            "billing_cust_email" :email ,  
+            "billing_cust_email" :email ,
             "billing_cust_state" :state ,
-            "billing_cust_city" :city , 
-            "billing_zip_code" :zip_code ,             
-            "billing_cust_notes" :notes,                                            
-            "delivery_cust_name" :name , 
-            "delivery_cust_address" :address , 
-            "delivery_cust_country" :country , 
+            "billing_cust_city" :city ,
+            "billing_zip_code" :zip_code ,
+            "billing_cust_notes" :notes,
+            "delivery_cust_name" :name ,
+            "delivery_cust_address" :address ,
+            "delivery_cust_country" :country ,
             "delivery_cust_state" :state ,
-            "delivery_cust_city" :city , 
+            "delivery_cust_city" :city ,
             "delivery_cust_tel" :contact_number ,
             "delivery_zip_code" :zip_code ,
         }
     except:
         return {
-            "Merchant_Id" :"M_thelaksh_10884" ,
+            "Merchant_Id" :settings.CCAVENUE_MERCHANT_ID ,
             "Amount" :amount ,
             "Order_Id" :transaction_id ,
-            "Redirect_Url" :callback_url , 
-            "Checksum" :calc_checksum("M_thelaksh_10884", transaction_id, amount, callback_url, "vsb2w5ampye1baft0hg62jlwrscw007u") ,
-            "billing_cust_name" :"" , 
-            "billing_cust_address" :"" , 
+            "Redirect_Url" :callback_url ,
+            "Checksum" :calc_checksum(settings.CCAVENUE_MERCHANT_ID, transaction_id, amount, callback_url, settings.CCAVENUE_WORKING_KEY) ,
+            "billing_cust_name" :"" ,
+            "billing_cust_address" :"" ,
             "billing_cust_country" :"" ,
             "billing_cust_tel" :"" ,
-            "billing_cust_email" :email_address ,  
+            "billing_cust_email" :email_address ,
             "billing_cust_state" :"" ,
-            "billing_cust_city" :"" , 
-            "billing_zip" :"" ,             
-            "billing_cust_notes" :notes,                                            
-            "delivery_cust_name" :"" , 
-            "delivery_cust_address" :"" , 
-            "delivery_cust_country" :"" , 
+            "billing_cust_city" :"" ,
+            "billing_zip" :"" ,
+            "billing_cust_notes" :notes,
+            "delivery_cust_name" :"" ,
+            "delivery_cust_address" :"" ,
+            "delivery_cust_country" :"" ,
             "delivery_cust_state" :"" ,
-            "delivery_cust_city" :"" , 
+            "delivery_cust_city" :"" ,
             "delivery_cust_tel" :"" ,
             "delivery_zip_code" :"" ,
             "billing_zip_code" : "",
             "Merchant_Param" : "",
-        }       
+        }
