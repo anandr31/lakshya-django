@@ -264,9 +264,9 @@ TINYMCE_DEFAULT_CONFIG = {
 
 CCAVENUE_PAYMENT_URL = 'https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction'
 # CCAVENUE_PAYMENT_URL = 'https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction'
-CCAVENUE_MERCHANT_ID = '91521'
-CCAVENUE_WORKING_KEY = 'A7D078B36AF0009FD1141D6AF9F8291E'
-CCAVENUE_ACCESS_CODE = 'AVDJ64DB14BU63JDUB'
+CCAVENUE_MERCHANT_ID = '10954'
+CCAVENUE_WORKING_KEY = '42C470C1C8ACA07B9124E5FB4156D46F'
+CCAVENUE_ACCESS_CODE = 'IBP8L05238YHMKCS'
 
 # Load the local settings
 # This should be at the end for overriding
